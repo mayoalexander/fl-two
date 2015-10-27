@@ -1,0 +1,168 @@
+Header add Access-Control-Allow-Origin "*"
+Header add Access-Control-Allow-Headers "origin, x-requested-with, content-type"
+Header add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
+
+#ErrorDocument 404 http://freelabel.net/404.php
+
+Redirect 301 http://m.freelabel.net/style.css http://freelabel.net/css/style.css
+
+#RewriteCond %{HTTP_HOST} !^([^.]+\.)freelabel\.net$ [NC]
+#RewriteCond %{HTTPS}s ^on(s)|
+#RewriteRule ^ http%1://www.freelabel.net%{REQUEST_URI} [L,R=301]
+
+RewriteRule ^register$ 										artists/templates/ZoomSlider/index.php?ctrl=$1
+RewriteRule ^register/$ 									artists/templates/ZoomSlider/index.php?ctrl=$1
+
+RewriteRule ^db/([\w-]+)/$ 										index.php?ctrl=$1
+RewriteRule ^db/([\w-]+)$ 										index.php?ctrl=$1
+
+RewriteRule ^form/([\w-]+)$ 									submit/upload/register.php?form=$1
+RewriteRule ^form/([\w-]+)/$ 									submit/upload/register.php?form=$1
+
+RewriteRule ^login$ 										/config/register_freetrial.php?login
+RewriteRule ^login/$ 										/config/register_freetrial.php?login
+
+
+
+RewriteRule ^search/([\w-]+)$ 										user/views/search.php?q=$1
+RewriteRule ^search/([\w-]+)/$ 										user/views/search.php?q=$1
+
+RewriteRule ^search/@([\w-]+)$ 										user/views/search.php?q=$1
+RewriteRule ^search/@([\w-]+)/$ 									user/views/search.php?q=$1
+
+
+RewriteRule ^submit$ 										/upload/index.php
+RewriteRule ^submit/([\w-]+)/$ 							/upload/index.php
+RewriteRule ^submit/([\w-]+)$ 								/upload/index.php
+
+
+RewriteRule ^confirm$ 										/config/payment.php?id=$1
+RewriteRule ^confirm/([\w-]+)/$ 							/config/payment.php?id=$1
+RewriteRule ^confirm/([\w-]+)$ 								/config/payment.php?id=$1
+
+
+
+
+RewriteRule ^l/([\w-]+)/$ 									/test/profile.php?uid=$1
+RewriteRule ^l/([\w-]+)$ 									/test/profile.php?uid=$1
+
+RewriteRule ^L/([\w-]+)/$ 									/test/profile.php?uid=$1
+RewriteRule ^L/([\w-]+)$ 									/test/profile.php?uid=$1
+
+RewriteRule ^u/([\w-]+)/$ 									/test/profile.php?uid=$1
+RewriteRule ^u/([\w-]+)$ 									/test/profile.php?uid=$1
+RewriteRule ^U/([\w-]+)/$ 									/test/profile.php?uid=$1
+RewriteRule ^U/([\w-]+)$ 									/test/profile.php?uid=$1
+
+
+RewriteRule ^l/@([\w-]+)/$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
+RewriteRule ^l/@([\w-]+)$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
+
+RewriteRule ^l/@([\w-]+)/([\w-]+)/$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
+RewriteRule ^l/@([\w-]+)/([\w-]+)$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
+
+RewriteRule ^L/@([\w-]+)/$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
+RewriteRule ^L/@([\w-]+)$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
+
+RewriteRule ^L/@([\w-]+)/([\w-]+)/$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
+RewriteRule ^L/@([\w-]+)/([\w-]+)$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
+
+ 
+
+
+#RewriteRule ^L$ 											/index.php
+#RewriteRule ^L/$ 											/index.php
+#RewriteRule ^L/([\w-]+)/$ 									/x/index.php?i=$1
+#RewriteRule ^L/([\w-]+)$ 									/x/index.php?i=$1
+
+#RewriteRule ^L/@([\w-]+)/$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
+#RewriteRule ^L/@([\w-]+)$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
+
+#RewriteRule ^L/@([\w-]+)/([\w-]+)/$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
+#RewriteRule ^L/@([\w-]+)/([\w-]+)$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
+
+
+RewriteRule ^@([\w-]+)/$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
+RewriteRule ^@([\w-]+)$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
+
+RewriteRule ^@([\w-]+)/t/([\w-]+)/$ 		/config/profile.php?user_twitter_name=$1&post_id=$2
+RewriteRule ^@([\w-]+)/t/([\w-]+)$ 		/config/profile.php?user_twitter_name=$1&post_id=$2
+
+RewriteRule ^@([\w-]+)/([\w-]+)/$ 		/config/profile.php?user_twitter_name=$1&blog_title=$2
+RewriteRule ^@([\w-]+)/([\w-]+)$ 		/config/profile.php?user_twitter_name=$1&blog_title=$2
+
+RewriteRule ^([0-9]+)/$ 									/config/profile.php?post_id=$1
+RewriteRule ^([0-9]+)$ 										/config/profile.php?post_id=$1
+RewriteRule ^d-([\w-]+)/$ 							/?ctrl=$1
+RewriteRule ^d-([\w-]+)$ 							/?ctrl=$1
+
+
+
+RewriteRule ^x/@([\w-]+)/([\w-]+)/$ 	/config/profile.php?user_twitter_name=$1&blog_title=$2
+RewriteRule ^x/@([\w-]+)/([\w-]+)$ 		/config/profile.php?user_twitter_name=$1&blog_title=$2
+
+
+
+
+RewriteRule ^bae/@([\w-]+)/$ 						/test/profile.php?uid=$1
+RewriteRule ^bae/@([\w-]+)$ 						/test/profile.php?uid=$1
+
+RewriteRule ^bae/([\w-]+)/$ 						/test/profile.php?uid=$1&q=$2
+RewriteRule ^bae/([\w-]+)$ 							/test/profile.php?uid=$1&q=$2
+
+RewriteRule ^bae/search/([\w-]+)/([\w-]+)/$ 						/bae/search/index.php?q=$1
+RewriteRule ^bae/search/([\w-]+)/([\w-]+)$ 						/bae/search.index.php?q=$1
+
+
+
+RewriteRule ^shop/$ /store/index.php
+
+RewriteRule ^tv/id/([0-9]+)/$ 									/tv/index.php?id=$1
+RewriteRule ^tv/id/([0-9]+)$ 									/tv/index.php?id=$1
+
+RewriteRule ^tv/@([\w-]+)/$ 										/tv/index.php?t=$1
+RewriteRule ^tv/@([\w-]+)$ 										/tv/index.php?t=$1
+RewriteRule ^tv/@([\w-]+)/([\w-]+)/$ 					/tv/index.php?t=$1&v=$2
+RewriteRule ^tv/@([\w-]+)/([\w-]+)$ 					/tv/index.php?t=$1&v=$2
+
+RewriteRule ^mag/#([\w-]+)/$ 		/images/index.php?id=$1
+RewriteRule ^mag/#([\w-]+)$ 		/images/index.php?id=$1
+
+RewriteRule ^mag/page/([[0-9]+]*)/$ 				/mag/index.php?p=$1
+RewriteRule ^mag/page/([[0-9]+]*)$ 					/mag/index.php?p=$1
+
+RewriteRule ^mag/id/([0-9]+)/$ 				/mag/index.php?p=$1
+RewriteRule ^mag/id/([0-9]+)$ 				/mag/index.php?p=$1
+
+
+RewriteRule ^images/@([\w-]+)/$ 				images/?id=$1
+RewriteRule ^images/@([\w-]+)$ 					images/?id=$1
+
+RewriteRule ^images/([[0-9]+]*)/$ 				images/?id=$1
+RewriteRule ^images/([[0-9]+]*)$ 				images/?id=$1
+
+
+
+
+
+#RewriteRule ^images/#([[0-9]+]*)/$ 			/images/?id=$1
+#RewriteRule ^images/#([[0-9]+]*)$ 				/images/?id=$1
+
+
+
+RewriteRule ^events/@([\w-]+)/$ 				events/?id=$1
+RewriteRule ^events/@([\w-]+)$ 					events/?id=$1
+
+RewriteRule ^events/([[0-9]+]*)/$ 				events/?id=$1
+RewriteRule ^events/([[0-9]+]*)$ 				events/?id=$1
+
+#RewriteRule ^events/#([[0-9]+]*)/$ 			/events/?id=$1
+#RewriteRule ^events/#([[0-9]+]*)$ 				/events/?id=$1
+
+
+#RewriteRule ^pic/#([[0-9]+]*)/$ 			/images/?id=$1
+#RewriteRule ^pic/#([[0-9]+]*)$ 				/images/?id=$1
+#RewriteRule ^pic/([[0-9]+]*)/$ 				/images/?id=$1
+#RewriteRule ^pic/([[0-9]+]*)$ 				/images/?id=$1
+
+
