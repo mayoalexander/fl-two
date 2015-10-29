@@ -1038,6 +1038,33 @@ class Config
   }
 
 
+
+  public function getLeads($count='100') {
+    
+      $app_build = '';
+      include(ROOT.'inc/connection.php');  // 2.1 - Pull Script From Database
+      $query = "SELECT * FROM leads ORDER BY `id` DESC LIMIT 12";
+      $result = mysqli_query($con,$query);
+      $i=1;
+      if($row = mysqli_fetch_assoc($result)) { 
+        foreach ($row as $script_text) {
+          $script[] = $script_text;
+        }
+        foreach ($script as $key => $value) {
+          $app_build  .= '<li><a href="http://freelabel.net/som/index.php?dm=1&t='.$user.'&text='.$script[$key].'" target="_blank" class="btn btn-default btn-xs col-md-2 " role="menuitem" tabindex="-1" ><span class="glyphicon glyphicon-question-sign"></span>  '.$key.'): '.urldecode(substr($script[$key],0,80)).'...</a></li>';
+        }
+        $app_build    .='<hr>';
+        foreach ($script as $key => $value) {
+          $app_build  .= '<li><a href="http://freelabel.net/som/index.php?post=1&t='.$user.'&text=@'.$user.' '.$script[$key].'" target="_blank" class="btn btn-default btn-xs" role="menuitem" tabindex="-1" ><span class="glyphicon glyphicon-plus"></span>  '.$key.'): '.urldecode(substr($script[$key],0,20)).'...</a></li>';
+        }
+
+      } else {
+        // 2.3 Throw Error if Does Not Exist
+      }
+    return $app_build;
+  }
+
+
   public function getCurrentPeriod() {
       //$current_time       = date('h:s:i');
     $current_time       = date('H');

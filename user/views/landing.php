@@ -17,8 +17,6 @@ if ($_SESSION['user_name']=='admin' OR strtolower($_SESSION['user_name'])=='that
 }	
 ?>
 <script type="text/javascript">
-</script>
-<script type="text/javascript">
 $('.load-more-button').click(function(){
 
   //$('.main_display_wrapper').html('Please Wait..');
@@ -76,7 +74,7 @@ $('.load-more-button').hover(function(){
 					include(ROOT.'mag/view/liked_posts.php');
 					break;
 				case 'leads':
-					include(ROOT.'submit/views/db/lead_conversion.php');
+					include(ROOT.'submit/views/db/leads.php');
 					break;
 				case 'script':
 					include(ROOT.'x/s.php');

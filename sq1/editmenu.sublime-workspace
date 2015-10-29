@@ -1,0 +1,742 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"border",
+				"border-top"
+			],
+			[
+				"backg",
+				"background-color"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "dfrg-master/dfrg-cms/application/views/admin/menu/display_menu.php",
+			"settings":
+			{
+				"buffer_size": 3204,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dfrg-master/dfrg-cms/application/views/admin/edit_menu.php",
+			"settings":
+			{
+				"buffer_size": 1813,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dfrg-master/dfrg-cms/application/views/admin/edit_publish_date.php",
+			"settings":
+			{
+				"buffer_size": 17,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dfrg-master/dfrg-cms/application/helpers/generate_modal_link_helper.php",
+			"settings":
+			{
+				"buffer_size": 1684,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dfrg-master/dfrg-cms/application/views/admin/delfriscos.php",
+			"settings":
+			{
+				"buffer_size": 5495,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 87.0,
+		"last_filter": "package control install",
+		"selected_items":
+		[
+			[
+				"package control install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 96.0,
+		"history":
+		[
+			"quit",
+			"exit",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/mayoalexander/FL/sq1/dfrg-master/dfrg-cms",
+		"/Users/mayoalexander/FL/sq1/dfrg-master/dfrg-cms/application",
+		"/Users/mayoalexander/FL/sq1/dfrg-master/dfrg-cms/application/views",
+		"/Users/mayoalexander/FL/sq1/dfrg-master/dfrg-cms/application/views/admin"
+	],
+	"file_history":
+	[
+		"/Users/mayoalexander/FL/sq1/dfrg-master/dfrg-cms/application/views/admin/promos/remove_promo.php",
+		"/Users/mayoalexander/FL/sq1/dfrg-master/dfrg-cms/application/controllers/promos/add_promo.php",
+		"/Users/mayoalexander/FL/sq1/dfrg-master/dfrg-cms/application/views/admin/promos/display_promos.php",
+		"/Users/mayoalexander/FL/sq1/dfrg-master/dfrg-cms/system/database/DB.php",
+		"/Users/mayoalexander/FL/sq1/dfrg-master/dfrg-cms/application/config/database.php",
+		"/Users/mayoalexander/FL/sq1/dfrg-master/dfrg-cms/application/controllers/drink/add_drink.php",
+		"/Users/mayoalexander/FL/sq1/dfrg-master/dfrg-cms/application/controllers/drink/add_menu.php",
+		"/Users/mayoalexander/FL/sq1/dfrg-master/dfrg-cms/application/views/admin/add_drink.php",
+		"/Users/mayoalexander/FL/user/views/landing.php",
+		"/Users/mayoalexander/FL/user/views/stream.php",
+		"/Users/mayoalexander/FL/user/views/feed.php",
+		"/Users/mayoalexander/FL/submit/views/db/user_photos.php",
+		"/Users/mayoalexander/FL/landing/header.php",
+		"/Users/mayoalexander/FL/submit/views/db/current_clients.php",
+		"/Users/mayoalexander/FL/config/confirm_upload.php",
+		"/Users/mayoalexander/FL/config/admin_controller.php",
+		"/Users/mayoalexander/FL/sftp-config.json",
+		"/Users/mayoalexander/FL/submit/views/db/campaign_info.php",
+		"/Users/mayoalexander/FL/user/views/signin.php",
+		"/Users/mayoalexander/FL/submit/views/uploadedsingles.php",
+		"/Users/mayoalexander/FL/landing/css/creative.css",
+		"/Users/mayoalexander/FL/landing/footer.php",
+		"/Users/mayoalexander/FL/user/views/expired.php",
+		"/Users/mayoalexander/FL/index.php",
+		"/Users/mayoalexander/FL/landing/index.php",
+		"/Users/mayoalexander/FL/introduction/index.php",
+		"/Users/mayoalexander/FL/artists/templates/ZoomSlider/index.php",
+		"/Users/mayoalexander/FL/config/deletesingle.php",
+		"/Users/mayoalexander/FL/tweeter.php",
+		"/Users/mayoalexander/FL/config/index.php",
+		"/Users/mayoalexander/FL/user/translations/en.php",
+		"/Users/mayoalexander/FL/upload/index.php",
+		"/Users/mayoalexander/FL/submit/views/db/recent_posts.php",
+		"/Users/mayoalexander/FL/user/views/register.php",
+		"/Users/mayoalexander/FL/user/views/password_reset.php",
+		"/Users/mayoalexander/FL/user/config/config.php",
+		"/Users/mayoalexander/FL/config/register_freetrial.php",
+		"/Users/mayoalexander/FL/.htaccess",
+		"/Users/mayoalexander/FL/submit/upload/register.php",
+		"/Users/mayoalexander/FL/sq1/dfrg-master/README.md",
+		"/Users/mayoalexander/Library/Application Support/Sublime Text 3/Packages/User/sftp_servers/FREELABEL",
+		"/Users/mayoalexander/Documents/GITMULA.php"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/mayoalexander/FL/sq1/dfrg-master/dfrg-cms/",
+			"/Users/mayoalexander/FL/sq1/dfrg-master/dfrg-cms/application",
+			"/Users/mayoalexander/FL/sq1/dfrg-master/dfrg-cms",
+			"/Users/mayoalexander/FL/sq1/dfrg-master/dfrg-cms/application"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"conf_delete",
+			"edit_publish_date",
+			"function generate_modal_link",
+			"generate_modal_link",
+			"script_text",
+			"class config",
+			"checkIfAlreadyExists",
+			"col-md-2",
+			"mentions",
+			"1<",
+			"200",
+			"leadScript",
+			"lead_twitter_noat",
+			"public_promotions",
+			"tweet_to_client",
+			"upload",
+			"soundcloud-form",
+			"row",
+			"col-lg-4 col-sm-6",
+			"stream",
+			"h3",
+			"h2",
+			"?view=",
+			"?view",
+			"?view=new",
+			"span",
+			"col-md-6",
+			"h5",
+			"login-pan",
+			"input",
+			"login-panel",
+			"baewatchfl",
+			"upload",
+			"nav",
+			"upload_options",
+			"alert",
+			"div",
+			"col-md-4",
+			"h3 class='form-s",
+			"h3 class='text-muted",
+			"<h3>",
+			"<h4>",
+			"h3",
+			"h2",
+			"h3",
+			"profile_builder_form",
+			"input-group",
+			"col-md-4 col-xs-12",
+			"Hello",
+			"$user_name",
+			"login-panel-",
+			"hide-on-mobile",
+			"echo '</script>';",
+			"echo '<script>';",
+			"login",
+			"font-size:140",
+			"input",
+			"register",
+			"overview",
+			"login",
+			"showcase_date"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\"/\",\n"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"path": "/Users/mayoalexander/FL/sq1/dfrg-master/dfrg-cms"
+		}
+	],
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "dfrg-master/dfrg-cms/application/views/admin/menu/display_menu.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3204,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11,
+								24
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "dfrg-master/dfrg-cms/application/views/admin/edit_menu.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1813,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								449,
+								449
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 187.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "dfrg-master/dfrg-cms/application/views/admin/edit_publish_date.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								17,
+								17
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"synced": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "dfrg-master/dfrg-cms/application/helpers/generate_modal_link_helper.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1684,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								720,
+								720
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "dfrg-master/dfrg-cms/application/views/admin/delfriscos.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5495,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1348,
+								1348
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 18.0
+	},
+	"input":
+	{
+		"height": 26.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 190.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"adminedit_menu",
+				"application/views/admin/edit_menu.php"
+			],
+			[
+				"delfri",
+				"application/views/admin/delfriscos.php"
+			],
+			[
+				"adminmenu",
+				"application/views/admin/menu/display_menu.php"
+			],
+			[
+				"controllerpromo",
+				"application/controllers/promos/add_promo.php"
+			],
+			[
+				"promos",
+				"application/views/admin/promos/display_promos.php"
+			],
+			[
+				"config/",
+				"config/index.php"
+			],
+			[
+				"twitter/inde",
+				"twitter/index.1.2.php"
+			],
+			[
+				"database",
+				"application/config/database.php"
+			],
+			[
+				"config",
+				"application/config/config.php"
+			],
+			[
+				"addmenu",
+				"application/controllers/drink/add_menu.php"
+			],
+			[
+				"adddrink",
+				"application/controllers/drink/add_drink.php"
+			],
+			[
+				"leads",
+				"submit/views/db/leads.php"
+			],
+			[
+				"feed",
+				"user/views/feed.php"
+			],
+			[
+				"user/viewsfeed",
+				"user/views/feed.php"
+			],
+			[
+				"user/viewsstream",
+				"user/views/stream.php"
+			],
+			[
+				"confirmupload",
+				"config/confirm_upload.php"
+			],
+			[
+				"currentclie",
+				"submit/views/db/current_clients.php"
+			],
+			[
+				"landing/header",
+				"landing/header.php"
+			],
+			[
+				"userphotos",
+				"submit/views/db/user_photos.php"
+			],
+			[
+				"adminco",
+				"config/admin_controller.php"
+			],
+			[
+				"userlanding",
+				"user/views/landing.php"
+			],
+			[
+				"globals",
+				"config/globals.js"
+			],
+			[
+				"introduction/index",
+				"introduction/index.php"
+			],
+			[
+				"introduction",
+				"introduction/index.php"
+			],
+			[
+				"config/index",
+				"config/index.php"
+			],
+			[
+				"landing/index",
+				"landing/index.php"
+			],
+			[
+				"artists/templates/zoom",
+				"artists/templates/ZoomSlider/index.php"
+			],
+			[
+				"creative",
+				"landing/css/creative.css"
+			],
+			[
+				"usersignin",
+				"user/views/signin.php"
+			],
+			[
+				"uploadedsingl",
+				"submit/views/uploadedsingles.php"
+			],
+			[
+				"index",
+				"index.php"
+			],
+			[
+				"expired",
+				"user/views/expired.php"
+			],
+			[
+				"landing/footer",
+				"landing/footer.php"
+			],
+			[
+				"signin",
+				"user/views/signin.php"
+			],
+			[
+				"user/viewlanding",
+				"user/views/landing.php"
+			],
+			[
+				"config/inde",
+				"config/index.php"
+			],
+			[
+				"campainginfo",
+				"submit/views/db/campaign_info.php"
+			],
+			[
+				"user/viewssignin",
+				"user/views/signin.php"
+			],
+			[
+				"campaign",
+				"submit/views/db/campaign_info.php"
+			],
+			[
+				"recentposts",
+				"submit/views/db/recent_posts.php"
+			],
+			[
+				"upload/index",
+				"upload/index.php"
+			],
+			[
+				"creativ",
+				"landing/css/creative.css"
+			],
+			[
+				"user/register",
+				"user/views/register.php"
+			],
+			[
+				"landingfooter",
+				"landing/footer.php"
+			],
+			[
+				"user/views/feed",
+				"user/views/feed.php"
+			],
+			[
+				"userviewsstream",
+				"user/views/stream.php"
+			],
+			[
+				"user/views/landing",
+				"user/views/landing.php"
+			],
+			[
+				"user_photos",
+				"submit/views/db/user_photos.php"
+			],
+			[
+				"user/viewslanding",
+				"user/views/landing.php"
+			],
+			[
+				"landing/foot",
+				"landing/footer.php"
+			],
+			[
+				"config/registerf",
+				"config/register_freetrial.php"
+			],
+			[
+				"userregiste",
+				"user/views/register.php"
+			],
+			[
+				"submit/upload/register",
+				"submit/upload/register.php"
+			],
+			[
+				"userviewssigin",
+				"user/views/signin.php"
+			],
+			[
+				"landingheader",
+				"landing/header.php"
+			],
+			[
+				"user/viewsregister",
+				"user/views/register.php"
+			],
+			[
+				"user/pass",
+				"user/views/password_reset.php"
+			],
+			[
+				"currentclients",
+				"submit/views/db/current_clients.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 233.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

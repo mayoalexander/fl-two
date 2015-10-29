@@ -17,6 +17,9 @@ $access_token['x_auth_expires'] = '0';
 $_SESSION['access_token'] = $access_token;
 $todays_date = date('Y-m-d H:i:s');
 
+$leads_list = $config->getLeads();
+
+$n=0;
 /* --------------------------------------------------------------------------------
 GRAB ALL SCRIPT VALUES
 --------------------------------------------------------------------------------*/
@@ -42,9 +45,11 @@ GRAB ALL SCRIPT VALUES
                         //print_r($row);
                         //echo '<hr><hr>';
                         $send_tweet_ornot = true;
-                        //echo 'Already sent to '.$related_user.'!!!!! ';
+                        // already sent to prompt
+                        echo 'Sending 2nd Follow Up: [@'.$related_user.'], ';
+
                       } else {
-                        $debug['twitter']['direct-messages'] = 'Auto Response Sent:';
+                        $debug['twitter']['direct-messages'] = 'Auto Response Sent: ';
                         echo $debug['twitter']['direct-messages'];
                         saveTwitterData($type , $related_user , $data);
                         $send_tweet_ornot = false;
@@ -145,6 +150,13 @@ GRAB ALL SCRIPT VALUES
                         "count" => '200');
                       //$connection->post('statuses/update', array('status' => $campaign5));
                       break;
+                      case 8: // GETING LEADS AND SENDING THEM THE CAMPAIGN
+                      $api_query_search =array(
+                        'screen_name'=>"freelabelnet", 
+                        'cursor'=>'-1',
+                        "count" => '200');
+                      //$connection->post('statuses/update', array('status' => $campaign5));
+                      break;
                       default:
                       $api_query_search =array('q'=>"my new soundcloud.com", 
                         "result_type" => "recent",
@@ -198,6 +210,9 @@ if(isset($_GET["redirect"]))
 <style type="text/css">
 .tweet-buttons {
   display:none;
+}
+.twitter-controls-group .btn , .twitter-controls-group button, .twitter-controls-group {
+  border-radius:0;
 }
 </style>
 <script src="<?php echo $leap; ?>../config/jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
@@ -336,7 +351,7 @@ if ($_POST['page']=='timeline'){
 *
 *
 ------------------------------------------------------------------------------------ */
-//if (isset($_GET['direct_messages'])){
+//if (isset($_GET['ssages'])){
 if ($_POST['page']=='direct_messages'){
 
         $api_query_dm =array("count" => '100');
@@ -367,6 +382,7 @@ if ($_POST['page']=='direct_messages'){
           * ---------------------------------------------------------------------- */
 
           if(checkIfAlreadyExists('direct_message',$user_twitter_name_screen, $main_follow_up)==true){
+            // if they have already been saved to the database, send the second follow up promotion
             //$connection->post('direct_messages/new', array('screen_name' => $user_twitter_name_screen,'text' => $main_follow_up));
           } else {
             /* 
@@ -582,9 +598,12 @@ if ($_POST['page']=='followers') { // GET FOLLOEWRS
           if ($user_post == 1) {
             $user_post = "TRUE";
           } else {
+            $follow_up_text = "Let us know when you create an account or upload at FREELABEL.NET. What are you focused on getting showcased in the Radio/Mag? Interviews, Project releases, etc?";
             $user_post = "FALSE";
             $connection->post('friendships/create', array('screen_name' => $user_twitter_name_screen));
-           // echo '<script>shareTwitter(\'Let us know when you upload at FREELABEL.net! Whats your focus on showcasing in the Radio/Mag? Interviews, Project releases, etc?\' , \''.$user_twitter_name_screen.'\');</script>';
+            $connection->post('direct_messages/new', array('screen_name' => $user_twitter_name_screen,'text' => $follow_up_text));
+
+           // echo '<script>shareTwitter(\'\' , \''.$user_twitter_name_screen.'\');</script>';
           }
           $user_post_date = date('F d - h:i A' , strtotime($user_twitter_data->created_at));
           // \'Let us know when you upload to FREELABEL.NET. What are you focused showcasing in the Mag/Radio? Projects, Releases, Interviews, etc?\' , \''.$user_twitter_name.'\'
@@ -720,7 +739,7 @@ if($_GET['som']=='1')
          // echo '</pre>';
           
           
-            $twtter_tabs .= '<div class="btn-group-vertical col-md-1 " >';
+            $twtter_tabs .= '<div class="btn-group-vertical col-md-2 twitter-controls-group " >';
             $twtter_tabs .= '<a onclick="$(\'#som_buttons\').slideToggle();" class="btn btn-default btn-lg col-md-1 col-xs-12 "><i class="fa fa-ellipsis-h" ></i></a>';
             $twtter_tabs .= '<button class="btn btn-default btn-lg col-md-3 col-xs-3 " onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'mentions', '".$_SESSION['user_name']."','','calendar')".'" alt="mentions"><i class="fa fa-comments" ></i> Mentions</button>';
             $twtter_tabs .= '<button class="btn btn-default btn-lg col-md-3 col-xs-3 " onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'direct_messages', '".$_SESSION['user_name']."','','calendar')".'" alt="messages"><i class="fa fa-envelope" ></i> Messages</button>';
@@ -731,7 +750,7 @@ if($_GET['som']=='1')
             $twtter_tabs .= '</div>';
 
             $twtter_tabs .= '
-          <div id="som_buttons" class="well" style="display:none;margin-bottom:2%;">
+          <div id="som_buttons" class="som-buttons" style="display:none;margin-bottom:2%;">
            <!-- <form action="twitter/index.php" method="post">
                 <div class="input-group">
                   <input type="text" class="form-control"  name="status" id="status" placeholder="Write something...." aria-describedby="basic-addon1">
@@ -765,7 +784,7 @@ if($_GET['som']=='1')
            // echo "<a class='btn btn-danger btn-lg btn-lg col-md-3 col-xs-3 fa fa-eject' href='twitter/destroysessions.php'></a>";
         } 
         echo '<div id="row">';
-                  echo '<div class="col-md-11 main_twitter_panel" style="font-size:80%;text-align:left;height:90vh;overflow-y:scroll;">';
+                  echo '<div class="col-md-10 main_twitter_panel" style="font-size:80%;text-align:left;height:90vh;overflow-y:scroll;">';
                     //print_r($twitter_followers);
                     /*foreach ($tweets['followers/list'] as $tweet) {
                       echo $tweet;
@@ -774,7 +793,7 @@ if($_GET['som']=='1')
 
 //echo' yas bitch yassss;<hr>';
 //print_r($_POST);
-
+    echo "<h2>Twitter <small> > ".$_POST['page']."</small></h2>";
     if ($_POST['page']=='direct_messages' OR $_POST['page']=='mentions')  {
 
         echo '<div class="row">';

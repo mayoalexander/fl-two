@@ -73,7 +73,7 @@ if ($_SESSION['user_name']) {
 				// include(ROOT."test/twitpic.php");
 					//echo "<hr>";
 				echo '<div class="" style="max-height:225px;overflow-y:scroll;">';
-					include(ROOT."tweeter.php");
+					//include(ROOT."tweeter.php");
 				echo '</div>';
 				echo "<hr>";
 					//echo '<div class="panel-body">';

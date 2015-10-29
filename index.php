@@ -1,4 +1,13 @@
 <?php
+//print_r($_SERVER['HTTP_HOST']);
+if ( strpos($_SERVER['HTTP_HOST'], 'localhost')===0 ) {
+	define(ENVIROMENT, 'DEVELOPMENT');
+} elseif(strpos($_SERVER['HTTP_HOST'], 'freelabel.net')===0) {
+	define(ENVIROMENT, 'LIVE');
+} else {
+	define(ENVIROMENT, 'PRODUCTION');
+}
+
 session_start();
 if (isset($_SESSION['fl-session-id'])==false) {
 	$_SESSION['fl-session-id'] = time();
@@ -6,8 +15,8 @@ if (isset($_SESSION['fl-session-id'])==false) {
 	//$_SESSION['fl-sesssion-id'] = rand(11111111111111111111,999999999999999999999); 
 	exit;
 }
-if (isset($_GET['dev'])) {
-	print_r($_SESSION);
+if (isset($_GET['dev']) OR ENVIROMENT=='DEVELOPMENT') {
+	//print_r($_SESSION);
 	//exit;
 }
 //$page_title = "WELCOME";
