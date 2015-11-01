@@ -19,7 +19,7 @@ include(ROOT.'submit/views/db/index.php');
 // ----------------- security measure ---------------- /
 // 1. If there is no GET value in the URL, then REDIRECT
 // 2. Check if GET UID is NOT a SUBMISSION and INVALID USERNAME
-// 3. 
+// 3.
 // --------------------------------------------------- /
 //$__redirect = 'http://freelabel.net/form/upload';
 $__redirect = 'http://freelabel.net/upload/?uid=submission';
@@ -35,17 +35,17 @@ if ($_GET['uid']=='') {
 } else {
    // echo 'Hello, '. $_GET['uid'];
 			include(ROOT.'inc/connection.php');
-			$result = mysqli_query($con,"SELECT * 
-			FROM  `users` 
+			$result = mysqli_query($con,"SELECT *
+			FROM  `users`
 			WHERE  `user_name` LIKE  '".$_GET['uid']."'
-			LIMIT 1"); 
+			LIMIT 1");
 			if($row = mysqli_fetch_array($result)) {
                 $user = $row;
 				$user_name_session = $_GET['uid'];
                 //print_r($user);
                 //exit;
-				
-				// USER FOUND!!! 
+
+				// USER FOUND!!!
 				//echo 'user found <hr> !';//print_r($row);
 			} else {
 				//echo 'No user set!';
@@ -129,6 +129,8 @@ if ( file_exists($path)) {
     }
     .dashboard-view {
         padding-bottom: 1vh;
+        //position:absolute;
+        //top: 0;
     }
     .uploaded-file-options {
         display: none;
@@ -180,7 +182,7 @@ if ( file_exists($path)) {
         echo '.testing-only {
             display:none;
         }';
-        } 
+        }
     ?>
 </style>
 </head>
@@ -193,14 +195,14 @@ if ( file_exists($path)) {
 
 
     <header class='fit-to-vieww dashboard-view'>
-        <?php 
+        <?php
 
         if ($user_name_session == 'admin') {
 
-            
+
             //include(ROOT.'landing_1.3.php');
         }
-        
+
         ?>
         <h1 style='background-color:#FE3F44;display:inline-block;margin-top:0;position:relative;bottom:25px;' class='fit-to-vieww head-logo-header'>
         <img src='http://freelabel.net/images/FREELABELLOGO.gif' style='background-color:#FE3F44;width:100px;margin-top:10px;vertical-align:top;display:block;'>
@@ -211,7 +213,7 @@ if ( file_exists($path)) {
         </h1>
     </header>
 
-        
+
         <section class='col-xs-12 col-md-4' style='display:none;'>
                 <h1 class="sub_header" style='margin-top:5%;margin-bottom:5%;' >DRAG & DROP</h1>
                 <p>Just drag and drop your music to send it to FREELABEL Radio and Magazine.</p>
@@ -223,15 +225,15 @@ if ( file_exists($path)) {
         <!-- Redirect browsers with JavaScript disabled to the origin page -->
         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
         <div class="row fileupload-buttonbar" style='position:fixed;bottom:0px;right:0px;width:100%;background-color:#101010;padding-top:1%;opacity:0.9;z-index:100000;'>
-            <!-- The global file processing state 
+            <!-- The global file processing state
                     <span class="fileupload-process"></span>
-            <!-- The global progress state 
+            <!-- The global progress state
             <div class="col-lg-5 col-xs-6 fileupload-progress fade">
-                <!-- The global progress bar 
+                <!-- The global progress bar
                 <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                     <div class="progress-bar progress-bar-success" style="width:0%;"></div>
                 </div>
-                <!-- The extended global progress state 
+                <!-- The extended global progress state
                 <div class="progress-extended">&nbsp;</div>
             </div>
             -->
@@ -260,13 +262,13 @@ if ( file_exists($path)) {
                     <span for='selectAll'>Select All</span>
                 </div>
             </div>
-            
+
         </div>
         <!-- The table listing the files available for upload/download -->
         <a name="share"></a>
         <table role="presentation" class="table uploads-table"><tbody class="files"></tbody></table>
     </form>
-    
+
 </center>
 </div><!-- .container -->
 <!-- The blueimp Gallery widget -->
@@ -292,7 +294,7 @@ if ( file_exists($path)) {
                 <strong class="error text-danger"></strong>
                 <p class="size">Processing...</p>
                 <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
-            
+
                 {% if (!i && !o.options.autoUpload) { %}
                     <button class="btn btn-xs btn-primary start col-md-6 col-xs-6" disabled>
                         <i class="glyphicon glyphicon-upload"></i>
@@ -343,18 +345,18 @@ if ( file_exists($path)) {
                 <a onclick="showOptions()" href="#{%=file.size%}" class="uploaded-file-options-button btn-primary btn-xs col-md-6" ><i class="glyphicon glyphicon-option-vertical"></i> Share</a>
                 <div class="uploaded-file-options">
                     <a onclick='grabFiles("{%=file.url%}" , "{%=file.size%}", "{%=file.type%}", "{%=file.name%}", "<?php echo $user[user_email] ?>")' id='addToProfile_{%=file.size%}' class='btn btn-primary btn-xs col-md-6 col-xs-12'><i class="glyphicon glyphicon-globe"></i> Post To Blog</a>
-                    <?php 
+                    <?php
                         if ($user_name_session !='submission') {
                             echo '<a onclick=\'postToBlog("{%=file.url%}" , "{%=file.size%}", "{%=file.type%}", "{%=file.name%}", "<?php echo $user[user_email] ?>")\' id=\'addToProfile_{%=file.size%}\' class=\'btn btn-primary btn-xs col-md-6 col-xs-12 save-to-profile\'><i class="glyphicon glyphicon-inbox"></i> Add to Your FLDRIVE</a>';
                         }
                     ?>
-                    
+
                 </div>
                 <div class="btn btn-danger btn-xs delete col-md-6 col-xs-12" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
                     <i class="glyphicon glyphicon-trash"></i>
                     <span>Delete</span>
                 </div>
-                
+
             {% } else { %}
                 <div class="btn btn-warning cancel">
                     <i class="glyphicon glyphicon-ban-circle"></i>
@@ -399,7 +401,7 @@ function postToBlog(link , i , type, filename, email) {
                 location : "none",
                 user_name : <?php echo '"'.$user_name_session.'",' ?>
                 title: filename,
-                desc : "photo upload", 
+                desc : "photo upload",
                 id : <?php echo '"'.$user_name_session.'",' ?>
                 filepath : link
 
@@ -419,7 +421,7 @@ function postToBlog(link , i , type, filename, email) {
                 //alert($(this));
                 //console.log($(this.form));
                 $('#panel_'+i).html(data);
-                
+
                 setTimeout(function(){
                    $('#panel_'+i).fadeOut('fast');
                 },4000);
@@ -515,5 +517,5 @@ var userNameSession = <?php echo "'".$_GET['uid']."'"; ?>;
 <script src="<?php echo HTTP; ?>upload/js/cors/jquery.xdr-transport.js"></script>
 <![endif]-->
 <?php //echo 'You are currently logged in as: '.$_SESSION['user_name']; ?>
-</body> 
+</body>
 </html>

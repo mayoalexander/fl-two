@@ -601,7 +601,7 @@ if ($_POST['page']=='followers') { // GET FOLLOEWRS
             $follow_up_text = "Let us know when you create an account or upload at FREELABEL.NET. What are you focused on getting showcased in the Radio/Mag? Interviews, Project releases, etc?";
             $user_post = "FALSE";
             $connection->post('friendships/create', array('screen_name' => $user_twitter_name_screen));
-            $connection->post('direct_messages/new', array('screen_name' => $user_twitter_name_screen,'text' => $follow_up_text));
+            //$connection->post('direct_messages/new', array('screen_name' => $user_twitter_name_screen,'text' => $follow_up_text));
 
            // echo '<script>shareTwitter(\'\' , \''.$user_twitter_name_screen.'\');</script>';
           }

@@ -174,8 +174,50 @@ if(isset($_GET['verify'])){
 /**
 * -------------- User Class -------------- // 
 */
-class User 
+class User extends Config
 {
+  public function init($_SESSION='none', $_COOKIE='none') {
+
+    // check if if session exists, 
+    if (isset($_SESSION['user_name'])) {
+      // set cookie to remember username
+      setcookie("fl-user-name", $_SESSION['user_name'], time()+3600 *24*30);  /* expire in 30 days */
+      setcookie("fl-user-email", $_SESSION['user_email'], time()+3600 *24*30);  /* expire in 30 days */
+      setcookie("fl-user-id", $_SESSION['user_id'], time()+3600 *24*30);  /* expire in 30 days */
+      //echo 'session is set';
+    } elseif (isset($_COOKIE['fl-user-name'])) {
+      //$_SESSION['user_name'] = $_COOKIE['fl-user-name'];
+      $_SESSION['user_logged_in'] = 0;
+      //$_SESSION['user_email'] = $_COOKIE['fl-user-email'];
+      //$_SESSION['user_id'] = $_COOKIE['fl-user-id'];
+      //echo 'cookie is set';
+    } else {
+      // set cookie data
+      setcookie("fl-viewer-id", $this->generateRandomString(20), time()+3600 *24*30);  /* expire in 30 days */
+      //setcookie("fl-viewer-id", $this->generateRandomString(10), time()+3600 *24*30);  /* expire in 30 days */
+      //print_r($_COOKIE);
+      //echo '<hr>';
+    }
+
+    // check if cookie exists,
+
+
+
+    if ($_SESSION=='none') {
+      echo 'none';
+    }else {
+     // echo 'something '.$_SESSION;
+      //print_r($_COOKIE);
+    }
+
+    // save to global site variables
+    $user_data['session'] = $_SESSION['user_name'];
+    $user_data['user_logged_in'] = $_SESSION['user_logged_in'];
+    $user_data['cookie'] = $_COOKIE['fl-user-name'];
+    $user_data['name'] = $_COOKIE['fl-user-name'];
+    return $user_data;
+  }
+
   public function validateSession() {
     if (isset($_SESSION['user_name'])==false) {
       session_start();
@@ -516,21 +558,23 @@ public function sendMail($emailToSendTo , $template='default') {
 */
 class Blog 
 {
-  public function __construct($site='http://freelabel.net/') {
+  public function __construct($site='freelabel.net') {
     $this->site = $site;
+    //$this->site = $this->getSiteData($site);
   }
-  public function getSiteData($site_name='http://freelabel.net') {
+  public function getSiteData($site_name='freelabel.net') {
     if (strpos($site_name, 'landing/')==true OR strpos($site_name, 'index.php')==true) {
       $site_name = str_replace('landing/', '', $site_name);
       $site_name = str_replace('index.php', '', $site_name);
     }
     switch ($site_name) {
-      case 'http://freelabel.net/':
+      case 'freelabel.net':
         $site['name'] = 'FREELABEL';
         $site['description'] = 'The Leaders In Innovative Online Showcasing';
         $site['bio'] = "FREELABEL is more than just a streaming Magazine + Radio + TV Network. We help you and millions of others discover new music & create better content than ever before! Just login account and start browsing, no strings attached!";
         $site['logo'] = $this->getSiteLogo($site_name);
         $site['http'] = 'http://freelabel.net/';
+        $site['domain'] = 'freelabel.net';
         $site['twitter'] = '@freelabelnet';
         $site['title'] = 'FREELABEL';
         $site['creator'] = 'admin';
@@ -538,12 +582,13 @@ class Blog
 
         break;
       
-      case 'http://thebae.watch/':
+      case 'thebae.watch':
         $site['name'] = 'BAEWATCH';
         $site['description'] = 'The Leaders in Modeling ';
         $site['bio'] = 'We Bout 2 Turn Up';
         $site['logo'] = $this->getSiteLogo($site_name);
         $site['http'] = 'http://thebae.watch/';
+        $site['domain'] = 'thebae.watch';
         $site['twitter'] = '@ilovebaewatch';
         $site['title'] = 'THEBAE.WATCH';
         $site['creator'] = 'chuk';
@@ -551,7 +596,7 @@ class Blog
 
 
         break;
-      case 'http://amradiolive.com/':
+      case 'amradiolive.com':
         $site['name'] = 'AMRadioLIVE';
         $site['description'] = 'The Leaders in Online Showcasing ';
         $site['bio'] = 'Tune in 24/7 for the best music ever!';
@@ -629,17 +674,25 @@ class Blog
   public function getPhotoAds($user_name='' , $search_query='advertise registration') {
     include(ROOT.'inc/connection.php');
       //echo '<pre>';
-    $result_stats = mysqli_query($con,"SELECT * FROM `images` WHERE `user_name` LIKE '$user_name' AND `desc` LIKE '%$search_query%' ORDER BY `id` DESC LIMIT 12");
+    $sql = "SELECT * 
+FROM  `images` 
+WHERE  `desc` LIKE CONVERT( _utf8 '%$search_query%'
+USING latin1 ) 
+COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id`";
+    //$sql = "SELECT * FROM `images` WHERE `user_name` LIKE '$user_name' AND `desc` LIKE '%$%' ORDER BY `id` DESC";
+    $result_stats = mysqli_query($con,$sql);
     $i=0;
     while($row = mysqli_fetch_assoc($result_stats)) {
         //print_r($row);
       $photos[] = $row;
-        //echo '<hr>';
+       // echo '<hr>';
+
     }
+    //echo '<br>'.$sql.'<br>';
     return $photos;
   }
 
-  public function getAds($site='http://freelabel.net/' , $creator='admin') {
+  public function getAds($site='freelabel.net' , $creator='admin') {
     include(ROOT.'inc/connection.php');
       //echo '<pre>';
       //echo 'what the fuck';
@@ -952,6 +1005,24 @@ class Config
     $todays_date = date('Y-m-d');
     $user_name_session = $_SESSION['user_name'];
   }
+
+
+
+  function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
+
+
+
+
+
 	public function getRadioPlayer($version='') {
 		if ($version=='dev') {
 		$radio = '<div class="navbar navbar-default navbar-fixed-bottom radio-player" style="background-color:rgba(0,0,0, 0.8);">
@@ -1225,15 +1296,16 @@ public function getProfilePhoto($user_name) {
 
 public function getUserData($user_name) {
   include(ROOT.'inc/connection.php');
-  $result = mysqli_query($con,"SELECT * 
-    FROM  `users` 
-    WHERE  `user_name` LIKE  '$user_name'
-    LIMIT 1");
+  $sql = "SELECT * 
+FROM  `users` 
+WHERE  `user_name` LIKE  '%$user_name%'
+LIMIT 0 , 30";
+  $result = mysqli_query($con,$sql);
   if ($row = mysqli_fetch_assoc($result)){
     $user_data = $row;
         //print_r($row);
   } else {
-    $user_data = 'No Profile Found!!';
+    $user_data = 'No Profile Found!!!';
   }
   return $user_data;
 }

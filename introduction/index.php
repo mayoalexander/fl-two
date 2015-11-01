@@ -27,6 +27,9 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
 	//$blog_post_data['writeup'] =  'not found';
 }
 
+
+//print_r($); exit;
+
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -140,6 +143,16 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
   			border:none;
   			min-width:150px;
   		}
+  		.bg-img img {
+  			height:auto;
+  		}
+  		.site-logo {
+  			opacity: 0.8;
+  			border-radius: 3px;
+  		}
+  		.mag-view-buttons a , .blog-post-media-image {
+  			border-radius:3px;
+  		}
   		.featured_post_wrapper .btn {
   			height:32px;
   			width:32px;
@@ -160,7 +173,7 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
 
 
   				
-  				<span class="right"><a class="codrops-icon codrops-icon-prev" href="http://freelabel.net/?ref=<?php echo $twitter; ?>"><span>Back to Main Site</span></a></span>
+  				<span class="right"><a class="codrops-icon codrops-icon-prev" href="<?php echo $config->site['http'].'?ref='.$twitter; ?>"><span>Back to Main Site</span></a></span>
   			</div>
   			<header class="header">
   				<div class="bg-img"><img src="<?php echo $blog_post_data['photo']; ?>" alt="<?php echo $blog_post_data['photo']; ?>"/></div>
@@ -174,7 +187,7 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
   						<a href="index6.html">Grid</a>
   						<a href="index7.html">Jam 3</a>
   					</nav>
-  					<img src="http://freelabel.net/images/fllogo.png" style='max-width:175px;'>
+  					<img class="site-logo" src="<?php echo $config->site['logo']; ?>" style='max-width:175px;'>
   					<h1><?php echo $blogtitle ?></h1>
   					<p class="subline"><?php echo $twitter ?></p>
   				</div>
@@ -225,7 +238,9 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
   				?>
   			</section>
   		</div><!-- /container -->
+  		
   		<script type="text/javascript" src='http://freelabel.net/config/globals.js'></script>
+  		<script type="text/javascript" src='http://freelabel.net/js/modalBox-min.js'></script>
   		<script src="<?php echo HTTP.'introduction/';?>js/classie.js"></script>
   		<script>
   		(function() {

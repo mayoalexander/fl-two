@@ -206,7 +206,27 @@ $submission_date = date('Y-m-d H:i');
 	//include('photos/index.php');
 }
 ?>
-<?php echo $user_upload_options; ?>
+<section class="col-md-2">
+	<?php echo $user_upload_options; ?>
+	<?php echo $upload_options; ?>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="col-md-10" style='height:90vh;overflow-y:scroll;'>
+
+
 <a name="recent_post_wrapper"></a>
 <style>
 	#featured_uploaded_image {
@@ -422,7 +442,7 @@ $submission_date = date('Y-m-d H:i');
 			$result = mysqli_query($con,$sql);
 		}elseif($_POST['page']) {
 			$tag = $_POST['page'];
-			$sql = "SELECT * FROM images WHERE user_name='".$user_name_session."' AND `desc` LIKE '%$tag%' ORDER BY `id` DESC LIMIT 100";
+			$sql = "SELECT * FROM images WHERE user_name='".$user_name_session."' AND `desc` LIKE '%$tag%' ORDER BY `id` DESC LIMIT 200";
 			$result = mysqli_query($con,$sql);
 		} else {
 			//$sql = "SELECT * FROM images WHERE user_name='".$_SESSION['user_name']."' ORDER BY `id` DESC LIMIT ".rand(0,24).",12";
@@ -647,6 +667,7 @@ $submission_date = date('Y-m-d H:i');
 			?>
 </div>
 
+</section>
 
 
 
@@ -656,17 +677,6 @@ $submission_date = date('Y-m-d H:i');
 
 
 
-
-
-<?php 
-if ($user_name_session == 'manage.amrecords@gmail.com') {
-	echo '<div class="panel panel-body">';
-	$source_path = 'test/photos/index.php';
-		include(ROOT.$source_path);
-	echo "</div>";
-}
-
-?>
 
 
 <script type="text/javascript" src='http://freelabel.net/js/jquery.jeditable.js'></script>

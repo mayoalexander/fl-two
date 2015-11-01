@@ -1,7 +1,5 @@
 <?php 
-if (isset($_SESSION['user_name'])==false) {
-	session_start();
-}
+
 
 include_once('/home/content/59/13071759/html/config/index.php');
 

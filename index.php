@@ -32,6 +32,8 @@ if (isset($_GET['dev']) OR ENVIROMENT=='DEVELOPMENT') {
 */
 include_once('config/index.php');
 $user = new User();
+//print($user);
+//exit;
 // 1.1) check if session exists OR cookie exists. 
 //$user->verifySession();
 //$user->showView($user->verifySession());

@@ -672,6 +672,10 @@ button:hover
       //border-left:red solid 1px;
       //border-bottom:red solid 1px;
     }
+    .details-panel {
+        max-height:200px;
+        overflow-y:scroll;
+    }
     .row {
       margin-left:0;
       margin-right:0;
