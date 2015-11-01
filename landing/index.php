@@ -148,7 +148,7 @@
 
     <a name="load-more"></a>
     <section class="no-padding learn-more" id="portfolio">
-        <div class="container-fluid" >
+        <div class="" >
             <div class="row no-gutter row-eq-height align-to-bottom" style="background-size:200%;background-image:url('<?php echo $blog_posts[1]['photo']; ?>');">
             
             <?php 

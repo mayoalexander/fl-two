@@ -46,11 +46,6 @@
 	  font-family: 'FontAwesome', sans-serif;
 	}
 
-	body{
-		background:#fff;
-		color:#111;
-		font-family:arial;
-	}
 
 	.radioco-playButton-playing:before{
 		font-family: 'FontAwesome', sans-serif;
@@ -65,7 +60,8 @@
 	.radioplayer{
 	  background: #101010;
 	  padding: 0;
-	  width: 500px;
+	  width:94vw;
+	  max-width: 352px;
 	  height: 45px;
 	  box-shadow: #ccc 0px 1px 10px;
 	  border-radius:4px;
@@ -145,6 +141,8 @@
 
 	.radioco-information span{
 	  display:block;
+	  text-align: right;
+      padding-right: 5%;
 	}
 
 	.radioco-information input[type="range"]{

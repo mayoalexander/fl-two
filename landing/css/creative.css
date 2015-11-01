@@ -513,8 +513,6 @@ body {
 }
 .container-fluid {
     background-color: #101010;
-    padding-left:0;
-    padding-right:0;
 }
 .radio-player {
     background-color:rbga(0,0,0,0.5);
