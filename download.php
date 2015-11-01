@@ -10,7 +10,7 @@ if ($Mime_type == 'png') {
     $Source_File = str_replace('http://freelabel.net/submit/uploads/', './submit/uploads/', $Source_File);
 } else {
     $Download_Name    =   $_GET['n'].'.mp3';
-    $Source_File = str_replace('http://freelabel.net/x/', './x/', $Source_File);
+    $Source_File = str_replace('http://freelabel.net/upload/', './upload/', $Source_File);
 }
 
     
@@ -21,9 +21,9 @@ if ($Mime_type == 'png') {
 
 
 if(isset($Source_File)){
-    header('Content-type: audio/x-mpeg-3');
+    header('Content-type: audio/mpeg');
     header('Content-Disposition: attachment; filename="'.$Download_Name.'"');
-    header('Content-Length: '.filesize($Source_File));
+    header('Content-Length: '.@filesize($Source_File));
     readfile($Source_File);
     exit();
 }

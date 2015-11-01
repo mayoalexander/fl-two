@@ -9,6 +9,8 @@
         //echo $i.') '.$photos['thumbnail'];
         $i++;
     }
+    shuffle($photos);
+
     
    
     //$site = $photos->getSiteData('http://thebae.watch/');
@@ -49,6 +51,7 @@
         //background-image:url("<?php echo $photo_ads[0]['image']; ?>");
         height:100vh;
         text-shadow:1px 1px 10px #000000;
+        display:none;
 
     }
     .bg-photo {
@@ -104,7 +107,6 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-
                 <h1><?php echo $site['name']; ?></h1>
                 <h3><?php echo $site['description']; ?></h3>
                 <hr>
@@ -113,6 +115,55 @@
             </div>
         </div>
     </header>
+
+
+
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img class="first-slide" src="<?php echo $photos[1]['image']; ?>" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+                <p><?php echo $site['description']; ?></p>
+                <a data-toggle="modal" data-target="#loginMod"  class="btn btn-primary btn-xl page-scroll">Login To Your Account</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="second-slide" src="<?php echo $photos[0]['image']; ?>" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+                <p><?php echo $site['description']; ?></p>
+                <a data-toggle="modal" data-target="#loginMod"  class="btn btn-primary btn-xl page-scroll">Login To Your Account</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="third-slide" src="<?php echo $photos[2]['image']; ?>" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+                <p><?php echo $site['description']; ?></p>
+                <a data-toggle="modal" data-target="#loginMod"  class="btn btn-primary btn-xl page-scroll">Login To Your Account</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
 
 
     
@@ -141,6 +192,7 @@
         <div class="container text-center">
             <div class="call-to-action">
                 <h2>Stay ahead of the game and get new content before it releases!</h2>
+                <a data-toggle="modal" data-target="#loginMod"  class="btn btn-primary btn-xl page-scroll">Login To Your Account</a>
                 <a href="#" class="btn btn-default btn-xl woww tada load-more-more-info-button">Preview <?php echo $site['title']; ?> Magazine</a>
             </div>
         </div>

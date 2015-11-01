@@ -5,24 +5,6 @@ print_r($_POST);
 include('../inc/connection.php');
 
 
-/*
-// GET FULL POST DATA
-
-include('../inc/connection.php');
-
-$sql = "SELECT * FROM `feed` WHERE `id` LIKE $_POST['post_id']";
-if (mysqli_query($con, $sql)) {
-    echo "New record created successfully";
-    echo '<script>';
-    //echo 'window.open("")';
-    echo '</script>';
-
-} else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-}
-
-*/
-
 // SAVE TO DATABASE
 $id = $_POST['post_id'];
 $sql = "SELECT * 
@@ -32,14 +14,19 @@ LIMIT 1";
 
 if ($result = mysqli_query($con, $sql)) {
 	$post = mysqli_fetch_assoc($result);
-    echo "New record created successfully";
-    echo '<script>';
-    //echo 'window.open('')';
-    echo "window.open('http://freelabel.net/download.php?p=\"".$post['trackmp3']."\"&n=\"".urlencode($post['blogtitle'])."+'&n=t'".$post['twitter']."\")";
-    echo 'alert("';
-    	echo $post['blogtitle'].' Now Downloading';
-    	echo '")';
-    echo '</script>';
+    echo "ID Data Found!";
+
+    // move file to downloads directory
+    $uploads_dir = 'downloads';
+    $name = $post['blogtitle'].'-'.rand(111111111,9999999999999).'.mp3';
+    //mkdir(pathname);
+    $new_location = $uploads_dir.'/'.$name;
+    $new_location_full = 'http://freelabel.net/'.$uploads_dir.'/'.$name;
+    move_uploaded_file($post['trackmp3'], '../'.$new_location);
+    $script = "http://freelabel.net/download.php?p=".$post['trackmp3']."&n=".$post['blogtitle']."&t=".$post['twitter'];
+
+
+
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
@@ -64,7 +51,9 @@ if (mysqli_query($con, $sql)) {
     echo "New record created successfully";
     echo '<script>';
     //echo 'window.open('')';
-    //echo 'alert("hello")';
+    //echo 'alert()';
+    echo 'window.open("'.$script.'");';
+    //echo 'alert("'.$script.'");';
     echo '</script>';
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);

@@ -181,6 +181,10 @@
                     $("#like_button" + post_id ).html("<i class='fa fa-heart'></i> LIKED!");
                     $("body" ).append(data);
                     $('#current_likes' + post_id ).html(new_likes +  " LIKES");
+                   
+
+
+
                     //alert('This post has been saved to your collection!');
                     //window.open('http://freelabel.net/download.php?p='+'&n='+'&n=t');
                     //window.open();
