@@ -158,6 +158,11 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       border-right:none;
       //border-bottom:none;
     }
+    .audio_player {
+      position: fixed;
+      bottom: 10px;
+      left:10px;
+    }
 
 
     .modal-dialog {
@@ -191,6 +196,10 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
 
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
+        <div class="audio_player">
+          <?php include(ROOT.'config/radio.php'); ?>
+        </div>
+                
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <img class='' src="<?php echo $config->getSiteLogo($site_url); ?>" style='height:80px;'>
@@ -205,7 +214,6 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
                     <input name='q' type="text" class="form-control search-bar-input" value='<?php echo $_GET["q"];?>'  placeholder="Search anything..">                    
                   </div><!-- /input-group -->
                 </form>
-				
 				
                 
                 <!--<a class="navbar-brand page-scroll" href="#page-top">FREELABEL</a>-->
