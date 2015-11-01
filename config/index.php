@@ -174,7 +174,7 @@ if(isset($_GET['verify'])){
 /**
 * -------------- User Class -------------- // 
 */
-class User extends Config
+class User
 {
   public function init($_SESSION='none', $_COOKIE='none') {
 
