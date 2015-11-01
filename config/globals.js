@@ -7,7 +7,7 @@
         $('.widget_menu .glyphicon-' + icon).addClass('active');
       }
 
-      function loadPage(path , containerDiv, page , user_name, id, setActiveIcon) {
+      function loadPage(path , containerDiv, page , user_name, id, setActiveIcon,ctrl) {
         if ($(containerDiv).css('display') == 'none') {
           $(containerDiv).css('display','block');
         }
@@ -33,6 +33,12 @@
             setActive(setActiveIcon);
           }
         });
+        //alert(ctrl);
+        if (ctrl!==undefined) {
+          var stateObj = { foo: "bar" };
+          history.pushState(stateObj, "page 2", '?ctrl='+ctrl);
+        }
+        
 
       }
       function openProfile(user_name) {

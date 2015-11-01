@@ -1191,27 +1191,27 @@ class Config
     </button>
     -->
 
-    <button onclick=\"loadPage('http://freelabel.net/twitter/index.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4' alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
+    <button onclick=\"loadPage('http://freelabel.net/twitter/index.php', '#main_display_panel', 'dashboard', '".$user_name_session."','','', 'twitter')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4' alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
     <span class=\"fa fa-twitter\"></span>
     <label class='label navi-label' >Twitter</label>
     </button>
 
-    <button onclick=\"loadPage('http://freelabel.net/rssreader/cosign.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4' alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
+    <button onclick=\"loadPage('http://freelabel.net/rssreader/cosign.php', '#main_display_panel', 'dashboard', '".$user_name_session."','','', 'rss')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4' alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
     <span class=\"fa fa-rss\"></span>
     <label class='label navi-label' >RSS</label>
     </button>
 
-    <button onclick=\"loadPage('http://freelabel.net/submit/views/db/leads.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4'  alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
+    <button onclick=\"loadPage('http://freelabel.net/submit/views/db/leads.php', '#main_display_panel', 'dashboard', '".$user_name_session."', '','', 'leads')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4'  alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
     <span class=\"fa fa-money\"></span>
     <label class='label navi-label' >Leads</label>
     </button>
 
-    <button onclick=\"loadPage('http://freelabel.net/submit/views/db/current_clients.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4' alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
+    <button onclick=\"loadPage('http://freelabel.net/submit/views/db/current_clients.php', '#main_display_panel', 'dashboard', '".$user_name_session."', '','', 'clients')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4' alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
     <span class=\"fa fa-user\"></span>
     <label class='label navi-label' >Clients</label>
     </button>
 
-    <button onclick=\"loadPage('http://freelabel.net/x/s.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4' alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
+    <button onclick=\"loadPage('http://freelabel.net/x/s.php', '#main_display_panel', 'dashboard', '".$user_name_session."', '','', 'script')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4' alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
     <span class=\"fa fa-file-text-o\"></span>
     <label class='label navi-label' >Script</label>
     </button>

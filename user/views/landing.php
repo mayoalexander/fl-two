@@ -58,6 +58,12 @@ $('.load-more-button').hover(function(){
 				case 'posts':
 					include(ROOT.'submit/views/db/recent_posts.php');
 					break;
+				case 'dashboard':
+					include(ROOT.'submit/views/db/recent_posts.php');
+					break;
+				case 'stats':
+					include(ROOT.'submit/views/db/recent_posts.php');
+					break;
 				case 'pics':
 					include(ROOT.'submit/views/db/user_photos.php');
 					break;
