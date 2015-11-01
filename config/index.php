@@ -951,7 +951,7 @@ $twitter_share = "#FLMAG | ".$twitter.'
       <a class="btn btn-social btn-default btn-google-plus" target="_blank" href="#'.$post_id.'">
       <i class=" glyphicon glyphicon-user"></i>
       </a>
-      <a class="btn btn-social btn-default btn-facebook" href="#" onclick="likePost('.$post_id.', '.$current_likes.' , \''.$_SESSION['user_name'].'\')" style="display:none;">
+      <a id="like_button'.$post_id.'" class="btn btn-social btn-default btn-facebook" href="#" onclick="likePost('.$post_id.', '.$current_likes.' , \''.$_SESSION['user_name'].'\')" style="display:none;">
       <i class=" glyphicon glyphicon-save"></i>
       </a>
       </span>

@@ -176,9 +176,13 @@
                     
                     $("#like_button" + post_id ).removeClass('btn-default');
                     $("#like_button" + post_id ).addClass('btn-success');
-                    $("#like_button" + post_id ).html("LIKED!");
+                    $("#like_button" + post_id ).addClass('btn-google-plus');
+                    $("#like_button" + post_id ).css('background-color','green');
+                    $("#like_button" + post_id ).html("<i class='fa fa-heart'></i> LIKED!");
+                    $("body" ).append(data);
                     $('#current_likes' + post_id ).html(new_likes +  " LIKES");
-                    alert('This post has been saved to your collection!');
+                    //alert('This post has been saved to your collection!');
+                    //window.open('http://freelabel.net/download.php?p='+'&n='+'&n=t');
                     //window.open();
                     
                     /*setTimeout(function() {
