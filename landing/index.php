@@ -71,16 +71,21 @@
         -webkit-filter: blur(5px);
         filter: blur(5px);
     }
+    #header-carousel .carousel-caption  {
+        display: none;
+    }
+    .carousel img {
+        //-webkit-filter: blur(5px);
+        //filter: blur(5px);
+        width:100%;
+        //height:90vh;
+    }
     </style>
 
 <style type="text/css">
     .call-to-action-button {
         padding-top:0%;
         padding-bottom:0%;
-    }
-    .landing-promo img {
-        width:100%;
-        height:auto;
     }
     .login-panel-main {
         //padding-top:14%;
@@ -119,12 +124,12 @@
 
 
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div id="header-carousel" class="carousel slide learn-more-hide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
-        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+        <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#header-carousel" data-slide-to="1" class=""></li>
+        <li data-target="#header-carousel" data-slide-to="2" class=""></li>
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
@@ -155,11 +160,11 @@
           </div>
         </div>
       </div>
-      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <a class="left carousel-control" href="#header-carousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <a class="right carousel-control" href="#header-carousel" role="button" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
@@ -192,8 +197,11 @@
         <div class="container text-center">
             <div class="call-to-action">
                 <h2>Stay ahead of the game and get new content before it releases!</h2>
-                <a data-toggle="modal" data-target="#loginMod"  class="btn btn-primary btn-xl page-scroll">Login To Your Account</a>
-                <a href="#" class="btn btn-default btn-xl woww tada load-more-more-info-button">Preview <?php echo $site['title']; ?> Magazine</a>
+                <div class="btn-group call-to-action-button-group">
+                    <a data-toggle="modal" data-target="#loginMod"  class="btn btn-primary btn-xl page-scroll">Login To Your Account</a>
+                    <a href="#" class="btn btn-default btn-xl woww tada load-more-more-info-button">Learn More About <?php echo $site['title']; ?></a>
+                </div>
+                
             </div>
         </div>
     </aside>
@@ -461,15 +469,8 @@
         </div>
     </aside>
     
-    <section>
-        
 
-    
-
-
-    </section>
-
-    <section id="contact" class="">
+    <section id="contact" class="learn-more">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -493,7 +494,11 @@
         $('.load-more-more-info-button').click(function(e){
             e.preventDefault();
             //alert('wer');
-            $('.learn-more').show('fast');
+            // learn-more-hide
+            $('.call-to-action-button-group').removeClass('btn-group');
+            $(this).hide('slow');
+            $('.learn-more-hide').hide('slow');
+            $('.learn-more').show('slow');
         });
     });
 </script>

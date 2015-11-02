@@ -161,7 +161,20 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     .audio_player {
       position: fixed;
       bottom: 10px;
-      left:10px;
+      right:10px;
+    }
+
+
+    /* Navigation Styles */
+    .dropdown-menu>li>a {
+      font-size:18px;
+      color:#e3e3e3;
+    }
+    .dropdown-menu {
+      background-color: #101010;
+    }
+    .navbar-default {
+      border:none;
     }
 
 
@@ -197,7 +210,10 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
         <div class="audio_player">
-          <?php include(ROOT.'config/radio.php'); ?>
+          <?php if ($_SERVER['SCRIPT_URI']=='http://freelabel.net/') {
+            include(ROOT.'config/radio.php'); 
+          }
+            ?>
         </div>
                 
             <!-- Brand and toggle get grouped for better mobile display -->
