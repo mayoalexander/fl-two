@@ -1,4 +1,8 @@
 <?php 
+if (isset($_SESSION['user_name'])==false) {
+  session_start();
+}
+
 if (isset($_GET['p'])==false) {
   $current_page = 0;
 } else {

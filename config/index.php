@@ -174,8 +174,51 @@ if(isset($_GET['verify'])){
 /**
 * -------------- User Class -------------- // 
 */
-class User 
+class User
 {
+
+  public function init($_SESSION='none', $_COOKIE='none') {
+
+    // check if if session exists, 
+    if (isset($_SESSION['user_name'])) {
+      // set cookie to remember username
+      setcookie("fl-user-name", $_SESSION['user_name'], time()+3600 *24*30);  /* expire in 30 days */
+      setcookie("fl-user-email", $_SESSION['user_email'], time()+3600 *24*30);  /* expire in 30 days */
+      setcookie("fl-user-id", $_SESSION['user_id'], time()+3600 *24*30);  /* expire in 30 days */
+      //echo 'session is set';
+    } elseif (isset($_COOKIE['fl-user-name'])) {
+      //$_SESSION['user_name'] = $_COOKIE['fl-user-name'];
+      $_SESSION['user_logged_in'] = 0;
+      //$_SESSION['user_email'] = $_COOKIE['fl-user-email'];
+      //$_SESSION['user_id'] = $_COOKIE['fl-user-id'];
+      //echo 'cookie is set';
+    } else {
+      // set cookie data
+      setcookie("fl-viewer-id", $this->generateRandomString(20), time()+3600 *24*30);  /* expire in 30 days */
+      //setcookie("fl-viewer-id", $this->generateRandomString(10), time()+3600 *24*30);  /* expire in 30 days */
+      //print_r($_COOKIE);
+      //echo '<hr>';
+    }
+
+    // check if cookie exists,
+
+
+
+    if ($_SESSION=='none') {
+      echo 'none';
+    }else {
+     // echo 'something '.$_SESSION;
+      //print_r($_COOKIE);
+    }
+
+    // save to global site variables
+    $user_data['session'] = $_SESSION['user_name'];
+    $user_data['user_logged_in'] = $_SESSION['user_logged_in'];
+    $user_data['cookie'] = $_COOKIE['fl-user-name'];
+    $user_data['name'] = $_COOKIE['fl-user-name'];
+    return $user_data;
+  }
+
   public function validateSession() {
     if (isset($_SESSION['user_name'])==false) {
       session_start();
@@ -311,6 +354,16 @@ class User
       }
       */
       //echo 'userExists';
+    }
+
+    public function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 
 
@@ -516,21 +569,23 @@ public function sendMail($emailToSendTo , $template='default') {
 */
 class Blog 
 {
-  public function __construct($site='http://freelabel.net/') {
+  public function __construct($site='freelabel.net') {
     $this->site = $site;
+    //$this->site = $this->getSiteData($site);
   }
-  public function getSiteData($site_name='http://freelabel.net') {
+  public function getSiteData($site_name='freelabel.net') {
     if (strpos($site_name, 'landing/')==true OR strpos($site_name, 'index.php')==true) {
       $site_name = str_replace('landing/', '', $site_name);
       $site_name = str_replace('index.php', '', $site_name);
     }
     switch ($site_name) {
-      case 'http://freelabel.net/':
+      case 'freelabel.net':
         $site['name'] = 'FREELABEL';
         $site['description'] = 'The Leaders In Innovative Online Showcasing';
         $site['bio'] = "FREELABEL is more than just a streaming Magazine + Radio + TV Network. We help you and millions of others discover new music & create better content than ever before! Just login account and start browsing, no strings attached!";
         $site['logo'] = $this->getSiteLogo($site_name);
         $site['http'] = 'http://freelabel.net/';
+        $site['domain'] = 'freelabel.net';
         $site['twitter'] = '@freelabelnet';
         $site['title'] = 'FREELABEL';
         $site['creator'] = 'admin';
@@ -538,12 +593,13 @@ class Blog
 
         break;
       
-      case 'http://thebae.watch/':
+      case 'thebae.watch':
         $site['name'] = 'BAEWATCH';
         $site['description'] = 'The Leaders in Modeling ';
         $site['bio'] = 'We Bout 2 Turn Up';
         $site['logo'] = $this->getSiteLogo($site_name);
         $site['http'] = 'http://thebae.watch/';
+        $site['domain'] = 'thebae.watch';
         $site['twitter'] = '@ilovebaewatch';
         $site['title'] = 'THEBAE.WATCH';
         $site['creator'] = 'chuk';
@@ -551,7 +607,7 @@ class Blog
 
 
         break;
-      case 'http://amradiolive.com/':
+      case 'amradiolive.com':
         $site['name'] = 'AMRadioLIVE';
         $site['description'] = 'The Leaders in Online Showcasing ';
         $site['bio'] = 'Tune in 24/7 for the best music ever!';
@@ -629,17 +685,25 @@ class Blog
   public function getPhotoAds($user_name='' , $search_query='advertise registration') {
     include(ROOT.'inc/connection.php');
       //echo '<pre>';
-    $result_stats = mysqli_query($con,"SELECT * FROM `images` WHERE `user_name` LIKE '$user_name' AND `desc` LIKE '%$search_query%' ORDER BY `id` DESC LIMIT 12");
+    $sql = "SELECT * 
+FROM  `images` 
+WHERE  `desc` LIKE CONVERT( _utf8 '%$search_query%'
+USING latin1 ) 
+COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id`";
+    //$sql = "SELECT * FROM `images` WHERE `user_name` LIKE '$user_name' AND `desc` LIKE '%$%' ORDER BY `id` DESC";
+    $result_stats = mysqli_query($con,$sql);
     $i=0;
     while($row = mysqli_fetch_assoc($result_stats)) {
         //print_r($row);
       $photos[] = $row;
-        //echo '<hr>';
+       // echo '<hr>';
+
     }
+    //echo '<br>'.$sql.'<br>';
     return $photos;
   }
 
-  public function getAds($site='http://freelabel.net/' , $creator='admin') {
+  public function getAds($site='freelabel.net' , $creator='admin') {
     include(ROOT.'inc/connection.php');
       //echo '<pre>';
       //echo 'what the fuck';
@@ -887,7 +951,7 @@ $twitter_share = "#FLMAG | ".$twitter.'
       <a class="btn btn-social btn-default btn-google-plus" target="_blank" href="#'.$post_id.'">
       <i class=" glyphicon glyphicon-user"></i>
       </a>
-      <a class="btn btn-social btn-default btn-facebook" href="#" onclick="likePost('.$post_id.', '.$current_likes.' , \''.$_SESSION['user_name'].'\')" style="display:none;">
+      <a id="like_button'.$post_id.'" class="btn btn-social btn-default btn-facebook" href="#" onclick="likePost('.$post_id.', '.$current_likes.' , \''.$_SESSION['user_name'].'\')" style="display:none;">
       <i class=" glyphicon glyphicon-save"></i>
       </a>
       </span>
@@ -952,6 +1016,24 @@ class Config
     $todays_date = date('Y-m-d');
     $user_name_session = $_SESSION['user_name'];
   }
+
+
+
+  function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
+
+
+
+
+
 	public function getRadioPlayer($version='') {
 		if ($version=='dev') {
 		$radio = '<div class="navbar navbar-default navbar-fixed-bottom radio-player" style="background-color:rgba(0,0,0, 0.8);">
@@ -1038,6 +1120,33 @@ class Config
   }
 
 
+
+  public function getLeads($count='100') {
+    
+      $app_build = '';
+      include(ROOT.'inc/connection.php');  // 2.1 - Pull Script From Database
+      $query = "SELECT * FROM leads ORDER BY `id` DESC LIMIT 12";
+      $result = mysqli_query($con,$query);
+      $i=1;
+      if($row = mysqli_fetch_assoc($result)) { 
+        foreach ($row as $script_text) {
+          $script[] = $script_text;
+        }
+        foreach ($script as $key => $value) {
+          $app_build  .= '<li><a href="http://freelabel.net/som/index.php?dm=1&t='.$user.'&text='.$script[$key].'" target="_blank" class="btn btn-default btn-xs col-md-2 " role="menuitem" tabindex="-1" ><span class="glyphicon glyphicon-question-sign"></span>  '.$key.'): '.urldecode(substr($script[$key],0,80)).'...</a></li>';
+        }
+        $app_build    .='<hr>';
+        foreach ($script as $key => $value) {
+          $app_build  .= '<li><a href="http://freelabel.net/som/index.php?post=1&t='.$user.'&text=@'.$user.' '.$script[$key].'" target="_blank" class="btn btn-default btn-xs" role="menuitem" tabindex="-1" ><span class="glyphicon glyphicon-plus"></span>  '.$key.'): '.urldecode(substr($script[$key],0,20)).'...</a></li>';
+        }
+
+      } else {
+        // 2.3 Throw Error if Does Not Exist
+      }
+    return $app_build;
+  }
+
+
   public function getCurrentPeriod() {
       //$current_time       = date('h:s:i');
     $current_time       = date('H');
@@ -1093,27 +1202,27 @@ class Config
     </button>
     -->
 
-    <button onclick=\"loadPage('http://freelabel.net/twitter/index.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4' alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
+    <button onclick=\"loadPage('http://freelabel.net/twitter/index.php', '#main_display_panel', 'dashboard', '".$user_name_session."','','', 'twitter')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4' alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
     <span class=\"fa fa-twitter\"></span>
     <label class='label navi-label' >Twitter</label>
     </button>
 
-    <button onclick=\"loadPage('http://freelabel.net/rssreader/cosign.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4' alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
+    <button onclick=\"loadPage('http://freelabel.net/rssreader/cosign.php', '#main_display_panel', 'dashboard', '".$user_name_session."','','', 'rss')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4' alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
     <span class=\"fa fa-rss\"></span>
     <label class='label navi-label' >RSS</label>
     </button>
 
-    <button onclick=\"loadPage('http://freelabel.net/submit/views/db/leads.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4'  alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
+    <button onclick=\"loadPage('http://freelabel.net/submit/views/db/leads.php', '#main_display_panel', 'dashboard', '".$user_name_session."', '','', 'leads')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4'  alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
     <span class=\"fa fa-money\"></span>
     <label class='label navi-label' >Leads</label>
     </button>
 
-    <button onclick=\"loadPage('http://freelabel.net/submit/views/db/current_clients.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4' alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
+    <button onclick=\"loadPage('http://freelabel.net/submit/views/db/current_clients.php', '#main_display_panel', 'dashboard', '".$user_name_session."', '','', 'clients')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4' alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
     <span class=\"fa fa-user\"></span>
     <label class='label navi-label' >Clients</label>
     </button>
 
-    <button onclick=\"loadPage('http://freelabel.net/x/s.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4' alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
+    <button onclick=\"loadPage('http://freelabel.net/x/s.php', '#main_display_panel', 'dashboard', '".$user_name_session."', '','', 'script')\" class='btn btn-default lead_control widget_menu col-md-2 col-xs-4' alt='Leads'  class='btn btn-default lead_control widget_menu' alt='Navigation'>
     <span class=\"fa fa-file-text-o\"></span>
     <label class='label navi-label' >Script</label>
     </button>
@@ -1198,15 +1307,16 @@ public function getProfilePhoto($user_name) {
 
 public function getUserData($user_name) {
   include(ROOT.'inc/connection.php');
-  $result = mysqli_query($con,"SELECT * 
-    FROM  `users` 
-    WHERE  `user_name` LIKE  '$user_name'
-    LIMIT 1");
+  $sql = "SELECT * 
+FROM  `users` 
+WHERE  `user_name` LIKE  '%$user_name%'
+LIMIT 0 , 30";
+  $result = mysqli_query($con,$sql);
   if ($row = mysqli_fetch_assoc($result)){
     $user_data = $row;
         //print_r($row);
   } else {
-    $user_data = 'No Profile Found!!';
+    $user_data = 'No Profile Found!!!';
   }
   return $user_data;
 }
@@ -1266,9 +1376,9 @@ public function getUserUploadOptions($user_name_session) {
   $upload_options = "
     <!--<h1 class='panel-heading'>Uploads</h1>-->
       <nav class='btn-group upload-options'>
-        <a href='#upload' onclick=\"window.open('http://upload.freelabel.net/?uid=". $_SESSION['user_name']. "')\" class='btn btn-success btn-lg col-md-4 col-xs-4'>      <span class=\"glyphicon glyphicon-plus\"></span> Upload</a>
-        <a href='#photos' onclick=\"loadPage('http://freelabel.net/submit/views/db/user_photos.php', '#main_display_panel', 'dashboard', '". $user_name_session. "')\" class='btn btn-default btn-lg col-md-4 col-xs-4'>        <span class=\"glyphicon glyphicon-camera\"></span> Photos</a>
-        <a href='#music' onclick=\"loadPage('http://freelabel.net/submit/views/db/recent_posts.php', '#main_display_panel', 'dashboard', '". $user_name_session. "')\" class='btn btn-default btn-lg col-md-4 col-xs-4'>      <span class=\"glyphicon glyphicon-music\"></span> Music</a>
+        <a href='http://upload.freelabel.net/?uid=". $_SESSION['user_name']. "' target='_blank' class='btn btn-success btn-lg col-md-4 col-xs-4'>      <span class=\"glyphicon glyphicon-plus\"></span> Upload</a>
+        <a href='#photos' onclick=\"loadPage('http://freelabel.net/submit/views/db/user_photos.php', '#main_display_panel', 'dashboard', '". $user_name_session. "','','','pics')\" class='btn btn-default btn-lg col-md-4 col-xs-4'>        <span class=\"glyphicon glyphicon-camera\"></span> Photos</a>
+        <a href='#music' onclick=\"loadPage('http://freelabel.net/submit/views/db/recent_posts.php', '#main_display_panel', 'dashboard', '". $user_name_session. "','','','posts')\" class='btn btn-default btn-lg col-md-4 col-xs-4'>      <span class=\"glyphicon glyphicon-music\"></span> Music</a>
       </nav>
     ";
   return $upload_options;

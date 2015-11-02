@@ -206,7 +206,17 @@ $submission_date = date('Y-m-d H:i');
 	//include('photos/index.php');
 }
 ?>
-<?php echo $user_upload_options; ?>
+<panel class="col-md-2">
+	<?php echo $user_upload_options; ?>
+	<?php echo $upload_options; ?>
+</panel>
+
+
+
+
+<panel class="col-md-10" style='height:90vh;overflow-y:scroll;'>
+
+
 <a name="recent_post_wrapper"></a>
 <style>
 	#featured_uploaded_image {
@@ -234,6 +244,9 @@ $submission_date = date('Y-m-d H:i');
 		padding:5%;
 		opacity:0.9;
 		margin:2%;
+	}
+	.file-options-advanced {
+		display:none;
 	}
 	.input_fields {
 		display:inline-block;
@@ -418,11 +431,11 @@ $submission_date = date('Y-m-d H:i');
 					ORDER BY `id` DESC LIMIT 52");
 		}elseif($_POST['page']==='dashboard') {
 			$tag = $_POST['page'];
-			$sql = "SELECT * FROM images WHERE user_name='".$user_name_session."' ORDER BY `id` DESC LIMIT 40";
+			$sql = "SELECT * FROM images WHERE user_name='".$user_name_session."' ORDER BY `id` DESC LIMIT 200";
 			$result = mysqli_query($con,$sql);
 		}elseif($_POST['page']) {
 			$tag = $_POST['page'];
-			$sql = "SELECT * FROM images WHERE user_name='".$user_name_session."' AND `desc` LIKE '%$tag%' ORDER BY `id` DESC LIMIT 100";
+			$sql = "SELECT * FROM images WHERE user_name='".$user_name_session."' AND `desc` LIKE '%$tag%' ORDER BY `id` DESC LIMIT 200";
 			$result = mysqli_query($con,$sql);
 		} else {
 			//$sql = "SELECT * FROM images WHERE user_name='".$_SESSION['user_name']."' ORDER BY `id` DESC LIMIT ".rand(0,24).",12";
@@ -471,11 +484,11 @@ $submission_date = date('Y-m-d H:i');
 														";
 
 														// Detect File Type
-														if (strpos($image, 'mp4') OR strpos($image, 'm4v') OR strpos($image, 'mov') ) {
+														if (strpos(strtolower($image), 'mp4') OR strpos(strtolower($image), 'm4v') OR strpos(strtolower($image), 'mov') ) {
 															$type='video';
-														} elseif(strpos($image, 'png') OR strpos($image, 'jpeg') OR strpos($image, 'jpg') OR strpos($image, 'gif') ) {
+														} elseif(strpos(strtolower($image), 'png') OR strpos(strtolower($image), 'jpeg') OR strpos(strtolower($image), 'jpg') OR strpos(strtolower($image), 'gif') ) {
 															$type='image';
-														} elseif(strpos($image, 'mp3') OR strpos($image, 'wav') ) {
+														} elseif(strpos(strtolower($image), 'mp3') OR strpos(strtolower($image), 'wav') ) {
 															$type='audio';
 														} else {
 															$type='Undetected!';
@@ -509,7 +522,15 @@ $submission_date = date('Y-m-d H:i');
 																break;
 														}
 														
-
+														if (strtolower($row['type'])=='event') {
+															$sel_e = 'selected';
+														} elseif (strtolower($row['type'])=='merch') {
+															$sel_m = 'selected';
+														} elseif (strtolower($row['type'])=='gallery') {
+															$sel_g = 'selected';
+														} else {
+															$sel_n = 'selected';
+														}
 
 														//if ($status == )
 														$private_select_option	= '';
@@ -564,17 +585,30 @@ $submission_date = date('Y-m-d H:i');
 																																							<h5 id='title-".$id."' class='photo-title edit'>".$title."</h5>
 																																							<span class='photo-details'>
 																																								<label>Type</label>
+																																								<select id='photo-type-dropdown' class='form-control' data-id='".$id."' name='type' >
+																																									<option value='' ".$sel_g.">Select One..</option>
+																																									<option value='Gallery' ".$sel_g.">Gallery</option>
+																																									<option value='Merch' ".$sel_m.">Merch</option>
+																																									<option value='Event' ".$sel_e.">Event</option>
+																																								</select>
 																																								<h6 id='type-".$id."' class='photo-description edit text-muted'>".$photo['type']."</h6>
 																																								<label>Tags</label>
 																																								<h6 id='desc-".$id."' class='photo-description edit text-muted'>".$photo['desc']."</h6>
 																																								<label>Caption</label>
 																																								<p id='caption-".$id."' class='photo-description edit text-muted'>".$photo['caption']."</p>
-																																								<label>Paypal URL</label>
-																																								<p id='paypal_url-".$id."' class='photo-description edit text-muted'>".$photo['paypal_url']."</p>
-																																								<label>Event Date</label>
-																																								<p id='event_date-".$id."' class='photo-description edit text-muted'>".$photo['date']."</p>
-																																								<label>Price</label><br>
-																																								$<p id='price-".$id."' class='photo-description edit text-muted' style='display:inline;'>".$photo['price']."</p>
+																																								<button class='btn btn-primary btn-xs file-options-advanced-button'>Advanced Options</button>
+																																								<div class='file-options-advanced' >
+
+																																									<label>Paypal URL</label>
+																																									<p id='paypal_url-".$id."' class='photo-description edit text-muted'>".$photo['paypal_url']."</p>
+																																									<label>Event Date</label>
+																																									<p id='event_date-".$id."' class='photo-description edit text-muted'>".$photo['date']."</p>
+																																									<label>Price</label><br>
+																																									$<p id='price-".$id."' class='photo-description edit text-muted' style='display:inline;'>".$photo['price']."</p>
+																																								
+																																								</div>
+
+
 																																							</span>
 																																						</div>
 																																						<div  id='shareBlock_".$id."'  style='display:none;' class='accordian' >
@@ -647,6 +681,7 @@ $submission_date = date('Y-m-d H:i');
 			?>
 </div>
 
+</panel>
 
 
 
@@ -656,17 +691,6 @@ $submission_date = date('Y-m-d H:i');
 
 
 
-
-
-<?php 
-if ($user_name_session == 'manage.amrecords@gmail.com') {
-	echo '<div class="panel panel-body">';
-	$source_path = 'test/photos/index.php';
-		include(ROOT.$source_path);
-	echo "</div>";
-}
-
-?>
 
 
 <script type="text/javascript" src='http://freelabel.net/js/jquery.jeditable.js'></script>
@@ -701,6 +725,30 @@ $(document).ready(function() {
 });
 
 $(function() { // ------- document ready scripts ----------- //
+
+	$('.file-options-advanced-button').click(function(){
+		if ($(this).text()=='Hide Advanced Options') {
+			$(this).text('Show Advanced Options');
+		} else {
+			$(this).text('Hide Advanced Options');
+		}
+		$(this).next().show();
+
+	});
+
+	$('#photo-type-dropdown').change(function(){
+		var status = $(this).val();
+		var id = $(this).attr('data-id');
+		data = 
+		$.post('http://freelabel.net/submit/update.php',{
+			id:id,
+			action:"photo-type-update",
+			type:status
+		},function(data){
+			alert(data);
+		});
+		//alert(id);
+	});
 
 	$( ".update_photo_form" ).submit(function( event ) {
 		// Stop form from submitting normally

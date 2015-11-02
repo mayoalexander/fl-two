@@ -5,7 +5,7 @@ function postTweet(textToPost) {
 
       var textToPost = "http://freelabel.net/som/index.php?post=1&text=" + textToPost;
       tweetWindow = window.open(textToPost);
-      
+
       setTimeout( function() { tweetWindow.close();
       	window.open('http://twitter.com/freelabelnet');}, 10000);
     }
@@ -14,8 +14,8 @@ function OpenTwitpic() {
 		q = document.getElementById("twitpicquery").value;
 		var search_url = 'https://twitter.com/search?q=' + q +'&mode=photos';
 		window.open(search_url);
-	} 
-    
+	}
+
 function postToTwitter(textToPost) {
 	var textToPost = textToPost[0]['value'];
 		//alert(textToPost);
@@ -37,7 +37,7 @@ function postToTwitter(textToPost) {
 		}).done(function(data) {
 			//alert(data);
 			$('#dashboard_view_panel_status').html(data);
-		});		
+		});
 }
 
 }
@@ -49,9 +49,9 @@ function postToTwitter(textToPost) {
 
 function delete_tweet(tweet_id) {
 	r = confirm('Are you sure you want to delete this tweet?');
-	if (r == true) 
+	if (r == true)
 	{
-		$.post('http://freelabel.net/config/deletesingle.php', { 
+		$.post('http://freelabel.net/config/deletesingle.php', {
 			tweet_id : tweet_id
 		} , function(data){
 			$('#tweet_row_' + tweet_id + '_status').html('<label class=\"label label-danger\" >Deleting...</label>');
@@ -77,29 +77,28 @@ function saveTweet() {
 	/* -----------------------------------------------------------------------------------------------------
 	THIS IS WHERE IT POSTS TO TWITTER
 	----------------------------------------------------------------------------------------------------------*/
-	if (isset($_GET['text'])) {
+	if (isset($_GET['text']) && strpos($_GET['text'], 'http://')==false) {
 		$textToPost = $_GET['text'];
 		include('inc/connection.php');
 		$query = "SELECT * FROM templates
 		WHERE `text` LIKE '".$textToPost."'";
 		$result = mysqli_query($con,$query);
-		if($row = mysqli_fetch_array($result))
+		if($row = mysqli_fetch_assoc($result))
 		{
 			$text = $row['text'];
 			echo 'Oh, no! The post "'.$text.'" already exists!';
 			exit;
 		}
-	 	
+
 		// Insert into database
 			$sql="INSERT INTO `amrusers`.`templates` (`id`, `text`, `date_created`, `last_posted`) VALUES (NULL, '$textToPost', NOW(), NOW());";
 			if (mysqli_query($con,$sql)) {
 				echo '<alert class="alert alert-success" style="display:block;">Yay! Saved to Database!</alert>';
 			} else {
-				echo 'falsdjflk: '.$textToPost.'not saved to data!';
+				echo ' '.$textToPost.'not saved to data!';
 			}
 		}
 ?>
-
 
 <form class="tweet-saver-form" class='panel-body' onsubmit="saveTweet()">
 	<textarea class='form-control' name="text" type="text" placeholder='Type out a tweet..'></textarea>
@@ -133,15 +132,9 @@ $show_tweets = true;
 			if ($date_created == $fivedaysback) {
 				//echo "<script>x('".$text."');</script>";
 			}
-			
+
 		}
 	}
 ?>
 
 </div>
-
-
-
-
-
-

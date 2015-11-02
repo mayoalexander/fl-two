@@ -1,20 +1,48 @@
 <?php 
     include_once('/home/content/59/13071759/html/config/index.php');
-    $config = new Blog($_SERVER['SCRIPT_URI']);
+    /* HEADER THIS IS WHAT IT DOES:
+    * builds the site variable
+    * loads the user with the user session, and cookie data
+    * 
+    *
+
+    */
+
+    
+    // LOAD SITE DATA
+    $config = new Blog($_SERVER['HTTP_HOST']);
     $site = $config->getSiteData($config->site);
-    $photo_ads = $config->getAds($config->site, $site['creator']);
-	  $user_logged_in = new UserDashboard($_SESSION['user_name']);
-	  $app = new Config();
-    $user_data = $user_logged_in->getUserMedia($_SESSION['user_name']);
-    $profile_photo = $user_logged_in->getProfilePhoto($_SESSION['user_name']);
+    $site['media']['photos']['front-page'] = $config->getPhotoAds($site['creator'], 'front');
+    
+    // LOAD USER DATA
+    $user = new User();
+    if (isset($_SESSION) OR isset($_COOKIE['fl-user-name'])) {
+      $site['user'] = $user->init($_SESSION,$_COOKIE);
+      $user_logged_in = new UserDashboard($site['user']['name']);
+      //$site['user']['profile-photo'] = $profile_photo = $user_logged_in->getProfilePhoto($site['user']['name']);
+      //$site['user']['media'] = $user_data = $user_logged_in->getUserMedia($site['user']['name']);
+    }
+    if ($_GET['dev']=='debug') {
+      print_r($_SESSION);
+      //print_r($site['user']['name']);
+    }
+
+    // LOAD WEBSITE APPLICATIONS
+    $app = new Config();
+	  
+
+    $front_page_photos = $config->getPhotoAds($site['creator'], 'front');
     if ($_GET['dev']=='debug') {
       //echo $config->site.'<hr>';
       echo '<pre>';
-      print_r($user_data);
+      //print_r($_COOKIE);
+
+      print_r($site);
+      //print_r($site['user']);
       exit;
     }
 
-    shuffle($photo_ads);
+    shuffle($front_page_photos);
     if ($page_title=='') {
       $page_title = $site['title'];
     }
@@ -125,10 +153,11 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       }
     ?>
     header {
-        background-image:url("<?php echo $photo_ads[0]['image']; ?>");
+        background-image:url("<?php echo $front_page_photos[0]['image']; ?>");
         //height:100vh;
         text-shadow:1px 1px 10px #000000;
     }
+
     .post {
       border:2px solid <?php echo $site['primary-color'] ?>;
       border-collapse: collapse;
@@ -136,8 +165,31 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       border-right:none;
       //border-bottom:none;
     }
+    .audio_player {
+      position: fixed;
+      bottom: 2px;
+      right:2px;
+      border-bottom-left-radius:none ;
+      border-bottom-right-radius:none ;
+
+    }
 
 
+    /* Navigation Styles */
+    .dropdown-menu>li>a {
+      font-size:18px;
+      color:#e3e3e3;
+    }
+    .dropdown-menu {
+      background-color: #101010;
+    }
+    .navbar-default {
+      border:none;
+    }
+
+    .navbar-default , .navbar-default.affix {
+      background-color:#101010;
+    }
     .modal-dialog {
       border:2px solid <?php echo $site['primary-color'] ?>;
       color:#e3e3e3;
@@ -166,9 +218,25 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
 </head>
 
 <body id="page-top">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-bottom">
+      <div class="container-fluid">
+        <div class="navbar-header">
+
+          <div class="audio_player">
+            <?php if ($_SERVER['SCRIPT_URI']=='http://freelabel.net/') {
+                include(ROOT.'config/radio.php'); 
+              }
+            ?>
+          </div>
+
+        </div>
+      </div>
+    </nav>
+
 
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
+                
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <img class='' src="<?php echo $config->getSiteLogo($site_url); ?>" style='height:80px;'>
@@ -183,10 +251,6 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
                     <input name='q' type="text" class="form-control search-bar-input" value='<?php echo $_GET["q"];?>'  placeholder="Search anything..">                    
                   </div><!-- /input-group -->
                 </form>
-				
-				
-                
-                <!--<a class="navbar-brand page-scroll" href="#page-top">FREELABEL</a>-->
             </div>
 
             <!-- NOT LOGGED IN -->
@@ -201,17 +265,17 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
                     <li class="not-logged-in dropdown" >
                         <a class="page-scroll dropdown-toggle" href='#' type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="glyphicon glyphicon-globe" ></i> Explore</a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                          <li><a class="page-scroll" href="<?php echo $site_url;?>?ctrl=feed&view=new" onclick="<?php echo "loadPage('http://freelabel.net/user/views/stream.php', '#main_display_panel', 'new', '".$_SESSION['user_name']."')"; ?>"><i class="glyphicon glyphicon-time" ></i>New Releases</a></li>
-                          <li><a class="page-scroll" href="<?php echo $site_url;?>?ctrl=feed&view=featured#" onclick="<?php echo "loadPage('http://freelabel.net/user/views/stream.php', '#main_display_panel', 'featured', '".$_SESSION['user_name']."')"; ?>"><i class="glyphicon glyphicon-heart" ></i>Features</a></li>
-                          <li><a class="page-scroll" href="<?php echo $site_url;?>?ctrl=feed&view=broadcast#" onclick="<?php echo "loadPage('http://freelabel.net/user/views/stream.php', '#main_display_panel', 'broadcast', '".$_SESSION['user_name']."')"; ?>"><i class="glyphicon glyphicon-signal" ></i>Broadcasts</a></li>
-                          <li><a class="page-scroll" href="<?php echo $site_url;?>?ctrl=feed&view=event#" onclick="<?php echo "loadPage('http://freelabel.net/user/views/stream.php', '#main_display_panel', 'event', '".$_SESSION['user_name']."')"; ?>"><i class="glyphicon glyphicon-calendar" ></i>Events</a></li>
+                          <li><a class="page-scroll" href="<?php echo $site_url;?>mag/?ctrl=feed&view=new" onclick="<?php echo "loadPage('http://freelabel.net/user/views/stream.php', '#main_display_panel', 'new', '".$_SESSION['user_name']."')"; ?>"><i class="glyphicon glyphicon-time" ></i>New Releases</a></li>
+                          <li><a class="page-scroll" href="<?php echo $site_url;?>mag/?ctrl=feed&view=featured#" onclick="<?php echo "loadPage('http://freelabel.net/user/views/stream.php', '#main_display_panel', 'featured', '".$_SESSION['user_name']."')"; ?>"><i class="glyphicon glyphicon-heart" ></i>Features</a></li>
+                          <li><a class="page-scroll" href="<?php echo $site_url;?>mag/?ctrl=feed&view=broadcast#" onclick="<?php echo "loadPage('http://freelabel.net/user/views/stream.php', '#main_display_panel', 'broadcast', '".$_SESSION['user_name']."')"; ?>"><i class="glyphicon glyphicon-signal" ></i>Broadcasts</a></li>
+                          <li><a class="page-scroll" href="<?php echo $site_url;?>mag/?ctrl=feed&view=event#" onclick="<?php echo "loadPage('http://freelabel.net/user/views/stream.php', '#main_display_panel', 'event', '".$_SESSION['user_name']."')"; ?>"><i class="glyphicon glyphicon-calendar" ></i>Events</a></li>
                           <hr>
                           <li><a class="page-scroll" href="http://radio.freelabel.net/#" ><i class="glyphicon glyphicon-signal" ></i>Radio</a></li>
-                          <li><a class="page-scroll" href="<?php echo $site_url;?>?ctrl=feed&view=video#" ><i class="glyphicon glyphicon-facetime-video" ></i>Videos</a></li>
-                          <li><a class="page-scroll" href="<?php echo $site_url;?>?ctrl=feed&view=single#" ><i class="glyphicon glyphicon-cd" ></i>Singles</a></li>
-                          <li><a class="page-scroll" href="<?php echo $site_url;?>?ctrl=feed&view=photo#" ><i class="glyphicon glyphicon-picture" ></i>Photos</a></li>
-                          <!--<li><a class="page-scroll" href="<?php echo $site_url;?>?ctrl=feed&view=album#" ><i class="fa fa-vinyl" ></i>Albums</a></li>-->
-                          <li><a class="page-scroll" href="<?php echo $site_url;?>?ctrl=feed&view=interview#" ><i class="glyphicon glyphicon-phone" ></i>Interviews</a></li>
+                          <li><a class="page-scroll" href="<?php echo $site_url;?>mag/?ctrl=feed&view=video#" ><i class="glyphicon glyphicon-facetime-video" ></i>Videos</a></li>
+                          <li><a class="page-scroll" href="<?php echo $site_url;?>mag/?ctrl=feed&view=single#" ><i class="glyphicon glyphicon-cd" ></i>Singles</a></li>
+                          <li><a class="page-scroll" href="<?php echo $site_url;?>mag/?ctrl=feed&view=photo#" ><i class="glyphicon glyphicon-picture" ></i>Photos</a></li>
+                          <!--<li><a class="page-scroll" href="<?php echo $site_url;?>mag/?ctrl=feed&view=album#" ><i class="fa fa-vinyl" ></i>Albums</a></li>-->
+                          <li><a class="page-scroll" href="<?php echo $site_url;?>mag/?ctrl=feed&view=interview#" ><i class="glyphicon glyphicon-phone" ></i>Interviews</a></li>
 
                         </ul>
                     </li>
@@ -282,8 +346,11 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
                     <li class="dropdown hide-if-expired" >
                         <a class="page-scroll dropdown-toggle" href='#' type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="glyphicon glyphicon-star" ></i> Showcase</a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li><a class="page-scroll" href="#" onclick="<?php echo "loadPage('http://freelabel.net/submit/views/db/recent_posts.php', '#main_display_panel', 'dashboard', '".$_SESSION['user_name']."','','','dashboard' )"; ?>"><i class="glyphicon glyphicon-dashboard" ></i>Your Dashboard</a></li>
+                          <li><a class="page-scroll" href="#" onclick="<?php echo "loadPage('http://freelabel.net/submit/views/db/recent_posts.php', '#main_display_panel', 'stats', '".$_SESSION['user_name']."' ,'','','stats' )"; ?>"><i class="glyphicon glyphicon-signal" ></i>View Stats</a></li>
+                          <li><a class="page-scroll" href="#" onclick="<?php echo "loadPage('http://freelabel.net/submit/views/db/user_photos.php', '#main_display_panel', 'dashboard', '".$_SESSION['user_name']."' , '','','drive')"; ?>"><i class="glyphicon glyphicon-hdd" ></i>View Files</a></li>
                           <li><a class="page-scroll" href="<?php echo 'http://upload.freelabel.net/?uid='.$_SESSION['user_name']; ?>"><i class="glyphicon glyphicon-upload" ></i>Upload Media</a></li>
-                          <li><a class="page-scroll" href="#" onclick="<?php echo "loadPage('http://freelabel.net/submit/views/db/showcase_schedule.php', '#main_display_panel', 'dashboard', '".$_SESSION['user_name']."')"; ?>"><i class="glyphicon glyphicon-calendar" ></i>Book An Event</a></li>
+                          <li><a class="page-scroll" href="#" onclick="<?php echo "loadPage('http://freelabel.net/submit/views/db/showcase_schedule.php', '#main_display_panel', 'dashboard', '".$_SESSION['user_name']."','','','cal' )"; ?>"><i class="glyphicon glyphicon-calendar" ></i>Schedule Events</a></li>
                           <!--<li><a class="page-scroll" href="#" onclick="<?php //echo "loadPage('http://freelabel.net/submit/views/db/showcase_schedule.php', '#main_display_panel', 'dashboard', '".$_SESSION['user_name']."')"; ?>"><i class="glyphicon glyphicon-usd" ></i>Merch</a></li>-->
                         </ul>
                     </li>

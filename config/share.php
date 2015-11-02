@@ -82,7 +82,7 @@ function findByID($post_id){
 				  Facebook
 				</a>
 				
-				<a class="btn btn-social btn-success btn-google-plus" href="#" onclick="likePost('.$post_id.', '.$current_likes.' , \''.$_SESSION['user_name'].'\')">
+				<a id="like_button'.$post_id.'" class="btn btn-social btn-success btn-google-plus" href="#" onclick="likePost('.$post_id.', '.$current_likes.' , \''.$_SESSION['user_name'].'\')">
 					<i class="fa fa-save"></i>
 					Save
 				</a>

@@ -1,13 +1,20 @@
 <?php 
+session_start();
 // ---------------- PRE DEFINED VARIABLES ---------------- //
 if ($_SESSION['user_name']=='') {
-	session_start();
+	
+	$user_name_session = $_POST['id'];
+	echo "no session set";
+} else {
+	$user_name_session = $_SESSION['user_name'];	
 }
+//print_r($user_name_session);
 
 include_once('/home/content/59/13071759/html/config/index.php');
 $db = new UserDashboard($_SESSION);
-$user_name_session = $_SESSION['user_name'];
+
 $user = $db->getUserData($user_name_session);
+//print_r($user);
 $user['stats']['total'] = $db->getUserStats($user_name_session , 'total');
 $user['stats']['total'] = $db->getUserStats($user_name_session , 'fans');
 $user['id'] = $user['user_id'];

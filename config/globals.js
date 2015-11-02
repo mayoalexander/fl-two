@@ -7,7 +7,7 @@
         $('.widget_menu .glyphicon-' + icon).addClass('active');
       }
 
-      function loadPage(path , containerDiv, page , user_name, id, setActiveIcon) {
+      function loadPage(path , containerDiv, page , user_name, id, setActiveIcon,ctrl) {
         if ($(containerDiv).css('display') == 'none') {
           $(containerDiv).css('display','block');
         }
@@ -33,6 +33,12 @@
             setActive(setActiveIcon);
           }
         });
+        //alert(ctrl);
+        if (ctrl!==undefined) {
+          var stateObj = { foo: "bar" };
+          history.pushState(stateObj, "page 2", '?ctrl='+ctrl);
+        }
+        
 
       }
       function openProfile(user_name) {
@@ -170,9 +176,17 @@
                     
                     $("#like_button" + post_id ).removeClass('btn-default');
                     $("#like_button" + post_id ).addClass('btn-success');
-                    $("#like_button" + post_id ).html("LIKED!");
+                    $("#like_button" + post_id ).addClass('btn-google-plus');
+                    $("#like_button" + post_id ).css('background-color','green');
+                    $("#like_button" + post_id ).html("<i class='fa fa-heart'></i> LIKED!");
+                    $("body" ).append(data);
                     $('#current_likes' + post_id ).html(new_likes +  " LIKES");
-                    alert('This post has been saved to your collection!');
+                   
+
+
+
+                    //alert('This post has been saved to your collection!');
+                    //window.open('http://freelabel.net/download.php?p='+'&n='+'&n=t');
                     //window.open();
                     
                     /*setTimeout(function() {

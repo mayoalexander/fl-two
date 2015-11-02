@@ -6,7 +6,7 @@
 
 
 
-//print_r($_POST); exit;
+//print_r($_POST); 
 
 
 
@@ -28,6 +28,20 @@ class Posts
 		if ($approval_query) {
 			echo $update['title'];
 			$update_status = $update['photo_title'];;
+		} else {
+			echo 'it didnt work!';
+			print_r($sql);
+			$update_status = false;
+		}
+		return $update_status;
+	}
+	public function updateImagePost($update) {
+		include(ROOT.'/inc/connection.php');
+		$sql = "UPDATE  `amrusers`.`images` SET  `".$update['param']."` =  '".$update['title']."' WHERE  `images`.`id` ='".$update['id']."' LIMIT 1";
+		$approval_query = mysqli_query($con,$sql);
+		if ($approval_query) {
+			echo $update['title'];
+			$update_status = $update['title'];;
 		} else {
 			echo 'it didnt work!';
 			print_r($sql);
@@ -503,6 +517,24 @@ if ($_POST['user_account_id']) {
 
 
 
+
+
+/*
+*  UPDATE IMAGE TYPE
+*/
+if ($_POST['action']=='photo-type-update') {
+	//print_r($_POST);
+	$post_id_arr = explode('-',$_POST['user_post_id']);
+	// print_r($post_id);
+	// echo '<hr>'.$post_id_arr[1];
+	$update['id'] = $_POST['id'];
+	$update['param'] = 'type';
+	$update['title'] = $_POST['type'];
+	//print_r($update);
+	//echo $edit_param.'.'.$post_id;
+	$posts = new Posts();
+	$posts->updateImagePost($update);
+}
 
 
 

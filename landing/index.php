@@ -1,35 +1,94 @@
 <?php 
     include_once('/home/content/59/13071759/html/config/index.php');
-
-    $config = new Blog('http://thebae.watch/');
+    /* LOAD ADVERTISMENT PHOTOS */
+    //$config = new Blog($_SERVER['HTTP_HOST']);
+    
+    
+    
+   
     //$site = $photos->getSiteData('http://thebae.watch/');
     //$photo_ads = $photos->getPhotographyPhotos('baewatch front-page' , SITE);
     //shuffle($photo_ads);
     //print_r($site);
     //exit;
+    /* **************
+
+
+    PRESET GLOBALS
+    $config->site
+
+
+    load a of this shit into the landing header eventually
+
+    *******************/
+    
+    if (isset($_GET['dev'])) {
+        $dev_only = '
+        .dev-only {
+            display:block;
+        }';
+    }
+
+    /* HEADER CONFIGURATION */
+    include_once(ROOT.'landing/header.php');
+    $photos = $config->getPhotoAds($site['creator'], 'front');
+    $i=0;
+    foreach ($photos as $photo) {
+        $photos[$i]['thumbnail'] = str_replace('server/php/files', 'server/php/files/thumbnail', $photo['image']);
+        //echo $i.') '.$photos['thumbnail'];
+        $i++;
+    }
+    shuffle($photos);
+
+
+    /* GET FEATURED POST PREVIEWS ARTICLES */
     $blog_posts = $config->getPosts(0,24,false,$_SERVER['SCRIPT_URI']);
     shuffle($blog_posts);
     $page_title = $site['name'];
     $page_desc = $site['description'];
-    if (isset($_GET['dev'])) {
-        print_r($blog_posts);
-        exit;
-    }
 
-    include_once(ROOT.'landing/header.php');
     ?>
 
 
     <style type="text/css">
     header {
-        background-image:url("<?php echo $photo_ads[0]['image']; ?>");
+        //background-image:url("<?php echo $photo_ads[0]['image']; ?>");
         height:100vh;
         text-shadow:1px 1px 10px #000000;
+        display:none;
 
+    }
+    .portfolio-box:hover .portfolio-box-caption {
+        background-color:<?php echo $site['primary-color']; ?>;
+    }
+    .bg-photo {
+        //text-shadow:1px 1px 10px #000000;
+        background-size:130%;
+    }
+    .bg-photo-1 {
+       //background-image:url("<?php echo $photo_ads[1]['image']; ?>");
+    }
+    .bg-photo-2 {
+        //background-image:url("<?php echo $photo_ads[2]['image']; ?>");
+    }
+    .bg-photo-3 {
+        //background-image:url("<?php echo $photo_ads[3]['image']; ?>");
+    }
+    .img-responsive {
+        width:100%;
     }
     header img {
         -webkit-filter: blur(5px);
         filter: blur(5px);
+    }
+    #header-carousel .carousel-caption  {
+        display: none;
+    }
+    .carousel img {
+        //-webkit-filter: blur(5px);
+        //filter: blur(5px);
+        width:100%;
+        //height:90vh;
     }
     </style>
 
@@ -38,22 +97,21 @@
         padding-top:0%;
         padding-bottom:0%;
     }
-    .landing-promo img {
-        width:100%;
-        height:auto;
-    }
     .login-panel-main {
         //padding-top:14%;
         text-align: left;
         color:#101010;
         margin-top:0;
     }
-    .img-responsive {
-        height:400px;
-    }
     .align-to-bottom .landing-promo{
         vertical-align: bottom;
     }
+
+    .dev-only , .learn-more {
+        display:none;
+    }
+    <?php echo $dev_only; ?>
+
 </style>
 
 <body id="main_display_panel">
@@ -65,108 +123,136 @@
                 <h3><?php echo $site['description']; ?></h3>
                 <hr>
                 <p><?php echo $site['bio']; ?></p>
-                <a href="<?php echo $site['http']; ?>register" class="btn btn-primary btn-xl page-scroll">Create An Account</a>
+                <a data-toggle="modal" data-target="#loginMod"  class="btn btn-primary btn-xl page-scroll">Login To Your Account</a>
             </div>
         </div>
     </header>
 
 
-    <section class="no-padding" id="portfolio">
-        <div class="container-fluid" >
-            <div class="row no-gutter row-eq-height align-to-bottom" style="background-size:200%;background-image:url('<?php echo $blog_posts[1]['photo']; ?>');">
-                <div class="col-md-4 landing-promo">
-                    <a href="<?php echo $blog_posts[1]['blog_story_url']; ?>#" target="_blank" class="portfolio-box">
-                        <img src="<?php echo $blog_posts[1]['photo']; ?>" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    <?php echo $blog_posts[1]['blogtitle']; ?>
-                                </div>
-                                <div class="project-name">
-                                    <?php echo $blog_posts[1]['twitter']; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 landing-promo">
-                    <a href="<?php echo $blog_posts[2]['blog_story_url']; ?>#" target="_blank" class="portfolio-box">
-                        <img src="<?php echo $blog_posts[2]['photo']; ?>" class="img-responsive"  alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    <?php echo $blog_posts[2]['blogtitle']; ?>
-                                </div>
-                                <div class="project-name">
-                                    <?php echo $blog_posts[2]['twitter']; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 landing-promo">
-                    <a href="<?php echo $blog_posts[3]['blog_story_url']; ?>#" target="_blank" class="portfolio-box">
-                        <img src="<?php echo $blog_posts[3]['photo']; ?>" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    <?php echo $blog_posts[3]['blogtitle']; ?>
-                                </div>
-                                <div class="project-name">
-                                    <?php echo $blog_posts[3]['twitter']; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
 
-            <div class="row no-gutter row-eq-height" style="background-size:200%;background-image:url('<?php echo $blog_posts[5]['photo']; ?>');">
-                <div class="col-md-4 landing-promo">
-                    <a href="<?php echo $blog_posts[4]['blog_story_url']; ?>#" target="_blank" class="portfolio-box">
-                        <img src="<?php echo $blog_posts[4]['photo']; ?>" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    <?php echo $blog_posts[4]['blogtitle']; ?>
-                                </div>
-                                <div class="project-name">
-                                    <?php echo $blog_posts[3]['twitter']; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+
+    <div id="header-carousel" class="carousel slide learn-more-hide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#header-carousel" data-slide-to="1" class=""></li>
+        <li data-target="#header-carousel" data-slide-to="2" class=""></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+
+        <div class="item active">
+          <img class="first-slide" src="<?php echo $photos[1]['image']; ?>" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+                <p><?php echo $site['description']; ?></p>
+                <a data-toggle="modal" data-target="#loginMod"  class="btn btn-primary btn-xl page-scroll">Login To Your Account</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <img class="second-slide" src="<?php echo $photos[0]['image']; ?>" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+                <p><?php echo $site['description']; ?></p>
+                <a data-toggle="modal" data-target="#loginMod"  class="btn btn-primary btn-xl page-scroll">Login To Your Account</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <img class="third-slide" src="<?php echo $photos[2]['image']; ?>" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+                <p><?php echo $site['description']; ?></p>
+                <a data-toggle="modal" data-target="#loginMod"  class="btn btn-primary btn-xl page-scroll">Login To Your Account</a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <a class="left carousel-control" href="#header-carousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#header-carousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+
+    
+    <div class="row bg-dark dev-only bg-photo bg-photo-2" style='text-align:center;padding:5%;'>
+        <div class="col-lg-4">
+          <img class="img-circle" src="<?php echo $photos[0]['thumbnail']; ?>" alt="Generic placeholder image" width="250" height="250">
+          <h2><?php echo $photos[0]['title']; ?></h2>
+          <p><?php echo $photos[0]['caption']; ?></p>
+          <p><a target="_blank" class="btn btn-default" href="http://freelabel.net/confirm/sub" role="button">Create Account »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="<?php echo $photos[1]['thumbnail']; ?>" alt="Generic placeholder image" width="250" height="250">
+          <h2><?php echo $photos[1]['title']; ?></h2>
+          <p><?php echo $photos[1]['caption']; ?></p>
+          <p><a target="_blank" class="btn btn-default" href="http://freelabel.net/confirm/basic" role="button">Create Account »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="<?php echo $photos[2]['thumbnail']; ?>" alt="Generic placeholder image" width="250" height="250">
+          <h2><?php echo $photos[2]['title']; ?></h2>
+          <p><?php echo $photos[2]['caption']; ?></p>
+          <p><a target="_blank" class="btn btn-default" href="http://freelabel.net/confirm/exclusive" role="button">Create Account »</a></p>
+        </div><!-- /.col-lg-4 -->
+    </div>
+
+    <aside class="bg-dark bg-photo bg-photo-3" style='text-align:center;padding:5%;'>
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2>Create Your Account & Explore The Movement</h2>
+                <div class="btn-group call-to-action-button-group">
+                    <!--<a data-toggle="modal" data-target="#loginMod"  class="btn btn-primary btn-xl page-scroll">Login To Your Account</a>-->
+                    <a href="#" class="btn btn-primary btn-xl woww tada load-more-more-info-button">Learn More About <?php echo $site['title']; ?></a>
                 </div>
-                <div class="col-md-4 landing-promo">
-                    <a href="<?php echo $blog_posts[5]['blog_story_url']; ?>#" target="_blank" class="portfolio-box">
-                        <img src="<?php echo $blog_posts[5]['photo']; ?>" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    <?php echo $blog_posts[5]['blogtitle']; ?>
-                                </div>
-                                <div class="project-name">
-                                    <?php echo $blog_posts[5]['twitter']; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 landing-promo">
-                    <a href="<?php echo $blog_posts[6]['blog_story_url']; ?>#" target="_blank" class="portfolio-box">
-                        <img src="<?php echo $blog_posts[6]['photo']; ?>" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    <?php echo $blog_posts[6]['blogtitle']; ?>
-                                </div>
-                                <div class="project-name">
-                                    <?php echo $blog_posts[6]['twitter']; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                
+            </div>
+        </div>
+    </aside>
+
+    <a name="load-more"></a>
+    <section class="no-padding learn-more" id="portfolio">
+        <div class="" >
+            <div class="row no-gutter row-eq-height align-to-bottom" style="background-size:200%;background-image:url('<?php echo $blog_posts[1]['photo']; ?>');">
+            
+            <?php 
+
+            foreach ($blog_posts as $post) {
+                $post['blog_story_url'] = str_replace(' ', '', $post['blog_story_url']);
+                
+        
+                    if ($config->site=="http://thebae.watch/") {
+                        $post['blog_story_url'] = str_replace('freela.be/l/', 'thebae.watch/', $post['blog_story_url']);
+                    }
+                    echo '
+                                    <div class="col-md-4 landing-promo">
+                                        <a href="'.$post['blog_story_url'].'#" target="_blank" class="portfolio-box">
+                                            <img src="'.$post['photo'].'" class="img-responsive" alt="">
+                                            <div class="portfolio-box-caption">
+                                                <div class="portfolio-box-caption-content">
+                                                    <div class="project-category text-faded">
+                                                        '.$post['blogtitle'].'
+                                                    </div>
+                                                    <div class="project-name">
+                                                        '.$post['twitter'].'
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                    ';
+            }
+
+            ?>
+
             </div>
         </div>
     </section>
@@ -181,7 +267,7 @@
     </section>
 
 
-    <section id="services">
+    <section id="services" class="learn-more">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -389,16 +475,17 @@
     
 
 
-    <aside class="bg-dark">
+    <aside class="bg-dark learn-more">
         <div class="container text-center">
             <div class="call-to-action">
                 <h2>Stay ahead of the game and get new content before it releases!</h2>
-                <a href="http://freelabel.net/images/@flmag" class="btn btn-default btn-xl woww tada">Preview <?php echo $site['title']; ?> Magazine</a>
+                <a href="<?php echo $site['http']; ?>mag/" class="btn btn-default btn-xl woww tada">Preview <?php echo $site['title']; ?></a>
             </div>
         </div>
     </aside>
+    
 
-    <section id="contact">
+    <section id="contact" class="learn-more">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -412,10 +499,22 @@
                 </div>
                 <div class="col-lg-4 text-center">
                     <i class="fa fa-envelope-o fa-3x woww bounceIn" data-woww-delay=".1s"></i>
-                    <p><a href="mailto:admin@freelabel.net">admin@<?php echo $site['http']; ?></a></p>
+                    <p><a href="mailto:admin@freelabel.net">admin@<?php echo $site['domain']; ?></a></p>
                 </div>
             </div>
         </div>
     </section>
-
+<script type="text/javascript">
+    $(function() {
+        $('.load-more-more-info-button').click(function(e){
+            e.preventDefault();
+            //alert('wer');
+            // learn-more-hide
+            $('.call-to-action-button-group').removeClass('btn-group');
+            $(this).hide('slow');
+            $('.learn-more-hide').hide('slow');
+            $('.learn-more').show('slow');
+        });
+    });
+</script>
 <?php include_once(ROOT.'landing/footer.php'); ?>
