@@ -1376,9 +1376,9 @@ public function getUserUploadOptions($user_name_session) {
   $upload_options = "
     <!--<h1 class='panel-heading'>Uploads</h1>-->
       <nav class='btn-group upload-options'>
-        <a href='#upload' onclick=\"window.open('http://upload.freelabel.net/?uid=". $_SESSION['user_name']. "')\" class='btn btn-success btn-lg col-md-4 col-xs-4'>      <span class=\"glyphicon glyphicon-plus\"></span> Upload</a>
-        <a href='#photos' onclick=\"loadPage('http://freelabel.net/submit/views/db/user_photos.php', '#main_display_panel', 'dashboard', '". $user_name_session. "')\" class='btn btn-default btn-lg col-md-4 col-xs-4'>        <span class=\"glyphicon glyphicon-camera\"></span> Photos</a>
-        <a href='#music' onclick=\"loadPage('http://freelabel.net/submit/views/db/recent_posts.php', '#main_display_panel', 'dashboard', '". $user_name_session. "')\" class='btn btn-default btn-lg col-md-4 col-xs-4'>      <span class=\"glyphicon glyphicon-music\"></span> Music</a>
+        <a href='http://upload.freelabel.net/?uid=". $_SESSION['user_name']. "' target='_blank' class='btn btn-success btn-lg col-md-4 col-xs-4'>      <span class=\"glyphicon glyphicon-plus\"></span> Upload</a>
+        <a href='#photos' onclick=\"loadPage('http://freelabel.net/submit/views/db/user_photos.php', '#main_display_panel', 'dashboard', '". $user_name_session. "','','','pics')\" class='btn btn-default btn-lg col-md-4 col-xs-4'>        <span class=\"glyphicon glyphicon-camera\"></span> Photos</a>
+        <a href='#music' onclick=\"loadPage('http://freelabel.net/submit/views/db/recent_posts.php', '#main_display_panel', 'dashboard', '". $user_name_session. "','','','posts')\" class='btn btn-default btn-lg col-md-4 col-xs-4'>      <span class=\"glyphicon glyphicon-music\"></span> Music</a>
       </nav>
     ";
   return $upload_options;

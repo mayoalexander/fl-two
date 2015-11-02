@@ -22,7 +22,8 @@ include_once(ROOT.'landing/header.php');
 	<?php 
 	$stream='search_page';
 	//$search_query = $_GET['q'];
-	include(ROOT.'images/pull_images.php'); ?>
+	include(ROOT.'images/pull_images.php'); 
+	?>
 	</div>
 <div>
 <?php 

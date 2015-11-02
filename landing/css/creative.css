@@ -33,6 +33,9 @@ hr {
     border-width: 3px;
 }
 
+.navbar-toggle {
+    border:none;
+}
 
 .navbar-default {
     border-color: rgba(34,34,34,.05);
@@ -662,6 +665,9 @@ button:hover
       //color:#101010;
       background-color:transparent;
       border:none;
+    }
+    .navbar-toggle {
+        border:none;
     }
     .search-bar-input, .search-bar button {
       padding:12%;

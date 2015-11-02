@@ -9,8 +9,6 @@ foreach ($content as $key => $image) {
 $arr = array(0.1,2,3,4,5,6);
 shuffle($arr);
 //print_r($image_data);
-
-
 //echo '<pre>';print_r($user);exit;
 ?><!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -33,6 +31,9 @@ shuffle($arr);
 			background-image:url("<?php echo $user['profile']['photo']; ?>");
 			background-size:100% auto;
 		}
+		body {
+			background-color:#101010;
+		}
 	</style>
 </head>
 <body>
@@ -51,51 +52,44 @@ shuffle($arr);
 			</div>
 			<h1 class="codrops-title">@<?php echo $user['profile']['id']; ?> <span><?php echo $user['profile']['location']; ?></span></h1>
 			<nav class="menu">
-				<a class="menu__item" href="#"><span>About</span></a>
+				<!--<a class="menu__item" href="#"><span>About</span></a>-->
 				<a class="menu__item menu__item--current" href="#"><span>Work</span></a>
 				<a class="menu__item" href="#"><span>Contact</span></a>
 			</nav>
 		</header>
 		<div class="stack-slider">
 			<div class="stacks-wrapper">
-				<div class="stack">
-					<h2 class="stack-title"><a href="#" data-text="Photos"><span>Photos</span></a></h2>
-					
-					<?php 
-					// print_r($user['media']['photo']);
-
-
-					// ------------------ DISPLAY PHOTOS --------------------------- // 
-
-					$i=0;
-					foreach ($user['media']['photo'] as $key => $photo) {
-						//echo $i.') <br>';
-							$i++;
-							echo '
-					<div class="item">
-						<div class="item__content">
-							<a href="http://freelabel.net/images/'.$photo['id'].'"><img src="'.$photo['thumbnail'].'" alt="'.$photo['title'].'" /></a>
-							<h3 class="item__title">'.$photo['title'].' <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>'.$user['media']['photos'][3]['desc'].'</span></li>
-									<!--<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>-->
-								</ul>
-							</div>
-						</div>
-					</div>';
-						//echo "<hr>";
-					}
-					
-					
+					<?php
+					/*if ($user['media']['photo']>0) {		 
+							echo '<h2 class="stack-title"><a href="#" data-text="Photos"><span>Photos</span></a></h2>';
+							// ------------------ DISPLAY PHOTOS --------------------------- // 
+							$i=0;
+							foreach ($user['media']['photo'] as $key => $photo) {
+								//echo $i.') <br>';
+									$i++;
+									echo '
+							<div class="item">
+								<div class="item__content">
+									<a href="http://freelabel.net/images/'.$photo['id'].'"><img src="'.$photo['thumbnail'].'" alt="'.$photo['title'].'" /></a>
+									<h3 class="item__title">'.$photo['title'].' <span class="item__date">05/05/2015</span></h3>
+									<div class="item__details">
+										<ul>
+											<li><i class="icon icon-camera"></i><span>'.$user['media']['photos'][3]['desc'].'</span></li>
+											<!--<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
+											<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
+											<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
+											<li><i class="icon icon-iso"></i><span>80</span></li>-->
+										</ul>
+									</div>
+								</div>
+							</div>';
+							}
+					}*/
 					
 					?>
-				</div>
 				
 	<?php 
+	/* CREATE VIDEO STACK */
 		if (count($user['media']['video'])>0) {
 			echo '<div class="stack">
 			<h2 class="stack-title"><a href="#" data-text="Videos"><span>Videos</span></a></h2>';
@@ -130,121 +124,112 @@ shuffle($arr);
 			echo "</div>";
 		}
 
+
+
+
+		/* CREATE PHOTO STACKS */
+		if (count($user['media']['photo'])>0) {
+			echo '<div class="stack">
+			<h2 class="stack-title"><a href="#" data-text="Photos"><span>Photos</span></a></h2>';
+					// print_r($user['media']['video']);
+
+					// ------------------ DISPLAY PHOTOS --------------------------- // 
+
+					$i=0;
+					foreach ($user['media']['photo'] as $key => $photo) {
+						//echo $i.') <br>';
+							$i++;
+							echo '
+							<div class="item">
+								<div class="item__content">
+									<a href="http://freelabel.net/images/'.$photo['id'].'"><img src="'.$photo['thumbnail'].'" alt="'.$photo['title'].'" /></a>
+									<h3 class="item__title">'.$photo['title'].' <span class="item__date">05/05/2015</span></h3>
+									<div class="item__details">
+										<ul>
+											<li><i class="icon icon-camera"></i><span>'.$user['media']['photos'][3]['desc'].'</span></li>
+											<!--<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
+											<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
+											<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
+											<li><i class="icon icon-iso"></i><span>80</span></li>-->
+										</ul>
+									</div>
+								</div>
+							</div>';
+					}
+			echo "</div>";
+		}
+
+
+
+		/* CREATE EVENTS STACKS */
+		if (count($user['media']['event'])>0) {
+			echo '<div class="stack">
+			<h2 class="stack-title"><a href="#" data-text="Events"><span>Events</span></a></h2>';
+					// print_r($user['media']['video']);
+
+					// ------------------ DISPLAY PHOTOS --------------------------- // 
+
+					$i=0;
+					foreach ($user['media']['event'] as $key => $photo) {
+						//echo $i.') <br>';
+							$i++;
+							echo '
+							<div class="item">
+								<div class="item__content">
+									<a href="http://freelabel.net/images/'.$photo['id'].'"><img src="'.$photo['thumbnail'].'" alt="'.$photo['title'].'" /></a>
+									<h3 class="item__title">'.$photo['title'].' <span class="item__date">05/05/2015</span></h3>
+									<div class="item__details">
+										<ul>
+											<li><i class="icon icon-camera"></i><span>'.$user['media']['photos'][3]['desc'].'</span></li>
+											<!--<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
+											<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
+											<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
+											<li><i class="icon icon-iso"></i><span>80</span></li>-->
+										</ul>
+									</div>
+								</div>
+							</div>';
+					}
+			echo "</div>";
+		}
+
+
+
+
+		/* CREATE Merch STACKS */
+		if (count($user['media']['merch'])>0) {
+			echo '<div class="stack">
+			<h2 class="stack-title"><a href="#" data-text="Merch"><span>Merch</span></a></h2>';
+					// print_r($user['media']['video']);
+
+					// ------------------ DISPLAY PHOTOS --------------------------- // 
+
+					$i=0;
+					foreach ($user['media']['merch'] as $key => $photo) {
+						//echo $i.') <br>';
+							$i++;
+							echo '
+							<div class="item">
+								<div class="item__content">
+									<a href="http://freelabel.net/images/'.$photo['id'].'"><img src="'.$photo['thumbnail'].'" alt="'.$photo['title'].'" /></a>
+									<h3 class="item__title">'.$photo['title'].' <span class="item__date">05/05/2015</span></h3>
+									<div class="item__details">
+										<ul>
+											<li><i class="icon icon-camera"></i><span>'.$user['media']['photos'][3]['desc'].'</span></li>
+											<!--<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
+											<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
+											<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
+											<li><i class="icon icon-iso"></i><span>80</span></li>-->
+										</ul>
+									</div>
+								</div>
+							</div>';
+					}
+			echo "</div>";
+		}
 	?>
 
 
-	
-				<div class="stack">
-					<h2 class="stack-title"><a href="#" data-text="Events"><span>Events</span></a></h2>
-					<div class="item">
-						<div class="item__content">
-							<img src="img/type2/2.jpg" alt="img02" />
-							<h3 class="item__title">Chia pop-up meh <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5 mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="stack">
-					<h2 class="stack-title"><a href="#" data-text="Wildlife"><span>Merch</span></a></h2>
-					<div class="item">
-						<div class="item__content">
-							<img src="img/type4/1.jpg" alt="img01" />
-							<h3 class="item__title">Kickstarter keffiyeh <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5 mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="item__content">
-							<img src="img/type4/2.jpg" alt="img02" />
-							<h3 class="item__title">Heirloom commodo migas <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5 mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="item__content">
-							<img src="img/type4/3.jpg" alt="img03" />
-							<h3 class="item__title">Austin banjo swag <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5 mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="item__content">
-							<img src="img/type4/4.jpg" alt="img04" />
-							<h3 class="item__title">Small batch farm-to-table <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5 mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="item__content">
-							<img src="img/type4/5.jpg" alt="img05" />
-							<h3 class="item__title">Ethical leggings semiotics <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5 mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
-								</ul>
-							</div>
-							<p>Images by <a href="https://www.flickr.com/photos/usfwsendsp/">USFWS Endangered Species</a></p>
-						</div>
-					</div>
-					<div class="item" style="display:none;">
-						<!-- Related demos -->
-						<div class="item__content item__content--related">
-							<p>If you enjoyed this demo you might also like:</p>
-							<a class="media-item" href="http://tympanus.net/Tutorials/SlidingHeaderLayout/">
-								<img class="media-item__img" src="img/related/SlidingHeaderLayout.jpg" />
-								<h3 class="media-item__title">Sliding Header Layout</h3>
-							</a>
-							<a class="media-item" href="http://tympanus.net/Development/ScatteredPolaroidsGallery/">
-								<img class="media-item__img" src="img/related/ScatteredPolaroidGallery.jpg" />
-								<h3 class="media-item__title">Scattered Polaroid Gallery</h3>
-							</a>
-						</div>
-					</div>
-				</div>
 			</div>
 			<!-- /stacks-wrapper -->
 		</div>
@@ -256,5 +241,21 @@ shuffle($arr);
 	<script src="<?php echo HTTP.'artists/templates/photoShowcase/'; ?>js/flickity.pkgd.min.js"></script>
 	<script src="<?php echo HTTP.'artists/templates/photoShowcase/'; ?>js/smoothscroll.js"></script>
 	<script src="<?php echo HTTP.'artists/templates/photoShowcase/'; ?>js/main.js"></script>
+	<script src="http://freelabel.net/landing/js/jquery.js"></script>
+	<script type="text/javascript">
+	$(function() {
+
+		$('.menu__item').click(function(e){
+			var text = $(this).children().text();
+			e.preventDefault();
+			if (text=='About') {
+				alert(text);
+			} else if(text=='Contact') {
+				alert(text);
+			}
+		});
+	
+	});
+	</script>
 </body>
 </html>

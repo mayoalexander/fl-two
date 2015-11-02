@@ -63,7 +63,7 @@
 	  width:94vw;
 	  max-width: 352px;
 	  height: 45px;
-	  box-shadow: #ccc 0px 1px 10px;
+	  //box-shadow: #ccc 0px 1px 10px;
 	  border-radius:4px;
 	  background-position:center center !important;
 	  background-repeat:no-repeat !important;
@@ -190,10 +190,10 @@
 	data-autoplay="true"
 	data-playbutton="true"
 	data-volumeslider="true"
-	data-elapsedtime="true"
+	data-elapsedtime="false"
 	data-nowplaying="true"
 	data-showplayer="true"
-	data-volume="50"></div>
+	data-volume="100"></div>
 
 
 <!-- Include the libraries -->

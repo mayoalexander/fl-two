@@ -16,10 +16,16 @@
     
     // LOAD USER DATA
     $user = new User();
-    $site['user'] = $user->init($_SESSION,$_COOKIE);
-    $user_logged_in = new UserDashboard($site['user']['name']);
-    $site['user']['profile-photo'] = $profile_photo = $user_logged_in->getProfilePhoto($site['user']['name']);
-    $site['user']['media'] = $user_data = $user_logged_in->getUserMedia($site['user']['name']);
+    if (isset($_SESSION) OR isset($_COOKIE['fl-user-name'])) {
+      $site['user'] = $user->init($_SESSION,$_COOKIE);
+      $user_logged_in = new UserDashboard($site['user']['name']);
+      //$site['user']['profile-photo'] = $profile_photo = $user_logged_in->getProfilePhoto($site['user']['name']);
+      //$site['user']['media'] = $user_data = $user_logged_in->getUserMedia($site['user']['name']);
+    }
+    if ($_GET['dev']=='debug') {
+      print_r($_SESSION);
+      //print_r($site['user']['name']);
+    }
 
     // LOAD WEBSITE APPLICATIONS
     $app = new Config();
@@ -151,6 +157,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
         //height:100vh;
         text-shadow:1px 1px 10px #000000;
     }
+
     .post {
       border:2px solid <?php echo $site['primary-color'] ?>;
       border-collapse: collapse;
@@ -160,8 +167,11 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     }
     .audio_player {
       position: fixed;
-      bottom: 10px;
-      right:10px;
+      bottom: 2px;
+      right:2px;
+      border-bottom-left-radius:none ;
+      border-bottom-right-radius:none ;
+
     }
 
 
@@ -177,7 +187,9 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       border:none;
     }
 
-
+    .navbar-default , .navbar-default.affix {
+      background-color:#101010;
+    }
     .modal-dialog {
       border:2px solid <?php echo $site['primary-color'] ?>;
       color:#e3e3e3;
@@ -206,15 +218,24 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
 </head>
 
 <body id="page-top">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-bottom">
+      <div class="container-fluid">
+        <div class="navbar-header">
+
+          <div class="audio_player">
+            <?php if ($_SERVER['SCRIPT_URI']=='http://freelabel.net/') {
+                include(ROOT.'config/radio.php'); 
+              }
+            ?>
+          </div>
+
+        </div>
+      </div>
+    </nav>
+
 
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
-        <div class="audio_player">
-          <?php if ($_SERVER['SCRIPT_URI']=='http://freelabel.net/') {
-            include(ROOT.'config/radio.php'); 
-          }
-            ?>
-        </div>
                 
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -230,9 +251,6 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
                     <input name='q' type="text" class="form-control search-bar-input" value='<?php echo $_GET["q"];?>'  placeholder="Search anything..">                    
                   </div><!-- /input-group -->
                 </form>
-				
-                
-                <!--<a class="navbar-brand page-scroll" href="#page-top">FREELABEL</a>-->
             </div>
 
             <!-- NOT LOGGED IN -->

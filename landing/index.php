@@ -1,16 +1,9 @@
 <?php 
     include_once('/home/content/59/13071759/html/config/index.php');
-
-    $config = new Blog($_SERVER['HTTP_HOST']);
-    $photos = $config->getPhotoAds('admin' , 'registration');
-    $i=0;
-    foreach ($photos as $photo) {
-        $photos[$i]['thumbnail'] = str_replace('server/php/files', 'server/php/files/thumbnail', $photo['image']);
-        //echo $i.') '.$photos['thumbnail'];
-        $i++;
-    }
-    shuffle($photos);
-
+    /* LOAD ADVERTISMENT PHOTOS */
+    //$config = new Blog($_SERVER['HTTP_HOST']);
+    
+    
     
    
     //$site = $photos->getSiteData('http://thebae.watch/');
@@ -28,10 +21,7 @@
     load a of this shit into the landing header eventually
 
     *******************/
-    $blog_posts = $config->getPosts(0,24,false,$_SERVER['SCRIPT_URI']);
-    shuffle($blog_posts);
-    $page_title = $site['name'];
-    $page_desc = $site['description'];
+    
     if (isset($_GET['dev'])) {
         $dev_only = '
         .dev-only {
@@ -39,9 +29,23 @@
         }';
     }
 
+    /* HEADER CONFIGURATION */
     include_once(ROOT.'landing/header.php');
-    $site = $config->getSiteData($_SERVER['HTTP_HOST']);
+    $photos = $config->getPhotoAds($site['creator'], 'front');
+    $i=0;
+    foreach ($photos as $photo) {
+        $photos[$i]['thumbnail'] = str_replace('server/php/files', 'server/php/files/thumbnail', $photo['image']);
+        //echo $i.') '.$photos['thumbnail'];
+        $i++;
+    }
+    shuffle($photos);
 
+
+    /* GET FEATURED POST PREVIEWS ARTICLES */
+    $blog_posts = $config->getPosts(0,24,false,$_SERVER['SCRIPT_URI']);
+    shuffle($blog_posts);
+    $page_title = $site['name'];
+    $page_desc = $site['description'];
 
     ?>
 
@@ -53,6 +57,9 @@
         text-shadow:1px 1px 10px #000000;
         display:none;
 
+    }
+    .portfolio-box:hover .portfolio-box-caption {
+        background-color:<?php echo $site['primary-color']; ?>;
     }
     .bg-photo {
         //text-shadow:1px 1px 10px #000000;
@@ -66,6 +73,9 @@
     }
     .bg-photo-3 {
         //background-image:url("<?php echo $photo_ads[3]['image']; ?>");
+    }
+    .img-responsive {
+        width:100%;
     }
     header img {
         -webkit-filter: blur(5px);
@@ -92,9 +102,6 @@
         text-align: left;
         color:#101010;
         margin-top:0;
-    }
-    .img-responsive {
-        height:400px;
     }
     .align-to-bottom .landing-promo{
         vertical-align: bottom;
@@ -132,6 +139,7 @@
         <li data-target="#header-carousel" data-slide-to="2" class=""></li>
       </ol>
       <div class="carousel-inner" role="listbox">
+
         <div class="item active">
           <img class="first-slide" src="<?php echo $photos[1]['image']; ?>" alt="First slide">
           <div class="container">
@@ -141,6 +149,7 @@
             </div>
           </div>
         </div>
+
         <div class="item">
           <img class="second-slide" src="<?php echo $photos[0]['image']; ?>" alt="Second slide">
           <div class="container">
@@ -150,6 +159,7 @@
             </div>
           </div>
         </div>
+
         <div class="item">
           <img class="third-slide" src="<?php echo $photos[2]['image']; ?>" alt="Third slide">
           <div class="container">
@@ -159,6 +169,8 @@
             </div>
           </div>
         </div>
+
+
       </div>
       <a class="left carousel-control" href="#header-carousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -196,10 +208,10 @@
     <aside class="bg-dark bg-photo bg-photo-3" style='text-align:center;padding:5%;'>
         <div class="container text-center">
             <div class="call-to-action">
-                <h2>Stay ahead of the game and get new content before it releases!</h2>
+                <h2>Create Your Account & Explore The Movement</h2>
                 <div class="btn-group call-to-action-button-group">
-                    <a data-toggle="modal" data-target="#loginMod"  class="btn btn-primary btn-xl page-scroll">Login To Your Account</a>
-                    <a href="#" class="btn btn-default btn-xl woww tada load-more-more-info-button">Learn More About <?php echo $site['title']; ?></a>
+                    <!--<a data-toggle="modal" data-target="#loginMod"  class="btn btn-primary btn-xl page-scroll">Login To Your Account</a>-->
+                    <a href="#" class="btn btn-primary btn-xl woww tada load-more-more-info-button">Learn More About <?php echo $site['title']; ?></a>
                 </div>
                 
             </div>
@@ -212,30 +224,33 @@
             <div class="row no-gutter row-eq-height align-to-bottom" style="background-size:200%;background-image:url('<?php echo $blog_posts[1]['photo']; ?>');">
             
             <?php 
+
             foreach ($blog_posts as $post) {
                 $post['blog_story_url'] = str_replace(' ', '', $post['blog_story_url']);
-                if ($config->site=="http://thebae.watch/") {
-                    $post['blog_story_url'] = str_replace('freela.be/l/', 'thebae.watch/', $post['blog_story_url']);
-                }
-                echo '
-                                <div class="col-md-4 landing-promo">
-                                    <a href="'.$post['blog_story_url'].'#" target="_blank" class="portfolio-box">
-                                        <img src="'.$post['photo'].'" class="img-responsive" alt="">
-                                        <div class="portfolio-box-caption">
-                                            <div class="portfolio-box-caption-content">
-                                                <div class="project-category text-faded">
-                                                    '.$post['blogtitle'].'
-                                                </div>
-                                                <div class="project-name">
-                                                    '.$post['twitter'].'
+                
+        
+                    if ($config->site=="http://thebae.watch/") {
+                        $post['blog_story_url'] = str_replace('freela.be/l/', 'thebae.watch/', $post['blog_story_url']);
+                    }
+                    echo '
+                                    <div class="col-md-4 landing-promo">
+                                        <a href="'.$post['blog_story_url'].'#" target="_blank" class="portfolio-box">
+                                            <img src="'.$post['photo'].'" class="img-responsive" alt="">
+                                            <div class="portfolio-box-caption">
+                                                <div class="portfolio-box-caption-content">
+                                                    <div class="project-category text-faded">
+                                                        '.$post['blogtitle'].'
+                                                    </div>
+                                                    <div class="project-name">
+                                                        '.$post['twitter'].'
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                ';
-
+                                        </a>
+                                    </div>
+                    ';
             }
+
             ?>
 
             </div>

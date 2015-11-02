@@ -141,6 +141,14 @@ echo '<a name="mag"></a>';
 		 ORDER BY `id` DESC LIMIT 1");
 	}
 //echo 'hello : '.$sql;
+	//print_r($result);
+	$rows = mysqli_num_rows($result);
+	if ($rows==0) {
+		//echo $rows;
+		echo 'No Results Found!';
+	}
+	//print_r(mysqli_num_rows($result));
+//echo 'hello : '.$sql;
 
 for ($i=0; $i < 4; $i++) {
 
@@ -230,9 +238,6 @@ $tweet_blog = urlencode("[#FLMAG] ".$twitter."
 
 ".$twitpic);
 
-
-
-
 $link = 'http://freelabel.net/'.$twitter.'/'.$rand_id;
 echo '
   <a name="anchor_'.$rand_id.'"></a>
@@ -276,20 +281,16 @@ echo '
 		}
 echo '</div>';
 
-}
-if ($pull != 'intro-page') {
+} 
+// ---------------- END OF FOR LOOP ---------------- //
+
+// ---------------- SHOW LOAD MORE IF RESULTS FOUND ---------------- //
+if ($rows!==0) {
 	echo '<br><button onclick="loadMore('.$current_page.')" class="btn btn-default btn-lg load_more_button">Load More</button>';
 	echo '<div class="more_content"></div>';
 }
 ?>
-</div> <!-- mag container -->
-
-
-
-
-
-
-
+</div><!-- mag container DIV -->
 
 <script>
 function loadMore (page) {
