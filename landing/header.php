@@ -1,19 +1,21 @@
-<?php 
+<?php
     include_once('/home/content/59/13071759/html/config/index.php');
     /* HEADER THIS IS WHAT IT DOES:
     * builds the site variable
     * loads the user with the user session, and cookie data
-    * 
+    *
     *
 
     */
 
-    
+    // LOAD WEBSITE APPLICATIONS
+    $app = new Config();
+
     // LOAD SITE DATA
     $config = new Blog($_SERVER['HTTP_HOST']);
     $site = $config->getSiteData($config->site);
     $site['media']['photos']['front-page'] = $config->getPhotoAds($site['creator'], 'front');
-    
+
     // LOAD USER DATA
     $user = new User();
     if (isset($_SESSION) OR isset($_COOKIE['fl-user-name'])) {
@@ -27,9 +29,8 @@
       //print_r($site['user']['name']);
     }
 
-    // LOAD WEBSITE APPLICATIONS
-    $app = new Config();
-	  
+
+
 
     $front_page_photos = $config->getPhotoAds($site['creator'], 'front');
     if ($_GET['dev']=='debug') {
@@ -59,8 +60,8 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
 <html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
   <link rel="shortcut icon" type="image/x-icon" href="<?php echo HTTP."ico/favicon.ico"; ?>" >
   <link rel="shortcut icon" href="<?php echo HTTP; ?>ico/favicon.ico" type="image/x-icon">
   <link rel="icon" href="<?php echo HTTP; ?>ico/favicon.ico" type="image/x-icon">
@@ -113,8 +114,8 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     <!--<link rel="stylesheet" href="<?php echo HTTP; ?>landing/css/bootstrap.min.css" type="text/css">-->
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
     <!--<link rel="stylesheet" href="http://freelabel.net/landing/font-awesome/css/font-awesome.min.css">-->
-    
-    <!-- Custom Fonts 
+
+    <!-- Custom Fonts
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     -->
@@ -124,11 +125,14 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="http://freelabel.net/landing/css/creative.css" type="text/css">
+
 	<!--<link rel="stylesheet" href="http://freelabel.net/css/radioplayer.css" type="text/css">-->
 
     <script src="http://freelabel.net/landing/js/jquery.js"></script>
-    <script type="text/javascript" src="http://freelabel.net/config/globals.js"></script>  
-    
+    <script type="text/javascript" src="http://freelabel.net/config/globals.js"></script>
+    <!-- jplayer -->
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -136,13 +140,13 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style type="text/css">
-    
+
     /*div {
       overflow-y:visible;
     }*/
-    
 
-    <?php 
+
+    <?php
       if (isset($_SESSION['user_name'])) {
         echo '.not-logged-in {
           display: none;
@@ -189,12 +193,13 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
 
     .navbar-default , .navbar-default.affix {
       background-color:#101010;
+      z-index: 2;
     }
     .modal-dialog {
       border:2px solid <?php echo $site['primary-color'] ?>;
       color:#e3e3e3;
     }
-    
+
 
     .top_posts_count , .btn-primary {
       background-color:<?php echo $site['primary-color'] ?>;
@@ -224,7 +229,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
 
           <div class="audio_player">
             <?php if ($_SERVER['SCRIPT_URI']=='http://freelabel.net/') {
-                include(ROOT.'config/radio.php'); 
+                include(ROOT.'config/radio.php');
               }
             ?>
           </div>
@@ -236,7 +241,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
 
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
-                
+
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <img class='' src="<?php echo $config->getSiteLogo($site_url); ?>" style='height:80px;'>
@@ -248,7 +253,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
                 </button>
                 <form class='search-bar input-group' action='<?php echo $site_url; ?>search/'>
                   <div class="input-group search-bar">
-                    <input name='q' type="text" class="form-control search-bar-input" value='<?php echo $_GET["q"];?>'  placeholder="Search anything..">                    
+                    <input name='q' type="text" class="form-control search-bar-input" value='<?php echo $_GET["q"];?>'  placeholder="Search anything..">
                   </div><!-- /input-group -->
                 </form>
             </div>
@@ -300,7 +305,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
                     </li>
 
 
-                      
+
                 </ul>
                 <!-- NOT LOGGED IN -->
 
@@ -322,7 +327,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
                         <a class="page-scroll radio-player-trigger" href="#"><i class="glyphicon glyphicon-signal" ></i>Radio</a>
                     </li>-->
 
-                    
+
                     <li class="dropdown" >
                         <a class="page-scroll dropdown-toggle" href='#' type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="glyphicon glyphicon-globe" ></i> Explore</a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -338,7 +343,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
                           <!--<li><a class="page-scroll" href="<?php echo $site_url;?>?ctrl=feed&view=album#" ><i class="fa fa-vinyl" ></i>Albums</a></li>-->
                           <li><a class="page-scroll" href="<?php echo $site_url;?>?ctrl=feed&view=interview#" ><i class="glyphicon glyphicon-phone" ></i>Interviews</a></li>
 
-                          
+
                           <!--<li><a class="page-scroll" href="#" onclick="<?php //echo "loadPage('http://freelabel.net/submit/views/db/showcase_schedule.php', '#main_display_panel', 'dashboard', '".$_SESSION['user_name']."')"; ?>"><i class="glyphicon glyphicon-usd" ></i>Merch</a></li>-->
                         </ul>
                     </li>
@@ -372,7 +377,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
                     </li>
 
 
-                    
+
                     <li class="dropdown" >
                         <a class="page-scroll dropdown-toggle" href='#' type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="glyphicon glyphicon-option-horizontal" ></i></a>
                         <ul class="dropdown-menu panel-body" aria-labelledby="dropdownMenu1">
@@ -391,5 +396,3 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
         </div>
         <!-- /.container-fluid -->
     </nav>
-
-    

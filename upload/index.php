@@ -26,33 +26,34 @@ $__redirect = 'http://freelabel.net/upload/?uid=submission';
 
 if ($_GET['uid']=='') {
     // No Username Set! ;
-	// !!!! BREAK SCRIPT AND REDIRECT !!!! ///
-	//header('Location: http://upload.freelabel.net/?uid=submission');
-	header('Location: '.$__redirect);
+    // !!!! BREAK SCRIPT AND REDIRECT !!!! ///
+    //header('Location: http://upload.freelabel.net/?uid=submission');
+    header('Location: '.$__redirect);
 } elseif($_GET['uid']=='submission') {
-	//header('Location: '.$__redirect);
-	$user_name_session = $_GET['uid'];
+    //header('Location: '.$__redirect);
+    $user_name_session = $_GET['uid'];
 } else {
    // echo 'Hello, '. $_GET['uid'];
-			include(ROOT.'inc/connection.php');
-			$result = mysqli_query($con,"SELECT *
-			FROM  `users`
-			WHERE  `user_name` LIKE  '".$_GET['uid']."'
-			LIMIT 1");
-			if($row = mysqli_fetch_array($result)) {
+            include(ROOT.'inc/connection.php');
+            $result = mysqli_query($con,"SELECT *
+            FROM  `users`
+            WHERE  `user_name` LIKE  '".$_GET['uid']."'
+            LIMIT 1");
+            if($row = mysqli_fetch_array($result)) {
                 $user = $row;
-				$user_name_session = $_GET['uid'];
+                $user_name_session = $_GET['uid'];
                 //print_r($user);
                 //exit;
 
-				// USER FOUND!!!
-				//echo 'user found <hr> !';//print_r($row);
-			} else {
-				//echo 'No user set!';
-				// !!!! BREAK SCRIPT AND REDIRECT !!!! ///
-				//header('Location: );
-				header('Location: '.$__redirect);
-			}
+                // USER FOUND!!!
+                //echo 'user found <hr> !';//print_r($row);
+            } else {
+        $user_name_session = $_GET['uid'];
+                //echo 'No user set!';
+                // !!!! BREAK SCRIPT AND REDIRECT !!!! ///
+                //header('Location: );
+                //header('Location: '.$__redirect);
+            }
 
 }
 // --------------------------------------------------- /
@@ -108,7 +109,9 @@ if ( file_exists($path)) {
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <!-- Generic page styles -->
 <link rel="stylesheet" href="<?php echo HTTP; ?>upload/css/style.css">
+<link rel="stylesheet" href="http://freelabel.net/landio/css/landio.css">
 <link rel="stylesheet" href="<?php echo HTTP; ?>css/style.css">
+
 <!-- blueimp Gallery styles -->
 <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
 <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
@@ -135,9 +138,6 @@ if ( file_exists($path)) {
     .uploaded-file-options {
         display: none;
     }
-    .preview img {
-       max-width:225px;
-    }
     .single_upload_form {
         border-bottom:6px solid red;
         padding:2%;
@@ -157,6 +157,7 @@ if ( file_exists($path)) {
         //right:0px;
         width:98%;
         margin:1%;
+        margin-bottom:10vh;
         z-index: 1000;
         background-color:rgba(0,0,0,0.9);
         border:red solid 3px;
@@ -172,6 +173,15 @@ if ( file_exists($path)) {
         border-radius:200px;
         padding:10% 9%;
     }
+    .file-form-area , .file-form-area label {
+        display:block;
+        width:100%;
+    }
+    .preview img {
+        display:block;
+        width:100%;
+    }
+
     @media (max-device-width:640px) {
         .head-logo-header {
             //padding:12% 14%;
@@ -188,7 +198,7 @@ if ( file_exists($path)) {
 </head>
 <body style='padding-top:0;padding-bottom:80px;'>
 <a class='back-to-site' href='http://freelabel.net/' style='z-index:100;font-size:10px;'>&larr; Back to Site</a>
-<div class="container">
+<div class="containerxxxx">
 <center>
     <br>
 
@@ -214,7 +224,7 @@ if ( file_exists($path)) {
     </header>
 
 
-        <section class='col-xs-12 col-md-4' style='display:none;'>
+        <section class='col-xs-12 col-md-12' style='display:none;'>
                 <h1 class="sub_header" style='margin-top:5%;margin-bottom:5%;' >DRAG & DROP</h1>
                 <p>Just drag and drop your music to send it to FREELABEL Radio and Magazine.</p>
                 <span class='glyphicon glyphicon glyphicon-import big-text'></span>
@@ -285,24 +295,42 @@ if ( file_exists($path)) {
 <script id="template-upload" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
     <?php
-    echo '<article class="panel-body template-upload fade" id="panel_{%=file.size%}">
+    echo '<article class="panel-body template-upload fade col-md-12" id="panel_{%=file.size%}">
             <div class="col-md-6 col-xs-12" >
-                <span class="preview"></span>
                 <p class="name">{%=file.name%}</p>
-            </div>
-            <div class="col-md-6 col-xs-12 hide-after-finish-{%=file.size%}" >
+                <span class="preview"></span>
                 <strong class="error text-danger"></strong>
                 <p class="size">Processing...</p>
                 <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+            </div>
+            <div class="col-md-6 col-xs-12 hide-after-finish-{%=file.size%}" >
+
+                <div class="file-form-area">  
+                
+                    <label class="title">
+                        <span>Title:</span><br>
+                        <input type="text" name="title[]" class="form-control">
+                    </label>
+
+                    <label class="twitter">
+                        <span>Twitter:</span><br>
+                        <input type="text" name="twitter[]" class="form-control">
+                    </label>
+
+                    <label class="user_name">
+                        <input type="hidden" name="user_name[]"  value="'.$user_name_session.'" class="form-control">
+                    </label>
+                </div>
 
                 {% if (!i && !o.options.autoUpload) { %}
-                    <button class="btn btn-xs btn-primary start col-md-6 col-xs-6" disabled>
+                    <button class="btn btn-lg btn-primary start col-md-6 col-xs-6" disabled>
                         <i class="glyphicon glyphicon-upload"></i>
                         <span>Start</span>
                     </button>
                 {% } %}
+
                 {% if (!i) { %}
-                    <button class="btn btn-xs btn-warning cancel col-md-6 col-xs-6">
+                    <button class="btn btn-lg btn-warning cancel col-md-6 col-xs-6">
                         <i class="glyphicon glyphicon-ban-circle "></i>
                         <span>Cancel</span>
                     </button>
@@ -319,15 +347,15 @@ if ( file_exists($path)) {
 <script id="template-download" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
     <a name="{%=file.size%}"></a>
-    <article class="panel-body template-download fade" id='panel_{%=file.size%}'>
-        <div class="col-lg-6 col-md-6 col-xs-12 preview-image" >
+    <article class="panel-body template-download fade col-md-12" id='panel_{%=file.size%}'>
+        <div class="col-lg-12 col-md-12 col-xs-12 preview-image" >
             <span class="preview">
                 {% if (file.thumbnailUrl) { %}
                     <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
                 {% } %}
             </span>
         </div>
-        <div class="col-lg-6 col-md-6 col-xs-12" >
+        <div class="col-lg-12 col-md-12 col-xs-12" >
             <p class="name">
                 {% if (file.url) { %}
                     <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}><span class='glyphicon glyphicon-ok' style='color:green;margin-right:2%;' ></span>{%=file.name%}</a>
@@ -342,15 +370,17 @@ if ( file_exists($path)) {
             {% } %}
 
             {% if (file.deleteUrl) { %}
+                <label>Share:</label>
+                <input type="text" value="{%=file.url%}" class="form-control">
+                <br>
                 <a onclick="showOptions()" href="#{%=file.size%}" class="uploaded-file-options-button btn-primary btn-xs col-md-6" ><i class="glyphicon glyphicon-option-vertical"></i> Share</a>
                 <div class="uploaded-file-options">
                     <a onclick='grabFiles("{%=file.url%}" , "{%=file.size%}", "{%=file.type%}", "{%=file.name%}", "<?php echo $user[user_email] ?>")' id='addToProfile_{%=file.size%}' class='btn btn-primary btn-xs col-md-6 col-xs-12'><i class="glyphicon glyphicon-globe"></i> Post To Blog</a>
                     <?php
-                        if ($user_name_session !='submission') {
+                        if ($user_name_session =='imnottoosure') {
                             echo '<a onclick=\'postToBlog("{%=file.url%}" , "{%=file.size%}", "{%=file.type%}", "{%=file.name%}", "<?php echo $user[user_email] ?>")\' id=\'addToProfile_{%=file.size%}\' class=\'btn btn-primary btn-xs col-md-6 col-xs-12 save-to-profile\'><i class="glyphicon glyphicon-inbox"></i> Add to Your FLDRIVE</a>';
                         }
                     ?>
-
                 </div>
                 <div class="btn btn-danger btn-xs delete col-md-6 col-xs-12" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
                     <i class="glyphicon glyphicon-trash"></i>
@@ -370,18 +400,32 @@ if ( file_exists($path)) {
 </script>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<!--<script src="http://upload.freelabel.net/config/upload.js"></script>-->
+<script src="http://freelabel.net/landio/js/landio.min.js"></script>
 <script>
 // turn on after finding out how variables will be grabbed
 //saveSingle('.$i.',"'.$mp3file.'" , "admin", "'.$twitter.'" , "'.$trackname.'" , "notwitpic",1,"manage.amrecords@gmail.com" , "8326915906","http://freelabel.net/images/fllogo.png","mixtape")
 </script>
 
 <script>
+
 $(function(){
     $('.save-to-profile').click(function() {
         $(this).hide('fast');
         alert($(this));
     });
+
+
+
+    $('#fileupload').fileupload({
+        url: 'server/php/'
+    }).on('fileuploadsubmit', function (e, data) {
+        data.formData = data.context.find(':input').serializeArray();
+    });
+
+
+
+
+
 });
 
 function showOptions() {

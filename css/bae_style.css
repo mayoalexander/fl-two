@@ -1,0 +1,27 @@
+	html {
+		background-size:225% auto;
+		background-repeat: no-repeat;
+		background-position: top;
+		//background-color:#ffffff;
+	}
+
+	#intro-block h2, #intro-block p {
+		text-shadow:none;
+	}
+	.metro h2, .metro h3 {
+		color:#101010;
+	}
+
+@media (min-device-width:640px) {
+	html {
+		background-size:150% auto;
+		background-position: top;
+	}
+}
+
+@media (min-device-width:900px) {
+	html {
+		background-size:100% auto;
+		background-position: top;
+	}
+}

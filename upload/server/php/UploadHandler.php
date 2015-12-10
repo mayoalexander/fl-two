@@ -128,12 +128,12 @@ class UploadHandler
                     'auto_orient' => true
                 ),
                 // Uncomment the following to create medium sized images:
-                /*
+
                 'medium' => array(
                     'max_width' => 800,
                     'max_height' => 600
                 ),
-                */
+
                 'thumbnail' => array(
                     // Uncomment the following to use a defined directory for the thumbnails
                     // instead of a subdirectory based on the version identifier.
@@ -1115,7 +1115,7 @@ class UploadHandler
     protected function body($str) {
         echo $str;
     }
-    
+
     protected function header($str) {
         header($str);
     }
@@ -1133,6 +1133,17 @@ class UploadHandler
     }
 
     protected function handle_form_data($file, $index) {
+      include_once('/home/content/59/13071759/html/config/index.php');
+      include_once(ROOT.'inc/connection.php');
+      $filepath = 'http://freelabel.net/upload/server/php/files/'.$file->name;
+      $sql = 'INSERT INTO `amrusers`.`files`
+      (`id`, `name`, `size`, `type`, `url`, `user_name`, `twitter`, `title`) VALUES
+      (NULL, "'.$file->name.'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'");';
+      if (mysqli_query($con, $sql)) {
+          //echo "New record created successfully";
+      } else {
+          echo "Error: " . $sql . "<br>" . mysqli_error($con);
+      }
         // Handle form data, e.g. $_POST['description'][$index]
     }
 

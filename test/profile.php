@@ -8,6 +8,7 @@ if (isset($_GET["uid"])=='') {
 	$uid = $user_name = $_GET['uid'];
 }
 include_once('/home/content/59/13071759/html/config/index.php');
+$config = new Blog();
 include_once(ROOT.'inc/connection.php');
 $result = mysqli_query($con,"SELECT * 
 FROM  `users` 
@@ -129,6 +130,18 @@ $tweet_bae = urlencode("[#FLVISUALS]
 						$user['media'][$media_type][$i]['thumbnail'] =  str_replace('server/php/files/', 'server/php/files/thumbnail/', $row['image']) ; // save thumbnail
 
 						$i++;
+
+
+
+
+
+						$user['media']['feed'] = $config->getPostsByUser(0,24,$_GET['uid']);
+
+
+
+
+
+
 			  }
 			// mysqli_close($con);
 			// echo "<pre>";

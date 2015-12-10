@@ -6,12 +6,16 @@ Header add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
 
 Redirect 301 http://m.freelabel.net/style.css http://freelabel.net/css/style.css
 
-#RewriteCond %{HTTP_HOST} !^([^.]+\.)freelabel\.net$ [NC]
-#RewriteCond %{HTTPS}s ^on(s)|
-#RewriteRule ^ http%1://www.freelabel.net%{REQUEST_URI} [L,R=301]
+
+RewriteRule ^dev$ 										/landio/index.php
+RewriteRule ^dev/$ 										/landio/index.php
 
 RewriteRule ^register$ 										artists/templates/ZoomSlider/index.php?ctrl=$1
 RewriteRule ^register/$ 									artists/templates/ZoomSlider/index.php?ctrl=$1
+
+
+RewriteRule ^info$ 										/pricing/info/index.php
+RewriteRule ^info/$ 									/pricing/info/index.php
 
 RewriteRule ^db/([\w-]+)/$ 										index.php?ctrl=$1
 RewriteRule ^db/([\w-]+)$ 										index.php?ctrl=$1

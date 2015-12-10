@@ -1,0 +1,269 @@
+</body>
+</html>
+<footer class="section-footer bg-inverse" role="contentinfo">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-5">
+        <div class="media">
+          <div class="media-left">
+            <img class="media-object display-1" src='http://freelabel.net/images/FREELABELLOGO.gif' style="width:60px;">
+          </div>
+          <small class="media-body media-bottom" style='display:none;'>
+            &copy; <?php echo $site['name']; ?> 2015. <br>
+            Designed by Peter Finlan, developed by Taty Grassini, exclusively for Codrops.
+            </small>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-7">
+        <ul class="list-inline m-b-0">
+          <li class="active"><a href="http://freelabel.net/users/help">About</a></li>
+          <li><a href="http;//freelabel.net/users/register">Register</a></li>
+          <!-- <li><a href="http://freelabel.net/upload/?uid=submission" target="_blank">Upload Submission</a></li> -->
+          <li><a class="scroll-top" href="#totop">Back to top <span class="icon-caret-up"></span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://freelabel.net/jPlayer/dist/jplayer/jquery.jplayer.min.js"></script>
+<script src="http://freelabel.net/landio/js/landio.min.js"></script>
+<script src="http://freelabel.net/js/jquery-ui.min.js"></script>
+<script src="http://freelabel.net/config/globals.js"></script>
+<script src="http://freelabel.net/landing/view/nexus/js/classie.js"></script>
+<script src="http://freelabel.net/landing/view/nexus/js/gnmenu.js"></script>
+<script type="text/javascript" src="http://freelabel.net/js/jquery.jeditable.js"></script>
+<script>
+  new gnMenu( document.getElementById( 'gn-menu' ) );
+</script>
+<!-- Tab Scripts -->
+<script src="http://freelabel.net/landing/view/tabs/js/cbpFWTabs.js"></script>
+<script>
+  (function() {
+
+    [].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
+      new CBPFWTabs( el );
+    });
+
+  })();
+</script>
+<!-- front end scripts  -->
+<script type="text/javascript">
+  
+
+<?php 
+if (isset($_SESSION['user_name'])) {
+  echo 'var userNameSession = "'.Session::get('user_name').'";';
+} else {
+  echo 'var userNameSession = "submission";';
+  // echo 'alert("no users found!")';
+} 
+?>
+
+
+
+
+$(function() {
+  // config
+  function isPlaying(audelem) {
+    return !audelem.paused;
+  }
+
+    $('.editable').editable('http://freelabel.net/submit/update.php',{
+      id  : 'user_post_id',
+      // type    : 'textarea',
+      name : 'title'
+    });
+
+    // Custom Controls
+    var globalAudioPlayer = $(".audio-player");
+    var globalButtons = $(".controls-play");
+    var globalAudioPlayerText =  $(".audio-player-title");
+
+
+
+    // Start Streaming
+    //  ---------- play button ------------ /
+    $('.controls-play').click(function(event){
+      event.preventDefault();
+      globalButtons.html('<i class="fa fa-play"></i>');
+      var audioFile = $(this).attr('data-src');
+      var audioTitle = $(this).attr('data-title');
+      var nowplaying = '<i class="fa fa-play"></i>';
+      var nowpaused = '<i class="fa fa-pause"></i>';
+
+
+      // get next song
+      var nextsong = $(this).parent().parent().next();
+      var nextFile = nextsong.find('.controls-play').attr('data-src');
+      console.log(nextFile);
+      console.log(nextsong);
+
+      // console.log(globalAudioPlayer[0]);
+      if (isPlaying(globalAudioPlayer[0])==false) {
+        $(this).html('<i class="fa fa-pause"></i>');
+        globalAudioPlayer[0].play();
+      } else {
+        $(this).html('<i class="fa fa-play"></i>');
+        globalAudioPlayer[0].pause();
+      }
+      // alert(globalAudioPlayer[0]);
+      if ($(this).html()==nowpaused) {
+          // alert('show pawuse : ' + $(this).html());
+          $(this).removeClass('btn-secondary-outline');
+          $(this).addClass('btn-primary-outline');
+      } else {
+          // alert('show play button ' + $(this).html());
+          $(this).html('<i class="fa fa-pause"></i>');
+          $(this).removeClass('btn-secondary-outline');
+          $(this).addClass('btn-primary-outline');
+      }
+
+      globalAudioPlayerText.text(audioTitle);
+      globalAudioPlayer.attr('src', audioFile);
+      globalAudioPlayer.attr('autoplay', 1);
+      globalAudioPlayer.attr('loop', 1);
+      // globalAudioPlayer.attr('controls', 1);
+
+      // if playing
+      if (globalAudioPlayer[0].paused==true) {
+        // alert('audio is stoped. set play');
+      } else {
+        // alert('audio is playing, set stop');
+      }
+    });
+  //  ---------- play button ------------ /
+  
+
+
+
+    $('.controls-options').click(function(){
+      var pid = $(this).attr('id');
+      // var value = $("#text").val(); // value = 9.61 use $("#text").text() if you are not on select box...
+      value = pid.replace("controls-", ""); // value = 9:61
+      // can then use it as
+      $(".controls-options-" + value).toggle('slow');
+    });
+    $('.controls-close').click(function(){
+      var parent = $(this).parent().parent();
+      //var parent = parent.parent();
+      //alert(parent);
+      //globalAudioPlayer.pause();
+      parent.hide('slow');
+      //globalAudioPlayer.attr('src', audioFile);
+      // globalAudioPlayer.attr('autoplay', 1);
+      // globalAudioPlayer.hide();
+      // globalAudioPlayer.attr('controls', 1);
+      //setTimeout(globalAudioPlayer.play(),1000);
+    });
+
+
+    $(".open-edit-options").click(function(){
+      alert($(this).attr('data-id'));
+    });
+    $(".open-delete-options").click(function(){
+      alert($(this).attr('data-id'));
+    });
+    $(".open-link-options").click(function(){
+      alert($(this).attr('data-id'));
+      var id = $(this).attr('data-id');
+      window.open('http://freelabel.net/images/'+id);
+    });
+
+
+
+    // ********************************* 
+    //  DELETE FILE CONTROL 
+    // *********************************
+    $(".delete-file-button").click(function(event){
+      event.preventDefault();
+      var file_id = $(this).attr('id');
+      var wrapper = $(this).parent();
+      // alert("deleting this file!!" + file_id);
+      var url = 'http://freelabel.net/users/login/delete_file/' + file_id + '/';
+      // alert(url);
+      // window.open(url);
+      c = confirm("Are you sure you want to delete this file?");
+      if (c==true) {
+        $.get(url,function(result){
+          alert(result);
+          wrapper.hide('fast');
+        });
+      }     
+    });
+
+
+    // ********************************* 
+    //  DELETE PROMO CONTROL 
+    // *********************************
+    $(".delete-promo-button").click(function(event){
+      event.preventDefault();
+      var file_id = $(this).attr('id');
+      var wrapper = $(this).parent();
+      var url = 'http://freelabel.net/users/login/delete_promo/' + file_id + '/';
+      c = confirm("Are you sure you want to delete this promotion?");
+      if (c==true) {
+        $.get(url,function(result){
+          wrapper.hide('fast');
+        });
+      }     
+    });
+
+    // ********************************* 
+    //  DELETE PROMO CONTROL 
+    // *********************************
+    $(".controls-audio-delete").click(function(event){
+      event.preventDefault();
+      var file_id = $(this).attr('data-id');
+      var wrapper = $(this).parent();
+      var url = 'http://freelabel.net/users/login/delete_feed/' + file_id + '/';
+      c = confirm("Are you sure you want to delete this posts?");
+      if (c==true) {
+        $.get(url,function(result){
+          wrapper.parent().hide('fast');
+        });
+      }     
+    });
+
+
+    
+
+
+
+
+    // ********************************* 
+    //  SHARE
+    // *********************************
+    $(".share-file-button").click(function(event){
+      $('.push_file_form').hide('fast');
+      $(this).parent().css('border','solid 3px #e3e3e3');
+      event.preventDefault();
+      var file_id = $(this).attr('id');
+      var wrapper = $(this).parent();
+      var url = 'http://freelabel.net/users/login/add_promo/' + file_id + '/' + 'WHATBRUH';
+      var dataId =  $(this).attr('id');
+      var dataUser =  $(this).attr('data-user');
+      var dataTitle =  $(this).attr('data-filetitle');
+      var dataFilePath =  $(this).attr('data-filepath');
+      var getData = { 
+        id: dataId, 
+        user_name: dataUser,
+        title: dataTitle,
+        img_path: dataFilePath
+      };
+      // load alert into the modal
+      $.get('http://freelabel.net/users/dashboard/push',getData,function(data){
+        wrapper.prepend(data);
+      });
+
+    });
+
+
+
+
+});
+</script>
+
+
+</body>
+</html>

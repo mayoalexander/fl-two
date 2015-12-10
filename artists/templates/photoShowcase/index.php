@@ -9,7 +9,7 @@ foreach ($content as $key => $image) {
 $arr = array(0.1,2,3,4,5,6);
 shuffle($arr);
 //print_r($image_data);
-//echo '<pre>';print_r($user);exit;
+// echo '<pre>';print_r($user);exit;
 ?><!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -60,6 +60,47 @@ shuffle($arr);
 		<div class="stack-slider">
 			<div class="stacks-wrapper">
 					<?php
+
+
+		/* CREATE EVENTS STACKS */
+		if (count($user['media']['feed'])>0) {
+			echo '<div class="stack">
+			<h2 class="stack-title"><a href="#" data-text="Feed"><span>Feed</span></a></h2>';
+					// print_r($user['media']['video']);
+
+					// ------------------ DISPLAY PHOTOS --------------------------- // 
+
+					$i=0;
+					foreach ($user['media']['feed'] as $key => $photo) {
+						//echo $i.') <br>';
+							$i++;
+							echo '
+							<div class="item">
+								<div class="item__content">
+									<a href="http://freelabel.net/images/'.$photo['id'].'"><img src="'.$photo['photo'].'" alt="'.$photo['blogtitle'].'" /></a>
+									<h3 class="item__title">'.$photo['blogtitle'].' <span class="item__date">05/05/2015</span></h3>
+									<div class="item__details">
+										<ul>
+											<li><i class="icon icon-camera"></i><span>'.$user['media']['photos'][3]['desc'].'</span></li>
+											<!--<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
+											<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
+											<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
+											<li><i class="icon icon-iso"></i><span>80</span></li>-->
+										</ul>
+									</div>
+								</div>
+							</div>';
+					}
+			echo "</div>";
+		} else {
+			echo "<div class='stack' ><h1 class='stack-title' ><span>No Posts</span></h1></div>";
+		}
+
+
+
+
+
+
 					/*if ($user['media']['photo']>0) {		 
 							echo '<h2 class="stack-title"><a href="#" data-text="Photos"><span>Photos</span></a></h2>';
 							// ------------------ DISPLAY PHOTOS --------------------------- // 
@@ -191,6 +232,8 @@ shuffle($arr);
 							</div>';
 					}
 			echo "</div>";
+		} else {
+			echo "<div class='stack' ><h1 class='stack-title' ><span>No Events</span></h1></div>";
 		}
 
 

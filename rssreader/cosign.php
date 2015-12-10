@@ -8,7 +8,7 @@ if (isset($user_name_session) == false) {
     } else {
       echo ' its not set: '.$_SESSION['user_name'];
     }
-    
+
   }
   $user_name_session = 'admin';
 
@@ -23,7 +23,7 @@ if (isset($user_name_session) == false) {
         return 'less than 1 second ago';
     }
 
-    $condition = array( 
+    $condition = array(
                 12 * 30 * 24 * 60 * 60  =>  'year',
                 30 * 24 * 60 * 60       =>  'month',
                 24 * 60 * 60            =>  'day',
@@ -62,9 +62,9 @@ $(function() {
     //var mp3data = decodeURI(mp3data);
     //var mp3data = mp3data.find('iframe').attr('href');
 	//console.log($(this));
-	  
+
     if (mp3data.search('iframe')) {
-		
+
 		if (mp3data.search('soundcloud.com')) {
         /* SOUNDCLOUD */
 			    var iframe = mp3data.search('iframe');
@@ -92,7 +92,7 @@ $(function() {
      		var end = mp3data.indexOf('" ',start) - start;
       		var mp3data = mp3data.substr(start,end);
 		}
-      
+
       	console.log(mp3data + ' ' + start + ' ' + end);
 		$('#soundcloud_link').val(mp3data);
 		$('#twitpic #advanced_options').show('fast');
@@ -134,7 +134,7 @@ $(function() {
         method: 'POST',
         cache       : false,
       processData: false,
-      contentType: false, 
+      contentType: false,
       fileElementId: 'image-upload',
         data: formdata,
         beforeSend: function (x) {
@@ -192,8 +192,8 @@ $rss_feed = array(//‘http://freelabelmagazine.wordpress.com/rss',
 $rss_feed = array(/*'http://freelabelmagazine.wordpress.com/rss',
   'https://freelabelcontent.wordpress.com/feed/', */
   //'http://freelabelnet.tumblr.com/rss' ,
-  'http://assets.complex.com/feeds/channels/all.xml?_ga=1.103967424.130544531.1429827317',
-  'http://www.elevatormag.com/feed/',
+  // 'http://assets.complex.com/feeds/channels/all.xml?_ga=1.103967424.130544531.1429827317',
+  // 'http://www.elevatormag.com/feed/',
 	'http://www.dirty-glove.com/feed/',
   'http://trapsntrunks.com/feed/',
   'http://www.saycheesetv.com/feed/',
@@ -286,15 +286,15 @@ foreach ($rss_feed as $site) {
               //echo '<pre>';echo '</pre>';
               if ( strpos($rss->channel->webMaster, 'soundcloud')) {
                 $soundcloud_url = $rss->channel->item->enclosure->attributes()->url[0];
-                //echo "yesssir .".$rss->channel->webMaster; 
+                //echo "yesssir .".$rss->channel->webMaster;
                 //echo $soundcloud_url.'<hr>';
               }
 
-                
+
               foreach ($rss->channel->item as $item) {
 
 
-                $content = $item->children("content", true); 
+                $content = $item->children("content", true);
                 $content = str_replace("'", "\"", $content);
                 if ($content == '') {
                   $content = $item->description;
@@ -311,9 +311,9 @@ foreach ($rss_feed as $site) {
                   if ($content_media == false) {
                       //$content_media = 'nope!';
                   }
-                $titleEncode = $item->title; 
+                $titleEncode = $item->title;
                 $key = rand(11111,99999);
-                $newsurl = urlencode($item->link); 
+                $newsurl = urlencode($item->link);
                 $newsurl = urlencode($item->link);
                 $item_link =  $item->link;
                 $spacer = urlencode(" | ");
@@ -323,8 +323,8 @@ foreach ($rss_feed as $site) {
 
 
 /* ------------------------------------------------------------
-VIEW DATA 
------------------------------------------------------------- */ 
+VIEW DATA
+------------------------------------------------------------ */
 $audiofile_input = "<input type='text' name='trackmp3' value='".$soundcloud_url."' class='form-control'>";
 
                 $post_to_blog_button = "
@@ -336,7 +336,7 @@ $audiofile_input = "<input type='text' name='trackmp3' value='".$soundcloud_url.
   <span class='col-md-8'>
     <input class='form-control' type='text' name='blogtitle' value='".$titleEncode."' requiredd>
   </span>
-  
+
   <span class='col-md-4'>
     <select name='blog_type' requiredd class='form-control' requiredd>
           <option value='' selected >Please Select..</option>
@@ -385,7 +385,7 @@ $audiofile_input = "<input type='text' name='trackmp3' value='".$soundcloud_url.
 <input class='form-control' type='file' name='audiofile'>
 <input type='hidden' name='email' value='manage.amrecords@gmail.com'>
 ".$audiofile_input."
- 
+
 <input type='hidden' name='uploaded_from_blog' value='1'>
 <input type='hidden' name='redirect_source' value='rss uploader'>
 <input type='hidden' name='rss_title' value='".$titleEncode."'>
@@ -409,20 +409,22 @@ $audiofile_input = "<input type='text' name='trackmp3' value='".$soundcloud_url.
                        ".$post_to_blog_button."
                    </div>
                    <div class='col-md-4' style='text-align:left;margin-bottom:0.5;' >
-                      <a target=\"_blank\"  class=\"btn btn-xs btn-warning\"  href=\"".$item_link."\" class=\"twitter-mention-button\" data-related=\"AMRadioLIVE\">Visit</a>
                       <a href='https://twitter.com/search?q=".urlencode($titleEncode)."&vertical=default&f=images' class='btn btn-xs btn-danger' target='_blank'>Twitpic</a>
-                      <button id='update_post_button_".$key."' class='btn btn-xs btn-primary glyphicon glyphicon-edit' alt='Edit' onclick='post_block_".$key."()'/></button>
+                      <!--<button id='update_post_button_".$key."' class='btn btn-xs btn-primary glyphicon glyphicon-edit' alt='Edit' onclick='post_block_".$key."()'/>edit</button>
+                      <a target=\"_blank\"  class=\"btn btn-xs btn-warning\"  href=\"".$item_link."\" class=\"twitter-mention-button\" data-related=\"AMRadioLIVE\">Visit</a>
+
+                      -->
                       <input type='button' id='update_post_button_".$key."' class='btn btn-xs btn-primary' value='Upload' onclick='window.open(\"http://freelabel.net/upload/?uid=admin&".$key."\")'/>
-                      <button class='get_player_button'>Get MP3</button>
-                      
+                      <button class='btn btn-primary get_player_button'>Get MP3</button>
+
                    </div>
                  </div>
-                
-              
-          
-                
+
+
+
+
                  <hr>
-                 
+
                  ";
                  echo "
         <script>
@@ -433,24 +435,24 @@ $audiofile_input = "<input type='text' name='trackmp3' value='".$soundcloud_url.
                 if (postBlock.style.display == 'block') {
                   // if showing, change to none
                   postBlock.style.display = 'none';
-                  
+
                   updatePhotoButton.value = 'EDIT';
                 } else {
                   postBlock.style.display = 'block';
-                  
+
                   dashboardProfileDiv.style.overflow = 'scroll';
                   updatePhotoButton.value = 'HIDE';
                 }
-                 
+
               }
           </script>";
               }
 
-              echo '<div class="col-md-8" style="text-align:center;"> 
+              echo '<div class="col-md-8" style="text-align:center;">
               ';
 
 
-              echo '          
+              echo '
                               <div class="panel-body" >
                               '.$feed3.'
                               </div>

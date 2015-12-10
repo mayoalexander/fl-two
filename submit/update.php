@@ -6,7 +6,7 @@
 
 
 
-//print_r($_POST); 
+// print_r($_POST);
 
 
 
@@ -56,11 +56,11 @@ class Posts
 
 
 /**
-* 
+*
 */
 class Photos
 {
-	
+
 	function __construct()
 	{
 		include_once('/home/content/59/13071759/html/config/index.php');
@@ -177,7 +177,7 @@ class Photos
 
 class Account
 {
-	
+
 	function __construct()
 	{
 		include_once('/home/content/59/13071759/html/config/index.php');
@@ -219,11 +219,11 @@ class Account
 }
 
 /**
-* 
+*
 */
 class Leads
 {
-	
+
 	function __construct()
 	{
 		include_once('/home/content/59/13071759/html/config/index.php');
@@ -249,13 +249,44 @@ class Leads
 
 
 /**
-* 
+*
+*/
+class Files
+{
+
+	function __construct()
+	{
+		include_once('/home/content/59/13071759/html/config/index.php');
+	}
+	public function updateDB($update) {
+		$table = $update['db_table'];
+		include(ROOT.'/inc/connection.php');
+		$sql = "UPDATE  `amrusers`.`".$table."` SET  `".$update['table_col']."` =  '".$update['user_title']."' WHERE  `script`.`id` ='".$update['row_id']."' LIMIT 1";
+		$approval_query = mysqli_query($con,$sql);
+		if ($approval_query) {
+			$update_status = $update['user_title'];
+		} else {
+			echo 'it didnt work!';
+			print_r($update);
+			echo '<hr>';
+			print_r($sql);
+			$update_status = false;
+		}
+		return $update_status;
+	}
+}
+
+
+
+
+/**
+*
 */
 
 
 class Events
 {
-	
+
 	function __construct()
 	{
 		include_once('/home/content/59/13071759/html/config/index.php');
@@ -273,7 +304,7 @@ class Events
 						window.location.assign('http://freelabel.net/?ctrl=booking#events')
 						</script>";
 					break;
-				
+
 				case 'complete':
 					$approval_query = mysqli_query($con,"UPDATE `schedule` SET active=2 WHERE `schedule`.`id` = ".$event_id." LIMIT 1");
 					echo "<script>alert('This Event Has Been Successfully Completed!')
@@ -308,7 +339,7 @@ class Events
 			if ($approval_query) {
 				// DO NOTHING!
 				return true;
-				
+
 			}else {
 				//echo "it didnt";
 				return false;
@@ -327,7 +358,7 @@ class Events
 						window.location.assign('http://freelabel.net/?ctrl=booking#events')
 						</script>";
 					break;
-				
+
 				case 'complete':
 					$approval_query = mysqli_query($con,"UPDATE `schedule` SET active=2 WHERE `schedule`.`id` = ".$event_id." LIMIT 1");
 					echo "<script>alert('This Event Has Been Successfully Completed!')
@@ -361,7 +392,7 @@ class Events
 			if ($approval_query) {
 				// DO NOTHING!
 				return true;
-				
+
 			}else {
 				//echo "it didnt";
 				return false;
@@ -382,9 +413,9 @@ class Events
 
 
 
-// ------------------------------------------------------------ // 
+// ------------------------------------------------------------ //
 // 		Update Photos
-// ------------------------------------------------------------ // 
+// ------------------------------------------------------------ //
 
 if ($_POST['user_photo_id']) {
 	$photos = new Photos();
@@ -449,9 +480,9 @@ if ($_POST['user_photo_id']) {
 
 
 
-// ------------------------------------------------------------ // 
+// ------------------------------------------------------------ //
 // 		UPDATE LEADS SCRIPT
-// ------------------------------------------------------------ // 
+// ------------------------------------------------------------ //
 
 if ($_POST['lead_script_id']) {
 	$leads = new Leads;
@@ -479,6 +510,26 @@ if ($_POST['lead_script_id']) {
 
 
 
+if (isset($_POST['file'])) {
+	$leads = new Files;
+	print_r($_POST);
+	if (strpos($_POST['file_id'], 'file-id')===0){
+		$arr = explode('-',str_replace('file-id-', '', $_POST['file_id']));
+		$update['table_col'] =  $arr[0];
+		$update['row_id'] =  $arr[1];
+		//$update['row_id'] = str_replace('title-', '', $_POST['title']) ;
+		$update['user_title'] = $_POST['title'];
+		$update['db_table'] = 'script';
+
+		//echo 'editing TITLE: ';
+		//echo $photos->updateUserEmail($update);
+		//print_r($_POST);
+		//echo '<hr>';
+		echo $leads->updateDB($update);
+	}
+	//print_r($update);
+	//exit;
+}
 
 
 
@@ -486,9 +537,10 @@ if ($_POST['lead_script_id']) {
 
 
 
-// ------------------------------------------------------------ // 
+
+// ------------------------------------------------------------ //
 // 		Update Account
-// ------------------------------------------------------------ // 
+// ------------------------------------------------------------ //
 
 if ($_POST['user_account_id']) {
 	$photos = new Account();
@@ -550,8 +602,8 @@ if ($_POST['action']=='photo-type-update') {
 *  UPDATE BLOG POST
 */
 if ($_POST['user_post_id']) {
+
 	$post_id_arr = explode('-',$_POST['user_post_id']);
-	// print_r($post_id);
 	// echo '<hr>'.$post_id_arr[1];
 	$update['id'] = $post_id_arr[1];
 	$update['param'] = $post_id_arr[0];
@@ -591,9 +643,9 @@ if (isset($_POST['formdata'])) {
 }
 
 
-// ------------------------------------------------------------ // 
+// ------------------------------------------------------------ //
 // 		Update Event
-// ------------------------------------------------------------ // 
+// ------------------------------------------------------------ //
 
 if ($_POST['value']!='' AND $_POST['event_description_id']!='') {
 
@@ -607,7 +659,7 @@ if ($_POST['value']!='' AND $_POST['event_description_id']!='') {
 			echo 'There was an error, please refresh the page.';
 		}
 		//echo 'Updating Event Description for '.$event_id;
-		
+
 	} else {
 		echo 'Not Detected!';
 	}
@@ -616,17 +668,17 @@ if ($_POST['value']!='' AND $_POST['event_description_id']!='') {
 
 
 
-// ------------------------------------------------------------ // 
+// ------------------------------------------------------------ //
 // 		Approve Event
-// ------------------------------------------------------------ // 
+// ------------------------------------------------------------ //
 
 if ($_POST['event_id']!='' AND $_POST['event_action']!='') {
 
 	switch ($_POST['event_action']) {
 		case 'reschedule':
-		// ------------------------------------------------------------ // 
+		// ------------------------------------------------------------ //
 		// 		Rescheudle Event
-		// ------------------------------------------------------------ // 
+		// ------------------------------------------------------------ //
 
 			$action = $_POST['event_action'];
 			$event_id = $_POST['event_id'];
@@ -638,11 +690,11 @@ if ($_POST['event_id']!='' AND $_POST['event_action']!='') {
 			}
 			break;
 
-			
+
 		case 'archive':
-			// ------------------------------------------------------------ // 
+			// ------------------------------------------------------------ //
 			// 		Archive Event
-			// ------------------------------------------------------------ // 
+			// ------------------------------------------------------------ //
 
 			$action = $_POST['event_action'];
 			$event_id = $_POST['event_id'];
@@ -653,16 +705,16 @@ if ($_POST['event_id']!='' AND $_POST['event_action']!='') {
 				echo 'There was an error, please refresh the page.';
 			}
 			break;
-		
+
 		default:
 			echo 'Not Detected!';
 			print_r($_POST['event_action']);
 			exit;
 			break;
 	}
-		
+
 		//echo 'Updating Event Description for '.$event_id;
-		
+
 
 }
 
@@ -676,12 +728,12 @@ $submission_id = $_POST['submission_id'];
 if ($submission_id) {
 	$approval_query = mysqli_query($con,"UPDATE `blog` SET approved=1 WHERE `blog`.`id` = ".$submission_id." LIMIT 1");
 	if ($approval_query) {
-		
+
 		echo "<script>alert('This Submission Has Been Successfully APPROVED!')
 				window.location.assign('http://freelabel.net/#submissions')
 				</script>";
-		
-		
+
+
 	}else {
 		echo "it didnt";
 	}
@@ -691,7 +743,7 @@ if ($submission_id) {
 
 
 // ADD TO LEADS
-if (isset($_POST['lead_twitter']) && isset($_POST['lead_name'])) 
+if (isset($_POST['lead_twitter']) && isset($_POST['lead_name']))
 {
 	$lead_twitter=$_POST['lead_twitter'];
 	$lead_name=$_POST['lead_name'];
@@ -713,8 +765,8 @@ if (isset($_POST['lead_twitter']) && isset($_POST['lead_name']))
 			//alert('This Lead Has Been Successfully Added!')
 			//window.location.assign('http://freelabel.net/');
 		</script>";*/
-		
-		
+
+
 	}else {
 		print_r($sql);
 		echo " <br><br>The Lead Didnt Insert!";
@@ -736,15 +788,15 @@ $lead_desc = $_POST['lead_desc'];
 if (isset($lead_id) && isset($approval_follow_up)) {
 	$approval_query = mysqli_query($con,"UPDATE `leads` SET approved=".$approval_action." WHERE `leads`.`id` = ".$lead_id." LIMIT 1");
 	if ($approval_query) {
-		
+
 		echo "<script>
 				alert('This Lead Has Been Successfully FOLLOWED UP WITH!')
 				window.open('".$approval_follow_up."');
 				window.location.assign('http://freelabel.net/?ctrl=sales#leads')
 				//window.open('http://m.twitter.com/messages/')
 				</script>";
-		
-		
+
+
 	}else {
 		echo "it didnt approve";
 	}
@@ -758,8 +810,8 @@ if (isset($lead_id) && isset($approval_follow_up)) {
 				window.location.assign('http://freelabel.net/submit/?control=sales#leads')
 				//window.open('http://m.twitter.com/messages/')
 				</script>";
-		
-		
+
+
 	}else {
 		echo "It didnt update the description. Lead id: " .$lead_id.'and Lead Desc: '.$lead_desc ;
 	}

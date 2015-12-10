@@ -23,55 +23,62 @@ $submit_form = '<br>
 <a name="add">
 <form id="booking_form" class="add-new-event-form" method="POST" action="http://freelabel.net/submit/views/db/showcase_schedule.php" >
 		<div class="input-group event-booking-form">
-			<select id="type_of_event" name="type_of_event" class="form-control" requ>
-				<option value="" select >Choose Type...</option>
-				<option value="Task" >Task</option>
-				<option value="Studio" >Studio Session</option>
-				<option value="Radio" >Radio Show</option>
-				<option value="Video Shoot" >Video Shoot</option>
-				<option value="Call" >Conference Call</option>
-				<option value="Meeting" >Meeting</option>
-				<option value="Interview" >Interview</option>
-				<option value="Preformance" >Preformance</option>
-				<option value="Party" >Listening Session/Party</option>
-				<option value="Release" >Project / Single Release</option>
-			</select>
+			
+
+			<span class="col-md-2 col-xs-12">
+				<label class="form-label">Type</label>
+				<select id="type_of_event" name="type_of_event" class="form-control" required>
+					<option value="" select >Choose Type...</option>
+					<option value="Task" >Task</option>
+					<option value="Studio" >Studio Session</option>
+					<option value="Radio" >Radio Show</option>
+					<option value="Video Shoot" >Video Shoot</option>
+					<option value="Call" >Conference Call</option>
+					<option value="Meeting" >Meeting</option>
+					<option value="Interview" >Interview</option>
+					<option value="Preformance" >Preformance</option>
+					<option value="Party" >Listening Session/Party</option>
+					<option value="Release" >Project / Single Release</option>
+				</select>
+			</span>
+
+			<span class="col-md-5 col-xs-12">
+				<label class="form-label">Title</label>
+				<input id="event_title" name="event_title" type="text" placeholder="Listening Event, Mixtape Release, Interview about Tour, etc.." required class="form-control">
+			</span>
+
+
+
+			<span class="col-md-5 col-xs-12">
+				<label class="form-label">Date</label>
+				<input id="manual_entry_input" type="text" class="form-control event-datepicker" name="showcase_day" placeholder="Enter Date: ex. January 10 1834" required>
+			</span>
+
+			<br><br>
+			<span class="col-md-12">
+				<label class="form-label">Description</label>
+				<textarea id="description" name="description" class="form-control" placeholder="Enter Any Specific Details About Your Event.." rows="5" ></textarea>
+			</span>
+
 			<div id="event_booking_detail_options" class="panel panel-body" style="display:none;">
 			<p style="color:#000;" ><span style="color:orange;font-size:150%;" class="glyphicon glyphicon-exclamation-sign" ></span> There is an $100 fee ($500 for Non-Clients) to book a date for a video shoot. You will be redirected after completing this form. If you have an EXCLUSIVE FREELABEL ACCOUNT, the $100 is not required.</p>
 			<p><a class="btn btn-success btn-xs">Click Here To Upgrade to Exclusive</a></p>
 			</div>
 
-			<input id="event_title" name="event_title" type="text" placeholder="Listening Event, Mixtape Release, Interview about Tour, etc.." required class="form-control">
-			<input id="manual_entry_input" type="text" class="form-control" name="showcase_day" placeholder="Enter Date: ex. January 10 1834" required>
-			<!--
-			<div class="input-group">
-					<select id="dropdown_event_entry" name="showcase_day" class="form-control"  >
-						<option value="Today" >Today</option>
-						<option value="Tomorrow" >Tomorrow</option>
-						<option value="Monday" >This Week (Monday)</option>
-						<option value="Friday" >This Weekend (Friday)</option>
-						<option value="+ 1 Week" >Next Week</option>
-						<option value="" >Other...</option>
-					</select> 
-					<span onclick="manualDateEntry()"  class="input-group-addon btn btn-primary" id="basic-addon2">MANUALLY ENTER DATE</span>
-			</div>
-			-->
-			<textarea id="description" name="description" class="form-control" placeholder="Enter Any Specific Details About Your Event.." rows="5" ></textarea>
-
 		<input type="hidden" id="user_email" name="user_email" value="'.$user_email.'" class="form-control"  >
 		<input type="hidden" id="user_name" name="user_name" value="'.$_SESSION['user_name'].'" class="form-control" >
-		
+
 		<input id="submission_date" name="submission_date" type="hidden" value="'.$current_date.'" class="form-control" >
-		<input type="submit" name="submit" value="APPLY FOR BOOKING" class="btn btn-primary">
+		<input type="submit" name="submit" value="APPLY FOR BOOKING" class="btn btn-primary btn-block">
 	</div>
 </form>
-<!-- eventbooking 
- 
+<!-- eventbooking
+
 <input onclick="bookEvent()" type="submit" name="submit" value="APPLY FOR BOOKING" class="btn btn-primary">
---> 
+-->
 ';
 ?>
-<?php 
+<?php
 // BOOK SHOWCASE FUNCTION
 
 if ($_POST['formdata']) {
@@ -91,12 +98,12 @@ function create_event() {
 			$user_name =  $_POST['user_name'];
 			$user_email =  $_POST['user_email'];
 			$event_title =  str_replace('\"','"',$_POST['event_title']) ;
-			if ($_POST['showcase_day'] != '') { 
-				$showcase_day = $_POST['showcase_day']; 
-			} else { 
+			if ($_POST['showcase_day'] != '') {
+				$showcase_day = $_POST['showcase_day'];
+			} else {
 				$showcase_day = 'today';
-			} 
-			
+			}
+
 			//echo 'SHOWCASE DAY: '.$showcase_day;
 
 			$showcase_day =  strtotime($showcase_day);
@@ -108,8 +115,8 @@ function create_event() {
 			// Insert into database
 				$sql="INSERT INTO schedule (user_name, event_title, showcase_day, type, description) VALUES ('$user_name','$event_title','$showcase_day', '$type', '$description')";
 				if (mysqli_query($con,$sql))
-				  {  
-					
+				  {
+
 
 
 $email_subject = '[@'.$user_name . '] - "'.$event_title.'" was Received!';
@@ -171,11 +178,11 @@ $body_template = '					<head>
 													<div id="para_text">
 														<h1>'.$email_subject.'</h1>
 
-														'.$email_body."												
+														'.$email_body."
 														<hr>
 												" . '<h2>EVENT DETAILS:</h2>
 														<div id="submission_info">
-															<table>
+															<table style="width:100%;" >
 																<tr>
 																	<td>TITLE:</td>
 																	<td>'.$event_title."</td>
@@ -208,7 +215,7 @@ $body_template = '					<head>
 													\nFREELABEL.net
 													</div>
 												</body>";
-		
+
 			$stafflist = array($user_email//,
 				//'notifications@freelabel.net',
 				//'booking@freelabel.net'
@@ -260,11 +267,11 @@ $body_template = '					<head>
 								    $mail->clearAddresses();
 								    $mail->clearAttachments();
 								//} // foreach END
-					
-					
+
+
 					// end of sending email
-						
-					
+
+
 					/*echo '<style>
 					html {
 					color:#fff;
@@ -284,7 +291,7 @@ $body_template = '					<head>
 				  {
 				  echo "Error creating database entry: " . mysqli_error($con);
 				  }
-		}	
+		}
 }
 create_event();
 
@@ -298,23 +305,23 @@ if (mysqli_fetch_array($result) == false) {
 	</p>';
 } else {
 	/* ------------------------------------------------------------------------
-	 
+
 	------------------------------------------------------------------------ */
-	
 
 
-	if ($user_name == "admin" 
+
+	if ($user_name == "admin"
 		OR $user_name_session == 'sales'
 		OR $user_name_session == 'mia'
 		OR $user_name_session == 'blog'
 		OR $user_name_session == 'booking')
 	{	// ADMIN EVENT DISPLAY
 		$result = mysqli_query($con,"SELECT * FROM schedule WHERE `active` NOT LIKE '%3%' ORDER BY `showcase_day`");
-		
+
 	} else {
 		// PUBLIC USER DISPLAY
-		$sql = "SELECT * FROM schedule 
-			WHERE user_name='".$user_name."' 
+		$sql = "SELECT * FROM schedule
+			WHERE user_name='".$user_name."'
 			AND active NOT LIKE '%3%'
 			ORDER BY `showcase_day` LIMIT 40";
 		$result = mysqli_query($con,$sql);
@@ -323,67 +330,67 @@ if (mysqli_fetch_array($result) == false) {
 // SPECIFIC CATEGORY VIEWS
 	// FUTURE TENSE
 	if ($_GET['range'] == 'today') {
-		$result = mysqli_query($con,"SELECT * FROM schedule 
-			WHERE user_name='".$user_name."' 
+		$result = mysqli_query($con,"SELECT * FROM schedule
+			WHERE user_name='".$user_name."'
 			AND active NOT LIKE '%3%'
 			AND showcase_day LIKE '%$todays_date%'
 			ORDER BY `showcase_day` LIMIT 40");
 	}
 	if ($_GET['range'] == 'tomorrow') {
-		$result = mysqli_query($con,"SELECT * FROM schedule 
-			WHERE user_name='".$user_name."' 
+		$result = mysqli_query($con,"SELECT * FROM schedule
+			WHERE user_name='".$user_name."'
 			AND active NOT LIKE '%3%'
 			AND showcase_day LIKE '%$tomorrows_date%'
 			ORDER BY `showcase_day` LIMIT 40");
 	}
 	// PAST TENSE
 	if ($_GET['range'] == 'yesterday') {
-		$result = mysqli_query($con,"SELECT * FROM schedule 
-			WHERE user_name='".$user_name."' 
+		$result = mysqli_query($con,"SELECT * FROM schedule
+			WHERE user_name='".$user_name."'
 			AND active NOT LIKE '%3%'
 			AND showcase_day LIKE '%$yesterdays_date%'
 			ORDER BY `showcase_day` LIMIT 40");
 	}
 	// PAST TENSE
 	if ($_GET['range'] == 'clients') {
-		$result = mysqli_query($con,"SELECT * FROM schedule 
-			WHERE user_name NOT LIKE 'admin' 
+		$result = mysqli_query($con,"SELECT * FROM schedule
+			WHERE user_name NOT LIKE 'admin'
 			AND active NOT LIKE '%3%'
 			AND showcase_day LIKE '%$yesterdays_date%'
 			ORDER BY `showcase_day` LIMIT 40");
 	}
 
 	if ($_POST['page'] == 'all') {
-		$result = mysqli_query($con,"SELECT * FROM schedule 
-			WHERE user_name = '$user_name' 
+		$result = mysqli_query($con,"SELECT * FROM schedule
+			WHERE user_name = '$user_name'
 			AND active NOT LIKE '%3%'
 			ORDER BY `showcase_day` LIMIT 40");
 	} elseif ($_POST['page'] == 'clients') {
-		$result = mysqli_query($con,"SELECT * FROM schedule 
+		$result = mysqli_query($con,"SELECT * FROM <
 			WHERE user_name NOT LIKE 'admin' AND user_name NOT LIKE ''
 			AND active NOT LIKE '%3%'
 			ORDER BY `showcase_day` LIMIT 40");
 	} elseif ($_POST['page'] == 'tasks') {
-		$result = mysqli_query($con,"SELECT * FROM schedule 
-			WHERE user_name = '$user_name' 
+		$result = mysqli_query($con,"SELECT * FROM schedule
+			WHERE user_name = '$user_name'
 			AND type LIKE'%task%' AND active NOT LIKE '%3%'
 			ORDER BY `showcase_day`");
 	} elseif ($_POST['page'] == 'meetings') {
-		$result = mysqli_query($con,"SELECT * FROM schedule 
-			WHERE user_name = '$user_name' 
+		$result = mysqli_query($con,"SELECT * FROM schedule
+			WHERE user_name = '$user_name'
 			AND type LIKE'%meeting%' AND active NOT LIKE '%3%'
 			ORDER BY `showcase_day`");
 	} elseif ($_POST['page'] == 'performance') {
-		$result = mysqli_query($con,"SELECT * FROM schedule 
-			WHERE user_name = '$user_name' 
+		$result = mysqli_query($con,"SELECT * FROM schedule
+			WHERE user_name = '$user_name'
 			AND type LIKE'%performance%' AND active NOT LIKE '%3%'
 			ORDER BY `showcase_day`");
 	}
 
 
-	$schedule_listing = '<table class="table" >';
+	$schedule_listing = '<table class="table" style="width:100%;text-align:left;" >';
 		while($row = mysqli_fetch_array($result))
-		{		
+		{
 
 
 				$event_title = ucwords($row['event_title']);
@@ -398,9 +405,9 @@ if (mysqli_fetch_array($result) == false) {
 					$type_of_event = 'Uncategorized';
 				}
 				$description = $row['description'];
-		
+
 				$event_time = $row['showcase_day'];
-		
+
 				$showcase_day_time = strtotime($showcase_day);
 				$showcase_day_text = date("M d Y h:s:i" , $showcase_day_time) ;
 
@@ -424,11 +431,11 @@ if (mysqli_fetch_array($result) == false) {
 '.$event_link.'
 '.$twitpic*/);
 				$tweet_event	=	'https://twitter.com/intent/tweet?screen_name=&text='.$tweet_event;
-					
 
 
 
-					
+
+
 					// STATUS SWITCHER
 					switch ($showcase_status) {
 						case 0:
@@ -449,7 +456,7 @@ if (mysqli_fetch_array($result) == false) {
 						case 3:
 							// ARCHIVED
 							break;
-						
+
 						default:
 							$showcase_status_bool = 1;
 							$showcase_status = "<label class='label label-success' ><span class='glyphicon glyphicon-ok'></span> ".$event_user_name."</label>";
@@ -479,7 +486,7 @@ if (mysqli_fetch_array($result) == false) {
 
 						$archive_event_button 	= "<form style='display:inline;' method='POST' action='submit/update.php' ><input name='event_id' type='hidden' value='".$event_id."'><input name='event_action' type='hidden' value='archive'><input type='submit' class='btn btn-warning btn-xs' value='ARCHIVE'></form>";
 						$archive_event_button = "<form class='archive-event-form'> <input id='complete_event_".$key."' name='event_id' type='hidden' value='".$event_id."'><input id='complete_event_".$key."' name='event_action' type='hidden' value='archive'><input id='complete_event_action_".$key."' type='hidden' value='archive'><button id='submit' class='btn btn-warning btn-xs'>ARCHIVE EVENT</button></form>";
-					
+
 					}
 
 
@@ -516,8 +523,8 @@ if (mysqli_fetch_array($result) == false) {
 					  </ul>
 					</div>
 					';
-					
-		
+
+
 
 
 		if ($showcase_date_primary == $todays_date_bruh) {
@@ -626,14 +633,14 @@ if (mysqli_fetch_array($result) == false) {
 							  	<td>
 								  	<span id="event_row_'.$key.'_status" >'.$showcase_status.'</span>
 								  	<p class="">
-								  	<span class="event-date">'.$showcase_date_primary.'</span> 
+								  	<span class="event-date">'.$showcase_date_primary.'</span>
 								  	<span class="event-type text-muted">('.strtoupper($type_of_event).')<span>
 								  	</p>
 								  	<h3 class="event-title">'.$event_title.'</h3>
 								  	<p class="edit event-description" id="event_desc_'.$key.'" >'.$description.'</p>
 								  	<input  id="event_edit_'.$key.'" type="text" class="form-control" value="'.$description.'" style="display:none;">
 							  	</td>
-							    
+
 							    <td>'.$event_options.'</td>
 						</tr>';
 		}
@@ -649,7 +656,7 @@ if ($row == false) {
 }
 /* ---------------------------------------------------------------- //
  *	this is where the view starts
- * ---------------------------------------------------------------- */	
+ * ---------------------------------------------------------------- */
 ?>
 <style>
 
@@ -659,6 +666,9 @@ if ($row == false) {
 }
 .event-booking-form a {
 	color:#fff;
+}
+.tabs nav a {
+	display:inline-block;
 }
 .event-booking-form input, .event-booking-form select, .event-booking-form option, .event-booking-form textarea {
 	font-size: 125%;
@@ -705,14 +715,14 @@ if ($row == false) {
      	bookEvent();
      	//alert(event + this);
      	var formdata = $(this).serializeArray();
-     	console.log(formdata);
+     	// console.log(formdata);
      	$(this).html('Please Wait.....');
      	$.post( "http://freelabel.net/submit/views/db/showcase_schedule.php", { formdata })
 		  .done(function( data ) {
 		  	alert('Event Saved!');
 		  	//console.log(data);
 		  	setTimeout(function(){
-		  		loadPage('http://freelabel.net/submit/views/db/showcase_schedule.php', '#main_display_panel', 'dashboard', <?php echo "'".$user_name_session."'"; ?>);
+		  		loadPage('http://freelabel.net/submit/views/db/showcase_schedule.php', '#main_display_panel #section-linemove-5', 'dashboard', <?php echo "'".$user_name_session."'"; ?>);
 		  	},1000);
 		});
 
@@ -720,7 +730,7 @@ if ($row == false) {
  });
 
 
-	/* ---------------------------------------- 
+	/* ----------------------------------------
 	*  Reschedule Event
 	---------------------------------------- */
 $(function(){
@@ -744,7 +754,7 @@ $(function(){
 	});
 
 
-	/* ---------------------------------------- 
+	/* ----------------------------------------
 	*  Archive Event class='archive-event-form'
 	---------------------------------------- */
 
@@ -794,7 +804,7 @@ $(function(){
 
 
 $(function(){
-	
+
 $('#type_of_event').on('change', function() {
 	if (this.value == 'Video Shoot') {
 		$('#event_booking_detail_options').show();
@@ -813,11 +823,11 @@ $('.event-option-add').click(function(){
 		$(this).html(changed);
 	}
 	$('.event-option-add-form').toggle('fast');
-		
+
 });
 
-	
-	
+
+
 });
 
 function editEvent (key) {
@@ -835,7 +845,7 @@ function showOlerEntries () {
 	$('.older-heading').toggle('fast');
 }
 function bookEvent() {
-	
+
 	var type_of_event = $('#type_of_event').val()
 	var event_title = $('#event_title').val()
 	var manual_entry_input = $('#manual_entry_input').val()
@@ -844,8 +854,8 @@ function bookEvent() {
 	var user_email = $('#user_email').val()
 	var user_name = $('#user_name').val()
 	var submission_date = $('#submission_date').val()
-	
-	$.post('views/db/showcase_schedule.php', { 
+
+	$.post('views/db/showcase_schedule.php', {
 		type_of_event : type_of_event,
 		event_title : event_title,
 		manual_entry_input : manual_entry_input,
@@ -875,7 +885,7 @@ function showEventControls(id) {
 
 function complete_event(event_id) {
 	//var event_id = $('#complete_event_' + event_id).val()
-	
+
 }
 function manualDateEntry() {
 	$('#manual_entry_input').fadeIn();
@@ -884,7 +894,7 @@ function manualDateEntry() {
 
 function delete_event(key) {
 	r = confirm('Are you sure you want to delete this event?');
-	if (r == true) 
+	if (r == true)
 	{
 
 		var event_id = $('#delete_event_' + key).val()
@@ -892,7 +902,7 @@ function delete_event(key) {
 		var approval_action = $('#delete_event_' + key + ' input[name=approval_action]').val()
 		var submit = $('#delete_event_' + key + ' input[name=submit]').val()
 
-		$.post('submit/deletesingle.php', { 
+		$.post('submit/deletesingle.php', {
 			event_id : event_id
 		} , function(data){
 			$('#event_row_' + key + '_status').html('<label class=\"label label-danger\" >Deleting...</label>');
@@ -907,7 +917,7 @@ function delete_event(key) {
 
 
 <a name="schedule"></a>
-<h2>SCHEDULE:</h2>
+<!-- <h2>SCHEDULE:</h2> -->
 
 <!--
 <a href='?control=booking#events' class='btn btn-default btn-xs'>All</a>
@@ -924,8 +934,8 @@ function delete_event(key) {
 	margin:1%;
 }
 </style>
-<nav class='event-option-panel'>
-	<button class='btn btn-success btn-xs event-option-add'><span class='glyphicon glyphicon-plus'></span> Add New Event</button>
+<nav class='event-option-panel btn-group' style='background-color:transparent;text-align:left;border-bottom:3px solid #303030;padding:2% 0%;'>
+	<button class='btn btn-success btn-xs event-option-add'><i class='fa fa-plus'></i> Add New Event</button>
 	<a onclick="loadPage('http://freelabel.net/submit/views/db/showcase_schedule.php?control=booking#events', '#main_display_panel', 'all' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>All</a>
 	<a onclick="loadPage('http://freelabel.net/submit/views/db/showcase_schedule.php?control=booking#events', '#main_display_panel', 'tasks' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>Tasks</a>
 	<a onclick="loadPage('http://freelabel.net/submit/views/db/showcase_schedule.php?control=booking#events', '#main_display_panel', 'meetings' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>Meetings</a>
@@ -939,11 +949,7 @@ function delete_event(key) {
 			  <div class="panel-heading"><h2 id='event_update_results_heading' >ADD EVENT</h2></div>
 			  <div class="panel-body">
 			  	<div id='event_update_results' ></div>
-			  	<?php echo $submit_form; ?> 
+			  	<?php echo $submit_form; ?>
 			  </div>
 </div>
 <?php echo $schedule_listing; ?>
-
-
-	
-

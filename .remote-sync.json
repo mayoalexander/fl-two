@@ -1,0 +1,11 @@
+{
+  "transport": "ftp",
+  "uploadOnSave": true,
+  "hostname": "1ab.f99.myftpupload.com",
+  "target": "/",
+  "ignore": [
+    ".git/**"
+  ],
+  "username": "freelabeluser",
+  "password": "Simplicity93!"
+}

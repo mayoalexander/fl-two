@@ -28,6 +28,7 @@
     <!-- jQuery -->
     <script>
     	$(function(){
+
 	    	$('.page-scroll').click(function(){
 	    		//alert('now collapsing');
 		    	//$('.navbar-collapse').collapse();

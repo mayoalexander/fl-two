@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once('/home/content/59/13071759/html/config/index.php');
 include_once(ROOT.'config/stats.php');
 $user = new User();
@@ -27,16 +27,17 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
 	//$blog_post_data['writeup'] =  'not found';
 }
 
-
-//print_r($); exit;
+if ($_GET['dev']==1) {
+	print_r($config); exit;
+}
 
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
 	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo HTTP."ico/favicon.ico"; ?>" >
 	<link rel="shortcut icon" href="<?php echo HTTP; ?>ico/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="<?php echo HTTP; ?>images/favicon.ico" type="image/x-icon">
@@ -99,8 +100,15 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
 	<link rel="stylesheet" type="text/css" href="<?php echo HTTP.'introduction/';?>css/demo.css" />
 
 	<link rel="stylesheet" type="text/css" href="<?php echo HTTP.'introduction/';?>css/component.css" />
-	
-	
+
+
+	<!-- hover styles -->
+	<link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/hover/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/hover/css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/hover/css/set2.css" />
+	<link rel="stylesheet" href="http://freelabel.net/AudioPlayer/css/audioplayer.css" type='text/css'
+
+
 		<!--[if IE]>
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   		<![endif]-->
@@ -172,7 +180,7 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
   				<!--<a class="codrops-icon codrops-icon-prev" href="http://freelabel.net/"><span>Back to Main Site</span></a>-->
 
 
-  				
+
   				<span class="right"><a class="codrops-icon codrops-icon-prev" href="<?php echo $config->site['http'].'?ref='.$twitter; ?>"><span>Back to Main Site</span></a></span>
   			</div>
   			<header class="header">
@@ -187,7 +195,7 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
   						<a href="index6.html">Grid</a>
   						<a href="index7.html">Jam 3</a>
   					</nav>
-  					<img class="site-logo" src="<?php echo $config->site['logo']; ?>" style='max-width:175px;'>
+  					<img class="site-logo" src="<?php echo 'http://freelabel.net/images/fllogo.png' //$config->site['logo']; ?>" style='max-width:175px;'>
   					<h1><?php echo $blogtitle ?></h1>
   					<p class="subline"><?php echo $twitter ?></p>
   				</div>
@@ -205,7 +213,7 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
   				</nav>
   				<h1><?php echo $blogtitle ?></h1>
   				<p class="subline"><?php echo $twitter ?></p>
-  				<p><?php 
+  				<p><?php
   				include(ROOT.'config/share.php');
 				//echo 'post id : '.$post_id;
   				findByID($post_id);
@@ -223,29 +231,27 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
   					echo $blogentry; ?>
   					<hr>
   					<?php echo $blog_post_data['writeup']; ?>
-  					
+
   				</div>
   			</article>
-  			<section class="related">
-  				<?php 
 
-  				$stream_pull ='related';
-  				$search_query =$twitter;
-  				include(ROOT.'singles/related.php');
-
-
-
+  			<section class="related-posts">
+  				<?php
+					echo $config->getPostsRelatedGallery($twitter);
+  				//$stream_pull ='related';
+  				//$search_query =$twitter;
+  				//include(ROOT.'singles/related.php');
   				?>
   			</section>
   		</div><!-- /container -->
-  		
+
   		<script type="text/javascript" src='http://freelabel.net/config/globals.js'></script>
   		<script type="text/javascript" src='http://freelabel.net/js/modalBox-min.js'></script>
   		<script src="<?php echo HTTP.'introduction/';?>js/classie.js"></script>
   		<script>
   		(function() {
 
-				// detect if IE : from http://stackoverflow.com/a/16657946		
+				// detect if IE : from http://stackoverflow.com/a/16657946
 				var ie = (function(){
 					var undef,rv = -1; // Return value assumes failure.
 					var ua = window.navigator.userAgent;
@@ -265,7 +271,7 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
 				}());
 
 
-				// disable/enable scroll (mousewheel and keys) from http://stackoverflow.com/a/4770179					
+				// disable/enable scroll (mousewheel and keys) from http://stackoverflow.com/a/4770179
 				// left: 37, up: 38, right: 39, down: 40,
 				// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
 				var keys = [32, 37, 38, 39, 40], wheelIter = 0;
@@ -274,7 +280,7 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
 					e = e || window.event;
 					if (e.preventDefault)
 						e.preventDefault();
-					e.returnValue = false;  
+					e.returnValue = false;
 				}
 
 				function keydown(e) {
@@ -291,7 +297,7 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
 				}
 
 				function wheel(e) {
-					// for IE 
+					// for IE
 					//if( ie ) {
 						//preventDefault(e);
 					//}
@@ -304,13 +310,13 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
 				}
 
 				function enable_scroll() {
-					window.onmousewheel = document.onmousewheel = document.onkeydown = document.body.ontouchmove = null;  
+					window.onmousewheel = document.onmousewheel = document.onkeydown = document.body.ontouchmove = null;
 				}
 
 				var docElem = window.document.documentElement,
 				scrollVal,
-				isRevealed, 
-				noscroll, 
+				isRevealed,
+				noscroll,
 				isAnimating,
 				container = document.getElementById( 'container' ),
 				trigger = container.querySelector( 'button.trigger' );
@@ -318,10 +324,10 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
 				function scrollY() {
 					return window.pageYOffset || docElem.scrollTop;
 				}
-				
+
 				function scrollPage() {
 					scrollVal = scrollY();
-					
+
 					if( noscroll && !ie ) {
 						if( scrollVal < 0 ) return false;
 						// keep it that way
@@ -336,7 +342,7 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
 					if( isAnimating ) {
 						return false;
 					}
-					
+
 					if( scrollVal <= 0 && isRevealed ) {
 						toggle(0);
 					}
@@ -347,7 +353,7 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
 
 				function toggle( reveal ) {
 					isAnimating = true;
-					
+
 					if( reveal ) {
 						classie.add( container, 'modify' );
 					}
@@ -371,18 +377,21 @@ if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
 				// refreshing the page...
 				var pageScroll = scrollY();
 				noscroll = pageScroll === 0;
-				
+
 				disable_scroll();
-				
+
 				if( pageScroll ) {
 					isRevealed = true;
 					classie.add( container, 'notrans' );
 					classie.add( container, 'modify' );
 				}
-				
+
 				window.addEventListener( 'scroll', scrollPage );
 				trigger.addEventListener( 'click', function() { toggle( 'reveal' ); } );
 			})();
 			</script>
+			<script src="http://freelabel.net/AudioPlayer/js/jquery.js"></script>
+			<script src="http://freelabel.net/AudioPlayer/js/audioplayer.js"></script>
+			<script>$( function() { $( 'audio' ).audioPlayer(); } );</script>
 		</body>
 		</html>

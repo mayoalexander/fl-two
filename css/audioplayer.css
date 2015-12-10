@@ -1,0 +1,111 @@
+							body, html {
+								padding:0px;
+								margin:0px;
+								width:100%;
+								opacity:1;
+								color:#000;
+								background-color: #000000;
+							}
+							iframe {
+								border: 0px inset;
+								border-top-color: initial;
+								border-top-style: inset;
+								border-top-width: 0px;
+							}
+
+							#playerwrapper {
+							min-width:300px;
+							min-height:350px;
+							font-size:200%;
+							padding:5px;
+							margin:auto;
+							text-align: center;
+							vertical-align: middle;
+
+
+							}
+							audio {
+								margin:auto;
+							}
+							#tracktitle {
+								font-size:80%;
+								color:#fff;
+								text-shadow: 1px 1px 2px 1px rgba(0,0,0,0.75);
+							}
+							#artisttitle {
+								font-size:100%;
+								color:#fff;
+								text-shadow: 1px 1px 2px 1px rgba(0,0,0,0.75);
+							}
+							#bottombuttons {
+								opacity:0.8;
+								background-color:#e3e3e3;
+								padding:10px;
+								margin:1px;
+								font-size:60%;
+								text-transform:lowercase;
+								font-family: 'Fjalla One', sans-serif;
+
+							}
+							#bottombuttons {
+								opacity:1;
+							}
+							#amrtag {
+								opacity:0.8;
+								font-size:80%;
+								width:100%;
+								text-align:center;
+								background-color:#e3e3e3;
+								padding:10px;
+								color:black;
+								position:fixed;
+								bottom:0px;
+								left:0px;
+								letter-spacing:5px;
+
+							}
+							textarea {
+								font-size:120%;
+							}
+							#embeddcode {
+								margin:auto;
+							}
+							#playerheading {
+								font-size:200%;
+								margin:15px 10px 5px 10px;
+
+							}
+							#commentwrapper {
+
+							}
+							input {
+								width:500px;
+							}
+							.playerButton:hover {
+								opacity:0.95;
+								
+							}
+							#joinbutton {
+								opacity:1;
+							}
+
+	#playerbackground {
+		margin:0px auto;
+		position:absolute;
+		left:0px;
+		top:0px;
+		width:100%;
+		min-height:260px;
+		max-height:500px;
+		height:60%;
+		opacity:0.3;
+		background-image:url('http://amradiolive.com/images/amrlogo.png');
+		background-repeat:no-repeat;
+		background-position:center center;
+		z-index:-3;
+	
+	}
+	#playerwrapper {
+		opacity:0.95;
+		color:#fff;
+	}
