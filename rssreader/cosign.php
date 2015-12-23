@@ -13,6 +13,13 @@ if (isset($user_name_session) == false) {
   $user_name_session = 'admin';
 
 
+
+echo "<button onclick=\"loadPage('http://freelabel.net/rssreader/index.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\"  alt='RSS'  class='btn btn-default lead_control widget_menu' alt='Navigation'>Admin Posts</button>";
+
+echo '<hr>';
+
+
+
   function get_timeagooo( $ptime )
 {
     date_default_timezone_set('America/Chicago');
@@ -194,6 +201,7 @@ $rss_feed = array(/*'http://freelabelmagazine.wordpress.com/rss',
   //'http://freelabelnet.tumblr.com/rss' ,
   // 'http://assets.complex.com/feeds/channels/all.xml?_ga=1.103967424.130544531.1429827317',
   // 'http://www.elevatormag.com/feed/',
+  // 'http://freelabelnet.tumblr.com/rss',
 	'http://www.dirty-glove.com/feed/',
   'http://trapsntrunks.com/feed/',
   'http://www.saycheesetv.com/feed/',

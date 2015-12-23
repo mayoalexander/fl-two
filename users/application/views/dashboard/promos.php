@@ -1,7 +1,6 @@
 <?php
 include_once('/home/content/59/13071759/html/config/index.php');
 $config = new Blog();
-
 // userz
 // get tag value
 if (isset($_POST["page"]) ) {
@@ -10,32 +9,37 @@ if (isset($_POST["page"]) ) {
 	$tag = '';
 }
 ?>
-
-
 <nav class="event-option-panel btn-group" style="background-color:transparent;text-align:left;border-bottom:3px solid #303030;padding:2% 0%;">
 	<!-- <button class="btn btn-success btn-xs add-new-media-photo" data-link="http://freelabel.net/upload/?uid=<?php echo Session::get('user_name'); ?>&type=photo" target="_blank"><i class="fa fa-plus"></i> Add New Promo</button> -->
 	<button type="button" class="btn btn-success btn-xs add-new-media-photo" data-toggle="modal" data-target="#myModal">
 	  <i class="fa fa-plus"></i> Add New Promo
 	</button>
-
-
-	<a target="_blank" href="<?php echo $config->getUserURL(Session::get('user_name')); ?>" class="btn btn-default btn-xs">View Profile</a>
+	<a href="<?php echo $config->getUserURL(Session::get('user_name')); ?>" class="btn btn-default btn-xs">View Profile</a>
 </nav>
 
 
 <nav class="event-option-panel btn-group" style="background-color:transparent;text-align:left;border-bottom:3px solid #303030;padding:2% 0%;">
 
 <!-- get user tags  -->
+<label>Filter by tags:</label>
 <?php
 echo $config->get_user_tags(Session::get('user_name'));
 ?>
 </nav>
 
 <!-- display content  -->
-<?php $photos = $config->getPhotosByUser(Session::get('user_name') , 20, $tag);
-echo $config->display_photos($photos); ?>
+<?php $promos = $config->getPromosByUser(Session::get('user_name') , 20, $tag);
+echo $config->display_photos($promos); ?>
 
 <script type="text/javascript">
+
+  // $('.editable-promo').editable('http://freelabel.net/submit/update.php',{
+  //      type:  'text',
+  //      name:  'promo',
+  //      title: 'Enter Orphan URL',
+  //      tooltip   : 'Click to Edit URL...'
+  // });
+
 	$(".add-new-media-photo").click(function(event) {
 		event.preventDefault();
 		$.get('http://freelabel.net/users/dashboard/add_new_promo/',function(data){
@@ -73,10 +77,10 @@ echo $config->display_photos($photos); ?>
       <div class="modal-body new-form-modal">
         ...
       </div>
-      <div class="modal-footer">
+      <!-- <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

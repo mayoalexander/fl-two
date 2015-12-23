@@ -278,6 +278,36 @@ class Files
 
 
 
+/**
+*
+*/
+class Promos
+{
+
+	function __construct()
+	{
+		include_once('/home/content/59/13071759/html/config/index.php');
+	}
+	public function updateDB($update) {
+		$table = $update['db_table'];
+		include(ROOT.'/inc/connection.php');
+		$sql = "UPDATE  `amrusers`.`".$table."` SET  `".$update['table_col']."` =  '".$update['user_title']."' WHERE  `$table`.`id` ='".$update['row_id']."' LIMIT 1";
+		$approval_query = mysqli_query($con,$sql);
+		if ($approval_query) {
+			$update_status = $update['user_title'];
+		} else {
+			echo 'it didnt work!';
+			print_r($update);
+			echo '<hr>';
+			print_r($sql);
+			$update_status = false;
+		}
+		return $update_status;
+	}
+}
+
+
+
 
 /**
 *
@@ -508,11 +538,9 @@ if ($_POST['lead_script_id']) {
 
 
 
-
-
 if (isset($_POST['file'])) {
 	$leads = new Files;
-	print_r($_POST);
+	//print_r($_POST);
 	if (strpos($_POST['file_id'], 'file-id')===0){
 		$arr = explode('-',str_replace('file-id-', '', $_POST['file_id']));
 		$update['table_col'] =  $arr[0];
@@ -529,6 +557,21 @@ if (isset($_POST['file'])) {
 	}
 	//print_r($update);
 	//exit;
+}
+
+
+if (isset($_POST['promo'])) {
+	$leads = new Promos;
+	$arr = explode('-',str_replace('promo-id-', '', $_POST['id']));
+	$arr = explode('-', $_POST['id']);
+
+	$update['table_col'] =  $arr[0];
+	$update['row_id'] =  $arr[2];
+	//$update['row_id'] = str_replace('title-', '', $_POST['title']) ;
+	$update['user_title'] = $_POST['promo'];
+	$update['db_table'] = 'images';
+
+	echo $leads->updateDB($update);
 }
 
 

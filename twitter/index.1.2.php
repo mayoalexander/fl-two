@@ -354,7 +354,8 @@ if ($_POST['page']=='timeline'){
 //if (isset($_GET['ssages'])){
 if ($_POST['page']=='direct_messages'){
 
-        $api_query_dm =array("count" => '100');
+        // $api_query_dm =array("count" => '100');
+        $api_query_dm =array("count" => '20');
         $method = 'direct_messages';
         $direct_messages =   $connection->get($method, $api_query_dm);
         $i=1;
@@ -740,12 +741,12 @@ if($_GET['som']=='1')
           
           
             $twtter_tabs .= '<div class="btn-group-vertical col-md-2 twitter-controls-group " >';
-            $twtter_tabs .= '<a onclick="$(\'#som_buttons\').slideToggle();" class="btn btn-default btn-lg col-md-1 col-xs-12 "><i class="fa fa-ellipsis-h" ></i></a>';
-            $twtter_tabs .= '<button class="btn btn-default btn-lg col-md-3 col-xs-3 " onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'mentions', '".$_SESSION['user_name']."','','calendar')".'" alt="mentions"><i class="fa fa-comments" ></i> Mentions</button>';
-            $twtter_tabs .= '<button class="btn btn-default btn-lg col-md-3 col-xs-3 " onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'direct_messages', '".$_SESSION['user_name']."','','calendar')".'" alt="messages"><i class="fa fa-envelope" ></i> Messages</button>';
-            $twtter_tabs .= '<button class="btn btn-default btn-lg col-md-3 col-xs-3 " onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'followers', '".$_SESSION['user_name']."','','calendar')".'"><i class="fa fa-users" ></i> Followers</button>';
-            $twtter_tabs .= '<button class="btn btn-default btn-lg col-md-2 col-xs-3 " onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'timeline', '".$_SESSION['user_name']."','','calendar')".'"><i class="fa fa-list" ></i> Timeline</button>';
-            $twtter_tabs .= '<button class="btn btn-primary btn-lg col-md-3 col-xs-3 " onclick="'."loadFeed('http://freelabel.net/twitter/index.1.0.php', '.main_twitter_panel', 'direct_messages-auto-reply', '".$_SESSION['user_name']."','','calendar')".'" alt="messages">Direct Messages [sent]</button>';
+            $twtter_tabs .= '<a onclick="$(\'#som_buttons\').slideToggle();" class="btn btn-default btn-lg col-md-3"><i class="fa fa-ellipsis-h" ></i></a>';
+            $twtter_tabs .= '<button class="btn btn-default btn-lg col-md-3" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'mentions', '".$_SESSION['user_name']."','','calendar')".'" alt="mentions"><i class="fa fa-comments" ></i> Mentions</button>';
+            $twtter_tabs .= '<button class="btn btn-default btn-lg col-md-3" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'direct_messages', '".$_SESSION['user_name']."','','calendar')".'" alt="messages"><i class="fa fa-envelope" ></i> Messages</button>';
+            $twtter_tabs .= '<button class="btn btn-default btn-lg col-md-3" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'followers', '".$_SESSION['user_name']."','','calendar')".'"><i class="fa fa-users" ></i> Followers</button>';
+            $twtter_tabs .= '<button class="btn btn-default btn-lg col-md-2" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'timeline', '".$_SESSION['user_name']."','','calendar')".'"><i class="fa fa-list" ></i> Timeline</button>';
+            $twtter_tabs .= '<button class="btn btn-primary btn-lg col-md-3" onclick="'."loadFeed('http://freelabel.net/twitter/index.1.0.php', '.main_twitter_panel', 'direct_messages-auto-reply', '".$_SESSION['user_name']."','','calendar')".'" alt="messages">Direct Messages [sent]</button>';
 
             $twtter_tabs .= '</div>';
 
@@ -781,7 +782,7 @@ if($_GET['som']=='1')
             if ($_POST['page']=='dashboard') {
               echo $twtter_tabs;
             }
-           // echo "<a class='btn btn-danger btn-lg btn-lg col-md-3 col-xs-3 fa fa-eject' href='twitter/destroysessions.php'></a>";
+           // echo "<a class='btn btn-danger btn-lg btn-lg col-md-3fa fa-eject' href='twitter/destroysessions.php'></a>";
         } 
         echo '<div id="row">';
                   echo '<div class="col-md-10 main_twitter_panel" style="font-size:80%;text-align:left;height:90vh;overflow-y:scroll;">';

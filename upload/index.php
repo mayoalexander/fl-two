@@ -197,7 +197,7 @@ if ( file_exists($path)) {
 </style>
 </head>
 <body style='padding-top:0;padding-bottom:80px;'>
-<a class='back-to-site' href='http://freelabel.net/' style='z-index:100;font-size:10px;'>&larr; Back to Site</a>
+<a class='back-to-site' href='http://freelabel.net/users/dashboard/index/?ctrl=box' style='z-index:100;font-size:10px;'>&larr; Back to Site</a>
 <div class="containerxxxx">
 <center>
     <br>
@@ -371,20 +371,13 @@ if ( file_exists($path)) {
 
             {% if (file.deleteUrl) { %}
                 <label>Share:</label>
-                <input type="text" value="{%=file.url%}" class="form-control">
-                <br>
-                <a onclick="showOptions()" href="#{%=file.size%}" class="uploaded-file-options-button btn-primary btn-xs col-md-6" ><i class="glyphicon glyphicon-option-vertical"></i> Share</a>
-                <div class="uploaded-file-options">
-                    <a onclick='grabFiles("{%=file.url%}" , "{%=file.size%}", "{%=file.type%}", "{%=file.name%}", "<?php echo $user[user_email] ?>")' id='addToProfile_{%=file.size%}' class='btn btn-primary btn-xs col-md-6 col-xs-12'><i class="glyphicon glyphicon-globe"></i> Post To Blog</a>
-                    <?php
-                        if ($user_name_session =='imnottoosure') {
-                            echo '<a onclick=\'postToBlog("{%=file.url%}" , "{%=file.size%}", "{%=file.type%}", "{%=file.name%}", "<?php echo $user[user_email] ?>")\' id=\'addToProfile_{%=file.size%}\' class=\'btn btn-primary btn-xs col-md-6 col-xs-12 save-to-profile\'><i class="glyphicon glyphicon-inbox"></i> Add to Your FLDRIVE</a>';
-                        }
-                    ?>
-                </div>
-                <div class="btn btn-danger btn-xs delete col-md-6 col-xs-12" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                <span class="col-md-4">
+                    <input type="text" value="{%=file.url%}" class="form-control">
+                </span>
+                <a onclick='grabFiles("{%=file.url%}" , "{%=file.size%}", "{%=file.type%}", "{%=file.name%}", "<?php echo $user[user_email] ?>")' id='addToProfile_{%=file.size%}' class='btn btn-primary btn-lg col-md-4 col-xs-12'><i class="glyphicon glyphicon-globe"></i> Post To Blog</a>
+                <div class="btn btn-danger btn-lg delete col-md-4 col-xs-12" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
                     <i class="glyphicon glyphicon-trash"></i>
-                    <span>Delete</span>
+                    Delete
                 </div>
 
             {% } else { %}

@@ -9,15 +9,9 @@ if (isset($_POST["page"]) ) {
 	$tag = '';
 }
 ?>
-
-
-
-
-
-
 <nav class="event-option-panel btn-group" style="background-color:transparent;text-align:left;border-bottom:3px solid #303030;padding:2% 0%;">
 	<button class="btn btn-success btn-xs col-md-3 col-xs-12 add-new-media-audio" data-link="http://freelabel.net/upload/?uid=<?php echo Session::get('user_name'); ?>&type=idea" ><i class="fa fa-plus"></i> Add New Audio</button> | 
-	<a target="_blank" href="<?php echo $config->getUserURL(Session::get('user_name')); ?>" class="btn btn-default btn-xs">View Profile</a> |
+	<a href="<?php echo $config->getUserURL(Session::get('user_name')); ?>" class="btn btn-default btn-xs">View Profile</a> |
 	<a href="http://freelabel.net/users/login/showprofile" class="btn btn-default btn-xs">Settings</a>
 </nav>
 
@@ -30,6 +24,7 @@ echo $files['posts']; ?>
 	$(".add-new-media-audio").click(function(event) {
 		event.preventDefault();
       	var link = $(this).attr('data-link');
-      	window.open(link);
+      	// window.open(link);
+      	window.location.assign(link);
     }); 
 </script>

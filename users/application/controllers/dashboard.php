@@ -37,10 +37,13 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/admin');
     }
-
     function photos()
     {
         $this->view->render('dashboard/photos',true);
+    }
+    function promos()
+    {
+        $this->view->render('dashboard/promos',true);
     }
     function push()
     {
@@ -51,12 +54,24 @@ class Dashboard extends Controller
         $config = new Blog();
         $_POST['promo_key'] = $config->generateRandomString();
         if ($_POST['add_new_promo']==1) {
-            print_r($_POST);
+            //print_r($_POST);
             echo $config->add_info_promo('images',$_POST);
         } else {
             $this->view->render('dashboard/add_new_promo',true);
         }
     }
+
+
+
+    function add_to_files() {
+        include_once('/home/content/59/13071759/html/config/index.php');
+        $config = new Blog();
+        $_POST['promo_key'] = $config->generateRandomString();
+        echo $config->add_info_files('files',$_POST);
+    }
+
+
+
 
     function delete_promo_file($id) {
         // print_r($_POST);

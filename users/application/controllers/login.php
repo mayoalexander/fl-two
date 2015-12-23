@@ -242,6 +242,18 @@ class Login extends Controller
         $this->view->render('login/register');
     }
 
+
+    /**
+     * create an account page
+     * Show the register form (with the register-with-facebook button). We need the facebook-register-URL for that.
+     */
+    function create()
+    {
+        $this->view->render('login/create');
+    }
+
+
+
     /**
      * Register page action (after form submit)
      */
@@ -253,7 +265,7 @@ class Login extends Controller
         if ($registration_successful == true) {
             header('location: ' . URL . 'login/index');
         } else {
-            header('location: ' . URL . 'login/register');
+            header('location: ' . URL . 'login/create');
         }
     }
 

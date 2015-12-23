@@ -59,9 +59,27 @@
   </div>
 </header>
 
+<nav class="section-title row">
+<!--   <panel class="col-md-3" >
+    <h1>NEW MUSIC DAILY.</h1>
+  </panel> -->
+  <panel class="col-md-3 pull-left" >
+    <h1 class='text-muted'>NEW MUSIC DAILY</h1>
+  </panel>
+  <panel class="col-md-3 pull-right" style='text-align:right;'>
+    <h3 class='text-muted'><a href="http://freelabel.net/radio/"><span style="color:red;" >LIVE</span> ON AIR</a></h3>
+    <script src="https://embed.radio.co/player/c1389e1.js"></script>
+  </panel>
+</nav>
+
+<section>
+
+
         <?php $files = $config->display_user_posts('admin' , 50);
         echo $files['posts']; ?>
 
+
+</section>
 <!--
 <section class="row" style='padding:5%;'>
     <div class="col-md-8">

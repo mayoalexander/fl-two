@@ -91,6 +91,16 @@ $stats = $config->getStatsByUser($site['user']['name']);
     });
 
 
+
+    $('.editable-promo').editable('http://freelabel.net/submit/update.php',{
+         type:  'text',
+         name:  'promo',
+         title: 'Enter Orphan URL',
+         tooltip   : 'Click to Edit URL...'
+    });
+
+
+
     $('.event-datepicker').datepicker({dateFormat: "yy-mm-dd"});
 
   });

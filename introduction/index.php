@@ -179,9 +179,7 @@ if ($_GET['dev']==1) {
   			<div class="codrops-top clearfix">
   				<!--<a class="codrops-icon codrops-icon-prev" href="http://freelabel.net/"><span>Back to Main Site</span></a>-->
 
-
-
-  				<span class="right"><a class="codrops-icon codrops-icon-prev" href="<?php echo $config->site['http'].'?ref='.$twitter; ?>"><span>Back to Main Site</span></a></span>
+  				<span class="right"><a class="codrops-icon codrops-icon-prev" href="http://freelabel.net/"><span>Back to Main Site</span></a></span>
   			</div>
   			<header class="header">
   				<div class="bg-img"><img src="<?php echo $blog_post_data['photo']; ?>" alt="<?php echo $blog_post_data['photo']; ?>"/></div>

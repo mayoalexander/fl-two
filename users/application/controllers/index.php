@@ -26,4 +26,8 @@ class Index extends Controller
     {
             $this->view->render('index/search');
     }
+    function image($slug)
+    {
+            $this->view->render('index/image');
+    }
 }

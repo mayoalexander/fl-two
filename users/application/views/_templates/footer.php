@@ -80,57 +80,108 @@ $(function() {
     var globalButtons = $(".controls-play");
     var globalAudioPlayerText =  $(".audio-player-title");
 
+    // ********************************* 
+    //  GLOBAL DETECT CONTROL
+    setInterval(function(){
+        // var ctime = globalAudioPlayer[0].currentTime;
+        // var cdur = globalAudioPlayer[0].duration;
+        // var daaaashit = 100 - (ctime / cdur);
+        // console.log(ctime + ' -' + cdur + ' = ' + daaaashit);
+        // if (isPlaying(globalAudioPlayer[0]) == true) {
+        //   console.log('YES! a song is playing...');
+        // } else if (isPlaying(globalAudioPlayer[0]) == false) {
+        //   console.log('NO song playing.');
+        // }
+
+      // get next song
+      var nowplaying = $('.now-playing');
+      var nextsong = nowplaying.parent().parent().next();
+      var nextFile = nextsong.find('.controls-play').attr('data-src');
+      var nextTitle = nextsong.find('.controls-play').attr('data-title');
+      console.log("Now Playing: " + nowplaying.attr('data-title'));
+      console.log("Next Up: " + nextTitle);
+      // console.log("Next Up: " + nowplaying.attr('data-title'));
+      globalAudioPlayer[0].onended = function() {
+          $('.now-playing').removeClass('now-playing');
+          nextsong.find('.controls-play').addClass('now-playing');
+          $(this).html('<i class="fa fa-pause"></i>');
+          // alert("The audio has ended");
+          // alert("Now playing next song " + nextTitle +' ' + nextFile);
+          globalAudioPlayer[0].play();
+          globalAudioPlayerText.text(nextTitle);
+          globalAudioPlayer.attr('src', nextFile);
+          globalAudioPlayer.attr('autoplay', 1);
+      };
 
 
-    // Start Streaming
+
+    },6000);
+    // *********************************
+
+
+
+
+
+    // ********************************* 
+    //  PLAY BUTTON CONTROL 
+    // *********************************
+
     //  ---------- play button ------------ /
     $('.controls-play').click(function(event){
       event.preventDefault();
-      globalButtons.html('<i class="fa fa-play"></i>');
       var audioFile = $(this).attr('data-src');
       var audioTitle = $(this).attr('data-title');
       var nowplaying = '<i class="fa fa-play"></i>';
       var nowpaused = '<i class="fa fa-pause"></i>';
-
-
       // get next song
       var nextsong = $(this).parent().parent().next();
       var nextFile = nextsong.find('.controls-play').attr('data-src');
-      console.log(nextFile);
-      console.log(nextsong);
+      var nextTitle = nextsong.find('.controls-play').attr('data-title');
+      globalButtons.html('<i class="fa fa-play"></i>'); // * 
+      
 
-      // console.log(globalAudioPlayer[0]);
+
+
+      // console.log(nextFile);
+      // console.log(nextsong);
+      // console.log(audioFile);
+      // console.log(globalAudioPlayer[0].src);
+
+
       if (isPlaying(globalAudioPlayer[0])==false) {
-        $(this).html('<i class="fa fa-pause"></i>');
-        globalAudioPlayer[0].play();
+        // play file
+              $(this).html('<i class="fa fa-pause"></i>');
+              globalAudioPlayer[0].play();
+              globalAudioPlayerText.text(audioTitle);
+              globalAudioPlayer.attr('src', audioFile);
+              globalAudioPlayer.attr('autoplay', 1);
+              $(this).addClass('now-playing'); // *
+              // globalAudioPlayer.attr('loop', 1);
+      } else if (isPlaying(globalAudioPlayer[0])==true && audioFile !== globalAudioPlayer[0].src) {
+        // pause function
+              $(this).html('<i class="fa fa-pause"></i>');
+              globalAudioPlayer[0].play();
+              globalAudioPlayerText.text(audioTitle);
+              globalAudioPlayer.attr('src', audioFile);
+              globalAudioPlayer.attr('autoplay', 1);
+              // globalAudioPlayer.attr('loop', 1);
       } else {
         $(this).html('<i class="fa fa-play"></i>');
         globalAudioPlayer[0].pause();
       }
-      // alert(globalAudioPlayer[0]);
+
       if ($(this).html()==nowpaused) {
           // alert('show pawuse : ' + $(this).html());
           $(this).removeClass('btn-secondary-outline');
           $(this).addClass('btn-primary-outline');
       } else {
           // alert('show play button ' + $(this).html());
-          $(this).html('<i class="fa fa-pause"></i>');
+          // $(this).html('<i class="fa fa-pause"></i>');
           $(this).removeClass('btn-secondary-outline');
           $(this).addClass('btn-primary-outline');
       }
 
-      globalAudioPlayerText.text(audioTitle);
-      globalAudioPlayer.attr('src', audioFile);
-      globalAudioPlayer.attr('autoplay', 1);
-      globalAudioPlayer.attr('loop', 1);
-      // globalAudioPlayer.attr('controls', 1);
 
-      // if playing
-      if (globalAudioPlayer[0].paused==true) {
-        // alert('audio is stoped. set play');
-      } else {
-        // alert('audio is playing, set stop');
-      }
     });
   //  ---------- play button ------------ /
   
@@ -181,12 +232,10 @@ $(function() {
       var wrapper = $(this).parent();
       // alert("deleting this file!!" + file_id);
       var url = 'http://freelabel.net/users/login/delete_file/' + file_id + '/';
-      // alert(url);
-      // window.open(url);
       c = confirm("Are you sure you want to delete this file?");
       if (c==true) {
         $.get(url,function(result){
-          alert(result);
+          // alert(result);
           wrapper.hide('fast');
         });
       }     

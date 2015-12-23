@@ -253,24 +253,6 @@ $tweet_bae = urlencode("#FLMAG:
 										
 										
 									
-							
-
-							/*echo "
-							<div class=' col-xs-12 col-md-12' style='display:none;'>
-								<a href='".$image."' ><img id='main_image' src='".$image."' style='width:100%;'></a>
-								<h1 id='section_title' style=''>".$title."</h1>
-								<p class='lead' style='color:#e3e3e3;'>".$bae_description." </p>
-								<a href='https://twitter.com/intent/tweet?screen_name=&text=".$tweet_bae."' class='btn btn-primary btn-lg' target='_blank' ><span class='fa fa-social'></span>SHARE</a>
-								";*/
-				/*echo			'
-								<hr>
-				<div id="page_navigation">
-			<a href="?control=upload#upload" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-music"></span> - Music</a>
-			<a href="?control=photos#photos" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-picture"></span> - Photos</a>
-			<a href="?control=videos" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-film"></span> - Videos</a>
-			<a href="?control=booking#events" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-calendar"></span> - Schedule</a>
-			<a href="?control=support#email" class="btn btn-default btn-lg" ><span class="glyphicon glyphicon-envelope"></span> - Contact</a>
-			</div>'; */
 
 			echo "					
 							</div>

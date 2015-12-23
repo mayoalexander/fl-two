@@ -1,6 +1,12 @@
 <?php
+if ($_GET['dev']=='2') {
+	echo '<pre>';
+		var_dump($_SERVER['HTTP_HOST']);
+	echo '</pre>';
+}
+
 session_start();
-header('Location: http://freelabel.net/users/');
+header('Location: http://'.$_SERVER['HTTP_HOST'].'/users/');
 exit;
 	// include('users/index.php');
 	// exit;

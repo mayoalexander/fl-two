@@ -163,7 +163,9 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     .lead_control {
       border-radius: 0;
     }
-    .editable input , .editable textarea , .editable input:focus {
+    .editable input , .editable textarea , .editable input:focus,
+    .editable-file input , .editable-file textarea , .editable-file input:focus,
+    .editable-promo input , .editable-promo textarea , .editable-promo input:focus {
       background-color:transparent;
       margin:inherit 0px;
       padding:inherit 0px ;
@@ -185,7 +187,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       color:#101010;
     }
     .controls-play , .user-video-item {
-      border-radius: 3px;
+      border-radius: 0px;
     }
     .controls-play {
     }
@@ -193,6 +195,8 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       font-size:4em;
     } 
     .controls-play {
+      border:#FE3F44 1px solid;
+      border-top:none;
       /*position: absolute;*/
       display:block;
       width: 100%;
@@ -242,6 +246,10 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     .full-width-article img , .idea-textarea {
       box-shadow:5px 5px 20px #000;
     }
+
+    .rss-feed article {
+      margin-bottom:10%;
+    }
     #files-list .list {
       list-style: none;
     }
@@ -265,8 +273,18 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       text-align:left;
       margin-bottom: 3vh ;
     }
+    .post-text {
+      padding-left:4%;
+    }
+    .promo-title {
+      font-size:6em;
+    }
+    .promo-subtitle {
+      font-size:4em;
+    }
     .post-item {
-      border-bottom:red solid 6px;
+      padding-top:0;
+      border-top:#FE3F44 solid 12px;
     }
     .post-item .list-twitter {
       font-size:24px;
@@ -293,6 +311,17 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     .share-buttons-row {
       text-align: center;
     }
+    .attached-file-button {
+      margin-right:6px;
+    }
+    .promo-file-options {
+      padding:1%;
+    }
+    .promo-file-options:hover {
+      background-color:#303030;
+      color:#e3e3e3;
+      cursor: pointer;
+    }
     article .list-item {
       text-align:left;
     }
@@ -317,6 +346,9 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     }
     .pricing-best .card-header , .btn-primary , .btn-primary-outline , .btn-primary:hover , .btn-primary-outline:hover {
       background-color: <?php echo $site['primary-color']; ?>;
+    }
+    .section-title {
+      padding:3%;
     }
     .label-info {
       background-color:<?php echo $site['primary-color']; ?>;
@@ -353,6 +385,10 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       font-size: 0.75em;
       margin-left: 7.5px;
       font-weight: lighter;
+    }
+    .post-item-stats {
+      font-size:0.7em;
+      padding: 0.5em;
     }
 
     .idea-textarea {
@@ -397,7 +433,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       }
       .radio-menu {
         font-size: 10px;
-        max-width: 230px;
+        max-width: 200px;
         overflow: hidden;
       }
     }
