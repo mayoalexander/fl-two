@@ -41,9 +41,29 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/photos',true);
     }
+    function feed()
+    {
+        $this->view->render('dashboard/feed',true);
+    }
+    function box()
+    {
+        $this->view->render('dashboard/box',true);
+    }
     function promos()
     {
         $this->view->render('dashboard/promos',true);
+    }
+    function audio()
+    {
+        $this->view->render('dashboard/audio',true);
+    }
+    function events()
+    {
+        $this->view->render('dashboard/events',true);
+    }
+    function dev()
+    {
+        $this->view->render('dashboard/dev');
     }
     function push()
     {

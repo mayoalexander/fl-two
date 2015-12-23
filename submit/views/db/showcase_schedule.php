@@ -1,4 +1,6 @@
 <?php
+include_once('/home/content/59/13071759/html/config/index.php');
+
 if (isset($_SESSION['user_name'])==false) {
 	session_start();
 }
@@ -111,7 +113,7 @@ function create_event() {
 			$submission_date = $_POST['submission_date'];
 			$description = $_POST['description'];
 			$type	=	$_POST['type_of_event'];
-			include('../../../inc/connection.php');
+			include(ROOT.'inc/connection.php');
 			// Insert into database
 				$sql="INSERT INTO schedule (user_name, event_title, showcase_day, type, description) VALUES ('$user_name','$event_title','$showcase_day', '$type', '$description')";
 				if (mysqli_query($con,$sql))
