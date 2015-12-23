@@ -370,7 +370,6 @@ if ( file_exists($path)) {
             {% } %}
 
             {% if (file.deleteUrl) { %}
-                <label>Share:</label>
                 <span class="col-md-4">
                     <input type="text" value="{%=file.url%}" class="form-control">
                 </span>
