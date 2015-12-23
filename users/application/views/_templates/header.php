@@ -390,6 +390,9 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       font-size:0.7em;
       padding: 0.5em;
     }
+    .logo-menu a {
+      padding:0%;
+    }
 
     .idea-textarea {
       padding:5%;
@@ -436,6 +439,12 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
         max-width: 200px;
         overflow: hidden;
       }
+      .logo-menu {
+        max-width: 66px;
+      }
+      .logo-menu a {
+        padding:0%;
+      }
     }
     </style>
 </head>
@@ -479,8 +488,8 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
             </div><!-- /gn-scroller -->
           </nav>
         </li>
-        <li><a href="<?php echo $site['http']; ?>users/"><img src="<?php echo $site['logo']; ?>" style="max-height:48px;" ></a></li>
-        <li class="radio-menu" >
+        <li class="logo-menu" style='border-right:none;' ><a href="<?php echo $site['http']; ?>users/"><img src="<?php echo $site['logo']; ?>" style="max-height:48px;" ></a></li>
+        <li class="radio-menu"  style='border-right:none;' >
           <a class="audio-player-title codrops-icon codrops-icon-prev" href="<?php echo $site['http']; ?>radio/"><span><i class="radio-player-control fa fa-play" ></i> Stream</span></a>
           <audio class="audio-player"></audio>
         </li>
