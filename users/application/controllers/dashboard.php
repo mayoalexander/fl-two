@@ -76,7 +76,12 @@ class Dashboard extends Controller
         // $config = new Blog();
         // $_POST['promo_key'] = $config->generateRandomString();
         // echo $config->add_info_files('files',$_POST);
-        $this->view->render('dashboard/attach',true);
+        print_r($_POST);
+        if (isset($_POST['file_id'])) {
+            echo 'okay updating';
+        } else {
+            $this->view->render('dashboard/attach',true);
+        }
 
     }
 
