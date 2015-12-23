@@ -72,13 +72,13 @@ class Dashboard extends Controller
 
 
     function attach() {
-        // include_once('/home/content/59/13071759/html/config/index.php');
-        // $config = new Blog();
-        // $_POST['promo_key'] = $config->generateRandomString();
-        // echo $config->add_info_files('files',$_POST);
-        print_r($_POST);
+
         if (isset($_POST['file_id'])) {
+            include_once('/home/content/59/13071759/html/config/index.php');
+            $config = new Blog();
             echo 'okay updating';
+        echo $config->attach_files($_POST['file_id'],$_POST['promo_id']);
+
         } else {
             $this->view->render('dashboard/attach',true);
         }
