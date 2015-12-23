@@ -10,7 +10,7 @@ $slug = str_replace('index/image/', '', $_GET['url']);
 if (is_numeric($slug)) {
 	$promos = $config->display_promo(Session::get('user_name') , 1, $slug, 'id');
 } else {
-	$promos = $config->display_promo(Session::get('user_name') , 1, $slug, 'id');
+	$promos = $config->display_promo(Session::get('user_name') , 1, $slug, 'desc');
 }
 echo $config->display_promo_public($promos, true); ?>
 <!-- <h4>Related</h4> -->
