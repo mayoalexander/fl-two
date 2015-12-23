@@ -72,13 +72,6 @@ $stats = $config->getStatsByUser($site['user']['name']);
   $(function(){
     $('.dash-filter').click(function(){
       var tabName = $(this).attr('data-load');
-      // var tabName = $(this).text();
-      // var dataLoad = $(this).attr('data-load');
-      // var url = 'http://freelabel.net/users/application/views/dashboard/' + dataLoad + '.php'
-
-      // // $('.al-' + dataLoad).html(url);
-       // alert(url + ' clicked!');
-       // console.log(url + ' clicked!');
        var stateObj = { foo: "bar" };
         history.pushState(stateObj, "page 2", '?ctrl='+tabName);
     });

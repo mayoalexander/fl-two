@@ -286,6 +286,7 @@ $(function() {
     $(".share-file-button").click(function(event){
       $('.push_file_form').hide('fast');
       $(this).parent().css('border','solid 3px #e3e3e3');
+      $(this).hide('fast');
       event.preventDefault();
       var file_id = $(this).attr('id');
       var wrapper = $(this).parent();
@@ -301,8 +302,8 @@ $(function() {
         img_path: dataFilePath
       };
       // load alert into the modal
-      $.get('http://freelabel.net/users/dashboard/push',getData,function(data){
-        wrapper.prepend(data);
+      $.get('http://freelabel.net/users/dashboard/attach/',getData,function(data){
+        wrapper.append(data);
       });
 
     });

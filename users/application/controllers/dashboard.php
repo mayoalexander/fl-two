@@ -71,6 +71,16 @@ class Dashboard extends Controller
     }
 
 
+    function attach() {
+        // include_once('/home/content/59/13071759/html/config/index.php');
+        // $config = new Blog();
+        // $_POST['promo_key'] = $config->generateRandomString();
+        // echo $config->add_info_files('files',$_POST);
+        $this->view->render('dashboard/attach',true);
+
+    }
+
+
 
 
     function delete_promo_file($id) {
