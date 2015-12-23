@@ -6,8 +6,6 @@
 
 
 
-// print_r($_POST);
-
 
 
 
@@ -261,7 +259,7 @@ class Files
 	public function updateDB($update) {
 		$table = $update['db_table'];
 		include(ROOT.'/inc/connection.php');
-		$sql = "UPDATE  `amrusers`.`".$table."` SET  `".$update['table_col']."` =  '".$update['user_title']."' WHERE  `script`.`id` ='".$update['row_id']."' LIMIT 1";
+		$sql = "UPDATE  `amrusers`.`".$table."` SET  `".$update['table_col']."` =  '".$update['user_title']."' WHERE  `".$table."`.`id` ='".$update['row_id']."' LIMIT 1";
 		$approval_query = mysqli_query($con,$sql);
 		if ($approval_query) {
 			$update_status = $update['user_title'];
@@ -537,24 +535,24 @@ if ($_POST['lead_script_id']) {
 
 
 
-
+// edit file
 if (isset($_POST['file'])) {
 	$leads = new Files;
-	//print_r($_POST);
-	if (strpos($_POST['file_id'], 'file-id')===0){
-		$arr = explode('-',str_replace('file-id-', '', $_POST['file_id']));
-		$update['table_col'] =  $arr[0];
-		$update['row_id'] =  $arr[1];
-		//$update['row_id'] = str_replace('title-', '', $_POST['title']) ;
-		$update['user_title'] = $_POST['title'];
-		$update['db_table'] = 'script';
+	// print_r($_POST);
+	// parse ID
+	$arr = explode('-',$_POST['id']);
+	$update['table_col'] =  $arr[0];
+	$update['row_id'] =  $arr[2];
+	//$update['row_id'] = str_replace('title-', '', $_POST['title']) ;
+	$update['user_title'] = $_POST['file'];
+	$update['db_table'] = 'files';
 
-		//echo 'editing TITLE: ';
-		//echo $photos->updateUserEmail($update);
-		//print_r($_POST);
-		//echo '<hr>';
-		echo $leads->updateDB($update);
-	}
+	//echo 'editing TITLE: ';
+	//echo $photos->updateUserEmail($update);
+	// print_r($update);
+	//echo '<hr>';
+	echo $leads->updateDB($update);
+
 	//print_r($update);
 	//exit;
 }

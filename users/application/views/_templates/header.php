@@ -316,6 +316,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     }
     .promo-file-options {
       padding:1%;
+      background-size:100%;
     }
     .promo-file-options:hover {
       background-color:#303030;
