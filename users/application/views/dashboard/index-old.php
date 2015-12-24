@@ -20,45 +20,45 @@ $stats = $config->getStatsByUser($site['user']['name']);
 <div class="tabs tabs-style-linemove" id="main_display_panel" >
   <nav>
     <ul>
-      <li><a href="#section-linemove-1" class="icon icon-home dash-filter" data-load="feed"><span>
+      <li><a href="#section-linemove-1" class="icon icon-home dash-filter" data-load="box"><span>
       <!-- <i class="fa fa-rss-square" ></i> -->
        Feed</span></a></li>
-      <li><a href="#section-linemove-2" class="icon icon-box dash-filter" data-load="box"><span>
+      <li><a href="#section-linemove-2" class="icon icon-box dash-box" data-load="box"><span>
       <!-- <i class="fa fa-database" ></i> -->
        Box</span></a></li>
-      <li><a href="#section-linemove-3" class="icon icon-plug dash-filter" data-load="promos"><span>
+      <li><a href="#section-linemove-3" class="icon icon-plug dash-filter" data-load="Promotions"><span>
       <!-- <i class="fa fa-bullhorn" ></i> -->
        Promotions</span></a></li>
-      <li><a href="#section-linemove-4" class="icon icon-coffee dash-filter" data-load="audio"><span>
+      <li><a href="#section-linemove-4" class="icon icon-coffee dash-display" data-load="Work"><span>
       <!-- <i class="fa fa-music" ></i> -->
-       Posts</span></a></li>
-      <li><a href="#section-linemove-5" class="icon icon-date dash-filter" data-load="events"><span>
+       Work</span></a></li>
+      <li><a href="#section-linemove-5" class="icon icon-date dash-events" data-load="settings"><span>
       <!-- <i class="fa fa-calendar" ></i> -->
        Events</span></a></li>
     </ul>
   </nav>
   <div class="content-wrap">
 
-    <section id="section-linemove-1" class="autoload al-feed">
+    <section id="section-linemove-1">
         <!-- display content  -->
         <?php $files = $config->display_user_posts('admin' , 50);
         echo $files['posts']; ?>
     </section>
 
-    <section id="box" class="autoload al-box" data-load="box">
-      <?php //$url =  ROOT.'users/application/views/dashboard/box.php'; include($url); ?>
+    <section id="section-linemove-2" class="autoload al-box" data-load="box">
+      <?php $url =  ROOT.'users/application/views/dashboard/box.php'; include($url); ?>
     </section>
 
-    <section id="promos" class="autoload al-promos" data-load="promos">
-      <?php //$url =  ROOT.'users/application/views/dashboard/promos.php'; include($url); ?>
+    <section id="section-linemove-3">
+      <?php $url =  ROOT.'users/application/views/dashboard/promos.php'; include($url); ?>
     </section>
 
-    <section id="audio" class="autoload al-audio" data-load="audio">
-      <?php //$url =  ROOT.'users/application/views/dashboard/audio.php'; include($url); echo $db['posts']; ?>
+    <section id="section-linemove-4">
+      <?php $url =  ROOT.'users/application/views/dashboard/audio.php'; include($url); echo $db['posts']; ?>
     </section>
 
-    <section id="events" class="autoload al-events" data-load="events">
-      <?php //include('../submit/views/db/showcase_schedule.php'); ?>
+    <section id="section-linemove-5">
+      <?php include('../submit/views/db/showcase_schedule.php'); ?>
        <!--  //$events = $config->getEventsByUser($site['user']['name'] , 50);
         // var_dump($events);
         //echo $config->display_events($events); -->
@@ -70,19 +70,10 @@ $stats = $config->getStatsByUser($site['user']['name']);
 
 <script type="text/javascript">
   $(function(){
-    // $('.dash-filter').click(function(){
-    $('.tabs li').click(function(){
-      var tabName = $(this).find('.dash-filter').attr('data-load');
+    $('.dash-filter').click(function(){
+      var tabName = $(this).attr('data-load');
        var stateObj = { foo: "bar" };
         history.pushState(stateObj, "page 2", '?ctrl='+tabName);
-        $('#' + tabName).html('<h3 class="text-muted" style="margin:10% 10%;"><i class="fa fa-cog fa-spin"></i> Loading...</h3>');
-        var url = 'http://freelabel.net/users/dashboard/' + tabName + '/' ;
-        $.get(url, function(data){
-          // alert('completed!');
-          console.log($('#' + tabName));
-          $('#' + tabName).html(data);
-        })
-        // alert(url);
     });
 
     $('.editable-file').editable('http://freelabel.net/submit/update.php',{
