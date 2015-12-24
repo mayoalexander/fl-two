@@ -129,6 +129,11 @@ if (isset($_POST["page"]) ) {
 
 
 
+  $(".add-new-media-audio").click(function(event) {
+  event.preventDefault();
+    var link = $(this).attr('data-link');
+    window.location.assign(link);
+  }); 
 
 
 
@@ -142,11 +147,6 @@ if (isset($_POST["page"]) ) {
 	});
 
 
-	$(".add-new-media-idea").click(function(event) {
-	event.preventDefault();
-    var link = $(this).attr('data-link');
-    window.location.assign(link);
-    }); 
 
     $('.dropdown-filter').change(function(event){
   //   	var filterValue = $(this).val();
@@ -176,6 +176,7 @@ if (isset($_POST["page"]) ) {
  	$(this).get(0).play()
  	console.log(data);
  });
+
 
 
 
