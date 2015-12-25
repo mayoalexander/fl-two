@@ -7,8 +7,6 @@
 
 
 
-
-
 /**
 * Edit User Posts
 */
@@ -550,6 +548,7 @@ if (isset($_POST['file'])) {
 	//echo 'editing TITLE: ';
 	//echo $photos->updateUserEmail($update);
 	// print_r($update);
+	// exit;
 	//echo '<hr>';
 	echo $leads->updateDB($update);
 
