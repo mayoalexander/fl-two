@@ -42,13 +42,8 @@ if ($_GET['uid']=='') {
             if($row = mysqli_fetch_array($result)) {
                 $user = $row;
                 $user_name_session = $_GET['uid'];
-                //print_r($user);
-                //exit;
-
-                // USER FOUND!!!
-                //echo 'user found <hr> !';//print_r($row);
             } else {
-        $user_name_session = $_GET['uid'];
+            $user_name_session = $_GET['uid'];
                 //echo 'No user set!';
                 // !!!! BREAK SCRIPT AND REDIRECT !!!! ///
                 //header('Location: );
@@ -299,26 +294,33 @@ if ( file_exists($path)) {
             <div class="col-md-6 col-xs-12" >
                 <p class="name">{%=file.name%}</p>
                 <span class="preview"></span>
+
                 <strong class="error text-danger"></strong>
                 <p class="size">Processing...</p>
                 <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
             </div>
             <div class="col-md-6 col-xs-12 hide-after-finish-{%=file.size%}" >
 
-                <div class="file-form-area">  
-                
+                <div class="file-form-area">
+
+                    <!-- UPLOAD PHOTO --> 
+                    <label class="photo">
+                        <span>Artwork:</span><br>
+                        <input class="artwork_photo"  type="file" name="photo[]" class="form-control" required="1">
+                    </label>
+
                     <label class="title">
                         <span>Title:</span><br>
-                        <input type="text" name="title[]" class="form-control">
+                        <input type="text" name="title[]" class="form-control" required="1" placeholder="Enter Trackname, producers, features, etc.." >
                     </label>
 
                     <label class="twitter">
                         <span>Twitter:</span><br>
-                        <input type="text" name="twitter[]" class="form-control">
+                        <input type="text" name="twitter[]" class="form-control" required="1" placeholder="Enter @TwitterUserName" >
                     </label>
 
                     <label class="user_name">
-                        <input type="hidden" name="user_name[]"  value="'.$user_name_session.'" class="form-control">
+                        <input type="hidden" name="user_name[]"  value="'.$user_name_session.'" class="form-control" >
                     </label>
                 </div>
 
@@ -517,6 +519,24 @@ var userNameSession = <?php echo "'".$_GET['uid']."'"; ?>;
             });
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+$(function(){
+
+    $('.artwork_photo').change(function(){
+        var data = $(this).text();
+        alert(data);
+    });
+});
 
 </script>
 <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
