@@ -48,7 +48,7 @@ echo $config->display_promo_public($promos, true); ?>
 
     //  ---------- play button ------------ /
     $('.promo-file-options').click(function(event){
-    console.log(globalButtons);
+    // console.log(globalButtons);
       event.preventDefault();
       var audioFile = $(this).attr('data-src');
       var audioTitle = $(this).attr('data-title');
@@ -119,7 +119,20 @@ echo $config->display_promo_public($promos, true); ?>
 
 
 
+ $('.share-promo-file').click(function(){
+  var promo = $('.promo-title').text();
+  var data = $(this).attr('data-id');
+  var title = $(this).attr('data-title');
+  var url      = window.location.href; 
+  var text = promo+": " + title;
 
+  // console.log(text);
+  var newURL = 'http://twitter.com/intent/tweet/?text='+ encodeURI(text) + '&url=' + url;
+  window.open(newURL);
+
+
+
+ });
 
 
 
