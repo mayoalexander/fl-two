@@ -580,7 +580,7 @@ if (isset($_POST['promo'])) {
 	$update['row_id'] =  $arr[2];
 	//$update['row_id'] = str_replace('title-', '', $_POST['title']) ;
 	$update['user_title'] = $_POST['promo'];
-	$update['db_table'] = 'feed';
+	$update['db_table'] = 'images';
 
 	echo $leads->updateDB($update);
 }

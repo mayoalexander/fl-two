@@ -165,7 +165,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     }
     .editable input , .editable textarea , .editable input:focus,
     .editable-file input , .editable-file textarea , .editable-file input:focus,
-    .editable-file-promo input , .editable-file-promo textarea , .editable-file-promo input:focus,
+    .editable-promo-file input , .editable-promo-file textarea , .editable-promo-file input:focus,
     .editable-promo input , .editable-promo textarea , .editable-promo input:focus {
       background-color:transparent;
       margin:inherit 0px;
