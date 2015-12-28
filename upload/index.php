@@ -176,6 +176,9 @@ if ( file_exists($path)) {
         display:block;
         width:100%;
     }
+    .confirm-upload-buttons {
+        display:none;
+    }
 
     @media (max-device-width:640px) {
         .head-logo-header {
@@ -292,12 +295,16 @@ if ( file_exists($path)) {
     <?php
     echo '<article class="panel-body template-upload fade col-md-12" id="panel_{%=file.size%}">
             <div class="col-md-6 col-xs-12" >
+
                 <p class="name">{%=file.name%}</p>
                 <span class="preview"></span>
 
                 <strong class="error text-danger"></strong>
                 <p class="size">Processing...</p>
+
                 <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+                <span class="photo-upload-results"></span>
+
             </div>
             <div class="col-md-6 col-xs-12 hide-after-finish-{%=file.size%}" >
 
@@ -306,7 +313,7 @@ if ( file_exists($path)) {
                     <!-- UPLOAD PHOTO --> 
                     <label class="photo">
                         <span>Artwork:</span><br>
-                        <input class="artwork_photo"  type="file" name="photo[]" class="form-control" required="1">
+                        <input id="artwork_photo"  type="file" name="photo[]" class="form-control" required="1">
                     </label>
 
                     <label class="title">
@@ -316,7 +323,7 @@ if ( file_exists($path)) {
 
                     <label class="twitter">
                         <span>Twitter:</span><br>
-                        <input type="text" name="twitter[]" class="form-control" required="1" placeholder="Enter @TwitterUserName" >
+                        <input type="text" name="twitter[]" class="form-control" required="1" placeholder="Enter @TwitterUserName" id="twitter" >
                     </label>
 
                     <label class="user_name">
@@ -325,14 +332,14 @@ if ( file_exists($path)) {
                 </div>
 
                 {% if (!i && !o.options.autoUpload) { %}
-                    <button class="btn btn-lg btn-primary start col-md-6 col-xs-6" disabled>
+                    <button class="btn btn-lg btn-primary start col-md-6 col-xs-6 confirm-upload-buttons" disabled>
                         <i class="glyphicon glyphicon-upload"></i>
                         <span>Start</span>
                     </button>
                 {% } %}
 
                 {% if (!i) { %}
-                    <button class="btn btn-lg btn-warning cancel col-md-6 col-xs-6">
+                    <button class="btn btn-lg btn-warning cancel col-md-6 col-xs-6 confirm-upload-buttons">
                         <i class="glyphicon glyphicon-ban-circle "></i>
                         <span>Cancel</span>
                     </button>
@@ -532,10 +539,100 @@ var userNameSession = <?php echo "'".$_GET['uid']."'"; ?>;
 
 $(function(){
 
-    $('.artwork_photo').change(function(){
-        var data = $(this).text();
-        alert(data);
-    });
+    setInterval(function(){
+        var img = $('#artwork_photo').val();
+        var img_path = $('.photo-upload-results').find('img');
+        console.log();
+        if (!img=='' && img_path.length==0) {
+            console.log('okay this is not set! --> ' + img);
+
+                var pleaseWait = 'Please wait...';
+                // ------ NEW NEW NEW NEW ------ //
+                $('.photo-upload-results').html(' ');
+                $('.photo-upload-results').append(pleaseWait);
+                $('.confirm-upload-buttons').prepend('<p class="wait" style="color:#303030;">Please wait..<p>');
+                $('.confirm-upload-buttons').hide('fast');
+                var path = 'http://freelabel.net/upload/server/php/upload-photo.php';
+                var data;
+                var formdata_PHO = $('#artwork_photo')[0].files[0];
+                var formdata = new FormData();
+
+                // Add the file to the request.
+                formdata.append('photos[]', formdata_PHO);
+            $.ajax({
+                // Uncomment the following to send cross-domain cookies:
+                xhrFields: {withCredentials: true},
+                url: path,
+                //dataType: 'json',
+                method: 'POST',
+                cache       : false,
+                processData: false,
+                contentType: false, 
+                fileElementId: 'image-upload',
+                data: formdata,
+                beforeSend: function (x) {
+                        if (x && x.overrideMimeType) {
+                            x.overrideMimeType("multipart/form-data");
+                        }
+                },
+                // Now you should be able to do this:
+                mimeType: 'multipart/form-data'    //Property added in 1.5.1
+            }).always(function () {
+                //alert(formdata_PHO);
+                console.log(formdata_PHO);
+                //$('#confirm_upload').html('please wait..');
+                //$(this).removeClass('fileupload-processing');
+            }).fail(function(jqXHR){
+                alert(jqXHR.statusText + 'oh no it didnt work!')
+            }).done(function (result) {
+                //alert('YES');
+                $('.photo-upload-results').html(result);
+                $('.confirm-upload-buttons').show('fast');
+                $('.confirm-upload-buttons').css('display','block');
+                $('.wait').hide('fast');
+            });
+
+
+            // trim twitter username
+            $("#twitter").keypress(function() {
+              var $y = $(this).val();
+              var $newy = $y.replace(/\s+/g, '');
+              if ($newy.toLowerCase().indexOf("@") >= 0) {
+                console.log('yes mane');
+              //   $newy = $newy.append('@');
+              } else {
+                $newy = '@'+ $newy;
+                console.log('No mane');
+              }
+              $(this).val($newy);
+
+              // $(this).next().html(y);
+              // console.log(y);
+              // alert(y);
+              // .append($(this).length);
+            });
+            // $( "#trimmed" ).html( "$.trim()'ed: '" + $.trim(str) + "'" );
+
+
+
+
+
+    } // end of IF STATEMENT
+
+
+    },3000);
+
+
+
+
+
+
+
+
+
+
+
+
 });
 
 </script>

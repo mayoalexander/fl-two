@@ -1134,11 +1134,24 @@ class UploadHandler
 
     protected function handle_form_data($file, $index) {
       include_once('/home/content/59/13071759/html/config/index.php');
+      $config = new Upload();
       include_once(ROOT.'inc/connection.php');
       $filepath = 'http://freelabel.net/upload/server/php/files/'.$file->name;
-      $sql = 'INSERT INTO `amrusers`.`files`
-      (`id`, `name`, `size`, `type`, `url`, `user_name`, `twitter`, `title`) VALUES
-      (NULL, "'.$file->name.'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'");';
+        // // CREATE QUICK URLS
+        $shortname = explode(' ',$_POST['title'][0]);
+        $_POST['blog_story_url'] = 'http://freelabel.net/'.$_POST['twitter'].'/'.$shortname[0];
+        // $invchars = array(" ","@",":","/","&","'");
+        // $_POST['playerpath'] = 'http://freelabel.net/x/'.$_POST['twitter'].'/'.str_replace($invchars, "-", $_POST['trackname']).'/';
+      // $sql = 'INSERT INTO `amrusers`.`files`
+      // (`id`, `name`, `size`, `type`, `url`, `user_name`, `twitter`, `title`, `photo`) VALUES
+      // (NULL, "'.$file->name.'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'");';
+      // $data = $config->handleSyntax($_POST);
+
+      $sql = 'INSERT INTO `amrusers`.`feed`
+      (`id`, `blog_story_url`, `size`, `filetype`, `trackmp3`, `user_name`, `twitter`, `blogtitle`, `photo`) VALUES
+      (NULL, "'.$_POST['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'");';
+
+
       if (mysqli_query($con, $sql)) {
           //echo "New record created successfully";
       } else {

@@ -3,6 +3,8 @@ include_once('/home/content/59/13071759/html/config/index.php');
 $config = new Blog();
 $slug = str_replace('index/image/', '', $_GET['url']);
 // var_dump($slug);
+// echo 'okay';
+// exit;
 ?>
 <!-- show main feature photo -->
 <?php 
