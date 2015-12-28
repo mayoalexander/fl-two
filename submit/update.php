@@ -6,7 +6,6 @@
 
 
 
-
 /**
 * Edit User Posts
 */
@@ -557,6 +556,21 @@ if (isset($_POST['file'])) {
 }
 
 
+
+// edit file
+if (isset($_POST['promo-file'])) {
+	$leads = new Files;
+	$arr = explode('-',$_POST['id']);
+	$update['table_col'] =  $arr[0];
+	$update['row_id'] =  $arr[2];
+	//$update['row_id'] = str_replace('title-', '', $_POST['title']) ;
+	$update['user_title'] = $_POST['promo-file'];
+	$update['db_table'] = 'feed';
+	echo $leads->updateDB($update);
+}
+
+
+
 if (isset($_POST['promo'])) {
 	$leads = new Promos;
 	$arr = explode('-',str_replace('promo-id-', '', $_POST['id']));
@@ -566,7 +580,7 @@ if (isset($_POST['promo'])) {
 	$update['row_id'] =  $arr[2];
 	//$update['row_id'] = str_replace('title-', '', $_POST['title']) ;
 	$update['user_title'] = $_POST['promo'];
-	$update['db_table'] = 'images';
+	$update['db_table'] = 'feed';
 
 	echo $leads->updateDB($update);
 }

@@ -59,9 +59,6 @@ $stats = $config->getStatsByUser($site['user']['name']);
 
     <section id="events" class="autoload al-events" data-load="events">
       <?php //include('../submit/views/db/showcase_schedule.php'); ?>
-       <!--  //$events = $config->getEventsByUser($site['user']['name'] , 50);
-        // var_dump($events);
-        //echo $config->display_events($events); -->
     </section>
 
   </div><!-- /content -->

@@ -227,6 +227,37 @@ $(function() {
 
 
 
+    // ********************************* 
+    //  SHARE
+    // *********************************
+    $(".attach-post-button").click(function(event){
+      $('.push_file_form').hide('fast');
+      $(this).parent().parent().css('border','solid 3px #e3e3e3');
+      $(this).parent().parent().css('padding','2%');
+      $(this).hide('fast');
+      event.preventDefault();
+      var file_id = $(this).attr('id');
+      var wrapper = $(this).parent().parent();
+      var url = 'http://freelabel.net/users/login/add_promo/' + file_id + '/' + 'WHATBRUH';
+      var dataId =  $(this).attr('id');
+      var dataUser =  $(this).attr('data-user');
+      var dataTitle =  $(this).attr('data-filetitle');
+      var dataFilePath =  $(this).attr('data-filepath');
+      var getData = { 
+        id: dataId, 
+        user_name: dataUser,
+        title: dataTitle,
+        img_path: dataFilePath
+      };
+      // load alert into the modal
+      $.get('http://freelabel.net/users/dashboard/attach/',getData,function(data){
+        wrapper.append(data);
+      });
+
+    });
+
+
+
 
 
 

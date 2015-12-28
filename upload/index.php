@@ -379,12 +379,12 @@ if ( file_exists($path)) {
             {% } %}
 
             {% if (file.deleteUrl) { %}
-                <span class="col-md-3">
+                <span class="col-md-4">
                     <input type="text" value="{%=file.url%}" class="form-control">
                 </span>
-                <a href="http://freelabel.net/users/dashboard/?ctrl=box" id='addToProfile_{%=file.size%}' class='btn btn-primary btn-lg col-md-3 col-xs-12'><i class="glyphicon glyphicon-eye"></i> View</a>
-                <a onclick='grabFiles("{%=file.url%}" , "{%=file.size%}", "{%=file.type%}", "{%=file.name%}", "<?php echo $user[user_email] ?>")' id='addToProfile_{%=file.size%}' class='btn btn-primary btn-lg col-md-3 col-xs-12'><i class="fa fa-eye"></i> Post To Blog</a>
-                <div class="btn btn-danger btn-lg delete col-md-3 col-xs-12" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                <a href="http://freelabel.net/users/dashboard/?ctrl=audio" id='addToProfile_{%=file.size%}' class='btn btn-primary btn-lg col-md-4 col-xs-12'><i class="glyphicon glyphicon-eye"></i> View</a>
+                <!--<a onclick='grabFiles("{%=file.url%}" , "{%=file.size%}", "{%=file.type%}", "{%=file.name%}", "<?php echo $user[user_email] ?>")' id='addToProfile_{%=file.size%}' class='btn btn-primary btn-lg col-md-6 col-xs-12'><i class="fa fa-eye"></i> Post To Blog</a>-->
+                <div class="btn btn-danger btn-lg delete col-md-4 col-xs-12" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
                     <i class="glyphicon glyphicon-trash"></i>
                     Delete
                 </div>

@@ -48,10 +48,17 @@ echo $config->display_photos($promos); ?>
          tooltip   : 'Click to Edit URL...'
     });
 
+    $('.editable-promo-file').editable('http://freelabel.net/submit/update.php',{
+         type:  'text',
+         name:  'promo-file',
+         title: 'Enter Orphan URL',
+         tooltip   : 'Click to Edit URL...'
+    });
+
 
     $('.editable-file').editable('http://freelabel.net/submit/update.php',{
          type:  'text',
-         name:  'file',
+         name:  'promo-file',
          title: 'Enter Orphan URL',
          tooltip   : 'Click to Edit URL...'
     });

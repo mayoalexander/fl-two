@@ -1134,24 +1134,35 @@ class UploadHandler
 
     protected function handle_form_data($file, $index) {
       include_once('/home/content/59/13071759/html/config/index.php');
-      $config = new Upload();
+      $config = new UploadFile();
       include_once(ROOT.'inc/connection.php');
       $filepath = 'http://freelabel.net/upload/server/php/files/'.$file->name;
-        // // CREATE QUICK URLS
-        $shortname = explode(' ',$_POST['title'][0]);
-        $_POST['blog_story_url'] = 'http://freelabel.net/'.$_POST['twitter'].'/'.$shortname[0];
-        // $invchars = array(" ","@",":","/","&","'");
-        // $_POST['playerpath'] = 'http://freelabel.net/x/'.$_POST['twitter'].'/'.str_replace($invchars, "-", $_POST['trackname']).'/';
+      // CREATE QUICK URLS
+      $shortname = explode(' ',$_POST['title'][0]);
+      $_POST['blog_story_url'] = 'http://freelabel.net/'.$_POST['twitter'][0].'/'.$shortname[0];
+      $invchars = array(" ","@",":","/","&","'");
+      $_POST['playerpath'] = 'http://freelabel.net/x/'.$_POST['twitter'][0].'/'.str_replace($invchars, "-", $_POST['title'][0]).'/';
+
+      
       // $sql = 'INSERT INTO `amrusers`.`files`
       // (`id`, `name`, `size`, `type`, `url`, `user_name`, `twitter`, `title`, `photo`) VALUES
       // (NULL, "'.$file->name.'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'");';
       // $data = $config->handleSyntax($_POST);
 
+
+
+        // detect file type
+        if ( strpos($filepath, 'mp3') ) {
+          $_POST['type']='single';
+        } else {
+          $_POST['type']='blog';
+        }
+
+
+
       $sql = 'INSERT INTO `amrusers`.`feed`
-      (`id`, `blog_story_url`, `size`, `filetype`, `trackmp3`, `user_name`, `twitter`, `blogtitle`, `photo`) VALUES
-      (NULL, "'.$_POST['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'");';
-
-
+      (`id`, `type`, `blog_story_url`, `size`, `filetype`, `trackmp3`, `user_name`, `twitter`, `blogtitle`, `photo`, `playerpath`, `trackname`) VALUES
+      (NULL, "'.$_POST['type'].'" , "'.$_POST['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'", "'.$_POST['playerpath'].'", "'.$_POST['title'][0].'");';
       if (mysqli_query($con, $sql)) {
           //echo "New record created successfully";
       } else {
