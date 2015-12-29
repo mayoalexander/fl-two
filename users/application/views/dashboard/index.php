@@ -1,37 +1,23 @@
 <?php
-$config = new Blog($_SERVER['HTTP_HOST']);
-// echo '<pre>';
-// print_r($site);
-// exit;
-//$config->showAdminController();
+  $config = new Blog($_SERVER['HTTP_HOST']);
+  // add these stats in here somehwere in the layout
+  $stats = $config->getStatsByUser($site['user']['name']);
 ?>
-<?php
-// echo '<th>ok</th>';
-// echo '<th>Photo</th>';
-// echo '<th>Title</th>';
-// echo '<th>MP3</th>';
-
-// add these stats in here somehwere in the layout
-$stats = $config->getStatsByUser($site['user']['name']);
-?>
-
-
-<?php //$db = //$config->display_dashboard_feed($site['user']); ?>
 <div class="tabs tabs-style-linemove" id="main_display_panel" >
   <nav>
     <ul>
       <li><a href="#section-linemove-1" class="icon icon-home dash-filter" data-load="feed"><span>
       <!-- <i class="fa fa-rss-square" ></i> -->
        Feed</span></a></li>
-      <li><a href="#section-linemove-2" class="icon icon-box dash-filter" data-load="box"><span>
+      <li><a href="#section-linemove-2" class="icon icon-display dash-filter" data-load="analytics"><span>
       <!-- <i class="fa fa-database" ></i> -->
-       Box</span></a></li>
+       Analytics</span></a></li>
       <li><a href="#section-linemove-3" class="icon icon-plug dash-filter" data-load="promos"><span>
       <!-- <i class="fa fa-bullhorn" ></i> -->
        Promotions</span></a></li>
-      <li><a href="#section-linemove-4" class="icon icon-coffee dash-filter" data-load="audio"><span>
+      <li><a href="#section-linemove-4" class="icon icon-upload dash-filter" data-load="audio"><span>
       <!-- <i class="fa fa-music" ></i> -->
-       Posts</span></a></li>
+       Uploads</span></a></li>
       <li><a href="#section-linemove-5" class="icon icon-date dash-filter" data-load="events"><span>
       <!-- <i class="fa fa-calendar" ></i> -->
        Events</span></a></li>
@@ -45,21 +31,13 @@ $stats = $config->getStatsByUser($site['user']['name']);
         echo $files['posts']; ?>
     </section>
 
-    <section id="box" class="autoload al-box" data-load="box">
-      <?php //$url =  ROOT.'users/application/views/dashboard/box.php'; include($url); ?>
-    </section>
+    <section id="analytics" class="autoload al-analytics" data-load="analytics"></section>
 
-    <section id="promos" class="autoload al-promos" data-load="promos">
-      <?php //$url =  ROOT.'users/application/views/dashboard/promos.php'; include($url); ?>
-    </section>
+    <section id="promos" class="autoload al-promos" data-load="promos"></section>
 
-    <section id="audio" class="autoload al-audio" data-load="audio">
-      <?php //$url =  ROOT.'users/application/views/dashboard/audio.php'; include($url); echo $db['posts']; ?>
-    </section>
+    <section id="audio" class="autoload al-audio" data-load="audio"></section>
 
-    <section id="events" class="autoload al-events" data-load="events">
-      <?php //include('../submit/views/db/showcase_schedule.php'); ?>
-    </section>
+    <section id="events" class="autoload al-events" data-load="events"></section>
 
   </div><!-- /content -->
 </div><!-- /tabs -->
@@ -89,16 +67,12 @@ $stats = $config->getStatsByUser($site['user']['name']);
          tooltip   : 'Click to Edit URL...'
     });
 
-
-
     $('.editable-promo').editable('http://freelabel.net/submit/update.php',{
          type:  'text',
          name:  'promo',
          title: 'Enter Orphan URL',
          tooltip   : 'Click to Edit URL...'
     });
-
-
 
     $('.event-datepicker').datepicker({dateFormat: "yy-mm-dd"});
 

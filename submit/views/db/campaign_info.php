@@ -13,18 +13,18 @@ if ($_SESSION['user_name']=='') {
 include_once('/home/content/59/13071759/html/config/index.php');
 $db = new UserDashboard($_SESSION);
 
-$user = $db->getUserData($user_name_session);
-//print_r($user);
-$user['stats']['total'] = $db->getUserStats($user_name_session , 'total');
-$user['stats']['total'] = $db->getUserStats($user_name_session , 'fans');
-$user['id'] = $user['user_id'];
-$user['photo'] = $db->getProfilePhoto($user_name_session);
-$user['profile_url'] = 'http://freela.be/l/'.$user['user_name'];
+// $user = $db->getUserData($user_name_session);
+// //print_r($user);
+// $user['stats']['total'] = $db->getUserStats($user_name_session , 'total');
+// $user['stats']['total'] = $db->getUserStats($user_name_session , 'fans');
+// $user['id'] = $user['user_id'];
+// $user['photo'] = $db->getProfilePhoto($user_name_session);
+// $user['profile_url'] = 'http://freela.be/l/'.$user['user_name'];
 
 
-$user['media']['audio'] = $db->getUserMedia($user_name_session); // Grab Users Posts
-$user['stats']['tracks'] = count($user['media']['audio']);
-$user['twitter'] = $user['media']['audio'][0]['twitter'];
+// $user['media']['audio'] = $db->getUserMedia($user_name_session); // Grab Users Posts
+// $user['stats']['tracks'] = count($user['media']['audio']);
+// $user['twitter'] = $user['media']['audio'][0]['twitter'];
 
 // ------ data fixes ------- //
 if (isset($user['photo']) && $user['photo']!='' ) {
@@ -580,7 +580,7 @@ if($row = mysqli_fetch_array($result))
 								  //echo "Entry Created Successfully!";
 								  echo '<script>
 								  		alert("Entry Created Successfully!");
-								  		window.location.assign("http://freelabel.net/");
+								  		window.location.assign("http://freelabel.net/users/dashboard/?ctrl=analytics");
 								  		</script>';
 								} else {
 								  echo "Error creating database entry: " . mysqli_error($con);

@@ -214,6 +214,9 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     .content {
       text-align: center;
     }
+    .paragraph {
+      font-size:14px;
+    }
     .content .feedback {
       margin-bottom:3%;
       margin-top:3%;

@@ -49,6 +49,14 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/box',true);
     }
+    function analytics()
+    {
+        $this->view->render('dashboard/analytics',true);
+    }
+    function stats()
+    {
+        $this->view->render('dashboard/stats',true);
+    }
     function promos()
     {
         $this->view->render('dashboard/promos',true);
