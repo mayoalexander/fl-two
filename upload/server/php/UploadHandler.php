@@ -1133,41 +1133,74 @@ class UploadHandler
     }
 
     protected function handle_form_data($file, $index) {
-      include_once('/home/content/59/13071759/html/config/index.php');
-      $config = new UploadFile();
-      include_once(ROOT.'inc/connection.php');
-      $filepath = 'http://freelabel.net/upload/server/php/files/'.$file->name;
-      // CREATE QUICK URLS
-      $shortname = explode(' ',$_POST['title'][0]);
-      $_POST['blog_story_url'] = 'http://freelabel.net/'.$_POST['twitter'][0].'/'.$shortname[0];
-      $invchars = array(" ","@",":","/","&","'");
-      $_POST['playerpath'] = 'http://freelabel.net/x/'.$_POST['twitter'][0].'/'.str_replace($invchars, "-", $_POST['title'][0]).'/';
 
-      
-      // $sql = 'INSERT INTO `amrusers`.`files`
-      // (`id`, `name`, `size`, `type`, `url`, `user_name`, `twitter`, `title`, `photo`) VALUES
-      // (NULL, "'.$file->name.'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'");';
-      // $data = $config->handleSyntax($_POST);
+        include_once('/home/content/59/13071759/html/config/index.php');
+        include_once('/home/content/59/13071759/html/config/upload.php');
+        $config = new UploadFile();
+        $upload = new Upload();
+        include_once(ROOT.'inc/connection.php');
+        $filepath = 'http://freelabel.net/upload/server/php/files/'.$file->name;
+        // CREATE QUICK URLS
+        $shortname = explode(' ',$_POST['title'][0]);
+        $_POST['blog_story_url'] = 'http://freelabel.net/'.$_POST['twitter'][0].'/'.$shortname[0];
+        $invchars = array(" ","@",":","/","&","'");
+        $_POST['playerpath'] = 'http://freelabel.net/x/'.$_POST['twitter'][0].'/'.str_replace($invchars, "-", $_POST['title'][0]).'/';
+        $filedata['trackmp3'] = $filepath;
+        $filedata['twitter'] = $_POST['twitter'][0];
+        $filedata['user_name'] = $_POST['user_name'][0];
+        $filedata['blogtitle'] = $_POST['title'][0];
+        $filedata['blog_story_url'] = $_POST['blog_story_url'];
+        $filedata['photo'] = $_POST['photo'];
 
+        // 3RD PARTY APIs
+        $twitpic = $upload->getTwitpicURL($filedata);
 
-
-        // detect file type
+        // DETECT FILE TYPE
         if ( strpos($filepath, 'mp3') ) {
           $_POST['type']='single';
         } else {
           $_POST['type']='blog';
         }
 
+        // -------------------------------------------------------- //
+                            // UPLOAD TO THE SITE! //
+        // -------------------------------------------------------- //
 
-
-      $sql = 'INSERT INTO `amrusers`.`feed`
-      (`id`, `type`, `blog_story_url`, `size`, `filetype`, `trackmp3`, `user_name`, `twitter`, `blogtitle`, `photo`, `playerpath`, `trackname`) VALUES
-      (NULL, "'.$_POST['type'].'" , "'.$_POST['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'", "'.$_POST['playerpath'].'", "'.$_POST['title'][0].'");';
-      if (mysqli_query($con, $sql)) {
+        // ADD TO DATABASE
+        $sql = 'INSERT INTO `amrusers`.`feed`
+        (`id`, `type`, `blog_story_url`, `size`, `filetype`, `trackmp3`, `user_name`, `twitter`, `blogtitle`, `photo`, `playerpath`, `trackname` , `twitpic`) VALUES
+        (NULL, "'.$_POST['type'].'" , "'.$_POST['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'", "'.$_POST['playerpath'].'", "'.$_POST['title'][0].'", "'.$twitpic.'");';
+        if (mysqli_query($con, $sql)) {
           //echo "New record created successfully";
-      } else {
+
+            // if ($upload->getTwitpicURL($filedata)===false) {
+            //     echo 'something went wrong! Not Uploaded to radio';
+            // } else {
+            //     // $file['email'] = 'mayoalexandertd@icloud.com';
+            //     // SEND NOTIFICATIONS
+            //     // $upload->sendMail($file['email'], $file['blogtitle'] , $file['twitter'] , $file['trackmp3'], $file['photo'] , $file['phone']  );
+            //     // echo '<h1 class="alert alert-success" style="color:green;" ><span class="glyphicon glyphicon-ok" ></span> Upload Completed!</h1>';
+            //     // // echo "<a target='_blank' href='".$file['blog_story_url']."'>";
+            //     // echo '<br><span class="btn btn-primary btn-lg">View Post</span>';
+            //     // // echo 'URL: '.$file['blog_story_url'];
+            //     // echo "</a>";
+            // }
+        } else {
           echo "Error: " . $sql . "<br>" . mysqli_error($con);
-      }
+        }
+
+        // -------------------------------------------------------- //
+                            // UPLOAD TO THE RADIO! //
+        // -------------------------------------------------------- //
+
+        // $file['twitter'] = $_POST['twitter'][0];
+        // $file['blogtitle'] = $_POST['title'][0];
+        // $file['blog_story_url'] = $_POST['blog_story_url'];
+            
+
+
+
+
         // Handle form data, e.g. $_POST['description'][$index]
     }
 

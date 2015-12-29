@@ -1,3 +1,4 @@
+
 <div class="card card-inverse card-social text-center">
     <div class="card-block has-gradient">
       <img src="<?php echo $photo; ?>" height="90" width="90" alt="Avatar" class="img-circle">
@@ -8,13 +9,13 @@
     <div class="card-block container">
       <div class="row">
         <div class="col-md-4 card-stat">
-          <h4>149 <small class="text-uppercase">Shots</small></h4>
+          <h4><?php echo $stats; ?> <small class="text-uppercase">Views</small></h4>
         </div>
         <div class="col-md-4 card-stat">
-          <h4>1,763 <small class="text-uppercase">Follows</small></h4>
+          <h4><?php echo $num_tracks; ?> <small class="text-uppercase">Uploads</small></h4>
         </div>
         <div class="col-md-4 card-stat">
-          <h4>324 <small>D/Ls</small></h4>
+          <h4><?php echo $score; ?> <small>Score</small></h4>
         </div>
       </div>
     </div>
@@ -27,15 +28,15 @@
     <ul class="list-group">
       <li class="list-group-item complete">
         <span class="label pull-right"><?php echo $stats; ?></span>
-        <span class="icon-status status-completed"></span> Total Views
+        <span class="icon-status status-completed"></span> Promotions
       </li>
       <li class="list-group-item">
         <span class="label pull-right"><?php echo $num_tracks; ?></span>
-        <span class="icon-status status-backlog"></span> Uploads
+        <span class="icon-status status-backlog"></span> Events
       </li>
       <li class="list-group-item">
         <span class="label pull-right">20</span>
-        <span class="icon-status status-noticket"></span> Without ticket
+        <span class="icon-status status-noticket"></span> Score
       </li>
     </ul>
   </div>
