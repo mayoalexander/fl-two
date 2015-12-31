@@ -1149,6 +1149,7 @@ class UploadHandler
         $filedata['twitter'] = $_POST['twitter'][0];
         $filedata['user_name'] = $_POST['user_name'][0];
         $filedata['blogtitle'] = $_POST['title'][0];
+        $filedata['trackname'] = $_POST['title'][0];
         $filedata['blog_story_url'] = $_POST['blog_story_url'];
         $filedata['photo'] = $_POST['photo'];
 
@@ -1171,20 +1172,25 @@ class UploadHandler
         (`id`, `type`, `blog_story_url`, `size`, `filetype`, `trackmp3`, `user_name`, `twitter`, `blogtitle`, `photo`, `playerpath`, `trackname` , `twitpic`) VALUES
         (NULL, "'.$_POST['type'].'" , "'.$_POST['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'", "'.$_POST['playerpath'].'", "'.$_POST['title'][0].'", "'.$twitpic.'");';
         if (mysqli_query($con, $sql)) {
-          //echo "New record created successfully";
 
-            // if ($upload->getTwitpicURL($filedata)===false) {
-            //     echo 'something went wrong! Not Uploaded to radio';
-            // } else {
-            //     // $file['email'] = 'mayoalexandertd@icloud.com';
-            //     // SEND NOTIFICATIONS
-            //     // $upload->sendMail($file['email'], $file['blogtitle'] , $file['twitter'] , $file['trackmp3'], $file['photo'] , $file['phone']  );
-            //     // echo '<h1 class="alert alert-success" style="color:green;" ><span class="glyphicon glyphicon-ok" ></span> Upload Completed!</h1>';
-            //     // // echo "<a target='_blank' href='".$file['blog_story_url']."'>";
-            //     // echo '<br><span class="btn btn-primary btn-lg">View Post</span>';
-            //     // // echo 'URL: '.$file['blog_story_url'];
-            //     // echo "</a>";
-            // }
+            // echo "New record created successfully";
+
+            if ($upload->handleSyntax($filedata)===false) {
+                echo 'something went wrong! Not Uploaded to radio';
+            } else {
+                if ($upload->uploadToRadio($filedata)===false) {
+                    echo 'FTP error';
+                }
+                // $file['email'] = 'mayoalexandertd@icloud.com';
+                // SEND NOTIFICATIONS
+                // $upload->sendMail($file['email'], $file['blogtitle'] , $file['twitter'] , $file['trackmp3'], $file['photo'] , $file['phone']  );
+                // echo '<h1 class="alert alert-success" style="color:green;" ><span class="glyphicon glyphicon-ok" ></span> Upload Completed!</h1>';
+                // // echo "<a target='_blank' href='".$file['blog_story_url']."'>";
+                // echo '<br><span class="btn btn-primary btn-lg">View Post</span>';
+                // // echo 'URL: '.$file['blog_story_url'];
+                // echo "</a>";
+            }
+
         } else {
           echo "Error: " . $sql . "<br>" . mysqli_error($con);
         }
