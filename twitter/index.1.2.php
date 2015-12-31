@@ -379,7 +379,6 @@ if ($_POST['page']=='direct_messages'){
           * 1. check if already tweeted to
           * 2. post the tweet
           * 3. save to database
-          *
           * ---------------------------------------------------------------------- */
 
           if(checkIfAlreadyExists('direct_message',$user_twitter_name_screen, $main_follow_up)==true){
@@ -396,7 +395,7 @@ if ($_POST['page']=='direct_messages'){
             // *************************** // 
             // *************************** //
             // *************************** //
-            $connection->post('direct_messages/new', array('screen_name' => $user_twitter_name_screen,'text' => $main_follow_up));
+            // $connection->post('direct_messages/new', array('screen_name' => $user_twitter_name_screen,'text' => $main_follow_up));
             // *************************** //
             // *************************** //
             // *************************** //
@@ -420,11 +419,11 @@ if ($_POST['page']=='direct_messages'){
           $build_data .= '
 
         
-            <a target="_blank" href="http://m.twitter.com/'.$user_twitter_name_screen.'/messages">
+          <a target="_blank" href="http://m.twitter.com/'.$user_twitter_name_screen.'/messages">
               <img style="height:45px;margin:0 0.5% 0.5% 0;" height="25px" src="'.$user_twitter_photo.'">
               <h4 style="display:inline;">'.$user_twitter_name.'</h4>
               <h5 style="display:inline;color:#303030;">'.$user_post_date.'</h5>
-            </a>
+          </a>
           <p class="">'.$user_post.'</p>
 
           <form id="direct_message_'.$user_twitter_name_screen.'">
@@ -480,7 +479,7 @@ if ($_POST['page']=='direct_messages'){
 //if (isset($_GET['direct_messages'])){
 if ($_POST['page']=='mentions'){
 
-        $api_query_dm =array("count" => '50');
+        $api_query_dm =array("count" => '20');
         $method = 'statuses/mentions_timeline';
         $mentions =   $connection->get($method, $api_query_dm);
         $i=1;
@@ -735,9 +734,6 @@ if($_GET['som']=='1')
         }
         else
         {
-         // echo '<pre>';
-         // print_r($_SESSION['access_token']);
-         // echo '</pre>';
           
           
             $twtter_tabs .= '<div class="btn-group-vertical col-md-2 twitter-controls-group " >';
@@ -801,7 +797,7 @@ if($_GET['som']=='1')
                       $direct_message_user_photo = $user_meta[$user]['photo'];
 
 
-                      echo '<section class="col-md-6 col-xs-12" style="border:red 1px solid;margin-bottom:2%;padding:2%;">
+                      echo '<section class="card card-chart col-md-12 col-xs-12" style="border:red 1px solid;margin-bottom:2%;padding:2%;">
                       <a href="https://mobile.twitter.com/'.$user.'/messages" target="_blank"><h1 class="section_title"><img src="'.$direct_message_user_photo.'" style="width:80px;border-radius:50px;">@'.$user.'</h1></a>';
                       
                         // --- DISPLAY EACH MESSAGE ------/
@@ -812,28 +808,17 @@ if($_GET['som']=='1')
                         }
                       
                       echo '
-                        <button class="btn btn-default" onclick="openReply(\''.$user.'\')" ><span class="glyphicon glyphicon-comment"></span>Reply</button>';
-echo '                  <a onclick="addToLeads(\''.$user.'\',\''.str_replace("'", "\'", $message['message']).'\',\''.$todays_date.'\',\''.$todays_date.'\')" class="btn btn-success"><span class="glyphicon glyphicon-usd" ></span>Add Leads</a>';
+                      <div class="btn-group">
+                        <button class="btn btn-default" onclick="openReply(\''.$user.'\')" ><span class="glyphicon glyphicon-comment"></span>Reply</button>
+                        <button onclick="addToLeads(\''.$user.'\',\''.str_replace("'", "\'", $message['message']).'\',\''.$todays_date.'\',\''.$todays_date.'\')" class="btn btn-success"><span class="glyphicon glyphicon-usd" ></span>Add Leads</button>
+                      </div>
+                        ';
 echo '
                           <span class="tweet-buttons" id="tb_'.$user.'">
                           <form id="direct_message_'.$user.'">
                             <input id="direct_message_text_'.$user.'" class="form-control direct_message_text" placeholder="type tweet message here" >
                           </form>
                           '.$config->loadScript($user).'
-                          <!--<a class="btn btn-xs btn-default" onclick="shareTwitter(\''.urlencode($script[4]).'\' , \''.$user.'\')">'.$script[4].'</a>
-                          <a class="btn btn-xs btn-default" onclick="shareTwitter(\''.urlencode($script[5]).'\' , \''.$user.'\')">'.$script[5].'</a>
-                          <a class="btn btn-xs btn-default" onclick="shareTwitter(\''.urlencode($script[6]).'\' , \''.$user.'\')">'.$script[6].'</a>
-                          <a class="btn btn-xs btn-default" onclick="shareTwitter(\''.urlencode($script[7]).'\' , \''.$user.'\')">'.$script[7].'</a>
-                          <a class="btn btn-xs btn-default" onclick="shareTwitter(\''. urlencode($script[8]) .'\' , \''.$user.'\')">'.$script[8].'</a>
-                          <a class="btn btn-xs btn-default" onclick="shareTwitter(\''. urlencode($script[9]) .'\' , \''.$user.'\')">'.$script[9].'</a>
-                          <a class="btn btn-xs btn-default" onclick="shareTwitter(\''. urlencode($script[10]) .'\' , \''.$user.'\')">'.$script[10].'</a>
-                          <a class="btn btn-xs btn-default" onclick="shareTwitter(\''. urlencode($script[11]) .'\' , \''.$user.'\')">'.$script[11].'</a>
-                          <a class="btn btn-xs btn-default" onclick="shareTwitter(\''. urlencode($script[12]) .'\' , \''.$user.'\')">'.$script[12].'</a>
-                          <a class="btn btn-xs btn-default" onclick="shareTwitter(\''. urlencode($script[13]) .'\' , \''.$user.'\')">'.$script[13].'</a>
-                          <a class="btn btn-xs btn-default" onclick="shareTwitter(\''. urlencode($script[14]) .'\' , \''.$user.'\')">'.$script[14].'</a>
-                          <a class="btn btn-xs btn-default" onclick="shareTwitter(\''. urlencode($script[15]) .'\' , \''.$user.'\')">'.$script[15].'</a>
-                          <a class="btn btn-xs btn-default" onclick="shareTwitter(\''. urlencode($script[16]) .'\' , \''.$user.'\')">'.$script[16].'</a>
-                          <a class="btn btn-xs btn-default" onclick="shareTwitter(\''. urlencode($script[17]) .'\' , \''.$user.'\')">'.$script[17].'</a>-->
                           </span>
 
 

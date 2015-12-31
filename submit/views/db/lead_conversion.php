@@ -1,9 +1,8 @@
 <?php include_once('/home/content/59/13071759/html/config/index.php');
-include_once(ROOT.'twitter/index.php');
+// include_once(ROOT.'twitter/index.php');
 $leads_conversion = new Config();
 //include_once(ROOT.'submit/views/db/current_clients.php');
 ?>
-<br><br>
 <section class="lead-block col-md-12">
 <a name="leads"></a>
 	<style type="text/css">
@@ -26,10 +25,6 @@ $leads_conversion = new Config();
 			padding:5% 2%;
 			font-size:200%;
 			box-shadow:0px 0px 15px #000;
-		}
-		button span {
-			//font-size:250%;
-			//padding:2%;
 		}
 		.lead_conversion_controls {
 			display:none;
