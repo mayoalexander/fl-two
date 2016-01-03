@@ -1134,12 +1134,14 @@ class UploadHandler
 
     protected function handle_form_data($file, $index) {
 
+        // CREATE QUICK URLS
         include_once('/home/content/59/13071759/html/config/index.php');
         include_once('/home/content/59/13071759/html/config/upload.php');
         $config = new UploadFile();
         $upload = new Upload();
         include_once(ROOT.'inc/connection.php');
         $filepath = 'http://freelabel.net/upload/server/php/files/'.$file->name;
+
         // CREATE QUICK URLS
         $shortname = explode(' ',$_POST['title'][0]);
         $_POST['blog_story_url'] = 'http://freelabel.net/'.$_POST['twitter'][0].'/'.$shortname[0];
@@ -1178,9 +1180,9 @@ class UploadHandler
             if ($upload->handleSyntax($filedata)===false) {
                 echo 'something went wrong! Not Uploaded to radio';
             } else {
-                if ($upload->uploadToRadio($filedata)===false) {
-                    echo 'FTP error';
-                }
+                // if ($upload->uploadToRadio($filedata)===false) {
+                //     echo 'FTP error';
+                // }
                 // $file['email'] = 'mayoalexandertd@icloud.com';
                 // SEND NOTIFICATIONS
                 // $upload->sendMail($file['email'], $file['blogtitle'] , $file['twitter'] , $file['trackmp3'], $file['photo'] , $file['phone']  );

@@ -81,11 +81,11 @@ if ($post_id) {
 	if ($deletequery) {
 		if ($_POST['blog_type']=='mag') {
 			echo "	<script>alert('This Magazine Post Has Been Successfully Deleted!') 
-					window.location.assign('http://freelabel.net/submit/?control=blog#blog_posts')
+					window.location.assign('http://freelabel.net/users/dashboard/admin/?ctrl=submissions')
 				</script>";
 			} else {
 				echo "	<script>alert('This Single Has Been Successfully Deleted!') 
-					window.location.assign('http://freelabel.net/submit/index.php?control=singles#singles')
+					window.location.assign('http://freelabel.net/users/dashboard/admin/?ctrl=submissions')
 				</script>";
 			}
 	} else {
@@ -126,7 +126,7 @@ if ($submission_id) {
 	$deletequery = mysqli_query($con,"DELETE FROM `feed` WHERE `feed`.`id` = ".$submission_id." LIMIT 1");
 	if ($deletequery) {
 		echo "<script>alert('This Submission Has Been Successfully Deleted!')
-				window.location.assign('http://freelabel.net/submit/#submissions')
+				window.location.assign('http://freelabel.net/users/dashboard/admin/?ctrl=submissions')
 				</script>";
 		
 		

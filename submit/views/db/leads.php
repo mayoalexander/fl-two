@@ -1,10 +1,10 @@
 <?php include_once('/home/content/59/13071759/html/config/index.php');
-include_once(ROOT.'twitter/index.php');
+// include_once(ROOT.'twitter/index.php');
 $leads_conversion = new Config();
 //include_once(ROOT.'submit/views/db/current_clients.php');
 ?>
-<br><br>
-<section class="lead-block col-md-8 col-xs-12">
+<h1>Lead Conversion</h1>
+<section class="lead-block col-md-12 col-xs-12">
 <a name="leads"></a>
 <style type="text/css">
 	.lead_label {
@@ -33,8 +33,6 @@ $leads_conversion = new Config();
 </style>
 
 <script>
-
-
 function editLead(id) {
 	if ($('#lead_edit_' + id).css('display') == 'block') {
 		//alert($('#event_desc_' + id));
@@ -209,59 +207,8 @@ $result = mysqli_query($con,"SELECT * FROM leads WHERE
 		//include('../../../x/submissions.php');
 		echo '<div id="lead_widget_container"></div>';
 		//echo '<hr>';
-		echo '<h2>Lead Conversion</h2>';
 
 
-			$som_block =  
-			'
-			<script>
-				function logSOM(number_of_som) {
-				               $.post(\'../x/update_title.php\', {
-					               		type : "som" ,
-					                    number_of_som_today : number_of_som
-				                    } , function(data){
-				                    	//$(\'#som_results\').html(data);
-				                    		loadPage(\'views/db/recent_posts.php\' , \'#som_results\', 0 , \'admin\' , 0 );
-				                    	//window.open(approval_follow_up); 
-				                });
-				}
-			</script>
-
-			<div class="panel panel-default col-md-6 col-xs-12">
-			  <div class="panel-heading">
-			    <h3 class="panel-title">SOM: <span class="text-muted">'.$how_recent.'<span></h3> 
-			  </div>
-			  <div class="panel-body">
-			    <div class="progress">
-				  <div class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width:'.$som_progress.'%;">
-				    <span class="sr-only">'.$som_progress.'% Complete</span>
-				  </div>
-				</div>
-
-				<div id="som_results"></div>
-				<div method="POST" action="http://freelabel.net/x/update_title.php"  style="display:inline;">
-					<input type="hidden" name="type" value="som">
-					<input type="hidden" name="number_of_som_today" value="'.$number_of_som.'"><br>
-					
-					<input onclick="logSOM('.$last_som_id.')" type="submit" class="btn btn-success btn-xs" value="LOG SOM">
-				</div>
-
-
-				
-
-				<form method="POST" action="http://freelabel.net/submit/deletesingle.php" style="display:inline;" >
-					<input type="hidden" name="SOM_id" value="'.$SOM_id.'">
-					<input type="submit" class="btn btn-danger btn-xs" value="DELETE SOM '.$SOM_id.'">
-				</form>
-				<div class="panel panel-body" style="color:#000;">
-					'.$send_out_message.'
-					<button onclick="somStart()"  class="btn btn-warning btn-xs"  >Start SOM</button>
-				</div>
-				
-
-			  </div>
-			</div>			
-			';
 			
 
 		
@@ -346,10 +293,7 @@ $result = mysqli_query($con,"SELECT * FROM leads WHERE
 			
 
 
-
-
-
-$submit_form = '<br><form class="form-horizontal" method="POST" action="http://freelabel.net/submit/views/db/lead_conversion.php">
+$submit_form = '<br><form class="form-horizontal" method="POST" action="http://freelabel.net/submit/views/db/leads.php">
 <fieldset>
 
 <!-- Form Name -->
@@ -414,74 +358,32 @@ $submit_form = '<br><form class="form-horizontal" method="POST" action="http://f
 	}
 
 </script>
-
-	<?php 
+<?php 
 	$todays_date = date('M/d/Y');
-			if ($number_of_leads < $min_sales) {
-				$status = "<button class='btn btn-xs btn-primary col-md-4 col-xs-4' onclick='rtmStart()' ><span class='glyphicon glyphicon-comment' ></span><hr>RECIEVE</button>";
-				$right_now= strtotime('now'); 
-				/*time_to_som = strtotime($entry_date) + 14400;
-					if ($right_now > $time_to_som) {
-						echo 'YOURE LATE :( ';
-					}
-					if ($right_now < $time_to_som) {
-						echo 'YOURE GOOD!';
-					}
-				$resultsbro =  substr(($right_now - $time_to_som) / 600, 0,4) .' hours ago';
-				echo $resultsbro . '<br>';
-				echo date('Y-m-d H:i A',strtotime($entry_date)) .' > '.date('Y-m-d H:i A',$time_to_som);
-				*/
-				if ($time_to_som < $right_now) {
+	$progress_bars = '
+	<div class="card card-social">
+	  
+	  <div class="panel-body col-md-12 col-xs-12">
+		<div class="panel-heading">
+			<h3 class="panel-title">LEADS: <span class="text-muted">last updated '.$how_recent.'<span></h3>
+		</div>
+		<hr>
+		<div>
+			'.$todays_date.' // EST REV | <span class="label label-success"  >$'.$total_sales.' / $'.$total_sales_quota.'</span> - <span class="label label-success"  >'.$sales_progress.'% ('.$number_of_leads.'/'.$min_sales.')</span>
+		</div>
+		<hr>
 
-					$status .= "<button onclick='somStart()' class='btn btn-xs btn-primary col-md-4 col-xs-4' ><span class='glyphicon glyphicon-screenshot' ></span><hr>RELEASE</button>";
-				}
-				$status .= "<button onclick='dmsStart()' class='btn btn-xs btn-primary col-md-4 col-xs-4' ><span class='glyphicon glyphicon-envelope'></span><hr>REPRODUCE</button>";
-				//$status .= "<button onclick='somLogout()' class='btn btn-xs btn-success' ><span class='glyphicon glyphicon-trash'></span></button>";
-			} else {
-				$status = "<span style='background-color:green;'>Quota Completed</span>";
-			}
+	    <div class="progress">
+		  <div class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width:'.$sales_progress.'%;">
+		    <span class="sr-only">'.$sales_progress.'% Complete</span>
+		  </div>
+		</div>
+	  </div>
 
-			$progress_bars = '
-			<div class="panel panel-default">
-			  
-			  <div class="panel-body col-md-6 col-xs-12">
-				<div class="panel-heading">
-					<h3 class="panel-title">LEADS: <span class="text-muted">last updated '.$how_recent.'<span></h3>
-				</div>
-				<hr>
-				<div>
-					'.$todays_date.' // EST REV | <span class="label label-success"  >$'.$total_sales.' / $'.$total_sales_quota.'</span> - <span class="label label-success"  >'.$sales_progress.'% ('.$number_of_leads.'/'.$min_sales.')</span>
-				</div>
-				<hr>
-
-			    <div class="progress">
-				  <div class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width:'.$sales_progress.'%;">
-				    <span class="sr-only">'.$sales_progress.'% Complete</span>
-				  </div>
-				</div>
-			  </div>
-			  '.$som_block.'
-			</div>
-			';
-
-			echo '	
-					  <div>	
-					  	<th></th>
-					  </div>
-					  <div>
-					  		'.//$status
-					  		'					  	
-					  	<br></br>
-						<hr>
-
-					  </div>
-					  <div>
-					  	<td>'.$progress_bars.'</td>
-					  </div>
-				';
-
-			
-	 ?>
+	</div>
+	';
+	echo $progress_bars; 
+?>
 
 
 
@@ -490,14 +392,14 @@ $submit_form = '<br><form class="form-horizontal" method="POST" action="http://f
 
 
 <div class='panel-body'>
-        <a onclick="loadPage('http://freelabel.net/submit/views/db/lead_conversion.php?leads=today', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>Today</a>
-        <a onclick="loadPage('http://freelabel.net/submit/views/db/lead_conversion.php?leads=all', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>All</a>
-        <a onclick="loadPage('http://freelabel.net/submit/views/db/lead_conversion.php?leads=yesterday', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>Yesterday</a>
-        <a onclick="loadPage('http://freelabel.net/submit/views/db/lead_conversion.php?leads=recent', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>Recent</a>
-        <a onclick="loadPage('http://freelabel.net/submit/views/db/lead_conversion.php?leads=followed', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>Followed</a>
-        <a onclick="loadPage('http://freelabel.net/submit/views/db/lead_conversion.php?leads=unfollowed', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>Unfollowed</a>
-        <a onclick="loadPage('http://freelabel.net/submit/views/db/lead_conversion.php?leads=third', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>Third</a>
-        <a onclick="loadPage('http://freelabel.net/submit/views/db/lead_conversion.php?leads=priority', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>Priority</a>
+        <a onclick="loadPage('http://freelabel.net/submit/views/db/leads.php?leads=today', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>Today</a>
+        <a onclick="loadPage('http://freelabel.net/submit/views/db/leads.php?leads=all', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>All</a>
+        <a onclick="loadPage('http://freelabel.net/submit/views/db/leads.php?leads=yesterday', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>Yesterday</a>
+        <a onclick="loadPage('http://freelabel.net/submit/views/db/leads.php?leads=recent', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>Recent</a>
+        <a onclick="loadPage('http://freelabel.net/submit/views/db/leads.php?leads=followed', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>Followed</a>
+        <a onclick="loadPage('http://freelabel.net/submit/views/db/leads.php?leads=unfollowed', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>Unfollowed</a>
+        <a onclick="loadPage('http://freelabel.net/submit/views/db/leads.php?leads=third', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>Third</a>
+        <a onclick="loadPage('http://freelabel.net/submit/views/db/leads.php?leads=priority', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>Priority</a>
 </div>
 <hr>
 
@@ -809,7 +711,7 @@ if (mysqli_fetch_array($result)) {
 
 
 
-echo '<table class="table">';
+echo '<table class="table col-md-12">';
 		while($row = mysqli_fetch_assoc($result))
 		{
 		$lead_data[$row['lead_twitter']]['follow_up_date'] = $row['follow_up_date'];
@@ -1039,9 +941,6 @@ $(function() {
 
 
 
-</section>
-<section class="col-md-4 col-md-12">
-	<?php include(ROOT.'x/s.php'); ?>
 </section>
 
 

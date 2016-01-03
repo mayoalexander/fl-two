@@ -142,6 +142,9 @@ if ($_GET['dev']==1) {
   			width:100%;
   			height:auto;
   		}
+  		.content video {
+  			width:100%;
+  		}
   		.btn {
   			text-align: center;
   			display:inline-block;
@@ -152,7 +155,9 @@ if ($_GET['dev']==1) {
   			min-width:150px;
   		}
   		.bg-img img {
-  			height:auto;
+  			/*height:auto;*/
+  			  -webkit-filter: blur(5px);
+			  filter: blur(5px);
   		}
   		.site-logo {
   			opacity: 0.8;
@@ -220,13 +225,27 @@ if ($_GET['dev']==1) {
   			<article class="content">
   				<div>
   					<?php
-  					if ($blog_type=='single') {
+  					switch ($blog_type) {
+  						case 'single':
   						$blogentry = '
   						<audio controls preload="metadata">
   						<source src="'.$trackmp3.'"></source>
   						</audio>';
+  							break;
+
+  						case 'blog':
+  						$blogentry = '
+  						<video controls preload="metadata" poster="'.$photo.'" >
+  						<source src="'.$trackmp3.'"></source>
+  						</video>';
+  							break;
+  						
+  						default:
+  							// $blogentry = '';
+  							break;
   					}
-  					echo $blogentry; ?>
+  					echo $blogentry; 
+  					?>
   					<hr>
   					<?php echo $blog_post_data['writeup']; ?>
 
