@@ -1177,21 +1177,21 @@ class UploadHandler
 
             // echo "New record created successfully";
 
-            if ($upload->handleSyntax($filedata)===false) {
-                echo 'something went wrong! Not Uploaded to radio';
-            } else {
-                // if ($upload->uploadToRadio($filedata)===false) {
-                //     echo 'FTP error';
-                // }
-                // $file['email'] = 'mayoalexandertd@icloud.com';
-                // SEND NOTIFICATIONS
-                // $upload->sendMail($file['email'], $file['blogtitle'] , $file['twitter'] , $file['trackmp3'], $file['photo'] , $file['phone']  );
-                // echo '<h1 class="alert alert-success" style="color:green;" ><span class="glyphicon glyphicon-ok" ></span> Upload Completed!</h1>';
-                // // echo "<a target='_blank' href='".$file['blog_story_url']."'>";
-                // echo '<br><span class="btn btn-primary btn-lg">View Post</span>';
-                // // echo 'URL: '.$file['blog_story_url'];
-                // echo "</a>";
-            }
+            // if ($upload->handleSyntax($filedata)===false) {
+            //     echo 'something went wrong! Not Uploaded to radio';
+            // } else {
+            //     // if ($upload->uploadToRadio($filedata)===false) {
+            //     //     echo 'FTP error';
+            //     // }
+            //     // $file['email'] = 'mayoalexandertd@icloud.com';
+            //     // SEND NOTIFICATIONS
+            //     // $upload->sendMail($file['email'], $file['blogtitle'] , $file['twitter'] , $file['trackmp3'], $file['photo'] , $file['phone']  );
+            //     // echo '<h1 class="alert alert-success" style="color:green;" ><span class="glyphicon glyphicon-ok" ></span> Upload Completed!</h1>';
+            //     // // echo "<a target='_blank' href='".$file['blog_story_url']."'>";
+            //     // echo '<br><span class="btn btn-primary btn-lg">View Post</span>';
+            //     // // echo 'URL: '.$file['blog_story_url'];
+            //     // echo "</a>";
+            // }
 
         } else {
           echo "Error: " . $sql . "<br>" . mysqli_error($con);
