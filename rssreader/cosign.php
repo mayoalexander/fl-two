@@ -15,7 +15,7 @@ if (isset($user_name_session) == false) {
 
 
 echo "<button onclick=\"loadPage('http://freelabel.net/rssreader/index.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\"  alt='RSS'  class='btn btn-default lead_control widget_menu' alt='Navigation'>Admin Posts</button>";
-echo "<button onclick=\"window.open('http://freelabel.net/rssreader/index.php?uid=".$user_name_session."')\"  alt='Upload'  class='btn btn-social btn-social-icon lead_control widget_menu' alt='Navigation'>Upload</button>";
+echo "<button onclick=\"window.open('http://freelabel.net/upload/?uid=".$user_name_session."')\"  alt='Upload'  class='btn btn-social btn-facebook lead_control widget_menu' alt='Navigation'>Upload</button>";
 
 echo '<hr>';
 
@@ -64,6 +64,12 @@ echo '<hr>';
   }
   .rss-third-partys {
     vertical-align: top;
+  }
+  .rss-item-details h3 {
+    color:#fff;
+  }
+    .rss-item-details p {
+    color:#303030;
   }
 </style>
 <script type="text/javascript">
@@ -418,10 +424,10 @@ $audiofile_input = "<input type='text' name='trackmp3' value='".$soundcloud_url.
                  $feed3 .= '
                  <div class="rss-item row">
                    <div class="rss-item-details col-md-8" style="text-align:left;margin-bottom:0.5;" >
-                       <a  href="'. $item_link. '" target="_blank">
-                          <span style="font-size:18px;" >' . $item->title . "</span>
+                       <a href="'. $item_link. '" target="_blank">
+                          <h3 style="font-size:18px;" >' . $item->title . "</h3>
                        </a>
-                       <p class='lead'>  ".$timeAgo."<p>
+                       <p>  ".$timeAgo."<p>
 
                        ".$post_to_blog_button."
                    </div>
