@@ -5,6 +5,10 @@
   .card-social small {
     color:#a7a7a7;
   }
+  .stats-track-list, .stats-date-list {
+    height:250px;
+    overflow: scroll;
+  }
 
 </style>
 <panel class="col-md-12">
@@ -54,15 +58,46 @@
 <panel class="col-md-6">
 <h3>Tracks</h3>
   <div class="card card-chart">
-    <ul class="list-group">
+    <ul class="stats-track-list list-group">
       <?php 
       foreach ($tracks as $key => $value) {
-        echo '<li class="list-group-item complete">'.$value['blogtitle'].'</li>';
+        echo '<li class="list-group-item complete">'.$value['twitter'].' - '.$value['blogtitle'].'</li>';
       }
       ?>
     </ul>
   </div>
 </panel>
+
+
+<panel class="col-md-6">
+<h3>Consistency</h3>
+  <div class="card card-chart">
+    <ul class="stats-date-list list-group">
+
+      <?php 
+      foreach ($tracks as $key => $value) {
+        $post_date = date('m-d',strtotime($value['submission_date']));
+        $todays_date = date('m-d');
+
+        if ($post_date == $todays_date) {
+          $today[] = $value['blogtitle'];
+        } else {
+          $last_week[] = $value['blogtitle'];
+
+        }
+      }
+      $this_week_count = count($today);
+      $last_week_count = count($last_week);
+      echo '<li class="list-group-item complete"><label class="label pull-left">This Week</label> - <label class="label pull-right">'.$this_week_count.'</label></li>';
+      echo '<li class="list-group-item complete"><label class="label pull-left">Previous Weeks</label> - <label class="label pull-right">'.$last_week_count.'</label></li>';
+
+      ?>
+    </ul>
+  </div>
+  </panel>
+
+
+
 <!-- 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript" src='http://freelabel.net/landio/js/plugins/chart.js'></script>

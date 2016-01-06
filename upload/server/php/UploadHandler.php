@@ -1154,6 +1154,8 @@ class UploadHandler
         $filedata['trackname'] = $_POST['title'][0];
         $filedata['blog_story_url'] = $_POST['blog_story_url'];
         $filedata['photo'] = $_POST['photo'];
+        $filedata['submission_date'] = date('Y-m-d H:s:i');
+
 
         // 3RD PARTY APIs
         $twitpic = $upload->getTwitpicURL($filedata);
@@ -1171,8 +1173,8 @@ class UploadHandler
 
         // ADD TO DATABASE
         $sql = 'INSERT INTO `amrusers`.`feed`
-        (`id`, `type`, `blog_story_url`, `size`, `filetype`, `trackmp3`, `user_name`, `twitter`, `blogtitle`, `photo`, `playerpath`, `trackname` , `twitpic`) VALUES
-        (NULL, "'.$_POST['type'].'" , "'.$_POST['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'", "'.$_POST['playerpath'].'", "'.$_POST['title'][0].'", "'.$twitpic.'");';
+        (`id`, `type`, `blog_story_url`, `size`, `filetype`, `trackmp3`, `user_name`, `twitter`, `blogtitle`, `photo`, `playerpath`, `trackname` , `twitpic`, `submission_date`) VALUES
+        (NULL, "'.$_POST['type'].'" , "'.$_POST['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'", "'.$_POST['playerpath'].'", "'.$_POST['title'][0].'", "'.$twitpic.'", "'.$filedata['submission_date'].'");';
         if (mysqli_query($con, $sql)) {
 
             // echo "New record created successfully";
