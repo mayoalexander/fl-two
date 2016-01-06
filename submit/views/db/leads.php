@@ -3,7 +3,6 @@
 $leads_conversion = new Config();
 //include_once(ROOT.'submit/views/db/current_clients.php');
 ?>
-<h1>Lead Conversion</h1>
 <section class="lead-block col-md-12 col-xs-12">
 <a name="leads"></a>
 <style type="text/css">

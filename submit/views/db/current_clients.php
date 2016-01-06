@@ -48,7 +48,7 @@
 		//echo $updated_user_status.', ';
 	}
 
-	include_once(ROOT.'inc/connection.php');
+	include_once(ROOT.'inc/huge.php');
 	// Detect Sort Parameter
 	if (isset($_GET['sort']) && $_GET['sort']!=='') {
 		switch ($_GET['sort']) {
@@ -98,7 +98,7 @@
 		default:
 			$sql = "SELECT * 
 			FROM  `users` 
-			WHERE `account_type` NOT LIKE '%admin%'
+			-- WHERE `account_type` NOT LIKE '%admin%'
 			ORDER BY  `users`.`$sort` DESC 
 			LIMIT 0 , 60";
 			break;
