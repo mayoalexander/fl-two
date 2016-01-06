@@ -366,6 +366,10 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       /*border-top:3px solid #e3e3e3;*/
       background-color: #101010;
     }
+    /* PANELS */
+    .dropdown-menu {
+      background-color:rgba(0,0,0,0.7);
+    }
     .feedback {
       font-size:10px;
     }

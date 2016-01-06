@@ -15,6 +15,7 @@ if (isset($user_name_session) == false) {
 
 
 echo "<button onclick=\"loadPage('http://freelabel.net/rssreader/index.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\"  alt='RSS'  class='btn btn-default lead_control widget_menu' alt='Navigation'>Admin Posts</button>";
+echo "<button onclick=\"window.open('http://freelabel.net/rssreader/index.php?uid=".$user_name_session."')\"  alt='Upload'  class='btn btn-social btn-social-icon lead_control widget_menu' alt='Navigation'>Upload</button>";
 
 echo '<hr>';
 
@@ -58,14 +59,22 @@ echo '<hr>';
 	.marketing .row {
 		margin-bottom:2%;
 	}
+  .rss-list {
+    padding:1em;
+  }
+  .rss-third-partys {
+    vertical-align: top;
+  }
 </style>
 <script type="text/javascript">
 $(function() {
 
   $(".get_player_button").click(function(){
-	//alert($(this));
+  // console.log($(this));
 	var iframe = 0 , start = 0, end = 0, mp3data = 0;
-    var mp3data = $(this).parent().parent().find('textarea').text();
+    var mp3data = $(this).parent().parent().parent().find('textarea').text();
+  // console.log(mp3data);
+
     //var mp3data = decodeURI(mp3data);
     //var mp3data = mp3data.find('iframe').attr('href');
 	//console.log($(this));
@@ -407,8 +416,8 @@ $audiofile_input = "<input type='text' name='trackmp3' value='".$soundcloud_url.
 
 ";
                  $feed3 .= '
-                 <div class="row">
-                   <div class="col-md-8" style="text-align:left;margin-bottom:0.5;" >
+                 <div class="rss-item row">
+                   <div class="rss-item-details col-md-8" style="text-align:left;margin-bottom:0.5;" >
                        <a  href="'. $item_link. '" target="_blank">
                           <span style="font-size:18px;" >' . $item->title . "</span>
                        </a>
@@ -416,26 +425,22 @@ $audiofile_input = "<input type='text' name='trackmp3' value='".$soundcloud_url.
 
                        ".$post_to_blog_button."
                    </div>
-                   <div class='col-md-4' style='text-align:left;margin-bottom:0.5;' >
-                      <a href='https://twitter.com/search?q=".urlencode($titleEncode)."&vertical=default&f=images' class='btn btn-xs btn-danger' target='_blank'>Twitpic</a>
-                      <!--<button id='update_post_button_".$key."' class='btn btn-xs btn-primary glyphicon glyphicon-edit' alt='Edit' onclick='post_block_".$key."()'/>edit</button>
-                      <a target=\"_blank\"  class=\"btn btn-xs btn-warning\"  href=\"".$item_link."\" class=\"twitter-mention-button\" data-related=\"AMRadioLIVE\">Visit</a>
-
-                      -->
-                      <input type='button' id='update_post_button_".$key."' class='btn btn-xs btn-primary' value='Upload' onclick='window.open(\"http://freelabel.net/upload/?uid=admin&".$key."\")'/>
-                      <button class='btn btn-primary get_player_button'>Get MP3</button>
+                   <div class='rss-item-controls col-md-4' style='text-align:left;margin-bottom:0.5;' >
+                    <button class='btn btn-social btn-facebook dropdown-toggle pull-right' type='button' data-toggle='dropdown'>Options</button>
+                    <panel class='dropdown-menu' >
+                      <a href='https://twitter.com/search?q=".urlencode($titleEncode)."&vertical=default&f=images' class='btn btn-social btn-twitter' target='_blank'>Twitpic</a>
+                      <a id='update_post_button_".$key."' class='btn btn-social btn-google-plus' onclick='window.open(\"http://freelabel.net/upload/?uid=admin&".$key."\")'>Upload</a>
+                      <button class='btn btn-social get_player_button'>Get MP3</button>
+                    </panel>
 
                    </div>
                  </div>
 
 
 
-
-                 <hr>
-
                  ";
                  echo "
-        <script>
+          <script>
 
               function post_block_".$key."() {
                 postBlock=document.getElementById('post_block_".$key."');
@@ -456,22 +461,12 @@ $audiofile_input = "<input type='text' name='trackmp3' value='".$soundcloud_url.
           </script>";
               }
 
-              echo '<div class="col-md-8" style="text-align:center;">
-              ';
-
-
               echo '
-                              <div class="panel-body" >
-                              '.$feed3.'
-                              </div>
-                    </div>';
+              <div class="rss-list col-md-12" style="text-align:center;">
+              '.$feed3.'
+              </div>';
+
 }
 
 ?>
-<div class="col-md-4">
-  <!-- SOUNDCLOUD PLAYER -->
-  <iframe width="100%" height="500" src="https://www.youtube.com/embed/videoseries?list=PL1LgddtBsW6nZTq0nLP0EQI-auszSml6y" frameborder="0" allowfullscreen></iframe>
-  <hr>
-  <iframe width="100%" height="500" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/54315339&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-</div>
 </div>
