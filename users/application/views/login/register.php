@@ -261,7 +261,7 @@
                 <li class="list-group-item">Featured Singles/Project Releases</li>
                 <li class="list-group-item">Flyer Design</li>
               </ul>
-              <a href="http://freelabel.net/confirm/basic" class="btn btn-primary cta-button-trigger">Start FREETRIAL</a>
+              <a href="http://freelabel.net/confirm/sub" class="btn btn-primary cta-button-trigger">Start FREETRIAL</a>
             </div>
           </div>
 <!--           <div class="col-md-4 p-t-md wp wp-6">
