@@ -131,18 +131,6 @@
  -->
 
 
- <header class="jumbotron bg-inverse text-center center-vertically" role="banner">
-   <div class="container">
-     <h1 class="display-3">Want More?</h1>
-     <h2 class="m-b-lg">Create your account! <a href="" class="jumbolink">Become the Movement</a>.</h2>
-     <a class="btn btn-secondary-outline m-b-md" href="https://www.facebook.com/dialog/oauth?client_id=450514531818920&redirect_uri=http%3A%2F%2Ffreelabel.net%2Fusers%2Flogin%2FregisterWithFacebook&state=a12898f06291c3d8aba047bcc535d9d0&sdk=php-sdk-3.2.3&scope=email#" role="button"><span class="icon-facebook"></span>Signin with Facebook</a>
-     <ul class="list-inline social-share">
-       <li><a class="nav-link" href="http://twitter.com/<?php echo $site['twitter']; ?>#"><span class="icon-twitter"></span> <?php echo $site['landing-info']['twitter']; ?></a></li>
-       <li><a class="nav-link" href="https://www.facebook.com/theAMRecords/#"><span class="icon-facebook"></span> <?php echo $site['landing-info']['facebook']; ?></a></li>
-     </ul>
-   </div>
- </header>
-
 
 <script type="text/javascript">
   $(function(){

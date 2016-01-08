@@ -14,4 +14,10 @@ catch(PDOException $e)
     echo $sql . "<br>" . $e->getMessage();
     }
 
+
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
 ?>

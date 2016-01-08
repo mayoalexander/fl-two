@@ -59,7 +59,7 @@
                 echo $config->build_input($params); ?>
 
                 <input type="checkbox" name="user_rememberme" class="remember-me-checkbox" />
-                <label class="remember-me-label">Keep me logged in (for 2 weeks)</label>
+                <label class="remember-me-label">Keep Me Logged-in</label>
 
                 <span class="input input--akira">
                   <input name="submit" class="input__field input__field--akira" type="submit" value="Login" id="user_name">

@@ -1,7 +1,14 @@
-<?php include_once('/home/content/59/13071759/html/config/index.php');
-// include_once(ROOT.'twitter/index.php');
+<?php
+include_once('/home/content/59/13071759/html/config/index.php');
+require(ROOT.'inc/conn.php');
+
+
+$result = $conn->query('select * from twitter_data WHERE timestamp LIKE "%01-07%" ORDER BY `id` DESC');
+$numb_soms_sent = count($result->fetchAll());
+
+
 $leads_conversion = new Config();
-//include_once(ROOT.'submit/views/db/current_clients.php');
+
 ?>
 <section class="lead-block col-md-12 col-xs-12">
 <a name="leads"></a>
@@ -50,6 +57,9 @@ function editLead(id) {
 		});
 	}
 }
+
+
+
 
 function followUpLead(id) {
 		var lead_id = $('#delete_form_' + id + ' input[name=lead_id').val()
@@ -367,6 +377,9 @@ $submit_form = '<br><form class="form-horizontal" method="POST" action="http://f
 			<h3 class="panel-title">LEADS: <span class="text-muted">last updated '.$how_recent.'<span></h3>
 		</div>
 		<hr>
+
+			<span>Messages Sent: </span>
+			<span>'.$numb_soms_sent.'</span>
 		<div>
 			'.$todays_date.' // EST REV | <span class="label label-success"  >$'.$total_sales.' / $'.$total_sales_quota.'</span> - <span class="label label-success"  >'.$sales_progress.'% ('.$number_of_leads.'/'.$min_sales.')</span>
 		</div>

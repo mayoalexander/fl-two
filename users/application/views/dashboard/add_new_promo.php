@@ -2,6 +2,8 @@
 include_once('/home/content/59/13071759/html/config/index.php');
 $config = new Blog();
 $user_files = $config->get_all_files(Session::get('user_name'));
+// var_dump($user_files);
+// exit;
 ?>
 <form class="add-new-promo-form">
 
@@ -29,7 +31,7 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 	<select name="files[]" multiple class="form-control" required>
 		<?php
 		foreach ($user_files as $key => $file) {
-			echo "<option value='".$file['id']."' >".$file['name']."</option>";
+			echo "<option value='".$file['id']."' >".$file['twitter']." - ".$file['blogtitle']."</option>";
 		}
 		?>
 	</select>

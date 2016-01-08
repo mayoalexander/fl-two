@@ -5,7 +5,6 @@
 // --------------------------------------------- //
 
 
-
 /**
 * Edit User Posts
 */
@@ -502,14 +501,12 @@ if ($_POST['user_photo_id']) {
 
 
 
-
-
-
 // ------------------------------------------------------------ //
 // 		UPDATE LEADS SCRIPT
 // ------------------------------------------------------------ //
 
-if ($_POST['lead_script_id']) {
+if (isset($_POST['lead_script_id'])) {
+
 	$leads = new Leads;
 
 	if (strpos($_POST['lead_script_id'], 'lead-script')===0){
@@ -526,8 +523,8 @@ if ($_POST['lead_script_id']) {
 		//echo '<hr>';
 		echo $leads->updateDB($update);
 	}
-	//print_r($update);
-	//exit;
+	// print_r($update);
+	// exit;
 }
 
 

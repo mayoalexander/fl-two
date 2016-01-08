@@ -21,7 +21,7 @@ include_once('/home/content/59/13071759/html/config/index.php');
 	font-size: 80%;
 	display: inline-block;
 }
-#phonescript {
+/*#phonescript {
 	font-size: 100%;
 	background-color: #303030;
 	text-shadow:none;
@@ -29,7 +29,7 @@ include_once('/home/content/59/13071759/html/config/index.php');
 	padding: 2%;
 	text-align: justify;
 	border-radius: 5px;
-}
+}*/
 .script-int {
 	color:red;
 	font-weight: bolder;
@@ -218,7 +218,7 @@ Now Available on FREELABEL.net");
 				  	$script_id = $row['id'];
 				  	$i=1;
 				  	foreach ($script as $key => $value) {
-				  		echo '<div class="lead script-item" id="lead-script-'.$key.'-'.$row['id'].'" ><span class="script-int text-muted">'.$i.'</span><data class="edit">'.$value.'</data></div>';
+				  		echo '<div class="lead script-item" ><span class="script-int text-muted">'.$i.'</span><data class="edit" id="lead-script-'.$key.'-'.$row['id'].'" >'.$value.'</data></div>';
 				  		$i++;
 				  	}
 				  	$i++;
@@ -271,7 +271,7 @@ Now Available on FREELABEL.net");
 				?>
 
 <hr>
-			<div id="phonescript" >
+			<div id="phonescript" class="card card-chart" >
 				
 				<?php $phonescript = "Hi this is YO NAME with FREELABEL Radio & Magazine. Our DJs approved your submissions & wanted me to follow up with you about getting your account created so we can start getting you placed on our radio & magazine interviews, projects, videos, & events this month.<br><br><br>
 
@@ -311,30 +311,7 @@ Are you by a computer, cell phone, or anything that you could use to get on the 
 IF YOU CREATE AN ARTIST ACCOUNT WITH US, WE'LL FEATURE AN INTERVIEW OR MUSIC REVIEWS EACH MONTH + WE'LL PROMOTE YOUR VIDEOS, ALBUMS, PROJECTS, OR SINGLES ALL MONTH SUCH AS RADIO SHOWCASES, BLOG REVIEWS OF EACH OF YOUR SINGLES, and WEEKLY INTERVIEWS TO TALK ABOUT YOUR UPCOMING EVENTS AND PROJECTS FOR $35 MONTH<br><br>
 
 && EXCLUSIVE ACCOUNTS: WE DISTRIBUTE YOUR MUSIC & YOU EARN 100% ROYALTIES. WE HAVE OTHER CLIENTS WHO EARN UP OVER $5,000+ EACH MONT BY HAVING OVER 1000 FANS SUBSCIBED TO THEIR ACCOUNT - $199 MONTH"; 
-/*
 
-
-onClick="this.select();"
-onClick="this.select();"
-onClick="this.select();"
-onClick="this.select();"
-onClick="this.select();"
-onClick="this.select();"
-onClick="this.select();"
-onClick="this.select();"
-onClick="this.select();"
-onClick="this.select();"
-onClick="this.select();"
-onClick="this.select();"
-onClick="this.select();"
-onClick="this.select();"
-onClick="this.select();"
-onClick="this.select();"
-onClick="this.select();"
-onClick="this.select();"
-
-
-*/
 if ($script_id=='') {
 	$script_id = 'testing_row';
 }
