@@ -325,6 +325,11 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       color:<?php echo $site['primary-color']; ?>;
       display:block;
     }
+    .post-item .list-writeup {
+      font-size:14px;
+      display:block;
+      margin-top: 1%;
+    }
     .post-item .col-md-1 {
       position: static;
     }

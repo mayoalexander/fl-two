@@ -1158,8 +1158,7 @@ class UploadHandler
 
 
         // 3RD PARTY APIs
-        // $twitpic = $upload->getTwitpicURL($filedata);
-        $twitpic = '';
+        $twitpic = $upload->getTwitpicURL($filedata);
 
         // DETECT FILE TYPE
         if ( strpos($filepath, 'mp3') ) {
@@ -1169,7 +1168,7 @@ class UploadHandler
         }
 
         $filedata['description'] = $_POST['description'][0];
-        if (strpos($filedata['description'], 'livemixtapes')) {
+        if (strpos($filedata['description'], 'livemixtapes') == true) {
             $filedata['description'] = '<iframe frameborder="0" style="width:100%;max-height:450px;" src="'.$filedata['description'].'"/>';
         }
 
