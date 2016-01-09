@@ -760,7 +760,7 @@ if($_GET['som']=='1')
             -->
             <section>
             <a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=all" class="btn btn-success col-md-1" target="_blank">Auto</a>
-            <a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&cat=mainstream" class="btn btn-success col-md-1" target="_blank">Clients</a>
+            <a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=clients" class="btn btn-success col-md-1" target="_blank">Clients</a>
             <a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&organic=1" class="btn btn-success col-md-1" target="_blank">Organic</a>
             <a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1" class="btn btn-success col-md-1" target="_blank">Recent</a>
 

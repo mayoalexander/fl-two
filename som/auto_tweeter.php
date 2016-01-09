@@ -18,6 +18,8 @@ WHERE `user_name` NOT LIKE '%admin%'
 LIMIT 0 , 0";
 } elseif($_GET['cat']=='all') {
   $query = "SELECT * FROM  `feed` WHERE `user_name` LIKE '%admin%' ORDER BY `id` DESC LIMIT 0 , 30";
+} elseif($_GET['cat']=='clients') {
+  $query = "SELECT * FROM  `feed` WHERE `user_name` NOT LIKE '%admin%' ORDER BY `id` DESC LIMIT 0 , 30";
 } else {
   $query = "SELECT * FROM  `feed` WHERE `user_name`  NOT LIKE '%admin%' ORDER BY `id` OR `user_name` LIKE '%admin%' LIMIT 0 , 60";
 }

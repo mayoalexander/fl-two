@@ -338,35 +338,6 @@ $submit_form = '<br><form class="form-horizontal" method="POST" action="http://f
 </fieldset>
 </form>';
 ?>
-<script>
-	function dmsStart() {
-		//alert('DMS STARTED');// getAllDMS
-		loadWidget('twitter');
-		//window.open('http://freelabel.net/som/index.php?som=findfriends&q=7&stayopen=1&min=0.2');
-		// do this later --> window.open('http://freelabel.net/som/index.php?som=getAllDMS');
-		//window.open('http://freelabel.net/som/index.php?som=dms');
-	}
-	
-	function rtmStart() {
-		dmsStart();
-		window.open('http://freelabel.net/som/index.php?som=1&stayopen=1&mins=9');
-		//window.open('http://freelabel.net/som/index.php?som=getAllDMS');
-		window.open('http://web.crowdfireapp.com/#/142121102-tw/nonFollowers?orderBy=OLDEST_FIRST')
-		window.open('http://tweetdeck.twitter.com/')
-		window.open('http://freelabel.net/x/s.php');
-	}
-	function somStart() {
-		window.open('http://freelabel.net/som/index.php?som=1&stayopen=1&mins=9');
-		window.open('http://freelabel.net/twitter/?som=1&q=1');
-		loadPage('http://freelabel.net/rssreader/cosign.php?control=update&rss=1', '#main_display_panel', 'mag')
-	}
-	
-	
-	function somLogout() {
-		window.open('http://freelabel.net/som/clearsessions.php');
-	}
-
-</script>
 <?php 
 	$todays_date = date('M/d/Y');
 	$progress_bars = '
