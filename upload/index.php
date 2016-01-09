@@ -125,10 +125,11 @@ if ( file_exists($path)) {
        margin-top:10vh;
        margin-bottom:10vh;
     }
+    .photo-upload-results img {
+        max-height:250px;
+    }
     .dashboard-view {
         padding-bottom: 1vh;
-        //position:absolute;
-        //top: 0;
     }
     .uploaded-file-options {
         display: none;

@@ -15,6 +15,7 @@
     $config = new Blog($_SERVER['HTTP_HOST']);
     $site = $config->getSiteData($config->site);
     $site['media']['photos']['front-page'] = $config->getPhotoAds($site['creator'], 'front');
+    $site['media']['photos']['ads'] = $config->getPhotoAds($site['creator'], 'current-promo');
     // LOAD USER DATA
 
     if (!$_SESSION) {
@@ -263,11 +264,30 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     .border-alert {
       border:solid red 3px;
     }
+
+
+
+
+
+
+    /* ------------------------------------------
+          PROMOTIONS FUNCTIONALITY 
+    ------------------------------------------ */
     .jumbotron {
       background-image: <?php $r = rand(0,2); echo 'url("'.$site['media']['photos']['front-page'][$r]['image'].'")'; ?> ;
       min-height: 100vh;
       background-position:center top ;
     }
+    .featured-ad img {
+      width: 100%;
+    }
+
+
+
+
+
+
+
     .promotion-player-button {
       font-size:3em;
     }
