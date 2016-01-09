@@ -243,7 +243,7 @@ $result = mysqli_query($con,"SELECT * FROM leads WHERE
 		}
 			$number_of_leads = count($leads);
 			$min_sales = 60;
-			$price = 60;
+			$price = 10;
 			// GET PERCENTAGACES
 			$sales_progress = round(($number_of_leads / $min_sales) * 100);
 			$total_sales 	= number_format($number_of_leads * $price);
@@ -377,13 +377,27 @@ $submit_form = '<br><form class="form-horizontal" method="POST" action="http://f
 			<h3 class="panel-title">LEADS: <span class="text-muted">last updated '.$how_recent.'<span></h3>
 		</div>
 		<hr>
+			<h3>Analytics:</h3>
+			
+			<div class="col-md-2">
+				<h4>Date: </h4>
+				<h5 class="text-muted">'.$todays_date.'</h5>
+			</div>
+			<div class="col-md-2">
+				<h4>Messages Sent: </h4>
+				<h5 class="text-muted">'.$numb_soms_sent.'</h5>
+			</div>
+			<div class="col-md-2">
+				<h4>Leads Added Today: </h4>
+				<h5 class="text-muted">'.$number_of_leads.'/'.$min_sales.'</h5>
+			</div>
+			<div class="col-md-2">
+				<h4>Estimated Revenue: </h4>
+				<h5 class="text-muted">$'.$total_sales.'/$'.$total_sales_quota.'</h5>
+			</div>
 
-			<span>Messages Sent: </span>
-			<span>'.$numb_soms_sent.'</span>
-		<div>
-			'.$todays_date.' // EST REV | <span class="label label-success"  >$'.$total_sales.' / $'.$total_sales_quota.'</span> - <span class="label label-success"  >'.$sales_progress.'% ('.$number_of_leads.'/'.$min_sales.')</span>
-		</div>
-		<hr>
+
+
 
 	    <div class="progress">
 		  <div class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width:'.$sales_progress.'%;">
@@ -403,7 +417,8 @@ $submit_form = '<br><form class="form-horizontal" method="POST" action="http://f
 
 
 
-<div class='panel-body'>
+<div class='panel-body' style="margin-top:10%;">
+	<h3>Sort by:</h3>
         <a onclick="loadPage('http://freelabel.net/submit/views/db/leads.php?leads=today', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>Today</a>
         <a onclick="loadPage('http://freelabel.net/submit/views/db/leads.php?leads=all', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>All</a>
         <a onclick="loadPage('http://freelabel.net/submit/views/db/leads.php?leads=yesterday', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>Yesterday</a>
