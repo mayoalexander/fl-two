@@ -50,9 +50,6 @@ if ($_GET['dev']==1) {
 	<meta name="Language" content="English">
 
 
-
-
-
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:player" content="<?php echo $page_url;?>">
 	<meta name="twitter:player:width" content="300">
@@ -103,9 +100,9 @@ if ($_GET['dev']==1) {
 
 
 	<!-- hover styles -->
-	<link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/hover/css/normalize.css" />
+<!-- 	<link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/hover/css/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/hover/css/demo.css" />
-	<link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/hover/css/set2.css" />
+	<link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/hover/css/set2.css" /> -->
 	<link rel="stylesheet" href="http://freelabel.net/AudioPlayer/css/audioplayer.css" type='text/css'
 
 
@@ -205,15 +202,6 @@ if ($_GET['dev']==1) {
   			</header>
   			<button class="trigger" data-info="View More"><span>Trigger</span></button>
   			<div class="title">
-  				<nav class="codrops-demos" style="display:none;">
-  					<a class="current-demo" href="index.html">Push</a>
-  					<a href="index2.html">Fade Out</a>
-  					<a href="index3.html">Sliced</a>
-  					<a href="index4.html">Side</a>
-  					<a href="index5.html">Fixed Side</a>
-  					<a href="index6.html">Grid</a>
-  					<a href="index7.html">Jam 3</a>
-  				</nav>
   				<h1><?php echo $blogtitle ?></h1>
   				<p class="subline"><?php echo $twitter ?></p>
   				<p><?php
@@ -254,10 +242,10 @@ if ($_GET['dev']==1) {
 
   			<section class="related-posts">
   				<?php
-					echo $config->getPostsRelatedGallery($twitter);
-  				//$stream_pull ='related';
-  				//$search_query =$twitter;
-  				//include(ROOT.'singles/related.php');
+					// echo $config->getPostsRelatedGallery($twitter);
+  				$stream_pull ='related';
+  				$search_query =$twitter;
+  				include(ROOT.'singles/related.php');
   				?>
   			</section>
   		</div><!-- /container -->
