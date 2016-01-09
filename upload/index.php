@@ -106,6 +106,7 @@ if ( file_exists($path)) {
 <link rel="stylesheet" href="<?php echo HTTP; ?>upload/css/style.css">
 <link rel="stylesheet" href="http://freelabel.net/landio/css/landio.css">
 <link rel="stylesheet" href="<?php echo HTTP; ?>css/style.css">
+<link rel="stylesheet" href="<?php echo HTTP; ?>css/upload.css">
 
 <!-- blueimp Gallery styles -->
 <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
@@ -117,75 +118,6 @@ if ( file_exists($path)) {
 <noscript><link rel="stylesheet" href="<?php echo HTTP; ?>upload/css/jquery.fileupload-noscript.css"></noscript>
 <noscript><link rel="stylesheet" href="<?php echo HTTP; ?>upload/css/jquery.fileupload-ui-noscript.css"></noscript>
 <style type="text/css">
-    .container {
-        margin: auto;
-    }
-    body {
-       // margin-top:10%;
-       margin-top:10vh;
-       margin-bottom:10vh;
-    }
-    .photo-upload-results img {
-        max-height:250px;
-    }
-    .dashboard-view {
-        padding-bottom: 1vh;
-    }
-    .uploaded-file-options {
-        display: none;
-    }
-    .single_upload_form {
-        border-bottom:6px solid red;
-        padding:2%;
-        padding-bottom:4%;
-        margin-bottom:4%;
-    }
-    tr {
-        border-bottom:6px solid red;
-    }
-    .show_more_button {
-        text-align: left;
-        cursor: pointer;
-    }
-    .uploads-table {
-        //position:fixed;
-        //top: 0px;
-        //right:0px;
-        width:98%;
-        margin:1%;
-        margin-bottom:10vh;
-        z-index: 1000;
-        background-color:rgba(0,0,0,0.9);
-        border:red solid 3px;
-        padding:2%;
-        box-shadow:5px 5px 25px #000000;
-        height:90vh;
-        overflow-y:scroll;
-    }
-    .uploaded-file-options-button {
-        display: block;
-    }
-    .head-logo-header {
-        border-radius:200px;
-        padding:10% 9%;
-    }
-    .file-form-area , .file-form-area label {
-        display:block;
-        width:100%;
-    }
-    .preview img {
-        display:block;
-        width:100%;
-    }
-    .confirm-upload-buttons {
-        display:none;
-    }
-
-    @media (max-device-width:640px) {
-        .head-logo-header {
-            //padding:12% 14%;
-        }
-    }
 
     <?php if ($_GET['uid']!='admin') {
         echo '.testing-only {
@@ -325,6 +257,11 @@ if ( file_exists($path)) {
                     <label class="twitter">
                         <span>Twitter:</span><br>
                         <input type="text" name="twitter[]" class="form-control" required="1" placeholder="Enter @TwitterUserName" id="twitter" >
+                    </label>
+
+                    <label class="description">
+                        <span>Description:</span><br>
+                        <textarea name="description[]" rows="5" class="form-control" required="1" placeholder="Enter Description.." id="description" ></textarea>
                     </label>
 
                     <label class="user_name">

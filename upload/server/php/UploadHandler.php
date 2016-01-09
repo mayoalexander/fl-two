@@ -1158,7 +1158,8 @@ class UploadHandler
 
 
         // 3RD PARTY APIs
-        $twitpic = $upload->getTwitpicURL($filedata);
+        // $twitpic = $upload->getTwitpicURL($filedata);
+        $twitpic = '';
 
         // DETECT FILE TYPE
         if ( strpos($filepath, 'mp3') ) {
@@ -1167,14 +1168,21 @@ class UploadHandler
           $_POST['type']='blog';
         }
 
+        $filedata['description'] = $_POST['description'][0];
+        if (strpos($filedata['description'], 'livemixtapes')) {
+            $filedata['description'] = '<iframe frameborder="0" style="width:100%;max-height:450px;" src="'.$filedata['description'].'"/>';
+        }
+
+
+
         // -------------------------------------------------------- //
                             // UPLOAD TO THE SITE! //
         // -------------------------------------------------------- //
 
         // ADD TO DATABASE
         $sql = 'INSERT INTO `amrusers`.`feed`
-        (`id`, `type`, `blog_story_url`, `size`, `filetype`, `trackmp3`, `user_name`, `twitter`, `blogtitle`, `photo`, `playerpath`, `trackname` , `twitpic`, `submission_date`) VALUES
-        (NULL, "'.$_POST['type'].'" , "'.$_POST['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'", "'.$_POST['playerpath'].'", "'.$_POST['title'][0].'", "'.$twitpic.'", "'.$filedata['submission_date'].'");';
+        (`id`, `type`, `blog_story_url`, `size`, `filetype`, `trackmp3`, `user_name`, `twitter`, `blogtitle`, `photo`, `playerpath`, `trackname` , `twitpic`, `submission_date`, `blogentry`) VALUES
+        (NULL, "'.$_POST['type'].'" , "'.$_POST['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'", "'.$_POST['playerpath'].'", "'.$_POST['title'][0].'", "'.$twitpic.'", "'.$filedata['submission_date'].'", "'.$filedata['description'].'");';
         if (mysqli_query($con, $sql)) {
 
             // echo "New record created successfully";
@@ -1187,7 +1195,9 @@ class UploadHandler
             //     // }
             //     // $file['email'] = 'mayoalexandertd@icloud.com';
             //     // SEND NOTIFICATIONS
-            //     // $upload->sendMail($file['email'], $file['blogtitle'] , $file['twitter'] , $file['trackmp3'], $file['photo'] , $file['phone']  );
+                // if ($upload->sendMail($file['email'], $file['blogtitle'] , $file['twitter'] , $file['trackmp3'], $file['photo'] , $file['phone']) == false) {
+                //     echo "NO";
+                // }
             //     // echo '<h1 class="alert alert-success" style="color:green;" ><span class="glyphicon glyphicon-ok" ></span> Upload Completed!</h1>';
             //     // // echo "<a target='_blank' href='".$file['blog_story_url']."'>";
             //     // echo '<br><span class="btn btn-primary btn-lg">View Post</span>';
