@@ -288,6 +288,16 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
 
 
 
+    /* ------------------------------------------
+          PROMOTIONS FUNCTIONALITY 
+    ------------------------------------------ */
+    .script-responses {
+      list-style-type: none;
+    }
+
+
+
+
     .promotion-player-button {
       font-size:3em;
     }

@@ -98,14 +98,13 @@
 		default:
 			$sql = "SELECT * 
 			FROM  `users` 
-			-- WHERE `account_type` NOT LIKE '%admin%'
 			ORDER BY  `users`.`$sort` DESC 
 			LIMIT 0 , 60";
 			break;
 	}
 	// Debugging
 	//print_r($_GET);
-	//print_r($sql);
+	// print_r($sql);
 
 
 		$result = mysqli_query($con,$sql);
@@ -258,7 +257,7 @@ FREELABEL Featured: ".$name." (".$twitter.")
 											    	'.$photo.'
 											    </td>
 											    <td>
-											    	'.$user_id.'
+											    	'.$user_id.')
 											    </td>
 											    <td>
 											    	'.$name.'

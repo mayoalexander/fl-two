@@ -179,14 +179,14 @@ class Account
 	}
 
 	public function updateUserEmail($update) {
-		include(ROOT.'/inc/connection.php');
-		$sql = "UPDATE  `amrusers`.`users` SET  `user_email` =  '".$update['user_title']."' WHERE  `users`.`user_id` ='".$update['user_id']."' LIMIT 1";
+		include(ROOT.'inc/huge.php');
+		$sql = "UPDATE  `hugee`.`users` SET  `user_email` =  '".$update['user_title']."' WHERE  `users`.`user_id` ='".$update['user_id']."' LIMIT 1";
 		$approval_query = mysqli_query($con,$sql);
 		if ($approval_query) {
 			$update_status = $update['user_title'];
 		} else {
-			echo 'it didnt work!';
-			print_r($sql);
+			// echo 'it didnt work!';
+			// print_r($sql);
 			$update_status = false;
 		}
 		return $update_status;
@@ -194,14 +194,14 @@ class Account
 
 
 	public function updateUserType($update) {
-		include(ROOT.'/inc/connection.php');
-		$sql = "UPDATE  `amrusers`.`users` SET  `account_type` =  '".$update['user_title']."' WHERE  `users`.`user_id` ='".$update['user_id']."' LIMIT 1";
+		include(ROOT.'inc/huge.php');
+		$sql = "UPDATE  `hugee`.`users` SET  `account_type` =  '".$update['user_title']."' WHERE  `users`.`user_id` ='".$update['user_id']."' LIMIT 1";
 		$approval_query = mysqli_query($con,$sql);
 		if ($approval_query) {
 			$update_status = $update['user_title'];
 		} else {
-			echo 'it didnt work!';
-			print_r($sql);
+			// echo 'it didnt work!';
+			// print_r($sql);
 			$update_status = false;
 		}
 		return $update_status;
@@ -595,18 +595,18 @@ if (isset($_POST['promo'])) {
 
 if ($_POST['user_account_id']) {
 	$photos = new Account();
-	//echo 'Updating user id!';
-	//print_r($_POST);
+	// echo 'Updating user id! <br>';
+	// print_r($_POST);
 	if (strpos($_POST['user_account_id'], 'email')===0){
 		$update['user_id'] = str_replace('email-', '', $_POST['user_account_id']) ;
 		$update['user_title'] = $_POST['title'];
-		//echo 'editing TITLE: ';
+		//echo 'editing Email: ';
 		echo $photos->updateUserEmail($update);
 
 	} elseif (strpos($_POST['user_account_id'], 'type')===0){
 		$update['user_id'] = str_replace('type-', '', $_POST['user_account_id']) ;
 		$update['user_title'] = $_POST['title'];
-		//echo 'editing TITLE: ';
+		//echo 'editing Type: ';
 		echo $photos->updateUserType($update);
 
 	} else {
