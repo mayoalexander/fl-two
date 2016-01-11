@@ -8,6 +8,17 @@ if (isset($_POST["page"]) ) {
 } else {
 	$tag = '';
 }
+
+$user_name = Session::get('user_name') ;
+
+if ($user_name = 'admin' OR $user_name = "thatdudewayne") {
+
+} else {
+
+}
+// ADMIN SETTINGS
+
+
 ?>
 <nav class="event-option-panel btn-group" style="background-color:transparent;text-align:left;border-bottom:3px solid #303030;padding:2% 0%;">
 	<button class="btn btn-success btn-xs col-md-3 col-xs-12 add-new-media-audio" data-link="http://freelabel.net/upload/?uid=<?php echo Session::get('user_name'); ?>&type=idea" ><i class="fa fa-plus"></i> Add New Audio</button> | 
@@ -16,7 +27,7 @@ if (isset($_POST["page"]) ) {
 </nav>
 
 <!-- display content  -->
-<?php $files = $config->get_user_posts(Session::get('user_name') , 20);
+<?php $files = $config->get_user_posts($user_name, 20);
 echo $files['posts']; ?>
 
 

@@ -817,7 +817,7 @@ echo '<table class="table col-md-12">';
 			$need_music	.= '<a href="http://freelabel.net/som/index.php?dm=1&t='.$lead_twitter_noat.'&text='.$leadScript[3].'" target="_blank" class="btn btn-default btn-xs" role="menuitem" tabindex="-1" ><span class="glyphicon glyphicon-question-sign"></span> 9) '.urldecode(substr($leadScript[3],0,80)).'...</a>';
 			$need_music	.= '<a href="http://freelabel.net/som/index.php?dm=1&t='.$lead_twitter_noat.'&text='.$leadScript[4].'" target="_blank" class="btn btn-default btn-xs" role="menuitem" tabindex="-1" ><span class="glyphicon glyphicon-question-sign"></span> 10) '.urldecode(substr($leadScript[4],0,80)).'...</a>';
 			$need_music	.= '<a href="http://freelabel.net/som/index.php?dm=1&t='.$lead_twitter_noat.'&text='.$leadScript[5].'" target="_blank" class="btn btn-default btn-xs" role="menuitem" tabindex="-1" ><span class="glyphicon glyphicon-question-sign"></span> 11) '.urldecode(substr($leadScript[6],0,80)).'...</a><hr>';
-			$delete_lead =  "<form id='delete_lead_".$key."' method='POST' action='http://freelabel.net/submit/deletesingle.php' ><input name='lead_id' type='hidden' value='".$lead_id."'></form><button onclick='delete_lead(".$lead_id.")' class='btn btn-danger btn-xs'><i class='glyphicon glyphicon-trash' ></i></button>";
+			$delete_lead =  "<form id='delete_lead_".$key."' method='POST' action='http://freelabel.net/submit/deletesingle.php' ><input name='lead_id' type='hidden' value='".$lead_id."'></form><button onclick='delete_lead(".$lead_id.")' class='btn btn-danger btn-xs'><i class='fa fa-trash' ></i></button>";
 			
 			$lead_data[$row['lead_twitter']]['embed'] = '<a href="https://twitter.com/intent/tweet?screen_name='.$lead_twitter_noat.'&text='.$follow_up_tweet.'" target="_blank" ></a>
 
@@ -871,7 +871,7 @@ echo '<table class="table col-md-12">';
 
 				<td>
 				'.$delete_lead.'
-				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal-'.$key.'">Follow Up '.$key.'</button>
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal-'.$key.'"><i class="fa fa-comment" ></i></button>
 				<div id="myModal-'.$key.'" class="modal fade" role="dialog">
 				  <div class="modal-dialog">
 

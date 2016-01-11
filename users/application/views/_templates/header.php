@@ -222,6 +222,9 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       margin-bottom:3%;
       margin-top:3%;
     }
+    .dashboard-nav-group {
+      margin-bottom:2vh;
+    }
     .user-photo-item {
       width:100%;
     }
@@ -264,6 +267,16 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     .border-alert {
       border:solid red 3px;
     }
+    .background-tint {
+      position: absolute;
+      top: 10px;
+      right:10px;
+      height: 100vh;
+      width:100vw;
+      background-color: red;
+      opacity: 0.7;
+      z-index: 0;
+    }
 
 
 
@@ -274,7 +287,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
           PROMOTIONS FUNCTIONALITY 
     ------------------------------------------ */
     .jumbotron {
-      background-image: <?php $r = rand(0,2); echo 'url("'.$site['media']['photos']['front-page'][$r]['image'].'")'; ?> ;
+      background-image: <?php $r = rand(0,6); echo 'url("'.$site['media']['photos']['front-page'][$r]['image'].'")'; ?> ;
       min-height: 100vh;
       background-position:center top ;
     }
@@ -511,23 +524,6 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
                   // display site navigation map
                   echo $config->display_site_map($site , Session::get('user_logged_in'), Session::get('user_name'));
                 ?>
-                <!-- <li>
-                  <a class="gn-icon gn-icon-download">Downloads</a>
-                  <ul class="gn-submenu">
-                    <li><a class="gn-icon gn-icon-illustrator">Vector Illustrations</a></li>
-                    <li><a class="gn-icon gn-icon-photoshop">Photoshop files</a></li>
-                  </ul>
-                </li>
-                <li><a class="gn-icon gn-icon-cog">Settings</a></li>
-                <li><a class="gn-icon gn-icon-help">Help</a></li> -->
-                <!-- <li>
-                  <a class="gn-icon gn-icon-archive">Archives</a>
-                  <ul class="gn-submenu">
-                    <li><a class="gn-icon gn-icon-article">Articles</a></li>
-                    <li><a class="gn-icon gn-icon-pictures">Images</a></li>
-                    <li><a class="gn-icon gn-icon-videos">Videos</a></li>
-                  </ul>
-                </li> -->
               </ul>
             </div><!-- /gn-scroller -->
           </nav>
