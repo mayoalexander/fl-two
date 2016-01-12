@@ -76,7 +76,7 @@ echo '<hr>';
 $(function() {
 
   $('.rss-item .close-trigger').click(function(){
-
+    $(this).parent().parent().hide();
   });
 
   $(".get_player_button").click(function(){
