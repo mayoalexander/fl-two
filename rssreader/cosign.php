@@ -75,63 +75,58 @@ echo '<hr>';
 <script type="text/javascript">
 $(function() {
 
-  $(".get_player_button").click(function(){
-  // console.log($(this));
-	var iframe = 0 , start = 0, end = 0, mp3data = 0;
-    var mp3data = $(this).parent().parent().parent().find('textarea').text();
-  // console.log(mp3data);
+  $('.rss-item .close-trigger').click(function(){
 
-    //var mp3data = decodeURI(mp3data);
-    //var mp3data = mp3data.find('iframe').attr('href');
-	//console.log($(this));
+  });
+
+  $(".get_player_button").click(function(){
+    // console.log($(this));
+  	var iframe = 0 , start = 0, end = 0, mp3data = 0;
+    var mp3data = $(this).parent().parent().parent().find('textarea').text();
 
     if (mp3data.search('iframe')) {
 
-		if (mp3data.search('soundcloud.com')) {
-        /* SOUNDCLOUD */
-			    var iframe = mp3data.search('iframe');
-      		var start = mp3data.indexOf('src="',iframe) + 5;
-      		var end = mp3data.indexOf('">',start) - start;
-      		var mp3data = mp3data.substr(start,end);
-		} else if (mp3data.search('audiomack')) {
-        /* AUDIOMACK */
-			var iframe = mp3data.search('iframe');
-      		var start = mp3data.indexOf('src="',iframe) + 5;
-     		var end = mp3data.indexOf('" s',start) - start;
-      		var mp3data = mp3data.substr(start,end);
-		} else if (mp3data.search('livemixtapes')) {
-       /* LIVE MIXTAPES */
-			console.log('LIVEMIXTAPES NOT WORKING 100% Not Found!!!');
-			var iframe = mp3data.search('iframe');
-      		var start = mp3data.indexOf('src="',iframe);
-     		var end = mp3data.indexOf('" ',start) - start;
-      		var mp3data = mp3data.substr(start,end);
-		} else {
-      /* NOT FOUND! */
-			console.log('MP3 Not Found!!!');
-			var iframe = mp3data.search('iframe');
-      		var start = mp3data.indexOf('src="',iframe) + 5;
-     		var end = mp3data.indexOf('" ',start) - start;
-      		var mp3data = mp3data.substr(start,end);
-		}
+    		if (mp3data.search('soundcloud.com')) {
+            /* SOUNDCLOUD */
+    			    var iframe = mp3data.search('iframe');
+          		var start = mp3data.indexOf('src="',iframe) + 5;
+          		var end = mp3data.indexOf('">',start) - start;
+          		var mp3data = mp3data.substr(start,end);
+    		} else if (mp3data.search('audiomack')) {
+            /* AUDIOMACK */
+    			var iframe = mp3data.search('iframe');
+          		var start = mp3data.indexOf('src="',iframe) + 5;
+         		var end = mp3data.indexOf('" s',start) - start;
+          		var mp3data = mp3data.substr(start,end);
+    		} else if (mp3data.search('livemixtapes')) {
+           /* LIVE MIXTAPES */
+    			console.log('LIVEMIXTAPES NOT WORKING 100% Not Found!!!');
+    			var iframe = mp3data.search('iframe');
+          		var start = mp3data.indexOf('src="',iframe);
+         		var end = mp3data.indexOf('" ',start) - start;
+          		var mp3data = mp3data.substr(start,end);
+    		} else {
+          /* NOT FOUND! */
+    			console.log('MP3 Not Found!!!');
+    			var iframe = mp3data.search('iframe');
+          		var start = mp3data.indexOf('src="',iframe) + 5;
+         		var end = mp3data.indexOf('" ',start) - start;
+          		var mp3data = mp3data.substr(start,end);
+    		}
 
-      	console.log(mp3data + ' ' + start + ' ' + end);
-		$('#soundcloud_link').val(mp3data);
-		$('#twitpic #advanced_options').show('fast');
-		//alert(mp3data);
+          	console.log(mp3data + ' ' + start + ' ' + end);
+    		$('#soundcloud_link').val(mp3data);
+    		$('#twitpic #advanced_options').show('fast');
+
     } else {
-      //alert('no iframe found!');
-		//console.log(mp3data);
-		alert(mp3data);
+        //alert('no iframe found!');
+  		  //console.log(mp3data);
+		    alert(mp3data);
     }
-    //alert(mp3data);
+
   });
 
   // ---- UPLOAD PHOTO ------ //
-  //var formdata_PHO = $('.rss_ #photo')[0].files[0];
-  //var formdata = new FormData();
-  // Add the file to the request.
-  //formdata.append('photos[]', formdata_PHO);
 
 
   // ---- Post Data To Server ------ //
@@ -189,28 +184,7 @@ $(function() {
 
 <?php
 
-/*
 
-$rss_feed = array(//‘http://freelabelmagazine.wordpress.com/rss',
-  'http://info.drillinginfo.com/di-blog/feed/',
-  'http://feeds.feedburner.com/exploration-and-development-ogj',
-  'http://feeds.feedburner.com/drilling-and-production-ogj',
-  'http://www.oilandgasinvestor.com/ogi-feeds.xml',
-  'http://www.exxonmobilperspectives.com/feed/',
-  'http://energyindepth.org/feed/',
-  'http://www.shalemarkets.com/feed/',
-  'http://www.oilandgastechnology.net/rss.xml',
-  'http://breakingenergy.com/feed/',
-  'http://www.castagra.com/2013/09/10-top-oil-gas-blogs/feed/',
-  'http://fuelfix.com/feed/'
-  );
-
-*/
-
-
-
-
-// DRILL SITE TITLE
 $rss_feed = array(/*'http://freelabelmagazine.wordpress.com/rss',
   'https://freelabelcontent.wordpress.com/feed/', */
   //'http://freelabelnet.tumblr.com/rss' ,
@@ -424,6 +398,7 @@ $audiofile_input = "<input type='text' name='trackmp3' value='".$soundcloud_url.
                  $feed3 .= '
                  <div class="rss-item row">
                    <div class="rss-item-details col-md-8" style="text-align:left;margin-bottom:0.5;" >
+                   <span class="pull-right fa fa-close close-trigger" ></span>
                        <a href="'. $item_link. '" target="_blank">
                           <h3 style="font-size:18px;" >' . $item->title . "</h3>
                        </a>
