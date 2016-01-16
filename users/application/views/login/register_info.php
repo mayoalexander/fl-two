@@ -49,10 +49,10 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="<?php echo HTTP ; ?>landing/view/pricing/css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo HTTP ; ?>landing/view/pricing/css/demo.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo HTTP ; ?>landing/view/pricing/css/icons.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo HTTP ; ?>landing/view/pricing/css/component.css" />
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
     <style type="text/css">
         .pricing-list-info {
             list-style-type: none;

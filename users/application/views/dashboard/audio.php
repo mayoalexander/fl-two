@@ -12,14 +12,14 @@ if (isset($_POST["page"]) ) {
 $user_name = Session::get('user_name') ;
 
 // ADMIN SETTINGS
-if ($user_name = 'admin' OR $user_name = "thatdudewayne") {
+if ($user_name == 'admin' OR $user_name == "thatdudewayne") {
   $user_name = 'admin';
 }
 
 
 ?>
 <nav class="dashboard-nav-group event-option-panel btn-group" style="background-color:transparent;text-align:left;border-bottom:3px solid #303030;padding:2% 0%;">
-	<button class="btn btn-success btn-xs col-md-3 col-xs-12 add-new-media-audio" data-link="http://freelabel.net/upload/?uid=<?php echo Session::get('user_name'); ?>&type=idea" ><i class="fa fa-plus"></i> Add New Audio</button> | 
+	<button class="btn btn-success btn-xs col-md-3 col-xs-12 add-new-media-audio" data-link="http://freelabel.net/upload/?uid=<?php echo $user_name; ?>&type=idea" ><i class="fa fa-plus"></i> Add New Audio</button> | 
 	<a href="<?php echo $config->getUserURL(Session::get('user_name')); ?>" class="btn btn-default btn-xs">View Profile</a> |
 	<a href="http://freelabel.net/users/login/showprofile" class="btn btn-default btn-xs">Settings</a>
 </nav>

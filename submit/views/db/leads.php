@@ -2,8 +2,8 @@
 include_once('/home/content/59/13071759/html/config/index.php');
 require(ROOT.'inc/conn.php');
 
-
-$result = $conn->query('select * from twitter_data WHERE timestamp LIKE "%01-07%" ORDER BY `id` DESC');
+$todays_date = date('m-d');
+$result = $conn->query('select * from twitter_data WHERE timestamp LIKE "%'.$todays_date.'%" ORDER BY `id` DESC');
 $numb_soms_sent = count($result->fetchAll());
 
 
@@ -400,10 +400,6 @@ $submit_form = '<br><form class="form-horizontal" method="POST" action="http://f
         <a onclick="loadPage('http://freelabel.net/submit/views/db/leads.php?leads=priority', '#main_display_panel', 'dashboard', '<?php echo $user_name_session; ?>')" class='btn btn-default btn-xs'>       <span class="glyphicon glyphicon-cloud-upload"></span>Priority</a>
 </div>
 <hr>
-
-
-
-
 
 
 
@@ -920,7 +916,7 @@ mysqli_close($con);
 </div>
 <?php 
 	// VIEW MODEL
-	echo $submit_form; 
+	// echo $submit_form; 
 ?>
 
 <script type="text/javascript">

@@ -125,26 +125,27 @@ if ( file_exists($path)) {
         }';
         }
     ?>
+    .dashboard-view {
+        height:100vh;
+        background-color:#FE3F44;
+    }
+    /* mobile styles */
+    @media (max-width: 760px) {
+      .dashboard-view {
+        height:20vh;
+        min-height:220px;
+      }
+    }
+    body {
+        margin:0;
+    }
 </style>
 </head>
-<body style='padding-top:0;padding-bottom:80px;'>
+<body style='padding-top:0;padding-bottom:0;'>
 <a class='back-to-site' href='http://freelabel.net/users/dashboard/index/?ctrl=box' style='z-index:100;font-size:10px;'>&larr; Back to Site</a>
-<div class="containerxxxx">
+
 <center>
-    <br>
-
-
-
-    <header class='fit-to-vieww dashboard-view'>
-        <?php
-
-        if ($user_name_session == 'admin') {
-
-
-            //include(ROOT.'landing_1.3.php');
-        }
-
-        ?>
+    <header class='fit-to-vieww dashboard-view col-md-3'>
         <h1 style='background-color:#FE3F44;display:inline-block;margin-top:0;position:relative;bottom:25px;' class='fit-to-vieww head-logo-header'>
         <img src='http://freelabel.net/images/FREELABELLOGO.gif' style='background-color:#FE3F44;width:100px;margin-top:10px;vertical-align:top;display:block;'>
         <p style='text-transform: uppercase;color:#fff;'>
@@ -152,66 +153,52 @@ if ( file_exists($path)) {
             <span class='sub_header' style='position:relative;bottom:5px;left:10px;'><?php echo $page_title; ?></span>
         </p>
         </h1>
+<!--         <h1 class="sub_header" style='margin-top:5%;margin-bottom:5%;' >DRAG & DROP</h1>
+        <p>Just drag and drop your music to send it to FREELABEL Radio and Magazine.</p>
+        <span class='glyphicon glyphicon glyphicon-import big-text'></span> -->
     </header>
-
-
-        <section class='col-xs-12 col-md-12' style='display:none;'>
-                <h1 class="sub_header" style='margin-top:5%;margin-bottom:5%;' >DRAG & DROP</h1>
-                <p>Just drag and drop your music to send it to FREELABEL Radio and Magazine.</p>
-                <span class='glyphicon glyphicon glyphicon-import big-text'></span>
-        </section>
-    <!-- The file upload form used as target for the file upload widget -->
-    <form id="fileupload" action="//jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data" class='col-xs-12 col-md-12 overflow_divx'>
-      <h1 class='sub_header' style='text-align:center;display:none;'>DRAG & DROP</h1>
-        <!-- Redirect browsers with JavaScript disabled to the origin page -->
-        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
-        <div class="row fileupload-buttonbar" style='position:fixed;bottom:0px;right:0px;width:100%;background-color:#101010;padding-top:1%;opacity:0.9;z-index:100000;'>
-            <!-- The global file processing state
-                    <span class="fileupload-process"></span>
-            <!-- The global progress state
-            <div class="col-lg-5 col-xs-6 fileupload-progress fade">
-                <!-- The global progress bar
-                <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar progress-bar-success" style="width:0%;"></div>
-                </div>
-                <!-- The extended global progress state
-                <div class="progress-extended">&nbsp;</div>
-            </div>
-            -->
-            <div class="col-lg-7 col-xs-12">
-                 <!-- The fileinput-button span is used to style the file input field as button -->
-                <span class="btn btn-success fileinput-button col-md-2 col-xs-3">
-                    <i class="glyphicon glyphicon-plus"></i>
-                    <span>Add files...</span>
-                    <input type="file" name="files[]" multiple>
-                </span>
-
-                <button type="submit" class="btn  btn-primary start col-md-2 col-xs-3">
-                    <i class="glyphicon glyphicon-upload"></i>
-                    <span>Start</span>
-                </button>
-                <button type="reset" class="btn  btn-warning cancel col-md-2 col-xs-3">
-                    <i class="glyphicon glyphicon-ban-circle"></i>
-                    <span>Cancel</span>
-                </button>
-                <button type="button" class="btn  btn-danger delete col-md-2 col-xs-3">
-                    <i class="glyphicon glyphicon-trash"></i>
-                    <span>Delete</span>
-                </button>
-                <div class='col-md-2 col-xs-12' style='display:none;'>
-                    <input id='selectAll' type="checkbox" class="toggle">
-                    <span for='selectAll'>Select All</span>
-                </div>
-            </div>
-
-        </div>
-        <!-- The table listing the files available for upload/download -->
-        <a name="share"></a>
-        <table role="presentation" class="table uploads-table"><tbody class="files"></tbody></table>
-    </form>
-
 </center>
-</div><!-- .container -->
+
+
+<!-- The file upload form used as target for the file upload widget -->
+<form id="fileupload" action="//jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data" class='col-md-9 overflow_divx'>
+  <h1 class='sub_header' style='text-align:center;display:none;'>DRAG & DROP</h1>
+    <!-- Redirect browsers with JavaScript disabled to the origin page -->
+    <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+    <div class="row fileupload-buttonbar" style='position:fixed;bottom:0px;right:0px;width:100%;background-color:#101010;padding-top:1%;opacity:0.9;z-index:100000;'>
+        <div class="col-lg-7 col-xs-12">
+            <!-- The fileinput-button span is used to style the file input field as button -->
+            <span class="btn btn-success fileinput-button col-md-2 col-xs-3">
+                <i class="glyphicon glyphicon-plus"></i>
+                <span>Add files...</span>
+                <input type="file" name="files[]" multiple>
+            </span>
+
+            <button type="submit" class="btn  btn-primary start col-md-2 col-xs-3">
+                <i class="glyphicon glyphicon-upload"></i>
+                <span>Start</span>
+            </button>
+            <button type="reset" class="btn  btn-warning cancel col-md-2 col-xs-3">
+                <i class="glyphicon glyphicon-ban-circle"></i>
+                <span>Cancel</span>
+            </button>
+            <button type="button" class="btn  btn-danger delete col-md-2 col-xs-3">
+                <i class="glyphicon glyphicon-trash"></i>
+                <span>Delete</span>
+            </button>
+            <div class='col-md-2 col-xs-12' style='display:none;'>
+                <input id='selectAll' type="checkbox" class="toggle">
+                <span for='selectAll'>Select All</span>
+            </div>
+        </div>
+    </div>
+    <!-- The table listing the files available for upload/download -->
+    <a name="share"></a>
+    <table role="presentation" class="table uploads-table"><tbody class="files"></tbody></table>
+</form>
+
+
+
 <!-- The blueimp Gallery widget -->
 <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
     <div class="slides"></div>

@@ -19,8 +19,6 @@ echo "<button onclick=\"window.open('http://freelabel.net/upload/?uid=".$user_na
 
 echo '<hr>';
 
-
-
   function get_timeagooo( $ptime )
 {
     date_default_timezone_set('America/Chicago');
@@ -55,23 +53,6 @@ echo '<hr>';
 
 ?>
 <a class='btn btn-default lead_control' onclick="loadPage('http://freelabel.net/rssreader/cosign.php?control=update&rss=1', '#main_display_panel', 'mag')"  >RSS</a>
-<style>
-	.marketing .row {
-		margin-bottom:2%;
-	}
-  .rss-list {
-    padding:1em;
-  }
-  .rss-third-partys {
-    vertical-align: top;
-  }
-  .rss-item-details h3 {
-    color:#fff;
-  }
-    .rss-item-details p {
-    color:#303030;
-  }
-</style>
 <script type="text/javascript">
 $(function() {
 
@@ -126,56 +107,6 @@ $(function() {
 
   });
 
-  // ---- UPLOAD PHOTO ------ //
-
-
-  // ---- Post Data To Server ------ //
-  $( ".rss_sform" ).submit(function( event ) {
-    // Stop form from submitting normally
-    event.preventDefault();
-    //var $formdata = $(this);
-    //alert($formdata.serialize());
-    alert($(this).children());
-    var formdata_PHO = $(this).find('#photofile')[0].files[0];
-    //var formdata_PHO = $('#single_upload_form #photo')[0].files[0];
-    var formdata = new FormData();
-    // Add the file to the request.
-      formdata.append('photos[]', formdata_PHO);
-
-
-  $.ajax({
-        // Uncomment the following to send cross-domain cookies:
-        xhrFields: {withCredentials: true},
-        url: "http://freelabel.net/x/post_to_blog.php",
-        //dataType: 'json',
-        method: 'POST',
-        cache       : false,
-      processData: false,
-      contentType: false,
-      fileElementId: 'image-upload',
-        data: formdata,
-        beforeSend: function (x) {
-              if (x && x.overrideMimeType) {
-                  x.overrideMimeType("multipart/form-data");
-              }
-      },
-      // Now you should be able to do this:
-      mimeType: 'multipart/form-data'    //Property added in 1.5.1
-    }).always(function () {
-    //alert(formdata_PHO);
-    console.log(formdata_PHO);
-    $('#confirm_upload').html('please wait..');
-        //$(this).removeClass('fileupload-processing');
-    }).fail(function(jqXHR){
-    alert(jqXHR.statusText + 'oh no it didnt work!')
-  }).done(function (result) {
-        //alert('YES');
-    $('#confirm_upload').html(result);
-  })
-
-
-
-  });
 
 });
 </script>
@@ -194,6 +125,7 @@ $rss_feed = array(/*'http://freelabelmagazine.wordpress.com/rss',
 	'http://www.dirty-glove.com/feed/',
   'http://trapsntrunks.com/feed/',
   'http://www.saycheesetv.com/feed/',
+  'http://pyramidatlanta.com/feed/',
  /*
   'http://www.hiphopcanada.com/feed/',
   'http://www.fakeshoredrive.com/feed/',

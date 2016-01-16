@@ -354,8 +354,8 @@ if ($_POST['page']=='timeline'){
 //if (isset($_GET['ssages'])){
 if ($_POST['page']=='direct_messages'){
 
-        // $api_query_dm =array("count" => '100');
-        $api_query_dm =array("count" => '20');
+        $api_query_dm =array("count" => '100');
+        // $api_query_dm =array("count" => '20');
         $method = 'direct_messages';
         $direct_messages =   $connection->get($method, $api_query_dm);
         $i=1;
@@ -479,7 +479,7 @@ if ($_POST['page']=='direct_messages'){
 //if (isset($_GET['direct_messages'])){
 if ($_POST['page']=='mentions'){
 
-        $api_query_dm =array("count" => '20');
+        $api_query_dm =array("count" => '100');
         $method = 'statuses/mentions_timeline';
         $mentions =   $connection->get($method, $api_query_dm);
         $i=1;
@@ -518,7 +518,7 @@ if ($_POST['page']=='mentions'){
               ----------------------------------------------------------------------
             */
            	echo ' '.$user_twitter_name_screen.',';
-            //$connection->post('direct_messages/new', array('screen_name' => $user_twitter_name_screen,'text' => $main_follow_up));
+            // $connection->post('direct_messages/new', array('screen_name' => $user_twitter_name_screen,'text' => $main_follow_up));
             // --- SEND TWEET TO DIRECT MESSAGES! ------- //
 
           }

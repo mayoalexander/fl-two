@@ -296,13 +296,26 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     }
 
 
-
-
+    /* ------------------------------------------
+          RSS FUNCITONALITY
+    ------------------------------------------ */
+    .rss-list {
+      padding:1em;
+    }
+    .rss-third-partys {
+      vertical-align: top;
+    }
+    .rss-item-details h3 {
+      color:#fff;
+    }
+    .rss-item-details p {
+      color:#303030;
+    }
 
 
 
     /* ------------------------------------------
-          PROMOTIONS FUNCTIONALITY 
+          SCRIPT FUNCTIONALITY 
     ------------------------------------------ */
     .script-responses {
       list-style-type: none;
