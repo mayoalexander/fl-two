@@ -209,19 +209,11 @@ $result = mysqli_query($con,"SELECT * FROM leads WHERE
 
 		}
 
-
-
-
-		//include('../../../twitter/index.php');
-		//include('../../../x/submissions.php');
 		echo '<div id="lead_widget_container"></div>';
-		//echo '<hr>';
+
 
 
 			
-
-		
-
 
 
 		// START COUTNING LEADS
