@@ -23,6 +23,34 @@ $score = round($stats / $num_tracks);
 $photo = $config->getProfilePhoto($user_name);
 $user = $config->getUserData($user_name);
 
+
+
+
+
+  foreach ($tracks as $key => $value) {
+    $post_date = date('m-d',strtotime($value['submission_date']));
+    $todays_date = date('m-d');
+    $yesterdays_date = date('m-d' , '-1 day');;
+    $day_before = date('m-d' , '-2 days');;
+
+    if ($post_date == $todays_date) {
+      $today[] = $value['blogtitle'];
+    } elseif ($post_date == $yesterdays_date) {
+      $yesterday[] = $value['blogtitle'];
+    } elseif ($post_date == $day_before) {
+      $day_before_yest[] = $value['blogtitle'];
+    } else {
+      $last_week[] = $value['blogtitle'];
+    }
+  }
+  $this_week_count = count($today);
+  $yesterday_count = count($yesterday);
+  $last_week_count = count($last_week);
+  $day_before_count = count($day_before_yest);
+
+
+      
+
 ?>
 <?php
 if (isset($user)) {

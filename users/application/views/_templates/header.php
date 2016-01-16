@@ -279,6 +279,18 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     }
 
 
+    .card-social , .card-chart {
+      background-color: #101010;
+    }
+    .card-social small {
+      color:#a7a7a7;
+    }
+    .stats-track-list, .stats-date-list {
+      height:250px;
+      overflow: scroll;
+    }
+
+
 
 
 

@@ -1168,8 +1168,18 @@ class UploadHandler
         }
 
         $filedata['description'] = $_POST['description'][0];
+
+
+
         if (strpos($filedata['description'], 'livemixtapes') == true) {
             $filedata['description'] = '<iframe frameborder="0" style="width:100%;max-height:450px;" src="'.$filedata['description'].'"/>';
+        }
+
+        if (strpos($filedata['description'], "'") == true) {
+            $filedata['description'] = str_replace("'", '', $filedata['description']);
+        }
+        if (strpos($filedata['blogtitle'], "'") == true) {
+            $filedata['blogtitle'] = str_replace("'", '', $filedata['blogtitle']);
         }
 
 
@@ -1184,6 +1194,15 @@ class UploadHandler
         (NULL, "'.$_POST['type'].'" , "'.$_POST['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'", "'.$_POST['playerpath'].'", "'.$_POST['title'][0].'", "'.$twitpic.'", "'.$filedata['submission_date'].'", "'.$filedata['description'].'");';
         if (mysqli_query($con, $sql)) {
 
+
+            $msg = "Your submission has been recieved and will be in radio rotation immedietly. Thank you for working with FREELABEL as we all change the way art is showcased and shared.\n\n\nFeel free to contact us at 347-994-0267.\n\nhttp://FREELABEL.net/";
+
+            // use wordwrap() if lines are longer than 70 characters
+            $msg = wordwrap($msg,70);
+
+            // send email
+            mail("manage.amrecords@gmail.com",'[SUBMISSION] '.$filedata['twitter']." - ".$filedata['blogtitle'],$msg);
+
             // echo "New record created successfully";
 
             // if ($upload->handleSyntax($filedata)===false) {
@@ -1192,7 +1211,7 @@ class UploadHandler
             //     // if ($upload->uploadToRadio($filedata)===false) {
             //     //     echo 'FTP error';
             //     // }
-            //     // $file['email'] = 'mayoalexandertd@icloud.com';
+                // $file['email'] = 'mayoalexandertd@icloud.com';
             //     // SEND NOTIFICATIONS
                 // if ($upload->sendMail($file['email'], $file['blogtitle'] , $file['twitter'] , $file['trackmp3'], $file['photo'] , $file['phone']) == false) {
                 //     echo "NO";
