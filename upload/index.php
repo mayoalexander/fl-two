@@ -375,19 +375,7 @@ function postToBlog(link , i , type, filename, email) {
                 desc : "photo upload",
                 id : <?php echo '"'.$user_name_session.'",' ?>
                 filepath : link
-
-                /*
-                user_trackname : '',
-                user_twitter : <?php echo '"'.$profile_twitter.'",' ?>
-                twitpic : <?php echo '"'.$twitpic.'",' ?>
-                user_name : <?php echo '"'.$user_name_session.'",' ?>
-                user_email : <?php echo '"'.$user_email.'",' ?>
-                user_phone : <?php echo '"'.$profile_phone.'",' ?>
-                onsale : <?php echo '"'.$onsale_status.'",' ?>
-                photo : <?php echo '"'.$photo.'",' ?>
-                redirect_source : "mixtape",
-                audiofile : link
-                */
+                
             }).done(function(data){
                 //alert($(this));
                 //console.log($(this.form));

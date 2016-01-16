@@ -62,6 +62,9 @@ $(function() {
 
   $(".get_player_button").click(function(){
     // console.log($(this));
+    $(this).parent().parent().parent().css('border','red 2px solid');
+    $(this).parent().parent().parent().css('padding','5%');
+    $(this).parent().parent().parent().css('margin','2.5%');
   	var iframe = 0 , start = 0, end = 0, mp3data = 0;
     var mp3data = $(this).parent().parent().parent().find('textarea').text();
 
@@ -126,6 +129,7 @@ $rss_feed = array(/*'http://freelabelmagazine.wordpress.com/rss',
   'http://trapsntrunks.com/feed/',
   'http://www.saycheesetv.com/feed/',
   'http://pyramidatlanta.com/feed/',
+  'http://www.hiphopsmission.com/feed/',
  /*
   'http://www.hiphopcanada.com/feed/',
   'http://www.fakeshoredrive.com/feed/',
