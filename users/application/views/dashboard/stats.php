@@ -78,17 +78,26 @@
       foreach ($tracks as $key => $value) {
         $post_date = date('m-d',strtotime($value['submission_date']));
         $todays_date = date('m-d');
+        $yesterdays_date = date('m-d' , '-1 day');;
+        $day_before = date('m-d' , '-2 days');;
 
         if ($post_date == $todays_date) {
           $today[] = $value['blogtitle'];
+        } elseif ($post_date == $yesterdays_date) {
+          $yesterday[] = $value['blogtitle'];
+        } elseif ($post_date == $day_before) {
+          $day_before_yest[] = $value['blogtitle'];
         } else {
           $last_week[] = $value['blogtitle'];
-
         }
       }
       $this_week_count = count($today);
+      $yesterday_count = count($yesterday);
       $last_week_count = count($last_week);
-      echo '<li class="list-group-item complete"><label class="label pull-left">This Week</label> - <label class="label pull-right">'.$this_week_count.'</label></li>';
+      $day_before_count = count($day_before_yest);
+      echo '<li class="list-group-item complete"><label class="label pull-left">Today</label> - <label class="label pull-right">'.$this_week_count.'</label></li>';
+      echo '<li class="list-group-item complete"><label class="label pull-left">Yesterday</label> - <label class="label pull-right">'.$yesterday_count.'</label></li>';
+      echo '<li class="list-group-item complete"><label class="label pull-left">'.$day_before.'</label> - <label class="label pull-right">'.$day_before_count.'</label></li>';
       echo '<li class="list-group-item complete"><label class="label pull-left">Previous Weeks</label> - <label class="label pull-right">'.$last_week_count.'</label></li>';
 
       ?>
