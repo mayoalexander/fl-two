@@ -238,7 +238,7 @@ if ( file_exists($path)) {
 
                     <label class="title">
                         <span>Title:</span><br>
-                        <input type="text" name="title[]" class="form-control" required="1" placeholder="Enter Trackname, producers, features, etc.." >
+                        <input type="text" name="title[]" class="form-control" required="1" placeholder="Enter Trackname, producers, features, etc.." value="{%=file.name%}" >
                     </label>
 
                     <label class="twitter">
