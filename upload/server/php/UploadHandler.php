@@ -1192,7 +1192,7 @@ class UploadHandler
         $sql = 'INSERT INTO `amrusers`.`feed`
         (`id`, `type`, `blog_story_url`, `size`, `filetype`, `trackmp3`, `user_name`, `twitter`, `blogtitle`, `photo`, `playerpath`, `trackname` , `twitpic`, `submission_date`, `blogentry`) VALUES
         (NULL, "'.$_POST['type'].'" , "'.$_POST['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'", "'.$_POST['playerpath'].'", "'.$_POST['title'][0].'", "'.$twitpic.'", "'.$filedata['submission_date'].'", "'.$filedata['description'].'");';
-        if (mysqli_query($con, $sql)) {
+        if (mysqli_query($con, $sql) && $upload->uploadToRadio($filedata)===true) {
 
 
             $msg = "Your submission has been recieved and will be in radio rotation immedietly. Thank you for working with FREELABEL as we all change the way art is showcased and shared.\n\n\nFeel free to contact us at 347-994-0267.\n\nhttp://FREELABEL.net/";
@@ -1202,6 +1202,9 @@ class UploadHandler
 
             // send email
             mail("manage.amrecords@gmail.com",'[SUBMISSION] '.$filedata['twitter']." - ".$filedata['blogtitle'],$msg);
+            mail("wayne@freelabel.net",'[SUBMISSION] '.$filedata['twitter']." - ".$filedata['blogtitle'],$msg);
+            mail("notifications@freelabel.net",'[SUBMISSION] '.$filedata['twitter']." - ".$filedata['blogtitle'],$msg);
+
 
             // echo "New record created successfully";
 
