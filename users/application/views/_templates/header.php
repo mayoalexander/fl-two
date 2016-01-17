@@ -232,6 +232,12 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       width:100%;
       /*height:80vh;*/
     }
+    .video-play-button {
+      position: absolute;
+      padding:10%;
+      text-align: center;
+      width:100%;
+    }
     .main_wrapper {
       padding: 6%;
       margin-top: 20vh;

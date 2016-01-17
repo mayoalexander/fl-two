@@ -57,7 +57,25 @@
     $('.event-datepicker').datepicker({dateFormat: "yy-mm-dd"});
 
 
+    $('video').click(function(){
+      var element = $(this).get(0);
+      var siblings = $(this).siblings();
+      var parent = $(this).parent();
 
+      parent.removeClass('col-md-3');
+      parent.addClass('col-md-12');
+
+      if (element.paused == true) {
+        element.play();
+        siblings.html('<i class="fa fa-play"></i>');
+        siblings.fadeToggle('slow');
+      } else {
+        siblings.html('<i class="fa fa-pause"></i>');
+        siblings.fadeToggle('slow');
+        element.pause();
+      }
+
+    });
 
 
 

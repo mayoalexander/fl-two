@@ -1,3 +1,4 @@
+<script type="text/javascript" src="http://freelabel.net/js/dashboard.js"></script>
 <?php
 $config = new Blog($_SERVER['HTTP_HOST']);
 // echo '<pre>';
