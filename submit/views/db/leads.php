@@ -843,7 +843,17 @@ echo '<table class="table col-md-12">';
 					<br>
 					<span class="text-muted">'.$user['follow_up_date'].'</span>
 					<br>
-					'.$approval_status.'
+
+
+					<div class="dropdown">
+					  <button class="btn btn-social btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Responses
+					  <span class="caret"></span></button>
+					  <ul class="dropdown-menu">
+					    '.$leads_conversion->loadScript($key).'
+					  </ul>
+					</div>
+
+
 				</td>
 
 					
@@ -854,30 +864,17 @@ echo '<table class="table col-md-12">';
 					<h4>'.$key.' ['.count($user['messages']).']</h4>
 					<p>'.$lead_phone.'</p>
 					<p>'.$lead_email.'</p>
+
 					
 				</td>
 
 				<td>
 				'.$delete_lead.'
-				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal-'.$key.'"><i class="fa fa-comment" ></i></button>
-				<div id="myModal-'.$key.'" class="modal fade" role="dialog">
-				  <div class="modal-dialog">
 
-				    <!-- Modal content-->
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal">&times;</button>
-				        <h4 class="modal-title">Follow-up with '.$key.'</h4>
-				      </div>
-				      <div class="modal-body">
-				        '.$leads_conversion->loadScript($key).'
-				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				      </div>
-				    </div>
 
-				  </div>
+
+
+				
 				</div>
 
 

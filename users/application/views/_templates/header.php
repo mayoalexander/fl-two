@@ -283,6 +283,9 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       opacity: 0.7;
       z-index: 0;
     }
+    .twitter-message-text {
+      color:#e3e3e3;
+    }
 
 
     .card-social , .card-chart {
