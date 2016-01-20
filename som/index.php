@@ -165,7 +165,7 @@ SEND DIRECT MESSAGES
 			$direct_message_contents = array('text' => $direct_message, 'screen_name' => $screen_name);
 		}
 		$connectionRequest 	= 	$connection->post('direct_messages/new', $direct_message_contents);
-		echo '<img onclick="windowClose()" id="confirm_image" src="http://www.fishertanner.com/wp-content/uploads/2014/05/check-mark-11-512.png">'.$screen_name ;
+		echo '<img onclick="windowClose()" id="confirm_image" src="http://julienbraida.com/wp-content/uploads/2015/04/check-mark-11-512.png">'.$screen_name ;
 	// } sendDirectMessage();
 }
 
@@ -200,7 +200,7 @@ elseif ($_GET['post']==1) {
 	} else {
 		echo '<center>';
 		echo '<div class="panel">';
-		echo '<img id="confirm_image" onclick="windowClose()" src="http://www.fishertanner.com/wp-content/uploads/2014/05/check-mark-11-512.png" >'.$text_to_post ;
+		echo '<img id="confirm_image" onclick="windowClose()" src="http://julienbraida.com/wp-content/uploads/2015/04/check-mark-11-512.png" >'.$text_to_post ;
 		echo '</div>';
 	}
 	

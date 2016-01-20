@@ -16,8 +16,8 @@
       </div>
       <div class="col-md-6 col-lg-7">
         <ul class="list-inline m-b-0">
-          <li class="active"><a href="http://freelabel.net/login/register">About</a></li>
-          <li><a href="http;//freelabel.net/users/login/register">Register</a></li>
+          <li class="active"><a href="http://freelabel.net/users/login/register">About</a></li>
+          <li><a href="http://freelabel.net/users/login/register">Register</a></li>
           <!-- <li><a href="http://freelabel.net/upload/?uid=submission" target="_blank">Upload Submission</a></li> -->
           <li><a class="scroll-top" href="#totop">Back to top <span class="icon-caret-up"></span></a></li>
         </ul>

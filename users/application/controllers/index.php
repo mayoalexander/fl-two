@@ -30,4 +30,8 @@ class Index extends Controller
     {
             $this->view->render('index/image');
     }
+    function view($slug)
+    {
+            $this->view->render('index/view',true);
+    }
 }

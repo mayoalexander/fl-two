@@ -57,6 +57,10 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/stats',true);
     }
+
+    function mail() {
+        $this->view->render('dashboard/mail', true);
+    }
     function promos()
     {
         $this->view->render('dashboard/promos',true);

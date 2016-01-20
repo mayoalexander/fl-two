@@ -36,7 +36,7 @@
         margin:1%;
         margin-bottom:10vh;
         z-index: 1000;
-        background-color:rgba(0,0,0,0.9);
+        /*background-color:rgba(0,0,0,0.9);*/
         border:red solid 3px;
         padding:2%;
         box-shadow:5px 5px 25px #000000;
@@ -66,5 +66,8 @@
     @media (max-device-width:640px) {
         .head-logo-header {
             //padding:12% 14%;
+        }
+        .uploads-table {
+            padding:5%;
         }
     }

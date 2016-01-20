@@ -1159,6 +1159,7 @@ class UploadHandler
 
         // 3RD PARTY APIs
         $twitpic = $upload->getTwitpicURL($filedata);
+        $filedata['email'] = $upload->getUserEmail($filedata['user_name']);
 
         // DETECT FILE TYPE
         if ( strpos($filepath, 'mp3') ) {
@@ -1187,44 +1188,27 @@ class UploadHandler
         // -------------------------------------------------------- //
                             // UPLOAD TO THE SITE! //
         // -------------------------------------------------------- //
+        $fileMeta['trackmp3'] = $filepath;
+        $fileMeta['twitter'] = '@AYEEEHOE';
+        $fileMeta['trackname'] = 'Big Money Hunny MOney';
 
         // ADD TO DATABASE
         $sql = 'INSERT INTO `amrusers`.`feed`
-        (`id`, `type`, `blog_story_url`, `size`, `filetype`, `trackmp3`, `user_name`, `twitter`, `blogtitle`, `photo`, `playerpath`, `trackname` , `twitpic`, `submission_date`, `blogentry`) VALUES
-        (NULL, "'.$_POST['type'].'" , "'.$_POST['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'", "'.$_POST['playerpath'].'", "'.$_POST['title'][0].'", "'.$twitpic.'", "'.$filedata['submission_date'].'", "'.$filedata['description'].'");';
-        if (mysqli_query($con, $sql) && $upload->uploadToRadio($filedata)===true) {
+        (`id`, `type`, `blog_story_url`, `size`, `filetype`, `trackmp3`, `user_name`, `twitter`, `blogtitle`, `photo`, `playerpath`, `trackname` , `twitpic`, `submission_date`, `blogentry` , `email`) VALUES
+        (NULL, "'.$_POST['type'].'" , "'.$_POST['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'", "'.$_POST['playerpath'].'", "'.$_POST['title'][0].'", "'.$twitpic.'", "'.$filedata['submission_date'].'", "'.$filedata['description'].'", "'.$filedata['email'].'");';
+        if (mysqli_query($con, $sql) /* && $upload->uploadToRadio($filepath,$_POST['twitter'][0],$_POST['trackname'][0], $_POST['user_name'][0])===true */) { // 
 
-
-            $msg = "Your submission has been recieved and will be in radio rotation immedietly. Thank you for working with FREELABEL as we all change the way art is showcased and shared.\n\n\nFeel free to contact us at 347-994-0267.\n\nhttp://FREELABEL.net/";
+            $msg = "Your submission has been recieved and will be in radio rotation immedietly. Thank you for working with FREELABEL as we all change the way art is showcased and shared.\n\n\n
+            <img style='width:100%;display:block;' src='".$_POST['photo']."'>
+            Feel free to contact us at 347-994-0267.\n\nhttp://FREELABEL.net/";
 
             // use wordwrap() if lines are longer than 70 characters
             $msg = wordwrap($msg,70);
 
             // send email
-            mail("manage.amrecords@gmail.com",'[SUBMISSION] '.$filedata['twitter']." - ".$filedata['blogtitle'],$msg);
-            mail("wayne@freelabel.net",'[SUBMISSION] '.$filedata['twitter']." - ".$filedata['blogtitle'],$msg);
+            mail($filedata['email'],'[SUBMISSION] '.$filedata['twitter']." - ".$filedata['blogtitle'],$msg);
             mail("notifications@freelabel.net",'[SUBMISSION] '.$filedata['twitter']." - ".$filedata['blogtitle'],$msg);
-
-
-            // echo "New record created successfully";
-
-            // if ($upload->handleSyntax($filedata)===false) {
-            //     echo 'something went wrong! Not Uploaded to radio';
-            // } else {
-            //     // if ($upload->uploadToRadio($filedata)===false) {
-            //     //     echo 'FTP error';
-            //     // }
-                // $file['email'] = 'mayoalexandertd@icloud.com';
-            //     // SEND NOTIFICATIONS
-                // if ($upload->sendMail($file['email'], $file['blogtitle'] , $file['twitter'] , $file['trackmp3'], $file['photo'] , $file['phone']) == false) {
-                //     echo "NO";
-                // }
-            //     // echo '<h1 class="alert alert-success" style="color:green;" ><span class="glyphicon glyphicon-ok" ></span> Upload Completed!</h1>';
-            //     // // echo "<a target='_blank' href='".$file['blog_story_url']."'>";
-            //     // echo '<br><span class="btn btn-primary btn-lg">View Post</span>';
-            //     // // echo 'URL: '.$file['blog_story_url'];
-            //     // echo "</a>";
-            // }
+            mail("wayne@freelabel.net",'[SUBMISSION] '.$filedata['twitter']." - ".$filedata['blogtitle'],$msg);
 
         } else {
           echo "Error: " . $sql . "<br>" . mysqli_error($con);
