@@ -77,6 +77,10 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/dev');
     }
+    function auto()
+    {
+        $this->view->render('dashboard/auto');
+    }
     function push()
     {
         $this->view->render('dashboard/push',true);
