@@ -260,6 +260,9 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     .full-width-article img , .idea-textarea {
       box-shadow:5px 5px 20px #000;
     }
+    .list-group-item {
+      color:#303030;
+    }
 
     .rss-feed article {
       margin-bottom:10%;

@@ -108,8 +108,10 @@ if ($_POST['promos'] || $_GET['promos'] || $action=='promos') {
           while($row = mysqli_fetch_array($result))
           {
             //print_r($row);
-            $text = $row['title'];
             $post_id = $row['id'];
+            $text = $row['title'] . ' 
+
+http://freelabel.net/users/index/image/'.$post_id;
             $posts_to_tweet[] = $text;
           }
 
@@ -135,7 +137,7 @@ if ($_POST['live'] || $_GET['live']) {
 } // end of organic
 
 
-      var_dump($query);
+      // var_dump($query);
       print_r($tweets_to_tweet);
 
 
@@ -177,7 +179,7 @@ if ($_POST['live'] || $_GET['live']) {
                       echo '
                       <script>
                       function execAutoPromote(linkToTweet) {
-                        // window.open(linkToTweet);
+                        window.open(linkToTweet);
                         console.log(linkToTweet);
                       }
                       setTimeout( function () { execAutoPromote("'.$link_to_tweet.'"); }  , '.$timeOutTime.');
