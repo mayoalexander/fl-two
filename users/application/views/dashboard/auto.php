@@ -84,17 +84,17 @@ LIMIT 0 , 0";
 
 if ($_POST['organic'] || $_GET['organic'] || $action=='organic') {
 
-          INCLUDE("../inc/connection.php");
-          // $todays_date = date('Y'); // WHERE date_created LIKE '$todays_date%'
-          $query = "SELECT * FROM templates ORDER BY `id` DESC LIMIT 25";
+          include_once(ROOT.'inc/huge.php');
+          $user_id = $huge->getUserID('admin');
+          $query = "SELECT * FROM notes WHERE user_id = $user_id ORDER BY `note_id` DESC LIMIT 30";
           $result = mysqli_query($con,$query);
           while($row = mysqli_fetch_array($result))
           {
-            //print_r($row);
-            $text = $row['text'];
+            $text = $row['note_text'];
             $post_id = $row['id'];
             $posts_to_tweet[] = $text;
           }
+
 
 } // end of organic
 
@@ -201,3 +201,16 @@ if ($i===30 && $_GET['stayopen']==1) {
 }
 */
 ?>
+
+
+<script type="text/javascript">
+  var contact = {
+    runIt: function printFullName() {
+      var firstName = "Andrew";
+      var lastName = "Chalkley";
+      console.log(firstName + " " + lastName);
+    }
+  }
+
+  // alert(contact.runIt());
+</script>
