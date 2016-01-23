@@ -254,7 +254,7 @@ FREELABEL Featured: ".$name." (".$twitter.")
 
 														} else {
 															$tweet_track_request = $profile_twitter.' Login to your FREELABEL profile and upload music ASAP --> submit.FREELABEL.net';
-															$submitted_tracks_status	= "<a onclick='postTweet(\"".$tweet_track_request."\")' class='btn btn-danger btn-xs'>NEED SONGS!!!!!</a>";
+															$submitted_tracks_status	= "<a data-email='".$user_email."' data-twitter='".$profile_twitter."' data-action='songs' class='btn btn-danger btn-xs need-songs-trigger'>NEED SONGS!!!!!</a>";
 														}
 														$profile_bool	= "<button href='http://x.freelabel.net/?i=".$name."'  class='btn btn-success btn-xs' target='_blank' >COMPLETED</button>";
 
@@ -263,7 +263,7 @@ FREELABEL Featured: ".$name." (".$twitter.")
 											} else {
 												$photo = '';
 												$tweet_to_client = '';
-												$profile_bool	= "<span class='btn btn-danger btn-xs'>NO PROFILE!!!!!</span>";
+												$profile_bool	= "<span data-email='".$user_email."' data-action='profile' class='btn btn-danger btn-xs need-songs-trigger'>NO PROFILE!!!!!</span>";
 											}
 												
 										
@@ -348,6 +348,28 @@ FREELABEL Featured: ".$name." (".$twitter.")
 
 <script type="text/javascript" src='http://freelabel.net/js/jquery.jeditable.js'></script>
 <script>
+	function sendEmail(email, message) {
+		var data = {
+			email : email,
+			message : message
+		}
+		$.post('http://freelabel.net/users/dashboard/send/',data,function(data){
+			alert(data);
+		});
+	}
+
+	$('.need-songs-trigger').click(function(){
+		$(this).hide();
+		var email = $(this).attr('data-email');
+		var action = $(this).attr('data-action');
+		if (action == 'profile') {
+			var message = 'You\'re almost done! You will need a finish completing your profile at FREELABEL.NET so we can have what we need to start building your showcases! If you have any questions, issues, or feedback, feel free to call us at 347-994-0267!\n\n\nThank you!\n\nhttp://freelabel.net/';
+		} else if (action == 'songs') {
+			var message = 'Uh ohh! You havent uploaded any music to your profile! To get the full experience of your FREELABEL account, you\'ll need to upload music to your account! Please login to FREELABEL.net so we can have what we need to get started working on your campaigns. If you have any questions, issues, or feedback, feel free to call us at 347-994-0267!\n\n\nThank you!\n\nhttp://freelabel.net/';
+		}
+		sendEmail(email,message);
+	});
+
 	$('#client-search').submit(function(event){
 		event.preventDefault();
 		var thedata = $(this).serialize();

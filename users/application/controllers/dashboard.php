@@ -124,6 +124,24 @@ class Dashboard extends Controller
 
 
 
+    function send() {
+        $msg = $_POST['message'];
+        // use wordwrap() if lines are longer than 70 characters
+        $msg = wordwrap($msg,70);
+        // send email
+        $result = mail($_POST['email'],"[FREELABEL] Important Information Regarding Your Account",$msg);
+        if ($result==true) {
+            echo 'Yay it worked!';
+        } else {
+            echo 'Oh NOOOOOOOOOOO!!!!!!';
+        }
+    }
+
+
+
+
+
+
     function delete_promo_file($id) {
         // print_r($_POST);
         include_once('/home/content/59/13071759/html/config/index.php');
