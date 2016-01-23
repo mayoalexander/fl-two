@@ -167,7 +167,8 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     .editable input , .editable textarea , .editable input:focus,
     .editable-file input , .editable-file textarea , .editable-file input:focus,
     .editable-promo-file input , .editable-promo-file textarea , .editable-promo-file input:focus,
-    .editable-promo input , .editable-promo textarea , .editable-promo input:focus {
+    .editable-promo input , .editable-promo textarea , .editable-promo input:focus,
+    .edit input {
       background-color:transparent;
       margin:inherit 0px;
       padding:inherit 0px ;
@@ -454,9 +455,17 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     /* PANELS */
     .dropdown-menu {
       background-color:rgba(0,0,0,0.7);
+      color:#303030;
+      border:solid 1px #e3e3e3;
+    }
+    .dropdown-menu a {
+      color: #e3e3e3;
     }
     .feedback {
       font-size:10px;
+    }
+    .current-clients-table td {
+      padding:1%;
     }
     .gn-menu {
       box-shadow: 0px 0px 15px;

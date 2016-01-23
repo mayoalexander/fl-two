@@ -13,8 +13,8 @@
 	
 
 	<hr>
-	<div style='overflow-y:scroll;height:700px;' >
-		<table class="table table-bordered table-condensed" style='font-size:80%;'>
+	<div style='overflow-y:scroll;height:700px;'>
+		<table class="current-clients-table table table-bordered table-hover" style='font-size:80%;'>
 			<tr>
 				<td>#</td>
 				<td></td>
@@ -129,6 +129,18 @@
 						  			//$user_account_type = '<span class="label label-danger">inactive</span>';
 						  			break;
 						  	}
+							$date_created = $row['user_creation_timestamp'];
+							$date_created_account = date('m/d',$date_created);
+							$showcase_date = date('m/d',strtotime("+ 10 days",$date_created));
+							$expiration_date = date('m/d',strtotime("+ 28 days",$date_created));
+
+
+
+							// $expiration_date = date("+ 28 days",$date_created);
+							// $showcase_date = strtotime("+ 10 days",strtotime($date_created));
+							// $showcase_date= date('m/d', $showcase_date);
+							// $expiration_date_text = date('m/d', $expiration_date);
+
 						  	$user_id = $row['user_id'];
 						  	$user_email = $row['user_email']; //<a href="mailto:">'.$user_email.'</a>
 						  	$user_email_link = '<a href="mailto:'.$user_email.'?subject="FREELABEL%20>'.$user_email.'</a>'; //
@@ -160,14 +172,8 @@ FREELABEL Featured: ".$name." (".$twitter.")
 							  						$photo = '<img width="56px" src="http://freelabel.net/images/fllogo.png">';
 												}
 												$profile_url = $row2['profile_url'];
-												$date_created = $row['user_registration_datetime'];
 
-												$expiration_date = strtotime("+ 28 days",strtotime($date_created));
-												$showcase_date = strtotime("+ 10 days",strtotime($date_created));
 
-												$showcase_date= date('m/d', $showcase_date);
-												$date_created = date('m/d', strtotime($date_created));
-												$expiration_date_text = date('m/d', $expiration_date);
 
 
 
@@ -185,8 +191,10 @@ FREELABEL Featured: ".$name." (".$twitter.")
 
 
 
-													// Check if Singles are Uplaoded
+													// Check if Singles are Uplaoded 
 													include('../../../inc/connection.php');
+													$config = new Config();
+
 													$result3 = mysqli_query($con,"SELECT * 
 														FROM  `feed` 
 														WHERE  `user_name` LIKE  '%".$name."%'");
@@ -213,22 +221,31 @@ FREELABEL Featured: ".$name." (".$twitter.")
 															$follow_up_promote[] = urlencode('Login to your FREELABEL.NET account and upload new music for todays radio showcases!');
 															$follow_up_promote[] = urlencode('Login to your FREELABEL.NET account and schedule any interviews or single/project releases to showcase this month on FREELABEL.NET!');
 																
-
+															//  
 
 															// FOLLOW UP BUTTON GENERATOR
 															// FOLLOW UP BUTTON GENERATOR
 															// FOLLOW UP BUTTON GENERATOR
 															$i=1;
 															$tweet_to_client = '';
-															$tweet_to_client .= '<div class="btn btn-primary btn-xs" onclick="showOptions('.$user_id.')" >Follow Up</div>';
-															$tweet_to_client .='<div id="follow_up_options'.$user_id.'" style="display:none;" >';
-															foreach ($follow_up_promote as $follow_up_button) {
-																$follow_up_button = $follow_up_promote[$i];
-																$tweet_to_client	.= '<a href="http://freelabel.net/som/index.php?dm=1&t='.$profile_twitter_noat.'&text='.$follow_up_promote[$i].'" target="_blank" class="btn btn-default btn-xs" >'.substr(urldecode($follow_up_promote[$i]), 0,120).'...</a>';
-																//$tweet_to_client	.= '<a href="https://twitter.com/intent/tweet?screen_name='.$profile_twitter_noat.'&text='.$follow_up_promote[$i].'" target="_blank" class="btn btn-default btn-xs" >'.substr(urldecode($follow_up_promote[$i]), 0,120).'...</a>';
-																$i++;
-															}
-															echo '</div>';
+															// $tweet_to_client .= '<div class="btn btn-primary btn-xs" onclick="showOptions('.$user_id.')" >Follow Up</div>';
+															// $tweet_to_client .='<div id="follow_up_options'.$user_id.'" style="display:none;" >';
+															$tweet_to_client .= '
+															<div class="dropdown">
+															  <button class="btn btn-social dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-comment"></i>
+															  <ul class="dropdown-menu">
+															    '.$config->loadScript($profile_trackname).'
+															  </ul>
+															</div>';
+
+
+															// foreach ($follow_up_promote as $follow_up_button) {
+															// 	$follow_up_button = $follow_up_promote[$i];
+															// 	$tweet_to_client	.= '<a href="http://freelabel.net/som/index.php?dm=1&t='.$profile_twitter_noat.'&text='.$follow_up_promote[$i].'" target="_blank" class="btn btn-default btn-xs" >'.substr(urldecode($follow_up_promote[$i]), 0,120).'...</a>';
+															// 	//$tweet_to_client	.= '<a href="https://twitter.com/intent/tweet?screen_name='.$profile_twitter_noat.'&text='.$follow_up_promote[$i].'" target="_blank" class="btn btn-default btn-xs" >'.substr(urldecode($follow_up_promote[$i]), 0,120).'...</a>';
+															// 	$i++;
+															// }
+															// echo '</div>';
 															// FOLLOW UP BUTTON GENERATOR
 															// FOLLOW UP BUTTON GENERATOR
 															// FOLLOW UP BUTTON GENERATOR
@@ -237,7 +254,7 @@ FREELABEL Featured: ".$name." (".$twitter.")
 
 														} else {
 															$tweet_track_request = $profile_twitter.' Login to your FREELABEL profile and upload music ASAP --> submit.FREELABEL.net';
-															$submitted_tracks_status	= "<a onclick='postTweet(\"".$tweet_track_request."\")' class='btn btn-danger btn-xs'>NO SONGS!!!!!</a>";
+															$submitted_tracks_status	= "<a onclick='postTweet(\"".$tweet_track_request."\")' class='btn btn-danger btn-xs'>NEED SONGS!!!!!</a>";
 														}
 														$profile_bool	= "<button href='http://x.freelabel.net/?i=".$name."'  class='btn btn-success btn-xs' target='_blank' >COMPLETED</button>";
 
@@ -278,13 +295,13 @@ FREELABEL Featured: ".$name." (".$twitter.")
 											    	<a href="http://twitter.com/'.$profile_twitter.'" target="_blank">'.$profile_twitter.'</a>
 											    </td>
 											    <td>
-											    	'.get_timeago(strtotime($date_created)).'
+											    	'.$date_created_account.'
 											    </td>
 											    <td>
 											    	'.$showcase_date.'
 											    </td>
 											    <td>
-											    	'.$expiration_date_text.'
+											    	'.$expiration_date.'
 											    </td>
 											    <td>
 											    	'.$profile_location.'

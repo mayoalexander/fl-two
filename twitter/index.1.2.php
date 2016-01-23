@@ -759,10 +759,10 @@ if($_GET['som']=='1')
             <hr>
             -->
             <section>
-            <a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=all" class="btn btn-success col-md-1" target="_blank">Auto</a>
+            <a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=all" class="btn btn-success col-md-1" target="_blank">Admin</a>
             <a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=clients" class="btn btn-success col-md-1" target="_blank">Clients</a>
             <a href="http://freelabel.net/users/dashboard/auto/organic?mins=6&som=1" class="btn btn-success col-md-1" target="_blank">Organic</a>
-            <a href="http://freelabel.net/users/dashboard/auto/promos?mins=6&som=1" class="btn btn-success col-md-1" target="_blank">Recent</a>
+            <a href="http://freelabel.net/users/dashboard/auto/promos?mins=6&som=1" class="btn btn-success col-md-1" target="_blank">Promos</a>
 
             <a href="http://freelabel.net/twitter/?som=1&q=1" class="btn btn-default col-md-2 col-xs-2" target="_blank">1</a>
             <a href="http://freelabel.net/twitter/?som=1&q=2" class="btn btn-default col-md-2 col-xs-2" target="_blank">2</a>

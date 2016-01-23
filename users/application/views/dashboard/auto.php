@@ -148,7 +148,7 @@ if ($_POST['live'] || $_GET['live']) {
         $already_tweeted = array("0");
         $i=1;
 
-        echo "<h1>CAMPAIGNS</h1>";
+        echo "<h1 style='text-transform:uppercase;'>".$action." tweets</h1>";
         echo '<ul class="list-group" style="">';
         // echo '<script>alert("okay okay");</script>';
         foreach ($posts_to_tweet as $tweet) {
@@ -156,7 +156,7 @@ if ($_POST['live'] || $_GET['live']) {
                 // $user_twitter_name = $twitter_user_data->user->screen_name;
                   echo '
                         <li class="list-group-item som-item">
-                          <span class="badge">'.$i.'</span>
+                          <span class="text-muted">'.$i.')</span>
                           '.$tweet.'
                         </li>
                       ';
