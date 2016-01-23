@@ -1158,7 +1158,15 @@ class UploadHandler
 
 
         // 3RD PARTY APIs
-        $twitpic = $upload->getTwitpicURL($filedata);
+        switch ($_POST['public']) {
+            case 'public':
+                $twitpic = $upload->getTwitpicURL($filedata);
+                break;
+            case 'private':
+                $twitpic = '';
+                break;
+        }
+
         $filedata['email'] = $upload->getUserEmail($filedata['user_name']);
 
         // DETECT FILE TYPE
@@ -1182,6 +1190,11 @@ class UploadHandler
         if (strpos($filedata['blogtitle'], "'") == true) {
             $filedata['blogtitle'] = str_replace("'", '', $filedata['blogtitle']);
         }
+        if (strpos($filedata['blogtitle'], ".mp3") == true) {
+            $filedata['blogtitle'] = str_replace(".mp3", '', $filedata['blogtitle']);
+        }
+
+
 
 
 

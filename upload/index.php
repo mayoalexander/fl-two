@@ -251,6 +251,14 @@ if ( file_exists($path)) {
                         <textarea name="description[]" rows="5" class="form-control" required="1" placeholder="Enter Description.." id="description" ></textarea>
                     </label>
 
+                    <label class="public">
+                        <span>Visibility:</span><br>
+                        <select name="public" class="form-control">
+                            <option value="public" selected>Public</option>
+                            <option value="private">Private</option>
+                        </select>
+                    </label>
+
                     <label class="user_name">
                         <input type="hidden" name="user_name[]"  value="'.$user_name_session.'" class="form-control" >
                     </label>
