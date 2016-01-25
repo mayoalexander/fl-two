@@ -291,10 +291,6 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       color:#e3e3e3;
     }
 
-
-    .card-social , .card-chart {
-      background-color: #101010;
-    }
     .card-social small {
       color:#a7a7a7;
     }

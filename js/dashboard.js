@@ -11,17 +11,23 @@
 	// 	return vars;
 	// }
 
- //    // detect
+ // // //    // detect
  //    var currenttab = getUrlVars()['ctrl'];
  //    var url = 'http://freelabel.net/users/dashboard/' + currenttab + '/' ;
-
+ //    $('.content-current').removeClass('content-current');
  //    // load 
  //    $.get(url, function(data){
  //      // alert('completed!');
  //      console.log($('#' + currenttab));
- //      $('#' + currenttab).html(data);
+ //      console.log('#' + currenttab);
+ //      $('#' + currenttab).addClass('content-current');
+ //      // $('#' + currenttab).html(data);
+
  //    });
  //    console.log(url);
+
+
+
 
 
 
