@@ -310,6 +310,7 @@ if ( file_exists($path)) {
                 {% } else { %}
                     <span>{%=file.name%}</span>
                 {% } %}
+                size: {%=file.size%}
                 <span class="size">{%=o.formatFileSize(file.size)%}</span>
             </p>
             {% if (file.error) { %}

@@ -65,7 +65,7 @@ shuffle($arr);
 		/* CREATE EVENTS STACKS */
 		if (count($user['media']['feed'])>0) {
 			echo '<div class="stack">
-			<h2 class="stack-title"><a href="#" data-text="Feed"><span>Feed</span></a></h2>';
+			<h2 class="stack-title"><a href="#" data-text="Uploads"><span>Uploads</span></a></h2>';
 					// print_r($user['media']['video']);
 
 					// ------------------ DISPLAY PHOTOS --------------------------- // 
@@ -77,7 +77,7 @@ shuffle($arr);
 							echo '
 							<div class="item">
 								<div class="item__content">
-									<a href="http://freelabel.net/images/'.$photo['id'].'"><img src="'.$photo['photo'].'" alt="'.$photo['blogtitle'].'" /></a>
+									<a href="http://freelabel.net/'.$photo['twitter'].'/t/'.$photo['id'].'"><img src="'.$photo['photo'].'" alt="'.$photo['blogtitle'].'" /></a>
 									<h3 class="item__title">'.$photo['blogtitle'].' <span class="item__date">05/05/2015</span></h3>
 									<div class="item__details">
 										<ul>
@@ -130,48 +130,48 @@ shuffle($arr);
 					?>
 				
 	<?php 
-	/* CREATE VIDEO STACK */
-		if (count($user['media']['video'])>0) {
-			echo '<div class="stack">
-			<h2 class="stack-title"><a href="#" data-text="Videos"><span>Videos</span></a></h2>';
-					// print_r($user['media']['video']);
+	// /* CREATE VIDEO STACK */
+	// 	if (count($user['media']['video'])>0) {
+	// 		echo '<div class="stack">
+	// 		<h2 class="stack-title"><a href="#" data-text="Videos"><span>Videos</span></a></h2>';
+	// 				// print_r($user['media']['video']);
 
-					// ------------------ DISPLAY PHOTOS --------------------------- // 
+	// 				// ------------------ DISPLAY PHOTOS --------------------------- // 
 
-					$i=0;
-					foreach ($user['media']['video'] as $key => $photo) {
-						//echo $i.') <br>';
-							$i++;
-							echo '
-					<div class="item">
-						<div class="item__content">
-							<video controls style="width:100%;" preload="metadata" alt="'.$photo['title'].'">
-								<source src="'.$photo['image'].'">
-							</video>
-							<h3 class="item__title">'.$photo['title'].' <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>'.$photo['type'].'</span></li>
-									<!--<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>-->
-								</ul>
-							</div>
-						</div>
-					</div>';
-						//echo "<hr>";
-					}
-			echo "</div>";
-		}
-
-
+	// 				$i=0;
+	// 				foreach ($user['media']['video'] as $key => $photo) {
+	// 					//echo $i.') <br>';
+	// 						$i++;
+	// 						echo '
+	// 				<div class="item">
+	// 					<div class="item__content">
+	// 						<video controls style="width:100%;" preload="metadata" alt="'.$photo['title'].'">
+	// 							<source src="'.$photo['image'].'">
+	// 						</video>
+	// 						<h3 class="item__title">'.$photo['title'].' <span class="item__date">05/05/2015</span></h3>
+	// 						<div class="item__details">
+	// 							<ul>
+	// 								<li><i class="icon icon-camera"></i><span>'.$photo['type'].'</span></li>
+	// 								<!--<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
+	// 								<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
+	// 								<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
+	// 								<li><i class="icon icon-iso"></i><span>80</span></li>-->
+	// 							</ul>
+	// 						</div>
+	// 					</div>
+	// 				</div>';
+	// 					//echo "<hr>";
+	// 				}
+	// 		echo "</div>";
+	// 	}
 
 
-		/* CREATE PHOTO STACKS */
+
+
+		/* CREATE PROMO STACKS */
 		if (count($user['media']['photo'])>0) {
 			echo '<div class="stack">
-			<h2 class="stack-title"><a href="#" data-text="Photos"><span>Photos</span></a></h2>';
+			<h2 class="stack-title"><a href="#" data-text="Promos"><span>Promos</span></a></h2>';
 					// print_r($user['media']['video']);
 
 					// ------------------ DISPLAY PHOTOS --------------------------- // 
@@ -239,37 +239,37 @@ shuffle($arr);
 
 
 
-		/* CREATE Merch STACKS */
-		if (count($user['media']['merch'])>0) {
-			echo '<div class="stack">
-			<h2 class="stack-title"><a href="#" data-text="Merch"><span>Merch</span></a></h2>';
-					// print_r($user['media']['video']);
+		// /* CREATE MERCH STACKS */
+		// if (count($user['media']['merch'])>0) {
+		// 	echo '<div class="stack">
+		// 	<h2 class="stack-title"><a href="#" data-text="Merch"><span>Merch</span></a></h2>';
+		// 			// print_r($user['media']['video']);
 
-					// ------------------ DISPLAY PHOTOS --------------------------- // 
+		// 			// ------------------ DISPLAY PHOTOS --------------------------- // 
 
-					$i=0;
-					foreach ($user['media']['merch'] as $key => $photo) {
-						//echo $i.') <br>';
-							$i++;
-							echo '
-							<div class="item">
-								<div class="item__content">
-									<a href="http://freelabel.net/images/'.$photo['id'].'"><img src="'.$photo['thumbnail'].'" alt="'.$photo['title'].'" /></a>
-									<h3 class="item__title">'.$photo['title'].' <span class="item__date">05/05/2015</span></h3>
-									<div class="item__details">
-										<ul>
-											<li><i class="icon icon-camera"></i><span>'.$user['media']['photos'][3]['desc'].'</span></li>
-											<!--<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-											<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-											<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-											<li><i class="icon icon-iso"></i><span>80</span></li>-->
-										</ul>
-									</div>
-								</div>
-							</div>';
-					}
-			echo "</div>";
-		}
+		// 			$i=0;
+		// 			foreach ($user['media']['merch'] as $key => $photo) {
+		// 				//echo $i.') <br>';
+		// 					$i++;
+		// 					echo '
+		// 					<div class="item">
+		// 						<div class="item__content">
+		// 							<a href="http://freelabel.net/images/'.$photo['id'].'"><img src="'.$photo['thumbnail'].'" alt="'.$photo['title'].'" /></a>
+		// 							<h3 class="item__title">'.$photo['title'].' <span class="item__date">05/05/2015</span></h3>
+		// 							<div class="item__details">
+		// 								<ul>
+		// 									<li><i class="icon icon-camera"></i><span>'.$user['media']['photos'][3]['desc'].'</span></li>
+		// 									<!--<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
+		// 									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
+		// 									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
+		// 									<li><i class="icon icon-iso"></i><span>80</span></li>-->
+		// 								</ul>
+		// 							</div>
+		// 						</div>
+		// 					</div>';
+		// 			}
+		// 	echo "</div>";
+		// }
 	?>
 
 

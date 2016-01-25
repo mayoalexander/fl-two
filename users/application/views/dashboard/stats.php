@@ -6,7 +6,7 @@
       <h6 class="card-subtitle"><?php echo $user['description']; ?></h6>
       <a href="http://freelabel.net/u/<?php echo $user_name; ?>" class="btn btn-secondary-outline btn-sm" target="_blank">View Profile</a>
       <div class="dropdown">
-      <a class="btn-secondary-outline btn-sm dropdown-toggle pull-left" type="button" data-toggle="dropdown"><i class='fa fa-pencil' ></i>
+      <a class="btn-secondary-outline btn-sm dropdown-toggle pull-left" type="button" data-toggle="dropdown"><i class='fa fa-pencil' > Edit</i>
       <span class="caret"></span></a>
       <ul class="dropdown-menu edit-profile-menu">
         <li><a type="button" class="btn-link" data-toggle="modal" data-target="#myModal" data-param="Photo"><i class="fa fa-photo" ></i> Change Profile Photo</a></li>

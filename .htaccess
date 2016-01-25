@@ -36,7 +36,7 @@ RewriteRule ^search/@([\w-]+)/$ 									user/views/search.php?q=$1
 
 
 RewriteRule ^submit$ 										/upload/index.php
-RewriteRule ^submit/([\w-]+)/$ 							/upload/index.php
+RewriteRule ^submit/([\w-]+)/$ 								/upload/index.php
 RewriteRule ^submit/([\w-]+)$ 								/upload/index.php
 
 
@@ -62,8 +62,8 @@ RewriteRule ^U/([\w-]+)$ 									/test/profile.php?uid=$1
 RewriteRule ^l/@([\w-]+)/$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
 RewriteRule ^l/@([\w-]+)$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
 
-RewriteRule ^l/@([\w-]+)/([\w-]+)/$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
-RewriteRule ^l/@([\w-]+)/([\w-]+)$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
+RewriteRule ^l/@([\w-]+)/([\w-]+)/$ 						/config/profile.php?user_twitter_name=$1&blog_title=$2
+RewriteRule ^l/@([\w-]+)/([\w-]+)$ 							/config/profile.php?user_twitter_name=$1&blog_title=$2
 
 RewriteRule ^L/@([\w-]+)/$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
 RewriteRule ^L/@([\w-]+)$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
