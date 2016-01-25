@@ -28,10 +28,6 @@
 
 
 
-
-
-
-
     $('.tabs li').click(function(){
       var tabName = $(this).find('.dash-filter').attr('data-load');
        var stateObj = { foo: "bar" };
@@ -43,7 +39,6 @@
           console.log($('#' + tabName));
           $('#' + tabName).html(data);
         })
-        // alert(url);
     });
 
     $('.editable-file').editable('http://freelabel.net/submit/update.php',{

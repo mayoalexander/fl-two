@@ -155,7 +155,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       font-family:<?php echo $site['font-head']; ?>;
     }
     /*body fonts */
-    body , p {
+    body , p , .tabs-style-linemove nav a {
       font-family:<?php echo $site['font-body']; ?>;
     }
     textarea:focus, input:focus{
@@ -168,13 +168,16 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     .editable-file input , .editable-file textarea , .editable-file input:focus,
     .editable-promo-file input , .editable-promo-file textarea , .editable-promo-file input:focus,
     .editable-promo input , .editable-promo textarea , .editable-promo input:focus,
-    .edit input {
+    .edit input , .search-tracks-input input {
       background-color:transparent;
       margin:inherit 0px;
       padding:inherit 0px ;
       border:0;
       display:inline-block;
       width:100%;
+    }
+    .search-tracks-input input {
+      width:250px;
     }
     .jumbotron {
       text-shadow:1px 1px 50px #101010;

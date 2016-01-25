@@ -9,6 +9,8 @@ if (isset($_POST["page"]) ) {
 	$tag = '';
 }
 
+
+
 $user_name = Session::get('user_name') ;
 
 // ADMIN SETTINGS
@@ -18,18 +20,60 @@ if ($user_name == 'admin' OR $user_name == "thatdudewayne") {
 
 
 ?>
+
 <nav class="dashboard-nav-group event-option-panel btn-group" style="background-color:transparent;text-align:left;border-bottom:3px solid #303030;padding:2% 0%;">
 	<button class="btn btn-success btn-xs col-md-3 col-xs-12 add-new-media-audio" data-link="http://freelabel.net/upload/?uid=<?php echo $user_name; ?>&type=idea" ><i class="fa fa-plus"></i> Add New Audio</button> | 
 	<a href="<?php echo $config->getUserURL(Session::get('user_name')); ?>" class="btn btn-default btn-xs">View Profile</a> |
 	<a href="http://freelabel.net/users/login/showprofile" class="btn btn-default btn-xs">Settings</a>
 </nav>
 
+
+<form class="search-tracks-input">
+  <input type='text' placeholder="Search Your Uploads..." class="form-control" data-user='<?php echo $user_name; ?>'>
+</form>
 <!-- display content  -->
-<?php $files = $config->get_user_posts($user_name, 20);
-echo $files['posts']; ?>
+<?php 
+
+
+  // get tag value
+  if (isset($_GET["q"]) ) {
+    // Search Tracks
+    $query = trim($_GET["q"]);
+    echo '<h1><span class="text-muted">Searching For:</span> '.$query.'</h1>';
+    $files = $config->get_user_posts_search($user_name, $query);
+  } else {
+    // show ALL tracks
+    $query = '';
+    $files = $config->get_user_posts($user_name, 20);
+  }
+  echo $files['posts']; 
+
+    
+
+?>
 
 
 <script type="text/javascript">
+
+
+
+
+ $('.search-tracks-input').submit(function(event){
+  $(this).append('Loading...');
+  $(this).hide('fast');
+  event.preventDefault();
+  var x = $(this).find('input').val();
+  var u = $(this).find('input').attr('data-user');
+  var url = 'http://freelabel.net/users/dashboard/audio/';
+  var data = {
+    q:x,
+    user:u
+  }
+  $.get(url,data,function(result){
+    $('#audio').html(result);
+  });
+ });
+
 
 	$(".add-new-media-audio").click(function(event) {
 		event.preventDefault();
