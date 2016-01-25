@@ -243,7 +243,12 @@ if ( file_exists($path)) {
 
                     <label class="twitter">
                         <span>Twitter:</span><br>
-                        <input type="text" name="twitter[]" class="form-control" required="1" placeholder="Enter @TwitterUserName" id="twitter" >
+                        <input type="text" name="twitter[]" class="form-control" required="1" placeholder="Enter @TwitterUserName.." id="twitter" >
+                    </label>
+
+                    <label class="phone">
+                        <span>Phone (Booking Contact Info):</span><br>
+                        <input type="text" name="phone[]" class="form-control" required="1" placeholder="Enter Phone Number.." id="phone" >
                     </label>
 
                     <label class="description">

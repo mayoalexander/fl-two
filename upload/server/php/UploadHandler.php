@@ -1142,6 +1142,7 @@ class UploadHandler
         include_once(ROOT.'inc/connection.php');
         $filepath = 'http://freelabel.net/upload/server/php/files/'.$file->name;
 
+
         // CREATE QUICK URLS
         $shortname = explode(' ',$_POST['title'][0]);
         $_POST['blog_story_url'] = 'http://freelabel.net/'.$_POST['twitter'][0].'/'.$shortname[0];
@@ -1150,6 +1151,7 @@ class UploadHandler
         $filedata['trackmp3'] = $filepath;
         $filedata['twitter'] = $_POST['twitter'][0];
         $filedata['user_name'] = $_POST['user_name'][0];
+        $filedata['phone'] = $_POST['phone'][0];
         $filedata['blogtitle'] = $_POST['title'][0];
         $filedata['trackname'] = $_POST['title'][0];
         $filedata['blog_story_url'] = $_POST['blog_story_url'];
@@ -1198,6 +1200,11 @@ class UploadHandler
 
 
 
+
+
+
+
+
         // -------------------------------------------------------- //
                             // UPLOAD TO THE SITE! //
         // -------------------------------------------------------- //
@@ -1207,12 +1214,11 @@ class UploadHandler
 
         // ADD TO DATABASE
         $sql = 'INSERT INTO `amrusers`.`feed`
-        (`id`, `type`, `blog_story_url`, `size`, `filetype`, `trackmp3`, `user_name`, `twitter`, `blogtitle`, `photo`, `playerpath`, `trackname` , `twitpic`, `submission_date`, `blogentry` , `email`) VALUES
-        (NULL, "'.$_POST['type'].'" , "'.$_POST['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'", "'.$_POST['playerpath'].'", "'.$_POST['title'][0].'", "'.$twitpic.'", "'.$filedata['submission_date'].'", "'.$filedata['description'].'", "'.$filedata['email'].'");';
+        (`id`, `type`, `blog_story_url`, `size`, `filetype`, `trackmp3`, `user_name`, `twitter`, `blogtitle`, `photo`, `playerpath`, `trackname` , `twitpic`, `submission_date`, `blogentry` , `email`, `phone`) VALUES
+        (NULL, "'.$_POST['type'].'" , "'.$_POST['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$_POST['user_name'][0].'", "'.$_POST['twitter'][0].'", "'.$_POST['title'][0].'", "'.$_POST['photo'].'", "'.$_POST['playerpath'].'", "'.$_POST['title'][0].'", "'.$twitpic.'", "'.$filedata['submission_date'].'", "'.$filedata['description'].'", "'.$filedata['email'].'", "'.$filedata['phone'].'");';
         if (mysqli_query($con, $sql) /* && $upload->uploadToRadio($filepath,$_POST['twitter'][0],$_POST['trackname'][0], $_POST['user_name'][0])===true */) { // 
 
-            $msg = "Your submission has been recieved and will be in radio rotation immedietly. Thank you for working with FREELABEL as we all change the way art is showcased and shared.\n\n\n
-            <img style='width:100%;display:block;' src='".$_POST['photo']."'>
+            $msg = "Your submission has been recieved and will be in radio rotation immedietly. Thank you for working with FREELABEL as we all change the way art is showcased and shared. If needed, we will be in contact with you at ".$filedata['phone']." \n\n\n
             Feel free to contact us at 347-994-0267.\n\nhttp://FREELABEL.net/";
 
             // use wordwrap() if lines are longer than 70 characters
@@ -1221,7 +1227,7 @@ class UploadHandler
             // send email
             mail($filedata['email'],'[SUBMISSION] '.$filedata['twitter']." - ".$filedata['blogtitle'],$msg);
             mail("notifications@freelabel.net",'[SUBMISSION] '.$filedata['twitter']." - ".$filedata['blogtitle'],$msg);
-            mail("wayne@freelabel.net",'[SUBMISSION] '.$filedata['twitter']." - ".$filedata['blogtitle'],$msg);
+            // mail("wayne@freelabel.net",'[SUBMISSION] '.$filedata['twitter']." - ".$filedata['blogtitle'],$msg);
 
         } else {
           echo "Error: " . $sql . "<br>" . mysqli_error($con);
