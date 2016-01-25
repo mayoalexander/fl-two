@@ -5,6 +5,13 @@
       <h5 class="card-title"><?php echo $user['name']; ?></h5>
       <h6 class="card-subtitle"><?php echo $user['description']; ?></h6>
       <a href="http://freelabel.net/u/<?php echo $user_name; ?>" class="btn btn-secondary-outline btn-sm" target="_blank">View Profile</a>
+      <div class="dropdown">
+      <a class="btn-secondary-outline btn-sm dropdown-toggle pull-left" type="button" data-toggle="dropdown"><i class='fa fa-pencil' ></i>
+      <span class="caret"></span></a>
+      <ul class="dropdown-menu edit-profile-menu">
+        <li><a type="button" class="btn-link" data-toggle="modal" data-target="#myModal" data-param="Photo"><i class="fa fa-photo" ></i> Change Profile Photo</a></li>
+      </ul>
+    </div>
     </div>
     <div class="card-block container">
       <div class="row">
@@ -69,3 +76,128 @@
     </ul>
   </div>
   </panel>
+
+
+
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content edit-profile-modal">
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <form class="edit-profile-photo-form">
+          <input type='file' id='edit-profile-photo-input' class="form-contol">
+          <input type='hidden' name='user_name' value='<?php echo $user_name; ?>'>
+          <input type='submit' class="btn btn-social btn-warning confirm-upload-buttons save-changes-photo" value="Save Changes">
+          <hr>
+          <span class="photo-upload-results" ></span>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+  $(function(){
+    $('.edit-profile-menu a').click(function(event){
+      var okay = $(this).attr('data-param');  
+      var wrap = $('.edit-profile-modal .modal-title').html('Upload New Profile ' + okay);
+      var wrap = $('.edit-profile-modal .modal-title').html();
+      // alert(okay);
+    });
+
+
+
+$('.confirm-upload-buttons').hide();
+
+$('#edit-profile-photo-input').change(function() {
+    var pleaseWait = 'Please wait...';
+      // ------ NEW NEW NEW NEW ------ //
+      $('.photo-upload-results').html('');
+      $('.photo-upload-results').append(pleaseWait);
+      $('.confirm-upload-buttons').prepend('<p class="wait" style="color:#303030;">Please wait..<p>');
+    $('.confirm-upload-buttons').hide('fast');
+    var path = 'http://freelabel.net/upload/server/php/upload-photo.php';
+    var data;
+    var formdata_PHO = $('#edit-profile-photo-input')[0].files[0];
+    var formdata = new FormData();
+
+    // Add the file to the request.
+      formdata.append('photos[]', formdata_PHO);
+  $.ajax({
+        // Uncomment the following to send cross-domain cookies:
+        xhrFields: {withCredentials: true},
+        url: path,
+        //dataType: 'json',
+        method: 'POST',
+        cache       : false,
+      processData: false,
+      contentType: false, 
+      fileElementId: 'image-upload',
+        data: formdata,
+        beforeSend: function (x) {
+              if (x && x.overrideMimeType) {
+                  x.overrideMimeType("multipart/form-data");
+              }
+      },
+      // Now you should be able to do this:
+      mimeType: 'multipart/form-data'    //Property added in 1.5.1
+    }).always(function () {
+    //alert(formdata_PHO);
+    console.log(formdata_PHO);
+    //$('#confirm_upload').html('please wait..');
+        //$(this).removeClass('fileupload-processing');
+    }).fail(function(jqXHR){
+    alert(jqXHR.statusText + 'oh no it didnt work!')
+  }).done(function (result) {
+        //alert('YES');
+    $('.photo-upload-results').html(result);
+    $('.confirm-upload-buttons').show('fast');
+    // $('.confirm-upload-buttons').css('opacity',1);
+    $('.wait').hide('fast');
+  })
+    
+ });
+
+
+$('.edit-profile-photo-form').submit(function(event){
+  event.preventDefault();
+  var data = $(this).serialize();
+  var el = $(this).parent();
+  $.post('http://freelabel.net/users/dashboard/update_photo/',data,function(results){
+    el.html(results);
+    setTimeout(function(){
+      $('#myModal').modal('hide');
+    },2000);
+  });
+  // $(this).okay('.edit-profile-photo-form');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  });
+</script>

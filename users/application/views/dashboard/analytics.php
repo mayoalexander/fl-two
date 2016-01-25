@@ -25,8 +25,6 @@ $user = $config->getUserData($user_name);
 
 
 
-
-
   foreach ($tracks as $key => $value) {
     $post_date = date('m-d',strtotime($value['submission_date']));
     $todays_date = date('m-d');

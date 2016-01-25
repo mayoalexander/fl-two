@@ -56,8 +56,6 @@ if ($user_name == 'admin' OR $user_name == "thatdudewayne") {
 <script type="text/javascript">
 
 
-
-
  $('.search-tracks-input').submit(function(event){
   $(this).append('Loading...');
   $(this).hide('fast');

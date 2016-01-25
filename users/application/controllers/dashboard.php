@@ -159,6 +159,18 @@ class Dashboard extends Controller
 
     }
 
+    function update_photo() {
+        include_once('/home/content/59/13071759/html/config/index.php');
+        $config = new Blog();
+        $res = $config->update('user_profiles','photo',$_POST['photo'],$_POST['user_name']);
+        // print_r($res);
+        if ($res==true) {
+            echo "Profile Successfully Updated!";
+        } else {
+            echo "Something Went Wrong!";
+        }
+    }
+
     
     
 }
