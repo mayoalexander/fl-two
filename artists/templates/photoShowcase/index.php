@@ -74,11 +74,12 @@ shuffle($arr);
 					foreach ($user['media']['feed'] as $key => $photo) {
 						//echo $i.') <br>';
 							$i++;
+							$url = 'http://freelabel.net/'.$photo['twitter'].'/t/'.$photo['id'];
 							echo '
 							<div class="item">
 								<div class="item__content">
-									<a href="http://freelabel.net/'.$photo['twitter'].'/t/'.$photo['id'].'"><img src="'.$photo['photo'].'" alt="'.$photo['blogtitle'].'" /></a>
-									<h3 class="item__title">'.$photo['blogtitle'].' <span class="item__date">05/05/2015</span></h3>
+									<a href="'.$url.'"><img src="'.$photo['photo'].'" alt="'.$photo['blogtitle'].'" /></a>
+									<a href="'.$url.'"><h3 class="item__title">'.$photo['blogtitle'].' <span class="item__date">05/05/2015</span></h3></a>
 									<div class="item__details">
 										<ul>
 											<li><i class="icon icon-camera"></i><span>'.$user['media']['photos'][3]['desc'].'</span></li>

@@ -208,94 +208,6 @@ $(function() {
 
 
 
-
-    // ********************************* 
-    //  PLAY BUTTON CONTROL 
-    // *********************************
-
-    //  ---------- play button ------------ /
-    $('.controls-play').click(function(event){
-      event.preventDefault();
-      var audioFile = $(this).attr('data-src');
-      var audioTitle = $(this).attr('data-title');
-      var nowplaying = '<i class="fa fa-play"></i>';
-      var nowpaused = '<i class="fa fa-pause"></i>';
-      // get next song
-      var nextsong = $(this).parent().parent().next();
-      var nextFile = nextsong.find('.controls-play').attr('data-src');
-      var nextTitle = nextsong.find('.controls-play').attr('data-title');
-      globalButtons.html('<i class="fa fa-play"></i>'); // * 
-      
-
-
-
-      // console.log(nextFile);
-      // console.log(nextsong);
-      // console.log(audioFile);
-      // console.log(globalAudioPlayer[0].src);
-
-
-      if (isPlaying(globalAudioPlayer[0])==false) {
-        // play file
-              $(this).html('<i class="fa fa-pause"></i>');
-              globalAudioPlayer[0].play();
-              globalAudioPlayerText.text(audioTitle);
-              globalAudioPlayer.attr('src', audioFile);
-              globalAudioPlayer.attr('autoplay', 1);
-              $(this).addClass('now-playing'); // *
-              // globalAudioPlayer.attr('loop', 1);
-      } else if (isPlaying(globalAudioPlayer[0])==true && audioFile !== globalAudioPlayer[0].src) {
-        // pause function
-              $(this).html('<i class="fa fa-pause"></i>');
-              globalAudioPlayer[0].play();
-              globalAudioPlayerText.text(audioTitle);
-              globalAudioPlayer.attr('src', audioFile);
-              globalAudioPlayer.attr('autoplay', 1);
-              // globalAudioPlayer.attr('loop', 1);
-      } else {
-        $(this).html('<i class="fa fa-play"></i>');
-        globalAudioPlayer[0].pause();
-      }
-
-      if ($(this).html()==nowpaused) {
-          // alert('show pawuse : ' + $(this).html());
-          $(this).removeClass('btn-secondary-outline');
-          $(this).addClass('btn-primary-outline');
-      } else {
-          // alert('show play button ' + $(this).html());
-          // $(this).html('<i class="fa fa-pause"></i>');
-          $(this).removeClass('btn-secondary-outline');
-          $(this).addClass('btn-primary-outline');
-      }
-
-
-    });
-  //  ---------- play button ------------ /
-  
-
-
-
-    $('.controls-options').click(function(){
-      var pid = $(this).attr('id');
-      // var value = $("#text").val(); // value = 9.61 use $("#text").text() if you are not on select box...
-      value = pid.replace("controls-", ""); // value = 9:61
-      // can then use it as
-      $(".controls-options-" + value).toggle('slow');
-    });
-    $('.controls-close').click(function(){
-      var parent = $(this).parent().parent();
-      //var parent = parent.parent();
-      //alert(parent);
-      //globalAudioPlayer.pause();
-      parent.hide('slow');
-      //globalAudioPlayer.attr('src', audioFile);
-      // globalAudioPlayer.attr('autoplay', 1);
-      // globalAudioPlayer.hide();
-      // globalAudioPlayer.attr('controls', 1);
-      //setTimeout(globalAudioPlayer.play(),1000);
-    });
-
-
     $(".open-edit-options").click(function(){
       alert($(this).attr('data-id'));
     });
@@ -307,7 +219,6 @@ $(function() {
       var id = $(this).attr('data-id');
       window.open('http://freelabel.net/images/'+id);
     });
-
 
 
 });
