@@ -70,7 +70,7 @@
       <?php 
         echo '<li class="list-group-item complete"><label class="label pull-left">Today</label> - <label class="label pull-right">'.$this_week_count.'</label></li>';
         echo '<li class="list-group-item complete"><label class="label pull-left">Yesterday</label> - <label class="label pull-right">'.$yesterday_count.'</label></li>';
-        echo '<li class="list-group-item complete"><label class="label pull-left">'.$day_before.'</label> - <label class="label pull-right">'.$day_before_count.'</label></li>';
+        echo '<li class="list-group-item complete"><label class="label pull-left">'.$day_before_yest.'</label> - <label class="label pull-right">'.$day_before_count.'</label></li>';
         echo '<li class="list-group-item complete"><label class="label pull-left">Previous Weeks</label> - <label class="label pull-right">'.$last_week_count.'</label></li>';
       ?>
     </ul>
@@ -154,9 +154,9 @@ $('#edit-profile-photo-input').change(function() {
       // Now you should be able to do this:
       mimeType: 'multipart/form-data'    //Property added in 1.5.1
     }).always(function () {
-    //alert(formdata_PHO);
-    console.log(formdata_PHO);
-    //$('#confirm_upload').html('please wait..');
+      //alert(formdata_PHO);
+      console.log(formdata_PHO);
+      //$('#confirm_upload').html('please wait..');
         //$(this).removeClass('fileupload-processing');
     }).fail(function(jqXHR){
     alert(jqXHR.statusText + 'oh no it didnt work!')

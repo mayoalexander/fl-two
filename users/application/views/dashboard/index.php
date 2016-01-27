@@ -27,8 +27,18 @@
 
     <section id="section-linemove-1" class="autoload al-feed">
         <!-- display content  -->
-        <?php $files = $config->display_user_posts('admin' , 50);
-        echo $files['posts']; ?>
+        <?php 
+
+        if (Session::get('user_name')=='admin') {
+          $files = $config->display_user_posts_new('admin' , 50);
+          echo $files['posts']; 
+        } else {
+          $files = $config->display_user_posts('admin' , 50);
+          echo $files['posts'];   
+        }
+
+
+        ?>
     </section>
 
     <section id="analytics" class="autoload al-analytics" data-load="analytics"></section>
