@@ -22,7 +22,7 @@
           <h4><?php echo $num_tracks; ?> <small class="text-uppercase">Posts</small></h4>
         </div>
         <div class="col-md-4 card-stat">
-          <h4>$<?php echo number_format($score, 2); ?> <small>Earnings</small></h4>
+          <h4>$<?php echo number_format($score, 2); ?> <small>Earnings (Exclusve Accounts Only)</small></h4>
         </div>
       </div>
     </div>
