@@ -19,7 +19,7 @@ shuffle($arr);
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php echo $user['profile']['id']; ?> // FREELABEL</title>
 	<meta name="description" content=<?php echo '"'.$user['profile']['desc'].'"'; ?> />
-	<meta name="keywords" content="photography, template, layout, effect, expand, image stack, animation, flickity, tilt" />
+	<meta name="keywords" content="<?php echo '"'.$user['profile']['desc'].'"'; ?>, <?php echo '"'.$user['profile']['id'].'"'; ?>" />
 	<meta name="author" content="@FREELABELNET" />
 	<link rel="shortcut icon" href="http://freelabel.net/ico/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="<?php echo HTTP.'artists/templates/photoShowcase/'; ?>css/normalize.css" />

@@ -22,7 +22,7 @@
           <h4><?php echo $num_tracks; ?> <small class="text-uppercase">Posts</small></h4>
         </div>
         <div class="col-md-4 card-stat">
-          <h4><?php echo number_format($score); ?> <small>Score</small></h4>
+          <h4>$<?php echo number_format($score, 2); ?> <small>Earnings</small></h4>
         </div>
       </div>
     </div>
@@ -70,7 +70,8 @@
       <?php 
         echo '<li class="list-group-item complete"><label class="label pull-left">Today</label> - <label class="label pull-right">'.$this_week_count.'</label></li>';
         echo '<li class="list-group-item complete"><label class="label pull-left">Yesterday</label> - <label class="label pull-right">'.$yesterday_count.'</label></li>';
-        echo '<li class="list-group-item complete"><label class="label pull-left">'.$day_before_yest.'</label> - <label class="label pull-right">'.$day_before_count.'</label></li>';
+        echo '<li class="list-group-item complete"><label class="label pull-left">'.date('l',strtotime($two_days_ago)).', ('.$two_days_ago.')</label> - <label class="label pull-right">'.$two_days_ago_count.'</label></li>';
+        echo '<li class="list-group-item complete"><label class="label pull-left">'.$three_days_ago.'</label> - <label class="label pull-right">'.$three_days_ago_count.'</label></li>';
         echo '<li class="list-group-item complete"><label class="label pull-left">Previous Weeks</label> - <label class="label pull-right">'.$last_week_count.'</label></li>';
       ?>
     </ul>
