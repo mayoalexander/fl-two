@@ -2,7 +2,8 @@
 include_once('/home/content/59/13071759/html/config/index.php');
 $user_name = Session::get('user_name');
 $config = new Blog();
-$stats = $config->getStatsByUser($user_name);
+$s = $config->getStatsByUser($user_name);
+$stats = $s['count'];
 $tracks = $config->getPostsByUser(0, 300, $user_name);
 $events = $config->getEventsByUser($user_name, 500);
 $promos = $config->getPromosByUser(Session::get('user_name') , 300);
@@ -20,7 +21,7 @@ if ($num_tracks == '300') {
 
 
 // earnings calculator 
-$score = 0.01 * $stats / $num_tracks;
+$score = 0.001 * $stats * 0.001 * $num_tracks;
 
 
 $photo = $config->getProfilePhoto($user_name);

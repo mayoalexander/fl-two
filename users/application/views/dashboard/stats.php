@@ -9,14 +9,14 @@
       <a class="btn-secondary-outline btn-sm dropdown-toggle pull-left" type="button" data-toggle="dropdown"><i class='fa fa-pencil' > Edit</i>
       <span class="caret"></span></a>
       <ul class="dropdown-menu edit-profile-menu">
-        <li><a type="button" class="btn-link" data-toggle="modal" data-target="#myModal" data-param="Photo"><i class="fa fa-photo" ></i> Change Profile Photo</a></li>
+        <li><a href="#" type="button" class="btn-link" data-toggle="modal" data-target="#editPhoto" data-param="Photo"><i class="fa fa-photo" ></i> Change Profile Photo</a></li>
       </ul>
     </div>
     </div>
     <div class="card-block container">
       <div class="row">
         <div class="col-md-4 card-stat">
-          <h4><?php echo number_format($stats); ?> <small class="text-uppercase">Views</small></h4>
+          <h4><?php echo number_format($stats); ?> <small class="text-uppercase">Views (for <?php echo $s['user_twitter'];?>)</small></h4>
         </div>
         <div class="col-md-4 card-stat">
           <h4><?php echo $num_tracks; ?> <small class="text-uppercase">Posts</small></h4>
@@ -50,7 +50,7 @@
   </panel>
 
 <panel class="col-md-6">
-<h3>Tracks</h3>
+<h3>Uploads</h3>
   <div class="card card-chart">
     <ul class="stats-track-list list-group">
       <?php 
@@ -82,7 +82,7 @@
 
 
 
-<div id="myModal" class="modal fade" role="dialog">
+<div id="editPhoto" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
