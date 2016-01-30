@@ -1157,7 +1157,8 @@ class UploadHandler
         $filedata['blog_story_url'] = $_POST['blog_story_url'];
         $filedata['photo'] = $_POST['photo'];
         $filedata['submission_date'] = date('Y-m-d H:s:i');
-
+        $twitpic = '';
+        
 
         // 3RD PARTY APIs
         switch ($_POST['public']) {
