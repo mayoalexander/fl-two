@@ -111,7 +111,7 @@
         <section class="pricing-section bg-8 pricing-area">
             <h2 class="pricing-section__title">Choose Your Account Type:</h2>
             <div class="pricing pricing--tashi">
-                <div class="pricing__item">
+<!--                 <div class="pricing__item">
                     <h3 class="pricing__title">Lite</h3>
                     <p class="pricing__sentence">Perfect for small startups that have less than 10 team members</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>6<span class="pricing__period">/ month</span></div>
@@ -121,7 +121,7 @@
                         <li class="pricing__feature">Upload Music + Videos</li>
                     </ul>
                     <button class="pricing__action" data-type="lite" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
-                </div>
+                </div> -->
                 <div class="pricing__item">
                     <h3 class="pricing__title">Creator</h3>
                     <p class="pricing__sentence">Suitable for medium-sized businesses with up to 30 employees</p>
@@ -171,6 +171,24 @@
 
                     </ul>
                     <button class="pricing__action" data-type="exclusive" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
+                </div>
+                <div class="pricing__item">
+                    <h3 class="pricing__title">Touring</h3>
+                    <p class="pricing__sentence">Secure your performance & campaign on our Spring Tour with Raider Klan's Amber London and friends.</p>
+                    <div class="pricing__price"><span class="pricing__currency">$</span>550<span class="pricing__period">/ month</span></div>
+                    <ul class="pricing__feature-list">
+                        <li class="pricing__feature">Includes Lite + Creator Features</li>
+                        <li class="pricing__feature">Unlimited space</li>
+                        <li class="pricing__feature">Paid Monthly Residuals for Radio Streams, Views, Followers, & Subscriber Royalties</li>
+                        <li class="pricing__feature">Full Social Media Package</li>
+                        <li class="pricing__feature">Artist Management</li>
+                        <li class="pricing__feature">Event/Project Promotions</li>
+                        <li class="pricing__feature">Magazine Photoshoot</li>
+                        <li class="pricing__feature">Event + Tour Booking</li>
+                        <li class="pricing__feature">Recording, Mixing, & Mastering</li>
+
+                    </ul>
+                    <button class="pricing__action" data-type="tour" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
                 </div>
             </div>
         </section>
@@ -293,6 +311,9 @@
                     break;
                 case 'exclusive':
                     var package = 'exclusive';
+                    break;
+                case 'tour':
+                    var package = 'tour';
                     break;
             }
             window.location.assign('http://freelabel.net/confirm/' + package);
