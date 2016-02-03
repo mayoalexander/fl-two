@@ -90,6 +90,28 @@
         .pricing-list-info h3 {
             color:#303030;
         }
+
+        /* LOGIN FORM */
+        .login-form {
+            text-align: center;
+        }
+        .login-form button {
+            display: block;
+            margin:auto;
+        }
+        .login-form input, .login-form button {
+            padding:2%;
+        }
+
+
+        /*MOBILE STYLES */
+         
+        @media (max-width: 600px) {
+        .codrops-header {
+            background-size:150%;
+          }
+        }
+
     </style>
     <!--[if IE]>
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -106,6 +128,15 @@
                 <span><?php echo $site['name']; ?></span> Create An Account
             </h1>
         </header>
+
+<!--         <section class="pricing-section bg-8 pricing-area">
+            <h2 class="pricing-section__title">Login</h2>
+            <form class="login-form">
+                <input type="text" class="form-control" placeholder="Enter Username">
+                <input type="text" class="form-control" placeholder="Enter Password">
+                <button>Login</button>
+            </form>
+        </section> -->
 
         <!-- Pricing Tables and More  -->
         <section class="pricing-section bg-8 pricing-area">
@@ -127,11 +158,10 @@
                     <p class="pricing__sentence">Suitable for medium-sized businesses with up to 30 employees</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>10<span class="pricing__period">/ month</span></div>
                     <ul class="pricing__feature-list">
-                        <li class="pricing__feature">Includes Lite Features</li>
                         <li class="pricing__feature">1TB of space (1000 GB)</li>
                         <li class="pricing__feature">Radio + Mag App</li>
                         <li class="pricing__feature">Free Entry to FL EVENTS</li>
-                        <li class="pricing__feature">Post Directly FreeLabel Official Twitter</li>
+                        <li class="pricing__feature">Post Directly FREELABEL Official Twitter</li>
                         <li class="pricing__feature">Create Promotions to Showcase full Albums or Projects.</li>
                     </ul>
                     <button class="pricing__action" data-type="creator" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
@@ -141,15 +171,13 @@
                     <p class="pricing__sentence">For any large corporation with an unlimited number of members</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>59<span class="pricing__period">/ month</span></div>
                     <ul class="pricing__feature-list">
-                        <li class="pricing__feature">Includes Lite + Creator Features</li>
+                        <li class="pricing__feature">Includes Creator Features</li>
                         <li class="pricing__feature">Unlimited space</li>
                         <li class="pricing__feature">Magazine + Radio Interviews</li>
                         <li class="pricing__feature">Full Project Streams</li>
-                        <li class="pricing__feature">Paid Monthly Residuals for Radio Streams, Views, Followers, & Subscriber Royalties</li>
                         <li class="pricing__feature">Full Social Media Package</li>
                         <li class="pricing__feature">Event/Project Promotions</li>
-                        <li class="pricing__feature">Event + Tour Booking</li>
-                        <li class="pricing__feature">Recording, Mixing, & Mastering</li>
+                        <li class="pricing__feature">Mixing & Mastering</li>
 
                     </ul>
                     <button class="pricing__action" data-type="pro" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
@@ -159,7 +187,7 @@
                     <p class="pricing__sentence">For any large corporation with an unlimited number of members</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>200<span class="pricing__period">/ month</span></div>
                     <ul class="pricing__feature-list">
-                        <li class="pricing__feature">Includes Lite + Creator Features</li>
+                        <li class="pricing__feature">Includes Creator Features</li>
                         <li class="pricing__feature">Unlimited space</li>
                         <li class="pricing__feature">Paid Monthly Residuals for Radio Streams, Views, Followers, & Subscriber Royalties</li>
                         <li class="pricing__feature">Full Social Media Package</li>
