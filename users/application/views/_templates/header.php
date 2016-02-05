@@ -16,6 +16,7 @@
     $site = $config->getSiteData($config->site);
     $site['media']['photos']['front-page'] = $config->getPhotoAds($site['creator'], 'front');
     $site['media']['photos']['ads'] = $config->getPhotoAds($site['creator'], 'current-promo');
+    $site['page_title'] = $config->getPageTitle(strtoupper($_GET['url']));
     // LOAD USER DATA
 
     if (!$_SESSION) {
@@ -42,18 +43,21 @@
         $upload_link =  'http://freelabel.net/upload/?uid='.$user_name;
     }
     if (isset($_GET['dev'])) {
-      //echo $config->site.'<hr>';
       echo '<pre>';
-      // print_r($_COOKIE);
-      // echo $config->debug($site);
+      switch ($_GET['dev']) {
 
-      // echo $config->debug($this);
-      // echo $config->debug($_SESSION);
-      echo $config->debug($site);
-      // $config->debug($site['user']['name']);
+        case 'debug':
+          // echo $config->debug($site);
+          break;
 
-      // print_r($this);
-      //print_r($site['user']);
+        case 'url':
+          echo $config->getPageTitle(strtoupper($_GET['url']));
+          break;
+        
+        default:
+          # code...
+          break;
+      }
       exit;
     }
 
@@ -77,7 +81,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><?php echo $site['name']; ?></title>
+    <title><?php echo $site['page_title'] . $site['name']; ?></title>
     <meta name="description" content="<?php echo $site['description']; ?>" />
     <meta name="keywords" content="<?php echo $site['keywords']; ?>" />
     <meta name="author" content="<?php echo $site['author']; ?>" />
@@ -163,6 +167,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     }
     .lead_control {
       border-radius: 0;
+      background-color:#202020;
     }
     .editable input , .editable textarea , .editable input:focus,
     .editable-file input , .editable-file textarea , .editable-file input:focus,
@@ -248,7 +253,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       height: 80vh;
     }
     .tabs-style-linemove nav, nav .event-option-panel {
-      background: #303030;
+      background: #202020;
     }
     .full-width-article {
       position:relative;
@@ -472,9 +477,12 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     .gn-menu-main, .gn-menu {
       font-size: 14px;
       z-index: 10000;
+      box-shadow:0px 2.5px 7px #000;
+      background-color: #202020;
     }
     .gn-menu-wrapper.gn-open-all {
       width:250px;
+      background-color: #202020;
     }
     footer {
       border-top:20px solid #a1a1a1;
@@ -514,9 +522,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     video {
       display: inline-block;
       width:100%;
-    }
-    .gn-menu-main, .gn-menu {
-      box-shadow:0px 2.5px 20px;
+      border: #FE3F44 1px solid;
     }
     @media (min-width:600px) {
       .post-image {
