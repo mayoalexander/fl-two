@@ -63,7 +63,7 @@
 </panel>
 
 
-<panel class="col-md-6">
+<panel class="col-md-12">
 <h3>Consistency</h3>
   <div class="card card-chart">
     <ul class="stats-date-list list-group">

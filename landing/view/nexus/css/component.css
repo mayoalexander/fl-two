@@ -295,19 +295,19 @@ input.gn-search:focus {
 		width: 30px;
 		height: 3px;
 		background: #101010;
-		box-shadow: 0 3px white, 0 -6px #202020, 0 -9px white, 0 -12px #202020;
+		box-shadow: 0 3px #74777b, 0 -6px #202020, 0 -9px #74777b, 0 -12px #202020;
 		content: '';
 }
 
 .no-touch .gn-icon-menu:hover::before,
 .no-touch .gn-icon-menu.gn-selected:hover::before {
 		background: #202020;
-		box-shadow: 0 3px #202020, 0 -6px white, 0 -9px #202020, 0 -12px white;
+		box-shadow: 0 3px #202020, 0 -6px #74777b, 0 -9px #202020, 0 -12px #74777b;
 }
 
 .gn-icon-menu.gn-selected::before {
 		background: #202020;
-		box-shadow: 0 3px white, 0 -6px #202020, 0 -9px white, 0 -12px #202020;
+		box-shadow: 0 3px #74777b, 0 -6px #202020, 0 -9px #74777b, 0 -12px #202020;
 }
 
 /* styles for opening menu */

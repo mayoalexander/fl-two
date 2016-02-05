@@ -181,6 +181,12 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       display:inline-block;
       width:100%;
     }
+    .search-tracks-input {
+      text-align:left;
+    }
+    input:focus {
+      outline:none;
+    }
     .search-tracks-input input {
       width:250px;
     }
@@ -442,6 +448,13 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     .pricing-best .card-header , .btn-primary , .btn-primary-outline , .btn-primary:hover , .btn-primary-outline:hover {
       background-color: <?php echo $site['primary-color']; ?>;
     }
+    .card {
+      border:0.0625rem solid #101010;
+    }
+    .card-chart .list-group-item {
+      background-color: #202020;
+      color:#e3e3e3;
+    }
     .section-title {
       padding:3%;
     }
@@ -477,7 +490,8 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     .gn-menu-main, .gn-menu {
       font-size: 14px;
       z-index: 10000;
-      box-shadow:0px 2.5px 7px #000;
+      box-shadow:0px 1px 7px #000;
+      /*border-bottom: 1px solid #101010;*/
       background-color: #202020;
     }
     .gn-menu-wrapper.gn-open-all {
@@ -580,7 +594,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
           </nav>
         </li>
         <li class="logo-menu" style='border-right:none;' ><a href="<?php echo $site['http']; ?>users/"><img src="<?php echo $site['logo']; ?>" style="max-height:48px;" ></a></li>
-        <li class="radio-menu"  style='border-right:none;' >
+        <li class="radio-menu pull-right"  style='border-right:none;' >
           <a class="audio-player-title codrops-icon codrops-icon-prev" href="<?php echo $site['http']; ?>radio/"><span><i class="radio-player-control fa fa-play" ></i> Stream</span></a>
           <audio class="audio-player"></audio>
         </li>

@@ -29,6 +29,7 @@ if ($user_name == 'admin' OR $user_name == "thatdudewayne") {
 
 
 <form class="search-tracks-input">
+  <span class="fa fa-search"></span>
   <input type='text' placeholder="Search Your Uploads..." class="form-control" data-user='<?php echo $user_name; ?>'>
 </form>
 <!-- display content  -->
