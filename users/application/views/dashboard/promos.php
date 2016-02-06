@@ -74,6 +74,20 @@ echo $config->display_photos($promos); ?>
 
 
     $(function(){
+
+
+      $( ".filter-by-tag" ).change(function() {
+        var val = $(this).val();
+        var user_name = $(this).attr('data-user');
+        console.log( val );
+        console.log( val );
+        loadPage('http://freelabel.net/users/dashboard/promos/', '#main_display_panel #promos ',  + val + ,  + user_name);
+
+        // alert( "Handler for .change() called." );
+        // alert( "Handler for .change() called." );
+      });
+
+
     	$('.promo-file-options a').click(function(event){
     		$(this).parent().hide('fast');
     		var action = $(this).attr('data-action');
