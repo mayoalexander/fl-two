@@ -5,8 +5,11 @@ $config = new Blog();
 // get tag value
 if (isset($_POST["page"]) ) {
 	$tag = $_POST["page"];
+  $current_tag = $tag;
+
 } else {
 	$tag = '';
+  $current_tag = NULL;
 }
 ?>
 <script type="text/javascript" src="http://freelabel.net/config/globals.js"></script>
@@ -23,14 +26,15 @@ if (isset($_POST["page"]) ) {
 	<button type="button" class="btn btn-success btn-xs add-new-media-photo" data-toggle="modal" data-target="#addPromo">
 	  <i class="fa fa-plus"></i> Add New Promo
 	</button>
-	<a href="<?php echo $config->getUserURL(Session::get('user_name')); ?>" class="btn btn-default btn-xs">View Profile</a>
+	<!-- <a href="<?php echo $config->getUserURL(Session::get('user_name')); ?>" class="btn btn-default btn-xs">View Profile</a> -->
 </nav>
 
 <!-- get user tags  -->
 <nav class="filter-option-panel btn-group" style="background-color:transparent;text-align:left;border-bottom:3px solid #303030;padding:2% 0%;">
-  <label>Filter by tags:</label>
+  <!-- <label>Filter by tags:</label> -->
+  <span class="fa fa-tag filter-by-icon"></span>
   <?php
-  echo $config->get_user_tags(Session::get('user_name'));
+  echo $config->get_user_tags(Session::get('user_name'), $current_tag);
   ?>
 </nav>
 
@@ -81,7 +85,7 @@ echo $config->display_photos($promos); ?>
         var user_name = $(this).attr('data-user');
         console.log( val );
         console.log( val );
-        loadPage('http://freelabel.net/users/dashboard/promos/', '#main_display_panel #promos ',  + val + ,  + user_name);
+        loadPage('http://freelabel.net/users/dashboard/promos/', '#main_display_panel #promos ',  val  ,  user_name);
 
         // alert( "Handler for .change() called." );
         // alert( "Handler for .change() called." );

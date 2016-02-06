@@ -187,6 +187,19 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     input:focus {
       outline:none;
     }
+    select.form-control, select.form-control:focus {
+      background-color: #101010;
+      border-color:#202020;
+      border-radius:2px;
+    }
+    .filter-by-tag {
+      width:300px;
+      font-size: 24px;
+      display: inline;
+    }
+    .filter-by-icon {
+      color:#e3e3e3;
+    }
     .search-tracks-input input {
       width:250px;
     }
@@ -558,7 +571,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       }
       .radio-menu {
         font-size: 10px;
-        max-width: 200px;
+        max-width: 190px;
         overflow: hidden;
       }
       .logo-menu {
