@@ -511,6 +511,13 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       width:250px;
       background-color: #202020;
     }
+    .profile-info {
+      margin-left:5%;
+    }
+    .profile-info img {
+      border-radius: 2px;
+      margin-right:4%;
+    }
     footer {
       border-top:20px solid #a1a1a1;
     }
@@ -551,12 +558,6 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       width:100%;
       border: #FE3F44 1px solid;
     }
-    @media (min-width:600px) {
-      .post-image {
-        /*max-width:250px;*/
-      }
-    }
-
 
     @media (max-width: 600px) {
       .jumbotron {
@@ -595,10 +596,15 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
                   <form method="GET" action="http://freelabel.net/users/index/search/">
                     <input placeholder="Search" name="q" type="search" class="gn-search">
                     <a class="gn-icon gn-icon-search"><span>Search</span></a>
-              </form>
+                  </form>
+                </li>
+                <li class="nav-item nav-item-toggable active">
+                  <a class="profile-info" href="<?php echo $site['http']."u/".$site['user']['name']; ?>">
+                    <?php echo '<img src="'.$site['user']['profile-photo'].'" height="24px">'; ?> 
+                    <?php echo ucfirst($site['user']['name']); ?>
+                  </a>
                 </li>
                 <?php
-
                   // display site navigation map
                   echo $config->display_site_map($site , Session::get('user_logged_in'), Session::get('user_name'));
                 ?>
@@ -611,104 +617,5 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
           <a class="audio-player-title codrops-icon codrops-icon-prev" href="<?php echo $site['http']; ?>radio/"><span><i class="radio-player-control fa fa-play" ></i> Stream</span></a>
           <audio class="audio-player"></audio>
         </li>
-        <li style='display:none;' ><a class="codrops-icon " href="<?php echo $site['http']; ?>"></a></li>
       </ul>
   </div>
-
-    <div class='title-box' style="display:none;">
-        <a href="<?php echo URL; ?>"><?php echo $site['name']; ?></a>
-    </div>
-    <nav class="navbar navbar-dark bg-inverse bg-inverse-custom navbar-fixed-top" style="display:none;">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          <!-- <span class="icon-logo"></span> -->
-          <img src="<?php echo $site['logo']; ?>" style="width:65px;border-radius:3px;">
-          <span class="sr-only"><?php echo $site['name']; ?></span>
-        </a>
-        <a class="navbar-toggler hidden-md-up pull-right" data-toggle="collapse" href="#collapsingNavbar" aria-expanded="false" aria-controls="collapsingNavbar">
-        &#9776;
-      </a>
-        <a class="navbar-toggler navbar-toggler-custom hidden-md-up pull-right" data-toggle="collapse" href="#collapsingMobileUser" aria-expanded="false" aria-controls="collapsingMobileUser">
-          <span class="icon-user"></span>
-        </a>
-        <div id="collapsingNavbar" class="collapse navbar-toggleable-custom" role="tabpanel" aria-labelledby="collapsingNavbar">
-          <ul class="nav navbar-nav pull-right">
-
-
-            <li class="nav-item nav-item-toggable hidden-sm-up">
-              <form class="navbar-form" action='http://freelabel.net/search/' method="GET">
-                <input class="form-control navbar-search-input" name='q' type="text" placeholder="Type your search &amp; hit Enter&hellip;">
-              </form>
-            </li>
-
-            <li class="navbar-divider hidden-sm-down"></li>
-            <li class="nav-item dropdown nav-dropdown-search hidden-sm-down">
-              <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="icon-search"></span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right dropdown-menu-search" aria-labelledby="dropdownMenu1">
-                <form class="navbar-form" action='http://freelabel.net/search/' method="GET">
-                  <input class="form-control navbar-search-input" name='q' type="text" placeholder="Type your search &amp; hit Enter&hellip;">
-                </form>
-              </div>
-            </li>
-
-            <li class="nav-item dropdown hidden-sm-down textselect-off">
-            <?php
-            echo '
-            <a class="nav-link dropdown-toggle nav-dropdown-user" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="'.'https://www.socialhub.directory/sites/all/themes/core/images/default-user.png'.'" height="40" width="40" alt="Avatar" class="img-circle"> <span class="icon-caret-down"></span>
-            </a>
-              ';
-            ?>
-              <div class="dropdown-menu dropdown-menu-right dropdown-menu-user dropdown-menu-animated" aria-labelledby="dropdownMenu2">
-                <div class="media">
-                  <div class="media-left">
-                    <img src="https://www.socialhub.directory/sites/all/themes/core/images/default-user.png" height="60" width="60" alt="Avatar" class="img-circle">
-                  </div>
-                  <div class="media-body media-middle">
-
-                    <h5 class="media-heading"><?php echo "Please Login!"; ?></h5>
-                    <h6>yourname@<?php echo $site['http']; ?></h6>
-                  </div>
-                </div>
-                <?php
-                  if ($_SESSION['user_name']) {
-                   echo '
-              <a href="#" class="dropdown-item text-uppercase">View posts</a>
-                <a href="#" class="dropdown-item text-uppercase">Manage groups</a>
-                <a href="#" class="dropdown-item text-uppercase">Subscription &amp; billing</a>
-                <a href="#" class="dropdown-item text-uppercase text-muted">Log out</a>
-                <a href="#" class="btn-circle has-gradient pull-right">
-                  <span class="sr-only">Edit</span>
-                  <span class="icon-edit"></span>
-              </a>';
-                  } else {
-                    include(ROOT.'user/views/signin.php');
-                  }
-
-                ?>
-
-
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div id="collapsingMobileUser" class="collapse navbar-toggleable-custom dropdown-menu-custom p-x hidden-md-up" role="tabpanel" aria-labelledby="collapsingMobileUser">
-          <div class="media m-t">
-            <div class="media-left">
-              <img src="https://www.socialhub.directory/sites/all/themes/core/images/default-user.png" height="60" width="60" alt="Avatar" class="img-circle">
-            </div>
-            <div class="media-body media-middle">
-              <h5 class="media-heading">Please Login!</h5>
-              <h6>or create an account</h6>
-            </div>
-          </div>
-          <?php include(ROOT.'user/views/signin.php');?>
-          <a href="#" class="btn-circle has-gradient pull-right m-b">
-            <span class="sr-only">Edit</span>
-            <span class="icon-edit"></span>
-          </a>
-        </div>
-      </div>
-    </nav>

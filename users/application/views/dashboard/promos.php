@@ -26,7 +26,6 @@ if (isset($_POST["page"]) ) {
 	<button type="button" class="btn btn-success btn-xs add-new-media-photo" data-toggle="modal" data-target="#addPromo">
 	  <i class="fa fa-plus"></i> Add New Promo
 	</button>
-	<!-- <a href="<?php echo $config->getUserURL(Session::get('user_name')); ?>" class="btn btn-default btn-xs">View Profile</a> -->
 </nav>
 
 <!-- get user tags  -->
