@@ -326,6 +326,16 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     }
 
 
+    <?php 
+    if (!Session::get('user_logged_in')) {
+      echo ".hide-if-loggedout {
+              display:none;
+            }";
+    }
+
+    ?>
+
+
 
 
 
@@ -600,7 +610,8 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
                     <a class="gn-icon gn-icon-search"><span>Search</span></a>
                   </form>
                 </li>
-                <li class="nav-item nav-item-toggable active">
+
+                <li class="nav-item nav-item-toggable hide-if-loggedout">
                   <a class="profile-info" href="<?php echo $site['http']."u/".$site['user']['name']; ?>">
                     <?php echo '<img src="'.$site['user']['profile-photo'].'" height="24px">'; ?> 
                     <?php echo ucfirst($site['user']['name']); ?>
@@ -611,7 +622,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
                   echo $config->display_site_map($site , Session::get('user_logged_in'), Session::get('user_name'));
                 ?>
               </ul>
-            </div><!-- /gn-scroller -->
+            </div><!-- /gn-scroller -->-
           </nav>
         </li>
         <li class="logo-menu" style='border-right:none;' ><a href="<?php echo $site['http']; ?>users/"><img src="<?php echo $site['logo']; ?>" style="max-height:48px;" ></a></li>
