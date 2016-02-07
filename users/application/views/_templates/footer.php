@@ -140,14 +140,6 @@ $(function() {
       globalButtons.html('<i class="fa fa-play"></i>'); // * 
       
 
-
-
-      // console.log(nextFile);
-      // console.log(nextsong);
-      // console.log(audioFile);
-      // console.log(globalAudioPlayer[0].src);
-
-
       if (isPlaying(globalAudioPlayer[0])==false) {
         // play file
               $(this).html('<i class="fa fa-pause"></i>');

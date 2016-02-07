@@ -88,7 +88,7 @@ foreach ($posts as $post) {
   echo '
 
 
-<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center post" style="background-image:url(\''.$post['photo'].'\');">
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center post" style="background-image:url(\''.$post['photo'].'\');" data-img=\''.$post['photo'].'\'>
   <div class="background-tint">
    
     <a class="story-img" href="'.$post['blog_story_url'].'"><h1>'.$post['blogtitle'].'</h1></a>

@@ -1,28 +1,38 @@
-<?php
-include_once('/home/content/59/13071759/html/config/index.php');
-$config = new Blog();
-$slug = str_replace('index/image/', '', $_GET['url']);
-// var_dump($slug);
-// echo 'okay';
-// exit;
-?>
-<!-- show main feature photo -->
-<?php 
-
-if (is_numeric($slug)) {
-	$promos = $config->display_promo(Session::get('user_name') , 1, $slug, 'id');
-} else {
-	$promos = $config->display_promo(Session::get('user_name') , 1, $slug, 'desc');
+<style>
+  body, html {
+    overflow-x: hidden;
+  }
+  .promo-title , .promo-subtitle {
+    text-align: center;
+  }
+  .promo-subtitle {
+    font-size:1.5em;
+  }
+  .full-width-article img {
+    /*height: 50vh;*/
+    width: 100%;
 }
-echo $config->display_promo_public($promos, true); ?>
-<!-- <h4>Related</h4> -->
-<!-- show related  -->
-<?php //$promos = $config->getPromosByUser(Session::get('user_name') , 20, $slug); ?>
+  .full-width-article {
+    min-height: 100vh;
+  }
 
+</style>
+<div class="container row">
+  <?php
+  include_once('/home/content/59/13071759/html/config/index.php');
+  $config = new Blog();
+  $slug = str_replace('index/image/', '', $_GET['url']);
+
+  if (is_numeric($slug)) {
+  	$promos = $config->display_promo(Session::get('user_name') , 1, $slug, 'id');
+  } else {
+  	$promos = $config->display_promo(Session::get('user_name') , 1, $slug, 'desc');
+  }
+  echo $config->display_promo_public($promos, true); 
+  ?>
+</div>
 
 <script type="text/javascript">
-	
-
 	$(function(){
 		// config
 	  	function isPlaying(audelem) {
@@ -135,10 +145,6 @@ echo $config->display_promo_public($promos, true); ?>
 
 
  });
-
-
-
-
 
 
 

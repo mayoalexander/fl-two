@@ -47,7 +47,7 @@ shuffle($arr);
 
 
 			<div class="codrops-links">
-				<a class="codrops-icon codrops-icon--prev" href="http://freelabel.net/users/dashboard/index/" title="Back to Site"><span>Back to Site</span></a>
+				<a class="codrops-icon codrops-icon--prev" href="http://freelabel.net/users/dashboard/" title="Back to Site"><span>Back to Site</span></a>
 				<!-- <a class="codrops-icon codrops-icon--drop" href="http://freelabel.net/users/dashboard/index/" title="<? echo $user['profile']['id']; ?>"><span>Back To Dashboard</span></a> -->
 			</div>
 			<h1 class="codrops-title">@<?php echo $user['profile']['id']; ?> <span><?php echo $user['profile']['location']; ?></span></h1>
