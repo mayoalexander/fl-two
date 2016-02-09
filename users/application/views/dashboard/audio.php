@@ -30,10 +30,30 @@ if ($user_name == 'admin' OR $user_name == "thatdudewayne") {
   </form>
 </nav>
 
-  
-<!-- display content  -->
-<?php 
 
+<!-- Modal -->
+<div class="modal fade" id="add_new_promo_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+        <h4 class="modal-title" id="myModalLabel">Attach Post To Promotions</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- front end functionality  -->
+<?php 
 
   // get tag value
   if (isset($_GET["q"]) ) {
@@ -281,10 +301,10 @@ $(function() {
     // ********************************* 
     //  SHARE
     // *********************************
-    $(".attach-post-button").click(function(event){
+    $(".attach-post-button").click(function(event) {
       $('.push_file_form').hide('fast');
-      $(this).parent().parent().css('border','solid 3px #e3e3e3');
-      $(this).parent().parent().css('padding','2%');
+      // $(this).parent().parent().css('border','solid 3px #e3e3e3');
+      // $(this).parent().parent().css('padding','2%');
       $(this).hide('fast');
       event.preventDefault();
       var file_id = $(this).attr('id');
@@ -300,15 +320,17 @@ $(function() {
         title: dataTitle,
         img_path: dataFilePath
       };
+      $('#add_new_promo_modal').modal('show');
+
+      // console.log(data); 
+
       // load alert into the modal
       $.get('http://freelabel.net/users/dashboard/attach/',getData,function(data){
-        wrapper.append(data);
+        // wrapper.append(data);
+        $('#add_new_promo_modal .modal-body').html(data);
       });
 
     });
-
-
-
 
 
 

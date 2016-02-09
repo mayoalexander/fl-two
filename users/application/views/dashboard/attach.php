@@ -10,9 +10,10 @@ $user_promos = $config->get_user_promos(Session::get('user_name'));
 
 ?>
 <form method="post" class='attach_file_form'>
-	<label>Choose a Promotion..</label>
+	<label>Add To..</label>
 	<?php echo $config->build_dropdown($user_promos); ?>
 	<input type='hidden' id='file_id' name='file_id' value='<?php echo $_GET['id'] ?>'>
+	<hr>
 	<button class="btn-success btn-block" >Add</button>
 </form>
 

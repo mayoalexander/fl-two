@@ -6,47 +6,6 @@
 //$config->showAdminController();
 
 ?>
-<?php
-// ** I can save this shit for a new modual, im not sure where we wshould put it but it is going to be verry useful for something. maybe a pop up modal. **//
-// echo '<th>ok</th>';
-// echo '<th>Photo</th>';
-// echo '<th>Title</th>';
-// echo '<th>MP3</th>';
-//
-// if (isset($site['user']['media']))
-// {
-// foreach ($site['user']['media'] as $value) {
-//
-// $posts_panel = '';
-// $posts_panel .= '<section class="section-news" style="padding-bottom:0;">
-//       <h3 class="sr-only">News</h3>
-//       <div class="bg-inverse">
-//         <div class="row">
-//           <div class="col-md-6 p-r-0">
-//             <figure class="has-light-mask m-b-0 image-effect">
-//               <img src="'.$value['photo'].'" alt="Article thumbnail" class="img-responsive">
-//             </figure>
-//           </div>
-//           <div class="col-md-6 p-l-0">
-//             <article class="center-block">
-//               <span class="label label-info">'.$value['twitter'].'</span>
-//               <br>
-//               <h5><a href="'.$value['blog_story_url'].'">'.$value['blogtitle'].' <span class="icon-arrow-right"></span></a></h5>
-//               <p class="m-b-0">
-//                 <a href="'.$value['blog_story_url'].'"><span class="label label-default text-uppercase"><span class="icon-tag"></span> Design Studio</span></a>
-//                 <a href="'.$value['blog_story_url'].'"><span class="label label-default text-uppercase"><span class="icon-time"></span> '.get_timeago(strtotime($value['submission_date'])).'</span></a>
-//               </p>
-//             </article>
-//           </div>
-//         </div>
-//       </div>
-//   </section>';
-//   }
-// }
-
-
-?>
-
 <header class="jumbotron feature bg-inverse text-center center-vertically" role="banner">
   <div class="container">
     <!-- <div class="background-tint"></div> -->
@@ -67,7 +26,6 @@
     <panel class="col-md-9 pull-left featured-ad "  >
       <h1>NEW EXCLUSIVES DAILY.</h1>
       <!-- current-promo advertisement --> 
-
         <div class="col-md-3">
           <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][0]['id'] ; ?>"><img src="<?php echo $site['media']['photos']['ads'][0]['image'] ; ?>"></a>
         </div>

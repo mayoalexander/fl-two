@@ -48,7 +48,8 @@
 
         case 'debug':
           // echo $config->debug($site);
-          var_dump($site['media']['photos']['ads']);
+          // var_dump($site['media']['photos']['ads']);
+          var_dump($site['media']['photos']['front-page']);
           break;
 
         case 'url':
@@ -460,6 +461,12 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     }
     .jumbotron .container , .modal {
       margin-top: 20vh;
+    }
+    .modal-content {
+      background-color: rgba(0,0,0,0.6);
+    }
+    .add_new_promo_modal select {
+      font-size: 24px;
     }
 
     .pricing-best , .btn-primary-outline , .btn-primary, .btn-primary:hover , .btn-primary-outline , .btn-primary-outline {
