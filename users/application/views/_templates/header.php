@@ -48,6 +48,7 @@
 
         case 'debug':
           // echo $config->debug($site);
+          var_dump($site['media']['photos']['ads']);
           break;
 
         case 'url':

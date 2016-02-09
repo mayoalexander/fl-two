@@ -391,7 +391,7 @@ if ($_POST['page']=='direct_messages'){
               auto promote to all direct messages auto promote auto campaign
               ----------------------------------------------------------------------
             */
-            echo ' '.$user_twitter_name_screen.',';
+            echo ' '.$user_twitter_name_screen.', '.$main_follow_up."<br>";
             // *************************** // 
             // *************************** //
             // *************************** //

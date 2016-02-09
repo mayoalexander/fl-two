@@ -17,7 +17,7 @@
   }
 
 </style>
-<div class="container row">
+<div class="row">
   <?php
   include_once('/home/content/59/13071759/html/config/index.php');
   $config = new Blog();
