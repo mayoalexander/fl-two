@@ -285,7 +285,7 @@ class Promos
 	public function updateDB($update) {
 		$table = $update['db_table'];
 		include(ROOT.'/inc/connection.php');
-		$sql = "UPDATE  `amrusers`.`".$table."` SET  `".$update['table_col']."` =  '".$update['user_title']."' WHERE  `$table`.`id` ='".$update['row_id']."' LIMIT 1";
+		$sql = "UPDATE  `amrusers`.`".$table."` SET  `".$update['table_col']."` =  '".mysqli_real_escape_string($con,$update['user_title'])."' WHERE  `$table`.`id` ='".$update['row_id']."' LIMIT 1";
 		$approval_query = mysqli_query($con,$sql);
 		if ($approval_query) {
 			$update_status = $update['user_title'];
