@@ -1,14 +1,7 @@
 <?php
 include_once('/home/content/59/13071759/html/config/index.php');
 
-if (isset($_GET)) {
-  var_dump($_GET);
-}
 
-
-if (isset($_POST)) {
-  var_dump($_POST);
-}
 //echo $_SESSION['user_name'];
 // ---------- DEFAULT VIEWS & CONFIGURATIONS
 //$access_token = $_SESSION['access_token'];
@@ -25,6 +18,19 @@ $access_token['user_id'] = '1018532587';
 $access_token['x_auth_expires'] = '0';
 $_SESSION['access_token'] = $access_token;
 $todays_date = date('Y-m-d H:i:s');
+
+
+/* debugging */
+if (isset($_GET)) {
+  var_dump($_GET);
+}
+if (isset($_POST)) {
+  var_dump($_POST);
+}
+
+
+
+// start application 
 
 $leads_list = $config->getLeads();
 
@@ -55,11 +61,11 @@ GRAB ALL SCRIPT VALUES
                         //echo '<hr><hr>';
                         $send_tweet_ornot = true;
                         // already sent to prompt
-                        echo 'Sending 2nd Follow Up: [@'.$related_user.'], ';
+                        echo 'Sending 2nd Follow Up: [@'.$related_user.']<br>';
 
                       } else {
                         $debug['twitter']['direct-messages'] = 'Auto Response Sent: ';
-                        echo $debug['twitter']['direct-messages'];
+                        echo $debug['twitter']['direct-messages'].'<br>';
                         saveTwitterData($type , $related_user , $data);
                         $send_tweet_ornot = false;
                       }
@@ -282,21 +288,28 @@ function shareTwitter(textToTweet , twittername) {
           //alert(shareURL);
       }
 
-      function addToLeads(lead_twitter , lead_name , follow_up_date , entry_date , lead_email) 
+      function addToLeads(lead_twitter , lead_name , follow_up_date , entry_date , index) 
       {
         //alert('add to leads!');
         var path = 'http://freelabel.net/submit/update.php';
+        var element = $('.add-lead-btn-' + index);
+        element.text('Saving..');
+        element.addClass('disabled');
         $.post(path, {
           lead_twitter: lead_twitter ,
           lead_name: lead_name ,
           follow_up_date: follow_up_date , 
-          entry_date: entry_date,
-          lead_email: lead_email
+          entry_date: entry_date
         }).done(function(data){
           //shareTwitter('We get over 5.2M views monthly on the Radio/Mag. We have the audience, we just need Quality artists to be the face of FLMAG.');
           //alert('Added To Leads! -- '+data);
-          //$('.add_to_leads_' + lead_twitter).hide('fast');
-          alert(lead_twitter +' --> '+data);
+          // $('.add-lead-btn-' + index).hide('fast');
+          // alert(lead_twitter +' --> '+data);
+          element.text('Saved!');
+          setTimeout(function(){
+            $('.add-lead-btn-' + index).hide('fast');
+          },2500);
+            
         });
       }
 </script>
@@ -361,10 +374,10 @@ if ($_POST['page']=='timeline'){
 *
 ------------------------------------------------------------------------------------ */
 //if (isset($_GET['ssages'])){
-if ($_POST['page']=='direct_messages'){
+if ($_POST['page']=='direct_messages' OR $_POST['page']=='direct_messages_auto_rtm'){
 
         $api_query_dm =array("count" => '100');
-        // $api_query_dm =array("count" => '20');
+        // $api_query_dm =array("count" => '2');
         $method = 'direct_messages';
         $direct_messages =   $connection->get($method, $api_query_dm);
         $i=1;
@@ -392,7 +405,10 @@ if ($_POST['page']=='direct_messages'){
 
           if(checkIfAlreadyExists('direct_message',$user_twitter_name_screen, $main_follow_up)==true){
             // if they have already been saved to the database, send the second follow up promotion
-            //$connection->post('direct_messages/new', array('screen_name' => $user_twitter_name_screen,'text' => $main_follow_up));
+            if ($_POST['page']=='direct_messages_auto_rtm') {
+              echo ' '.$user_twitter_name_screen.', '.$main_follow_up."<br>";
+              // $connection->post('direct_messages/new', array('screen_name' => $user_twitter_name_screen,'text' => $main_follow_up));
+            }
           } else {
             /* 
               ----------------------------------------------------------------------
@@ -400,11 +416,13 @@ if ($_POST['page']=='direct_messages'){
               auto promote to all direct messages auto promote auto campaign
               ----------------------------------------------------------------------
             */
-            echo ' '.$user_twitter_name_screen.', '.$main_follow_up."<br>";
             // *************************** // 
             // *************************** //
             // *************************** //
-            // $connection->post('direct_messages/new', array('screen_name' => $user_twitter_name_screen,'text' => $main_follow_up));
+            if ($_POST['page']=='direct_messages_auto_rtm') {
+              echo ' '.$user_twitter_name_screen.', '.$main_follow_up."<br>";
+              $connection->post('direct_messages/new', array('screen_name' => $user_twitter_name_screen,'text' => $main_follow_up));
+            }
             // *************************** //
             // *************************** //
             // *************************** //
@@ -527,7 +545,7 @@ if ($_POST['page']=='mentions'){
               ----------------------------------------------------------------------
             */
            	echo ' '.$user_twitter_name_screen.',';
-            // $connection->post('direct_messages/new', array('screen_name' => $user_twitter_name_screen,'text' => $main_follow_up));
+            $connection->post('direct_messages/new', array('screen_name' => $user_twitter_name_screen,'text' => $main_follow_up));
             // --- SEND TWEET TO DIRECT MESSAGES! ------- //
 
           }
@@ -632,7 +650,7 @@ if ($_POST['page']=='followers') { // GET FOLLOEWRS
           $tweet = 'Call us 323-601-8111';
           $twitter_ui .='<button onclick="shareTwitter(\''.urlencode($tweet).' \' , \''.$user_twitter_name_screen.'\')" class="btn btn-xs btn-default">CallUs</button>';
           $twitter_ui .='<a target="_blank" href="http://m.twitter.com/'.$user_twitter_name_screen.'/messages" class="btn btn-xs btn-warning">MSG</a>';
-          $twitter_ui .='<a onclick="addToLeads(\''.$user_twitter_name.'\',\''.str_replace("'", "\'", $user_post).'\',\''.$user_post_date.'\',\''.$user_post_date.'\')" class="btn btn-xs btn-success">Add To Leads</a>';
+          $twitter_ui .='<a onclick="addToLeads(\''.$user_twitter_name.'\',\''.str_replace("'", "\'", $user_post).'\',\''.$user_post_date.'\',\''.$user_post_date.'\')" class="add-lead-btn-'.$i.' btn btn-xs btn-success">Add To Leads</a>';
           $twitter_ui .= '</div>';
           $twitter_ui .= '<hr>
           </div><!--twitter datablock -->';
@@ -751,7 +769,7 @@ if($_GET['som']=='1')
               $twtter_tabs .= '<button class="btn btn-default btn-lg col-sm-3 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'direct_messages', '".$_SESSION['user_name']."','','calendar')".'" alt="messages"><i class="fa fa-envelope" ></i> Messages</button>';
               $twtter_tabs .= '<button class="btn btn-default btn-lg col-sm-3 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'followers', '".$_SESSION['user_name']."','','calendar')".'"><i class="fa fa-users" ></i> Followers</button>';
               $twtter_tabs .= '<button class="btn btn-default btn-lg col-sm-3 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'timeline', '".$_SESSION['user_name']."','','calendar')".'"><i class="fa fa-list" ></i> Timeline</button>';
-              $twtter_tabs .= '<button class="btn btn-primary btn-lg col-sm-3 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.1.0.php', '.main_twitter_panel', 'direct_messages-auto-reply', '".$_SESSION['user_name']."','','calendar')".'" alt="messages">Direct Messages [sent]</button>';
+              $twtter_tabs .= '<button class="btn btn-primary btn-lg col-sm-3 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'direct_messages_auto_rtm', '".$_SESSION['user_name']."','','calendar')".'" alt="messages"><i class="fa fa-usd"></i> RESPOND</button>';
             $twtter_tabs .= '</div>';
 
             $twtter_tabs .= '
@@ -802,6 +820,7 @@ if($_GET['som']=='1')
     if ($_POST['page']=='direct_messages' OR $_POST['page']=='mentions')  {
 
         echo '<div class="row">';
+                    $i=0;
                     foreach ($user_meta as $user => $convo) {
                       $direct_message_user_photo = $user_meta[$user]['photo'];
 
@@ -819,7 +838,7 @@ if($_GET['som']=='1')
                       echo '
                       <div class="btn-group">
                         <button class="btn btn-default" onclick="openReply(\''.$user.'\')" ><span class="glyphicon glyphicon-comment"></span>Reply</button>
-                        <button onclick="addToLeads(\''.$user.'\',\''.str_replace("'", "\'", $message['message']).'\',\''.$todays_date.'\',\''.$todays_date.'\')" class="btn btn-success"><span class="glyphicon glyphicon-usd" ></span>Add Leads</button>
+                        <button onclick="addToLeads(\''.$user.'\',\''.str_replace("'", "\'", $message['message']).'\',\''.$todays_date.'\',\''.$todays_date.'\' , \''.$i.'\')" class="add-lead-btn-'.$i.' btn btn-success"><span class="glyphicon glyphicon-usd" ></span>Add Leads</button>
                       </div>
                         ';
 echo '
@@ -848,7 +867,7 @@ echo '
                           ';
                       echo '</section>';
 
-
+                      $i++;
                     } // end of foreach
         echo '</div>';
 
