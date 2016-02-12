@@ -59,7 +59,8 @@
         }
         .codrops-header {
             background-position:center top;
-            background-size:100% auto;
+            background-size:auto 100vh;
+
             background-image:url('<?php echo $site["media"]["photos"][2]["image"]; ?>');
         }
         .marketing-area {
@@ -108,7 +109,7 @@
          
         @media (max-width: 600px) {
         .codrops-header {
-            background-size:150%;
+            background-size: auto 100vh;
           }
         }
 

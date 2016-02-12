@@ -20,13 +20,13 @@ $_SESSION['access_token'] = $access_token;
 $todays_date = date('Y-m-d H:i:s');
 
 
-/* debugging */
-if (isset($_GET)) {
-  var_dump($_GET);
-}
-if (isset($_POST)) {
-  var_dump($_POST);
-}
+// /* debugging */
+// if (isset($_GET)) {
+//   var_dump($_GET);
+// }
+// if (isset($_POST)) {
+//   var_dump($_POST);
+// }
 
 
 
@@ -776,39 +776,31 @@ if($_GET['som']=='1')
           
           
             $twtter_tabs .= '<div class="btn-group-vertical col-md-2 twitter-controls-group " >';
-              $twtter_tabs .= '<a onclick="$(\'#som_buttons\').slideToggle();" class="btn btn-default btn-lg col-md-3"><i class="fa fa-ellipsis-h" ></i></a>';
-              $twtter_tabs .= '<button class="btn btn-default btn-lg col-sm-3 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'mentions', '".$_SESSION['user_name']."','','calendar')".'" alt="mentions"><i class="fa fa-comments" ></i> Mentions</button>';
-              $twtter_tabs .= '<button class="btn btn-default btn-lg col-sm-3 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'direct_messages', '".$_SESSION['user_name']."','','calendar')".'" alt="messages"><i class="fa fa-envelope" ></i> Messages</button>';
-              $twtter_tabs .= '<button class="btn btn-default btn-lg col-sm-3 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'followers', '".$_SESSION['user_name']."','','calendar')".'"><i class="fa fa-users" ></i> Followers</button>';
-              $twtter_tabs .= '<button class="btn btn-default btn-lg col-sm-3 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'timeline', '".$_SESSION['user_name']."','','calendar')".'"><i class="fa fa-list" ></i> Timeline</button>';
-              $twtter_tabs .= '<button class="btn btn-primary btn-lg col-sm-3 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'direct_messages_auto_rtm', '".$_SESSION['user_name']."','','calendar')".'" alt="messages"><i class="fa fa-usd"></i> RESPOND</button>';
+              $twtter_tabs .= '<a onclick="$(\'#som_buttons\').slideToggle();" class="btn btn-default btn-lg col-md-3 col-xs-12"><i class="fa fa-ellipsis-h" ></i></a>';
+              $twtter_tabs .= '<button class="btn btn-default btn-lg col-xs-6 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'mentions', '".$_SESSION['user_name']."','','calendar')".'" alt="mentions"><i class="fa fa-comments" ></i> Mentions</button>';
+              $twtter_tabs .= '<button class="btn btn-default btn-lg col-xs-6 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'direct_messages', '".$_SESSION['user_name']."','','calendar')".'" alt="messages"><i class="fa fa-envelope" ></i> Messages</button>';
+              $twtter_tabs .= '<button class="btn btn-default btn-lg col-xs-6 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'followers', '".$_SESSION['user_name']."','','calendar')".'"><i class="fa fa-users" ></i> Followers</button>';
+              $twtter_tabs .= '<button class="btn btn-default btn-lg col-xs-6 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'timeline', '".$_SESSION['user_name']."','','calendar')".'"><i class="fa fa-list" ></i> Timeline</button>';
+              $twtter_tabs .= '<button class="btn btn-primary btn-lg col-xs-12 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'direct_messages_auto_rtm', '".$_SESSION['user_name']."','','calendar')".'" alt="messages"><i class="fa fa-usd"></i> RESPOND</button>';
             $twtter_tabs .= '</div>';
 
             $twtter_tabs .= '
           <div id="som_buttons" class="som-buttons" style="display:none;margin-bottom:2%;">
-           <!-- <form action="twitter/index.php" method="post">
-                <div class="input-group">
-                  <input type="text" class="form-control"  name="status" id="status" placeholder="Write something...." aria-describedby="basic-addon1">
-                  <span class="input-group-btn" ><input class="btn btn-primary" type="submit" id="status" name="submit" value="Tweet"></span>
-                </div>
-                <input type="hidden" name="user_post" value="1">
-            </form>
-
-
-            <hr>
-            -->
             <section>
-            <a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=all" class="btn btn-success col-md-1" target="_blank">Admin</a>
-            <a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=clients" class="btn btn-success col-md-1" target="_blank">Clients</a>
-            <a href="http://freelabel.net/users/dashboard/auto/organic?mins=6&som=1" class="btn btn-success col-md-1" target="_blank">Organic</a>
-            <a href="http://freelabel.net/users/dashboard/auto/promos?mins=6&som=1" class="btn btn-success col-md-1" target="_blank">Promos</a>
-
-            <a href="http://freelabel.net/twitter/?som=1&q=1" class="btn btn-default col-md-2 col-xs-2" target="_blank">1</a>
-            <a href="http://freelabel.net/twitter/?som=1&q=2" class="btn btn-default col-md-2 col-xs-2" target="_blank">2</a>
-            <a href="http://freelabel.net/twitter/?som=1&q=3" class="btn btn-default col-md-2 col-xs-2" target="_blank">3</a>
-            <a href="http://freelabel.net/twitter/?som=1&q=4" class="btn btn-default col-md-2 col-xs-2" target="_blank">4</a>
-            <a href="http://freelabel.net/twitter/?som=1&q=5" class="btn btn-default col-md-2 col-xs-2" target="_blank">5</a>
-      <a href="http://freelabel.net/twitter/?som=1&q=6" class="btn btn-default col-md-2 col-xs-2" target="_blank">6</a>
+              <div class="row">
+                <a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=all" class="btn btn-success col-xs-3 col-md-1" target="_blank">Admin</a>
+                <a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=clients" class="btn btn-success col-xs-3 col-md-1" target="_blank">Clients</a>
+                <a href="http://freelabel.net/users/dashboard/auto/organic?mins=6&som=1" class="btn btn-success col-xs-3 col-md-1" target="_blank">Organic</a>
+                <a href="http://freelabel.net/users/dashboard/auto/promos?mins=6&som=1" class="btn btn-success col-xs-3 col-md-1" target="_blank">Promos</a>
+              </div>
+              <div class="row">
+                <a href="http://freelabel.net/twitter/?som=1&q=1" class="btn btn-default col-md-2 col-xs-2" target="_blank">1</a>
+                <a href="http://freelabel.net/twitter/?som=1&q=2" class="btn btn-default col-md-2 col-xs-2" target="_blank">2</a>
+                <a href="http://freelabel.net/twitter/?som=1&q=3" class="btn btn-default col-md-2 col-xs-2" target="_blank">3</a>
+                <a href="http://freelabel.net/twitter/?som=1&q=4" class="btn btn-default col-md-2 col-xs-2" target="_blank">4</a>
+                <a href="http://freelabel.net/twitter/?som=1&q=5" class="btn btn-default col-md-2 col-xs-2" target="_blank">5</a>
+                <a href="http://freelabel.net/twitter/?som=1&q=6" class="btn btn-default col-md-2 col-xs-2" target="_blank">6</a>
+              </div>
             </section>
           </div>
             ';
