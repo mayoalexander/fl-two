@@ -8,6 +8,8 @@
 /**
 * Edit User Posts
 */
+include_once('/home/content/59/13071759/html/config/index.php');
+
 class Posts
 {
 	function __construct()
@@ -773,19 +775,30 @@ if ($_POST['event_id']!='' AND $_POST['event_action']!='') {
 
 
 
-include('../inc/connection.php');
+include(ROOT.'inc/connection.php');
+
 // APPROVE SUBMISSION
 $submission_id = $_POST['submission_id'];
 if ($submission_id) {
-	$approval_query = mysqli_query($con,"UPDATE `blog` SET approved=1 WHERE `blog`.`id` = ".$submission_id." LIMIT 1");
+	$approval_query = mysqli_query($con,"UPDATE `feed` SET approved=1 WHERE `feed`.`id` = ".$submission_id." LIMIT 1");
 	if ($approval_query) {
 
-		echo "<script>alert('This Submission Has Been Successfully APPROVED!')
-				window.location.assign('http://freelabel.net/#submissions')
-				</script>";
+	// 	/* add to radio */
+		include(ROOT.'config/upload.php'); 
+		$upload = new Upload();
+		$file = str_replace('http://freelabel.net/', ROOT, $_POST['radio_mp3']);
+		print_r($_POST);
+		print_r($file);
+		$res = $upload->uploadToRadio($file , $_POST['radio_twitter'] , $_POST['radio_title'], $_POST['radio_user']);
+		if ($res) {
+			echo 'The file successfuly uploaded to the radio!! ';
+		} else {
+			echo 'The file did not upload to the radio!';
+		}
+	// 	/* throw success message */
+	echo "This Submission Has Been Successfully APPROVED!";
 
-
-	}else {
+	} else {
 		echo "it didnt";
 	}
 

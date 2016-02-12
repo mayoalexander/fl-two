@@ -70,12 +70,22 @@ while($row = mysqli_fetch_array($result))
 						
 						echo "<td>";
 								if($approved == true) {
-									$approval_status = "<span id='btn btn-success' >APPROVED</span>";
-									echo ' - <a class="btn btn-default" href="'.$trackmp3.'">'.$approval_status.'</a>';
+									// $approval_status = "<span id='btn btn-success' >APPROVED</span>";
+									// echo ' - <a class="btn btn-default" href="'.$trackmp3.'">'.$approval_status.'</a>';
+									$approval_status = "APPROVED";
+									 echo "<form class='approve-form' method='POST' style='display:inline;' action='update.php' >
+									 <input name='submission_id' type='hidden' value='".$submission_id."'>
+									 <input name='radio_mp3' type='hidden' value='".$row['trackmp3']."'>
+									 <input type='submit' class='btn btn-success' value='VERIFIED'></form>";
 								} else {
 									$approval_status = "NOT APPROVED";
-									 echo "<form method='POST' style='display:inline;' action='update.php' ><input name='submission_id' type='hidden' value='".$submission_id."'><input type='submit' class='btn btn-warning' value='APPROVE'></form>";
-									
+									 echo "<form class='approve-form' method='POST' style='display:inline;' action='update.php' >
+									 <input name='submission_id' type='hidden' value='".$submission_id."'>
+									 <input name='radio_mp3' type='hidden' value='".$row['trackmp3']."'>
+									 <input name='radio_title' type='hidden' value='".$row['blogtitle']."'>
+									 <input name='radio_twitter' type='hidden' value='".$row['twitter']."'>
+									 <input name='radio_user' type='hidden' value='".$row['user_name']."'>
+									 <input type='submit' class='btn btn-warning' value='APPROVE'></form>";
 								}
 						echo "</td>";
 						
@@ -87,7 +97,55 @@ while($row = mysqli_fetch_array($result))
 }
 echo "</table>";
 ?>
+<script type="text/javascript">
+function updateID3(mp3file, trackname, twittername) {
+			alert(mp3file);
+			$.get('http://freelabel.net/config/id3/demos/demo.simple.write.php', {
+					mp3: mp3file,
+					title: trackname,
+					artist: twittername
+				},function(result){
+					if (result == 'Success!') {
+						// file_upload_handler();
+						alert('it worked! proceed!');
+					} else {
+						alert('something went wrong with the writing!!');
+						// c = confirm("This file is not an mp3 and may not tag you correctly, do you wish to continue?");
+						// if (c==true) {
+						// 	file_upload_handler();
+						// }
+						console.log(result);
+					}
+					
+			});
+}
 
+
+
+	$('.approve-form').submit(function(event){
+		event.preventDefault();
+		var data = $(this).serializeArray();
+		var element = $(this);
+		element.text('Saving..');
+		element.css('disabled');
+		// alert(data);
+		// console.log(data);
+		alert(data[1]['value']);
+		var init = updateID3(data[1]['value'], data[2]['value'] ,data[3]['value'], data[4]['value'] );
+		$.post('http://freelabel.net/submit/update.php', data, function(result) {
+			alert(result);
+			element.text('Approved!');
+		});
+		// alert(init);
+		// console.log(init);
+
+	}); 
+
+
+
+
+
+</script>
 
 
 
