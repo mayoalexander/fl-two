@@ -312,6 +312,18 @@ function shareTwitter(textToTweet , twittername) {
             
         });
       }
+
+
+
+
+  $('.twitter-reply-button').click(function(event){
+    var data = $(this).parent().siblings();
+    console.log(data[2]);
+    $('#twitter-reply-modal').modal('show');
+    // $('#twitter-reply-modal .modal-body').html(data.html());
+  });
+
+
 </script>
 <?php
 if ($_POST['page']=='timeline'){
@@ -376,8 +388,8 @@ if ($_POST['page']=='timeline'){
 //if (isset($_GET['ssages'])){
 if ($_POST['page']=='direct_messages' OR $_POST['page']=='direct_messages_auto_rtm'){
 
-        $api_query_dm =array("count" => '100');
-        // $api_query_dm =array("count" => '2');
+        // $api_query_dm =array("count" => '100');
+        $api_query_dm =array("count" => '2');
         $method = 'direct_messages';
         $direct_messages =   $connection->get($method, $api_query_dm);
         $i=1;
@@ -817,7 +829,7 @@ if($_GET['som']=='1')
 //echo' yas bitch yassss;<hr>';
 //print_r($_POST);
     echo "<h2>Twitter <small> > ".$_POST['page']."</small></h2>";
-    if ($_POST['page']=='direct_messages' OR $_POST['page']=='mentions')  {
+    if ($_POST['page']=='direct_messages' OR $_POST['page']=='direct_messages_auto_rtm' OR $_POST['page']=='mentions')  {
 
         echo '<div class="row">';
                     $i=0;
@@ -838,6 +850,7 @@ if($_GET['som']=='1')
                       echo '
                       <div class="btn-group">
                         <button class="btn btn-default" onclick="openReply(\''.$user.'\')" ><span class="glyphicon glyphicon-comment"></span>Reply</button>
+                        <button class="btn btn-default twitter-reply-button" ><span class="glyphicon glyphicon-comment"></span>Reply</button>
                         <button onclick="addToLeads(\''.$user.'\',\''.str_replace("'", "\'", $message['message']).'\',\''.$todays_date.'\',\''.$todays_date.'\' , \''.$i.'\')" class="add-lead-btn-'.$i.' btn btn-success"><span class="glyphicon glyphicon-usd" ></span>Add Leads</button>
                       </div>
                         ';
@@ -979,10 +992,35 @@ echo '
     </div>
 </div>
 
+
+
+<!-- Modal -->
+<div class="modal fade" id="twitter-reply-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 <?php
 //include('../new_footer.php');
 
 ?>
 <script>
+
   
 </script>
