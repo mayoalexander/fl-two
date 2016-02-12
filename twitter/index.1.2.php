@@ -1,5 +1,14 @@
 <?php
 include_once('/home/content/59/13071759/html/config/index.php');
+
+if (isset($_GET)) {
+  var_dump($_GET);
+}
+
+
+if (isset($_POST)) {
+  var_dump($_POST);
+}
 //echo $_SESSION['user_name'];
 // ---------- DEFAULT VIEWS & CONFIGURATIONS
 //$access_token = $_SESSION['access_token'];
