@@ -405,6 +405,9 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
       padding-top:0;
       border-top:#FE3F44 solid 12px;
     }
+    .post-item img {
+      width:100%;
+    }
     .post-item .list-twitter {
       font-size:24px;
       color:<?php echo $site['primary-color']; ?>;

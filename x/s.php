@@ -14,6 +14,12 @@ include_once('/home/content/59/13071759/html/config/index.php');
 	padding:5% auto;
 	font-size: 90%;
 }
+.lead .script-item input {
+	color:#e3e3e3;
+}
+.edit input {
+	color:#e3e3e3;
+}
 #script_label {
 	width:100px;
 	//background-color:red;

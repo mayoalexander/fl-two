@@ -11,7 +11,14 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 	<label>Upload Promo Image</label>
 	<span class="photo-upload-results"></span>
 	<input type='file' class="form-control" name='promo-img' id='poster' required>
-
+	
+	<select name='type'>
+		<option value="album" selected>Album</option>
+		<option value="event" >Event</option>
+		<option value="merch" >Product</option>
+		<option value="gallery" selected>Gallery</option>
+		<option value="other">Other..</option>
+	</select>
 
 	<label>Title</label>
 	<input type='text' class="form-control" name='title' placeholder='Enter Title' required>
