@@ -27,7 +27,7 @@
     if (isset($_SESSION) && count($_SESSION)>0) {
       $site['user'] = $user->init($_SESSION,$_COOKIE);
       $user_logged_in = new UserDashboard(Session::get('user_name'));
-      $site['user']['profile-photo'] = $profile_photo = $user_logged_in->getProfilePhoto(Session::get('user_name'));
+      $site['user']['profile-photo'] = $profile_photo = $config->getProfilePhoto(Session::get('user_name'));
       if (isset($site['user']['name'])) {
         $site['user']['media'] = $user_data = $user_logged_in->getUserMedia(Session::get('user_name'));
       }

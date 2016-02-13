@@ -320,7 +320,7 @@ function shareTwitter(textToTweet , twittername) {
     var data = $(this).parent().siblings();
     console.log(data[2]);
     $('#twitter-reply-modal').modal('show');
-    // $('#twitter-reply-modal .modal-body').html(data.html());
+    $('#twitter-reply-modal .modal-body').html('what is going on here!');
   });
 
 
@@ -388,8 +388,8 @@ if ($_POST['page']=='timeline'){
 //if (isset($_GET['ssages'])){
 if ($_POST['page']=='direct_messages' OR $_POST['page']=='direct_messages_auto_rtm'){
 
-        // $api_query_dm =array("count" => '100');
-        $api_query_dm =array("count" => '2');
+        $api_query_dm =array("count" => '50');
+        // $api_query_dm =array("count" => '2');
         $method = 'direct_messages';
         $direct_messages =   $connection->get($method, $api_query_dm);
         $i=1;

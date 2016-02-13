@@ -36,7 +36,7 @@ if (isset($_SESSION['user_name'])) {
     <a class="btn btn-secondary-outline btn-primary btn-social m-b-md" href="http://freelabel.net/users/<?php echo $calltoaction_link; ?>" role="button"><?php echo $calltoaction; ?></a>
     <ul class="list-inline social-share">
      <li>
-       <a class="nav-link" href="http://twitter.com/<?php echo $site['twitter']; ?>#">Register</a>
+       <a class="nav-link" href="http://freelabel.net/users/login/register">Register</a>
      </li>
       <li><a class="nav-link" href="http://twitter.com/<?php echo $site['twitter']; ?>#"><span class="icon-twitter"></span> @freelabelnet <?php //echo $site['landing-info']['twitter']; ?></a></li>
       <li><a class="nav-link" href="https://www.facebook.com/theAMRecords/#"><span class="icon-facebook"></span> /freelabel<?php //echo $site['landing-info']['facebook']; ?></a></li>
