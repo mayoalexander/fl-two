@@ -167,7 +167,7 @@ FREELABEL Featured: ".$name." (".$twitter.")
 												$profile_location = $row2['location'];
 												$profile_photo = $row2['photo'];
 												if (isset($row2['photo']) && $row2['photo']!='') {
-							  						$photo = '<img width="56px" src="'.$profile_photo.'">';
+							  						$photo = '<a href="'.$profile_photo.'" target="_blank" ><img width="56px" src="'.$profile_photo.'"></a>';
 												} else {
 							  						$photo = '<img width="56px" src="http://freelabel.net/images/fllogo.png">';
 												}
@@ -277,7 +277,7 @@ FREELABEL Featured: ".$name." (".$twitter.")
 											    	'.$user_id.')
 											    </td>
 											    <td>
-											    	'.$name.'
+											    	<a href="http://freelabel.net/u/'.$name.'" target="_blank">'.$name.'</a>
 											    </td>
 											    <td>
 											    	<span class="edit" id="type-'.$user_id.'">'.$user_account_type.'</span>

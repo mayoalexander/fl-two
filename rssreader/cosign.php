@@ -15,7 +15,7 @@ if (isset($user_name_session) == false) {
 
 
 echo "<button onclick=\"loadPage('http://freelabel.net/rssreader/index.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\"  alt='RSS'  class='btn btn-default lead_control widget_menu' alt='Navigation'>Admin Posts</button>";
-echo "<button onclick=\"window.open('http://freelabel.net/upload/?uid=".$user_name_session."')\"  alt='Upload'  class='btn btn-social btn-facebook lead_control widget_menu' alt='Navigation'>Upload</button>";
+echo "<button onclick=\"window.open('http://freelabel.net/drive/plus.php?uid=".$user_name_session."')\"  alt='Upload'  class='btn btn-social btn-facebook lead_control widget_menu' alt='Navigation'>Upload</button>";
 
 echo '<hr>';
 

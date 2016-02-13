@@ -131,9 +131,9 @@ class Dashboard extends Controller
         // send email
         $result = mail($_POST['email'],"[FREELABEL] Important Information Regarding Your Account",$msg);
         if ($result==true) {
-            echo 'Yay it worked!';
+            echo 'Email Successfully Sent!';
         } else {
-            echo 'Oh NOOOOOOOOOOO!!!!!!';
+            echo 'Oh NOOOOOOOOOOO!!!!!! The email did not send!';
         }
     }
 

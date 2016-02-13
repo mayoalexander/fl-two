@@ -516,6 +516,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     }
     .current-clients-table td {
       padding:1%;
+      border:1px solid #202020;
     }
     .gn-menu {
       box-shadow: 0px 0px 15px;
