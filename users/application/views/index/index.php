@@ -7,7 +7,7 @@
 // print_r($_SESSION)
 
 if (isset($_SESSION['user_name'])) {
-  $calltoaction = 'Login to Dashboard';
+  $calltoaction = 'Return to Dashboard';
   $calltoaction_link = 'dashboard/';
 } else {
   $calltoaction = 'Create Account';
@@ -20,18 +20,24 @@ if (isset($_SESSION['user_name'])) {
   html, body {
     overflow-y:hidden;
   }
+  .jumbotron {
+    background-color:#101010;
+  }
+  .jumbotron-body {
+    background-color: rgba(0,0,0,0.4);
+  }
 </style>
 <header class="jumbotron feature bg-inverse text-center center-vertically" role="banner">
-  <div class="container">
+  <div class="container jumbotron-body">
     <!-- <div class="background-tint"></div> -->
     <h1 class="display-3"><?php echo $site['name']; ?></h1>
     <h2 class="m-b-lg"><?php echo $site['description']; ?> <a href="<?php echo $site['http']; ?>users/login" class="jumbolink">Login Now</a>.</h2>
+    <p class="m-b-lg"><?php echo $site['media']['photos']['front-page'][$r]['title']; ?> <a href="<?php echo 'http://freelabel.net/users/index/image/'.$site['media']['photos']['front-page'][$r]['id']; ?>" class="jumbolink">View Now</a>.</p>
     <a class="btn btn-secondary-outline btn-primary btn-social m-b-md" href="http://freelabel.net/users/<?php echo $calltoaction_link; ?>" role="button"><?php echo $calltoaction; ?></a>
     <ul class="list-inline social-share">
      <li>
        <a class="nav-link" href="http://twitter.com/<?php echo $site['twitter']; ?>#">Register</a>
      </li>
-
       <li><a class="nav-link" href="http://twitter.com/<?php echo $site['twitter']; ?>#"><span class="icon-twitter"></span> @freelabelnet <?php //echo $site['landing-info']['twitter']; ?></a></li>
       <li><a class="nav-link" href="https://www.facebook.com/theAMRecords/#"><span class="icon-facebook"></span> /freelabel<?php //echo $site['landing-info']['facebook']; ?></a></li>
     </ul>

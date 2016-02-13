@@ -14,7 +14,7 @@
     // LOAD SITE DATA
     $config = new Blog($_SERVER['HTTP_HOST']);
     $site = $config->getSiteData($config->site);
-    $site['media']['photos']['front-page'] = $config->getPhotoAds($site['creator'], 'front');
+    $site['media']['photos']['front-page'] = $config->getPhotoAds($site['creator'], 'freelabel front');
     $site['media']['photos']['ads'] = $config->getPhotoAds($site['creator'], 'current-promo');
     $site['page_title'] = $config->getPageTitle(strtoupper($_GET['url']));
     // LOAD USER DATA
