@@ -21,7 +21,7 @@ if ($user_name == 'admin' OR $user_name == "thatdudewayne") {
 
 ?>
 
-<button class="btn btn-success btn-xs col-md-3 col-xs-12 add-new-media-audio" style="display:block;" data-link="http://freelabel.net/upload/?uid=<?php echo $user_name; ?>&type=idea" ><i class="fa fa-plus"></i> Add New</button>
+<button class="btn btn-success btn-xs col-md-3 col-xs-12 add-new-media-audio" style="display:block;" data-link="http://freelabel.net/drive/plus.php?uid=<?php echo $user_name; ?>&type=idea" ><i class="fa fa-plus"></i> Add New</button>
 <br>
 <nav class="dashboard-nav-group event-option-panel btn-group" style="background-color:transparent;text-align:left;border-bottom:3px solid #303030;padding:2% 0%;">
   <form class="search-tracks-input">
