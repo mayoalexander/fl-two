@@ -34,4 +34,8 @@ class Index extends Controller
     {
             $this->view->render('index/view',true);
     }
+    function page($page=0)
+    {
+            $this->view->render('index/page',true);
+    }
 }

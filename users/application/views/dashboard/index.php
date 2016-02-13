@@ -2,6 +2,7 @@
   $config = new Blog($_SERVER['HTTP_HOST']);
   // add these stats in here somehwere in the layout
   $stats = $config->getStatsByUser($site['user']['name']);
+  $current_page = '0';
 ?>
 <div class="tabs tabs-style-linemove" id="main_display_panel" >
   <nav>
@@ -29,13 +30,10 @@
         <!-- display content  -->
         <?php 
 
-        if (Session::get('user_name')=='admin') {
-          $files = $config->display_user_posts_new('admin' , 50);
+
+          $files = $config->display_user_posts_new('admin' , $current_page);
           echo $files['posts']; 
-        } else {
-          $files = $config->display_user_posts('admin' , 50);
-          echo $files['posts'];   
-        }
+
 
 
         ?>

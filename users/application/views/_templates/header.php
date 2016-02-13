@@ -139,8 +139,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     <!-- <link rel="stylesheet" href="<?php echo URL; ?>public/css/style.css" /> -->
     <!-- in case you wonder: That's the cool-kids-protocol-free way to load jQuery -->
     <script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="<?php echo URL; ?>public/js/application.js"></script>
-
+    <script type="text/javascript" src="<?php echo HTTP; ?>js/application.js"></script>
 
     
     <style type="text/css">
