@@ -323,6 +323,7 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     }
     .twitter-message-text {
       color:#e3e3e3;
+      font-size: 2em;
     }
 
     .card-social small {

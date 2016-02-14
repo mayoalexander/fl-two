@@ -61,7 +61,7 @@ GRAB ALL SCRIPT VALUES
                         //echo '<hr><hr>';
                         $send_tweet_ornot = true;
                         // already sent to prompt
-                        echo 'Sending 2nd Follow Up: [@'.$related_user.']<br>';
+                        // echo 'Sending 2nd Follow Up: [@'.$related_user.']<br>';
 
                       } else {
                         $debug['twitter']['direct-messages'] = 'Auto Response Sent: ';
@@ -317,10 +317,11 @@ function shareTwitter(textToTweet , twittername) {
 
 
   $('.twitter-reply-button').click(function(event){
-    var data = $(this).parent().siblings();
-    console.log(data[2]);
+    var data = $(this).parent().parent();//.find('.tweet-buttons');
+    // console.log(data);
     $('#twitter-reply-modal').modal('show');
-    $('#twitter-reply-modal .modal-body').html('what is going on here!');
+    $('#twitter-reply-modal .modal-body').html(data);
+    $('#twitter-reply-modal .modal-body').find('.tweet-buttons').show();
   });
 
 
@@ -418,7 +419,7 @@ if ($_POST['page']=='direct_messages' OR $_POST['page']=='direct_messages_auto_r
           if(checkIfAlreadyExists('direct_message',$user_twitter_name_screen, $main_follow_up)==true){
             // if they have already been saved to the database, send the second follow up promotion
             if ($_POST['page']=='direct_messages_auto_rtm') {
-              echo ' '.$user_twitter_name_screen.', '.$main_follow_up."<br>";
+              // echo ' '.$user_twitter_name_screen.', '.$main_follow_up."<br>";
               // $connection->post('direct_messages/new', array('screen_name' => $user_twitter_name_screen,'text' => $main_follow_up));
             }
           } else {
@@ -432,7 +433,7 @@ if ($_POST['page']=='direct_messages' OR $_POST['page']=='direct_messages_auto_r
             // *************************** //
             // *************************** //
             if ($_POST['page']=='direct_messages_auto_rtm') {
-              echo ' '.$user_twitter_name_screen.', '.$main_follow_up."<br>";
+              // echo ' '.$user_twitter_name_screen.', '.$main_follow_up."<br>";
               $connection->post('direct_messages/new', array('screen_name' => $user_twitter_name_screen,'text' => $main_follow_up));
             }
             // *************************** //
@@ -787,20 +788,16 @@ if($_GET['som']=='1')
             $twtter_tabs .= '
           <div id="som_buttons" class="som-buttons" style="display:none;margin-bottom:2%;">
             <section>
-              <div class="row">
                 <a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=all" class="btn btn-success col-xs-3 col-md-1" target="_blank">Admin</a>
                 <a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=clients" class="btn btn-success col-xs-3 col-md-1" target="_blank">Clients</a>
                 <a href="http://freelabel.net/users/dashboard/auto/organic?mins=6&som=1" class="btn btn-success col-xs-3 col-md-1" target="_blank">Organic</a>
                 <a href="http://freelabel.net/users/dashboard/auto/promos?mins=6&som=1" class="btn btn-success col-xs-3 col-md-1" target="_blank">Promos</a>
-              </div>
-              <div class="row">
-                <a href="http://freelabel.net/twitter/?som=1&q=1" class="btn btn-default col-md-2 col-xs-2" target="_blank">1</a>
-                <a href="http://freelabel.net/twitter/?som=1&q=2" class="btn btn-default col-md-2 col-xs-2" target="_blank">2</a>
-                <a href="http://freelabel.net/twitter/?som=1&q=3" class="btn btn-default col-md-2 col-xs-2" target="_blank">3</a>
-                <a href="http://freelabel.net/twitter/?som=1&q=4" class="btn btn-default col-md-2 col-xs-2" target="_blank">4</a>
-                <a href="http://freelabel.net/twitter/?som=1&q=5" class="btn btn-default col-md-2 col-xs-2" target="_blank">5</a>
-                <a href="http://freelabel.net/twitter/?som=1&q=6" class="btn btn-default col-md-2 col-xs-2" target="_blank">6</a>
-              </div>
+                <a href="http://freelabel.net/twitter/?som=1&q=1" class="btn btn-default col-lg-1 col-xs-2" target="_blank">1</a>
+                <a href="http://freelabel.net/twitter/?som=1&q=2" class="btn btn-default col-lg-1 col-xs-2" target="_blank">2</a>
+                <a href="http://freelabel.net/twitter/?som=1&q=3" class="btn btn-default col-lg-1 col-xs-2" target="_blank">3</a>
+                <a href="http://freelabel.net/twitter/?som=1&q=4" class="btn btn-default col-lg-1 col-xs-2" target="_blank">4</a>
+                <a href="http://freelabel.net/twitter/?som=1&q=5" class="btn btn-default col-lg-1 col-xs-2" target="_blank">5</a>
+                <a href="http://freelabel.net/twitter/?som=1&q=6" class="btn btn-default col-lg-1 col-xs-2" target="_blank">6</a>
             </section>
           </div>
             ';
@@ -841,7 +838,7 @@ if($_GET['som']=='1')
                       
                       echo '
                       <div class="btn-group">
-                        <button class="btn btn-default" onclick="openReply(\''.$user.'\')" ><span class="glyphicon glyphicon-comment"></span>Reply</button>
+
                         <button class="btn btn-default twitter-reply-button" ><span class="glyphicon glyphicon-comment"></span>Reply</button>
                         <button onclick="addToLeads(\''.$user.'\',\''.str_replace("'", "\'", $message['message']).'\',\''.$todays_date.'\',\''.$todays_date.'\' , \''.$i.'\')" class="add-lead-btn-'.$i.' btn btn-success"><span class="glyphicon glyphicon-usd" ></span>Add Leads</button>
                       </div>
@@ -988,11 +985,10 @@ echo '
 
 <!-- Modal -->
 <div class="modal fade" id="twitter-reply-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Respond To Messages</h4>
       </div>
       <div class="modal-body">
         ...
