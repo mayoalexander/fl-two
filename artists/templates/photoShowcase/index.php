@@ -2,9 +2,11 @@
 include_once('/home/content/59/13071759/html/config/index.php');
 
 $i=0;
-foreach ($content as $key => $image) {
-	$image_data[$i]= $image['image'];
-	$i++;
+if (isset($content)) {	
+	foreach ($content as $key => $image) {
+		$image_data[$i]= $image['image'];
+		$i++;
+	}
 }
 $arr = array(0.1,2,3,4,5,6);
 shuffle($arr);

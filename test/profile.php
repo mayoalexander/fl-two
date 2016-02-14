@@ -9,7 +9,7 @@ if (isset($_GET["uid"])=='') {
 }
 include_once('/home/content/59/13071759/html/config/index.php');
 $config = new Blog();
-include_once(ROOT.'inc/connection.php');
+include_once(ROOT.'inc/huge.php');
 $result = mysqli_query($con,"SELECT * 
 FROM  `users` 
 WHERE  `user_name` LIKE  '%".$uid."%'
@@ -17,13 +17,15 @@ LIMIT 1");
 	while($row = mysqli_fetch_assoc($result))
 	{
 		$user['settings'] = $row;
+		include_once(ROOT.'inc/connection.php');
 		
-		$result = mysqli_query($con,"SELECT * FROM  `user_profiles` WHERE  `id` LIKE  '%".$uid."%'LIMIT 1");
+		$result = mysqli_query($con,"SELECT * FROM  `user_profiles` WHERE  `id` =  '".$uid."' LIMIT 1");
 
 		if($row = mysqli_fetch_assoc($result))
 		{ 
-			//echo 'found!';
+			// echo 'found!';
 			$user['profile'] = $row;
+			$user['media']['feed'] = $config->getPostsByUser(0,24,$_GET['uid']);
 			//print_r($user);
 			
 		} else {
@@ -32,10 +34,13 @@ LIMIT 1");
 		
 	} 
 
+			/* GET USER PROFILE DATA */
+			$user['profile'] = $config->getUserData($uid);
+
 			$meta_tag_photo = str_replace(' ', '%20', $row['image']);
 
 			include_once(ROOT.'inc/connection.php');
-			$result = mysqli_query($con,"SELECT * FROM  `images` WHERE  `user_name` LIKE '%".$_GET['uid']."%' AND `type` NOT LIKE '%private%' ORDER BY `id` DESC LIMIT 100");
+			$result = mysqli_query($con,"SELECT * FROM  `images` WHERE  `user_name` = '".$_GET['uid']."' AND `type` NOT LIKE '%private%' ORDER BY `id` DESC LIMIT 10");
 			$i=0;
 			while($row = mysqli_fetch_assoc($result))
 			  {
@@ -135,7 +140,7 @@ $tweet_bae = urlencode("[#FLVISUALS]
 
 
 
-						$user['media']['feed'] = $config->getPostsByUser(0,24,$_GET['uid']);
+						
 
 
 
@@ -145,14 +150,13 @@ $tweet_bae = urlencode("[#FLVISUALS]
 			  }
 			// mysqli_close($con);
 			// echo "<pre>";
-				// var_dump($user['media']);
+			// 	var_dump($user);
 			// echo '</pre>';
-			  // print_r($user['media']);
 			// exit;
-			if ($user['media']===NULL) {
-				echo 'No Photos Found!';
-				exit;
-			}
+			// if ($user['media']===NULL) {
+			// 	echo 'No Photos Found!';
+			// 	exit;
+			// }
 			// ---------- DISPLAY VIEW ---------- //
 			//include_once(ROOT.'test/view-profile.1.0.0.php');
 			include_once(ROOT.'artists/templates/photoShowcase/index.php');
