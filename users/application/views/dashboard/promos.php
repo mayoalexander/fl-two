@@ -44,7 +44,7 @@ if (isset($_POST["page"]) ) {
 
 <div id="promos_content">
   <!-- display content  -->
-  <?php $promos = $config->getPromosByUser(Session::get('user_name') , 20, $current_tag);
+  <?php $promos = $config->getPromosByUser(Session::get('user_name') , 0, $current_tag);
   echo $config->display_photos($promos, null , 0, $current_tag); ?>
 </div>
 
@@ -122,19 +122,7 @@ if (isset($_POST["page"]) ) {
       });
 
 
-    	$('.promo-file-options a').click(function(event){
-    		$(this).parent().hide('fast');
-    		var action = $(this).attr('data-action');
-    		var id = $(this).attr('data-id');
-    		var promoId = $(this).parent().parent().parent().attr('data-promo-id');
-    		console.log(promoId);
-    		var data = {
-    			promo_id:promoId
-    		}
-    		$.post('http://freelabel.net/users/dashboard/delete_promo_file/' + id , data ,  function(data) {
-    			// alert(data);
-    		});
-    	});
+
     });
 
     $('.filter-option-panel a').click(function(){

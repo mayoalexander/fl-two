@@ -392,6 +392,9 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     .promotion-player-button {
       font-size:3em;
     }
+    .load-more-button {
+      color:#303030;
+    }
     .post-item, .post-text {
       display:block;
       vertical-align: text-top;

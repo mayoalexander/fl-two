@@ -94,6 +94,26 @@
 
 
 
+    // ********************************* 
+    // DELETE PROMO ATTACHMENT
+    // *********************************
+    $('.promo-file-options a').click(function(event){
+      $(this).parent().hide('fast');
+      var action = $(this).attr('data-action');
+      var id = $(this).attr('data-id');
+      var promoId = $(this).parent().parent().parent().attr('data-promo-id');
+      console.log(promoId);
+      var data = {
+        promo_id:promoId
+      }
+      $.post('http://freelabel.net/users/dashboard/delete_promo_file/' + id , data ,  function(data) {
+        // alert(data);
+      });
+    });
+
+
+
+
 
 
   });
