@@ -138,9 +138,10 @@
   var url      = window.location.href; 
   var text = promo+": " + title;
 
-  // console.log(text);
-  var newURL = 'http://twitter.com/intent/tweet/?text='+ encodeURI(text) + '&url=' + url;
+  console.log(text);
+  var newURL = 'http://twitter.com/intent/tweet/?text='+ encodeURIComponent(text) + '&url=' + url;
   window.open(newURL);
+  alert(newURL);
 
 
 
