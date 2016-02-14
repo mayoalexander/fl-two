@@ -77,13 +77,16 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/dev');
     }
+    function push()
+    {
+        $this->view->render('dashboard/push',true);
+    }
     function auto()
     {
         $this->view->render('dashboard/auto');
     }
-    function push()
-    {
-        $this->view->render('dashboard/push',true);
+    function get_promos() {
+        $this->view->render('dashboard/get_promos',true);
     }
     function add_new_promo() {
         include_once('/home/content/59/13071759/html/config/index.php');

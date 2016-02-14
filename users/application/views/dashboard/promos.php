@@ -37,10 +37,11 @@ if (isset($_POST["page"]) ) {
   ?>
 </nav>
 
-<!-- display content  -->
-<?php $promos = $config->getPromosByUser(Session::get('user_name') , 20, $tag);
-echo $config->display_photos($promos); ?>
-
+<div id="promos_content">
+  <!-- display content  -->
+  <?php $promos = $config->getPromosByUser(Session::get('user_name') , 20, $tag);
+  echo $config->display_photos($promos, null , 0, $tag); ?>
+</div>
 <script type="text/javascript">
 
     $('.editable-promo').editable('http://freelabel.net/submit/update.php',{
@@ -82,12 +83,15 @@ echo $config->display_photos($promos); ?>
       $( ".filter-by-tag" ).change(function() {
         var val = $(this).val();
         var user_name = $(this).attr('data-user');
-        console.log( val );
-        console.log( val );
-        loadPage('http://freelabel.net/users/dashboard/promos/', '#main_display_panel #promos ',  val  ,  user_name);
-
-        // alert( "Handler for .change() called." );
-        // alert( "Handler for .change() called." );
+        $("#promos_content").html('Loading..');
+        // loadPage('http://freelabel.net/users/dashboard/promos/', '#main_display_panel #promos ',  val  ,  user_name);
+        // loadPage('http://freelabel.net/users/dashboard/get_promos/', '#promos_content ',  val  ,  user_name);
+        $.get('http://freelabel.net/users/dashboard/get_promos/', {
+          tag:val,
+          user_name:user_name
+        },function(result){
+          $("#promos_content").html(result);
+        });
       });
 
 
