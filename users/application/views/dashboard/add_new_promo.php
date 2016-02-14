@@ -7,41 +7,49 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 ?>
 <form class="add-new-promo-form">
 
+	<panel class="col-md-4" style="min-height:250px;">
+		<label>Upload Promo Image</label>
+		<span class="photo-upload-results"></span>
+		<input type='file' class="form-control" name='promo-img' id='poster' required>
+		<label>Status</label>
+		<select name='type' class="form-control">
+			<option value="album" selected>Album</option>
+			<option value="event" >Event</option>
+			<option value="merch" >Product</option>
+			<option value="gallery" selected>Gallery</option>
+			<option value="other">Other..</option>
+		</select>
 
-	<label>Upload Promo Image</label>
-	<span class="photo-upload-results"></span>
-	<input type='file' class="form-control" name='promo-img' id='poster' required>
+		<label>Tags</label>
+		<!-- <small></small><br> -->
+		<input type='text' class="form-control" name='desc' placeholder='Enter Tags (Separate tags using commas)' required>
+
+	</panel>
 	
-	<select name='type'>
-		<option value="album" selected>Album</option>
-		<option value="event" >Event</option>
-		<option value="merch" >Product</option>
-		<option value="gallery" selected>Gallery</option>
-		<option value="other">Other..</option>
-	</select>
-
-	<label>Title</label>
-	<input type='text' class="form-control" name='title' placeholder='Enter Title' required>
-
-	<label>Description</label>
-	<input type='text' class="form-control" name='caption' placeholder='Enter Description' required>
+	<panel class="col-md-8">
 
 
-	<label>Tags</label>
-	<small>Separate tags using commas (for example: tag1, tag2, tag3...)</small><br>
-	<input type='text' class="form-control" name='desc' placeholder='Enter Tags' required>
+		<label>Title</label>
+		<input type='text' class="form-control" name='title' placeholder='Enter Title' required>
+		<!-- <label>Description</label> -->
+		<!-- <input type='text' class="form-control" name='caption' placeholder='Enter Description' required> -->
+		<textarea class="form-control" name="caption" placeholder="Enter Description.."></textarea>
+
+		<label>Attach Files</label>
+		<small>Hold Cmd or Shift to select multiple files</small>
+		<select name="files[]" multiple class="form-control" required style="min-height:250px;">
+			<?php
+			foreach ($user_files as $key => $file) {
+				echo "<option value='".$file['id']."' >".$file['twitter']." - ".$file['blogtitle']."</option>";
+			}
+			?>
+		</select>
+
+	</panel>
 
 
 
-	<label>Attach Files</label>
-	<small>Hold Cmd or Shift to select multiple files</small>
-	<select name="files[]" multiple class="form-control" required>
-		<?php
-		foreach ($user_files as $key => $file) {
-			echo "<option value='".$file['id']."' >".$file['twitter']." - ".$file['blogtitle']."</option>";
-		}
-		?>
-	</select>
+	
 	<input type="hidden" name='add_new_promo' value='1'>
 	<input type="hidden" name='user_name' value='<?php echo Session::get('user_name'); ?>'>
 	<button class="btn btn-primary btn-block confirm-upload-buttons">Add Promotion</button>
@@ -49,17 +57,17 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 
 <script type="text/javascript">
 	$(function(){
-		$('.add-new-promo-form').submit(function(event){
-			event.preventDefault();
-			$(this).parent().html('Please wait..');
-			var data = $(this).serialize();
-			// console.log(data);
-			$.post('http://freelabel.net/users/dashboard/add_new_promo/',data,function(result){
-				alert(result);
-				// console.log(result);
-				location.reload();
-			});
-		});
+		// $('.add-new-promo-form').submit(function(event){
+		// 	event.preventDefault();
+		// 	$(this).parent().html('Please wait..');
+		// 	var data = $(this).serialize();
+		// 	// console.log(data);
+		// 	$.post('http://freelabel.net/users/dashboard/add_new_promo/',data,function(result){
+		// 		alert(result);
+		// 		// console.log(result);
+		// 		location.reload();
+		// 	});
+		// });
 
 
 

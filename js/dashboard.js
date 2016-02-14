@@ -60,6 +60,41 @@
 
 
 
+    // ********************************* 
+    //  DELETE PROMO CONTROL 
+    // *********************************
+    $(".delete-promo-button").click(function(event){
+      event.preventDefault();
+      var file_id = $(this).attr('id');
+      var wrapper = $(this).parent();
+      var url = 'http://freelabel.net/users/login/delete_promo/' + file_id + '/';
+      c = confirm("Are you sure you want to delete this promotion?");
+      if (c==true) {
+        $.get(url,function(result){
+          wrapper.hide('fast');
+        });
+      }     
+    });
+
+    // ********************************* 
+    //  ADD NEW PROMO CONTROL 
+    // *********************************
+    $('.add-new-promo-form').submit(function(event){
+      event.preventDefault();
+      $(this).parent().html('Please wait..');
+      var data = $(this).serialize();
+      // console.log(data);
+      $.post('http://freelabel.net/users/dashboard/add_new_promo/',data,function(result){
+        alert(result);
+        // console.log(result);
+        location.reload();
+      });
+    });
+
+
+
+
+
 
   });
 

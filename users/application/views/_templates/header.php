@@ -163,6 +163,12 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     body , p , .tabs-style-linemove nav a {
       font-family:<?php echo $site['font-body']; ?>;
     }
+    .form-control {
+      background-color:transparent;
+      border:1px solid #202020;
+      color:#e3e3e3;
+      border-radius: 0px;
+    }
     textarea:focus, input:focus{
         outline: 0;
     }
@@ -188,11 +194,12 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     input:focus {
       outline:none;
     }
-    select.form-control, select.form-control:focus {
+    select.form-control, select.form-control:focus  {
       background-color: #101010;
       border-color:#202020;
-      border-radius:2px;
+      /*border-radius:2px;*/
     }
+
     .filter-by-tag {
       width:300px;
       font-size: 24px;

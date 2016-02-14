@@ -4,7 +4,7 @@
 		$current_page = $_GET['page'];
 	}
 
-	if (isset($_GET['tag'])) {
+	if (isset($_GET['tag']) OR $tag!=='') {
 		$tag = $_GET['tag'];
 	} else {
 		$tag = NULL;
@@ -18,3 +18,4 @@
 	echo $config->display_photos($promos, null , $current_page, $tag);
 
 ?>
+<script type="text/javascript" src='http://freelabel.net/js/dashboard.js'></script>

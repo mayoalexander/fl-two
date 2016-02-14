@@ -7,12 +7,17 @@ if (isset($_POST["page"]) ) {
 	$tag = $_POST["page"];
   $current_tag = $tag;
 
+} else if (isset($_GET["page"]) ) {
+  $tag = $_GET["page"];
+  $current_tag = $tag;
+
 } else {
 	$tag = '';
   $current_tag = NULL;
 }
 ?>
 <script type="text/javascript" src="http://freelabel.net/config/globals.js"></script>
+<script type="text/javascript" src="http://freelabel.net/js/dashboard.js"></script>
 <script type="text/javascript" src="http://freelabel.net/js/jquery.jeditable.js"></script>
 <style type="text/css">
   .filter-option-panel a {
@@ -39,9 +44,31 @@ if (isset($_POST["page"]) ) {
 
 <div id="promos_content">
   <!-- display content  -->
-  <?php $promos = $config->getPromosByUser(Session::get('user_name') , 20, $tag);
-  echo $config->display_photos($promos, null , 0, $tag); ?>
+  <?php $promos = $config->getPromosByUser(Session::get('user_name') , 20, $current_tag);
+  echo $config->display_photos($promos, null , 0, $current_tag); ?>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript">
 
     $('.editable-promo').editable('http://freelabel.net/submit/update.php',{
@@ -116,21 +143,21 @@ if (isset($_POST["page"]) ) {
     });
 
 
-        // ********************************* 
-    //  DELETE PROMO CONTROL 
-    // *********************************
-    $(".delete-promo-button").click(function(event){
-      event.preventDefault();
-      var file_id = $(this).attr('id');
-      var wrapper = $(this).parent();
-      var url = 'http://freelabel.net/users/login/delete_promo/' + file_id + '/';
-      c = confirm("Are you sure you want to delete this promotion?");
-      if (c==true) {
-        $.get(url,function(result){
-          wrapper.hide('fast');
-        });
-      }     
-    });
+    // // ********************************* 
+    // //  DELETE PROMO CONTROL 
+    // // *********************************
+    // $(".delete-promo-button").click(function(event){
+    //   event.preventDefault();
+    //   var file_id = $(this).attr('id');
+    //   var wrapper = $(this).parent();
+    //   var url = 'http://freelabel.net/users/login/delete_promo/' + file_id + '/';
+    //   c = confirm("Are you sure you want to delete this promotion?");
+    //   if (c==true) {
+    //     $.get(url,function(result){
+    //       wrapper.hide('fast');
+    //     });
+    //   }     
+    // });
 </script>
 
 
@@ -138,7 +165,7 @@ if (isset($_POST["page"]) ) {
 
 <!-- Modal -->
 <div class="modal fade" id="addPromo" tabindex="-1" role="dialog" aria-labelledby="addPromoLabel">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
