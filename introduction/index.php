@@ -133,7 +133,8 @@ if ($_GET['dev']==1) {
   		}
   		.background_tint , #background_tint_singles {
   			background-color: rgba(0, 0, 0, 0.8);
-  			min-height:100vh;
+  			/*min-height:100vh;*/
+  			min-height:inherit;
   		}
   		.blog-post-media-image , .blog-post-media-video {
   			width:100%;
