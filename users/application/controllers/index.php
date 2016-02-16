@@ -42,4 +42,7 @@ class Index extends Controller
     {
             $this->view->render('index/page',true);
     }
+    function profile() {
+            $this->view->render('index/profile',true);
+    }
 }

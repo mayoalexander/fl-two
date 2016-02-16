@@ -180,22 +180,11 @@ if ($_GET['dev']==1) {
   		<div id="container" class="container intro-effect-push">
   			<!-- Top Navigation -->
   			<div class="codrops-top clearfix">
-  				<!--<a class="codrops-icon codrops-icon-prev" href="http://freelabel.net/"><span>Back to Main Site</span></a>-->
-
-  				<span class="right"><a class="codrops-icon codrops-icon-prev" href="http://freelabel.net/"><span>Back to Main Site</span></a></span>
+  				<span class="right"><a class="codrops-icon codrops-icon-prev" href="http://freelabel.net/u/<?php echo $blog_post_data['user_name']; ?>"><span>Back to <?php echo $blog_post_data['user_name']; ?> Site</span></a></span>
   			</div>
   			<header class="header">
   				<div class="bg-img"><img src="<?php echo $blog_post_data['photo']; ?>" alt="<?php echo $blog_post_data['photo']; ?>"/></div>
   				<div class="title">
-  					<nav class="codrops-demos" style="display:none;">
-  						<a class="current-demo" href="index.html">Push</a>
-  						<a href="index2.html">Fade Out</a>
-  						<a href="index3.html">Sliced</a>
-  						<a href="index4.html">Side</a>
-  						<a href="index5.html">Fixed Side</a>
-  						<a href="index6.html">Grid</a>
-  						<a href="index7.html">Jam 3</a>
-  					</nav>
   					<img class="site-logo" src="<?php echo 'http://freelabel.net/images/fllogo.png' //$config->site['logo']; ?>" style='max-width:175px;'>
   					<h1><?php echo $blogtitle ?></h1>
   					<p class="subline"><?php echo $twitter ?></p>
@@ -245,7 +234,7 @@ if ($_GET['dev']==1) {
   				<?php
 					// echo $config->getPostsRelatedGallery($twitter);
   				$stream_pull ='related';
-  				$search_query =$twitter;
+  				$search_query = $twitter;
   				include(ROOT.'singles/related.php');
   				?>
   			</section>
