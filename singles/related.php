@@ -7,7 +7,7 @@
 //mysqli_close($con);
 //include('../inc/connection.php');
 
-include(ROOT.'AudioPlayer/index.php');
+// include(ROOT.'AudioPlayer/index.php');
 $include_path = 'config/index.php';
 if (file_exists($include_path)) {
     include_once($include_path);
@@ -31,7 +31,7 @@ if (file_exists($include_path)) {
 
 
 echo "<a name='radio_singles'></a>
-<div class='row'>";
+<div class='row' style='text-align:center;'>";
 
 // XXXFL TWEAK
 if ($stream_pull == "xxxfl") {
