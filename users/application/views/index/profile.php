@@ -64,11 +64,11 @@ $config = new Blog();
 								</div>
 							</div>';
 					}
-					if ($count >= 24) {
+					if ($count >= 20) {
 					echo '
 						<div class="item">
 							<div class="item__content">
-							<a href="#" class="load-more-button" data-src="feed" data-page="1"  data-user="'.$photo['user_name'].'">Load More..</a>
+							<a href="#" class="load-more-button" data-src="feed" data-page="'.$next_page.'"  data-user="'.$photo['user_name'].'">Load More..</a>
 							</div>
 						</div>';
 					}
@@ -78,3 +78,25 @@ $config = new Blog();
 
 
 ?>
+<script type="text/javascript">
+	
+		$('.load-more-button').click(function(event){
+			// event.preventDefault();
+			var element = $(this).parent().parent().parent();
+			var user = $(this).attr('data-user');
+			var page = $(this).attr('data-page');
+			var src = $(this).attr('data-src');
+
+			$.get('http://freelabel.net/users/index/profile/',{ 
+				src: src,
+				page: page,
+				user_name: user
+			},function(result){
+				// console.log(element);
+				element.html(result);
+			});
+			// element.hide('slow');
+			console.log(element);
+		});
+
+</script>
