@@ -69,15 +69,15 @@ if (isset($_SESSION['user_name'])) {
       <script src="https://embed.radio.co/player/c1389e1.js"></script>
     </panel>
   </nav>
-<!-- 
+
 <section>
 
 
-        // <?php $files = $config->display_user_posts('admin' , 50);
-        // echo $files['posts']; ?>
+        <?php $files = $config->display_user_posts('admin' , 20);
+        echo $files['posts']; ?>
 
 
-</section> -->
+</section> 
 
 
 <script type="text/javascript">
