@@ -1,11 +1,9 @@
 <?php
- include_once('/home/content/59/13071759/html/config/index.php');
+  include_once('/home/content/59/13071759/html/config/index.php');
+  $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     /* HEADER THIS IS WHAT IT DOES:
     * builds the site variable
     * loads the user with the user session, and cookie data
-    *
-    *
-
     */
 
     // LOAD WEBSITE APPLICATIONS
@@ -16,13 +14,13 @@
     $site = $config->getSiteData($config->site);
     $site['media']['photos']['front-page'] = $config->getPhotoAds($site['creator'], 'freelabel front');
     $site['media']['photos']['ads'] = $config->getPhotoAds($site['creator'], 'current-promo');
+
+
+    /* load page title */
     $site['page_title'] = $config->getPageTitle(strtoupper($_GET['url']));
+
+
     // LOAD USER DATA
-
-    if (!$_SESSION) {
-
-    }
-
     $user = new User();
     if (isset($_SESSION) && count($_SESSION)>0) {
       $site['user'] = $user->init($_SESSION,$_COOKIE);
@@ -39,44 +37,16 @@
     }
 
     $front_page_photos = $config->getPhotoAds($site['creator'], 'front');
+    shuffle($front_page_photos);
     if ($user_name = Session::get('user_name')) {
         $upload_link =  'http://freelabel.net/upload/?uid='.$user_name;
     }
-    if (isset($_GET['dev'])) {
-      echo '<pre>';
-      switch ($_GET['dev']) {
-
-        case 'debug':
-          // echo $config->debug($site);
-          // var_dump($site['media']['photos']['ads']);
-          var_dump($site['media']['photos']['front-page']);
-          break;
-
-        case 'url':
-          echo $config->getPageTitle(strtoupper($_GET['url']));
-          break;
-        
-        default:
-          # code...
-          break;
-      }
-      exit;
-    }
-
-    shuffle($front_page_photos);
-    if (!isset($page_title)) {
-      $page_title = $site['title'];
-    }
-    if ($meta_tag_photo=='') {
-      $meta_tag_photo = "http://freelabel.net/images/fllogo.png";
-    } else {
-      //$meta_tag_photo = "http://freelabel.net/images/fllogo.png";
-    }
 
 
 
 
-$site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
+
+
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
@@ -140,6 +110,13 @@ $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
     <!-- in case you wonder: That's the cool-kids-protocol-free way to load jQuery -->
     <script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="<?php echo HTTP; ?>js/application.js"></script>
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@freelabelnet">
+    <meta name="twitter:creator" content="@freelabelnet">
+    <meta name="twitter:title" content="<?php echo $site['media']['photos']['front-page'][0]['title']; ?>">
+    <meta name="twitter:description" content="<?php echo $site['media']['photos']['front-page'][0]['caption']; ?>">
+    <meta name="twitter:image" content="<?php echo $site['media']['photos']['front-page'][0]['image']; ?>">
 
     
     <style type="text/css">

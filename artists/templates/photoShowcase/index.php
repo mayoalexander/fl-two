@@ -74,13 +74,28 @@ shuffle($arr);
 
 					$i=0;
 					foreach ($user['media']['feed'] as $key => $photo) {
-						//echo $i.') <br>';
+							$photo['twitter'] = trim($photo['twitter']);
 							$i++;
 							$url = 'http://freelabel.net/'.$photo['twitter'].'/t/'.$photo['id'];
+
+							// detect file type for preview
+							switch ($photo['filetype']) {
+								case 'image/jpeg':
+									$preview = '<a href="'.$url.'"><img src="'.$photo['trackmp3'].'" alt="'.$photo['blogtitle'].'" /></a>';
+									break;
+								case 'audio/mpeg' OR 'audio/x-wav':
+									$preview = '<a href="'.$url.'"><img src="'.$photo['photo'].'" alt="'.$photo['blogtitle'].'" /></a>';
+									break;
+								
+								default:
+									$preview = 'Preview not set yet! (type: '.$photo['filetype'].')';
+									break;
+							}
+
 							echo '
 							<div class="item">
 								<div class="item__content">
-									<a href="'.$url.'"><img src="'.$photo['photo'].'" alt="'.$photo['blogtitle'].'" /></a>
+									'.$preview.'
 									<a href="'.$url.'"><h3 class="item__title">'.$photo['blogtitle'].' <span class="item__date">05/05/2015</span></h3></a>
 									<div class="item__details">
 										<ul>
