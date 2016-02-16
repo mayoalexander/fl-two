@@ -324,7 +324,7 @@ if ($row['type'] == 'blog') {
 if ($row['type'] == 'single') {
   $id = $row['id'];
 
-  $twittername= $row['twitter'];
+  $twittername= trim($row['twitter']);
   $onsale= $row['onsale'];
   $full_track_name = $row['trackname'];
   $trackname = strtolower($row['trackname']);
@@ -341,6 +341,11 @@ if ($row['type'] == 'single') {
   $submission_date  = $row['submission_date'];
   $user_name = $row['user_name'];
   $playerpath = $row['playerpath'];
+
+
+  if ( strpos($twittername, '@')===false ) {
+    $twittername = '@'.$twittername;
+  }
   //echo 'this track: ';
   //print_r($trackname);
   /*$tracknamearray = explode(' ', $trackname);
@@ -376,7 +381,7 @@ if ($row['type'] == 'single') {
 
 
 
-      $track_url = 'http://FREELABEL.net/'.$twitter.'/'.$post_title_short;
+      $track_url = 'http://FREELABEL.net/'.$twittername.'/'.$post_title_short;
 
 
 
@@ -536,19 +541,19 @@ echo '
 
 
           <div class="play-panel-right">
-            <a href="'.$track_url.'" target="_blank" ><img src="'.$track_photo.'" class="track_art_pic"></a>
+            <a href="'.$track_url.'" ><img src="'.$track_photo.'" class="track_art_pic"></a>
           </div>
 
           <div class="play-panel-left" >
     		  	<audio id="'.$trackanchor_noat.'"" preload="metadata">
               <source src="'.$trackmp3.'">
             </audio>
-            <a href="'.$track_url.'" target="_blank" >
+            <a href="'.$track_url.'" >
               <h4 id="full_track_name" >
               	'.$full_track_name.'
 			         </h4>
             </a>
-            <a href="'.$track_url.'" target="_blank" >
+            <a href="'.$track_url.'" >
               <h5 id="full_track_name" >'.$twittername.'</h5>
             </a>
           </div>
@@ -783,7 +788,7 @@ $tweet_blog = urlencode("[#FLMAG]
         echo '
   <div class="col-md-4">
     <div class="thumbnail" style="background-image:url(\''.$photo_url.'\');background-position:center center;background-size:auto 150%;" >
-      <a href="'.$blog_story_url.'" target="_blank" ><img src="'.$photo_url.'" alt="'.$blog_title.'"></a>
+      <a href="'.$blog_story_url.'" ><img src="'.$photo_url.'" alt="'.$blog_title.'"></a>
       <div class="caption">
         <a href="'.$blog_story_url.'" target="_blank" ><h4>'.$blog_title.'</h4></a>
         <a href="'.$artist_profile.'" target="_blank" ><h5 style="display:inline-block;" >'.$twitter.'</h5></a>

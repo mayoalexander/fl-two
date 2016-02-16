@@ -75,6 +75,10 @@ shuffle($arr);
 					$i=0;
 					foreach ($user['media']['feed'] as $key => $photo) {
 							$photo['twitter'] = trim($photo['twitter']);
+
+							  if ( strpos($photo['twitter'], '@')===false ) {
+							    $photo['twitter'] = '@'.$photo['twitter'];
+							  }
 							$i++;
 							$url = 'http://freelabel.net/'.$photo['twitter'].'/t/'.$photo['id'];
 
