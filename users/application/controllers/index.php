@@ -45,4 +45,7 @@ class Index extends Controller
     function profile() {
             $this->view->render('index/profile',true);
     }
+    function radio() {
+            $this->view->render('index/radio');
+    }
 }

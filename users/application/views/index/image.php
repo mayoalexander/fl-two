@@ -32,6 +32,18 @@
   ?>
 </div>
 
+
+
+
+
+<?php 
+
+$stream = 'related_bae';
+
+include(ROOT.'images/pull_images.php');
+
+?>
+
 <script type="text/javascript">
 	$(function(){
 		// config

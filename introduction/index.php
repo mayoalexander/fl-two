@@ -192,8 +192,8 @@ if ($_GET['dev']==1) {
   			</header>
   			<button class="trigger" data-info="View More"><span>Trigger</span></button>
   			<div class="title">
-  				<h1><?php echo $blogtitle ?></h1>
-  				<p class="subline"><?php echo $twitter ?></p>
+  				<a href="http://freelabel.net/u/<?php echo $blog_post_data['user_name']; ?>"><h1><?php echo $blogtitle ?></h1></a>
+  				<a href="http://freelabel.net/u/<?php echo $blog_post_data['user_name']; ?>"><p class="subline"><?php echo $twitter ?></p></a>
   				<p><?php
   				include(ROOT.'config/share.php');
 				//echo 'post id : '.$post_id;

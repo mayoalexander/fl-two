@@ -214,7 +214,7 @@ shuffle($arr);
 							echo '
 							<div class="item">
 								<div class="item__content">
-									<a href="http://freelabel.net/images/'.$photo['id'].'"><img src="'.$photo['thumbnail'].'" alt="'.$photo['title'].'" /></a>
+									<a href="http://freelabel.net/users/index/image/'.$photo['id'].'"><img src="'.$photo['thumbnail'].'" alt="'.$photo['title'].'" /></a>
 									<h3 class="item__title">'.$photo['title'].' <span class="item__date">05/05/2015</span></h3>
 									<div class="item__details">
 										<ul>
