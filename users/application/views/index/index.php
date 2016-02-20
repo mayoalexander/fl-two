@@ -18,13 +18,22 @@ if (isset($_SESSION['user_name'])) {
 <style type="text/css">
   
   html, body {
-    overflow-y:hidden;
+    /*overflow-y:hidden;*/
   }
   .jumbotron {
     background-color:#101010;
   }
   .jumbotron-body {
     background-color: rgba(0,0,0,0.4);
+  }
+  .background-tint-promo {
+    background-color:rgba(0,0,0,0.75);
+    padding:2%;
+    /*background-color:red;*/
+  }
+  .background-tint-promo {
+    padding-bottom:10vh;
+    padding-top:10vh;
   }
 </style>
 <header class="jumbotron feature bg-inverse text-center center-vertically" role="banner">
@@ -44,11 +53,9 @@ if (isset($_SESSION['user_name'])) {
   </div>
 </header>
 
-  <nav style="display:none;"  class="section-title row"  style="background-image:url('<?php echo $site['media']['photos']['ads'][0]['image'] ; ?>');">
-  <!--   <panel class="col-md-3" >
-    </panel> -->
+  <nav  class="promo-container row row-eq-height"  style="background-image:url('<?php echo $site['media']['photos']['ads'][0]['image'] ; ?>');">
 
-    <panel class="col-md-9 pull-left featured-ad "  >
+    <panel class="col-md-9 pull-left featured-ad background-tint-promo"  >
       <h1>NEW EXCLUSIVES DAILY.</h1>
       <!-- current-promo advertisement --> 
 
@@ -63,11 +70,12 @@ if (isset($_SESSION['user_name'])) {
         </div>
         
     </panel>
-    <panel class="col-md-3 pull-right" style='text-align:right;'>
+    <panel class="col-md-3 col-xs-12 pull-right background-tint-promo " style='text-align:right;'>
       <!-- radio player --> 
       <h3 class='text-muted'><a href="http://freelabel.net/radio/"><span style="color:red;" >LIVE</span> ON AIR</a></h3>
       <script src="https://embed.radio.co/player/c1389e1.js"></script>
     </panel>
+
   </nav>
 
 <section>

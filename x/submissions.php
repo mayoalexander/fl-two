@@ -134,10 +134,10 @@ function updateID3(mp3file, trackname, twittername) {
 		var init = updateID3(data[1]['value'], data[2]['value'] ,data[3]['value']);
 		console.log(init);
 		// if (init === true) {
-		// 		$.post('http://freelabel.net/submit/update.php', data, function(result) {
-		// 					alert(result);
-		element.text('Approved!');
-		// 		});
+		$.post('http://freelabel.net/submit/update.php', data, function(result) {
+					// alert(result);
+					element.text('Approved!');
+		});
 		// } else {
 		// 	element.html('failed..');
 		// }
