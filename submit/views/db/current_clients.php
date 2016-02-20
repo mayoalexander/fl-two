@@ -13,7 +13,7 @@
 	
 
 	<hr>
-	<div style='overflow-y:scroll;height:700px;'>
+	<div class="current-clients-container">
 		<table class="current-clients-table table table-bordered table-hover" style='font-size:80%;'>
 			<tr>
 				<td>#</td>
@@ -29,7 +29,6 @@
 				<td>Next Payment Date</td>
 				<td>Location</td>
 				<td>Submitted?</td>
-				<td>Campaign?</td>
 				<td>TWEETOUT</td>
 			</tr>
 	<?php
@@ -210,7 +209,7 @@ FREELABEL Featured: ".$name." (".$twitter.")
 															$profile_trackname	 	= 		$row3['trackname']; 
 															$playerpath	 	= 		$row3['playerpath']; 
 															//$profile_phone 		= 		"(".substr($profile_phone, 0, 3).") ".substr($profile_phone, 3, 3)."-".substr($profile_phone,6);
-															$submitted_tracks_status ='<a href="http://freelabel.net/'.strtolower($profile_twitter).'" class="btn btn-success btn-xs" target="_blank">WE GOT TRACKS!!!</a>';
+															$submitted_tracks_status ='<a href="http://freelabel.net/'.strtolower($profile_twitter).'" class="text-success" target="_blank">UPLOADED!!!</a>';
 
 															$follow_up_promote[] = urlencode('[NEW MUSIC] '.$profile_twitter.' - "'.$profile_trackname.'" | '.$playerpath);
 															$follow_up_promote[] = urlencode($profile_trackname.'" | '.$playerpath);
@@ -254,16 +253,16 @@ FREELABEL Featured: ".$name." (".$twitter.")
 
 														} else {
 															$tweet_track_request = $profile_twitter.' Login to your FREELABEL profile and upload music ASAP --> submit.FREELABEL.net';
-															$submitted_tracks_status	= "<a data-email='".$user_email."' data-twitter='".$profile_twitter."' data-action='songs' class='btn btn-danger btn-xs need-songs-trigger'>NEED SONGS!!!!!</a>";
+															$submitted_tracks_status	= "<a href='#' data-email='".$user_email."' data-twitter='".$profile_twitter."' data-action='songs' class='text-danger need-songs-trigger'>INCOMPLETE!!!!!</a>";
 														}
-														$profile_bool	= "<button href='http://x.freelabel.net/?i=".$name."'  class='btn btn-success btn-xs' target='_blank' >COMPLETED</button>";
+														$profile_bool	= "<a href='http://freelabel.net/u/".$name."'  class='text-success' target='_blank' >".$name."</a>";
 
 
 												
 											} else {
 												$photo = '';
 												$tweet_to_client = '';
-												$profile_bool	= "<span data-email='".$user_email."' data-action='profile' class='btn btn-danger btn-xs need-songs-trigger'>NO PROFILE!!!!!</span>";
+												$profile_bool	= "<a href='#' data-email='".$user_email."' data-action='profile' class='text-danger need-songs-trigger'>".$name."</a>";
 											}
 												
 										
@@ -276,8 +275,8 @@ FREELABEL Featured: ".$name." (".$twitter.")
 											    <td>
 											    	'.$user_id.')
 											    </td>
-											    <td>
-											    	<a href="http://freelabel.net/u/'.$name.'" target="_blank">'.$name.'</a>
+												<td>
+											    	@'.$profile_bool.'
 											    </td>
 											    <td>
 											    	<span class="edit" id="type-'.$user_id.'">'.$user_account_type.'</span>
@@ -298,7 +297,6 @@ FREELABEL Featured: ".$name." (".$twitter.")
 											    	'.$date_created_account.'
 											    </td>
 											    <td>
-											    	'.$showcase_date.'
 											    </td>
 											    <td>
 											    	'.$expiration_date.'
@@ -306,11 +304,9 @@ FREELABEL Featured: ".$name." (".$twitter.")
 											    <td>
 											    	'.$profile_location.'
 											    </td>
+
 											    <td>
 											    	'.$submitted_tracks_status.'
-											    </td>
-											    <td>
-											    	'.$profile_bool.'
 											    </td>
 											    <td>
 											    <!--<textarea></textarea>-->
@@ -358,8 +354,9 @@ FREELABEL Featured: ".$name." (".$twitter.")
 		});
 	}
 
-	$('.need-songs-trigger').click(function(){
-		$(this).hide();
+	$('.need-songs-trigger').click(function(event){
+		event.preventDefault();
+		$(this).removeClass('text-danger').addClass('text-warning');
 		var email = $(this).attr('data-email');
 		var action = $(this).attr('data-action');
 		if (action == 'profile') {

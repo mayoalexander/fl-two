@@ -501,6 +501,10 @@
     .feedback {
       font-size:10px;
     }
+    .current-clients-container .current-clients-table {
+      margin:auto;
+      width: 100%;
+    }
     .current-clients-table td {
       padding:1%;
       border:1px solid #202020;
