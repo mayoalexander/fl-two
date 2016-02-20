@@ -57,17 +57,17 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 
 <script type="text/javascript">
 	$(function(){
-		// $('.add-new-promo-form').submit(function(event){
-		// 	event.preventDefault();
-		// 	$(this).parent().html('Please wait..');
-		// 	var data = $(this).serialize();
-		// 	// console.log(data);
-		// 	$.post('http://freelabel.net/users/dashboard/add_new_promo/',data,function(result){
-		// 		alert(result);
-		// 		// console.log(result);
-		// 		location.reload();
-		// 	});
-		// });
+		$('.add-new-promo-form').submit(function(event){
+			event.preventDefault();
+			$(this).parent().html('Please wait..');
+			var data = $(this).serialize();
+			// console.log(data);
+			$.post('http://freelabel.net/users/dashboard/add_new_promo/',data,function(result){
+				alert(result);
+				// console.log(result);
+				location.reload();
+			});
+		});
 
 
 

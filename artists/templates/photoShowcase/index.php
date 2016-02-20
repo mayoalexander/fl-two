@@ -326,6 +326,8 @@ shuffle($arr);
 				alert(text);
 			} else if(text=='Contact') {
 				alert(text);
+			} else {
+				alert(text);
 			}
 		});
 

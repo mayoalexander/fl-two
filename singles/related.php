@@ -202,6 +202,9 @@ if ($row['type'] == 'blog') {
     $blog_title = $row['blogtitle'];
     $photo_path = $row['photo'];
     // $photo_url = "http://FreeLabel.net/images/". $photo_path;
+    if ( strpos(strtolower($photo_path), 'http://freelabel.net/')===false ) {
+      $photo_path = 'http://freelabel.net/images/'.$photo_path;
+    }
     $photo_url = $photo_path;
     $twitter = trim($row['twitter']);
     $twitpic = $row['twitpic'];
