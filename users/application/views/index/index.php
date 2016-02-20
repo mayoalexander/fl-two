@@ -13,7 +13,7 @@ if (isset($_SESSION['user_name'])) {
   $calltoaction = 'Create Account';
   $calltoaction_link = 'login/register';
 }
-
+$current_page = '0';
 ?>
 <style type="text/css">
   
@@ -78,10 +78,10 @@ if (isset($_SESSION['user_name'])) {
 
   </nav>
 
-<section>
+<section id='section-linemove-1'>
 
 
-        <?php $files = $config->display_user_posts('admin' , 20);
+        <?php $files = $config->display_user_posts_new('admin' , $current_page);
         echo $files['posts']; ?>
 
 

@@ -1,4 +1,7 @@
-<?php include_once('/home/content/59/13071759/html/config/index.php'); ?>
+<?php 
+include_once('/home/content/59/13071759/html/config/index.php');
+$config = new Blog(); 
+?>
 <a name="currentClients"></a>
 <h2 >CURRENT CLIENTS</h2>
 	<form id='client-search' style='inline-block' >
@@ -29,6 +32,7 @@
 				<td>Next Payment Date</td>
 				<td>Location</td>
 				<td>Submitted?</td>
+				<td>Promos?</td>
 				<td>TWEETOUT</td>
 			</tr>
 	<?php
@@ -115,6 +119,7 @@
 						  	$profile_location = '';
 						  	$submitted_tracks_status = '';
 						  	$profile_bool = '';
+						  	$promos = '';
 
 
 						  	$name = $row['user_name'];
@@ -133,7 +138,15 @@
 							$showcase_date = date('m/d',strtotime("+ 10 days",$date_created));
 							$expiration_date = date('m/d',strtotime("+ 28 days",$date_created));
 
-
+							$promos = $config->getPromosByUser($name, 0);
+							if ($promos ===NULL) {
+								$promos='No Promos Found!';
+							} else {
+								$promos = count($promos);
+							}
+							// echo '<pre>';
+							// var_dump($promos);
+							// exit;
 
 							// $expiration_date = date("+ 28 days",$date_created);
 							// $showcase_date = strtotime("+ 10 days",strtotime($date_created));
@@ -192,7 +205,7 @@ FREELABEL Featured: ".$name." (".$twitter.")
 
 													// Check if Singles are Uplaoded 
 													include('../../../inc/connection.php');
-													$config = new Config();
+													$system = new Config();
 
 													$result3 = mysqli_query($con,"SELECT * 
 														FROM  `feed` 
@@ -233,7 +246,7 @@ FREELABEL Featured: ".$name." (".$twitter.")
 															<div class="dropdown">
 															  <button class="btn btn-social dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-comment"></i>
 															  <ul class="dropdown-menu">
-															    '.$config->loadScript($profile_trackname).'
+															    '.$system->loadScript($profile_trackname).'
 															  </ul>
 															</div>';
 
@@ -307,6 +320,9 @@ FREELABEL Featured: ".$name." (".$twitter.")
 
 											    <td>
 											    	'.$submitted_tracks_status.'
+											    </td>
+											    <td>
+											    	'.$promos.'
 											    </td>
 											    <td>
 											    <!--<textarea></textarea>-->
