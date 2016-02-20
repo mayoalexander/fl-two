@@ -87,7 +87,7 @@ $current_page = '0';
 
 </section> 
 
-
+<script type="text/javascript" src='http://freelabel.net/js/dashboard.js'></script>
 <script type="text/javascript">
   $(function(){
     $('.dash-filter').click(function(){
