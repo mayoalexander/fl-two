@@ -111,19 +111,17 @@ class Dashboard extends Controller
 
 
     function attach() {
-
         if (isset($_POST['file_id'])) {
             include_once('/home/content/59/13071759/html/config/index.php');
             $config = new Blog();
-            echo 'okay updating';
-        echo $config->attach_files($_POST['file_id'],$_POST['promo_id']);
+            // echo 'okay updating';
+            echo $config->attach_files($_POST['file_id'],$_POST['promo_id']);
 
         } else {
             $this->view->render('dashboard/attach',true);
         }
 
     }
-
 
 
 
@@ -174,6 +172,26 @@ class Dashboard extends Controller
         }
     }
 
+    function attach_files_to_promo() {
+
+        if (isset($_POST['file_id'])) {
+            // echo '<pre>';
+            // var_dump($_POST);
+            // echo '</pre>';
+            if (is_array($_POST['file_id'])) {
+                foreach ($_POST['file_id'] as $key => $value) {
+                    $files[] = $value['value'];
+                }
+                $files = implode(', ', $files);
+            }
+            include_once('/home/content/59/13071759/html/config/index.php');
+            $config = new Blog();
+            // echo 'okay updating';
+            echo $config->attach_files_to_promo($files,$_POST['promo_id']);
+        } else {
+            $this->view->render('dashboard/attach_files_to_promo',true);
+        }
+    }
     
     
 }

@@ -95,6 +95,21 @@ if (isset($_POST["page"]) ) {
 
 
 
+
+    
+
+  $(".attach-promo-files-button").click(function(event) {
+    event.preventDefault();
+    // alert('okay');
+    var id = $(this).attr('data-id');
+    // data = ''
+    $('#addPromo').modal('show');
+    // alert(data);
+    $.get('http://freelabel.net/users/dashboard/attach_files_to_promo/',{promo_id:id},function(result){
+      $('.new-form-modal').html(result);
+    });
+  }); 
+
 	$(".add-new-media-photo").click(function(event) {
 		event.preventDefault();
     // alert('okay');
