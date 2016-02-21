@@ -55,7 +55,7 @@
     <ul class="stats-track-list list-group">
       <?php 
       foreach ($tracks as $key => $value) {
-        echo '<li class="list-group-item complete">'.$value['twitter'].' - '.$value['blogtitle'].'</li>';
+        echo '<li class="list-group-item complete"><a href="'.$value['blog_story_url'].'">'.$value['twitter'].' - '.$value['blogtitle'].'</a></li>';
       }
       ?>
     </ul>

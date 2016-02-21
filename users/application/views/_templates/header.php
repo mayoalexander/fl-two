@@ -474,6 +474,8 @@
     }
     .card-chart .list-group-item {
       background-color: #202020;
+    }
+    .list-group-item a, .card-chart .list-group-item {
       color:#e3e3e3;
     }
     .section-title {
