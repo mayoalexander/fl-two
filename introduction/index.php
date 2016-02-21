@@ -143,6 +143,14 @@ if ($_GET['dev']==1) {
   		.content video {
   			width:100%;
   		}
+/*  		.audioplayer-bar {
+  			height:1;
+  		}*/
+  		#full_track_name {
+		    font-size: 1.75em;
+		    max-width: 275px;
+		    margin: auto;
+  		}
   		.btn {
   			text-align: center;
   			display:inline-block;
@@ -167,6 +175,26 @@ if ($_GET['dev']==1) {
   		.featured_post_wrapper .btn {
   			height:32px;
   			width:32px;
+  		}
+  		.btn-twitter, .btn-facebook, .btn-tumblr, .btn-twitter:hover, .btn-facebook:hover, .btn-tumblr:hover {
+  			background-color: transparent;
+  		}
+  		.btn-twitter:hover,.btn-twitter:focus,.btn-twitter:active,.btn-twitter.active,.open>.dropdown-toggle.btn-twitter, 
+  		.btn-tumblr:hover,.btn-tumblr:focus,.btn-tumblr:active,.btn-tumblr.active,.open>.dropdown-toggle.btn-tumblr, 
+  		.btn-facebook:hover,.btn-facebook:focus,.btn-facebook:active,.btn-facebook.active,.open>.dropdown-toggle.btn-facebook, 
+  		{
+  			color:#fff;
+  			background-color:transparent;
+  			border-color:rgba(0,0,0,0.2);
+  		}
+  		.btn-twitter {
+  			color:#55acee;
+  		}
+  		.btn-tumblr {
+  			color: #2c4762;
+  		}
+  		.btn-facebook {
+  			color:#3b5998;
   		}
   		@media (max-width: 600px) {
 		  .featured_post_wrapper {
@@ -241,9 +269,31 @@ if ($_GET['dev']==1) {
   		</div><!-- /container -->
 
   		<script type="text/javascript" src='http://freelabel.net/config/globals.js'></script>
-  		<script type="text/javascript" src='http://freelabel.net/js/modalBox-min.js'></script>
   		<script src="<?php echo HTTP.'introduction/';?>js/classie.js"></script>
+  		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  		<script type="text/javascript" src='http://freelabel.net/js/modalBox-min.js'></script>
   		<script>
+  		$(function(){
+		    // Main Feed Videon Controls Functionality
+		    $('video').click(function(){
+		      var element = $(this).get(0);
+		      var siblings = $(this).siblings();
+		      var parent = $(this).parent();
+
+		      parent.removeClass('col-md-3');
+		      parent.addClass('col-md-12');
+
+		      if (element.paused == true) {
+		        element.play();
+		        siblings.html('<i class="fa fa-play"></i>');
+		        siblings.fadeToggle('slow');
+		      } else {
+		        siblings.html('<i class="fa fa-pause"></i>');
+		        siblings.fadeToggle('slow');
+		        element.pause();
+		      }
+  			});
+  		}); 
   		(function() {
 
 				// detect if IE : from http://stackoverflow.com/a/16657946

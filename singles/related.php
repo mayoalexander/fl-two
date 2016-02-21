@@ -295,10 +295,14 @@ if ($row['type'] == 'blog') {
       <div id="background_tint_singles" >
       <a href="'.$blog_story_url.'"><img src="'.$photo_url.'" alt="'.$blog_title.'"></a>
       <div class="caption">
-         <a href="'.$blog_story_url.'"><h4>'.$blog_title.'</h4></a>
-        <a href="'.$artist_profile.'" target="_blank" ><h5 style="display:inline-block;" >'.$twitter.'</h5></a>
-        <label class="label label-success">'.$how_recent.'</label>
+         <a href="'.$blog_story_url.'"><p id="full_track_name">'.$blog_title.'</p></a>
+        <a href="'.$artist_profile.'" target="_blank" ><h5 id="full_track_name">'.$twitter.'</h5></a>
         <br>
+        <p>
+            <label>'.$how_recent.'</label>
+            '.$blog->getShareButtons($id).'
+            <!-- show share buttons -->
+          </p>
         <p>
         ';
             include(ROOT.'config/share.php');
@@ -327,7 +331,6 @@ if ($row['type'] == 'blog') {
 if ($row['type'] == 'single') {
   $id = $row['id'];
 
-  $twittername= trim($row['twitter']);
   $onsale= $row['onsale'];
   $full_track_name = $row['trackname'];
   $trackname = strtolower($row['trackname']);
@@ -345,7 +348,8 @@ if ($row['type'] == 'single') {
   $user_name = $row['user_name'];
   $playerpath = $row['playerpath'];
 
-
+  // clean up twitter name just to be safe
+  $twittername= trim($row['twitter']);
   if ( strpos($twittername, '@')===false ) {
     $twittername = '@'.$twittername;
   }
@@ -548,17 +552,11 @@ echo '
           </div>
 
           <div class="play-panel-left" >
-    		  	<audio id="'.$trackanchor_noat.'"" preload="metadata">
-              <source src="'.$trackmp3.'">
-            </audio>
-            <a href="'.$track_url.'" >
-              <h4 id="full_track_name" >
-              	'.$full_track_name.'
-			         </h4>
-            </a>
-            <a href="'.$track_url.'" >
-              <h5 id="full_track_name" >'.$twittername.'</h5>
-            </a>
+    		  	<audio id="'.$trackanchor_noat.'"" preload="metadata"><source src="'.$trackmp3.'"></audio>
+            
+            <p id="full_track_name" ><a href="'.$track_url.'" >'.$full_track_name.'</a></p>
+            <h3 id="full_track_name" ><a href="'.$track_url.'" >'.$twittername.'</a></h3>
+            
           </div>
 
           <!--<iframe src="http://freelabel.net/config/play.php?mp3='.$trackmp3.'" width="100%" seamless></iframe>-->
