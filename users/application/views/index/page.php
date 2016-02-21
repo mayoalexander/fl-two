@@ -13,3 +13,5 @@
 	echo $files['posts']; 
 
 ?>
+
+<script type="text/javascript" src='http://freelabel.net/js/dashboard.js'></script>

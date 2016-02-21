@@ -132,6 +132,7 @@
     html, body , .bg-faded, .pricing-box{
       background-color: #101010;
       color:#e3e3e3;
+      overflow-x:hidden;
     }
     body,html, h1, h2,h3,h4,h5,h6, label, button {
       font-family:<?php echo $site['font-head']; ?>;

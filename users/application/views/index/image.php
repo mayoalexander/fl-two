@@ -75,6 +75,7 @@ include(ROOT.'images/pull_images.php');
     // console.log(globalButtons);
       event.preventDefault();
       var audioFile = $(this).attr('data-src');
+      var filetype = $(this).attr('data-type');
       var audioTitle = $(this).attr('data-title');
       var nowplaying = '<i class="fa fa-play"></i>';
       var nowpaused = '<i class="fa fa-pause"></i>';
@@ -92,37 +93,45 @@ include(ROOT.'images/pull_images.php');
       // console.log(nextsong);
       // console.log(audioFile);
       // console.log(globalAudioPlayer[0].src);
+      // alert(filetype);
 
 
+    if (filetype === 'audio/mp3') {  
+      // play audio  
       if (isPlaying(globalAudioPlayer[0])==false) {
-        // play file
-        	// console.log();
-        	// var trackListing = ;
-        	// alert(trackListing);
-        	// console.log(trackListing[0]);
-        	$(this).find('a').removeClass('fa-play-circle')
-        	$(this).find('a').addClass('fa-pause');
-        	// trackListing[0].removeClass('fa-play-circle');
-        	// trackListing[0].addClass('fa-pause-circle');
-              // $(this).html('<i class="fa fa-pause"></i>');
-              globalAudioPlayer[0].play();
-              globalAudioPlayerText.text(audioTitle);
-              globalAudioPlayer.attr('src', audioFile);
-              globalAudioPlayer.attr('autoplay', 1);
-              $(this).addClass('now-playing'); // *
-              globalAudioPlayer.attr('loop', 1);
-      } else if (isPlaying(globalAudioPlayer[0])==true && audioFile !== globalAudioPlayer[0].src) {
-        // pause function
-            $(this).find('a').removeClass('fa-play-circle')
-        	$(this).find('a').addClass('fa-pause');
-              globalAudioPlayer[0].play();
-              globalAudioPlayerText.text(audioTitle);
-              globalAudioPlayer.attr('src', audioFile);
-              globalAudioPlayer.attr('autoplay', 1);
-              // globalAudioPlayer.attr('loop', 1);
+              // play file
+                // console.log();
+                // var trackListing = ;
+                // alert(trackListing);
+                // console.log(trackListing[0]);
+                $(this).find('a').removeClass('fa-play-circle')
+                $(this).find('a').addClass('fa-pause');
+                // trackListing[0].removeClass('fa-play-circle');
+                // trackListing[0].addClass('fa-pause-circle');
+                    // $(this).html('<i class="fa fa-pause"></i>');
+                    globalAudioPlayer[0].play();
+                    globalAudioPlayerText.text(audioTitle);
+                    globalAudioPlayer.attr('src', audioFile);
+                    globalAudioPlayer.attr('autoplay', 1);
+                    $(this).addClass('now-playing'); // *
+                    globalAudioPlayer.attr('loop', 1);
+            } else if (isPlaying(globalAudioPlayer[0])==true && audioFile !== globalAudioPlayer[0].src) {
+              // pause function
+                  $(this).find('a').removeClass('fa-play-circle')
+                $(this).find('a').addClass('fa-pause');
+                    globalAudioPlayer[0].play();
+                    globalAudioPlayerText.text(audioTitle);
+                    globalAudioPlayer.attr('src', audioFile);
+                    globalAudioPlayer.attr('autoplay', 1);
+                    // globalAudioPlayer.attr('loop', 1);
+            } else {
+              $(this).html('<i class="fa fa-play"></i>');
+              globalAudioPlayer[0].pause();
+            }
       } else {
-        $(this).html('<i class="fa fa-play"></i>');
-        globalAudioPlayer[0].pause();
+        // play video 
+        alert("playing video");
+        // $(this).attr('');
       }
 
       if ($(this).html()==nowpaused) {
