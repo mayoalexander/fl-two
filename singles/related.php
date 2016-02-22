@@ -714,23 +714,52 @@ if ($row['type'] == 'mixtape') {
 
 
 
-
-
-
-      if ($row['type'] == 'xxxfl') {
-
+  if ($row['type'] == 'xxxfl') {
 
     $submission_date  = $row['submission_date'];
     $blog_title = $row['blogtitle'];
     $photo_path = $row['photo'];
-    $photo_url = "http://FreeLabel.net/images/". $photo_path;
-    $twitter = $row['twitter'];
+    // $photo_url = "http://FreeLabel.net/images/". $photo_path;
+    if ( strpos(strtolower($photo_path), 'http://freelabel.net/')===false ) {
+      $photo_path = 'http://freelabel.net/images/'.$photo_path;
+    }
+    $photo_url = $photo_path;
+    $twitter = trim($row['twitter']);
     $twitpic = $row['twitpic'];
     $blog_story_url = $row['blog_story_url'];
     $subject = $blog_story_url;
     $find = "blog.amradiolive.com";
     $replace = "freelabel.net/blog";
     $blog_story_url = str_replace($find,$replace,$subject);
+
+
+
+
+    $post_title_array = explode(' ', trim($blog_title));
+      if ($post_title_array[0] == '[VIDEO]'
+        OR $post_title_array[0] == '[SINGLE]'
+        OR $post_title_array[0] == '[ALBUM'
+        OR $post_title_array[0] == '[INTERVIEW]'
+        OR $post_title_array[0] == '[EXCLUSIVE]'
+        ) {
+        if ($post_title_array[0] == '[ALBUM') {
+          $post_title_short = $post_title_array[2];
+        }else{
+          $post_title_short = $post_title_array[1];
+        }
+      } else {
+        $post_title_short = $post_title_array[0];
+      }
+
+
+
+
+      //$blog_story_url = 'http://FREELABEL.net/'.$twitter.'/'.$post_title_short;
+      $blog_story_url = 'http://freela.be/l/'.$twitter.'/'.$post_title_short;
+
+
+    
+
 
     $trackname = strtolower($row['trackname']);
     $tracknameshort = preg_replace('/\s+/', '', $trackname);
@@ -776,32 +805,152 @@ if ($row['type'] == 'mixtape') {
         }
     
 
-// TWEET SHARE MESSAGE
-$tweet_blog = urlencode("[#FLMAG]
-
-".$twitter." ". $blog_title ." 
-
-[".$blog_story_url."]
-
-".$twitpic);
 
 
         echo '
-  <div class="col-md-4">
+  <div class="col-md-4 featured_post_wrapper">
     <div class="thumbnail" style="background-image:url(\''.$photo_url.'\');background-position:center center;background-size:auto 150%;" >
-      <a href="'.$blog_story_url.'" ><img src="'.$photo_url.'" alt="'.$blog_title.'"></a>
+      <div id="background_tint_singles" >
+      <a href="'.$blog_story_url.'"><img src="'.$photo_url.'" alt="'.$blog_title.'"></a>
       <div class="caption">
-        <a href="'.$blog_story_url.'" target="_blank" ><h4>'.$blog_title.'</h4></a>
-        <a href="'.$artist_profile.'" target="_blank" ><h5 style="display:inline-block;" >'.$twitter.'</h5></a>
-        <label class="label label-success">'.$how_recent.'</label>
-        <hr>
-        <p><a href="http://freelabel.net/som/index.php?post=1&text='.$tweet_blog.'" class="btn btn-primary" role="button" target="_blank"><span class="glyphicon glyphicon-retweet"></span></a> <a href="'.$blog_story_url.'" class="btn btn-default" role="button"><span class="glyphicon glyphicon-fullscreen"></span></a></a></p>
+         <a href="'.$blog_story_url.'"><p id="full_track_name">'.$blog_title.'</p></a>
+        <a href="'.$artist_profile.'" target="_blank" ><h5 id="full_track_name">'.$twitter.'</h5></a>
+        <br>
+        <p>
+            <label>'.$how_recent.'</label>
+            '.$blog->getShareButtons($id).'
+            <!-- show share buttons -->
+          </p>
+        <p>
+        ';
+            include(ROOT.'config/share.php');
+            findByID($blog_id);
+        echo '
+          <!-- <a href="http://freelabel.net/som/index.php?post=1&text='.$tweet_blog.'" class="btn btn-primary btn-xs" role="button" target="_blank"><span class="glyphicon glyphicon-retweet"></span></a> 
+          <a href="https://twitter.com/intent/tweet?screen_name=&text='.$tweet_blog.'" class="btn btn-primary btn-xs" role="button" target="_blank"><span class="glyphicon glyphicon-star"></span></a>-->
+          <a href="'.$blog_story_url.'" class="btn btn-default btn-xs" role="button"><span class="glyphicon glyphicon-fullscreen"></span></a>
+        </p>
       </div>
+      </div><!-- background_tint -->
     </div>
   </div>';
 
     
       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//       if ($row['type'] == 'xxxxxfl' OR strtolower($row['twitter'])=='@xxxxxfl') {
+
+
+//     $submission_date  = $row['submission_date'];
+//     $blog_title = $row['blogtitle'];
+//     $photo_path = $row['photo'];
+//     if ( strpos($photo_path, 'http://freelabel.net/')===false) {
+//       $photo_url = "http://FreeLabel.net/images/". $photo_path;
+//     } else {
+//       $photo_url = $photo_path;
+//     }
+//     $twitter = $row['twitter'];
+//     $twitpic = $row['twitpic'];
+//     $blog_story_url = $row['blog_story_url'];
+//     $subject = $blog_story_url;
+//     $find = "blog.amradiolive.com";
+//     $replace = "freelabel.net/blog";
+//     $blog_story_url = str_replace($find,$replace,$subject);
+
+//     $trackname = strtolower($row['trackname']);
+//     $tracknameshort = preg_replace('/\s+/', '', $trackname);
+//     $trackanchor  = "".$tracknameshort;
+//     $pound = "%23";
+//     $views = $row['views'];
+//     $userphoto = $row['userphoto'];
+//     $playerpath = $row['playerpath'];
+//     $photo = $row['photo'];
+//     $artist_profile = 'http://x.freelabel.net/'.strtolower($twitter);
+
+    
+//     $how_recent =  time() - strtotime($row['submission_date']);
+//         //$how_recent = date('H:i', $how_recent);
+//         $how_recent = $how_recent / 60;
+//         $how_recent = $how_recent / 60;
+//         $how_recent = $how_recent / 24;
+//         if ($how_recent < 0.041666666666667) {
+//           $how_recent = $how_recent * 24 * 60;
+//           $how_recent = substr($how_recent, 0,3);
+//           $how_recent =  $how_recent.' minutes ago';
+//         } elseif ($how_recent < 1) {
+//           $how_recent = $how_recent * 24;
+//           if ($how_recent < 2) {
+//             $how_recent = substr($how_recent, 0,1);
+//             $how_recent =  $how_recent.' hour ago';
+//           } elseif ($how_recent < 10) {
+//             $how_recent = substr($how_recent, 0,1);
+//             $how_recent =  $how_recent.' hours ago';
+//           } else {
+//             $how_recent = substr($how_recent, 0,2);
+//             $how_recent =  $how_recent.' hours ago';
+//           } 
+//         }elseif($how_recent < 10) {
+//           $how_recent = substr($how_recent, 0,1);
+//           $how_recent =  $how_recent.' days ago';
+//         } else {
+//           $how_recent = substr($how_recent, 0,2);
+//           $how_recent =  $how_recent.' days ago';
+//         }
+//         if ($submission_date == '0000-00-00 00:00:00') {
+//           $how_recent = strtotime($row['submission_date']);
+//         }
+    
+
+// // TWEET SHARE MESSAGE
+// $tweet_blog = urlencode("[#FLMAG]
+
+// ".$twitter." ". $blog_title ." 
+
+// [".$blog_story_url."]
+
+// ".$twitpic);
+
+
+//         echo '
+//   <div class="col-md-4 featured_post_wrapper">
+//     <div class="thumbnail" style="background-image:url(\''.$photo_url.'\');background-position:center center;background-size:auto 150%;" >
+//       <a href="'.$blog_story_url.'" ><img src="'.$photo_url.'" alt="'.$blog_title.'"></a>
+//       <div class="caption">
+//         <a href="'.$blog_story_url.'" target="_blank" ><h4>'.$blog_title.'</h4></a>
+//         <a href="'.$artist_profile.'" target="_blank" ><h5 style="display:inline-block;" >'.$twitter.'</h5></a>
+//         <label class="label label-success">'.$how_recent.'</label>
+//         <hr>
+//         <p><a href="http://freelabel.net/som/index.php?post=1&text='.$tweet_blog.'" class="btn btn-primary" role="button" target="_blank"><span class="glyphicon glyphicon-retweet"></span></a> <a href="'.$blog_story_url.'" class="btn btn-default" role="button"><span class="glyphicon glyphicon-fullscreen"></span></a></a></p>
+//       </div>
+//     </div>
+//   </div>';
+
+    
+//       }
 
 
   }

@@ -240,10 +240,16 @@ if ($_GET['dev']==1) {
   							break;
 
   						case 'blog':
-  						$blogentry = '
-  						<video controls preload="metadata" poster="'.$photo.'" >
-  						<source src="'.$trackmp3.'"></source>
-  						</video>';
+  						if ($blog_post_data['filetype']=='video/mp4') {
+ 							$blogentry = '
+	  						<video controls preload="metadata" poster="'.$photo.'" >
+	  						<source src="'.$trackmp3.'"></source>
+	  						</video>';
+  						} else {
+ 							$blogentry = '
+	  						<img style="width:100%;" src="'.$photo.'" alt="'.$blog_post_data['twitter'].'" >';
+  						}
+	 
   							break;
   						
   						default:

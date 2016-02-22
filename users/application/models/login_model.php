@@ -263,6 +263,23 @@ class LoginModel
                 Session::set('user_provider_type', 'FACEBOOK');
                 Session::set('user_avatar_file', $this->getUserAvatarFilePath());
 
+
+                // generate 64 char random string
+                $random_token_string = hash('sha256', mt_rand());
+
+                // write that token into database
+                $sql = "UPDATE users SET user_rememberme_token = :user_rememberme_token WHERE user_id = :user_id";
+                $sth = $this->db->prepare($sql);
+                $sth->execute(array(':user_rememberme_token' => $random_token_string, ':user_id' => $result->user_id));
+
+                // generate cookie string that consists of user id, random string and combined hash of both
+                $cookie_string_first_part = $result->user_id . ':' . $random_token_string;
+                $cookie_string_hash = hash('sha256', $cookie_string_first_part);
+                $cookie_string = $cookie_string_first_part . ':' . $cookie_string_hash;
+
+                // set cookie
+                setcookie('rememberme', $cookie_string, time() + COOKIE_RUNTIME, "/", COOKIE_DOMAIN);
+
                 // generate integer-timestamp for saving of last-login date
                 $user_last_login_timestamp = time();
                 // write timestamp of this login into database (we only write "real" logins via login form into the

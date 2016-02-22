@@ -12,22 +12,44 @@
     /*height: 50vh;*/
     width: 100%;
 }
+  .promo-image , ol {
+    list-style-type: none;
+    padding: 0;
+  }
+  .promo-image img {
+    width:100%;
+  }
   .full-width-article {
     min-height: 100vh;
   }
 
+   @media (max-width: 800px) {
+      .promo-image img {
+        width:100%;
+      }
+    }
 </style>
 <div class="row">
   <?php
   include_once('/home/content/59/13071759/html/config/index.php');
   $config = new Blog();
-  $slug = str_replace('index/image/', '', $_GET['url']);
+  $promo_id = str_replace('index/image/', '', $_GET['url']);
 
-  if (is_numeric($slug)) {
-  	$promos = $config->display_promo(Session::get('user_name') , 1, $slug, 'id');
+  // gather promo data
+  if (is_numeric($promo_id)) {
+  	$promos = $config->display_promo(Session::get('user_name') , 1, $promo_id, 'id');
   } else {
-  	$promos = $config->display_promo(Session::get('user_name') , 1, $slug, 'desc');
+  	$promos = $config->display_promo(Session::get('user_name') , 1, $promo_id, 'desc');
   }
+
+  // update stats
+  $counts = $promos[0]['stats'];
+  $new_counts = $counts + 1;
+  $promo_id = $promos[0]['id'];
+  $stats = $config->update_stats($counts , $promo_id);
+  // print_r($stats);
+
+
   echo $config->display_promo_public($promos, true); 
   ?>
 </div>
@@ -44,8 +66,54 @@ include(ROOT.'images/pull_images.php');
 
 ?>
 
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="promoModal" tabindex="-1" role="dialog" aria-labelledby="promoModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 <script type="text/javascript">
 	$(function(){
+
+    $('.promo-image').click(function(){
+      var x = $(this).find('img').attr('src');
+      console.log(x);
+      $('#promoModal').modal('show');
+      $('#promoModal .modal-body').html('<img style="width:100%;" src="' + x +'" >')
+    });
+
+    $('video').click(function(){
+      var x = $(this).get(0);
+      x.play()
+    });
+
+
+
 		// config
 	  	function isPlaying(audelem) {
 	    	return !audelem.paused;
@@ -130,7 +198,7 @@ include(ROOT.'images/pull_images.php');
             }
       } else {
         // play video 
-        alert("playing video");
+        // alert("playing video");
         // $(this).attr('');
       }
 
