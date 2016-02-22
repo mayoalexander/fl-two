@@ -19,6 +19,11 @@
   .promo-image img {
     width:100%;
   }
+  .promo-image video {
+    width: 50px;
+    height: 50px;
+    /*display: inline-block;*/
+  }
   .full-width-article {
     min-height: 100vh;
   }
@@ -101,16 +106,32 @@ include(ROOT.'images/pull_images.php');
 	$(function(){
 
     $('.promo-image').click(function(){
-      var x = $(this).find('img').attr('src');
-      console.log(x);
+      var t = $(this).attr('data-type');
+      console.log($(this));
+      // alert(t);
       $('#promoModal').modal('show');
-      $('#promoModal .modal-body').html('<img style="width:100%;" src="' + x +'" >')
+
+      if (t=='video/mp4') {
+        var e = $(this).find('video');
+        var s = e.attr('src');
+        c='<video style="width:100%;" src="' + s +'" >';
+      } else if (t=='image/jpeg' || 'image/jpeg' || 'image/jpg') {
+        var e = $(this).find('img');
+        var s = e.attr('src');
+        c='<img style="width:100%;" src="' + s +'" >';
+      }
+
+      $('#promoModal .modal-body').html(c);
+      console.log(e);
+      e.get(0).play();
     });
 
-    $('video').click(function(){
-      var x = $(this).get(0);
-      x.play()
-    });
+    // $('video').click(function(){
+    //   var x = $(this).get(0);
+    //   // x.play()
+    //   $('#promoModal').modal('show');
+    //   $('#promoModal .modal-body').html('<video style="width:100%;" src="' + x +'" >')
+    // });
 
 
 
