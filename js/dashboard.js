@@ -1,3 +1,13 @@
+function getUrlVars() {
+var vars = {};
+var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+vars[key] = value;
+});
+return vars;
+}
+
+
+
   $(function(){
 
     // finds the tab data
@@ -291,6 +301,9 @@ $(function() {
       var id = $(this).attr('data-id');
       window.open('http://freelabel.net/images/'+id);
     });
+
+
+
 
 
 

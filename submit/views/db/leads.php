@@ -36,6 +36,11 @@ $leads_conversion = new Config();
 	.lead_conversion_controls {
 		display:none;
 	}
+	tr {
+		border-bottom:1px #202020 solid;
+		padding-top:4%;
+		padding-bottom:4%;
+	}
 </style>
 
 <script>
@@ -600,7 +605,7 @@ $body_template = '								<style>
 save_lead();
 ?>
 
-<div id='leads_container' style="height:500px;overflow-y:scroll;" >
+<div id='leads_container' >
 
 <?php  
 // DISPLAY SAVED LEADS
@@ -734,6 +739,7 @@ echo '<table class="table col-md-12">';
 
 
 
+
 		// LEAD FOLLOW UP
 		$follow_up_tweet = urlencode("hit my DM.");
 		//$follow_up_promote[0] = urlencode("send us music ASAP for the #FLMAG x #BSM1017 @MackDrama1017 Compilation Release on the 28th | pic.twitter.com/wKbIyokXN7");
@@ -837,6 +843,16 @@ echo '<table class="table col-md-12">';
 		//echo '</pre>';
 		//print_r($lead_data);
 	foreach ($lead_data as $key => $user) {
+
+
+		// create lead messages block
+		// $lead_messages = 
+		$lead_messages = '';
+		foreach ($user['messages'] as $int => $text) {
+			$lead_messages .= $int.'. '.$text.'<br>';
+		}
+
+
 		echo '<tr id="lead_panel'.$key.'">
 
 				<td>
@@ -861,8 +877,9 @@ echo '<table class="table col-md-12">';
 					<!-- <p onclick="editLead('.$key.')" id="lead_desc_'.$key.'" style="font-size:70%;" >'.$description.'</p>
 					<input onclick="editLead('.$key.')" id="lead_edit_'.$key.'" type="text" class="form-control" value="'.$description.'" style="display:none;"> --> 
 
-					<h4>'.$key.' ['.count($user['messages']).']</h4>
+					<h4><a href="http://twitter.com/@'.$key.'" target="_blank">'.$key.'</a> ['.count($user['messages']).']</h4>
 					<p>'.$lead_phone.'</p>
+					<p>'.$lead_messages.'</p>
 					<p>'.$lead_email.'</p>
 
 					

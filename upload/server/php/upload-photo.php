@@ -10,6 +10,10 @@ $temp =$sourcePath[0] ;
 foreach ($_FILES as $file) {
 	$photo	=		$file['name'][0];
 	$name	=		$file[0][0]['name'];
+
+	$arr = array_reverse(explode('.', $photo));
+	$rand = rand(0,982348237434);
+	$photo = $arr[1].'-'.$rand.'-.'.$arr[0];
 	//echo $temp.' acutally moving to '.	$photo;
 
 	$loadStatus = move_uploaded_file($temp,'upload/'.$photo) ;    // Moving Uploaded file
