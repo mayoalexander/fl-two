@@ -795,7 +795,7 @@ echo '<table class="table col-md-12">';
 			break;
 		}
 
-			$send_DM	= '<a href="https://mobile.twitter.com/'.$lead_twitter_noat.'/messages" class="btn btn-primary btn-xs" target="_blank" role="menuitem" tabindex="-1" ><span class="glyphicon glyphicon-comment"></span> - Convo</a>';
+			$send_DM	= '<a href="https://twitter.com/'.$lead_twitter_noat.'/" class="btn btn-primary btn-xs" target="_blank" role="menuitem" tabindex="-1" ><span class="glyphicon glyphicon-comment"></span> - Convo</a>';
 			//echo '<a href="https://twitter.com/'.$lead_twitter_noat.'/" class="download_button" target="_blank" >SENDMAG</a>';
 			$check_tracks	= '<a href="http://freelabel.net/search/x.php?search_text='.$lead_twitter_noat.'&submit=Submit" class="btn btn-default btn-xs"target="_blank" role="menuitem" tabindex="-1" ><span class="glyphicon glyphicon-music"></span> - Tracks</a>';
 			$public_promotions	= '<h3>Public Promo</h3><a href="http://freelabel.net/som/index.php?post=1&text=@'.$lead_twitter_noat.'%20'.$leadScript[5].'" target="_blank" class="btn btn-default btn-xs" role="menuitem" tabindex="-1" ><span class="glyphicon glyphicon-plus"></span> - Promote</a>';
