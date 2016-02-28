@@ -6,6 +6,7 @@ include_once('/home/content/59/13071759/html/config/index.php');
 // ---------- DEFAULT VIEWS & CONFIGURATIONS
 //$access_token = $_SESSION['access_token'];
 $config = new Config();
+$blog = new Blog();
 
 // ---------- DEFAULT VIEWS & CONFIGURATIONS
 if (isset($_SESSION['user_name']) == false) {
@@ -18,6 +19,16 @@ $access_token['user_id'] = '1018532587';
 $access_token['x_auth_expires'] = '0';
 $_SESSION['access_token'] = $access_token;
 $todays_date = date('Y-m-d H:i:s');
+
+
+
+  $promos_data = $blog->getPromosByUser('admin',0,'live-promo');
+  foreach ($promos_data as $value) {
+      $params[]['id']     =   $value['id'];
+      $params[]['title']  =   $value['title'];
+  }
+
+  $promos_data = $blog->build_dropdown($params,'promo_id');
 
 
 // /* debugging */
@@ -792,6 +803,7 @@ if($_GET['som']=='1')
                 <a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=clients" class="btn btn-success col-xs-3 col-md-1" target="_blank">Clients</a>
                 <a href="http://freelabel.net/users/dashboard/auto/organic?mins=6&som=1" class="btn btn-success col-xs-3 col-md-1" target="_blank">Organic</a>
                 <a href="http://freelabel.net/users/dashboard/auto/promos?mins=6&som=1" class="btn btn-success col-xs-3 col-md-1" target="_blank">Promos</a>
+                <button type="button" class="btn btn-primary btn-lg col-xs-3 col-md-1 go-live-button" data-toggle="modal" data-target="#twitter-reply-modal" href="http://freelabel.net/users/dashboard/auto/live?mins=5&som=1">Live</button>
                 <a href="http://freelabel.net/twitter/?som=1&q=1" class="btn btn-default col-lg-1 col-xs-2" target="_blank">1</a>
                 <a href="http://freelabel.net/twitter/?som=1&q=2" class="btn btn-default col-lg-1 col-xs-2" target="_blank">2</a>
                 <a href="http://freelabel.net/twitter/?som=1&q=3" class="btn btn-default col-lg-1 col-xs-2" target="_blank">3</a>
@@ -995,20 +1007,46 @@ echo '
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary submit-form-button">Save changes</button>
       </div>
     </div>
   </div>
 </div>
 
 
+<form class="go-live-form" style="display: hidden;">
+  <label>Promotion Rate</label>
+  <select name="mins" class="form-control">
+    <option value="3">3 Minutes (20x/hr)</option>
+    <option value="6">6 Minutes (10x/hr)</option>
+    <option value="9">9 Minutes (7x/hr)</option>
+    <option value="12">12 Minutes (5x/hr)</option>
+  </select>
+  <?php echo $promos_data ; ?>
+</form>
 
 
-<?php
-//include('../new_footer.php');
-
-?>
 <script>
+
+$(function(){
+  $('.go-live-button').click(function(){
+    var form = $('.go-live-form').html();
+    $('.go-live-form').show();
+    $('#twitter-reply-modal .modal-body').html(form);
+    $('#twitter-reply-modal .modal-header').html("Prepare To Go Live On Air");
+  });
+  $('.submit-form-button').click(function(){
+    window.open('http://freelabel.net/users/dashboard/auto/live?mins=6');
+    // var data = $('.go-live-form').serialize();
+    // window.open('http://freelabel.net/users/dashboard/auto/live?' + data);
+  });
+
+  $('.go-live-form').submit(function(event){
+    event.preventDefault()
+    // var data = $(this).serialize();
+    alert('form submitted! ' + data);
+  });
+});
 
   
 </script>

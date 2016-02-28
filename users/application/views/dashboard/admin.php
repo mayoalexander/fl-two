@@ -157,7 +157,18 @@ $twitpic_downloader = "
 
 
 
-<div id='main_display_panel' ></div>
+<div id='main_display_panel' >
+  <div class="jubmotron container">
+    <h1 style="padding-top:5vh;">Welcome to the Admin Dashboard</h1>
+    <p>Here are some of the test apps in development:</p>
+  </div>
+  <hr>
+  <section class="jubmotron container">
+    <h3>Instagram App</h3>
+    <p>Instagram App for loggin in and viewing users, searching, and profiles.</p>
+    <a class="btn btn-primary" target="_blank" href="http://freelabel.net/vendor/instagram/example/">Instagram</a>
+  </section>
+</div>
 
 
 

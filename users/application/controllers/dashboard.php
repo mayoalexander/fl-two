@@ -73,6 +73,11 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/events',true);
     }
+    function social()
+    {
+
+        $this->view->render('dashboard/social');
+    }
     function dev()
     {
         $this->view->render('dashboard/dev');
@@ -87,6 +92,9 @@ class Dashboard extends Controller
     }
     function get_promos() {
         $this->view->render('dashboard/get_promos',true);
+    }
+    function add_photos_from_instagram() {
+        $this->view->render('dashboard/add_photos_from_instagram',true);
     }
     function add_new_promo() {
         include_once('/home/content/59/13071759/html/config/index.php');

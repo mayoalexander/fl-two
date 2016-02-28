@@ -164,9 +164,16 @@ $(function(){
   var newURL = 'http://twitter.com/intent/tweet/?text='+ encodeURIComponent(text) + '&url=' + url;
   window.open(newURL);
   // alert(newURL);
+ });
 
-
-
+ $('.share-promo-button').click(function(event){
+  event.preventDefault();
+  var title = $(this).attr('data-title');
+  var id = $(this).attr('data-id');
+  var url = 'http://freelabel.net/users/index/image/' + id;
+  var text = title;
+  var executeUrl = 'http://twitter.com/intent/tweet/?text='+ encodeURIComponent(text) + '&url=' + url;
+  window.open(executeUrl);
  });
 
 

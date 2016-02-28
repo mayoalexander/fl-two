@@ -42,6 +42,19 @@
         $upload_link =  'http://freelabel.net/upload/?uid='.$user_name;
     }
 
+    if (!strpos($_GET['url'], '/image/')) {
+      $meta_tag_photo = $site['media']['photos']['front-page'][0]['image'];
+      $meta_tag_title = $site['media']['photos']['front-page'][0]['title'];
+      $meta_tag_caption = $site['media']['photos']['front-page'][0]['caption'];
+
+    } else {
+      $promo_id = str_replace('index/image/', '', $_GET['url']);
+      $current_promo = $config->getPromoById($promo_id);
+      $meta_tag_photo = $current_promo[0]['image'];
+      $meta_tag_title = $current_promo[0]['title'];
+      $meta_tag_caption = $current_promo[0]['caption'];
+    }
+
 
 
 
@@ -114,9 +127,9 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@freelabelnet">
     <meta name="twitter:creator" content="@freelabelnet">
-    <meta name="twitter:title" content="<?php echo $site['media']['photos']['front-page'][0]['title']; ?>">
-    <meta name="twitter:description" content="<?php echo $site['media']['photos']['front-page'][0]['caption']; ?>">
-    <meta name="twitter:image" content="<?php echo $site['media']['photos']['front-page'][0]['image']; ?>">
+    <meta name="twitter:title" content="<?php echo $meta_tag_title; ?> // FREELABEL MAG + RADIO">
+    <meta name="twitter:description" content="<?php echo $meta_tag_caption; ?>">
+    <meta name="twitter:image" content="<?php echo $meta_tag_photo; ?>">
 
     
     <style type="text/css">
@@ -176,6 +189,9 @@
       background-color: #101010;
       border-color:#202020;
       /*border-radius:2px;*/
+    }
+    .promo-description {
+      border-bottom: 1px solid #303030;
     }
 
     .filter-by-tag {

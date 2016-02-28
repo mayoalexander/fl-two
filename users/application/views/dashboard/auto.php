@@ -118,27 +118,34 @@ http://freelabel.net/users/index/image/'.$post_id;
 } // end of organic
 
 
-if ($_POST['live'] || $_GET['live']) {
+
+
+if ($_POST['live'] || $_GET['live'] || $action=='live') {
 
           INCLUDE("../inc/connection.php");
-          $todays_date = date('Y-m-d');
-          $query = "SELECT * FROM templates 
-          WHERE date_created LIKE '$todays_date%'
-          ORDER BY `id` DESC";
+          // $todays_date = date('Y'); // WHERE date_created LIKE '$todays_date%'
+          $query = "SELECT * FROM images WHERE `user_name`='admin' AND `desc` LIKE '%live-promo%' ORDER BY `id` DESC LIMIT 30";
           $result = mysqli_query($con,$query);
           while($row = mysqli_fetch_array($result))
           {
             //print_r($row);
-            $text = $row['text'];
             $post_id = $row['id'];
+            $text = $row['title'] . ' 
+
+http://freelabel.net/users/index/image/'.$post_id;
             $posts_to_tweet[] = $text;
           }
 
 } // end of organic
 
+        for ($i=0; $i < 29; $i++) { 
+          $premade_tweets[] = "#".$text." : tune in LIVE on air! radio.freealbel.net/<br>";
+        }
+
+
 
       // var_dump($query);
-      print_r($tweets_to_tweet);
+      $posts_to_tweet = array_merge($premade_tweets, $posts_to_tweet);
 
 
 
