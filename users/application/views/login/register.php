@@ -2,10 +2,10 @@
     include_once('/home/content/59/13071759/html/config/index.php');
     $config = new Blog();
     $site = $config->getSiteData();
-    $site['media']['photos'] = array_reverse($config->getPhotoAds($site['creator'], 'registration'));
-    $site['media']['studio'] = array_reverse($config->getPhotoAds($site['creator'], 'studio'));
-    $site['media']['artists'] = array_reverse($config->getPhotoAds($site['creator'], 'artist flyer'));
-    $site['media']['promos'] = array_reverse($config->getPhotoAds($site['creator'], 'current-promo'));
+    $site['media']['photos'] = $config->getPhotoAds($site['creator'], 'registration');
+    $site['media']['studio'] = $config->getPhotoAds($site['creator'], 'studio');
+    $site['media']['artists'] = $config->getPhotoAds($site['creator'], 'artist flyer');
+    $site['media']['promos'] = $config->getPhotoAds($site['creator'], 'current-promo');
     // $site['media']['credit'] = array_reverse($config->getPhotoAds($site['creator'], 'magazine'));
 
     /* why */
@@ -53,7 +53,12 @@
     <link rel="stylesheet" type="text/css" href="<?php echo HTTP ; ?>landing/view/pricing/css/demo.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo HTTP ; ?>landing/view/pricing/css/icons.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo HTTP ; ?>landing/view/pricing/css/component.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
     <style type="text/css">
+        a {
+            color:#FE3F44;
+        }
         .pricing-list-info {
             list-style-type: none;
         }
@@ -61,7 +66,7 @@
             background-position:center top;
             background-size:auto 100vh;
 
-            background-image:url('<?php echo $site["media"]["photos"][2]["image"]; ?>');
+            background-image:url('<?php echo $site["media"]["photos"][0]["image"]; ?>');
         }
         .marketing-area {
             background-position:center top;
@@ -80,6 +85,10 @@
         }
         .media-item__img {
             max-width:300px;
+            border-radius: 0.5em;
+        }
+        .media-item__caption {
+            color:#303030;
         }
         .marketing-area img {
             /*max-width:650px;*/
@@ -125,7 +134,7 @@
         <!-- Header and Awesome Photo Slide -->
         <header class="codrops-header">
             <h1>
-                <img src="<?php echo $site['logo']; ?>" style="max-height:20vh;">
+                <a href="http://freelabel.net/" ><img src="<?php echo $site['logo']; ?>" style="max-height:20vh;"></a>
                 <span><?php echo $site['name']; ?></span> Create An Account
             </h1>
         </header>
@@ -155,9 +164,9 @@
                     <button class="pricing__action" data-type="lite" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
                 </div> -->
                 <div class="pricing__item">
-                    <h3 class="pricing__title">Creator</h3>
-                    <p class="pricing__sentence">Suitable for medium-sized businesses with up to 30 employees</p>
-                    <div class="pricing__price"><span class="pricing__currency">$</span>10<span class="pricing__period">/ month</span></div>
+                    <h3 class="pricing__title"><i class="fa fa-ticket"></i> Basic</h3>
+                    <p class="pricing__sentence">For people wanting to try out the platform to see how everything works for an affordable price.</p>
+                    <div class="pricing__price"><span class="pricing__currency">$</span>20<span class="pricing__period">/ month</span></div>
                     <ul class="pricing__feature-list">
                         <li class="pricing__feature">1TB of space (1000 GB)</li>
                         <li class="pricing__feature">Radio + Mag App</li>
@@ -168,8 +177,8 @@
                     <button class="pricing__action" data-type="creator" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
                 </div>
                 <div class="pricing__item">
-                    <h3 class="pricing__title">Basic</h3>
-                    <p class="pricing__sentence">For any large corporation with an unlimited number of members</p>
+                    <h3 class="pricing__title"><i class="fa fa-microphone"></i> Creator</h3>
+                    <p class="pricing__sentence">For more advanced creators and artists looking to make more impressions on the world.</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>59<span class="pricing__period">/ month</span></div>
                     <ul class="pricing__feature-list">
                         <li class="pricing__feature">Includes Creator Features</li>
@@ -184,8 +193,8 @@
                     <button class="pricing__action" data-type="pro" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
                 </div>
                 <div class="pricing__item">
-                    <h3 class="pricing__title">Exclusive</h3>
-                    <p class="pricing__sentence">For any large corporation with an unlimited number of members</p>
+                    <h3 class="pricing__title"><i class="fa fa-institution"></i> Exclusive</h3>
+                    <p class="pricing__sentence">For creators who need every resouce possible to bring their ideas into the industry market.</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>200<span class="pricing__period">/ month</span></div>
                     <ul class="pricing__feature-list">
                         <li class="pricing__feature">Includes Creator Features</li>
@@ -202,7 +211,7 @@
                     <button class="pricing__action" data-type="exclusive" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
                 </div>
                 <div class="pricing__item">
-                    <h3 class="pricing__title">Touring</h3>
+                    <h3 class="pricing__title"><i class="fa fa-map"></i> Touring</h3>
                     <p class="pricing__sentence">Secure your performance & campaign on our Spring Tour with Raider Klan's Amber London and friends.</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>550<span class="pricing__period">/ month</span></div>
                     <ul class="pricing__feature-list">
@@ -233,14 +242,17 @@
             <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['studio'][0]['id']; ?>">
                 <img class="media-item__img" src="<?php echo $site['media']['studio'][0]['image']; ?>">
                 <h3 class="media-item__title"><?php echo $site['media']['studio'][0]['title']; ?></h3>
+                <p class="media-item__caption"><?php echo $site['media']['studio'][0]['desc']; ?></p>
             </a>
             <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['studio'][1]['id']; ?>">
                 <img class="media-item__img" src="<?php echo $site['media']['studio'][1]['image']; ?>">
                 <h3 class="media-item__title"><?php echo $site['media']['studio'][1]['title']; ?></h3>
+                <p class="media-item__caption"><?php echo $site['media']['studio'][1]['desc']; ?></p>
             </a>
             <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['studio'][2]['id']; ?>">
                 <img class="media-item__img" src="<?php echo $site['media']['studio'][2]['image']; ?>">
                 <h3 class="media-item__title"><?php echo $site['media']['studio'][2]['title']; ?></h3>
+                <p class="media-item__caption"><?php echo $site['media']['studio'][2]['desc']; ?></p>
             </a>
         </section>
 

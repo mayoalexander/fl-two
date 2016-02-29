@@ -46,13 +46,13 @@
       $meta_tag_photo = $site['media']['photos']['front-page'][0]['image'];
       $meta_tag_title = $site['media']['photos']['front-page'][0]['title'];
       $meta_tag_caption = $site['media']['photos']['front-page'][0]['caption'];
-
     } else {
       $promo_id = str_replace('index/image/', '', $_GET['url']);
       $current_promo = $config->getPromoById($promo_id);
       $meta_tag_photo = $current_promo[0]['image'];
       $meta_tag_title = $current_promo[0]['title'];
       $meta_tag_caption = $current_promo[0]['caption'];
+      $site['page_title'] = $meta_tag_title.' // FREELABEL'; 
     }
 
 
@@ -67,7 +67,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title><?php echo $site['page_title'] . $site['name']; ?></title>
-    <meta name="description" content="<?php echo $site['description']; ?>" />
+    <meta name="description" content="<?php echo $meta_tag_caption; ?> // <?php echo $site['description']; ?>" />
     <meta name="keywords" content="<?php echo $site['keywords']; ?>" />
     <meta name="author" content="<?php echo $site['author']; ?>" />
     <link rel="apple-touch-icon" sizes="57x57" href="<?php echo $site['logo']; ?>">
@@ -134,6 +134,9 @@
     
     <style type="text/css">
     /* INTEGRATE INTO CSS FILE */
+    html,body {
+      overflow: visible;
+    }
     html {
       overflow-x:hidden;
       margin-top:60px;
