@@ -135,20 +135,20 @@
     <style type="text/css">
     /* INTEGRATE INTO CSS FILE */
     html,body {
-      overflow: visible;
+      /*overflow-x:hidden;*/
     }
     html {
-      overflow-x:hidden;
       margin-top:60px;
     }
     body {
       padding: 0 0%;
+      overflow-x:hidden;
     }
     /*heading fonts */
-    html, body , .bg-faded, .pricing-box{
+    html, body , .bg-faded, .pricing-box {
       background-color: #101010;
       color:#e3e3e3;
-      overflow-x:hidden;
+      
     }
     body,html, h1, h2,h3,h4,h5,h6, label, button {
       font-family:<?php echo $site['font-head']; ?>;
@@ -181,6 +181,9 @@
       border:0;
       display:inline-block;
       width:100%;
+    }
+    .promo-container {
+      overflow-x:hidden;
     }
     .search-tracks-input {
       text-align:left;
@@ -596,6 +599,7 @@
     @media (max-width: 600px) {
       .jumbotron {
         background-position:center top ;
+        width:100vw;
       }
       .post-image {
         /*width:100%;*/

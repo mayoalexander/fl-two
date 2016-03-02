@@ -93,6 +93,9 @@ class Dashboard extends Controller
     function get_promos() {
         $this->view->render('dashboard/get_promos',true);
     }
+    function edit_promo() {
+        $this->view->render('login/edit_promo',true);
+    }
     function add_photos_from_instagram() {
         $this->view->render('dashboard/add_photos_from_instagram',true);
     }

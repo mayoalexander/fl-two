@@ -153,6 +153,19 @@ $(function(){
 
 
 
+  $(".attach-promo-files-button").click(function(event) {
+    event.preventDefault();
+    // alert('okay');
+    var id = $(this).attr('data-id');
+    // data = ''
+    $('#addPromo').modal('show');
+    // alert(data);
+    $.get('http://freelabel.net/users/dashboard/attach_files_to_promo/',{promo_id:id},function(result){
+      $('.new-form-modal').html(result);
+    });
+  }); 
+
+
  $('.share-promo-file').click(function(){
   var promo = $('.promo-title').text();
   var data = $(this).attr('data-id');
@@ -174,6 +187,19 @@ $(function(){
   var text = title;
   var executeUrl = 'http://twitter.com/intent/tweet/?text='+ encodeURIComponent(text) + '&url=' + url;
   window.open(executeUrl);
+ });
+
+
+ $('.edit-promo-button').click(function(event){
+  event.preventDefault();
+  var modal = $('#addPromo').modal('show');
+  var id = $(this).attr('data-id');
+  $.get('http://freelabel.net/users/dashboard/edit_promo/',{
+    promo_id:id
+},function(data){
+    // load data into body
+    $('#addPromo').find('.modal-body').html(data); 
+  });
  });
 
 

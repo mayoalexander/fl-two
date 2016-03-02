@@ -3,7 +3,7 @@
     $config = new Blog();
     $site = $config->getSiteData();
     $site['media']['photos'] = $config->getPhotoAds($site['creator'], 'registration');
-    $site['media']['studio'] = $config->getPhotoAds($site['creator'], 'studio');
+    $site['media']['studio'] = $config->getPhotoAds($site['creator'], 'register-feature');
     $site['media']['artists'] = $config->getPhotoAds($site['creator'], 'artist flyer');
     $site['media']['promos'] = $config->getPhotoAds($site['creator'], 'current-promo');
     // $site['media']['credit'] = array_reverse($config->getPhotoAds($site['creator'], 'magazine'));
@@ -71,7 +71,7 @@
         .marketing-area {
             background-position:center top;
             background-size:100% auto;
-            background-image:url('<?php echo $site["media"]["photos"][1]["image"]; ?>');
+            /*background-image:url('<?php echo $site["media"]["photos"][1]["image"]; ?>');*/
         }
         .pricing-area {
             background-position:center top;
@@ -84,11 +84,14 @@
             /*background-image:url('<?php echo $site["media"]["photos"][0]["image"]; ?>');*/
         }
         .media-item__img {
-            max-width:300px;
-            border-radius: 0.5em;
+            max-width:450px;
+            border-radius: 0.25em;
+            box-shadow: 1px 1px 5px #101010;
         }
         .media-item__caption {
-            color:#303030;
+            color:#e3e3e3;
+            max-width:400px;
+            margin:auto;
         }
         .marketing-area img {
             /*max-width:650px;*/
@@ -148,6 +151,35 @@
             </form>
         </section> -->
 
+
+
+        <!-- RECENT PROJECTS -->
+        <section class="content content--related freetrial-area">
+            <!-- <p>Don't have the money right now? Try out our limited FREE TRIAL accounts!</p> -->
+            <p class="intro">
+            <h1>How Does This Help Artist and Music Industry?</h1>
+
+            <?php 
+                echo $info['benefits'];
+            ?>
+            </p>
+            <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['credit'][0]['id']; ?>">
+                <img class="media-item__img" src="<?php echo $site['media']['credit'][0]['image']; ?>">
+                <h3 class="media-item__title"><?php echo $site['media']['credit'][0]['title']; ?></h3>
+            </a>
+            <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['credit'][1]['id']; ?>">
+                <img class="media-item__img" src="<?php echo $site['media']['credit'][1]['image']; ?>">
+                <h3 class="media-item__title"><?php echo $site['media']['credit'][1]['title']; ?></h3>
+            </a>
+            <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['credit'][2]['id']; ?>">
+                <img class="media-item__img" src="<?php echo $site['media']['credit'][2]['image']; ?>">
+                <h3 class="media-item__title"><?php echo $site['media']['credit'][2]['title']; ?></h3>
+            </a>
+        </section>
+
+
+
+
         <!-- Pricing Tables and More  -->
         <section class="pricing-section bg-8 pricing-area">
             <h2 class="pricing-section__title">Choose Your Account Type:</h2>
@@ -166,7 +198,7 @@
                 <div class="pricing__item">
                     <h3 class="pricing__title"><i class="fa fa-ticket"></i> Basic</h3>
                     <p class="pricing__sentence">For people wanting to try out the platform to see how everything works for an affordable price.</p>
-                    <div class="pricing__price"><span class="pricing__currency">$</span>20<span class="pricing__period">/ month</span></div>
+                    <div class="pricing__price"><span class="pricing__currency">$</span>25<span class="pricing__period">/ month</span></div>
                     <ul class="pricing__feature-list">
                         <li class="pricing__feature">1TB of space (1000 GB)</li>
                         <li class="pricing__feature">Radio + Mag App</li>
@@ -233,7 +265,7 @@
 
 
         <!-- RECENT PROMOTIONS -->
-        <section class="content content--related marketing-area">
+        <section class="content content--related marketing-area bg-8">
             <!-- <p>Don't have the money right now? Try out our limited FREE TRIAL accounts!</p> -->
             <h1>Why Use FREELABEL?</h1>
             <?php 
@@ -242,17 +274,32 @@
             <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['studio'][0]['id']; ?>">
                 <img class="media-item__img" src="<?php echo $site['media']['studio'][0]['image']; ?>">
                 <h3 class="media-item__title"><?php echo $site['media']['studio'][0]['title']; ?></h3>
-                <p class="media-item__caption"><?php echo $site['media']['studio'][0]['desc']; ?></p>
+                <p class="media-item__caption"><?php echo $site['media']['studio'][0]['caption']; ?></p>
             </a>
             <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['studio'][1]['id']; ?>">
                 <img class="media-item__img" src="<?php echo $site['media']['studio'][1]['image']; ?>">
                 <h3 class="media-item__title"><?php echo $site['media']['studio'][1]['title']; ?></h3>
-                <p class="media-item__caption"><?php echo $site['media']['studio'][1]['desc']; ?></p>
+                <p class="media-item__caption"><?php echo $site['media']['studio'][1]['caption']; ?></p>
             </a>
             <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['studio'][2]['id']; ?>">
                 <img class="media-item__img" src="<?php echo $site['media']['studio'][2]['image']; ?>">
                 <h3 class="media-item__title"><?php echo $site['media']['studio'][2]['title']; ?></h3>
-                <p class="media-item__caption"><?php echo $site['media']['studio'][2]['desc']; ?></p>
+                <p class="media-item__caption"><?php echo $site['media']['studio'][2]['caption']; ?></p>
+            </a>
+            <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['studio'][0]['id']; ?>">
+                <img class="media-item__img" src="<?php echo $site['media']['studio'][3]['image']; ?>">
+                <h3 class="media-item__title"><?php echo $site['media']['studio'][3]['title']; ?></h3>
+                <p class="media-item__caption"><?php echo $site['media']['studio'][3]['caption']; ?></p>
+            </a>
+            <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['studio'][1]['id']; ?>">
+                <img class="media-item__img" src="<?php echo $site['media']['studio'][4]['image']; ?>">
+                <h3 class="media-item__title"><?php echo $site['media']['studio'][4]['title']; ?></h3>
+                <p class="media-item__caption"><?php echo $site['media']['studio'][4]['caption']; ?></p>
+            </a>
+            <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['studio'][2]['id']; ?>">
+                <img class="media-item__img" src="<?php echo $site['media']['studio'][5]['image']; ?>">
+                <h3 class="media-item__title"><?php echo $site['media']['studio'][5]['title']; ?></h3>
+                <p class="media-item__caption"><?php echo $site['media']['studio'][5]['caption']; ?></p>
             </a>
         </section>
 
@@ -281,34 +328,12 @@
 
 
 
-        <!-- RECENT PROJECTS -->
-        <section class="content content--related freetrial-area">
-            <!-- <p>Don't have the money right now? Try out our limited FREE TRIAL accounts!</p> -->
-            <p class="intro">
-            <h1>How Does This Help The Artist and Music Industry?</h1>
 
-            <?php 
-                echo $info['benefits'];
-            ?>
-            </p>
-            <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['credit'][0]['id']; ?>">
-                <img class="media-item__img" src="<?php echo $site['media']['credit'][0]['image']; ?>">
-                <h3 class="media-item__title"><?php echo $site['media']['credit'][0]['title']; ?></h3>
-            </a>
-            <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['credit'][1]['id']; ?>">
-                <img class="media-item__img" src="<?php echo $site['media']['credit'][1]['image']; ?>">
-                <h3 class="media-item__title"><?php echo $site['media']['credit'][1]['title']; ?></h3>
-            </a>
-            <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['credit'][2]['id']; ?>">
-                <img class="media-item__img" src="<?php echo $site['media']['credit'][2]['image']; ?>">
-                <h3 class="media-item__title"><?php echo $site['media']['credit'][2]['title']; ?></h3>
-            </a>
-        </section>
 
 
 
         <!-- RELATED -->
-        <section class="content content--promotions freetrial-area bg-7">
+        <section class="content content--promotions freetrial-area bg-8">
             <!-- <p>Don't have the money right now? Try out our limited FREE TRIAL accounts!</p> -->
             <h1>Recent Work</h1>
             <p>Checkout some of our recent artist and their projects!</p>
@@ -327,6 +352,14 @@
             <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['artists'][3]['id']; ?>">
                 <img class="media-item__img" src="<?php echo $site['media']['artists'][3]['image']; ?>">
                 <h3 class="media-item__title"><?php echo $site['media']['artists'][3]['title']; ?></h3>
+            </a>
+            <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['artists'][4]['id']; ?>">
+                <img class="media-item__img" src="<?php echo $site['media']['artists'][4]['image']; ?>">
+                <h3 class="media-item__title"><?php echo $site['media']['artists'][4]['title']; ?></h3>
+            </a>
+            <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['artists'][5]['id']; ?>">
+                <img class="media-item__img" src="<?php echo $site['media']['artists'][5]['image']; ?>">
+                <h3 class="media-item__title"><?php echo $site['media']['artists'][5]['title']; ?></h3>
             </a>
 
 

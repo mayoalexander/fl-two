@@ -19,3 +19,4 @@
 
 ?>
 <script type="text/javascript" src='http://freelabel.net/js/dashboard.js'></script>
+<script type="text/javascript" src='http://freelabel.net/js/promos.js'></script>

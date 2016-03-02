@@ -42,7 +42,7 @@ $current_page = '0';
     <h1 class="display-3"><?php echo $site['name']; ?></h1>
     <h2 class="m-b-lg"><?php echo $site['description']; ?> <a href="<?php echo $site['http']; ?>users/login" class="jumbolink">Login Now</a>.</h2>
     <p class="m-b-lg"><?php echo $site['media']['photos']['front-page'][$r]['title']; ?> <a href="<?php echo 'http://freelabel.net/users/index/image/'.$site['media']['photos']['front-page'][$r]['id']; ?>" class="jumbolink">View Now</a>.</p>
-    <a class="btn btn-secondary-outline btn-primary btn-social m-b-md" href="http://freelabel.net/users/<?php echo $calltoaction_link; ?>" role="button"><?php echo $calltoaction; ?></a>
+    <a class="btn btn-secondary-outline m-b-md" href="http://freelabel.net/users/<?php echo $calltoaction_link; ?>" role="button"><?php echo $calltoaction; ?></a>
     <!-- <ul class="list-inline social-share">
      <li>
        <a class="nav-link" href="http://freelabel.net/users/login/register">Register</a>
@@ -53,7 +53,7 @@ $current_page = '0';
   </div>
 </header>
 
-  <nav  class="promo-container row row-eq-height"  style="background-image:url('<?php echo $site['media']['photos']['ads'][0]['image'] ; ?>');">
+  <nav class="promo-container row row-eq-height"  style="background-image:url('<?php echo $site['media']['photos']['ads'][0]['image'] ; ?>');">
 
     <panel class="col-md-9 pull-left featured-ad background-tint-promo"  >
       <h1>NEW EXCLUSIVES DAILY.</h1>
@@ -66,11 +66,11 @@ $current_page = '0';
         <div class="col-md-9">
           <h2 class='text-muted'><?php echo $site['media']['photos']['ads'][0]['title'] ; ?></h2>
           <p><?php echo $site['media']['photos']['ads'][0]['caption'] ; ?></p>
-          <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][0]['id'] ; ?>" class="btn btn-social bg-google">View Now</a>
+          <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][0]['id'] ; ?>" class="btn btn-secondary-outline m-b-md">View Now</a>
         </div>
         
     </panel>
-    <panel class="col-md-3 col-xs-12 pull-right background-tint-promo " style='text-align:right;'>
+    <panel class="col-md-3 col-xs-12 pull-right background-tint-promo " style='text-align:right;overflow-x:hidden;'>
       <!-- radio player --> 
       <h3 class='text-muted'><a href="http://freelabel.net/radio/"><span style="color:red;" >LIVE</span> ON AIR</a></h3>
       <script src="https://embed.radio.co/player/c1389e1.js"></script>

@@ -1,5 +1,4 @@
-</body>
-</html>
+<!-- Footer -->
 <footer class="section-footer bg-inverse" role="contentinfo">
   <div class="container">
     <div class="row">
@@ -25,6 +24,25 @@
     </div>
   </div>
 </footer>
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Login To Your Account</h4>
+      </div>
+      <div class="modal-body signin-wrapper">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary-outline m-b-md" data-dismiss="modal"><i class="fa fa-close" ></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="http://freelabel.net/jPlayer/dist/jplayer/jquery.jplayer.min.js"></script>
 <script src="http://freelabel.net/landio/js/landio.min.js"></script>
@@ -61,6 +79,17 @@ if (isset($_SESSION['user_name'])) {
 } 
 ?>
 
+$(function(){
+  $('.navi-Login').click(function(event){
+    event.preventDefault();
+    var ok = $(this).text();
+    $('#loginModal').modal('show');
+    $('.signin-wrapper').html('Please wait..');
+    $.get('http://freelabel.net/users/login/signin/',{},function(data){
+      $('.signin-wrapper').html(data);
+    });
+  });
+});
 
 
 </script>

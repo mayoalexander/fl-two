@@ -30,7 +30,7 @@ if (isset($_POST["page"]) ) {
 	<!-- <button class="btn btn-success btn-xs add-new-media-photo" data-link="http://freelabel.net/upload/?uid=<?php echo Session::get('user_name'); ?>&type=photo" target="_blank"><i class="fa fa-plus"></i> Add New Promo</button> -->
 	<button type="button" class="btn btn-success btn-xs add-new-media-photo" data-toggle="modal" data-target="#addPromo">
 	  <i class="fa fa-plus"></i> Add New Promo
-	</button>
+	</button>s
 </nav>
 
 <!-- get user tags  -->
@@ -43,6 +43,7 @@ if (isset($_POST["page"]) ) {
 </nav>
 
 <div id="promos_content">
+  <script type="text/javascript" src="http://freelabel.net/js/promos.js"></script>
   <!-- display content  -->
   <?php $promos = $config->getPromosByUser(Session::get('user_name') , 0, $current_tag);
   echo $config->display_photos($promos, null , 0, $current_tag); ?>
@@ -96,19 +97,8 @@ if (isset($_POST["page"]) ) {
 
 
 
-    
+     
 
-  $(".attach-promo-files-button").click(function(event) {
-    event.preventDefault();
-    // alert('okay');
-    var id = $(this).attr('data-id');
-    // data = ''
-    $('#addPromo').modal('show');
-    // alert(data);
-    $.get('http://freelabel.net/users/dashboard/attach_files_to_promo/',{promo_id:id},function(result){
-      $('.new-form-modal').html(result);
-    });
-  }); 
 
 	$(".add-new-media-photo").click(function(event) {
 		event.preventDefault();

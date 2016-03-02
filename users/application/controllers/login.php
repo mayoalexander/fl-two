@@ -253,6 +253,10 @@ class Login extends Controller
     {
         $this->view->render('login/create');
     }
+    function signin () 
+    {
+        $this->view->render('login/signin',true);
+    }
 
 
 

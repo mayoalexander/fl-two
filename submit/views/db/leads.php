@@ -44,6 +44,15 @@ $leads_conversion = new Config();
 </style>
 
 <script>
+function shareTwitter(textToTweet , twittername) {
+	shareURL = 'http://freelabel.net/som/index.php?dm=1&t='+ twittername +'&text=' + encodeURI(textToTweet);
+	$.get(shareURL,function(data){
+		alert('it worked!' + data);
+	});
+	// window.open(shareURL);
+	// alert(shareURL);
+}
+
 function editLead(id) {
 	if ($('#lead_edit_' + id).css('display') == 'block') {
 		//alert($('#event_desc_' + id));
@@ -860,10 +869,11 @@ echo '<table class="table col-md-12">';
 					<span class="text-muted">'.$user['follow_up_date'].'</span>
 					<br>
 
-
+				  	<h3 class="lead-name">'.$key.'</h3>
 					<div class="dropdown">
-					  <button class="btn btn-social btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Responses
-					  <span class="caret"></span></button>
+					  <button class="btn btn-social btn-primary leadResponseToggle"  data-lead="'.$key.'" data-toggle="modal" data-target="#leadMessagingModal" type="button">Responses
+						  <span class="caret"></span>
+					  </button>
 					  <ul class="dropdown-menu">
 					    '.$leads_conversion->loadScript($key).'
 					  </ul>
@@ -936,6 +946,27 @@ $(function() {
 			leadControls.fadeOut(500);
 		}	
 	}
+
+	$('.leadResponseToggle').click(function(){
+		var sibs = $(this).siblings();
+		var rents = $(this).parent().parent().siblings();
+		var wrapper = $(this).parent().parent();
+		$('#leadMessagingModal .modal-body').html(sibs);
+		var leadName = $(this).attr('data-lead');
+		$('#leadMessagingModal .dropdown-menu').css('display','block');
+		$('#leadMessagingModal .dropdown-menu').css('position','relative');
+		$('#leadMessagingModal .modal-title').html('Reply: @' + leadName);
+
+		$('.lead-reply-user').val(leadName);
+		// console.log(wrapper);
+	}); 
+
+	$('#lead-reply').submit(function(event){
+		event.preventDefault();
+		var data = $(this).serializeArray();
+		shareTwitter(data[0].value , data[1].value);
+	});
+
 });
 </script>
 
@@ -944,6 +975,33 @@ $(function() {
 </section>
 
 
+
+
+<!-- Modal -->
+<div class="modal fade" id="leadMessagingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+        <h4 class="modal-title" id="myModalLabel">Reply To: </h4>
+      </div>
+      <div class="modal-form">
+      	<form id="lead-reply">
+      		<textarea name="message" rows="5" class="form-control" type="text" placeholder="Type message.." ></textarea>
+      		<input type="submit" class="btn btn-block btn-secondary-outline submit-button"  value="Send"></input>
+      		<input type="hidden" name="user" class="lead-reply-user" ></input>
+      	</form>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
