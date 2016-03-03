@@ -47,7 +47,12 @@ $leads_conversion = new Config();
 function shareTwitter(textToTweet , twittername) {
 	shareURL = 'http://freelabel.net/som/index.php?dm=1&t='+ twittername +'&text=' + encodeURI(textToTweet);
 	$.get(shareURL,function(data){
-		alert('it worked!' + data);
+		$('.form-result').addClass('text-success');
+		$('.form-result').text('Message Sent!');
+
+		setTimeout(function(){
+			$('.form-result').hide('fast');
+		},3000);
 	});
 	// window.open(shareURL);
 	// alert(shareURL);
@@ -956,14 +961,13 @@ $(function() {
 		$('#leadMessagingModal .dropdown-menu').css('display','block');
 		$('#leadMessagingModal .dropdown-menu').css('position','relative');
 		$('#leadMessagingModal .modal-title').html('Reply: @' + leadName);
-
 		$('.lead-reply-user').val(leadName);
-		// console.log(wrapper);
 	}); 
 
 	$('#lead-reply').submit(function(event){
 		event.preventDefault();
 		var data = $(this).serializeArray();
+		$(this).prepend('<span class="form-result">Please Wait..</span>');
 		shareTwitter(data[0].value , data[1].value);
 	});
 
