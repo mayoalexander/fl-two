@@ -43,6 +43,7 @@ while($row = mysqli_fetch_array($result))
 	$trackmp3 = $row['trackmp3'];
 	$playerpath = $row['playerpath'];
 	$approved = $row['approved'];
+	$filetype = $row['filetype'];
 
 	$trackmp3 = str_replace("amradiolive.com", "freelabel.net", $trackmp3);
 	$trackname = $row['trackname'];
@@ -80,7 +81,7 @@ while($row = mysqli_fetch_array($result))
 									 <input name='radio_twitter' type='hidden' value='".$row['twitter']."'>
 									 <input name='radio_user' type='hidden' value='".$row['user_name']."'>
 									 <input type='submit' class='btn btn-success' value='VERIFIED'></form>";
-								} else {
+								} elseif($approved == false && $filetype == 'audio/mp3') {
 									$approval_status = "NOT APPROVED";
 									 echo "<form class='approve-form' method='POST' style='display:inline;' action='update.php' >
 									 <input name='submission_id' type='hidden' value='".$submission_id."'>

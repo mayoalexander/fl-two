@@ -245,29 +245,27 @@ if ($_POST['page']=='direct_messages' OR $_POST['page']=='direct_messages_auto_r
               // $direct_messages =   $connection->get($method, $api_query_dm);
 
 
-
-              // GET INCOMING
-              $api_query_dm =array("count" => '10');
-              $method = 'direct_messages/show';
-              $direct_messages =   $connection->get($method, $api_query_dm);
-              var_dump($direct_messages);
-              exit;
-
-              
-
               // GET SENT
-              $api_query_dm =array("count" => '10');
+              $api_query_dm =array("count" => '100');
               $method = 'direct_messages/sent';
               $direct_messages =   $connection->get($method, $api_query_dm);
               foreach ($direct_messages as $key => $value) {
-                $messages[$value->recipient_screen_name][] = $value->recipient_screen_name;
+                $messages[$value->recipient_screen_name]['sent'][] = $value->text;
               }
 
 
 
-              // foreach ($direct_messages as $key => $value) {
-              //   $messages[$value->sender_screen_name][] = $value->sender_screen_name;
-              // }
+              // GET INCOMING
+              $api_query_dm =array("count" => '100');
+              $method = 'direct_messages';
+              $direct_messages =   $connection->get($method, $api_query_dm);
+              echo '<pre>';
+
+              // var_dump($direct_messages->);
+              // exit;
+              foreach ($direct_messages as $key => $value) {
+                $messages[$value->sender_screen_name]['recieved'][] = $value->text;
+              }
 
 
               echo '<pre>';

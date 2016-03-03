@@ -879,6 +879,7 @@ echo '<table class="table col-md-12">';
 					  <button class="btn btn-social btn-primary leadResponseToggle"  data-lead="'.$key.'" data-toggle="modal" data-target="#leadMessagingModal" type="button">Responses
 						  <span class="caret"></span>
 					  </button>
+					  <p class="lead-messages">'.$lead_messages.'</p>
 					  <ul class="dropdown-menu">
 					    '.$leads_conversion->loadScript($key).'
 					  </ul>
@@ -894,7 +895,6 @@ echo '<table class="table col-md-12">';
 
 					<h4><a href="http://twitter.com/@'.$key.'" target="_blank">'.$key.'</a> ['.count($user['messages']).']</h4>
 					<p>'.$lead_phone.'</p>
-					<p>'.$lead_messages.'</p>
 					<p>'.$lead_email.'</p>
 
 					
@@ -955,7 +955,8 @@ $(function() {
 	$('.leadResponseToggle').click(function(){
 		var sibs = $(this).siblings();
 		var rents = $(this).parent().parent().siblings();
-		var wrapper = $(this).parent().parent();
+		var wrapper = $(this).parent().parent().parent();
+		wrapper.hide('fast');
 		$('#leadMessagingModal .modal-body').html(sibs);
 		var leadName = $(this).attr('data-lead');
 		$('#leadMessagingModal .dropdown-menu').css('display','block');
@@ -983,20 +984,20 @@ $(function() {
 
 <!-- Modal -->
 <div class="modal fade" id="leadMessagingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
         <h4 class="modal-title" id="myModalLabel">Reply To: </h4>
       </div>
-      <div class="modal-form">
+      <div class="modal-form col-md-5">
       	<form id="lead-reply">
       		<textarea name="message" rows="5" class="form-control" type="text" placeholder="Type message.." ></textarea>
       		<input type="submit" class="btn btn-block btn-secondary-outline submit-button"  value="Send"></input>
       		<input type="hidden" name="user" class="lead-reply-user" ></input>
       	</form>
       </div>
-      <div class="modal-body">
+      <div class="modal-body col-md-7">
         ...
       </div>
       <div class="modal-footer">
