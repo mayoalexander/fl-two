@@ -132,6 +132,7 @@ $rss_feed = array(/*'http://freelabelmagazine.wordpress.com/rss',
   'http://pyramidatlanta.com/feed/',
   'http://www.hiphopsmission.com/feed/',
   'http://feeds.feedburner.com/256up?format=xml',
+  'http://hiphopsince1987.com/feed/',
  /*
   'http://www.hiphopcanada.com/feed/',
   'http://www.fakeshoredrive.com/feed/',

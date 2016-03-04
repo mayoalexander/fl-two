@@ -30,7 +30,7 @@ if (isset($_POST["page"]) ) {
 	<!-- <button class="btn btn-success btn-xs add-new-media-photo" data-link="http://freelabel.net/upload/?uid=<?php echo Session::get('user_name'); ?>&type=photo" target="_blank"><i class="fa fa-plus"></i> Add New Promo</button> -->
 	<button type="button" class="btn btn-success btn-xs add-new-media-photo" data-toggle="modal" data-target="#addPromo">
 	  <i class="fa fa-plus"></i> Add New Promo
-	</button>s
+	</button>
 </nav>
 
 <!-- get user tags  -->
