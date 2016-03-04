@@ -315,8 +315,6 @@ $(function() {
     // *********************************
     $(".attach-post-button").click(function(event) {
       $('.push_file_form').hide('fast');
-      // $(this).parent().parent().css('border','solid 3px #e3e3e3');
-      // $(this).parent().parent().css('padding','2%');
       $(this).hide('fast');
       event.preventDefault();
       var file_id = $(this).attr('id');
