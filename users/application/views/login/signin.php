@@ -10,5 +10,6 @@
                     <label class="remember-me-label">Keep me logged in (for 2 weeks)</label>
                     <br><br><input type="submit" value="Login" class="btn btn-secondary-outline m-b-md btn-block" />
             </form>
-            <?php echo $this->facebook_login_url; ?>
+            <a href='<?php echo $this->facebook_login_url; ?>' class="btn btn-secondary-outline m-b-md btn-block"><i class="fa fa-facebook"></i> Signin with Facebook</a>
+            
             <a href="http://freelabel.net/users/login/register" class="btn btn-secondary-outline m-b-md btn-block" >Create New Account</a>
