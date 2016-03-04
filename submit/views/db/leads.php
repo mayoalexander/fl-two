@@ -881,6 +881,8 @@ echo '<table class="table col-md-12">';
 					  </button>
 					  <p class="lead-messages">'.$lead_messages.'</p>
 					  <ul class="dropdown-menu">
+					    '.$leads_conversion->loadScriptPromos($key).'
+					    <hr>
 					    '.$leads_conversion->loadScript($key).'
 					  </ul>
 					</div>

@@ -59,10 +59,10 @@ if ($_GET['dev']==1) {
 	<meta name="twitter:site" content="@freelabelnet">
 	<meta name="twitter:creator" content="@AMRadioLIVE">
 	<meta name="twitter:title" content="<?php echo $page_title; ?> | FREELABEL RADIO + MAGAZINE + STUDIOS">
-	<meta name="twitter:description" content="Submit your music to get showcased on FREELABEL Magazine, Radio, TV, Events, and more!">
+	<meta name="twitter:description" content="<?php echo $blog_post_data['writeup']; ?>">
 	<meta property="og:url" content="<?php echo $page_url; ?>">
 	<meta property="og:title" content="<?php echo $page_title; ?> // FREELABEL RADIO + MAGAZINE">
-	<meta property="og:description" content="Subscribe and create an account to FREELABEL.net for exclusive access to daily updated news, interviews, singles and project releases from the most influencial creators of our generation.">
+	<meta property="og:description" content="<?php echo $blog_post_data['writeup']; ?>">
 	<meta property="og:image" content="<?php echo $blog_post_data['photo']; ?>">
 	<meta property="og:image:type" content="image/png">
 	<meta property="og:image:width" content="1024">
