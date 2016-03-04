@@ -14,7 +14,7 @@ $user_promos = $config->get_user_promos(Session::get('user_name'));
 	<?php echo $config->build_dropdown($user_promos); ?>
 	<input type='hidden' id='file_id' name='file_id' value='<?php echo $_GET['id'] ?>'>
 	<hr>
-	<button class="btn-success btn-block" >Add</button>
+	<button class="btn btn-secondary-outline btn-success btn-block" >Add</button>
 </form>
 
 
