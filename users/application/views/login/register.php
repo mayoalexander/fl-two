@@ -90,6 +90,8 @@
         }
         .media-item__caption {
             color:#e3e3e3;
+        }
+        .media-item__caption, .media-item__title {
             max-width:400px;
             margin:auto;
         }
@@ -315,14 +317,17 @@
             <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['promos'][0]['id']; ?>">
                 <img class="media-item__img" src="<?php echo $site['media']['promos'][0]['image']; ?>">
                 <h3 class="media-item__title"><?php echo $site['media']['promos'][0]['title']; ?></h3>
+                <p class="media-item__caption"><?php echo substr($site['media']['promos'][0]['caption'],0,150).'...'; ?></p>
             </a>
             <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['promos'][1]['id']; ?>">
                 <img class="media-item__img" src="<?php echo $site['media']['promos'][1]['image']; ?>">
                 <h3 class="media-item__title"><?php echo $site['media']['promos'][1]['title']; ?></h3>
+                <p class="media-item__caption"><?php echo substr($site['media']['promos'][1]['caption'],0,150).'...'; ?></p>
             </a>
             <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['promos'][2]['id']; ?>">
                 <img class="media-item__img" src="<?php echo $site['media']['promos'][2]['image']; ?>">
                 <h3 class="media-item__title"><?php echo $site['media']['promos'][2]['title']; ?></h3>
+                <p class="media-item__caption"><?php echo substr($site['media']['promos'][2]['caption'],0,150).'...'; ?></p>
             </a>
         </section>
 

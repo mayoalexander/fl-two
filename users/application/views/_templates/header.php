@@ -43,16 +43,24 @@
     }
 
     if (!strpos($_GET['url'], '/image/')) {
-      $meta_tag_photo = $site['media']['photos']['front-page'][0]['image'];
-      $meta_tag_title = $site['media']['photos']['front-page'][0]['title'];
-      $meta_tag_caption = $site['media']['photos']['front-page'][0]['caption'];
+      $site['meta_tag_photo'] = $site['media']['photos']['front-page'][0]['image'];
+      $site['meta_tag_title'] = $site['media']['photos']['front-page'][0]['title'];
+      $site['meta_tag_caption'] = $site['media']['photos']['front-page'][0]['caption'];
     } else {
       $promo_id = str_replace('index/image/', '', $_GET['url']);
       $current_promo = $config->getPromoById($promo_id);
-      $meta_tag_photo = $current_promo[0]['image'];
-      $meta_tag_title = $current_promo[0]['title'];
-      $meta_tag_caption = $current_promo[0]['caption'];
-      $site['page_title'] = $meta_tag_title.' // FREELABEL'; 
+      // $site['meta_tag_photo'] = $current_promo[0]['image'];
+      $site['meta_tag_title'] = $current_promo[0]['title'];
+      $site['meta_tag_caption'] = $current_promo[0]['caption'];
+      $site['page_title'] = $site['meta_tag_title'].' // FREELABEL'; 
+
+
+      if (!$current_promo[0]['thumb']=='') {
+        $site['meta_tag_photo'] = $current_promo[0]['thumb'];
+      } else {
+        $site['meta_tag_photo'] = $current_promo[0]['image'];
+      }
+
     }
 
 
@@ -63,32 +71,9 @@
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><?php echo $site['page_title'] . $site['name']; ?></title>
-    <meta name="description" content="<?php echo $meta_tag_caption; ?> // <?php echo $site['description']; ?>" />
-    <meta name="keywords" content="<?php echo $site['keywords']; ?>" />
-    <meta name="author" content="<?php echo $site['author']; ?>" />
-    <link rel="apple-touch-icon" sizes="57x57" href="<?php echo $site['logo']; ?>">
-    <link rel="apple-touch-icon" sizes="60x60" href="<?php echo $site['logo']; ?>">
-    <link rel="apple-touch-icon" sizes="72x72" href="<?php echo $site['logo']; ?>">
-    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo $site['logo']; ?>">
-    <link rel="apple-touch-icon" sizes="114x114" href="<?php echo $site['logo']; ?>">
-    <link rel="apple-touch-icon" sizes="120x120" href="<?php echo $site['logo']; ?>">
-    <link rel="apple-touch-icon" sizes="144x144" href="<?php echo $site['logo']; ?>">
-    <link rel="apple-touch-icon" sizes="152x152" href="<?php echo $site['logo']; ?>">
-    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo $site['logo']; ?>">
-    <link rel="icon" type="image/png" href="<?php echo $site['logo']; ?>" sizes="32x32">
-    <link rel="icon" type="image/png" href="<?php echo $site['logo']; ?>" sizes="192x192">
-    <link rel="icon" type="image/png" href="<?php echo $site['logo']; ?>" sizes="96x96">
-    <link rel="icon" type="image/png" href="<?php echo $site['logo']; ?>" sizes="16x16">
-    <link rel="manifest" href="http://freelabel.net/landio/img/favicon/manifest.json">
-    <link rel="shortcut icon" href="<?php echo $site['logo']; ?>">
-    <meta name="msapplication-TileColor" content="#663fb5">
-    <meta name="msapplication-TileImage" content="<?php echo $site['logo']; ?>">
-    <meta name="msapplication-config" content="http://freelabel.net/landio/img/favicon/browserconfig.xml">
-    <meta name="theme-color" content="#663fb5">
+    <?php // displa meta tags
+    echo $config->display_site_meta($site); ?>
+
     <link rel="stylesheet" href="http://freelabel.net/landio/css/landio.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://code.createjs.com/createjs-2015.05.21.min.js">
@@ -98,38 +83,19 @@
     <link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/tabs/css/tabstyles.css">
     <link rel="stylesheet" type="text/css" href="http://freelabel.net/jPlayer/dist/skin/pink.flag/css/jplayer.pink.flag.css">
     <link href='https://fonts.googleapis.com/css?family=Oswald:400|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-
     <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
     <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
     <link rel="stylesheet" href="http://freelabel.net/upload/css/jquery.fileupload.css">
     <link rel="stylesheet" href="http://freelabel.net/upload/css/jquery.fileupload-ui.css">
     <link rel="stylesheet" href="http://freelabel.net/js/jquery-ui.min.css">
-
     <!-- CSS adjustments for browsers with JavaScript disabled -->
     <noscript><link rel="stylesheet" href="http://freelabel.net/css/jquery.fileupload-noscript.css"></noscript>
     <noscript><link rel="stylesheet" href="http://freelabel.net/css/jquery.fileupload-ui-noscript.css"></noscript>
-    <style>
-    /* Hide Angular JS elements before initializing */
-    .ng-cloak {
-        display: none;
-    }
-    </style>
-
     <script src="http://freelabel.net/landing/view/tabs/js/modernizr.custom.js"></script>
     <script src="http://freelabel.net/js/list.js"></script>
-    <!-- CSS -->
-    <!-- <link rel="stylesheet" href="<?php echo URL; ?>public/css/reset.css" /> -->
-    <!-- <link rel="stylesheet" href="<?php echo URL; ?>public/css/style.css" /> -->
-    <!-- in case you wonder: That's the cool-kids-protocol-free way to load jQuery -->
     <script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="<?php echo HTTP; ?>js/application.js"></script>
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@freelabelnet">
-    <meta name="twitter:creator" content="@freelabelnet">
-    <meta name="twitter:title" content="<?php echo $meta_tag_title; ?> // FREELABEL MAG + RADIO">
-    <meta name="twitter:description" content="<?php echo $meta_tag_caption; ?>">
-    <meta name="twitter:image" content="<?php echo $meta_tag_photo; ?>">
 
     
     <style type="text/css">
@@ -198,6 +164,11 @@
     }
     .promo-description {
       border-bottom: 1px solid #303030;
+    }
+
+    /* Hide Angular JS elements before initializing */
+    .ng-cloak {
+        display: none;
     }
 
     .filter-by-tag {

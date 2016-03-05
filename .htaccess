@@ -95,6 +95,12 @@ RewriteRule ^@([\w-]+)/t/([\w-]+)$ 		/config/profile.php?user_twitter_name=$1&po
 RewriteRule ^@([\w-]+)/([\w-]+)/$ 		/config/profile.php?user_twitter_name=$1&blog_title=$2
 RewriteRule ^@([\w-]+)/([\w-]+)$ 		/config/profile.php?user_twitter_name=$1&blog_title=$2
 
+
+RewriteRule ^@([\w-]+)/@([\w-]+)/$ 		/config/profile.php?user_twitter_name=$1&blog_title=$2
+RewriteRule ^@([\w-]+)/@([\w-]+)$ 		/config/profile.php?user_twitter_name=$1&blog_title=$2
+
+
+
 RewriteRule ^([0-9]+)/$ 									/config/profile.php?post_id=$1
 RewriteRule ^([0-9]+)$ 										/config/profile.php?post_id=$1
 RewriteRule ^d-([\w-]+)/$ 							/?ctrl=$1

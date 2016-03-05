@@ -27,9 +27,8 @@
   $config = new Blog();
   $slug = str_replace('index/promos', '', $_GET['url']);
 
-  print_r($slug);
-  $promos = $config->display_promo('admin' , 6, $slug, 'id');
-
+  // print_r($slug);
+  $promos = $config->display_promo_list('admin' , 6, $slug, 'id');
   echo $config->display_promo_public($promos, true); 
 ?>
 </section>

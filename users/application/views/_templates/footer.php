@@ -7,10 +7,6 @@
           <div class="media-left">
             <img class="media-object display-1" src='http://freelabel.net/images/FREELABELLOGO.gif' style="width:60px;">
           </div>
-          <small class="media-body media-bottom" style='display:none;'>
-            &copy; <?php echo $site['name']; ?> 2015. <br>
-            Designed by Peter Finlan, developed by Taty Grassini, exclusively for Codrops.
-            </small>
         </div>
       </div>
       <div class="col-md-6 col-lg-7">

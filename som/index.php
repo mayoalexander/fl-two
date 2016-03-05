@@ -217,7 +217,7 @@ REVERT BACK T0 DEFAULT BUTTONS VIEW FROM TWITTER API APP
 						      <input id="validation_key" type="password" class="form-control"  placeholder="Enter Passcode...">
 						      <span class="input-group-btn">
 						        <button class="btn btn-success" onclick="validateKey()" >GO</button>
-						      </span>
+						      </span
 						    </div>
 
 

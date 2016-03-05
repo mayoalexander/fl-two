@@ -31,6 +31,20 @@ if ($_GET['dev']==1) {
 	print_r($config); exit;
 }
 
+
+if ($blog_post_data['writeup']=='') {
+	$page_desc = 'The latest music, videos, news, and information in the most innovative way. Create an account at FREELABEL.NET';
+} else {
+	$page_desc = $blog_post_data['writeup'];
+}
+
+
+if (!$blog_post_data['poster']=='') {
+	$poster = $blog_post_data['poster'];
+} else {
+	$poster = $blog_post_data['photo'];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -44,7 +58,7 @@ if ($_GET['dev']==1) {
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<title><?php echo $page_title; ?> // FREELABEL MAG + RADIO</title>
 	<meta name="author" content="FREELABEL">
-	<meta name="Description" content="// FREELABEL Network is the Leader in Online Showcasing">
+	<meta name="Description" content="<?php echo $page_desc; ?> // FREELABEL Network is the Leader in Online Showcasing">
 	<meta name="Keywords" content="FREELABEL, FREE LABEL, FREE, LABEL, AMR, AMRecords, Rap, Hip Hop, Showcasing, Good Brand, Get That Good, Good Brand Clothing, Dalls Texas, FREELABEL, amradio, am radio live, texas, music, promotion, hip hop, rap">
 	<meta name="Copyright" content="FREELABEL">
 	<meta name="Language" content="English">
@@ -54,16 +68,16 @@ if ($_GET['dev']==1) {
 	<meta name="twitter:player" content="<?php echo $page_url;?>">
 	<meta name="twitter:player:width" content="300">
 	<meta name="twitter:player:height" content="300">
-	<meta name="twitter:image" content="<?php echo $blog_post_data['photo'];?>">
-	<meta name="twitter:image:src" content="<?php echo $blog_post_data['photo'];?>">
+	<meta name="twitter:image" content="<?php echo $poster;?>">
+	<meta name="twitter:image:src" content="<?php echo $poster;?>">
 	<meta name="twitter:site" content="@freelabelnet">
 	<meta name="twitter:creator" content="@AMRadioLIVE">
 	<meta name="twitter:title" content="<?php echo $page_title; ?> | FREELABEL RADIO + MAGAZINE + STUDIOS">
-	<meta name="twitter:description" content="<?php echo $blog_post_data['writeup']; ?>">
+	<meta name="twitter:description" content="<?php echo $page_desc; ?>">
 	<meta property="og:url" content="<?php echo $page_url; ?>">
 	<meta property="og:title" content="<?php echo $page_title; ?> // FREELABEL RADIO + MAGAZINE">
-	<meta property="og:description" content="<?php echo $blog_post_data['writeup']; ?>">
-	<meta property="og:image" content="<?php echo $blog_post_data['photo']; ?>">
+	<meta property="og:description" content="<?php echo $page_desc; ?> // LOGIN @ FREELABEL">
+	<meta property="og:image" content="<?php echo $poster; ?>">
 	<meta property="og:image:type" content="image/png">
 	<meta property="og:image:width" content="1024">
 	<meta property="og:image:height" content="1024">

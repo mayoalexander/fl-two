@@ -75,8 +75,10 @@ class Dashboard extends Controller
     }
     function social()
     {
-
         $this->view->render('dashboard/social');
+    }
+    function featured() {
+        $this->view->render('dashboard/featured',true);
     }
     function dev()
     {
