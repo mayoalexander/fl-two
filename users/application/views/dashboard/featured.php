@@ -1,66 +1,99 @@
+<?php
+  include_once('/home/content/59/13071759/html/config/index.php');
+  $site_url = 'http://'.$_SERVER['SERVER_NAME'].'/';
+    /* HEADER THIS IS WHAT IT DOES:
+    * builds the site variable
+    * loads the user with the user session, and cookie data
+    */
 
-<!DOCTYPE html>
+    // LOAD WEBSITE APPLICATIONS
+    $app = new Config();
+
+    // LOAD SITE DATA
+    $config = new Blog($_SERVER['HTTP_HOST']);
+    $site = $config->getSiteData($config->site);
+    $site['media']['photos']['front-page'] = $config->getPhotoAds($site['creator'], 'freelabel front');
+    $site['media']['photos']['ads'] = $config->getPhotoAds($site['creator'], 'current-promo');
+
+
+    /* load page title */
+    $site['page_title'] = $config->getPageTitle(strtoupper($_GET['url']));
+
+
+    // LOAD USER DATA
+    $user = new User();
+    if (isset($_SESSION) && count($_SESSION)>0) {
+      $site['user'] = $user->init($_SESSION,$_COOKIE);
+      $user_logged_in = new UserDashboard(Session::get('user_name'));
+      $site['user']['profile-photo'] = $profile_photo = $config->getProfilePhoto(Session::get('user_name'));
+      if (isset($site['user']['name'])) {
+        $site['user']['media'] = $user_data = $user_logged_in->getUserMedia(Session::get('user_name'));
+      }
+    } else {
+    //   //$site['user'] = $user->init(,$_COOKIE);
+    //   $site['user']['name'] = 'admin';
+    //   $user_logged_in = new UserDashboard('admin');
+    //   $site['user']['media'] = $user_logged_in->getUserMedia('admin');
+    }
+
+    $front_page_photos = $config->getPhotoAds($site['creator'], 'front');
+    shuffle($front_page_photos);
+    if ($user_name = Session::get('user_name')) {
+        $upload_link =  'http://freelabel.net/upload/?uid='.$user_name;
+    }
+
+    if (!strpos($_GET['url'], '/image/')) {
+      $site['meta_tag_photo'] = $site['media']['photos']['front-page'][0]['image'];
+      $site['meta_tag_title'] = $site['media']['photos']['front-page'][0]['title'];
+      $site['meta_tag_caption'] = $site['media']['photos']['front-page'][0]['caption'];
+    } else {
+      $promo_id = str_replace('index/image/', '', $_GET['url']);
+      $current_promo = $config->getPromoById($promo_id);
+      // $site['meta_tag_photo'] = $current_promo[0]['image'];
+      $site['meta_tag_title'] = $current_promo[0]['title'];
+      $site['meta_tag_caption'] = $current_promo[0]['caption'];
+      $site['page_title'] = $site['meta_tag_title'].' // FREELABEL'; 
+
+
+      if (!$current_promo[0]['thumb']=='') {
+        $site['meta_tag_photo'] = $current_promo[0]['thumb'];
+      } else {
+        $site['meta_tag_photo'] = $current_promo[0]['image'];
+      }
+
+    }
+
+
+
+
+
+?><!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
 <html lang="en" class="no-js">
 	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Boxify: Free HTML5/CSS3 Template by Peter Finlan</title>
-		<meta name="description" content="A free HTML5/CSS3 template made exclusively for Codrops by Peter Finlan" />
-		<meta name="keywords" content="html5 template, css3, one page, animations, agency, portfolio, web design" />
-		<meta name="author" content="Peter Finlan" />
-		<link rel="shortcut icon" href="../favicon.ico">
+	    <?php // displa meta tags
+   		echo $config->display_site_meta($site); ?>
 		<!-- Bootstrap -->
-		<script src="js/modernizr.custom.js"></script>
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/jquery.fancybox.css" rel="stylesheet">
-		<link href="css/flickity.css" rel="stylesheet" >
-		<link href="css/animate.css" rel="stylesheet">
+		<script src="http://freelabel.net/vendor/boxify/js/modernizr.custom.js"></script>
+		<link href="http://freelabel.net/vendor/boxify/css/bootstrap.min.css" rel="stylesheet">
+		<link href="http://freelabel.net/vendor/boxify/css/jquery.fancybox.css" rel="stylesheet">
+		<link href="http://freelabel.net/vendor/boxify/css/flickity.css" rel="stylesheet" >
+		<link href="http://freelabel.net/vendor/boxify/css/animate.css" rel="stylesheet">
 		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
-		<link href="css/styles.css" rel="stylesheet">
-		<link href="css/queries.css" rel="stylesheet">
-		<!-- Facebook and Twitter integration -->
-		<meta property="og:title" content=""/>
-		<meta property="og:image" content=""/>
-		<meta property="og:url" content=""/>
-		<meta property="og:site_name" content=""/>
-		<meta property="og:description" content=""/>
-		<meta name="twitter:title" content="" />
-		<meta name="twitter:image" content="" />
-		<meta name="twitter:url" content="" />
-		<meta name="twitter:card" content="" />
+		<link href="http://freelabel.net/vendor/boxify/css/styles.css" rel="stylesheet">
+		<link href="http://freelabel.net/vendor/boxify/css/queries.css" rel="stylesheet">
+
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
-		<script type="text/javascript">
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-7243260-2']);
-_gaq.push(['_trackPageview']);
-(function() {
-var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-</script>
-	<style>
-	#cdawrap {
-		top: 538px!important;
-		position: absolute !important;
-		background: none !important;
-		border: 1px solid rgba(255,255,255,0.5) !important;
-	}
-	#cdawrap .carbon-text {
-		color: #fff !important;
-	}
-	</style>
 	</head>
 	<body>
 		<!--[if lt IE 7]>
@@ -73,7 +106,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				<div class="container">
 					<div class="row nav-wrapper">
 						<div class="col-md-6 col-sm-6 col-xs-6 text-left">
-							<a href="#" class="logo-link"><img src="img/logo-white.png" alt="Boxify Logo"></a>
+							<a href="#"><img src="<?php echo $site['logo']; ?>" alt="Boxify Logo"></a>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-6 text-right navicon">
 							<p>MENU</p><a id="trigger-overlay" class="nav_slide_button nav-toggle" href="#"><span></span></a>
@@ -230,7 +263,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<ul class="grid">
 						<li>
 							<figure>
-								<img src="img/01-screenshot.jpg" alt="Screenshot 01">
+								<img src="<?php echo $site['media']['photos']['front-page'][0]['image']; ?>" alt="Screenshot 01">
 								<figcaption>
 								<div class="caption-content">
 									<a href="img/large/01.jpg" class="single_image">
@@ -243,7 +276,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						</li>
 						<li>
 							<figure>
-								<img src="img/02-screenshot.jpg" alt="Screenshot 01">
+								<img src="<?php echo $site['media']['photos']['front-page'][1]['image']; ?>" alt="Screenshot 01">
 								<figcaption>
 								<div class="caption-content">
 									<a href="img/large/02.jpg" class="single_image">
@@ -256,7 +289,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						</li>
 						<li>
 							<figure>
-								<img src="img/03-screenshot.jpg" alt="Screenshot 01">
+								<img src="<?php echo $site['media']['photos']['front-page'][2]['image']; ?>" alt="Screenshot 01">
 								<figcaption>
 								<div class="caption-content">
 									<a href="img/large/03.jpg" class="single_image">
@@ -269,7 +302,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						</li>
 						<li>
 							<figure>
-								<img src="img/04-screenshot.jpg" alt="Screenshot 01">
+								<img src="<?php echo $site['media']['photos']['front-page'][3]['image']; ?>" alt="Screenshot 01">
 								<figcaption>
 								<div class="caption-content">
 									<a href="img/large/04.jpg" class="single_image">
@@ -286,7 +319,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<ul class="grid">
 						<li>
 							<figure>
-								<img src="img/05-screenshot.jpg" alt="Screenshot 01">
+								<img src="<?php echo $site['media']['photos']['front-page'][4]['image']; ?>" alt="Screenshot 01">
 								<figcaption>
 								<div class="caption-content">
 									<a href="img/large/05.jpg" class="single_image">
@@ -299,7 +332,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						</li>
 						<li>
 							<figure>
-								<img src="img/06-screenshot.jpg" alt="Screenshot 01">
+								<img src="<?php echo $site['media']['photos']['front-page'][5]['image']; ?>" alt="Screenshot 01">
 								<figcaption>
 								<div class="caption-content">
 									<a href="img/large/06.jpg" class="single_image">
@@ -312,7 +345,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						</li>
 						<li>
 							<figure>
-								<img src="img/07-screenshot.jpg" alt="Screenshot 01">
+								<img src="<?php echo $site['media']['photos']['front-page'][6]['image']; ?>" alt="Screenshot 01">
 								<figcaption>
 								<div class="caption-content">
 									<a href="img/large/07.jpg" class="single_image">
@@ -325,7 +358,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						</li>
 						<li>
 							<figure>
-								<img src="img/08-screenshot.jpg" alt="Screenshot 01">
+								<img src="<?php echo $site['media']['photos']['front-page'][7]['image']; ?>" alt="Screenshot 01">
 								<figcaption>
 								<div class="caption-content">
 									<a href="img/large/08.jpg" class="single_image">
@@ -383,17 +416,23 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			</nav>
 		</div>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="js/min/toucheffects-min.js"></script>
+		<script src="http://freelabel.net/vendor/boxify/js/min/toucheffects-min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="js/flickity.pkgd.min.js"></script>
-		<script src="js/jquery.fancybox.pack.js"></script>
+		<script src="http://freelabel.net/vendor/boxify/js/flickity.pkgd.min.js"></script>
+		<script src="http://freelabel.net/vendor/boxify/js/jquery.fancybox.pack.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="js/retina.js"></script>
-		<script src="js/waypoints.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/min/scripts-min.js"></script>
- <!-- For the demo ad only -->   
-<script src="http://tympanus.net/codrops/adpacks/demoad.js"></script>
-		
+		<script src="http://freelabel.net/vendor/boxify/js/retina.js"></script>
+		<script src="http://freelabel.net/vendor/boxify/js/waypoints.min.js"></script>
+		<script src="http://freelabel.net/vendor/boxify/js/bootstrap.min.js"></script>
+		<script src="http://freelabel.net/vendor/boxify/js/min/scripts-min.js"></script>
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+		<script>
+		(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+		function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+		e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+		e.src='//www.google-analytics.com/analytics.js';
+		r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+		ga('create','UA-XXXXX-X');ga('send','pageview');
+		</script>
 	</body>
 </html>
