@@ -242,7 +242,6 @@ REVERT BACK T0 DEFAULT BUTTONS VIEW FROM TWITTER API APP
 echo '</center>';
 
 
-
 /* Some example calls */
 //$connection->get('users/show', array('screen_name' => 'abraham'));
 //$connection->post('statuses/update', array('status' => date(DATE_RFC822)));

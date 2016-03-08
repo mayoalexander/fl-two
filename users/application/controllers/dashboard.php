@@ -96,7 +96,14 @@ class Dashboard extends Controller
         $this->view->render('dashboard/get_promos',true);
     }
     function edit_promo() {
-        $this->view->render('login/edit_promo',true);
+        if (isset($_POST['processing'])) {
+            // echo 'okay saving promo data';
+            include_once('/home/content/59/13071759/html/config/index.php');
+            $config = new Blog();
+            $config->edit_promo($_POST,$_POST['id']);
+        } else {
+            $this->view->render('login/edit_promo',true);
+        }
     }
     function add_photos_from_instagram() {
         $this->view->render('dashboard/add_photos_from_instagram',true);

@@ -139,16 +139,11 @@ function sendDirectMessage(twitter_id_num , directMessageText) {
                   <?php 
 
                   if ($_GET['som']) {
-                    //echo 'aye look';
+                    echo 'aye look';
                     include('auto_tweeter.php');
                   }
                   print_r($content_SOM);
                   print_r($connectionRequest);
-                  //include('auto_campaign.php');
-                  if (isset($_GET['q'])) {
-                    //include('mass_som_app.php');
-                  }
-                  //print_r($connectionRequest);
 
                   //if ($_GET['clockin']===1) {
                    //echo '<script>setTimeout(function() { sendEmail("notifications@freelabel.net", "Admin Clocked In for ['.date('l, F j, Y').']!", "We are now clocked in @ '.date('l F j Y @ h:i:s A').'", "#main_content" , "admin" , ""); },1000);</script>';

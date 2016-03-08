@@ -470,7 +470,7 @@ if ($_POST['page']=='direct_messages' OR $_POST['page']=='direct_messages_auto_r
           $build_data .= '
 
         
-          <a target="_blank" href="http://m.twitter.com/'.$user_twitter_name_screen.'/messages">
+          <a target="_blank" href="http://twitter.com/@'.$user_twitter_name_screen.'/messages">
               <img style="height:45px;margin:0 0.5% 0.5% 0;" height="25px" src="'.$user_twitter_photo.'">
               <h4 style="display:inline;">'.$user_twitter_name.'</h4>
               <h5 style="display:inline;color:#303030;">'.$user_post_date.'</h5>
@@ -839,7 +839,7 @@ if($_GET['som']=='1')
 
 
                       echo '<section class="card card-chart col-md-12 col-xs-12" style="border:red 1px solid;margin-bottom:2%;padding:2%;">
-                      <a href="https://mobile.twitter.com/'.$user.'/messages" target="_blank"><h1 class="section_title"><img src="'.$direct_message_user_photo.'" style="width:80px;border-radius:50px;">@'.$user.'</h1></a>';
+                      <a href="https://twitter.com/@'.$user.'/messages" target="_blank"><h1 class="section_title"><img src="'.$direct_message_user_photo.'" style="width:80px;border-radius:50px;">@'.$user.'</h1></a>';
                       
                         // --- DISPLAY EACH MESSAGE ------/
                         foreach ($user_meta[$user]['messages'] as $message) {

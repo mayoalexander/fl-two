@@ -138,14 +138,14 @@ http://freelabel.net/users/index/image/'.$post_id;
 
 } // end of organic
 
-        for ($i=0; $i < 29; $i++) { 
-          $premade_tweets[] = "#".$text." : tune in LIVE on air! radio.freealbel.net/<br>";
-        }
+        // for ($i=0; $i < 29; $i++) { 
+        //   $premade_tweets[] = "#".$text." : tune in LIVE on air! radio.freealbel.net/<br>";
+        // }
 
 
 
       // var_dump($query);
-      $posts_to_tweet = array_merge($premade_tweets, $posts_to_tweet);
+      // $posts_to_tweet = array_merge($premade_tweets, $posts_to_tweet);
 
 
 

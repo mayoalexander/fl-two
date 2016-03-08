@@ -11,17 +11,26 @@
            OR  */ 
           INCLUDE("../inc/connection.php");
 
+if (isset($_GET['limit'])) {
+  $limit = $_GET['limit'];
+
+} else {
+  $limit = 60;
+}
+// print_r($limit);
+// exit;
+
 if ($_GET['cat']=='mainstream') {
     $query = "SELECT * 
 FROM  `feed` 
 WHERE `user_name` NOT LIKE '%admin%'
 LIMIT 0 , 0";
 } elseif($_GET['cat']=='all') {
-  $query = "SELECT * FROM  `feed` WHERE `user_name` LIKE '%admin%' ORDER BY `id` DESC LIMIT 0 , 30";
+  $query = "SELECT * FROM  `feed` WHERE `user_name` LIKE '%admin%' ORDER BY `id` DESC LIMIT 0 , $limit";
 } elseif($_GET['cat']=='clients') {
-  $query = "SELECT * FROM  `feed` WHERE `user_name` NOT LIKE '%admin%' ORDER BY `id` DESC LIMIT 0 , 30";
+  $query = "SELECT * FROM  `feed` WHERE `user_name` NOT LIKE '%admin%' ORDER BY `id` DESC LIMIT 0 , $limit";
 } else {
-  $query = "SELECT * FROM  `feed` WHERE `user_name`  NOT LIKE '%admin%' ORDER BY `id` OR `user_name` LIKE '%admin%' LIMIT 0 , 60";
+  $query = "SELECT * FROM  `feed` WHERE `user_name`  NOT LIKE '%admin%' ORDER BY `id` OR `user_name` LIKE '%admin%' LIMIT 0 , $limit";
 }
     echo '<h1>'.$query.'</h1>';
            $result = mysqli_query($con,$query);

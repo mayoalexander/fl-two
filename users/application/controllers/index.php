@@ -48,4 +48,7 @@ class Index extends Controller
     function radio() {
             $this->view->render('index/radio');
     }
+    function stream($slug) {
+            $this->view->render('index/stream',true);
+    }
 }

@@ -23,7 +23,7 @@ include(ROOT.'inc/connection.php');
 	if (is_numeric($_GET['id'])) {
 		$result = mysqli_query($con,"SELECT * 
 		FROM  `images` 
-		WHERE  `id` =".$_GET['id']."
+		WHERE  `id` = ".$_GET['id']."
 		ORDER BY `id` DESC LIMIT 1");
 	} else {
 		// NOT NUMERIC, SO SEARCH FOR THE TEXT
