@@ -38,14 +38,15 @@ $user_promos = $config->get_user_promos(Session::get('user_name'));
 			4. update data into query
 			
 			*/
+			console.log('thsi is the rappwer');
+			console.log(wrapper);
 			wrapper.text('please wait..');
 			var data = {
 				file_id : file_id,
 				promo_id : promo_id
 			}
 			$.post('http://freelabel.net/users/dashboard/attach/',data,function(result){
-				wrapper.text('Successfully Pushed!');
-				alert(result);
+				wrapper.text('Successfully Added to Promo!');
 				setTimeout(function(){
 					wrapper.hide('fast');
 				},3000);

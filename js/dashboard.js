@@ -305,12 +305,16 @@ $(function() {
     $('.share-post-button').click(function(event){
       event.preventDefault();
       var txt = $(this).attr('data-type');
+      alert(txt);
+
+      // loading UI message 
+      $('#loginModal .modal-body').html('<i class="fa fa-circle-o-notch fa-spin"></i> Please wait...');
       if (txt=='like') {
         var msg = 'You liked this post!';
       } else if (txt=='add') {
         var msg = 'Add To Promo';
         // show promos form
-        $(this).hide('fast');
+        $(this).addClass('disabled');
         event.preventDefault();
         var file_id = $(this).attr('id');
         var wrapper = $(this).parent().parent();
@@ -325,9 +329,9 @@ $(function() {
           title: dataTitle,
           img_path: dataFilePath
         };
-        $('#add_new_promo_modal').modal('show');
 
-        console.log(getData); 
+        // launch modal
+        $('#add_new_promo_moal').modal('show');
 
         // // load alert into the modal
         $.get('http://freelabel.net/users/dashboard/attach/',getData,function(data){
@@ -336,8 +340,8 @@ $(function() {
           $('#loginModal .modal-body').html(data);
         });
       }
+      // set the title 
       $('#loginModal .modal-title').text(msg);
-      // alert(txt + ' /// '+ msg);
     });
 
 

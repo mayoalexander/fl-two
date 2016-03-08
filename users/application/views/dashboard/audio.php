@@ -83,6 +83,7 @@ if ($user_name == 'admin' OR $user_name == "thatdudewayne") {
     
 
 ?>
+<script type="text/javascript" src="http://freelabel.net/js/control.js"></script>
 
 
 <script type="text/javascript">
@@ -330,7 +331,7 @@ $(function() {
         title: dataTitle,
         img_path: dataFilePath
       };
-      $('#add_new_promo_modal').modal('show');
+      // $('#add_new_promo_modal').modal('show');
 
       // console.log(data); 
 
@@ -341,6 +342,54 @@ $(function() {
       });
 
     });
+
+
+
+
+
+
+
+    $('.share-post-button').click(function(event){
+      event.preventDefault();
+      var txt = $(this).attr('data-type');
+      alert(txt);
+      if (txt=='like') {
+        var msg = 'You liked this post!';
+      } else if (txt=='add') {
+        var msg = 'Add To Promo';
+        // show promos form
+        $(this).hide('fast');
+        event.preventDefault();
+        var file_id = $(this).attr('id');
+        var wrapper = $(this).parent().parent();
+        var url = 'http://freelabel.net/users/login/add_promo/' + file_id + '/' + 'WHATBRUH';
+        var dataId =  $(this).attr('id');
+        var dataUser =  $(this).attr('data-user');
+        var dataTitle =  $(this).attr('data-filetitle');
+        var dataFilePath =  $(this).attr('data-filepath');
+        var getData = { 
+          id: dataId, 
+          user_name: dataUser,
+          title: dataTitle,
+          img_path: dataFilePath
+        };
+        // $('#add_new_promo_modal').modal('show');
+
+        console.log(getData); 
+
+        // // load alert into the modal
+        $.get('http://freelabel.net/users/dashboard/attach/',getData,function(data){
+          // wrapper.append(data);
+          console.log('finshed!');
+          $('#loginModal .modal-body').html(data);
+        });
+      }
+      $('#loginModal .modal-title').text(msg);
+    });
+
+
+
+
 
 
 
