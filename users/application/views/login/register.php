@@ -106,6 +106,15 @@
             color:#303030;
         }
 
+        .pricing-selection {
+                font-size: 2em;
+                font-weight: 300;
+                margin: 0 0 0.15em;
+                color: #E25A77;
+                background-color:transparent;
+                border: #202020;
+        }
+
         /* LOGIN FORM */
         .login-form {
             text-align: center;
@@ -184,7 +193,15 @@
 
         <!-- Pricing Tables and More  -->
         <section class="pricing-section bg-8 pricing-area">
-            <h2 class="pricing-section__title">Choose Your Account Type:</h2>
+            <h2 class="pricing-section__title">Choose Your Account:</h2>
+            <select class="pricing-selection">
+                <option value="" selected>Select type..</option>
+                <option value="free">Free Accounts</option>
+                <option value="fan">Fan Accounts</option>
+                <option value="artist">Creator Accounts</option>
+<!--                 <option value="blogger">Blogger</option>
+                <option value="videographer">Videographer</option> -->
+            </select>
             <div class="pricing pricing--tashi">
 <!--                 <div class="pricing__item">
                     <h3 class="pricing__title">Lite</h3>
@@ -197,7 +214,22 @@
                     </ul>
                     <button class="pricing__action" data-type="lite" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
                 </div> -->
-                <div class="pricing__item">
+                <div class="pricing__item free">
+                    <h3 class="pricing__title"><i class="fa fa-ticket"></i> Trial</h3>
+                    <p class="pricing__sentence">For people wanting to try out the platform and start sharing your profile to the world.</p>
+                    <div class="pricing__price"><span class="pricing__currency">$</span>0<span class="pricing__period">/ month</span></div>
+                    <ul class="pricing__feature-list">
+                        <li class="pricing__feature">Upload and Download Unlimited Songs, Videos, Interviews, Radio Shows, Magazine Issues, Exclusve Music & much more..</li>
+                        <li class="pricing__feature">Radio + Magazine App</li>
+                        <li class="pricing__feature">24/7 Radio Rotation</li>
+                        <li class="pricing__feature">Free Entry into FREELABEL Events</li>
+                        <li class="pricing__feature">Post Directly FREELABEL Social Network Profiles</li>
+                        <li class="pricing__feature">Create Promotions to Showcase full Albums or Projects.</li>
+                    </ul>
+                    <button class="pricing__action" data-type="creator" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
+                </div>
+
+                <div class="pricing__item fan artist">
                     <h3 class="pricing__title"><i class="fa fa-ticket"></i> Basic</h3>
                     <p class="pricing__sentence">For people wanting to try out the platform and start sharing your profile to the world.</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>10<span class="pricing__period">/ month</span></div>
@@ -211,7 +243,7 @@
                     </ul>
                     <button class="pricing__action" data-type="creator" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
                 </div>
-                <div class="pricing__item">
+                <div class="pricing__item artist">
                     <h3 class="pricing__title"><i class="fa fa-microphone"></i> Creator</h3>
                     <p class="pricing__sentence">For more advanced creators looking to make a impression to millions by get their content showcased exclusively on the Radio + Magazine.</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>59<span class="pricing__period">/ month</span></div>
@@ -226,7 +258,7 @@
                     </ul>
                     <button class="pricing__action" data-type="pro" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
                 </div>
-                <div class="pricing__item">
+                <div class="pricing__item artist">
                     <h3 class="pricing__title"><i class="fa fa-institution"></i> Exclusive</h3>
                     <p class="pricing__sentence">For creators who are looking for more Studio Production, hands-on development, interested in expanding their team, building more resources for their content production. audio and visual production such as recording, mixing, mastering, video or photoshoots, etc.</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>200<span class="pricing__period">/ month</span></div>
@@ -243,7 +275,7 @@
                     </ul>
                     <button class="pricing__action" data-type="exclusive" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
                 </div>
-                <div class="pricing__item">
+                <div class="pricing__item artist">
                     <h3 class="pricing__title"><i class="fa fa-map"></i> Touring</h3>
                     <p class="pricing__sentence">Secure your performance & campaign on our Spring Tour with Raider Klan's Amber London and friends.</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>550<span class="pricing__period">/ month</span></div>
@@ -373,6 +405,14 @@
     <!-- /container -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript">
+
+        $('.pricing-selection').change(function(event){
+        
+            var type = $(this).val();
+            var classesss = '.'+type;
+            $('.pricing__item').hide('fast');
+            $(classesss).show('fast');
+        }); 
         $('.pricing__action').click(function(){
 
             var data = $(this).attr('data-type');

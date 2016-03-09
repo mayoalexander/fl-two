@@ -1,6 +1,6 @@
 <?php
-
-$content ='<script type="text/javascript" src="jquery-1.8.0.min.js"></script>
+// <script type="text/javascript" src="jquery-1.8.0.min.js"></script>
+$content ='
 <script type="text/javascript">
 $(function(){
 $(".search").keyup(function() 
@@ -22,20 +22,20 @@ if(searchid!=\'\')
 }return false;    
 });
 
-jQuery("#result").live("click",function(e){ 
-    var $clicked = $(e.target);
-    var $name = $clicked.find(\'.name\').html();
-    var decoded = $("<div/>").html($name).text();
-    $(\'#searchid\').val(decoded);
-});
-jQuery(document).live("click", function(e) { 
+// $("#result").live("click",function(e){ 
+//     var $clicked = $(e.target);
+//     var $name = $clicked.find(\'.name\').html();
+//     var decoded = $("<div/>").html($name).text();
+//     $(\'#searchid\').val(decoded);
+// });
+$(document).live("click", function(e) { 
     var $clicked = $(e.target);
     if (! $clicked.hasClass("search")){
-    jQuery("#result").fadeOut(); 
+    $("#result").fadeOut(); 
     }
 });
 $(\'#searchid\').click(function(){
-    jQuery("#result").fadeIn();
+    $("#result").fadeIn();
 });
 });
 </script>
