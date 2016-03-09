@@ -605,11 +605,14 @@
             <div class="gn-scroller">
               <ul class="gn-menu">
                 <li class="gn-search-item">
-                  <form method="GET" action="http://freelabel.net/users/index/search/">
+                <?php include(ROOT.'landing/livesearch/index.php'); ?>
+<!--                   <form method="GET" action="http://freelabel.net/users/index/search/">
                     <input placeholder="Search" name="q" type="search" class="gn-search">
                     <a class="gn-icon gn-icon-search"><span>Search</span></a>
-                  </form>
+                  </form> -->
+                  <span id="result"></span>
                 </li>
+
 
                 <li class="nav-item nav-item-toggable hide-if-loggedout">
                   <a class="profile-info" href="<?php echo $site['http']."u/".$site['user']['name']; ?>">

@@ -15,7 +15,11 @@ if($_POST)
         $final_email = str_ireplace($q, $b_email, $email);
         ?>
             <div class="show" align="left">
-                <img src="<?php echo $final_photo; ?>" style="width:50px; height:50px; float:left; margin-right:6px;" /><span class="name"><?php echo $final_username; ?></span>&nbsp;<br/><?php echo $final_email; ?><br/>
+                <a href="<?php echo $row['blog_story_url']; ?>">
+                    <img src="<?php echo $final_photo; ?>" style="width:40px; height:40px; float:left; margin-right:4px;" />
+                    <span class="name"><?php echo $final_email; ?></span> 
+                    <?php echo $final_username; ?>
+                </a>
             </div>
         <?php
     }

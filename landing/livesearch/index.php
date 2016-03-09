@@ -11,7 +11,7 @@ if(searchid!=\'\')
 {
     $.ajax({
     type: "POST",
-    url: "search.php",
+    url: "http://freelabel.net/landing/livesearch/search.php",
     data: dataString,
     cache: false,
     success: function(html)
@@ -42,34 +42,35 @@ $(\'#searchid\').click(function(){
 
 <style type="text/css">
     .content{
-        width:900px;
-        margin:0 auto;
+        // width:900px;
+        // margin:0 auto;
     }
     #searchid
     {
-        width:500px;
-        border:solid 1px #000;
-        padding:10px;
-        font-size:14px;
+        // width:500px;
+        // border:solid 1px #000;
+        // padding:10px;
+        // font-size:14px;
     }
     #result
     {
         position:absolute;
-        width:500px;
+        width:251px;
         padding:10px;
         display:none;
         margin-top:-1px;
         border-top:0px;
         overflow:hidden;
         border:1px #CCC solid;
-        background-color: white;
+        background-color: #202020;
+        color:#e3e3e3;
     }
     .show
     {
         padding:10px; 
-        border-bottom:1px #999 dashed;
-        font-size:15px; 
-        height:50px;
+        border-bottom:1px #101010 dashed;
+        // font-size:15px; 
+        // height:100px;
     }
     .show:hover
     {
@@ -79,10 +80,15 @@ $(\'#searchid\').click(function(){
     }
 </style>
 
-<div class="content">
-<input type="text" class="search" id="searchid" placeholder="Search for people" />&nbsp; &nbsp; Ex: <b><i>huzoor bux, neelam, ravi or sameer</i></b><br /> 
-<div id="result"></div>
-</div>';
+<form method="GET" action="http://freelabel.net/users/index/search/">
+    <input placeholder="Search" name="q" type="search" id="searchid" class="search gn-search" placeholder="Search for music, videos, albums, artists, radio shows and more" >
+    <a class="gn-icon gn-icon-search"><span>Search</span></a>
+</form>
+
+
+
+
+';
 
 
 $pre = 1;
