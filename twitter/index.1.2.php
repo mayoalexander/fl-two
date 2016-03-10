@@ -69,6 +69,7 @@ GRAB ALL SCRIPT VALUES
                       $result = mysqli_query($con,$sql);
                       if($row = mysqli_fetch_array($result)) {
                         //print_r($row);
+                        //print_r($row['count']);
                         //echo '<hr><hr>';
                         $send_tweet_ornot = true;
                         // already sent to prompt
@@ -95,6 +96,7 @@ GRAB ALL SCRIPT VALUES
                     }
                     $send_out_message = $row['send_out'];
                     $main_follow_up = $row['twitpic'];
+
         
                     $promote_campaign[]     = $row['first'];
                     $promote_campaign[]     = $row['second'];
@@ -118,6 +120,13 @@ GRAB ALL SCRIPT VALUES
                     $value_builder[1] = urlencode($value_builder[1]);
                     $value_builder[2] = urlencode($value_builder[2]);
                     $i++;
+                  }
+                  include(ROOT.'inc/connection.php');  // 2.1 - Pull Script From Database
+                  $query = "SELECT * FROM images WHERE `desc` LIKE '%current-promo%' ORDER BY `id` DESC LIMIT 5";
+                  $result = mysqli_query($con,$query);
+                  $i=1;
+                  if($row = mysqli_fetch_assoc($result)) {
+                   $main_campaign = $row['title'] .' http://freelabel.net/user/index/image/' .$row['id'];
                   }
 
                     switch ($_GET['q']) {
@@ -401,7 +410,7 @@ if ($_POST['page']=='timeline'){
 if ($_POST['page']=='direct_messages' OR $_POST['page']=='direct_messages_auto_rtm'){
 
         $api_query_dm =array("count" => '50');
-        // $api_query_dm =array("count" => '2');
+        // $api_query_dm =array("count" => '1');
         $method = 'direct_messages';
         $direct_messages =   $connection->get($method, $api_query_dm);
         $i=1;
@@ -431,7 +440,7 @@ if ($_POST['page']=='direct_messages' OR $_POST['page']=='direct_messages_auto_r
             // if they have already been saved to the database, send the second follow up promotion
             if ($_POST['page']=='direct_messages_auto_rtm') {
               // echo ' '.$user_twitter_name_screen.', '.$main_follow_up."<br>";
-              // $connection->post('direct_messages/new', array('screen_name' => $user_twitter_name_screen,'text' => $main_follow_up));
+              // $connection->post('direct_messages/new', array('screen_name' => $user_twitter_name_screen,'text' => $main_campaign));
             }
           } else {
             /* 
@@ -839,7 +848,7 @@ if($_GET['som']=='1')
 
 
                       echo '<section class="card card-chart col-md-12 col-xs-12" style="border:red 1px solid;margin-bottom:2%;padding:2%;">
-                      <a href="https://twitter.com/@'.$user.'/messages" target="_blank"><h1 class="section_title"><img src="'.$direct_message_user_photo.'" style="width:80px;border-radius:50px;">@'.$user.'</h1></a>';
+                      <a href="https://twitter.com/@'.$user.'" target="_blank"><h1 class="section_title"><img src="'.$direct_message_user_photo.'" style="width:80px;border-radius:50px;">@'.$user.'</h1></a>';
                       
                         // --- DISPLAY EACH MESSAGE ------/
                         foreach ($user_meta[$user]['messages'] as $message) {

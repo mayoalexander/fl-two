@@ -23,7 +23,7 @@ $config = new Blog();
 				<td></td>
 				<td>ID</td>
 				<td>Type</td>
-				<td>Status</td>
+				<td>Stats</td>
 				<td>Email</td>
 				<td>Phone</td>
 				<td>Twitter</td>
@@ -73,21 +73,21 @@ $config = new Blog();
 			FROM  `users` 
 			WHERE `account_type` LIKE '%paid%'
 			ORDER BY  `users`.`$sort` DESC 
-			LIMIT 0 , 100";
+			LIMIT 0 , 20";
 			break;
 		case 'expired':
 			$sql = "SELECT * 
 			FROM  `users` 
 			WHERE `account_type` LIKE '%expired%'
 			ORDER BY  `users`.`$sort` DESC 
-			LIMIT 0 , 100";
+			LIMIT 0 , 20";
 			break;
 		case 'uncategorized':
 			$sql = "SELECT * 
 			FROM  `users` 
 			WHERE `account_type` NOT LIKE '%expired%' AND `account_type` NOT LIKE '%paid%' 
 			ORDER BY  `users`.`$sort` DESC 
-			LIMIT 0 , 100";
+			LIMIT 0 , 20";
 			break;
 		case 'search':
 		$q = trim($_GET['search_query']);
@@ -95,7 +95,7 @@ $config = new Blog();
 			FROM  `users` 
 			WHERE `account_type` LIKE '%$q%' OR `user_name` LIKE '%$q%' OR `user_email` LIKE '%$q%' OR `twitter` LIKE '%$q%'
 			ORDER BY  `users`.`$sort` DESC 
-			LIMIT 0 , 100";
+			LIMIT 0 , 20";
 			break;
 		
 		default:
@@ -222,7 +222,16 @@ FREELABEL Featured: ".$name." (".$twitter.")
 															$profile_trackname	 	= 		$row3['trackname']; 
 															$playerpath	 	= 		$row3['playerpath']; 
 															//$profile_phone 		= 		"(".substr($profile_phone, 0, 3).") ".substr($profile_phone, 3, 3)."-".substr($profile_phone,6);
+															
+
+															// display tracks status
 															$submitted_tracks_status ='<a href="http://freelabel.net/'.strtolower($profile_twitter).'" class="text-success" target="_blank">UPLOADED!!!</a>';
+
+
+															// get usr stats
+															$s=0;
+															$s = $config->getStatsByUser($name);
+
 
 															$follow_up_promote[] = urlencode('[NEW MUSIC] '.$profile_twitter.' - "'.$profile_trackname.'" | '.$playerpath);
 															$follow_up_promote[] = urlencode($profile_trackname.'" | '.$playerpath);
@@ -295,7 +304,8 @@ FREELABEL Featured: ".$name." (".$twitter.")
 											    	<span class="edit" id="type-'.$user_id.'">'.$user_account_type.'</span>
 											    </td>
 											    <td>
-											    	'.$client_status.'
+											    	<!-- '.$client_status.' -->
+											    	<a data-twitter="'.$profile_twitter.'"  href="#" class="client-stats-trigger" target="_blank">'.$s['count'].'</a>
 											    </td>
 											    <td >
 											    	<span class="edit" id="email-'.$user_id.'">'.$user_email.'</span>
@@ -360,6 +370,24 @@ FREELABEL Featured: ".$name." (".$twitter.")
 
 <script type="text/javascript" src='http://freelabel.net/js/jquery.jeditable.js'></script>
 <script>
+	function notifyClientStats(twittername) {
+		alert(twittername);
+	}
+	$('.client-stats-trigger').click(function(event){
+		event.preventDefault();
+		var el = $(this).attr('data-twitter');
+		var views = $(this).text();
+		var text = "You currently have " + views + " total views on FREELABEL.NET!";
+
+		$(this).addClass('text-warning');
+        url = 'http://freelabel.net/som/index.php?dm=1&t='+ el +'&text=' + encodeURI(text);
+        window.open(url);
+		// $.get(url,function(data){
+		// 	alert("Message sent!");
+		// 	// $(this).html('<span class="text-success" >'+views+'</span>');
+		// });
+
+	});
 	function sendEmail(email, message) {
 		var data = {
 			email : email,

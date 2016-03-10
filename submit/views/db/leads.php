@@ -974,6 +974,25 @@ $(function() {
 		shareTwitter(data[0].value , data[1].value);
 	});
 
+	$('.script-responses a').click(function(event){
+		event.preventDefault();
+		var url = $(this).attr('href');
+		var wrap = $(this).parent();
+		var c = confirm('Are you sure you want to send this message');
+		if (c==true) {
+			// alert(url);
+			wrap.html('<span class="text-warning" >Sending message..</span>');
+			$.get(url,function(data){
+				// alert(data);
+				wrap.html('<span class="text-success" >Message sent!</span>');
+				setTimeout(function(){
+					wrap.hide('fast');
+				}, 3000);
+
+			});
+		}
+	});
+
 });
 </script>
 

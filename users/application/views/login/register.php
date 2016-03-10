@@ -35,7 +35,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Register | <?php echo $site['name']; ?></title>
     <meta name="description" content="<?php echo $site['description']; ?>" />
     <meta name="keywords" content="<?php echo $site['keywords']; ?>" />
@@ -118,13 +118,15 @@
             padding:2%;
         }
 
-
         /*MOBILE STYLES */
          
         @media (max-width: 600px) {
         .codrops-header {
             background-size: auto 100vh;
           }
+        .media-item__img {
+            width:250px;
+        }
         }
 
     </style>
