@@ -19,7 +19,7 @@ return vars;
         history.pushState(stateObj, "page 2", '?ctrl='+tabName);
 
         // Loading Please Wait Feature
-        $('#' + tabName).html('<h3 class="text-muted" style="margin:10% 10%;"><i class="fa fa-cog fa-spin"></i> Loading...</h3>');
+        // $('#' + tabName).html('<h3 class="text-muted" style="margin:10% 10%;"><i class="fa fa-cog fa-spin"></i> Loading...</h3>');
         
         // load the data in to the wrapper
         var url = 'http://freelabel.net/users/dashboard/' + tabName + '/' ;

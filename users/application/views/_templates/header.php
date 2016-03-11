@@ -188,6 +188,9 @@
     .dark-bg {
       color:#101010;
     }
+    .has-gradient {
+      background-image: linear-gradient(45deg, #303030, #101010);
+    }
 
     .fa .audio-player-control , .text-dark {
       margin:5%;
@@ -605,11 +608,11 @@
             <div class="gn-scroller">
               <ul class="gn-menu">
                 <li class="gn-search-item">
-                <?php include(ROOT.'landing/livesearch/index.php'); ?>
-<!--                   <form method="GET" action="http://freelabel.net/users/index/search/">
+                <?php //include(ROOT.'landing/livesearch/index.php'); ?>
+                  <form method="GET" action="http://freelabel.net/users/index/search/">
                     <input placeholder="Search" name="q" type="search" class="gn-search">
                     <a class="gn-icon gn-icon-search"><span>Search</span></a>
-                  </form> -->
+                  </form>
                   <span id="result"></span>
                 </li>
 

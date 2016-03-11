@@ -163,6 +163,36 @@ $(function() {
       name : 'title'
     });
 
+
+
+
+
+    // Main Feed Videon Controls Functionality
+    $('video').click(function(){
+      var element = $(this).get(0);
+      var siblings = $(this).siblings();
+      var parent = $(this).parent();
+
+      parent.removeClass('col-md-3');
+      parent.addClass('col-md-12');
+
+      if (element.paused == true) {
+        element.play();
+        siblings.html('<i class="fa fa-play"></i>');
+        siblings.fadeToggle('slow');
+      } else {
+        siblings.html('<i class="fa fa-pause"></i>');
+        siblings.fadeToggle('slow');
+        element.pause();
+      }
+
+    });
+
+
+
+
+
+
     // Custom Controls
     var globalAudioPlayer = $(".audio-player");
     var globalButtons = $(".controls-play");
@@ -245,6 +275,7 @@ $(function() {
               globalAudioPlayer.attr('autoplay', 1);
               $(this).addClass('now-playing'); // *
               // globalAudioPlayer.attr('loop', 1);
+              var player_status = 'playing'
       } else if (isPlaying(globalAudioPlayer[0])==true && audioFile !== globalAudioPlayer[0].src) {
         // pause function
               $(this).html('<i class="fa fa-pause"></i>');
@@ -253,6 +284,8 @@ $(function() {
               globalAudioPlayer.attr('src', audioFile);
               globalAudioPlayer.attr('autoplay', 1);
               // globalAudioPlayer.attr('loop', 1);
+              var player_status = 'pausing'
+
       } else {
         $(this).html('<i class="fa fa-play"></i>');
         globalAudioPlayer[0].pause();
