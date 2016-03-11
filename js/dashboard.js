@@ -209,7 +209,7 @@ $(function() {
 
 
 
-
+    
 
     // ********************************* 
     //  PLAY BUTTON CONTROL 
@@ -228,7 +228,6 @@ $(function() {
       var nextTitle = nextsong.find('.controls-play').attr('data-title');
       globalButtons.html('<i class="fa fa-play"></i>'); // * 
       
-
       if (isPlaying(globalAudioPlayer[0])==false) {
         // play file
               $(this).html('<i class="fa fa-pause"></i>');

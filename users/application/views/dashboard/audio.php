@@ -21,19 +21,24 @@ if ($user_name == 'admin' OR $user_name == "thatdudewayne") {
 
 ?>
 
-<br>
-<div class="upload-options col-md-3 col-xs-12">
+
+
+
+
+
+<!-- button tool bar  -->
+<div class="event-option-panel btn-group dropdown" style="background-color:transparent;text-align:left;border-bottom:3px solid #303030;padding:2% 0%;">
   <!-- Split button -->
-  <button type="button" class="btn btn-danger btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add New</button>
+  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus"></i> Add New</button>
   <ul class="dropdown-menu">
     <li><a href='http://freelabel.net/drive/plus.php?uid=<?php echo $user_name; ?>'><i class="fa fa-cloud-upload"></i> Upload via FLDRIVE</a></li>
     <li><a href='http://freelabel.net/vendor/instagram/example/'><i class="fa fa-instagram"></i> Connect to Instagram</a></li>
   </ul>
   <!-- <button class="btn btn-success btn-xs btn-block add-new-media-audio" style="display:block;" data-link="http://freelabel.net/drive/plus.php?uid=<?php echo $user_name; ?>&type=idea" ><i class="fa fa-plus"></i> Add New</button> -->
 </div>
-<br>
-<nav class="dashboard-nav-group event-option-panel btn-group" style="background-color:transparent;text-align:left;border-bottom:3px solid #303030;padding:2% 0%;">
-<br><br>
+
+<!-- get user tags  -->
+<nav class="filter-option-panel btn-group" style="background-color:transparent;text-align:left;border-bottom:3px solid #303030;padding:2% 0%;">
   <form class="search-tracks-input">
     <span class="fa fa-search"></span>
     <input type='text' placeholder="Search Your Uploads..." class="form-control" data-user='<?php echo $user_name; ?>'>

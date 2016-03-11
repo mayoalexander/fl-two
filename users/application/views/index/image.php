@@ -1,3 +1,25 @@
+<?php 
+  include_once('/home/content/59/13071759/html/config/index.php');
+  $config = new Blog();
+  $promo_id = str_replace('index/image/', '', $_GET['url']);
+
+  $current_promo = $config->getPromoById($promo_id);
+
+  // gather promo data
+  if (is_numeric($promo_id)) {
+    $promos = $config->display_promo(Session::get('user_name') , 1, $promo_id, 'id');
+  } else {
+    $promos = $config->display_promo(Session::get('user_name') , 1, $promo_id, 'desc');
+  }
+
+  // update stats
+  $counts = $promos[0]['stats'];
+  $new_counts = $counts + 1;
+  $promo_id = $promos[0]['id'];
+  $stats = $config->update_stats($counts , $promo_id);
+  // print_r($stats);
+
+?>
 <style>
   body, html {
     overflow-x: hidden;
@@ -24,9 +46,17 @@
     height: 50px;
     /*display: inline-block;*/
   }
+  .promo-body {
+    background-color: rgba(0,0,0,0.85);
+    border-radius: 5px;
+  }
+  .jumbotron {
+    padding-top: 1.5%;
+  }
   .full-width-article {
     min-height: 100vh;
   }
+
 
    @media (max-width: 800px) {
       .promo-image img {
@@ -34,29 +64,17 @@
       }
     }
 </style>
-<div class="row">
+
+<div class="jumbotron" style="background-image:url(<?php echo $current_promo[0]['image']; ?>);">
+  <?php echo $current_promo['image']; ?>
+
+<div class="row promo-body">
   <?php
-  include_once('/home/content/59/13071759/html/config/index.php');
-  $config = new Blog();
-  $promo_id = str_replace('index/image/', '', $_GET['url']);
-
-  // gather promo data
-  if (is_numeric($promo_id)) {
-  	$promos = $config->display_promo(Session::get('user_name') , 1, $promo_id, 'id');
-  } else {
-  	$promos = $config->display_promo(Session::get('user_name') , 1, $promo_id, 'desc');
-  }
-
-  // update stats
-  $counts = $promos[0]['stats'];
-  $new_counts = $counts + 1;
-  $promo_id = $promos[0]['id'];
-  $stats = $config->update_stats($counts , $promo_id);
-  // print_r($stats);
-
 
   echo $config->display_promo_public($promos, true); 
   ?>
+</div>
+
 </div>
 
 
@@ -65,9 +83,9 @@
 
 <?php 
 
-$stream = 'related_bae';
+// $stream = 'related_bae';
 
-include(ROOT.'images/pull_images.php');
+// include(ROOT.'images/pull_images.php');
 
 ?>
 
