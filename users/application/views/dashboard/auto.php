@@ -86,7 +86,7 @@ if ($_POST['organic'] || $_GET['organic'] || $action=='organic') {
 
           include_once(ROOT.'inc/huge.php');
           $user_id = $huge->getUserID('admin');
-          $query = "SELECT * FROM notes WHERE user_id = $user_id ORDER BY `note_id` DESC LIMIT 30";
+          $query = "SELECT * FROM notes WHERE user_id = $user_id ORDER BY `note_id` DESC LIMIT 60";
           $result = mysqli_query($con,$query);
           while($row = mysqli_fetch_array($result))
           {

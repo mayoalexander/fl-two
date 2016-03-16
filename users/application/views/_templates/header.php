@@ -273,6 +273,10 @@
       color:#303030;
     }
 
+    .row {
+      margin-left:0;
+      margin-right:0;
+    }
     .rss-feed article {
       margin-bottom:10%;
     }

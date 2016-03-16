@@ -64,8 +64,8 @@
       }
     }
 </style>
-
-<div class="jumbotron" style="background-image:url(<?php echo $current_promo[0]['image']; ?>);">
+<!-- style="background-image:url(<?php //echo $current_promo[0]['image']; ?>);" -->
+<div class="x" >
   <?php echo $current_promo['image']; ?>
 
 <div class="row promo-body">

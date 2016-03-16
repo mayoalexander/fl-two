@@ -117,6 +117,9 @@
         .login-form input, .login-form button {
             padding:2%;
         }
+        .jumbotron {
+            background-size:200%;
+        }
 
         /*MOBILE STYLES */
          
@@ -158,8 +161,7 @@
 
 
         <!-- RECENT PROJECTS -->
-        <section class="content content--related freetrial-area">
-            <!-- <p>Don't have the money right now? Try out our limited FREE TRIAL accounts!</p> -->
+<!--         <section class="content content--related freetrial-area">
             <p class="intro">
             <h1>How Does This Help Artist and Music Industry?</h1>
 
@@ -179,7 +181,7 @@
                 <img class="media-item__img" src="<?php echo $site['media']['credit'][2]['image']; ?>">
                 <h3 class="media-item__title"><?php echo $site['media']['credit'][2]['title']; ?></h3>
             </a>
-        </section>
+        </section> -->
 
 
 
@@ -199,10 +201,20 @@
                     </ul>
                     <button class="pricing__action" data-type="lite" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
                 </div> -->
+<!--                 <div class="pricing__item">
+                    <h3 class="pricing__title"><i class="fa fa-ticket"></i> Freetrial</h3>
+                    <p class="pricing__sentence">For people wanting to try out the platform and upload their music to the site!</p>
+                    <div class="pricing__price"><span class="pricing__currency">$</span>0<span class="pricing__period">/ $10 after 24 hours</span></div>
+                    <ul class="pricing__feature-list">
+                        <li class="pricing__feature">Upload and Download Unlimited Songs, Videos, Interviews, Radio Shows, Magazine Issues, Exclusve Music & much more..</li>
+                    </ul>
+                    <button class="pricing__action" data-type="lite" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
+                </div> -->
+
                 <div class="pricing__item">
-                    <h3 class="pricing__title"><i class="fa fa-ticket"></i> Basic</h3>
+                    <h3 class="pricing__title"><i class="fa fa-ticket"></i> Trial</h3>
                     <p class="pricing__sentence">For people wanting to try out the platform and start sharing your profile to the world.</p>
-                    <div class="pricing__price"><span class="pricing__currency">$</span>10<span class="pricing__period">/ month</span></div>
+                    <div class="pricing__price"><span class="pricing__currency">$</span>FREE<span class="pricing__period">/ First Day</span></div>
                     <ul class="pricing__feature-list">
                         <li class="pricing__feature">Upload and Download Unlimited Songs, Videos, Interviews, Radio Shows, Magazine Issues, Exclusve Music & much more..</li>
                         <li class="pricing__feature">Radio + Magazine App</li>
@@ -211,8 +223,9 @@
                         <li class="pricing__feature">Post Directly FREELABEL Social Network Profiles</li>
                         <li class="pricing__feature">Create Promotions to Showcase full Albums or Projects.</li>
                     </ul>
-                    <button class="pricing__action" data-type="creator" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
+                    <button class="pricing__action" data-type="lite" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
                 </div>
+
                 <div class="pricing__item">
                     <h3 class="pricing__title"><i class="fa fa-microphone"></i> Creator</h3>
                     <p class="pricing__sentence">For more advanced creators looking to make a impression to millions by get their content showcased exclusively on the Radio + Magazine.</p>
@@ -245,7 +258,7 @@
                     </ul>
                     <button class="pricing__action" data-type="exclusive" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
                 </div>
-                <div class="pricing__item">
+<!--                 <div class="pricing__item">
                     <h3 class="pricing__title"><i class="fa fa-map"></i> Touring</h3>
                     <p class="pricing__sentence">Secure your performance & campaign on our Spring Tour with Raider Klan's Amber London and friends.</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>550<span class="pricing__period">/ month</span></div>
@@ -262,7 +275,7 @@
 
                     </ul>
                     <button class="pricing__action" data-type="tour" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
-                </div>
+                </div> -->
             </div>
         </section>
 
@@ -339,7 +352,7 @@
 
 
         <!-- RELATED -->
-        <section class="content content--promotions freetrial-area bg-8">
+        <section class="content content--promotions freetrial-area bg-8" style="display:none;">
             <!-- <p>Don't have the money right now? Try out our limited FREE TRIAL accounts!</p> -->
             <h1>Recent Work</h1>
             <p>Checkout some of our recent artist and their projects!</p>
