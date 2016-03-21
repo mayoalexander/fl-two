@@ -13,10 +13,9 @@ $(function(){
             var type = 'Uh oh, this file you\'ve selected is not a photo. Please upload a photo for the artwork!';
             alert(type);
             $('#artwork_photo').val('');
-
             return false;
         } else {
-            alert("its a photo!");
+            // alert("its a photo!");
         }
 
 
