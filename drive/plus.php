@@ -165,10 +165,13 @@
             display:block;
             z-index: -20;
         }
+        video {
+            display:none;
+        }
         .btn-link:active{
             position: relative;
-            top:3px;
-            right:3px;
+            top:2px;
+            right:2px;
         }
         .form-control {
             background-color: transparent;
@@ -190,13 +193,15 @@
             text-align: center;
         }
         .file-panel {
-               margin-bottom: 10vh;
+                margin-bottom: 2vh;
                 /*background: #202020;*/
                 border: #101010;
                 box-shadow: 1px 1px 10px #000;
                 border-radius: 3px;
-                padding: 1%;
+                padding: 11%;
+                padding-bottom:0px;
                 border-top: solid 2px #202020;
+
         }
         #files > div > p > button {
             border-radius: 3px;
@@ -253,6 +258,9 @@
           }
           .file-panel {
             font-size: 12px;
+          }
+          .files img, .files canvas {
+            max-width: 10vh;
           }
 /*          .form-control {
             width: 200px;
@@ -394,7 +402,7 @@ $(function () {
         previewCrop: true
     }).on('fileuploadadd', function (e, data) {
         $('.btn-link').hide('fast');
-        alert('hding');
+
         // on file add
         data.context = $('<div/>').appendTo('#files');
         $.each(data.files, function (index, file) {
@@ -496,11 +504,11 @@ $(function () {
         var index = data.index,
             file = data.files[index],
             node = $(data.context.children()[index]);
-        // if (file.preview) {
-        //     node.find('.photo-upload-results')
-        //         .prepend('<br>')
-        //         .prepend(file.preview);
-        // }
+        if (file.preview) {
+            node//.find('.photo-upload-results')
+                //.prepend('<br>')
+                .prepend(file.preview);
+        }
         if (file.error) {
             node
                 .append('<br>')

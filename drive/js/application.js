@@ -17,10 +17,9 @@ $(function(){
         } else {
             // alert("its a photo!");
         }
-
-
-
-
+        
+        // hide input 
+        $('#artwork_photo').hide();
 
                 // alert(ext);
 
