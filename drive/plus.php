@@ -93,7 +93,7 @@
             margin-top:0;
             margin-bottom:0;
             padding-top:0;
-            padding-bottom:20vh;
+            /*padding-bottom:20vh;*/
             font-family: 'Oswald';
         }
         a:hover, a:visited, a:link , a:active {
@@ -149,14 +149,26 @@
         .btn .glyphicon {
             margin-right: 1px;
         }
-        .file-container {
+/*        .file-container {
             height: 95vh;
-        }
+        }*/
         .btn-primary {
             background-color: <?php echo $site['primary-color']; ?>;
         }
-        .btn-link {
-            color:<?php echo $site['primary-color']; ?>;
+        .btn-link , .fileinput-button {
+            /*color:<?php echo $site['primary-color']; ?>;*/
+            color:#202020;
+            z-index: 100000;
+        }
+        .btn-link i {
+            font-size:12rem;
+            display:block;
+            z-index: -20;
+        }
+        .btn-link:active{
+            position: relative;
+            top:3px;
+            right:3px;
         }
         .form-control {
             background-color: transparent;
@@ -239,6 +251,9 @@
             height: 36px;
             top: 3px;
           }
+          .file-panel {
+            font-size: 12px;
+          }
 /*          .form-control {
             width: 200px;
             margin:auto;
@@ -287,12 +302,13 @@
 
 <div class="file-container col-md-10 col-lg-10 col-sm-10 col-xs-12">
     <!-- The fileinput-button span is used to style the file input field as button -->
-    <span class="btn btn-link fileinput-button btn-block">
-        <i class="glyphicon glyphicon-plus"></i>
-        <span>Add files...</span>
+    <button class="btn btn-link fileinput-button btn-block">
+        <input id="fileupload" type="file" name="files[]" multiple style="height:250px;">
+        <i class="fa fa-cloud-upload"></i>
+        <span>Add Music, Photos, Videos..</span>
         <!-- The file input field used as target for the file upload widget -->
-        <input id="fileupload" type="file" name="files[]" multiple style="height:50px;">
-    </span>
+        
+    </button>
     <!-- The container for the uploaded files -->
     <div id="files" class="files"></div>
 </div>
@@ -377,7 +393,8 @@ $(function () {
         previewMaxHeight: 300,
         previewCrop: true
     }).on('fileuploadadd', function (e, data) {
-
+        $('.btn-link').hide('fast');
+        alert('hding');
         // on file add
         data.context = $('<div/>').appendTo('#files');
         $.each(data.files, function (index, file) {
@@ -476,7 +493,6 @@ $(function () {
             node.appendTo(data.context);
         });
     }).on('fileuploadprocessalways', function (e, data) {
-        $('.toolbar').show();
         var index = data.index,
             file = data.files[index],
             node = $(data.context.children()[index]);
@@ -496,6 +512,7 @@ $(function () {
                 .prop('disabled', !!data.files.error);
         }
     }).on('fileuploadprogressall', function (e, data) {
+        $('.toolbar').show();
 
         var progress = parseInt(data.loaded / data.total * 100, 10);
         $('#progress .progress-bar').css(
