@@ -31,18 +31,9 @@ $todays_date = date('Y-m-d H:i:s');
   $promos_data = $blog->build_dropdown($params,'promo_id');
 
 
-// /* debugging */
-// if (isset($_GET)) {
-//   var_dump($_GET);
-// }
-// if (isset($_POST)) {
-//   var_dump($_POST);
-// }
 
 
-
-// start application 
-
+// start application
 $leads_list = $config->getLeads();
 
 $n=0;
@@ -409,7 +400,8 @@ if ($_POST['page']=='timeline'){
 //if (isset($_GET['ssages'])){
 if ($_POST['page']=='direct_messages' OR $_POST['page']=='direct_messages_auto_rtm'){
 
-        $api_query_dm =array("count" => '50');
+        // $api_query_dm =array("count" => '50');
+        $api_query_dm =array("count" => '200');
         // $api_query_dm =array("count" => '1');
         $method = 'direct_messages';
         $direct_messages =   $connection->get($method, $api_query_dm);

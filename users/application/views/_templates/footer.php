@@ -5,7 +5,8 @@
       <div class="col-md-6 col-lg-5">
         <div class="media">
           <div class="media-left">
-            <img class="media-object display-1" src='http://freelabel.net/images/FREELABELLOGO.gif' style="width:60px;">
+            <!-- <img class="media-object display-1" src='http://freelabel.net/images/FREELABELLOGO.gif' style="width:60px;"> -->
+            &reg; All Rights Reserved.
           </div>
         </div>
       </div>

@@ -1,4 +1,8 @@
+<div class="container-fixed">
 <?php
+ include_once('/home/content/59/13071759/html/config/index.php');
+ $config = new Blog();
+
  if($_GET['recent']){
 	 $todays_date = date('Y-m');
 	 /* `user_name` NOT LIKE '%submission%'
@@ -132,8 +136,19 @@ if ($_POST['live'] || $_GET['live']) {
 
 
 
+
+        /* GET THE PROMOS */
+        $promos1 = $config->getPromosByUser('admin', 0, 'current-promo');
+        $promos2 = $config->getPromosByUser('admin', 1, 'current-promo');
+        $promos = array_merge($promos1, $promos2);
+        foreach ($promos as $promo) {
+          $new_tweets[] = $promo['title'] . ' | http://freelabel.net/users/index/image/'. $promo['id'];
+          $new_tweets[] = $promo['title'] . ' | http://freelabel.net/users/index/image/'. $promo['id'];
+        }
+
+        $posts_to_tweet = array_merge($posts_to_tweet, $new_tweets);
         shuffle($posts_to_tweet);
-        //print_r($posts_to_tweet);
+
         $already_tweeted = array("0");
         $i=1;
         echo "<h1>CAMPAIGNS</h1>";
@@ -188,3 +203,4 @@ if ($i===30 && $_GET['stayopen']==1) {
 }
 */
 ?>
+</div>

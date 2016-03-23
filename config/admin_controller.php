@@ -79,13 +79,13 @@ $twitpic_downloader = "
 
 				echo '<div class="btn-group">';
 					echo '<a href="https://studio.radio.co/stations/s95fa8cba2" target="_blank" class="btn btn-danger btn-xs" >RADIO</a>';
-					echo '<a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&live=1" target="_blank" class="btn btn-success btn-xs" >LIVE</a>';
-					echo '<a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&organic=1&recent=1" target="_blank" class="btn btn-success btn-xs" >PROMO</a>';
+					// echo '<a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&live=1" target="_blank" class="btn btn-success btn-xs" >LIVE</a>';
+					// echo '<a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&organic=1&recent=1" target="_blank" class="btn btn-success btn-xs" >PROMO</a>';
 					echo '<a href="https://ads.twitter.com/accounts/gueorv/cards/show?url_id=9fou" target="_blank" class="btn btn-primary btn-xs" >SOMCard</a>';
 
 					echo '<a href="https://tweetdeck.twitter.com/" target="_blank" class="btn btn-primary btn-xs" >TWEETDECK</a>';			//https://trello.com/b/od3WonId/production
 					echo '<a href="https://trello.com/b/od3WonId/production" target="_blank" class="btn btn-primary btn-xs" >TRELLO</a>';
-					echo '<a href="https://inbox.google.com/u/0/?pli=1" target="_blank" class="btn btn-primary btn-xs" >MAIL</a>';
+					// echo '<a href="https://inbox.google.com/u/0/?pli=1" target="_blank" class="btn btn-primary btn-xs" >MAIL</a>';
 				echo '</div>';
 				echo '<details class="details-panel" style="max-height:200px;overflow-y:scroll;" >';
 					include(ROOT.'tweeter.php');

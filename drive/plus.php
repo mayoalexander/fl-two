@@ -430,7 +430,7 @@ $(function () {
                             .append($('<input type="hidden" name="poster" value="' + file.name +'" />'))
                             .append($('<panel class="col-md-9"><div>Title</div><input class="form-control" type="text" name="title" required value="'+file.name+'"/></panel>'))
                             .append($('<panel class="col-md-6"><div>Twitter</div><input class="form-control" type="text" name="twitter" id="twitter" value="@" required/></panel>'))
-                            .append($('<panel class="col-md-6"><div>Phone</div><input class="form-control" type="text" name="phone" required/></panel>'))
+                            .append($('<panel class="col-md-6"><div>Phone</div><input class="form-control" type="text" name="phone"/></panel>'))
                             .append($('<panel class="col-md-12"><div>Description</div><textarea class="form-control" type="text" name="description" /><span class="photo-upload-results"></span></panel>'))
                             .append($('<input type="hidden" name="user_name" value="' + user_name +'" />'))
                             .append($('<input type="hidden" name="user_email" value="' + user_email +'" />'));
@@ -442,7 +442,7 @@ $(function () {
                             .append($('<input type="hidden" name="poster" value="' + file.name +'" />'))
                             .append($('<panel class="col-md-9"><div>Title</div><input class="form-control" type="text" name="title" required value="'+file.name+'"/></panel>'))
                             .append($('<panel class="col-md-6"><div>Twitter</div><input class="form-control" type="text" name="twitter" id="twitter" value="@" required/></panel>'))
-                            .append($('<panel class="col-md-6"><div>Phone</div><input class="form-control" type="text" name="phone" required/></panel>'))
+                            .append($('<panel class="col-md-6"><div>Phone</div><input class="form-control" type="text" name="phone"/></panel>'))
                             .append($('<panel class="col-md-12"><div>Description</div><textarea class="form-control" type="text" name="description" /><span class="photo-upload-results"></span></panel>'))
                             .append($('<input type="hidden" name="user_name" value="' + user_name +'" />'))
                             .append($('<input type="hidden" name="user_email" value="' + user_email +'" />'));
@@ -455,7 +455,7 @@ $(function () {
                             .append($('<input type="hidden" name="poster" value="' + file.name +'" />'))
                             .append($('<panel class="col-md-9"><div>Title</div><input class="form-control" type="text" name="title" required value="'+file.name+'"/></panel>'))
                             .append($('<panel class="col-md-6"><div>Twitter</div><input class="form-control" type="text" name="twitter" id="twitter" value="@" required/></panel>'))
-                            .append($('<panel class="col-md-6"><div>Phone</div><input class="form-control" type="text" name="phone" required/></panel>'))
+                            .append($('<panel class="col-md-6"><div>Phone</div><input class="form-control" type="text" name="phone"/></panel>'))
                             .append($('<panel class="col-md-12"><div>Description</div><textarea class="form-control" type="text" name="description" /><span class="photo-upload-results"></span></panel>'))
                             .append($('<input type="hidden" name="user_name" value="' + user_name +'" />'))
                             .append($('<input type="hidden" name="user_email" value="' + user_email +'" />'));
@@ -464,7 +464,7 @@ $(function () {
                 var node = $('<p class="file-panel col-md-12 col-xs-12"/>')
                             // .append($('<span class="file-name" />').text(file.name))
                             .append($('<panel class="col-md-3"><div>Photo</div><input class="form-control" type="file" name="photo" id="artwork_photo" /><span class="photo-upload-results"></span> <div>Status</div><select class="form-control" name="status"><option value="public" selected>Public</option><option value="private">Private</option></select> </panel>'))
-                            .append($('<panel class="col-md-8"> <div>Title</div><input class="form-control" type="text" name="title" required value="'+file.name+'"/>  <div>Twitter</div><input class="form-control" type="text" name="twitter" id="twitter" required/> <div>Phone</div><input class="form-control" type="text" name="phone" required/> <div>Description</div><textarea class="form-control" type="text" name="description" /> </panel>'))
+                            .append($('<panel class="col-md-8"> <div>Title</div><input class="form-control" type="text" name="title" required value="'+file.name+'"/>  <div>Twitter</div><input class="form-control" type="text" name="twitter" id="twitter" required/> <div>Phone</div><input class="form-control" type="text" name="phone"/> <div>Description</div><textarea class="form-control" type="text" name="description" /> </panel>'))
                             .append($('<input type="hidden" name="user_name" value="' + user_name +'" />'))
                             // .append($('<input type="hidden" name="trackmp3" value="' + file.url +'" />'))
                             .append($('<input type="hidden" name="user_email" value="' + user_email +'" />'));
@@ -473,7 +473,7 @@ $(function () {
                 var node = $('<p class="file-panel col-md-12 col-xs-12"/>')
                             // .append($('<span class="file-name" />').text(file.name))
                             .append($('<panel class="col-md-3"><div>Photo</div><input class="form-control" type="file" name="photo" id="artwork_photo" /><span class="photo-upload-results"></span> <div>Status</div><select class="form-control" name="status"><option value="public" selected>Public</option><option value="private">Private</option></select> </panel>'))
-                            .append($('<panel class="col-md-8"><div>Title</div><input class="form-control" type="text" name="title" required value="'+file.name+'"/> <div>Twitter</div><input class="form-control" type="text" name="twitter" id="twitter" required/> <div>Phone</div><input class="form-control" type="text" name="phone" required/> <div>Description</div><textarea class="form-control" type="text" name="description" /> </panel>'))
+                            .append($('<panel class="col-md-8"><div>Title</div><input class="form-control" type="text" name="title" required value="'+file.name+'"/> <div>Twitter</div><input class="form-control" type="text" name="twitter" id="twitter" required/> <div>Phone</div><input class="form-control" type="text" name="phone"/> <div>Description</div><textarea class="form-control" type="text" name="description" /> </panel>'))
                             .append($('<panel class="col-md-12">'))
                             .append($('<input type="hidden" name="user_name" value="' + user_name +'" />'))
                             // .append($('<input type="hidden" name="trackmp3" value="' + file.url +'" />'))
@@ -483,7 +483,7 @@ $(function () {
                 var node = $('<p class="file-panel col-md-12 col-xs-12"/>')
                             // .append($('<span class="file-name" />').text(file.name))
                             .append($('<panel class="col-md-3"><div>Photo</div><input class="form-control" type="file" name="photo" id="artwork_photo" /><span class="photo-upload-results"></span> <div>Status</div><select class="form-control" name="status"><option value="public" selected>Public</option><option value="private">Private</option></select> </panel>'))
-                            .append($('<panel class="col-md-8"><div>Title</div><input class="form-control" type="text" name="title" required value="'+file.name+'"/> <div>Twitter</div><input class="form-control" type="text" name="twitter" id="twitter" required/> <div>Phone</div><input class="form-control" type="text" name="phone" required/> <div>Description</div><textarea class="form-control" type="text" name="description" /> </panel>'))
+                            .append($('<panel class="col-md-8"><div>Title</div><input class="form-control" type="text" name="title" required value="'+file.name+'"/> <div>Twitter</div><input class="form-control" type="text" name="twitter" id="twitter" required/> <div>Phone</div><input class="form-control" type="text" name="phone"/> <div>Description</div><textarea class="form-control" type="text" name="description" /> </panel>'))
                             .append($('<panel class="col-md-12">'))
                             .append($('<input type="hidden" name="user_name" value="' + user_name +'" />'))
                             // .append($('<input type="hidden" name="trackmp3" value="' + file.url +'" />'))

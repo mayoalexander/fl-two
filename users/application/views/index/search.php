@@ -78,21 +78,24 @@ if (!isset($_GET['p'])) {
 if (!isset($_GET['q'])) {
     $search_query = 'Search Anything..';
 } else {
-  $search_query = 'Showing Results For: '.$_GET['q'];
+  $search_query = '<span class="text-muted">Searching For</span> '.$_GET['q'];
 }
 
 
 
 ?>
-<hr>
+<div class="container page-header">
+  <h1><?php echo $search_query; ?></h1>
     <?php
+      $posts = $config->getPostSearch($_GET['q']);
+      // $posts = $config->getPostFeatured($_GET['q']);
 
-    $posts = $config->getPostSearch($_GET['q']);
-    // $posts = $config->getPostFeatured($_GET['q']);
+      echo $posts;
 
-    echo $posts;
+      $db = $config->display_dashboard_feed($site['user']); 
+    ?>
+</div>
 
-    $db = $config->display_dashboard_feed($site['user']); ?>
 
 
 

@@ -282,6 +282,15 @@
       color:#303030;
     }
 
+    .site-break {
+      background-color:#202020;
+      text-align: center;
+      padding:3%;
+    }
+    .site-break .page-title {
+      margin:3%;
+      font-size:24px;
+    }
     .row {
       margin-left:0;
       margin-right:0;
@@ -459,6 +468,9 @@
       /*min-width: 250px;*/
       width:100%;
     }
+    .main-feed {
+      padding-top:5%;
+    }
     .jumbotron .container , .modal {
       margin-top: 20vh;
     }
@@ -489,6 +501,9 @@
     }
     .section-title {
       padding:3%;
+    }
+    .pagination-count {
+      font-size:14px;
     }
     .label-info {
       background-color:<?php echo $site['primary-color']; ?>;
@@ -615,6 +630,9 @@
         left: 100px;
         top: -112px;
         padding:8px;
+      }
+      .site-break {
+        padding:3%;
       }
 
     }

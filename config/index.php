@@ -1110,7 +1110,6 @@ class Blog
 
       // $sql = "SELECT * FROM feed 
       //   WHERE MATCH(blogtitle) AGAINST('$query')";
-
       // BUILD QUERY
       $result = mysqli_query($con,$sql);
 
@@ -1131,63 +1130,67 @@ class Blog
     // GRAB GLOBAL FEED
     // $feed_posts = $this->getPostsByUser(0,50,'admin');
     // shuffle($feed_posts);
-    foreach ($feed_posts as $track_num => $meta) {
-
-    if ($this->detect_type($meta['trackmp3'])=='mp3') {
-
-      // build play button
-      $play_button = '<a href="#" id="controls-'.$meta['id'].'" class="btn btn-default btn-xs btn-secondary-outline controls-play" data-src="'.$meta['trackmp3'].'" data-title="'.$meta['twitter'].' - '.$meta['blogtitle'].'" style="background-image:url(\''.$meta['photo'].'\');" ><i class="fa fa-play"></i></a>';
-
-      // build article row
-      $b .= '<panel class="row post-item" >';
-          $b .= '
-            <div class="seamless col-md-3 col-xs-12" >
-            '.$play_button.'
-            </div>';
-          $b .= '<div class="col-md-8 col-xs-8" >';
-          $b .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
-          $b .= '<p class="post-text" >'.$this->display_title($meta,false).'
-          '.$this->getStatsByTitle($meta['twitter'], $meta['blogtitle']).'
-          </p>';
-          $b .= '
-        </div>
-        <div class="col-md-1 col-xs-4 col-sm-6">
-          '.$this->display_controls($meta).'
-        </div>
-        
-
-        ';
-      $b .= '</panel>';
-    } else {
-
-      // build play button
-      // $play_button = '<a href="#" id="controls-'.$meta['id'].'" class="btn btn-default btn-xs btn-secondary-outline controls-play" data-src="'.$meta['trackmp3'].'" data-title="'.$meta['twitter'].' - '.$meta['blogtitle'].'" style="background-image:url(\''.$meta['photo'].'\');" ><i class="fa fa-play"></i></a>';
-      $play_button = '<div class="video-play-button"><i class="fa fa-play" ></i></div><video preload="metadata" src="'.$meta['trackmp3'].'" poster="'.$meta['photo'].'"></video>';
-      // $play_button = '<video controls preload="metadata" src="'.$meta['photo'].'"></video>';
-      // build article row
-      $b .= '<panel class="row post-item" >';
-          $b .= '
-            <div class="seamless col-md-3 col-xs-12" >
-            '.$play_button.'
-            </div>';
-          $b .= '<div class="col-md-8 col-xs-12" >';
-          $b .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
-          $b .= '<p class="post-text" >'.$this->display_title($meta,false).'
-          '.$this->getStatsByTitle($meta['twitter'], $meta['blogtitle']).'
-          </p>';
-          // $b .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
-          $b .= '
-        </div>
-        <div class="col-md-1">
-          '.$this->display_controls($meta,'user').'
-        </div>
-        
-        ';
-      $b .= '</panel>';
-
-
-    } // IF END
-  } // FOREACH END
+    if (isset($feed_posts)) {
+        foreach ($feed_posts as $track_num => $meta) {
+    
+            if ($this->detect_type($meta['trackmp3'])=='mp3') {
+    
+              // build play button
+              $play_button = '<a href="#" id="controls-'.$meta['id'].'" class="btn btn-default btn-xs btn-secondary-outline controls-play" data-src="'.$meta['trackmp3'].'" data-title="'.$meta['twitter'].' - '.$meta['blogtitle'].'" style="background-image:url(\''.$meta['photo'].'\');" ><i class="fa fa-play"></i></a>';
+    
+              // build article row
+              $b .= '<panel class="row post-item" >';
+                  $b .= '
+                    <div class="seamless col-md-3 col-xs-12" >
+                    '.$play_button.'
+                    </div>';
+                  $b .= '<div class="col-md-8 col-xs-8" >';
+                  $b .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
+                  $b .= '<p class="post-text" >'.$this->display_title($meta,false).'
+                  '.$this->getStatsByTitle($meta['twitter'], $meta['blogtitle']).'
+                  </p>';
+                  $b .= '
+                </div>
+                <div class="col-md-1 col-xs-4 col-sm-6">
+                  '.$this->display_controls($meta).'
+                </div>
+                
+    
+                ';
+              $b .= '</panel>';
+            } else {
+    
+              // build play button
+              // $play_button = '<a href="#" id="controls-'.$meta['id'].'" class="btn btn-default btn-xs btn-secondary-outline controls-play" data-src="'.$meta['trackmp3'].'" data-title="'.$meta['twitter'].' - '.$meta['blogtitle'].'" style="background-image:url(\''.$meta['photo'].'\');" ><i class="fa fa-play"></i></a>';
+              $play_button = '<div class="video-play-button"><i class="fa fa-play" ></i></div><video preload="metadata" src="'.$meta['trackmp3'].'" poster="'.$meta['photo'].'"></video>';
+              // $play_button = '<video controls preload="metadata" src="'.$meta['photo'].'"></video>';
+              // build article row
+              $b .= '<panel class="row post-item" >';
+                  $b .= '
+                    <div class="seamless col-md-3 col-xs-12" >
+                    '.$play_button.'
+                    </div>';
+                  $b .= '<div class="col-md-8 col-xs-12" >';
+                  $b .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
+                  $b .= '<p class="post-text" >'.$this->display_title($meta,false).'
+                  '.$this->getStatsByTitle($meta['twitter'], $meta['blogtitle']).'
+                  </p>';
+                  // $b .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
+                  $b .= '
+                </div>
+                <div class="col-md-1">
+                  '.$this->display_controls($meta,'user').'
+                </div>
+                
+                ';
+              $b .= '</panel>';
+    
+    
+            } // IF END
+          } // FOREACH END
+        } else {
+          echo 'No Results Found!';
+        } // end if isset($feed_posts)
 
     return $b;
   }
@@ -1906,6 +1909,15 @@ class Blog
 
 
   public function display_user_posts_new($user_name, $page=0) {
+    $page_read = (($page * 20)+1).' - '. (20 * ($page+1));
+    if ($page!==0) {
+      $prev = '<span class="pagination-count pull-right text-muted text-small"><a onclick=\'page("http://freelabel.net/users/index/stream/" , "'.($page-1).'")\' class="fa fa-arrow-left"></a>';
+    } else {
+      $prev='';
+    }
+
+
+    echo '<h2 class="page-header">Feed '.$prev.' '.$page_read.' <a onclick=\'page("http://freelabel.net/users/index/stream/" , "'.($page+1).'")\' class="fa fa-arrow-right"></a></span></h2>';
         // GRAB GLOBAL FEED
         $feed_posts = $this->getPostsByUser($page,20,$user_name);
 
@@ -2277,7 +2289,12 @@ public function getUserInfo($user_name) {
     }
     foreach ($data as $key => $value) {
       // load thumbnail 
-      $thumbnail =  str_replace('server/php/files/', 'server/php/files/thumbnail/', $value['image']);
+      $thumbnail =  str_replace('server/php/upload/', 'server/php/upload/thumb/', $value['image']);
+      if (file_exists($thumbnail)) {
+        $thumbnail = $thumbnail;
+      } else {
+        $thumbnail = $value['image'];
+      }
       $photos .= "
       <article class='full-width-article ".$colWidth." col-xs-12 eq-row-height' data-promo-id='".$value['id']."'>";
 

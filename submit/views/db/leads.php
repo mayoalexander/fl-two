@@ -254,7 +254,7 @@ $result = mysqli_query($con,"SELECT * FROM leads WHERE
 		}
 			$number_of_leads = count($leads);
 			$min_sales = 60;
-			$price = 10;
+			$price = 56;
 			// GET PERCENTAGACES
 			$sales_progress = round(($number_of_leads / $min_sales) * 100);
 			$total_sales 	= number_format($number_of_leads * $price);
