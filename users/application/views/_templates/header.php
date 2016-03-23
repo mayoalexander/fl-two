@@ -148,6 +148,15 @@
       display:inline-block;
       width:100%;
     }
+    .share-button {
+      padding: 5px;
+      text-align: center;
+      width:100%;
+    }
+    .post-item .dropdown-menu {
+      left:-85px;
+      padding:7%;
+    }
     .promo-container {
       overflow-x:hidden;
     }
@@ -496,10 +505,12 @@
     .dropdown-menu {
       background-color:rgba(0,0,0,0.7);
       color:#303030;
-      border:solid 1px #e3e3e3;
+      /*border:solid 1px #e3e3e3;*/
+      border: solid 2px #202020;
     }
     .dropdown-menu a {
       color: #e3e3e3;
+      border-radius:2px;
     }
     .feedback {
       font-size:10px;
@@ -600,6 +611,12 @@
       .promo-title , .promo-subtitle {
         font-size:1.75em;
       }
+      .post-item .dropdown-menu {
+        left: 100px;
+        top: -112px;
+        padding:8px;
+      }
+
     }
     </style>
 </head>

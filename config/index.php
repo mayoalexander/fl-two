@@ -3143,11 +3143,11 @@ $twitter_share = "#FLMAG | ".$twitter.'
       $twitter_share = urlencode($twitter_share);
       $current_likes = 0;
       $share_buttons = '
-        <li><a class="btn btn-social col-md-4 btn-twitter fa fa-twitter" target="_blank" href="https://twitter.com/intent/tweet?text='.$twitter_share.'"></a></li>
-        <li><a class="btn btn-social col-md-4 btn-tumblr fa fa-tumblr" target="_blank" href="http://www.tumblr.com/share/photo?source='.$post_photo.'&caption=%3Ca%20href%3D%22freelabel.net%22%3E'.urlencode($twitter).' '.urlencode($post_title).'%0A%0Afreelabel.net%3C%2Fa%3E%0A%0A'.urlencode($post_blogentry).'&name='.urlencode($twitter).' '.urlencode($post_title).'"></a></li>
-        <li><a class="btn btn-social col-md-4 btn-facebook fa fa-facebook" target="_blank"  href="https://www.facebook.com/sharer/sharer.php?u='.$page_url.'"></a></li>
-        <li><a class="btn btn-social col-md-4 btn-foursquare fa fa-heart-o share-post-button" data-type="like"   data-toggle="modal" data-target="#loginModal" href="#" ></a></li>
-        <li><a class="btn btn-social col-md-4 btn-openid fa fa-plus share-post-button" data-toggle="modal" data-type="add" data-target="#loginModal" href="#"
+        <li><a class="share-button btn-twitter fa fa-twitter" target="_blank" href="https://twitter.com/intent/tweet?text='.$twitter_share.'"></a></li>
+        <li><a class="share-button btn-tumblr fa fa-tumblr" target="_blank" href="http://www.tumblr.com/share/photo?source='.$post_photo.'&caption=%3Ca%20href%3D%22freelabel.net%22%3E'.urlencode($twitter).' '.urlencode($post_title).'%0A%0Afreelabel.net%3C%2Fa%3E%0A%0A'.urlencode($post_blogentry).'&name='.urlencode($twitter).' '.urlencode($post_title).'"></a></li>
+        <li><a class="share-button btn-facebook fa fa-facebook" target="_blank"  href="https://www.facebook.com/sharer/sharer.php?u='.$page_url.'"></a></li>
+        <li><a class="share-button btn-foursquare fa fa-heart-o share-post-button" data-type="like"   data-toggle="modal" data-target="#loginModal" href="#" ></a></li>
+        <li><a class="share-button btn-openid fa fa-plus share-post-button" data-toggle="modal" data-type="add" data-target="#loginModal" href="#"
         id="'.$post_id.'"
         data-user="'.$user_name.'"
         data-filepath="'.$post_mp3.'" 
@@ -3379,7 +3379,7 @@ $output .= '<a id="controls-'.$meta['id'].'" href="'.$url.'" target="_blank" cla
 // $output .= '<div id="controls-'.$meta['id'].'" class="btn btn-xs controls-options m-b-md" data-src="'.$meta['trackmp3'].'" ><i class="fa fa-share-alt" ></i></div>';
 $output .= '
 
-<div class="dropup">
+<div class="dropdown">
   <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     <i class="fa fa-share-alt" ></i>
   </button>

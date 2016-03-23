@@ -532,7 +532,7 @@ $(function () {
         // hide the tool bar
         $('.toolbar').hide();
         // hide the artwork photo for input for additional uploads
-        $(data.context.find('.file-panel div')).remove();
+        $(data.context.find('.file-panel')).remove();
         $(data.context.find('.file-panel .form-control')).remove();
         $(data.context.find('.file-panel .photo-upload-results')).remove();
         // $(data.context.find('.file-panel')).prepend('<button onclick="$(this).parent().hide()" class="close-button btn btn-primary pull-right" ><i class="fa fa-close"></i></button>');
