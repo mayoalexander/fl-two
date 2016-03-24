@@ -1909,15 +1909,16 @@ class Blog
 
 
   public function display_user_posts_new($user_name, $page=0) {
+    $page = (int)$page;
     $page_read = (($page * 20)+1).' - '. (20 * ($page+1));
-    if ($page!==0) {
-      $prev = '<span class="pagination-count pull-right text-muted text-small"><a onclick=\'page("http://freelabel.net/users/index/stream/" , "'.($page-1).'")\' class="fa fa-arrow-left"></a>';
-    } else {
+    if ($page===0) {
       $prev='';
+    } else {
+      $prev = '<a onclick=\'page("http://freelabel.net/users/index/stream/" , "'.($page-1).'")\' class="fa fa-arrow-left"></a>';
     }
 
+      echo '<h2 class="page-header feed-header"><span class="pull-left" >Feed</span> <span class="pagination-count pull-right text-muted text-small"> '.$prev.' '.$page_read.' <a onclick=\'page("http://freelabel.net/users/index/stream/" , "'.($page+1).'")\' class="fa fa-arrow-right"></a></span></h2>';
 
-    echo '<h2 class="page-header">Feed '.$prev.' '.$page_read.' <a onclick=\'page("http://freelabel.net/users/index/stream/" , "'.($page+1).'")\' class="fa fa-arrow-right"></a></span></h2>';
         // GRAB GLOBAL FEED
         $feed_posts = $this->getPostsByUser($page,20,$user_name);
 

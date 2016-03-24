@@ -82,8 +82,14 @@ $current_page = '0';
 </nav>
 
 
-<section class="site-break">
-  <span class="page-title">Join the movement today</span><button class="btn btn-secondary-outline">Get Started</button>
+<section class="site-break dropdown">
+  <span class="page-title">Stay Connected. Subscribe to FREELABEL Magazine</span>
+  <a class="btn btn-secondary-outline dropdown-toggle" href="http://twitter.com/@freelabelnet" target="_blank"><i class="fa fa-twitter" ></i> Follow Us</a>
+<!--   <ul class="dropdown-menu">
+    <li><a href="#">HTML</a></li>
+    <li><a href="#">CSS</a></li>
+    <li><a href="#">JavaScript</a></li>
+  </ul> -->
 </section>
 
 

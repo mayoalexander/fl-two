@@ -218,8 +218,6 @@
                     <ul class="pricing__feature-list">
                         <li class="pricing__feature">Upload and Download Unlimited Songs, Videos, Interviews, Radio Shows, Magazine Issues, Exclusve Music & much more..</li>
                         <li class="pricing__feature">Radio + Magazine App</li>
-                        <li class="pricing__feature">24/7 Radio Rotation</li>
-                        <li class="pricing__feature">Free Entry into FREELABEL Events</li>
                         <li class="pricing__feature">Post Directly FREELABEL Social Network Profiles</li>
                         <li class="pricing__feature">Create Promotions to Showcase full Albums or Projects.</li>
                     </ul>
@@ -231,8 +229,10 @@
                     <p class="pricing__sentence">For more advanced creators looking to make a impression to millions by get their content showcased exclusively on the Radio + Magazine.</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>59<span class="pricing__period">/ month</span></div>
                     <ul class="pricing__feature-list">
-                        <li class="pricing__feature">Includes Creator Features</li>
+                        <li class="pricing__feature">Includes Trial Features</li>
+                        <li class="pricing__feature">24/7 Radio Rotation</li>
                         <li class="pricing__feature">Magazine + Radio Interviews</li>
+                        <li class="pricing__feature">Free Entry into FREELABEL Events</li>
                         <li class="pricing__feature">Full Project Streams</li>
                         <li class="pricing__feature">Full One-Hour Radio Show Broadcasting Your Projects Live On-air</li>
                         <li class="pricing__feature">Event/Project Placement</li>
@@ -258,24 +258,6 @@
                     </ul>
                     <button class="pricing__action" data-type="exclusive" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
                 </div>
-<!--                 <div class="pricing__item">
-                    <h3 class="pricing__title"><i class="fa fa-map"></i> Touring</h3>
-                    <p class="pricing__sentence">Secure your performance & campaign on our Spring Tour with Raider Klan's Amber London and friends.</p>
-                    <div class="pricing__price"><span class="pricing__currency">$</span>550<span class="pricing__period">/ month</span></div>
-                    <ul class="pricing__feature-list">
-                        <li class="pricing__feature">Includes Lite + Creator Features</li>
-                        <li class="pricing__feature">Unlimited space</li>
-                        <li class="pricing__feature">Paid Monthly Residuals for Radio Streams, Views, Followers, & Subscriber Royalties</li>
-                        <li class="pricing__feature">Full Social Media Package</li>
-                        <li class="pricing__feature">Artist Management</li>
-                        <li class="pricing__feature">Event/Project Promotions</li>
-                        <li class="pricing__feature">Magazine Photoshoot</li>
-                        <li class="pricing__feature">Event + Tour Booking</li>
-                        <li class="pricing__feature">Recording, Mixing, & Mastering</li>
-
-                    </ul>
-                    <button class="pricing__action" data-type="tour" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
-                </div> -->
             </div>
         </section>
 

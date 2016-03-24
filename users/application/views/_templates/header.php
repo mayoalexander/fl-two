@@ -210,6 +210,15 @@
     .controls-play , .user-video-item {
       border-radius: 0px;
     }
+    .feed-header {
+      display: block;
+      margin-bottom: 50px;
+    }
+
+    .seamless {
+      padding-left:0;
+      padding-right:0;
+    }
     .controls-play {
     }
     .controls-play .fa-play-circle , .controls-play .fa-pause-circle {
@@ -356,6 +365,9 @@
     .featured-ad img {
       width: 100%;
     }
+    .featured-ad p {
+      font-size:24px;
+    }
 
 
     /* ------------------------------------------
@@ -475,7 +487,7 @@
       margin-top: 20vh;
     }
     .modal-content {
-      background-color: rgba(0,0,0,0.6);
+      background-color: rgba(0,0,0,0.7);
     }
     .add_new_promo_modal select {
       font-size: 24px;
