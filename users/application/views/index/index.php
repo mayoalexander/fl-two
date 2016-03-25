@@ -43,13 +43,6 @@ $current_page = '0';
     <h2 class="m-b-lg"><?php echo $site['description']; ?> <a href="<?php echo $site['http']; ?>users/login" class="jumbolink">Login Now</a>.</h2>
     <p class="m-b-lg"><?php echo $site['media']['photos']['front-page'][$r]['title']; ?> <a href="<?php echo 'http://freelabel.net/users/index/image/'.$site['media']['photos']['front-page'][$r]['id']; ?>" class="jumbolink">View Now</a>.</p>
     <a class="btn btn-secondary-outline m-b-md" href="http://freelabel.net/users/<?php echo $calltoaction_link; ?>" role="button"><?php echo $calltoaction; ?></a>
-    <!-- <ul class="list-inline social-share">
-     <li>
-       <a class="nav-link" href="http://freelabel.net/users/login/register">Register</a>
-     </li>
-      <li><a class="nav-link" href="http://twitter.com/<?php echo $site['twitter']; ?>#"><span class="icon-twitter"></span> @freelabelnet <?php //echo $site['landing-info']['twitter']; ?></a></li>
-      <li><a class="nav-link" href="https://www.facebook.com/theAMRecords/#"><span class="icon-facebook"></span> /freelabel<?php //echo $site['landing-info']['facebook']; ?></a></li>
-    </ul> -->
   </div>
 </header>
 

@@ -157,9 +157,6 @@ if (!$blog_post_data['poster']=='') {
   		.content video {
   			width:100%;
   		}
-/*  		.audioplayer-bar {
-  			height:1;
-  		}*/
   		#full_track_name {
 		    font-size: 1.75em;
 		    max-width: 275px;
@@ -238,7 +235,6 @@ if (!$blog_post_data['poster']=='') {
   				<a href="http://freelabel.net/u/<?php echo $blog_post_data['user_name']; ?>"><p class="subline"><?php echo $twitter ?></p></a>
   				<p><?php
   				include(ROOT.'config/share.php');
-				//echo 'post id : '.$post_id;
   				findByID($post_id);
   				?></p>
   			</div>

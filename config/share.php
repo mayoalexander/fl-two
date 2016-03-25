@@ -67,7 +67,7 @@ function findByID($post_id){
 			$current_likes = 0;
 			$share_buttons = '
 			<p id="post_'.$post_id.'" class="mag-view-buttons row" style="display:block;">
-				<a class="btn btn-social col-md-4 btn-twitter" target="_blank" href="https://twitter.com/intent/tweet?screen_name=&text='.$twitter_share.'">
+				<a class="btn btn-social col-md-4 btn-twitter" target="_blank" href="https://twitter.com/intent/tweet?text='.$twitter_share.'">
 				  <i class="fa fa-twitter"></i>
 				  Twitter
 				</a>

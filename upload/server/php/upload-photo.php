@@ -54,7 +54,7 @@ foreach ($_FILES as $file) {
 		// $dir = readdir('../');
 		// var_dump($dir);
 
-		$thumb = make_thumb($src ,$path_thumb , 400 );
+		$thumb = make_thumb($src ,$path_thumb , 600 );
 		// var_dump($thumb);
 		echo '<img style="width:100%;" src="'.$thumb.'"">';
 		echo '<input type="hidden" name="photo" id="photo" value="'.$path.'"">';

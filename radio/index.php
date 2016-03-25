@@ -1,9 +1,9 @@
 <?php
-header('Location: http://freelabel.net/users/');
-exit;
+// header('Location: http://streaming.radio.co/s95fa8cba2/listen');
+// exit;
 
-include('../config/radio-player.php');
-exit;
+// include('../config/radio-player.php');
+// exit;
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 /*	------------------------------------ //
@@ -21,13 +21,10 @@ if(stripos($ua,'android') !== false) { // && stripos($ua,'mobile') !== false) {
 		r = confirm("Do you wish to proceed with the FREELABEL App for your phone for FREE?");
 		if (r==true){
 			window.location = \'http://freelabel.net/radio/FREELABEL.apk\';
+			alert("open application");
 		} else {
-			//window.location = \'http://stardust.wavestreamer.com:9614/listen.m3u?sid=1\';
-			// window.location = \'http://public.radio.co/stations/s95fa8cba2/m3u\';
-			//window.location = \'http://freelabel.net/config/freelabel-radio-player.m3u\';
-			window.location = \'http://streaming.radio.co:80/s95fa8cba2/listen\';
-
-			
+			alert("show the streamer");
+			window.location = \'http://streaming.radio.co/s95fa8cba2/listen\';
 		}
 	}
 	</script>
