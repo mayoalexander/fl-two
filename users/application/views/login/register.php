@@ -247,13 +247,14 @@
                     <div class="pricing__price"><span class="pricing__currency">$</span>200<span class="pricing__period">/ month</span></div>
                     <ul class="pricing__feature-list">
                         <li class="pricing__feature">Includes Creator Features</li>
-                        <li class="pricing__feature">Earn Money Monthly with Residuals for Radio Streams, Views, Followers, & Subscriber Royalties</li>
-                        <li class="pricing__feature">Full Social Media Package</li>
+                        <li class="pricing__feature">Public Relations</li>
                         <li class="pricing__feature">Artist Management</li>
-                        <li class="pricing__feature">Event/Project Promotions</li>
-                        <li class="pricing__feature">Magazine Photoshoot</li>
                         <li class="pricing__feature">Event + Tour Booking</li>
+                        <li class="pricing__feature">Earn Monthly Royalties for Radio Streams, Views, Followers, & Subscribers</li>
+                        <li class="pricing__feature">Full Social Media Package</li>
+                        <li class="pricing__feature">Project Placement</li>
                         <li class="pricing__feature">Recording, Mixing, & Mastering</li>
+                        <li class="pricing__feature">Video + Photoshoots</li>
 
                     </ul>
                     <button class="pricing__action" data-type="exclusive" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>

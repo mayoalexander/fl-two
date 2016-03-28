@@ -36,15 +36,13 @@
   }
 }
 
-/*  .player-trigger {
-    border-radius: 4rem;
-  }*/
 </style>
 <header class="jumbotron" ></header>
 <header class="">
   <div class="container jumbotron-body">
       <hr>
-      <h1 class="display-3"><button class="player-trigger btn btn-secondary-outline"><i class="fa fa-circle-o-notch fa-spin"></i> Loading</button> FREELABEL RADIO</h1>
+      <h1 class="display-3"><button class="radio-menu player-trigger audio-player-title btn btn-secondary-outline"><i class="fa fa-circle-o-notch fa-spin"></i> Loading</button> FREELABEL RADIO</h1>
+      <input type="range" id="volume-meter"></input>
       <p>Streaming Live 24/7 with something ALWAYS going on.</p>
       <h2 class="radioplayer"
       data-elapsedtime="false"
@@ -66,41 +64,4 @@
 
 
 <script>$('.radioplayer').radiocoPlayer();</script>
-<script type="text/javascript">
-
-  function isPlaying(audelem) { return !audelem.paused; }
-  function changePlayer(status) {
-    // alert(status);
-    if (status===true) {
-      var status = 'play';
-    } else {
-      var status = 'pause';
-    }
-    var build = '<i class="fa fa-'+status+'"></i> ';
-    $('.player-trigger').html(build);
-  }
-
-  // play audio on load
-  $(function(){
-    $('#audio_player').get(0).play();
-    $('#audio_player').get(0).volume = 0.05;
-    changePlayer(false);
-  });
-  $('.player-trigger').click(function(event){
-    event.preventDefault();
-    var okay = $(this);
-    var audioPlayer = $('#audio_player').get(0);
-    // audioPlayer.play();
-    if (isPlaying(audioPlayer)===true) {
-      audioPlayer.pause();
-      changePlayer(true);
-    } else {
-      audioPlayer.play();
-      changePlayer(false);
-    }
-  });
-
-
-
-
-</script>
+<script type="text/javascript" src="http://freelabel.net/js/radio.js"></script>

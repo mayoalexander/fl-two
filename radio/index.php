@@ -1,6 +1,6 @@
 <?php
-// header('Location: http://streaming.radio.co/s95fa8cba2/listen');
-// exit;
+header('Location: http://freelabel.net/users/index/radio/');
+exit;
 
 // include('../config/radio-player.php');
 // exit;

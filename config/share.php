@@ -18,8 +18,6 @@ function findByID($post_id){
 			$post_title = trim($post_title); $post_title = str_replace('Ft.', 'f.', $post_title);
 			$twitter = trim($post_data['twitter']);
 			
-			
-			
 			$post_photo = $post_data['photo'];
 			$twitpic = $post_data['twitpic'];
 			if (strpos($twitpic, 'cards.twitter')) {
