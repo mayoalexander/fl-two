@@ -684,12 +684,11 @@
         </li>
         <li class="logo-menu" style='border-right:none;' ><a href="<?php echo $site['http']; ?>users/"><img src="<?php echo $site['logo']; ?>" style="max-height:48px;" ></a></li>
         <li class="radio-menu pull-right"  style='border-right:none;' >
+          <a class="audio-player-title codrops-icon codrops-icon-prev" href="<?php echo $site['http']; ?>radio/"><span><i class="radio-player-control fa fa-play" ></i> Stream</span></a>
           <!-- hidden audioplayer  -->
-          <audio id="audio_player">
+          <audio class="audio-player">
             <source src="http://streaming.radio.co/s95fa8cba2/listen">
           </audio>
-          <a class="audio-player-title codrops-icon codrops-icon-prev" href="<?php echo $site['http']; ?>radio/"><span><i class="radio-player-control fa fa-play" ></i> Stream</span></a>
-          <audio class="audio-player"></audio>
         </li>
       </ul>
   </div>

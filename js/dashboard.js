@@ -6,6 +6,18 @@ vars[key] = value;
 return vars;
 }
 
+function stopAllAudio() {
+  var data = $('.audio-player').get(0).pause();
+
+  var videos = $('video');
+  // var videostop = $('video').pause();
+
+  $.each(videos, function( index, value ) {
+    console.log(value.pause());
+  });
+
+}
+
 
 
   $(function(){
@@ -48,6 +60,7 @@ return vars;
 
     // Main Feed Videon Controls Functionality
     $('video').click(function(){
+      stopAllAudio();
       var element = $(this).get(0);
       var siblings = $(this).siblings();
       var parent = $(this).parent();
@@ -217,6 +230,7 @@ $(function() {
 
     //  ---------- play button ------------ /
     $('.controls-play').click(function(event){
+      stopAllAudio();
       event.preventDefault();
       var audioFile = $(this).attr('data-src');
       var audioTitle = $(this).attr('data-title');
