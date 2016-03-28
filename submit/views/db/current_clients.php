@@ -25,6 +25,8 @@ $config = new Blog();
 				<td>Type</td>
 				<td>Stats</td>
 				<td>Email</td>
+				<td>Notes</td>
+				<td>Rating</td>
 				<td>Phone</td>
 				<td>Twitter</td>
 				<td>Date Created</td>
@@ -120,6 +122,8 @@ $config = new Blog();
 						  	$submitted_tracks_status = '';
 						  	$profile_bool = '';
 						  	$promos = '';
+						  	$user_notes = '';
+						  	$user_rating = '';
 
 
 						  	$name = $row['user_name'];
@@ -144,19 +148,14 @@ $config = new Blog();
 							} else {
 								$promos = count($promos);
 							}
-							// echo '<pre>';
-							// var_dump($promos);
-							// exit;
 
-							// $expiration_date = date("+ 28 days",$date_created);
-							// $showcase_date = strtotime("+ 10 days",strtotime($date_created));
-							// $showcase_date= date('m/d', $showcase_date);
-							// $expiration_date_text = date('m/d', $expiration_date);
 
 						  	$user_id = $row['user_id'];
 						  	$user_email = $row['user_email']; //<a href="mailto:">'.$user_email.'</a>
 						  	$user_email_link = '<a href="mailto:'.$user_email.'?subject="FREELABEL%20>'.$user_email.'</a>'; //
 						  	$user_twitter = $row['twitter'];
+						  	$user_notes = $row['notes'];
+						  	$user_rating = $row['rating'];
 
 						  	$active = $row['active'];
 						  	$client_profile = "http://x.freelabel.net/".strtolower($twitter);
@@ -309,6 +308,12 @@ FREELABEL Featured: ".$name." (".$twitter.")
 											    </td>
 											    <td >
 											    	<span class="edit" id="email-'.$user_id.'">'.$user_email.'</span>
+											    </td>
+											    <td >
+											    	<span class="edit" id="notes-'.$user_id.'">'.$user_notes.'</span>
+											    </td>
+											    <td >
+											    	<span class="edit" id="rating-'.$user_id.'">'.$user_rating.'</span>
 											    </td>
 											    <td>
 											    	'.$profile_phone.'

@@ -11,12 +11,12 @@
     $('.audio-player-title').html(build);
   }
 
-  // play audio on load
-  $(function(){
+  function autoStart() {
     $('.audio-player').get(0).play();
     $('.audio-player').get(0).volume = 0.5;
     changePlayer(false);
-  });
+    // alert('auto starting!');
+  }
 
   // volume control
   $('#volume-meter').change(function(event){

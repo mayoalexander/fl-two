@@ -188,6 +188,7 @@ class Account
 			$update_status = $update['user_title'];
 		} else {
 			// echo 'it didnt work!';
+
 			// print_r($sql);
 			$update_status = false;
 		}
@@ -198,6 +199,34 @@ class Account
 	public function updateUserType($update) {
 		include(ROOT.'inc/huge.php');
 		$sql = "UPDATE  `hugee`.`users` SET  `account_type` =  '".$update['user_title']."' WHERE  `users`.`user_id` ='".$update['user_id']."' LIMIT 1";
+		$approval_query = mysqli_query($con,$sql);
+		if ($approval_query) {
+			$update_status = $update['user_title'];
+		} else {
+			// echo 'it didnt work!';
+			// print_r($sql);
+			$update_status = false;
+		}
+		return $update_status;
+	}
+
+	public function updateUserNotes($update) {
+		include(ROOT.'inc/huge.php');
+		$sql = "UPDATE  `hugee`.`users` SET  `notes` =  '".$update['user_title']."' WHERE  `users`.`user_id` ='".$update['user_id']."' LIMIT 1";
+		$approval_query = mysqli_query($con,$sql);
+		if ($approval_query) {
+			$update_status = $update['user_title'];
+		} else {
+			// echo 'it didnt work!';
+			// print_r($sql);
+			$update_status = false;
+		}
+		return $update_status;
+	}
+
+	public function updateUserData($update, $col = 'notes') {
+		include(ROOT.'inc/huge.php');
+		$sql = "UPDATE  `hugee`.`users` SET  `$col` =  '".$update['user_title']."' WHERE  `users`.`user_id` ='".$update['user_id']."' LIMIT 1";
 		$approval_query = mysqli_query($con,$sql);
 		if ($approval_query) {
 			$update_status = $update['user_title'];
@@ -610,6 +639,18 @@ if ($_POST['user_account_id']) {
 		$update['user_title'] = $_POST['title'];
 		//echo 'editing Type: ';
 		echo $photos->updateUserType($update);
+
+	} elseif (strpos($_POST['user_account_id'], 'notes')===0){
+		$update['user_id'] = str_replace('notes-', '', $_POST['user_account_id']) ;
+		$update['user_title'] = $_POST['title'];
+		//echo 'editing Type: ';
+		echo $photos->updateUserNotes($update);
+
+	} elseif (strpos($_POST['user_account_id'], 'rating')===0){
+		$update['user_id'] = str_replace('rating-', '', $_POST['user_account_id']) ;
+		$update['user_title'] = $_POST['title'];
+		//echo 'editing Type: ';
+		echo $photos->updateUserData($update,'rating');
 
 	} else {
 		echo 'nothing going on ';

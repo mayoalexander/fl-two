@@ -70,7 +70,7 @@ $current_page = '0';
   <panel class="col-md-3 col-xs-12 pull-right background-tint-promo " style='text-align:right;overflow-x:hidden;'>
     <!-- radio player --> 
     <h3 class='text-muted'><a href="http://freelabel.net/radio/"><span style="color:red;" >LIVE</span> ON AIR</a></h3>
-    <script src="https://embed.radio.co/player/c1389e1.js"></script>
+    <!-- <script src="https://embed.radio.co/player/c1389e1.js"></script> -->
   </panel>
 </nav>
 
@@ -101,5 +101,9 @@ $current_page = '0';
       //alert(tabName + ' clicked!');
     });
   });
-
+</script>
+<script type="text/javascript">
+$(function(){
+  autoStart();
+});
 </script>

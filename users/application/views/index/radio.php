@@ -65,3 +65,4 @@
 
 <script>$('.radioplayer').radiocoPlayer();</script>
 <script type="text/javascript" src="http://freelabel.net/js/radio.js"></script>
+<script type="text/javascript">autoStart();</script>
