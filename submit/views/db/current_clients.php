@@ -404,9 +404,9 @@ FREELABEL Featured: ".$name." (".$twitter.")
 		var email = $(this).attr('data-email');
 		var action = $(this).attr('data-action');
 		if (action == 'profile') {
-			var message = 'You\'re almost done! You will need a finish completing your profile at FREELABEL.NET so we can have what we need to start building your showcases! If you have any questions, issues, or feedback, feel free to call us at 347-994-0267!\n\n\nThank you!\n\nhttp://freelabel.net/';
+			var message = 'You\'re almost done! You will need a finish completing your profile at FREELABEL.NET so we can have what we need to start building your showcases! If you have any questions, issues, or feedback, please feel free to call us at 347-994-0267!\n\n\nThank you!\n\nhttp://freelabel.net/';
 		} else if (action == 'songs') {
-			var message = 'Uh ohh! You havent uploaded any music to your profile! To get the full experience of your FREELABEL account, you\'ll need to upload music to your account! Please login to FREELABEL.net so we can have what we need to get started working on your campaigns. If you have any questions, issues, or feedback, feel free to call us at 347-994-0267!\n\n\nThank you!\n\nhttp://freelabel.net/';
+			var message = 'Uh ohh! You havent uploaded any music to your profile! To get the full experience of your FREELABEL account, you\'ll need to upload music to your account! Please login to FREELABEL.net so we can have what we need to get started working on your campaigns. If you have any questions, issues, or feedback, please feel free to call us at 347-994-0267!\n\n\nThank you!\n\nhttp://freelabel.net/';
 		}
 		sendEmail(email,message);
 	});

@@ -1,3 +1,4 @@
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <div class="container-fixed">
 <?php
  include_once('/home/content/59/13071759/html/config/index.php');
@@ -181,7 +182,9 @@ if ($_POST['live'] || $_GET['live']) {
                       echo '<script>console.log('.$timeOutTime.');</script>';
                       $content_SOM .= '<script>
                       function execAutoPromote(linkToTweet) {
-                        window.open(linkToTweet);
+                        $.post(linkToTweet,"",function(data){
+                          alert("Succesfully Posted Tweet! ----- " + data);
+                        });
                         console.log(linkToTweet);
                       }
                       setTimeout( function () { execAutoPromote("'.$link_to_tweet.'"); }  , '.$timeOutTime.');

@@ -9,13 +9,13 @@ $syst = new Config();
 ?>
 <?php
 // include('../rssreader/cosign.php');
-$url= ROOT.'admin_controller.php';
-if (file_exists($url)) {
-  include($url);
+// $url= ROOT.'admin_controller.php';
+// if (file_exists($url)) {
+//   include($url);
 //  echo 'yes!';
-} else {
-  // echo "yes!";
-}
+// } else {
+//   echo "No!";
+// }
 echo $syst->showAdminController();
 
 // var_dump($syst);
@@ -25,6 +25,7 @@ echo $syst->showAdminController();
 ?>
 <script>
 function openDashOptions() {
+    event.preventDefault();
 		$('#advanced_options').slideToggle('fast');
 	}
 function downloadSoundcloud() {
@@ -37,8 +38,15 @@ $(function(){
 
 	$( "#soundcloud-form" ).submit(function( event ) {
 		event.preventDefault();
+
 		$('#advanced_options').slideToggle('fast');
 		soundcloud_link = document.getElementById('soundcloud_link').value;
+
+    // validation 
+    if (soundcloud_link==='') {
+      alert('nothing entered!');
+      return;
+    }
 		var s = "youtu";
 		if (soundcloud_link.indexOf('soundcloud') > -1) {
       // alert('its a soundcloud!');
@@ -79,6 +87,9 @@ $(function(){
   #twitpic button {
       border-radius: 0;
   }
+  .downloader, .soundcloud-download {
+    display: inline-block;
+  }
 </style>
 <?php
 $soundcloud_downloader = "
@@ -86,7 +97,7 @@ $soundcloud_downloader = "
 	<input type='text' id='soundcloud_link' class='form-control' placeholder='Paste Soundcloud URL'>
 	<span class='input-group-btn'>
 		<input type='hidden' name='ctrl' value='rss'>
-		<button class='btn btn-xs btn-default' onclick=''>Download</button>
+		<button class='btn btn-success-outline' onclick=''>Download</button>
 	</span>
 </form>
 ";
@@ -116,30 +127,41 @@ $twitpic_downloader = "
 
 
 
-			echo '<div id="twitpic" class="" style="">';
+			echo '<div id="" class="navbar navbar-light bg-faded navbar-fixed-bottom" style="">';
+
+
+      echo '<a class="navbar-brand" href="#"></a>
+  <ul class="nav navbar-nav">
+  <button onclick="openDashOptions()" class="btn btn-warning-outline" ><i class="fa fa-cog"></i></button>
+
+  <span class="downloader">
+    '.$soundcloud_downloader.'
+  </span>
+  </ul>
+';
+  // 
 				echo '<div id="advanced_options" class="" style="display:none;">';
 
 
 				echo '<div class="btn-group">';
 					echo '<a href="https://studio.radio.co/stations/s95fa8cba2" target="_blank" class="btn btn-danger btn-xs" >RADIO</a>';
 					echo '<a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&live=1" target="_blank" class="btn btn-success btn-xs" >LIVE</a>';
-					echo '<a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&organic=1&recent=1" target="_blank" class="btn btn-success btn-xs" >PROMO</a>';
+          echo '<a href="https://web.crowdfireapp.com/#/grow/1018532587-tw/nonFollowers" target="_blank" class="btn btn-danger btn-xs">CROWDFIRE</a>';
 					echo '<a href="https://ads.twitter.com/accounts/gueorv/cards/show?url_id=9fou" target="_blank" class="btn btn-primary btn-xs" >SOMCard</a>';
 
 					echo '<a href="https://tweetdeck.twitter.com/" target="_blank" class="btn btn-primary btn-xs" >TWEETDECK</a>';			//https://trello.com/b/od3WonId/production
 					echo '<a href="https://trello.com/b/od3WonId/production" target="_blank" class="btn btn-primary btn-xs" >TRELLO</a>';
-					echo '<a href="https://inbox.google.com/u/0/?pli=1" target="_blank" class="btn btn-primary btn-xs" >MAIL</a>';
+					// echo '<a href="https://inbox.google.com/u/0/?pli=1" target="_blank" class="btn btn-primary btn-xs" >MAIL</a>';
 				echo '</div>';
   				// echo '<details class="details-panel" style="max-height:200px;overflow-y:scroll;" >';
   				// 	include(ROOT.'tweeter.php');
   				// echo '</details>';
 					//echo '<div class="panel-body">';
-						echo $soundcloud_downloader;
+						
 						//echo $twitpic_downloader;
 					//echo '</div>';
 				echo "</div>";
 
-			echo "<button onclick='openDashOptions()' class='btn btn-xs btn-warning' ><i class='fa fa-cog'></i> Controls</button>";
 			echo '</div>';
 
 			//echo $admin_controls;
@@ -166,7 +188,7 @@ $twitpic_downloader = "
   <section class="jubmotron container">
     <h3>Instagram App</h3>
     <p>Instagram App for loggin in and viewing users, searching, and profiles.</p>
-    <a class="btn btn-primary" target="_blank" href="http://freelabel.net/vendor/instagram/example/">Instagram</a>
+    <a class="btn btn-primary-outline" target="_blank" href="http://freelabel.net/vendor/instagram/example/">Instagram</a>
   </section>
 </div>
 

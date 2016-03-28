@@ -160,6 +160,10 @@ if ($_POST['live'] || $_GET['live']) {
                       $content_SOM .= '<script>
                       function execAutoPromote(linkToTweet) {
                         window.open(linkToTweet);
+                        alert("sending tweet!");
+                        $.post(linkToTweet,'',function(){
+                          alert("Okay it successfully sent!");
+                        });
                         console.log(linkToTweet);
                       }
                       setTimeout( function () { execAutoPromote("'.$link_to_tweet.'"); }  , '.$timeOutTime.');

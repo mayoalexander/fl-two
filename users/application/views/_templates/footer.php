@@ -47,6 +47,7 @@
 <script src="http://freelabel.net/config/globals.js"></script>
 <script src="http://freelabel.net/landing/view/nexus/js/classie.js"></script>
 <script src="http://freelabel.net/landing/view/nexus/js/gnmenu.js"></script>
+<script src="http://freelabel.net/js/radio.js"></script>
 <script type="text/javascript" src="http://freelabel.net/js/jquery.jeditable.js"></script>
 <script>
   new gnMenu( document.getElementById( 'gn-menu' ) );

@@ -79,6 +79,7 @@ $twitpic_downloader = "
 
 				echo '<div class="btn-group">';
 					echo '<a href="https://studio.radio.co/stations/s95fa8cba2" target="_blank" class="btn btn-danger btn-xs" >RADIO</a>';
+					echo '<a href="https://web.crowdfireapp.com/#/grow/1018532587-tw/nonFollowers" class="btn btn-danger btn-xs">CROWDFIRE</a>';
 					// echo '<a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&live=1" target="_blank" class="btn btn-success btn-xs" >LIVE</a>';
 					// echo '<a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&organic=1&recent=1" target="_blank" class="btn btn-success btn-xs" >PROMO</a>';
 					echo '<a href="https://ads.twitter.com/accounts/gueorv/cards/show?url_id=9fou" target="_blank" class="btn btn-primary btn-xs" >SOMCard</a>';
