@@ -316,7 +316,7 @@ FREELABEL Featured: ".$name." (".$twitter.")
 											    	<span class="edit" id="rating-'.$user_id.'">'.$user_rating.'</span>
 											    </td>
 											    <td>
-											    	'.$profile_phone.'
+											    	<a href="#" class="client_phone" data-user="'.$name.'">'.$profile_phone.'</a>
 											    </td>
 											    <td>
 											    	<a href="http://twitter.com/'.$profile_twitter.'" target="_blank">'.$profile_twitter.'</a>
@@ -427,6 +427,17 @@ FREELABEL Featured: ".$name." (".$twitter.")
      	//type    : 'textarea',
         name : 'title'
      });
+
+	$('.client_phone').click(function(event){
+		event.preventDefault();
+		var phonenumber = $(this).text();
+		var user_name = $(this).attr('data-user');
+		var url = 'http://freelabel.net/users/dashboard/sendContact';
+		alert(phonenumber);
+		$.post(url, { number : phonenumber, user_name : user_name}, function(data){
+			alert(data);
+		});
+	});
 	function showOptions(id) {
 		$('#follow_up_options' + id).toggle();
 		//alert(this);

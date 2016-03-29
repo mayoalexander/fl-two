@@ -419,7 +419,7 @@ $(function () {
             data.formData = inputs.serializeArray();
         });
 
-        // alert(file.type);
+        alert(file.type); 
 
         switch(file.type) {
             case 'image/jpeg':
@@ -461,6 +461,15 @@ $(function () {
                             .append($('<input type="hidden" name="user_email" value="' + user_email +'" />'));
                 break;
             case 'audio/mp3':
+                var node = $('<p class="file-panel col-md-12 col-xs-12"/>')
+                            // .append($('<span class="file-name" />').text(file.name))
+                            .append($('<panel class="col-md-3"><div>Photo</div><input class="form-control" type="file" name="photo" id="artwork_photo" /><span class="photo-upload-results"></span> <div>Status</div><select class="form-control" name="status"><option value="public" selected>Public</option><option value="private">Private</option></select> </panel>'))
+                            .append($('<panel class="col-md-8"> <div>Title</div><input class="form-control" type="text" name="title" required value="'+file.name+'"/>  <div>Twitter</div><input class="form-control" type="text" name="twitter" id="twitter" required/> <div>Phone</div><input class="form-control" type="text" name="phone"/> <div>Description</div><textarea class="form-control" type="text" name="description" /> </panel>'))
+                            .append($('<input type="hidden" name="user_name" value="' + user_name +'" />'))
+                            // .append($('<input type="hidden" name="trackmp3" value="' + file.url +'" />'))
+                            .append($('<input type="hidden" name="user_email" value="' + user_email +'" />'));
+                break;
+            case 'audio/mpeg':
                 var node = $('<p class="file-panel col-md-12 col-xs-12"/>')
                             // .append($('<span class="file-name" />').text(file.name))
                             .append($('<panel class="col-md-3"><div>Photo</div><input class="form-control" type="file" name="photo" id="artwork_photo" /><span class="photo-upload-results"></span> <div>Status</div><select class="form-control" name="status"><option value="public" selected>Public</option><option value="private">Private</option></select> </panel>'))

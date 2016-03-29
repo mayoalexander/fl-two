@@ -84,6 +84,17 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/dev');
     }
+    function sendContact() 
+    {
+        $numb = $_POST['number'];
+        var_dump($numb);
+        if (mail('notifications@freelabel.net','Client Booking - ' . $numb, 'Here is the number: '.$numb)) {
+            echo 'it sent out!';
+        } else {
+            echo 'not sent!';
+        }
+
+    }
     function push()
     {
         $this->view->render('dashboard/push',true);
