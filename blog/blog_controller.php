@@ -70,16 +70,13 @@ if (isset($_GET['user_twitter_name']) && isset($_GET['blog_title']) && $_GET['bl
 	ORDER BY `id` DESC LIMIT 1");
 	$debug[] = 'FIND BY title';
 } 
-// print_r($_GET);
-// print_r($debug);
-// print_r($result2);
-
 
 		if($row = mysqli_fetch_array($result2))
 						{
 							$blog_post_data = $row;
 			//	echo '<hr><hr><pre>'.print_r($_GET).' <hr>: '.print_r($row).'</pre>';
 			//exit;
+
 
 							//print_r($row);
 							$post_id 			= 	$row['id'];
@@ -88,6 +85,7 @@ if (isset($_GET['user_twitter_name']) && isset($_GET['blog_title']) && $_GET['bl
 							$twitter 			= 	$row['twitter'];
 							$post_type 			= 	$row['type'];
 							$blog_story_url 	= 	$row['blog_story_url'];
+							$current_views 	= 	$row['views'];
 							$trackmp3 	= 	$row['trackmp3'];
 
 							if ($row['type']=='single') { // IF SINGLE, GRAB PHOTO
@@ -148,5 +146,13 @@ $twitter_share 	= urlencode(
 						} else {
 							//echo 'it didnt work'.$post_id;
 						}
+
+// echo '<pre>';
+
+// grab id and add to database 
+$new_view = $current_views+1;
+
+$sql = "UPDATE  `amrusers`.`feed` SET  `views` =  '$new_view' WHERE  `feed`.`id` = $post_id LIMIT 1";
+$addStats = mysqli_query($con,$sql);
 
 
