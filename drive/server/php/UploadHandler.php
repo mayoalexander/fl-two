@@ -1228,7 +1228,7 @@ class UploadHandler
 
 
         // get rid of bad extentions
-        $find = array('.mp3','.png','.jpeg','.jpg');
+        $find = array('.mp3','.png','.jpeg','.jpg','.mp4');
         $filedata['blogtitle'] = str_replace($find, '', $filedata['blogtitle']);
 
 
