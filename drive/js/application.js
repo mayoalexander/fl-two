@@ -1,4 +1,4 @@
-$(function(){
+function fileValidation(){
 
     setInterval(function(){
         
@@ -100,6 +100,4 @@ $(function(){
 
 
 
-
-
-});
+}
