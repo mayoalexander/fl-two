@@ -12,8 +12,17 @@ $temp =$sourcePath[0] ;
 
 function make_thumb($src, $dest, $desired_width) {
 
+	$arr = array_reverse(explode('.', $src));
+	$ext = strtolower($arr[0]);
+
+	if ($ext==='png') {
+		$source_image = imagecreatefrompng($src);
+	} elseif($ext==='jpeg' || $ext==='jpg') {
+		$source_image = imagecreatefromjpeg($src);
+	} elseif($ext==='jpeg' || $ext==='jpg') {
+		$source_image = imagecreatefromgif($src);
+	}
 	/* read the source image */
-	$source_image = imagecreatefromjpeg($src);
 	$width = imagesx($source_image);
 	$height = imagesy($source_image);
 	
@@ -27,7 +36,14 @@ function make_thumb($src, $dest, $desired_width) {
 	imagecopyresampled($virtual_image, $source_image, 0, 0, 0, 0, $desired_width, $desired_height, $width, $height);
 	
 	/* create the physical thumbnail image to its destination */
-	imagejpeg($virtual_image, $dest);
+		
+	if ($ext==='png') {
+		imagepng($virtual_image, $dest);
+	} elseif($ext==='jpeg' || $ext==='jpg') {
+		imagejpeg($virtual_image, $dest);
+	} elseif($ext==='gif') {
+		imagegif($virtual_image, $dest);
+	}
 	$res = str_replace('../../../', 'http://freelabel.net/', $dest);
 	return $res;
 }

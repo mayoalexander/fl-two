@@ -1715,7 +1715,7 @@ class Blog
                       $b['posts'] .= '<div class="col-md-8 col-xs-12" >';
                       $b['posts'] .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
                       $b['posts'] .= '<p class="post-text" >'.$this->display_title($meta,true).'</p>';
-                      $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
+                      $b['posts'] .= '<span class="post-item-stats"><i class="fa fa-eye" ></i> '.$meta['views'].'</span>';// $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
                       $b['posts'] .= '
                     </div>
                     <div class="col-md-1">'.$this->display_controls($meta,'user').'</div>
@@ -1734,7 +1734,7 @@ class Blog
                       $b['posts'] .= '<div class="col-md-8 col-xs-12" >';
                       $b['posts'] .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
                       $b['posts'] .= '<p class="post-text" >'.$this->display_title($meta,true).'</p>';
-                      $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
+                      $b['posts'] .= '<span class="post-item-stats"><i class="fa fa-eye" ></i> '.$meta['views'].'</span>';// $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
                       $b['posts'] .= '
                     </div>
                     <div class="col-md-1">'.$this->display_controls($meta,'user').'</div>
@@ -1754,7 +1754,7 @@ class Blog
                       $b['posts'] .= '<div class="col-md-8 col-xs-12" >';
                       $b['posts'] .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
                       $b['posts'] .= '<p class="post-text" >'.$this->display_title($meta,true).'</p>';
-                      $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
+                      $b['posts'] .= '<span class="post-item-stats"><i class="fa fa-eye" ></i> '.$meta['views'].'</span>';// $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
                       $b['posts'] .= '
                     </div>
                     <div class="col-md-1">'.$this->display_controls($meta,'user').'</div>
@@ -1775,7 +1775,7 @@ class Blog
                       $b['posts'] .= '<div class="col-md-8 col-xs-12" >';
                       $b['posts'] .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
                       $b['posts'] .= '<p class="post-text" >'.$this->display_title($meta,true).'</p>';
-                      $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
+                      $b['posts'] .= '<span class="post-item-stats"><i class="fa fa-eye" ></i> '.$meta['views'].'</span>';// $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
                       $b['posts'] .= '
                     </div>
                     <div class="col-md-1">'.$this->display_controls($meta,'user').'</div>
@@ -1812,7 +1812,7 @@ class Blog
                       $b['posts'] .= '<div class="col-md-8 col-xs-12" >';
                       $b['posts'] .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
                       $b['posts'] .= '<p class="post-text" >'.$this->display_title($meta,true).'</p>';
-                      $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
+                      $b['posts'] .= '<span class="post-item-stats"><i class="fa fa-eye" ></i> '.$meta['views'].'</span>';// $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
                       $b['posts'] .= '
                     </div>
                     <div class="col-md-1">'.$this->display_controls($meta,'user').'</div>
@@ -1832,7 +1832,7 @@ class Blog
                       $b['posts'] .= '<div class="col-md-8 col-xs-12" >';
                       $b['posts'] .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
                       $b['posts'] .= '<p class="post-text" >'.$this->display_title($meta,true).'</p>';
-                      $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
+                      $b['posts'] .= '<span class="post-item-stats"><i class="fa fa-eye" ></i> '.$meta['views'].'</span>';// $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
                       $b['posts'] .= '
                     </div>
                     <div class="col-md-1">'.$this->display_controls($meta,'user').'</div>

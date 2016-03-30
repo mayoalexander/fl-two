@@ -348,14 +348,76 @@
 <!-- The File Upload validation plugin -->
 <script src="js/jquery.fileupload-validate.js"></script>
 <script>
-function closeThis() {
-    var data = $(this);
-    console.log(data);
-    alert('okay!');
+function hideFilePanel(data) {
+    $(data.context.find('.file-panel')).remove();
+    $(data.context.find('.file-panel .form-control')).remove();
+    $(data.context.find('.file-panel .photo-upload-results')).remove();
+    $(data.context.find('.file-panel')).prepend('<button onclick="location.reload()" class="close-button btn btn-primary pull-right" ><i class="fa fa-close"></i></button>');
+    // $(data.context.find('.file-panel')).append('<button onclick="$(this).parent().hide()" class="close-button btn btn-primary pull-right" ><i class="fa fa-plus"></i></button>');
+
+    // hide the tool bar
+    $('.toolbar').hide();
+
 }
+function openPost(data) {
+        console.log('open the post form here');
+        console.log(data);
+
+ p
+        if (typeof data.result === 'undefined') {
+            console.log('There was an error thrown');
+            // $.each(data.result.files, function (index, file) {
+                var twitter = data.formData[4].value;
+                var postUrl = 'http://freelabel.net/' + twitter + "/" ;
+                console.log(postUrl);
+                window.open(postUrl);
+            //     if (file.url) {
+            //         // var link = $('<a>')
+            //         //     .attr('target', '_blank')
+            //         //     .prop('href', file.url);
+            //         // $(data.context.children()[index])
+            //         //     .wrap(link);
+            //     } else if (file.error) {
+            //         var error = $('<span class="text-danger"/>').text(file.error);
+            //         $(data.context.children()[index])
+            //             .append('<br>')
+            //             .append(error);
+            //     }
+            // });
+        } else {
+            console.log('NO ERROR WAS THROWN, RESUME REGULLARRY');
+            $.each(data.result.files, function (index, file) {
+                var twitter = data.formData[4].value;
+                var postUrl = 'http://freelabel.net/' + twitter + "/" ;
+                window.open(postUrl);
+                if (file.url) {
+                    // var link = $('<a>')
+                    //     .attr('target', '_blank')
+                    //     .prop('href', file.url);
+                    // $(data.context.children()[index])
+                    //     .wrap(link);
+                } else if (file.error) {
+                    var error = $('<span class="text-danger"/>').text(file.error);
+                    $(data.context.children()[index])
+                        .append('<br>')
+                        .append(error);
+                }
+            });
+        }
+
+
+
+
+
+
+
+}
+
+
+
 $('.close-button').click(function(event){
     alert($(this));
-    console.log($(this));
+    // console.log($(this));
 });
 
 
@@ -387,6 +449,7 @@ $(function () {
                 });
             });
     $('#fileupload').fileupload({
+
         url: url,
         dataType: 'json',
         autoUpload: false,
@@ -399,7 +462,10 @@ $(function () {
             .test(window.navigator.userAgent),
         previewMaxWidth: 300,
         previewMaxHeight: 300,
-        previewCrop: true
+        previewCrop: true,
+        xhrFields: {
+            withCredentials: true
+        }
     }).on('fileuploadadd', function (e, data) {
         $('.btn-link').hide('fast');
 
@@ -419,7 +485,7 @@ $(function () {
             data.formData = inputs.serializeArray();
         });
 
-        alert(file.type); 
+        // alert(file.type); 
 
         switch(file.type) {
             case 'image/jpeg':
@@ -538,43 +604,22 @@ $(function () {
         );
     }).on('fileuploaddone', function (e, data) {
 
-        // hide the tool bar
-        $('.toolbar').hide();
         // hide the artwork photo for input for additional uploads
-        $(data.context.find('.file-panel')).remove();
-        $(data.context.find('.file-panel .form-control')).remove();
-        $(data.context.find('.file-panel .photo-upload-results')).remove();
-        // $(data.context.find('.file-panel')).prepend('<button onclick="$(this).parent().hide()" class="close-button btn btn-primary pull-right" ><i class="fa fa-close"></i></button>');
-        $(data.context.find('.file-panel')).prepend('<button onclick="location.reload()" class="close-button btn btn-primary pull-right" ><i class="fa fa-close"></i></button>');
-        // $(data.context.find('.file-panel')).append('<button onclick="$(this).parent().hide()" class="close-button btn btn-primary pull-right" ><i class="fa fa-plus"></i></button>');
+        hideFilePanel(data);
 
-
-        console.log(data.formData);
-        $.each(data.result.files, function (index, file) {
-            var twitter = data.formData[4].value;
-            var postUrl = 'http://freelabel.net/' + twitter + "/" ;
-            window.open(postUrl);
-            if (file.url) {
-                // var link = $('<a>')
-                //     .attr('target', '_blank')
-                //     .prop('href', file.url);
-                // $(data.context.children()[index])
-                //     .wrap(link);
-            } else if (file.error) {
-                var error = $('<span class="text-danger"/>').text(file.error);
-                $(data.context.children()[index])
-                    .append('<br>')
-                    .append(error);
-            }
-        });
+        openPost(data);
     }).on('fileuploadfail', function (e, data) {
+        hideFilePanel(data);
+        openPost(data);
+
+        console.log("new data");
         console.log(data);
-        $.each(data.files, function (index) {
-            var error = $('<span class="text-danger"/>').text('File upload failed.');
-            $(data.context.children()[index])
-                .append('<br>')
-                .append(error);
-        });
+        // $.each(data.files, function (index) {
+        //     var error = $('<span class="text-danger"/>').text('File upload failed.');
+        //     $(data.context.children()[index])
+        //         .append('<br>')
+        //         .append(error);
+        // });
     }).prop('disabled', !$.support.fileInput)
         .parent().addClass($.support.fileInput ? undefined : 'disabled');
 });

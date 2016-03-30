@@ -23,7 +23,7 @@ $(function(){
 
                 // alert(ext);
 
-                var pleaseWait = 'Please wait...';
+                var pleaseWait = '<i class="fa fa-circle-o-notch fa-spin" ></i>';
 
                 // ------ NEW NEW NEW NEW ------ //
                 $('.photo-upload-results').html(' ');
@@ -77,11 +77,11 @@ $(function(){
               var $y = $(this).val();
               var $newy = $y.replace(/\s+/g, '');
               if ($newy.toLowerCase().indexOf("@") >= 0) {
-                console.log('yes mane');
+                // console.log('yes mane');
               //   $newy = $newy.append('@');
               } else {
                 $newy = '@'+ $newy;
-                console.log('No mane');
+                // console.log('No mane');
               }
               $(this).val($newy);
             });
