@@ -3109,10 +3109,11 @@ $twitter_share = "#FLMAG | ".$twitter.'
 
 
 
-  function share_page_button($page_url) {
-    $page_url = 'here is the share button ' . $page_url;
-
-    return $page_url;
+  function share_page_button($page_title, $page_url) {
+    // $page_url = 'here is the share button ' . $page_url;
+    $twitter_share = urlencode($page_title . ' - ' . $page_url);
+    $buttons = '<a class="btn btn-social btn-twitter fa fa-twitter" target="_blank" href="https://twitter.com/intent/tweet?text='.$twitter_share.'"></a>';
+    return $buttons;
   }
 
 
