@@ -34,6 +34,9 @@ function hiddenInput($key , $value) {
 			case 'title':
 				textInput($key , $value);
 				break;
+			case 'paypal_url':
+				textInput($key , $value);
+				break;
 			case 'desc':
 				textInput($key , $value);
 				break;

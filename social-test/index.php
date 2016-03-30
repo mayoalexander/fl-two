@@ -28,8 +28,8 @@ if ($_GET=='') {
 				$uploadedmedia = 'http://'.str_replace(' ', '%20', $_GET['f']);
 				$debug[] = 'photos detected: "'.$uploadedmedia.'"';
 				$media1 = $connection->upload('media/upload', array('media' => $uploadedmedia));
-				if (strlen($_GET['t']) > 80) {
-					$text = substr($_GET['t'], 0,80).'...';
+				if (strlen($_GET['t']) > 90) {
+					$text = substr($_GET['t'], 0,90).'...';
 				} else {
 					$text = $_GET['t'];
 				}

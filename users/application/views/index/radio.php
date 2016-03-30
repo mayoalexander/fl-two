@@ -53,6 +53,7 @@
       data-nowplaying="true"></h2></center>
   </div>
   <hr>
+  <?php echo $config->share_page_button($page_url); ?>
   <section>
 
   </section>

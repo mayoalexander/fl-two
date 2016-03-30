@@ -363,14 +363,15 @@ function openPost(data) {
         console.log('open the post form here');
         console.log(data);
 
- p
+
         if (typeof data.result === 'undefined') {
             console.log('There was an error thrown');
+            alert("Uh, oh. Something is wrong with your MP3 file that does not allow us to update the metatags. Please, re-export your MP3 and reupload so we can have the right type of file format!");
             // $.each(data.result.files, function (index, file) {
-                var twitter = data.formData[4].value;
-                var postUrl = 'http://freelabel.net/' + twitter + "/" ;
-                console.log(postUrl);
-                window.open(postUrl);
+                // var twitter = data.formData[4].value;
+                // var postUrl = 'http://freelabel.net/' + twitter + "/" ;
+                // console.log(postUrl);
+                // window.open(postUrl);
             //     if (file.url) {
             //         // var link = $('<a>')
             //         //     .attr('target', '_blank')

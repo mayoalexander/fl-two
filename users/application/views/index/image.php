@@ -5,6 +5,8 @@
 
   $current_promo = $config->getPromoById($promo_id);
 
+
+
   // gather promo data
   if (is_numeric($promo_id)) {
     $promos = $config->display_promo(Session::get('user_name') , 1, $promo_id, 'id');
