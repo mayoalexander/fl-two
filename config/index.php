@@ -2050,6 +2050,27 @@ class Blog
   }
 
 
+  public function getPromoByDesc($id='', $page=0, $tag=NULL,$sort_by=false) {
+    $query = '';
+    // echo 'the current tag is :'. $tag.'<hr>';
+    if (!$tag==NULL) {
+      $query .= 'AND `desc` LIKE \'%'.trim($tag).'%\' ';
+    }
+    if (!$sort_by==NULL) {
+      $query .= 'AND `'.$sort_by.'` LIKE \'%'.trim($tag).'%\' ';
+    }
+    $sql = "SELECT * FROM `images`
+        WHERE `desc` LIKE '%$id%'
+        ORDER BY `id` DESC LIMIT 1";
+    include(ROOT.'inc/connection.php');
+      $result_stats = mysqli_query($con,$sql);
+    $i=0;
+    while($row = mysqli_fetch_assoc($result_stats)) {
+      $promos[] = $row;
+    }
+    return $promos;
+  }
+
 
 
 
