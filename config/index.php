@@ -2236,12 +2236,18 @@ public function getUserInfo($user_name) {
 
 
 
-  public function display_attached_files($attached_files, $status=NULL, $desc=null, $title=null, $id=null) {
+  public function display_attached_files($attached_files, $status=NULL, $desc=null, $title=null, $id=null, $promo=null) {
     $res = '';
-    $share_button = '<a href="#" data-title="'.$title.'" data-id="'.$id.'" class="fa fa-share-alt share-promo-button"></a>';
+    $share_button = '<a href="#" data-title="'.$title.'" data-id="'.$id.'" class="btn btn-success-outline fa fa-share-alt share-promo-button"></a>';
+    // $share_button .= 'okay get mone';
+    // var_dump();
+    if (isset($promo['paypal_url'])) {
+      $share_button .= '<a href="'.$promo['paypal_url'].'" class="btn btn-success-outline" target="_blank">Purchase Tickets</a>' ;
+    }
     if (isset($desc)) {
       $res .="<p class='promo-description' >".$desc."<br>{$share_button}</p>";
     }
+
  
     $attached_files = explode(", ", $attached_files);
 
@@ -2394,7 +2400,7 @@ public function display_promo_public($data , $featured=false, $public=false) {
                   
       
                     $photos .= '<ol>';
-                    $photos .= $this->display_attached_files($value['files_attached'], 'public', $value['caption'], $value['title'], $value['id']);
+                    $photos .= $this->display_attached_files($value['files_attached'], 'public', $value['caption'], $value['title'], $value['id'], $value);
                     $photos .= '</ol>';
                   $photos .= '</panel>';
                   break;

@@ -54,7 +54,7 @@ $current_page = '0';
 
 <!-- first promo -->
 <nav class="promo-container row row-eq-height"  style="background-image:url('<?php echo $site['media']['photos']['ads'][0]['image'] ; ?>');">
-  <panel class="col-md-9 pull-left featured-ad background-tint-promo"  >
+  <panel class="col-md-12 pull-left featured-ad background-tint-promo"  >
     <h1>NEW EXCLUSIVES DAILY.</h1>
     <!-- current-promo advertisement --> 
       <div class="col-md-3">
@@ -67,42 +67,10 @@ $current_page = '0';
         <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][0]['id'] ; ?>" class="btn btn-secondary-outline m-b-md">View Now</a>
       </div>
   </panel>
-  <panel class="col-md-3 col-xs-12 pull-right background-tint-promo " style='text-align:right;overflow-x:hidden;'>
-    <!-- radio player --> 
-    <h3 class='text-muted'><a href="http://freelabel.net/radio/"><span style="color:red;" >LIVE</span> ON AIR</a></h3>
-    <!-- <script src="https://embed.radio.co/player/c1389e1.js"></script> -->
-  </panel>
 </nav>
 
 
 
-
-<!-- second promo -->
-<nav class="promo-container row row-eq-height"  style="background-image:url('<?php echo $site['media']['photos']['ads'][1]['image'] ; ?>');">
-  <panel class="col-md-9 pull-left featured-ad background-tint-promo"  >
-    <h1>SOMETHING IS ALWAYS GOING ON.</h1>
-    <!-- current-promo advertisement --> 
-
-
-      <div class="col-md-9">
-        <h2 class='text-muted'><?php echo $site['media']['photos']['ads'][1]['title'] ; ?></h2>
-        <p><?php echo $site['media']['photos']['ads'][0]['caption'] ; ?></p>
-        <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][0]['id'] ; ?>" class="btn btn-secondary-outline m-b-md">View Now</a>
-      </div>
-
-
-      <div class="col-md-3">
-        <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][1]['id'] ; ?>"><img src="<?php echo $site['media']['photos']['ads'][1]['image'] ; ?>"></a>
-      </div>
-
-      
-  </panel>
-  <panel class="col-md-3 col-xs-12 pull-right background-tint-promo " style='text-align:right;overflow-x:hidden;'>
-    <!-- radio player --> 
-    <h3 class='text-muted'><a href="http://freelabel.net/radio/"><span style="color:red;" >LIVE</span> ON AIR</a></h3>
-    <!-- <script src="https://embed.radio.co/player/c1389e1.js"></script> -->
-  </panel>
-</nav>
 
 
 
@@ -125,6 +93,41 @@ $current_page = '0';
         echo $files['posts']; ?>
 </section> 
 
+
+
+
+
+
+
+
+<!-- second promo -->
+<nav class="promo-container row row-eq-height"  style="background-image:url('<?php echo $site['media']['photos']['ads'][1]['image'] ; ?>');">
+  <panel class="col-md-12 pull-left featured-ad background-tint-promo"  >
+    <h1>SOMETHING IS ALWAYS GOING ON.</h1>
+    <!-- current-promo advertisement --> 
+
+
+      <div class="col-md-9">
+        <h2 class='text-muted'><?php echo $site['media']['photos']['ads'][1]['title'] ; ?></h2>
+        <p><?php echo $site['media']['photos']['ads'][0]['caption'] ; ?></p>
+        <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][0]['id'] ; ?>" class="btn btn-secondary-outline m-b-md">View Now</a>
+      </div>
+
+
+      <div class="col-md-3">
+        <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][1]['id'] ; ?>"><img src="<?php echo $site['media']['photos']['ads'][1]['image'] ; ?>"></a>
+      </div>
+
+      
+  </panel>
+</nav>
+
+
+
+
+
+
+
 <script type="text/javascript" src='http://freelabel.net/js/dashboard.js'></script>
 <script type="text/javascript">
   $(function(){
@@ -139,3 +142,8 @@ $(function(){
   autoStart();
 });
 </script>
+
+
+
+
+
