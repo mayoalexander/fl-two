@@ -160,14 +160,30 @@ RewriteRule ^images/([[0-9]+]*)$ 				images/?id=$1
 
 
 
-RewriteRule ^events/@([\w-]+)/$ 				events/?id=$1
-RewriteRule ^events/@([\w-]+)$ 					events/?id=$1
+RewriteRule ^events/@([\w-]+)/$ 				users/index/image/?id=$1
+RewriteRule ^events/@([\w-]+)$ 					users/index/image/?id=$1
 
-RewriteRule ^events/([[0-9]+]*)/$ 				events/?id=$1
-RewriteRule ^events/([[0-9]+]*)$ 				events/?id=$1
+RewriteRule ^events/([[0-9]+]*)/$ 				users/index/image/?id=$1
+RewriteRule ^events/([[0-9]+]*)$ 				users/index/image/?id=$1
 
-#RewriteRule ^events/#([[0-9]+]*)/$ 			/events/?id=$1
-#RewriteRule ^events/#([[0-9]+]*)$ 				/events/?id=$1
+#RewriteRule ^events/#([[0-9]+]*)/$ 			users/index/image/?id=$1
+#RewriteRule ^events/#([[0-9]+]*)$ 				users/index/image/?id=$1
+
+
+
+
+
+RewriteRule ^tour/@([\w-]+)/$ 				users/index/image/?id=$1
+RewriteRule ^tour/@([\w-]+)$ 					users/index/image/?id=$1
+
+RewriteRule ^tour/([[0-9]+]*)/$ 				users/index/image/?id=$1
+RewriteRule ^tour/([[0-9]+]*)$ 				users/index/image/?id=$1
+
+#RewriteRule ^tour/#([[0-9]+]*)/$ 			users/index/image/?id=$1
+#RewriteRule ^tour/#([[0-9]+]*)$ 				users/index/image/?id=$1
+
+
+
 
 
 #RewriteRule ^pic/#([[0-9]+]*)/$ 			/images/?id=$1

@@ -727,7 +727,7 @@ class Blog
     $res = '<meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>'.$site['page_title'] . $site['name'].'</title>
+        <title>'.$site['page_title'] .' | '. $site['name'].'</title>
         <meta name="description" content="'.$site['meta_tag_caption'].' // '.$site['description'].'" />
         <meta name="keywords" content="'.$site['keywords'].'" />
         <meta name="author" content="'.$site['author'].'" />
@@ -2238,12 +2238,14 @@ public function getUserInfo($user_name) {
 
   public function display_attached_files($attached_files, $status=NULL, $desc=null, $title=null, $id=null, $promo=null) {
     $res = '';
-    $share_button = '<a href="#" data-title="'.$title.'" data-id="'.$id.'" class="btn btn-success-outline fa fa-share-alt share-promo-button"></a>';
+    $share_button = '';
     // $share_button .= 'okay get mone';
     // var_dump();
     if (isset($promo['paypal_url'])) {
       $share_button .= '<a href="'.$promo['paypal_url'].'" class="btn btn-success-outline" target="_blank">Purchase Tickets</a>' ;
     }
+    $share_button .= '<a href="#" data-title="'.$title.'" data-id="'.$id.'" class="btn fa fa-share-alt share-promo-button"></a>';
+
     if (isset($desc)) {
       $res .="<p class='promo-description' >".$desc."<br>{$share_button}</p>";
     }

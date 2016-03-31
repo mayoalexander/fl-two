@@ -36,7 +36,7 @@
     //   $site['user']['media'] = $user_logged_in->getUserMedia('admin');
     }
 
-    $front_page_photos = $config->getPhotoAds($site['creator'], 'front');
+    // $front_page_photos = $config->getPhotoAds($site['creator'], 'front');
     shuffle($front_page_photos);
     if ($user_name = Session::get('user_name')) {
         $upload_link =  'http://freelabel.net/upload/?uid='.$user_name;
@@ -173,6 +173,7 @@
     }
     .promo-description {
       border-bottom: 1px solid #303030;
+      padding-bottom:1em;
     }
 
     /* Hide Angular JS elements before initializing */
