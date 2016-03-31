@@ -358,9 +358,9 @@
 <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
 <script src="js/vendor/jquery.ui.widget.js"></script>
 <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
-<script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+<script src="http://freelabel.net/drive/js/load-image.all.min.js"></script>
 <!-- The Canvas to Blob plugin is included for image resizing functionality -->
-<script src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+<script src="http://freelabel.net/drive/js/canvas-to-blob.min.js"></script>
 <!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
@@ -380,6 +380,7 @@
 <script src="js/jquery.fileupload-validate.js"></script>
 <script>
 function hideFilePanel(data) {
+
     $(data.context.find('.file-panel')).remove();
     $(data.context.find('.file-panel .form-control')).remove();
     $(data.context.find('.file-panel .photo-upload-results')).remove();
@@ -418,7 +419,7 @@ function openPost(data) {
         } else {
             console.log('NO ERROR WAS THROWN, RESUME REGULLARRY');
             $.each(data.result.files, function (index, file) {
-                var twitter = data.formData[4].value;
+                var twitter = $.trim(data.formData[4].value);
                 var postUrl = 'http://freelabel.net/' + twitter + "/" ;
                 window.open(postUrl);
                 if (file.url) {
@@ -616,6 +617,7 @@ $(function () {
             node.appendTo(data.context);
         });
     }).on('fileuploadprocessalways', function (e, data) {
+        // bind validation
         $('document').bind(fileValidation());
         var index = data.index,
             file = data.files[index],

@@ -9,7 +9,7 @@ function fileValidation(){
 
         if (!img=='' && img_path.length==0) {
 
-        if (ext.toLowerCase() !=='png' && ext.toLowerCase() !=='jpeg' && ext.toLowerCase() !=='jpg') {
+        if (ext.toLowerCase() !=='png' && ext.toLowerCase() !=='jpeg' && ext.toLowerCase() !=='jpg' && ext.toLowerCase() !=='gif') {
             var type = 'Uh oh, this file you\'ve selected is not a photo. Please upload a photo for the artwork!';
             alert(type);
             $('#artwork_photo').val('');
@@ -72,6 +72,16 @@ function fileValidation(){
             });
 
 
+
+    } // end of IF STATEMENT
+
+
+    },3000);
+
+
+
+
+
             // trim twitter username
             $("#twitter").keypress(function() {
               var $y = $(this).val();
@@ -85,16 +95,6 @@ function fileValidation(){
               }
               $(this).val($newy);
             });
-
-
-    } // end of IF STATEMENT
-
-
-    },3000);
-
-
-
-
 
 
 

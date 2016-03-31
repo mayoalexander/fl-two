@@ -1156,20 +1156,35 @@ class UploadHandler
         $filedata['status'] = '';
         $filedata['poster'] = '';
 
-        //         // CREATE QUICK URLS
+        // Clean up twitter name: place the TWITTER @ sign and trim whitespace
+        $filedata['twitter'] = trim($_POST['twitter']);
+        if (strpos($filedata['twitter'], "@") === false) {
+            $filedata['twitter'] = '@'.$filedata['twitter'];
+        }
+
+        // Clean Up Blog Title:  get rid of bad extentions
+        $filedata['blogtitle'] = trim($_POST['title']);
+        $find = array('.mp3','.png','.jpeg','.jpg','.mp4');
+        $filedata['blogtitle'] = str_replace($find, '', $filedata['blogtitle']);
+
+
+
+
+
+        // CREATE QUICK URLS
         $filepath = 'http://freelabel.net/drive/server/php/files/'.$file->name;
-        $shortname = explode(' ',$_POST['title']);
-        $_POST['blog_story_url'] = 'http://freelabel.net/'.$_POST['twitter'].'/'.$shortname[0];
+        $shortname = explode(' ',$filedata['blogtitle']);
         $invchars = array(" ","@",":","/","&","'");
-        $_POST['playerpath'] = 'http://freelabel.net/x/'.$_POST['twitter'].'/'.str_replace($invchars, "-", $_POST['title']).'/';
-        $filedata['twitter'] = $_POST['twitter'];
+        $_POST['playerpath'] = 'http://freelabel.net/x/'.$filedata['twitter'].'/'.str_replace($invchars, "-", $filedata['blogtitle']).'/';
+        $filedata['blog_story_url'] = 'http://freelabel.net/'.$filedata['twitter'].'/'.str_replace($invchars, "-", $shortname[0]);
+        
+        // User Profile Data
         $filedata['user_name'] = $_POST['user_name'];
-        $filedata['phone'] = $_POST['phone'];
-        $filedata['blogtitle'] = $_POST['title'];
-        $filedata['trackname'] = $_POST['title'];
-        $filedata['blog_story_url'] = $_POST['blog_story_url'];
+        $filedata['phone'] = trim($_POST['phone']);
+        
+        $filedata['trackname'] = $filedata['blogtitle'];
         $filedata['submission_date'] = date('Y-m-d H:s:i');
-        $filedata['description'] = $_POST['description'];
+        $filedata['description'] = trim($_POST['description']);
         $filedata['email'] = $upload->getUserEmail($filedata['user_name']);
 
         // detect status and set private as default
@@ -1227,16 +1242,6 @@ class UploadHandler
 
 
 
-        // get rid of bad extentions
-        $find = array('.mp3','.png','.jpeg','.jpg','.mp4');
-        $filedata['blogtitle'] = str_replace($find, '', $filedata['blogtitle']);
-
-
-        // place the TWITTER @ sign
-        if (strpos($filedata['twitter'], "@") === false) {
-            $filedata['twitter'] = '@'.$filedata['twitter'];
-        }
-
 
         // ADD TO DATABASE
         $sql = 'INSERT INTO `amrusers`.`feed`
@@ -1268,17 +1273,6 @@ class UploadHandler
         }
 
 
-
-
-
-
-
-        // $msg = 'this is the email: '.$_POST['twitter'];
-        // $msg .= 'this is the data: ';
-        // foreach ($filedata as $value) {
-        //         $msg .= $value.', ';
-        // }
-        // mail("manage.amrecords@gmail.com",'[SUBMISSION] '.$filedata['twitter']." - ".$filedata['blogtitle'],$msg);
 
     }
 
