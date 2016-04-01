@@ -165,8 +165,13 @@
             display:block;
             z-index: -20;
         }
-        video {
-            display:none;
+        video, img {
+            /*display:none;*/
+            border-radius: 2px;
+            width: 100%;
+        }
+        video, img {
+            cursor:pointer;
         }
         .btn-link:active{
             position: relative;
@@ -191,6 +196,10 @@
             /*color: #101010;*/
             font-size:0.6em;
             text-align: center;
+        }
+        .file-panel div {
+            color: #303030;
+            /*border-bottom: solid 1px #202020*/
         }
         .file-panel {
                 margin-bottom: 2vh;
@@ -322,14 +331,36 @@
 </div>
 
 
+<!-- add modal here -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
 <script src="js/vendor/jquery.ui.widget.js"></script>
 <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
-<script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+<script src="http://freelabel.net/drive/js/load-image.all.min.js"></script>
 <!-- The Canvas to Blob plugin is included for image resizing functionality -->
-<script src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+<script src="http://freelabel.net/drive/js/canvas-to-blob.min.js"></script>
 <!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
@@ -348,15 +379,87 @@
 <!-- The File Upload validation plugin -->
 <script src="js/jquery.fileupload-validate.js"></script>
 <script>
-function closeThis() {
-    var data = $(this);
-    console.log(data);
-    alert('okay!');
+function hideFilePanel(data) {
+
+    $(data.context.find('.file-panel')).remove();
+    $(data.context.find('.file-panel .form-control')).remove();
+    $(data.context.find('.file-panel .photo-upload-results')).remove();
+    $(data.context.find('.file-panel')).prepend('<button onclick="location.reload()" class="close-button btn btn-primary pull-right" ><i class="fa fa-close"></i></button>');
+    // $(data.context.find('.file-panel')).append('<button onclick="$(this).parent().hide()" class="close-button btn btn-primary pull-right" ><i class="fa fa-plus"></i></button>');
+    // hide the tool bar
+    $('.toolbar').hide();
+
 }
+function openPost(data) {
+        console.log('open the post form here');
+        console.log(data);
+
+
+        if (typeof data.result === 'undefined') {
+            console.log('There was an error thrown');
+            alert("Uh, oh. Something is wrong with your MP3 file that does not allow us to update the metatags. Please, re-export your MP3 and reupload so we can have the right type of file format!");
+            // $.each(data.result.files, function (index, file) {
+                // var twitter = data.formData[4].value;
+                // var postUrl = 'http://freelabel.net/' + twitter + "/" ;
+                // console.log(postUrl);
+                // window.open(postUrl);
+            //     if (file.url) {
+            //         // var link = $('<a>')
+            //         //     .attr('target', '_blank')
+            //         //     .prop('href', file.url);
+            //         // $(data.context.children()[index])
+            //         //     .wrap(link);
+            //     } else if (file.error) {
+            //         var error = $('<span class="text-danger"/>').text(file.error);
+            //         $(data.context.children()[index])
+            //             .append('<br>')
+            //             .append(error);
+            //     }
+            // });
+        } else {
+            console.log('NO ERROR WAS THROWN, RESUME REGULLARRY');
+            $.each(data.result.files, function (index, file) {
+                var twitter = $.trim(data.formData[4].value);
+                var postUrl = 'http://freelabel.net/' + twitter + "/" ;
+                window.open(postUrl);
+                if (file.url) {
+                    // var link = $('<a>')
+                    //     .attr('target', '_blank')
+                    //     .prop('href', file.url);
+                    // $(data.context.children()[index])
+                    //     .wrap(link);
+                } else if (file.error) {
+                    var error = $('<span class="text-danger"/>').text(file.error);
+                    $(data.context.children()[index])
+                        .append('<br>')
+                        .append(error);
+                }
+            });
+        }
+
+
+
+
+
+
+
+}
+
+/* CUSTOM JAVASCRIPT */
+$(function(){
+    // // alert();
+    // $('video').Z;
+    // $('#myModal').modal('show');
+});
+
 $('.close-button').click(function(event){
     alert($(this));
-    console.log($(this));
+    // console.log($(this));
 });
+
+
+
+
 
 
 /*jslint unparam: true, regexp: true */
@@ -387,6 +490,7 @@ $(function () {
                 });
             });
     $('#fileupload').fileupload({
+
         url: url,
         dataType: 'json',
         autoUpload: false,
@@ -399,7 +503,10 @@ $(function () {
             .test(window.navigator.userAgent),
         previewMaxWidth: 300,
         previewMaxHeight: 300,
-        previewCrop: true
+        previewCrop: true,
+        xhrFields: {
+            withCredentials: true
+        }
     }).on('fileuploadadd', function (e, data) {
         $('.btn-link').hide('fast');
 
@@ -419,7 +526,7 @@ $(function () {
             data.formData = inputs.serializeArray();
         });
 
-        alert(file.type); 
+        // alert(file.type); 
 
         switch(file.type) {
             case 'image/jpeg':
@@ -510,12 +617,14 @@ $(function () {
             node.appendTo(data.context);
         });
     }).on('fileuploadprocessalways', function (e, data) {
+        // bind validation
+        $('document').bind(fileValidation());
         var index = data.index,
             file = data.files[index],
             node = $(data.context.children()[index]);
         if (file.preview) {
-            node//.find('.photo-upload-results')
-                //.prepend('<br>')
+            node.find('.photo-upload-results')
+                .prepend('<br>')
                 .prepend(file.preview);
         }
         if (file.error) {
@@ -538,36 +647,14 @@ $(function () {
         );
     }).on('fileuploaddone', function (e, data) {
 
-        // hide the tool bar
-        $('.toolbar').hide();
-        // hide the artwork photo for input for additional uploads
-        $(data.context.find('.file-panel')).remove();
-        $(data.context.find('.file-panel .form-control')).remove();
-        $(data.context.find('.file-panel .photo-upload-results')).remove();
-        // $(data.context.find('.file-panel')).prepend('<button onclick="$(this).parent().hide()" class="close-button btn btn-primary pull-right" ><i class="fa fa-close"></i></button>');
-        $(data.context.find('.file-panel')).prepend('<button onclick="location.reload()" class="close-button btn btn-primary pull-right" ><i class="fa fa-close"></i></button>');
-        // $(data.context.find('.file-panel')).append('<button onclick="$(this).parent().hide()" class="close-button btn btn-primary pull-right" ><i class="fa fa-plus"></i></button>');
+        // SUCCESS 
+        hideFilePanel(data);
+        openPost(data);
 
-
-        console.log(data.formData);
-        $.each(data.result.files, function (index, file) {
-            var twitter = data.formData[4].value;
-            var postUrl = 'http://freelabel.net/' + twitter + "/" ;
-            window.open(postUrl);
-            if (file.url) {
-                // var link = $('<a>')
-                //     .attr('target', '_blank')
-                //     .prop('href', file.url);
-                // $(data.context.children()[index])
-                //     .wrap(link);
-            } else if (file.error) {
-                var error = $('<span class="text-danger"/>').text(file.error);
-                $(data.context.children()[index])
-                    .append('<br>')
-                    .append(error);
-            }
-        });
     }).on('fileuploadfail', function (e, data) {
+
+        // FAIL 
+        console.log("new data");
         console.log(data);
         $.each(data.files, function (index) {
             var error = $('<span class="text-danger"/>').text('File upload failed.');
@@ -575,6 +662,7 @@ $(function () {
                 .append('<br>')
                 .append(error);
         });
+
     }).prop('disabled', !$.support.fileInput)
         .parent().addClass($.support.fileInput ? undefined : 'disabled');
 });

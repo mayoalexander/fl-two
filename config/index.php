@@ -727,7 +727,7 @@ class Blog
     $res = '<meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>'.$site['page_title'] . $site['name'].'</title>
+        <title>'.$site['page_title'] .' | '. $site['name'].'</title>
         <meta name="description" content="'.$site['meta_tag_caption'].' // '.$site['description'].'" />
         <meta name="keywords" content="'.$site['keywords'].'" />
         <meta name="author" content="'.$site['author'].'" />
@@ -1006,10 +1006,12 @@ class Blog
     $_POST['caption'] = mysqli_real_escape_string($con,$_POST['caption']);
     $_POST['date'] = mysqli_real_escape_string($con,$_POST['date']);
     $_POST['title'] = mysqli_real_escape_string($con,$_POST['title']);
+    $_POST['paypal_url'] = mysqli_real_escape_string($con,$_POST['paypal_url']);
 
     $sql = "UPDATE  `amrusers`.`images` SET  `desc` =  '".$_POST['desc']."',
 `caption` =  '".$_POST['caption']."',
 `date` =  '".$_POST['date']."',
+`paypal_url` =  '".$_POST['paypal_url']."',
 `title` =  '".$_POST['title']."' WHERE `images`.`id` = ".$_POST['id']." LIMIT 1";
 
 
@@ -1715,7 +1717,7 @@ class Blog
                       $b['posts'] .= '<div class="col-md-8 col-xs-12" >';
                       $b['posts'] .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
                       $b['posts'] .= '<p class="post-text" >'.$this->display_title($meta,true).'</p>';
-                      $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
+                      $b['posts'] .= '<span class="post-item-stats"><i class="fa fa-eye" ></i> '.$meta['views'].'</span>';// $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
                       $b['posts'] .= '
                     </div>
                     <div class="col-md-1">'.$this->display_controls($meta,'user').'</div>
@@ -1734,7 +1736,7 @@ class Blog
                       $b['posts'] .= '<div class="col-md-8 col-xs-12" >';
                       $b['posts'] .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
                       $b['posts'] .= '<p class="post-text" >'.$this->display_title($meta,true).'</p>';
-                      $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
+                      $b['posts'] .= '<span class="post-item-stats"><i class="fa fa-eye" ></i> '.$meta['views'].'</span>';// $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
                       $b['posts'] .= '
                     </div>
                     <div class="col-md-1">'.$this->display_controls($meta,'user').'</div>
@@ -1754,7 +1756,7 @@ class Blog
                       $b['posts'] .= '<div class="col-md-8 col-xs-12" >';
                       $b['posts'] .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
                       $b['posts'] .= '<p class="post-text" >'.$this->display_title($meta,true).'</p>';
-                      $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
+                      $b['posts'] .= '<span class="post-item-stats"><i class="fa fa-eye" ></i> '.$meta['views'].'</span>';// $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
                       $b['posts'] .= '
                     </div>
                     <div class="col-md-1">'.$this->display_controls($meta,'user').'</div>
@@ -1775,7 +1777,7 @@ class Blog
                       $b['posts'] .= '<div class="col-md-8 col-xs-12" >';
                       $b['posts'] .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
                       $b['posts'] .= '<p class="post-text" >'.$this->display_title($meta,true).'</p>';
-                      $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
+                      $b['posts'] .= '<span class="post-item-stats"><i class="fa fa-eye" ></i> '.$meta['views'].'</span>';// $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
                       $b['posts'] .= '
                     </div>
                     <div class="col-md-1">'.$this->display_controls($meta,'user').'</div>
@@ -1812,7 +1814,7 @@ class Blog
                       $b['posts'] .= '<div class="col-md-8 col-xs-12" >';
                       $b['posts'] .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
                       $b['posts'] .= '<p class="post-text" >'.$this->display_title($meta,true).'</p>';
-                      $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
+                      $b['posts'] .= '<span class="post-item-stats"><i class="fa fa-eye" ></i> '.$meta['views'].'</span>';// $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
                       $b['posts'] .= '
                     </div>
                     <div class="col-md-1">'.$this->display_controls($meta,'user').'</div>
@@ -1832,7 +1834,7 @@ class Blog
                       $b['posts'] .= '<div class="col-md-8 col-xs-12" >';
                       $b['posts'] .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
                       $b['posts'] .= '<p class="post-text" >'.$this->display_title($meta,true).'</p>';
-                      $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
+                      $b['posts'] .= '<span class="post-item-stats"><i class="fa fa-eye" ></i> '.$meta['views'].'</span>';// $b['posts'] .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
                       $b['posts'] .= '
                     </div>
                     <div class="col-md-1">'.$this->display_controls($meta,'user').'</div>
@@ -2048,6 +2050,27 @@ class Blog
   }
 
 
+  public function getPromoByDesc($id='', $page=0, $tag=NULL,$sort_by=false) {
+    $query = '';
+    // echo 'the current tag is :'. $tag.'<hr>';
+    if (!$tag==NULL) {
+      $query .= 'AND `desc` LIKE \'%'.trim($tag).'%\' ';
+    }
+    if (!$sort_by==NULL) {
+      $query .= 'AND `'.$sort_by.'` LIKE \'%'.trim($tag).'%\' ';
+    }
+    $sql = "SELECT * FROM `images`
+        WHERE `desc` LIKE '%$id%'
+        ORDER BY `id` DESC LIMIT 1";
+    include(ROOT.'inc/connection.php');
+      $result_stats = mysqli_query($con,$sql);
+    $i=0;
+    while($row = mysqli_fetch_assoc($result_stats)) {
+      $promos[] = $row;
+    }
+    return $promos;
+  }
+
 
 
 
@@ -2234,9 +2257,15 @@ public function getUserInfo($user_name) {
 
 
 
-  public function display_attached_files($attached_files, $status=NULL, $desc=null, $title=null, $id=null) {
+  public function display_attached_files($attached_files, $status=NULL, $desc=null, $title=null, $id=null, $promo=null) {
     $res = '';
-    $share_button = '<a href="#" data-title="'.$title.'" data-id="'.$id.'" class="fa fa-share-alt share-promo-button"></a>';
+    $share_button = '';
+
+    if (isset($promo['paypal_url'])) {
+      $share_button .= '<a href="'.$promo['paypal_url'].'" class="btn btn-success-outline" target="_blank">Purchase Tickets</a>' ;
+    }
+    $share_button .= '<a href="#" data-title="'.$title.'" data-id="'.$id.'" class="btn fa fa-share-alt share-promo-button"></a>';
+
     if (isset($desc)) {
       $res .="<p class='promo-description' >".$desc."<br>{$share_button}</p>";
     }
@@ -2254,6 +2283,7 @@ public function getUserInfo($user_name) {
     }
     return $res;
   }
+
 
   public function getVideosByUser($user_name='', $limit=6) {
 
@@ -2360,54 +2390,59 @@ public function display_promo_public($data , $featured=false, $public=false) {
     } else {
       $colWidth = 'col-md-6';
     }
-    foreach ($data as $key => $value) {
-      // load thumbnail 
-      $thumbnail =  str_replace('server/php/files/', 'server/php/files/thumbnail/', $value['image']);
-      $photos .= "
-      <article class='full-width-article ".$colWidth." col-xs-12 eq-row-height' data-promo-id='".$value['id']."'>";
-      $type = $this->detect_type($value['image']);
-      //$photos .= ''.$this->display_promo_options($value['id'], $user_name , $value['image'], $value['description']);
-      switch (strtolower($type)) {
-        case 'mp4':
-          $photos .="<h2 id='title-id-".$value['id']."' class='promo-title editable-promo' >".$value['title']."</h2>";
-          $photos .="<h2 id='promo-id-".$value['id']."' class='promo-subtitle editable-promo'>".$value['desc']."</h2>";
-          // $photos .= '<video class="user-video-item" controls preload="metadata" src="'.$value['image'].'">';
-          $photos .= "<video href='#' id='controls-".$value['id']."' class='controls-play' ".'poster="'.$value['image'].'" data-title="'.$value['title'].'" style="background-image:url(\''.$value['poster'].'\');" '.">";
-          break;
-        case 'mp3':
-          $photos .="<h2 id='title-id-".$value['id']."' class='promo-title editable-promo' >".$value['title']."</h2>";
-          $photos .="<h2 id='promo-id-".$value['id']."' class='promo-subtitle editable-promo'>".$value['desc']."</h2>";
-          $photos .= "<a href='#' id='controls-".$value['id']."' class='controls-play' ".'data-src="'.$value['image'].'" data-title="'.$value['title'].'" style="background-image:url(\''.$value['poster'].'\');" '."><i class='promotion-player-button fa fa-play-circle'></i></a>";
-          break;
-        case 'png' OR 'jpeg' OR 'jpg':
-            $photos .="<h2 id='title-id-".$value['id']."' class='promo-title editable-promo' >".$value['title']."</h2>";
-            // $photos .="<p id='promo-id-".$value['id']."' class='promo-subtitle editable-promo'>".$value['caption']."</p>";
-          $photos .= '<panel class="col-md-5 col-xs-12">';
-            $photos .= '<a href="http://freelabel.net/users/index/image/'.$value['id'].'" ><img class="user-photo-item" src="'.$thumbnail.'"></a>';
-            $photos .="<br><label class='file_name'>Tags:</label><label id='desc-id-".$value['id']."' class='file_name editable-promo text-muted' >".$value['desc']."</label>";
-          $photos .= '</panel>';
-          $photos .= '<panel class="col-md-7 col-xs-12">';
-          
 
-            $photos .= '<ol>';
-            $photos .= $this->display_attached_files($value['files_attached'], 'public', $value['caption'], $value['title'], $value['id']);
-            $photos .= '</ol>';
-          $photos .= '</panel>';
-          break;
-        default:
-          if (strpos($value['image'] , 'mp4')>0) {
-            $photos .="<h2 id='promo-id-".$value['id']."' class='promo-title editable-promo'>".$value['title']."</h2>";
-          } else {
-            $photos .="<h2 id='promo-id-".$value['id']."' class='promo-title editable-promo'>".$value['title']."</h2>";
-            $photos .="<h2 id='promo-id-".$value['id']."' class='promo-subtitle editable-promo'>".$value['desc']."</h2>";
-            $photos .= '<ol>';
-            $photos .= $this->display_attached_files($value['files_attached'], 'public');
-            $photos .= '</ol>';
-          }
-        break;
+    if (isset($data)) {
+        foreach ($data as $key => $value) {
+              // load thumbnail 
+              $thumbnail =  str_replace('server/php/files/', 'server/php/files/thumbnail/', $value['image']);
+              $photos .= "
+              <article class='full-width-article ".$colWidth." col-xs-12 eq-row-height' data-promo-id='".$value['id']."'>";
+              $type = $this->detect_type($value['image']);
+              //$photos .= ''.$this->display_promo_options($value['id'], $user_name , $value['image'], $value['description']);
+              switch (strtolower($type)) {
+                case 'mp4':
+                  $photos .="<h2 id='title-id-".$value['id']."' class='promo-title editable-promo' >".$value['title']."</h2>";
+                  $photos .="<h2 id='promo-id-".$value['id']."' class='promo-subtitle editable-promo'>".$value['desc']."</h2>";
+                  // $photos .= '<video class="user-video-item" controls preload="metadata" src="'.$value['image'].'">';
+                  $photos .= "<video href='#' id='controls-".$value['id']."' class='controls-play' ".'poster="'.$value['image'].'" data-title="'.$value['title'].'" style="background-image:url(\''.$value['poster'].'\');" '.">";
+                  break;
+                case 'mp3':
+                  $photos .="<h2 id='title-id-".$value['id']."' class='promo-title editable-promo' >".$value['title']."</h2>";
+                  $photos .="<h2 id='promo-id-".$value['id']."' class='promo-subtitle editable-promo'>".$value['desc']."</h2>";
+                  $photos .= "<a href='#' id='controls-".$value['id']."' class='controls-play' ".'data-src="'.$value['image'].'" data-title="'.$value['title'].'" style="background-image:url(\''.$value['poster'].'\');" '."><i class='promotion-player-button fa fa-play-circle'></i></a>";
+                  break;
+                case 'png' OR 'jpeg' OR 'jpg':
+                    $photos .="<h2 id='title-id-".$value['id']."' class='promo-title editable-promo' >".$value['title']."</h2>";
+                    // $photos .="<p id='promo-id-".$value['id']."' class='promo-subtitle editable-promo'>".$value['caption']."</p>";
+                  $photos .= '<panel class="col-md-5 col-xs-12">';
+                    $photos .= '<a href="http://freelabel.net/users/index/image/'.$value['id'].'" ><img class="user-photo-item" src="'.$thumbnail.'"></a>';
+                    $photos .="<br><label class='file_name'>Tags:</label><label id='desc-id-".$value['id']."' class='file_name editable-promo text-muted' >".$value['desc']."</label>";
+                  $photos .= '</panel>';
+                  $photos .= '<panel class="col-md-7 col-xs-12">';
+                  
+      
+                    $photos .= '<ol>';
+                    $photos .= $this->display_attached_files($value['files_attached'], 'public', $value['caption'], $value['title'], $value['id'], $value);
+                    $photos .= '</ol>';
+                  $photos .= '</panel>';
+                  break;
+                default:
+                  if (strpos($value['image'] , 'mp4')>0) {
+                    $photos .="<h2 id='promo-id-".$value['id']."' class='promo-title editable-promo'>".$value['title']."</h2>";
+                  } else {
+                    $photos .="<h2 id='promo-id-".$value['id']."' class='promo-title editable-promo'>".$value['title']."</h2>";
+                    $photos .="<h2 id='promo-id-".$value['id']."' class='promo-subtitle editable-promo'>".$value['desc']."</h2>";
+                    $photos .= '<ol>';
+                    $photos .= $this->display_attached_files($value['files_attached'], 'public');
+                    $photos .= '</ol>';
+                  }
+                break;
+              }
+              $photos .='</article>';
+            }
+      } else {
+        $photos  .='No Promotion Found';
       }
-      $photos .='</article>';
-    }
     return $photos;
   }
 
@@ -3098,6 +3133,15 @@ $twitter_share = "#FLMAG | ".$twitter.'
 
     return $share_buttons;
 
+  }
+
+
+
+  function share_page_button($page_title, $page_url) {
+    // $page_url = 'here is the share button ' . $page_url;
+    $twitter_share = urlencode($page_title . ' - ' . $page_url);
+    $buttons = '<a class="btn btn-social btn-twitter fa fa-twitter" target="_blank" href="https://twitter.com/intent/tweet?text='.$twitter_share.'"></a>';
+    return $buttons;
   }
 
 

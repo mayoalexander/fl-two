@@ -454,5 +454,18 @@ if (!$blog_post_data['poster']=='') {
 			<script src="http://freelabel.net/AudioPlayer/js/jquery.js"></script>
 			<script src="http://freelabel.net/AudioPlayer/js/audioplayer.js"></script>
 			<script>$( function() { $( 'audio' ).audioPlayer(); } );</script>
+			<script>
+			function playVideo(elem) {
+				elem.get(0).play();
+				elem.get(0).volume = 0.5;
+			}
+				$(function(){
+					$('video').bind('hover',function(){
+						// alert('now playing video');
+						playVideo($(this));
+						$('video').unbind('hover');
+					});
+				});
+			</script>
 		</body>
 		</html>

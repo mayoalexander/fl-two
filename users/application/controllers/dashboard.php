@@ -87,8 +87,9 @@ class Dashboard extends Controller
     function sendContact() 
     {
         $numb = $_POST['number'];
+        $user = $_POST['user_name'];
         var_dump($numb);
-        if (mail('notifications@freelabel.net','Client Booking - ' . $numb, 'Here is the number: '.$numb)) {
+        if (mail('notifications@freelabel.net','Client Booking - ' . $user, 'Here is the number: '.$numb)) {
             echo 'it sent out!';
         } else {
             echo 'not sent!';

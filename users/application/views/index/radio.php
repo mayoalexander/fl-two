@@ -51,8 +51,16 @@
       data-volumeslider="false"
       data-src="http://streaming.radio.co/s95fa8cba2/listen"
       data-nowplaying="true"></h2></center>
+      <br><br>
+      <?php 
+  $page_title = 'Listen LIVE ON-AIR to #FREELABELRADIO ';
+  $page_url = 'RADIO.FREELABEL.NET';
+  echo $config->share_page_button($page_title , $page_url); 
+  ?>
   </div>
+
   <hr>
+
   <section>
 
   </section>

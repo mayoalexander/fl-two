@@ -1,4 +1,4 @@
-$(function(){
+function fileValidation(){
 
     setInterval(function(){
         
@@ -6,10 +6,9 @@ $(function(){
         var img_path = $('.photo-upload-results').find('img');
         var ext = img.split('.').pop();
 
-
         if (!img=='' && img_path.length==0) {
 
-        if (ext.toLowerCase() !=='png' && ext.toLowerCase() !=='jpeg' && ext.toLowerCase() !=='jpg') {
+        if (ext.toLowerCase() !=='png' && ext.toLowerCase() !=='jpeg' && ext.toLowerCase() !=='jpg' && ext.toLowerCase() !=='gif') {
             var type = 'Uh oh, this file you\'ve selected is not a photo. Please upload a photo for the artwork!';
             alert(type);
             $('#artwork_photo').val('');
@@ -18,23 +17,37 @@ $(function(){
             // alert("its a photo!");
         }
         
-        // hide input 
-        $('#artwork_photo').hide();
+
 
                 // alert(ext);
 
-                var pleaseWait = 'Please wait...';
+                var pleaseWait = '<i class="fa fa-circle-o-notch fa-spin" ></i>';
 
-                // ------ NEW NEW NEW NEW ------ //
-                $('.photo-upload-results').html(' ');
-                $('.photo-upload-results').append(pleaseWait);
-                $('.confirm-upload-buttons').prepend('<p class="wait" style="color:#303030;">Please wait..<p>');
-                $('.confirm-upload-buttons').hide('fast');
+
 
                 var path = 'http://freelabel.net/upload/server/php/upload-photo.php';
                 var data;
                 var formdata_PHO = $('#artwork_photo')[0].files[0];
                 var formdata = new FormData();
+                var maxSize = (1000 * 1000) * 2; // 2 Megabytes
+
+                console.log(formdata_PHO);
+                console.log(formdata_PHO.size + ' --- ' + maxSize);
+
+                if (formdata_PHO.size > maxSize) {
+                    alert('file too large!');
+                    $('#artwork_photo').val('');
+                    return;
+                }
+
+
+                // ------ NEW NEW NEW NEW ------ //
+                        // hide input 
+                $('#artwork_photo').hide();
+                $('.photo-upload-results').html(' ');
+                $('.photo-upload-results').append(pleaseWait);
+                $('.confirm-upload-buttons').prepend('<p class="wait" style="color:#303030;">Please wait..<p>');
+                $('.confirm-upload-buttons').hide('fast');
 
                 // Add the file to the request.
                 formdata.append('photos[]', formdata_PHO);
@@ -72,20 +85,6 @@ $(function(){
             });
 
 
-            // trim twitter username
-            $("#twitter").keypress(function() {
-              var $y = $(this).val();
-              var $newy = $y.replace(/\s+/g, '');
-              if ($newy.toLowerCase().indexOf("@") >= 0) {
-                console.log('yes mane');
-              //   $newy = $newy.append('@');
-              } else {
-                $newy = '@'+ $newy;
-                console.log('No mane');
-              }
-              $(this).val($newy);
-            });
-
 
     } // end of IF STATEMENT
 
@@ -96,10 +95,22 @@ $(function(){
 
 
 
+            // trim twitter username
+            $("#twitter").keypress(function() {
+              var $y = $(this).val();
+              var $newy = $y.replace(/\s+/g, '');
+              if ($newy.toLowerCase().indexOf("@") >= 0) {
+                // console.log('yes mane');
+              //   $newy = $newy.append('@');
+              } else {
+                $newy = '@'+ $newy;
+                // console.log('No mane');
+              }
+              $(this).val($newy);
+            });
 
 
 
 
 
-
-});
+}
