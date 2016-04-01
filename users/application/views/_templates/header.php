@@ -502,6 +502,9 @@
       color:#e3e3e3;
       cursor: pointer;
     }
+    .promo-file-options img {
+      margin-right: 12px;
+    }
     article .list-item {
       text-align:left;
     }
@@ -516,6 +519,12 @@
     }
     .main-feed {
       padding-top:5%;
+      min-height: 100vh;
+
+
+
+
+
     }
     .jumbotron .container , .modal {
       margin-top: 20vh;
@@ -728,3 +737,8 @@
         </li>
       </ul>
   </div>
+
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://public.radio.co/playerapi/jquery.radiocoplayer.min.js"></script>
+<script>$('.radioplayer').radiocoPlayer();</script>

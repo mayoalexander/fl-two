@@ -2260,8 +2260,7 @@ public function getUserInfo($user_name) {
   public function display_attached_files($attached_files, $status=NULL, $desc=null, $title=null, $id=null, $promo=null) {
     $res = '';
     $share_button = '';
-    // $share_button .= 'okay get mone';
-    // var_dump();
+
     if (isset($promo['paypal_url'])) {
       $share_button .= '<a href="'.$promo['paypal_url'].'" class="btn btn-success-outline" target="_blank">Purchase Tickets</a>' ;
     }
@@ -2270,7 +2269,6 @@ public function getUserInfo($user_name) {
     if (isset($desc)) {
       $res .="<p class='promo-description' >".$desc."<br>{$share_button}</p>";
     }
-
  
     $attached_files = explode(", ", $attached_files);
 
@@ -2285,6 +2283,7 @@ public function getUserInfo($user_name) {
     }
     return $res;
   }
+
 
   public function getVideosByUser($user_name='', $limit=6) {
 

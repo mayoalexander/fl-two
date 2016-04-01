@@ -35,6 +35,13 @@ $current_page = '0';
     padding-bottom:10vh;
     padding-top:10vh;
   }
+  .btn-primary-outline {
+    background-color: transparent;
+  }
+  .full-width-article img {
+    margin-right: 12px;
+  }
+
 </style>
 <header class="jumbotron feature bg-inverse text-center center-vertically" role="banner">
   <div class="container jumbotron-body">
@@ -74,10 +81,38 @@ $current_page = '0';
 
 
 
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://public.radio.co/playerapi/jquery.radiocoplayer.min.js"></script>
 
 <section class="site-break dropdown">
-  <span class="page-title">Stay Connected. Subscribe to FREELABEL Magazine</span>
-  <a class="btn btn-secondary-outline dropdown-toggle" href="http://twitter.com/@freelabelnet" target="_blank"><i class="fa fa-twitter" ></i> Follow Us</a>
+  <div class="container" style="max-width:500px;">
+      <hr>
+      <h1 class="display-3"><button class="radio-menu player-trigger audio-player-title btn btn-secondary-outline"><i class="fa fa-circle-o-notch fa-spin"></i> Loading</button> FLRADIO</h1>
+      <h2 class="radioplayer"
+      data-elapsedtime="false"
+      data-showartwork="false"
+      data-showplayer="false"
+      data-volumeslider="false"
+      data-src="http://streaming.radio.co/s95fa8cba2/listen"
+      data-nowplaying="true"></h2></center>
+      <input type="range" id="volume-meter"></input>
+      
+      <br><br>
+      <?php 
+  // $page_title = 'Listen LIVE ON-AIR to #FREELABELRADIO ';
+  // $page_url = 'RADIO.FREELABEL.NET';
+  // echo $config->share_page_button($page_title , $page_url); 
+  ?>
+  </div>
+
+
+
+<script>$('.radioplayer').radiocoPlayer();</script>
+<!-- <script type="text/javascript" src="http://freelabel.net/js/radio.js"></script> -->
+
+
+  <!-- <span class="page-title">Stay Connected. Subscribe to FREELABEL Magazine</span> -->
+<!--   <a class="btn btn-secondary-outline dropdown-toggle" href="http://twitter.com/@freelabelnet" target="_blank"><i class="fa fa-twitter" ></i> Follow Us</a> -->
 <!--   <ul class="dropdown-menu">
     <li><a href="#">HTML</a></li>
     <li><a href="#">CSS</a></li>
