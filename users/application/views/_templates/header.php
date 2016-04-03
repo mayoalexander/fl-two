@@ -285,6 +285,7 @@
       margin-bottom:3%;
       margin-top:3%;
     }
+
     .dashboard-nav-group {
       margin-bottom:2vh;
     }
@@ -557,6 +558,9 @@
     .section-title {
       padding:3%;
     }
+    .section-description {
+      font-size:22px;
+    }
     .pagination-count {
       font-size:14px;
     }
@@ -584,6 +588,7 @@
     }
     .feedback {
       font-size:10px;
+      padding:0.6em;
     }
     .current-clients-container .current-clients-table {
       margin:auto;

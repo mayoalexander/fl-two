@@ -109,13 +109,13 @@ if ($user['custom']==''){
 	$profile_builder_form = '<div class="create_profile_form_wrapper">';
 
 	//$profile_builder_form .= '<h3 >Hello, '.$user_name_session.'! </h3>';
-	$profile_builder_form .= '<div class="alert alert-danger" role="alert">You haven\'t finish completing all the additional information regarding creating your profile, '.$user_name_session.'! </div>';
+	$profile_builder_form .= '<div class="label label-warning" role="alert">You\'ll need to finish completing all the additional information regarding creating your profile, '.$user_name_session.'! </div>';
 	//$profile_builder_form .= '<div class="alert alert-warning" role="alert">You\'ll need to <a href="#" class="alert-link">make your payment</a> before we can get you booked in rotation!</div>';
 	$profile_builder_form	.=	 "
 
 															<form name='profile_builder_form' action='http://freelabel.net/submit/views/db/campaign_info.php' method='post' enctype=\"multipart/form-data\" class='profile_builder_form panel-body row' >
 															<h1>Complete Profile</h1>
-															<p class='text-muted' >Use this form to complete your FREELABEL Profile. We will use this information to build your campaign as well as tag you during promotional campaigns!</p>
+															<p class='section-description text-muted' >Use this form to complete your FREELABEL Profile. We will use this information to build your campaign as well as tag you during promotional campaigns!</p>
 															
 															<div class='col-md-3 col-sm-6' >
 																<h4><i class='fa fa-photo' ></i> Upload Profile Photo</h4><input type='file' class='form-control' name='photo' required>

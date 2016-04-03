@@ -30,27 +30,28 @@ $user = $config->getUserData($user_name);
 
 
 
+  if (isset($tracks)) {
+    foreach ($tracks as $key => $value) {
+      $post_date = date('m-d',strtotime($value['submission_date']));
+      $todays_date = date('m-d');
+      $yesterdays_date = date('m-d' , '-1 day');
+      $two_days_ago = date('m-d', strtotime('-2 days', time() ));
+      $three_days_ago = date('m-d', strtotime('-3 days', time() ));
 
-  foreach ($tracks as $key => $value) {
-    $post_date = date('m-d',strtotime($value['submission_date']));
-    $todays_date = date('m-d');
-    $yesterdays_date = date('m-d' , '-1 day');
-    $two_days_ago = date('m-d', strtotime('-2 days', time() ));
-    $three_days_ago = date('m-d', strtotime('-3 days', time() ));
 
+      if ($post_date == $todays_date) {
+        $today[] = $value['blogtitle'];
+      } elseif ($post_date == $yesterdays_date) {
+        $yesterday[] = $value['blogtitle'];
+      } elseif ($post_date == $two_days_ago) {
+        $two_days_ago_arr[] = $value['blogtitle'];
+      } elseif ($post_date == $three_days_ago) {
+        $three_days_ago_arr[] = $value['blogtitle'];
+      } else {
+        $last_week[] = $value['blogtitle'];
+      }
 
-    if ($post_date == $todays_date) {
-      $today[] = $value['blogtitle'];
-    } elseif ($post_date == $yesterdays_date) {
-      $yesterday[] = $value['blogtitle'];
-    } elseif ($post_date == $two_days_ago) {
-      $two_days_ago_arr[] = $value['blogtitle'];
-    } elseif ($post_date == $three_days_ago) {
-      $three_days_ago_arr[] = $value['blogtitle'];
-    } else {
-      $last_week[] = $value['blogtitle'];
     }
-
   }
   $this_week_count = count($today);
   $yesterday_count = count($yesterday);
