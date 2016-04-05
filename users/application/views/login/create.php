@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <style type="text/css">
     
     .register-panel {
@@ -49,8 +50,15 @@
         <div class="container">
             <section class="">
                 <form action="<?php echo URL; ?>login/register_action" method="POST" class="registration-form" name="registerform" >
+=======
+<a name="register-form"></a>
+<header class="jumbotron bg-inverse text-center center-vertically show-after-cta" role="banner" style='background-image:none;background-color:transparent;'>
+        <div class="container">
 
-                    <h1>Register</h1>
+                <form action="<?php echo URL; ?>login/register_action" method="POST" style="max-width:400px;margin:auto;" name="registerform" >
+>>>>>>> integrating_huge
+
+                    <h1 class="display-3">REGISTER</h1>
                     <?php $this->renderFeedbackMessages(); ?>
                     <div class="row">
                     <panel class="col-md-6 col-xs-12 register-panel">
@@ -82,6 +90,7 @@
                         $params_1[] = array('name'=>'captcha', 'id'=>'captcha','label'=>'Enter Captcha..');
                         echo $config->build_input($params_1);
                     ?>
+<<<<<<< HEAD
                     <span class="input input--akira">
                       <input name="register" class="input__field input__field--akira" type="submit" value="Register" id="user_name">
                       <label class="input__label input__label--akira" for="input-22">
@@ -90,9 +99,12 @@
                     </span>
 
                     <!-- <a href="<?php echo URL; ?>login/register">Register</a> | <a href="<?php echo URL; ?>login/requestpasswordreset">Forgot my Password</a> -->
+=======
+                    <input name="register" class="btn btn-success-outline btn-block" type="submit" value="Register" id="user_name">
+                    <a href="<?php echo URL; ?>login/register">Register</a> | <a href="<?php echo URL; ?>login/requestpasswordreset">Forgot my Password</a>
+>>>>>>> integrating_huge
 
                 </form>
-            </section>
         </div><!-- /container -->
         <script src="http://freelabel.net/landing/view/inputs/js/classie.js"></script>
         <script>

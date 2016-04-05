@@ -3316,12 +3316,7 @@ $twitter_share = "#FLMAG | ".$twitter.'
       }
 
       $output .= '
-    <span class="input input--akira col-md-3">
-      <input name="'.$value['name'].'" class="input__field input__field--akira" type="'.$type.'"  id="'.$value['id'].'"  autocomplete="off"/>
-      <label class="input__label input__label--akira" for="input-22">
-          <span class="input__label-content input__label-content--akira">'.$value['label'].'</span>
-      </label>
-    </span>';
+      <input name="'.$value['name'].'" class="form-control" type="'.$type.'"  id="'.$value['id'].'"  placeholder="'.$value['label'].'" autocomplete="off"/>';
     }
 
     return $output;

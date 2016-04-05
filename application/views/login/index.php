@@ -1,43 +1,8 @@
-<style>
-.input__label--akira::before, .jumbotron {
-    /*background-color:#2f3238;*/
-    background:#101010;
- }
- .button-pill-left {
-        border-radius: 2rem 0rem 0rem 2rem;
-            /*border: 0.0625rem solid transparent;*/
- }
-  .button-pill-right {
-        border-radius: 0rem 2rem 2rem 0rem;
- }
-</style>
+<header class="jumbotron bg-inverse text-center center-vertically show-after-cta" role="banner" style='background-image:none;background-color:transparent;'>
 
-<header class="jumbotron bg-inverse text-center center-vertically" role="banner">
-  <div class="container">
-    <!-- <h1 class="display-3">SIGN-IN</h1> -->
-
-
-
-    <!-- <h2 class="m-b-lg"><?php echo $site['description']; ?> <a href="" class="jumbolink">Join now</a>.</h2> -->
-    <!-- <a href="<?php echo $this->facebook_login_url; ?>" class="btn btn-secondary-outline m-b-md btn-facebook facebook-login-button"><i class="fa fa-facebook" ></i> Signin with Facebook</a> -->
-    <!-- <a href="<?php echo $this->facebook_login_url; ?>" class="btn btn-secondary-outline m-b-md btn-facebook facebook-login-button button-pill-left"><i class="fa fa-facebook" ></i> Login with Facebook</a> -->
-
-        <!-- <a class="btn btn-secondary-outline m-b-md button-pill-right" href="<?php echo $site['http']; ?>users/login/register#" role="button"><span class="icon-sketch"></span>or Create New Account</a> -->
-
-<!--     <ul class="list-inline social-share">
-      <li><a class="nav-link" href="http://twitter.com/<?php echo $site['twitter']; ?>#"><span class="icon-twitter"></span> <?php echo $site['landing-info']['twitter']; ?></a></li>
-      <li><a class="nav-link" href="https://www.facebook.com/theAMRecords/#"><span class="icon-facebook"></span> <?php echo $site['landing-info']['facebook']; ?></a></li>
-      <li><a class="nav-link" href="#"><span class="icon-linkedin"></span> <?php //echo $site['landing-info']['twitter']; ?></a></li>
-    </ul> -->
-<!--   </div>
-</header>
-
-
-<header class="jumbotron bg-inverse text-center center-vertically" role="banner" > -->
-        <link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/inputs/css/normalize.css" />
-        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+        <!-- <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" /> -->
         <!-- <link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/inputs/css/demo.css" /> -->
-        <link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/inputs/css/set1.css" />
+        <!-- <link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/inputs/css/set1.css" /> -->
 
         <h1 class="display-3">SIGN-IN</h1>
         <h2 class="m-b-lg">
