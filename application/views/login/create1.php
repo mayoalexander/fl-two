@@ -13,6 +13,12 @@
     #captcha {
         max-width:1000px;
     }
+    .registration-form {
+        max-width: 350px;
+    }
+    .facebook-login-button {
+        font-size:0.75em;
+    }
 
     @media (max-width: 600px) {
       .registration-form {
@@ -21,23 +27,45 @@
     }
 </style>
 
-<header class="jumbotron bg-inverse text-center center-vertically show-after-cta" role="banner" style="display:none;">
-  <div class="container">
-    <h1 class="display-3">CREATE ACCOUNT</h1>
+<header class="page-header">
 
-
-
-    <h2 class="m-b-lg"><?php echo $site['description']; ?> <a href="" class="jumbolink">Join now</a>.</h2>
-    <!-- <a href="<?php echo $this->facebook_login_url; ?>" class="btn btn-secondary-outline m-b-md btn-facebook facebook-login-button"><i class="fa fa-facebook" ></i> Signin with Facebook</a> -->
-    <a href="<?php echo $this->facebook_register_url; ?>" class="btn btn-secondary-outline m-b-md btn-facebook facebook-login-button"><i class="fa fa-facebook" ></i> Register with Facebook</a>
-    <a class="btn btn-secondary-outline m-b-md" href="<?php echo $site['http']; ?>users/login#" role="button"><span class="icon-sketch"></span>Already Registered? Login Here</a>
-    <ul class="list-inline social-share">
-      <li><a class="nav-link" href="http://twitter.com/<?php echo $site['twitter']; ?>#"><span class="icon-twitter"></span> <?php echo $site['landing-info']['twitter']; ?></a></li>
-      <!-- <li><a class="nav-link" href="https://www.facebook.com/theAMRecords/#"><span class="icon-facebook"></span> <?php echo $site['landing-info']['facebook']; ?></a></li> -->
-      <!-- <li><a class="nav-link" href="#"><span class="icon-linkedin"></span> <?php //echo $site['landing-info']['twitter']; ?></a></li> -->
-    </ul>
-  </div>
 </header>
+
+
+
+    <div class="container">
+      <form action="<?php echo URL; ?>login/register_action" method="POST" class="registration-form" name="registerform" >
+
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <?php $this->renderFeedbackMessages(); ?>
+
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="text" id="user_name" name="user_name" class="form-control" placeholder="Choose Username.." required autofocus>
+        <input type="text" id="user_email" name="user_email" class="form-control" placeholder="Choose Email.." required autofocus>
+        <input type="text" id="user_password_new" name="user_password_new" class="form-control" placeholder="Choose Password.." required autofocus>
+        <input type="text" id="user_password_repeat" name="user_password_repeat" class="form-control" placeholder="Repeat Password.." required autofocus>
+
+        <br>
+
+        <img id="captcha" src="<?php echo URL; ?>login/showCaptcha" />
+        <span style="display: block; font-size: 11px; color: #999; margin-bottom: 10px">
+            <!-- quick & dirty captcha reloader -->
+            <a href="#" onclick="document.getElementById('captcha').src = '<?php echo URL; ?>login/showCaptcha?' + Math.random(); return false">[ Reload Captcha ]</a>
+        </span>
+        <input type="text" id="captcha" name="captcha" class="form-control" placeholder="Enter Captcha.." required autofocus>
+
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        <hr>
+        <a href="<?php echo $this->facebook_register_url; ?>" class="label btn-secondary-outline m-b-md btn-facebook facebook-login-button"><i class="fa fa-facebook" ></i> Register with Facebook</a>
+      </form>
+
+    </div> <!-- /container -->
+
+
+
+
+
 
 
 <a name="register-form"></a>

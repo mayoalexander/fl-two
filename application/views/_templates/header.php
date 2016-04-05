@@ -20,6 +20,16 @@
     $site['page_title'] = $config->getPageTitle(strtoupper($_GET['url']));
 
 
+
+
+
+    /* SET PAGE TITLES */
+    function setMetaTags() {
+
+    }
+
+
+
     // LOAD USER DATA
     $user = new User();
     if (isset($_SESSION) && count($_SESSION)>0) {
@@ -36,6 +46,7 @@
     //   $site['user']['media'] = $user_logged_in->getUserMedia('admin');
     }
 
+
     $front_page_photos = $config->getPhotoAds($site['creator'], 'front');
     shuffle($front_page_photos);
     if ($user_name = Session::get('user_name')) {
@@ -43,10 +54,32 @@
     }
 
     if (!strpos($_GET['url'], '/image/')) {
+
+      // for links using FREELABEL.NET/TOUR/
       $site['meta_tag_photo'] = $site['media']['photos']['front-page'][0]['image'];
       $site['meta_tag_title'] = $site['media']['photos']['front-page'][0]['title'];
       $site['meta_tag_caption'] = $site['media']['photos']['front-page'][0]['caption'];
+    } elseif (strpos($_GET['url'], '/image/')  && isset($_GET['id'])) {
+
+// for links using "index/image/#id"
+      $promo_id = str_replace('index/image/', '', $_GET['id']);
+      $current_promo = $config->getPromoByDesc($promo_id,null,null,'desc');
+      // $site['meta_tag_photo'] = $current_promo[0]['image'];
+
+  
+      $site['meta_tag_title'] = $current_promo[0]['title'];
+      $site['meta_tag_caption'] = $current_promo[0]['caption'];
+      $site['page_title'] = $site['meta_tag_title'].' // FREELABEL'; 
+
+      if (!$current_promo[0]['thumb']=='') {
+        $site['meta_tag_photo'] = $current_promo[0]['thumb'];
+      } else {
+        $site['meta_tag_photo'] = $current_promo[0]['image'];
+      }
+
+
     } else {
+      // for links using "index/image/#id"
       $promo_id = str_replace('index/image/', '', $_GET['url']);
       $current_promo = $config->getPromoById($promo_id);
       // $site['meta_tag_photo'] = $current_promo[0]['image'];
@@ -173,6 +206,7 @@
     }
     .promo-description {
       border-bottom: 1px solid #303030;
+      padding-bottom:1em;
     }
 
     /* Hide Angular JS elements before initializing */
@@ -251,6 +285,7 @@
       margin-bottom:3%;
       margin-top:3%;
     }
+
     .dashboard-nav-group {
       margin-bottom:2vh;
     }
@@ -468,6 +503,9 @@
       color:#e3e3e3;
       cursor: pointer;
     }
+    .promo-file-options img {
+      margin-right: 12px;
+    }
     article .list-item {
       text-align:left;
     }
@@ -482,6 +520,12 @@
     }
     .main-feed {
       padding-top:5%;
+      min-height: 100vh;
+
+
+
+
+
     }
     .jumbotron .container , .modal {
       margin-top: 20vh;
@@ -514,6 +558,9 @@
     .section-title {
       padding:3%;
     }
+    .section-description {
+      font-size:22px;
+    }
     .pagination-count {
       font-size:14px;
     }
@@ -541,6 +588,7 @@
     }
     .feedback {
       font-size:10px;
+      padding:0.6em;
     }
     .current-clients-container .current-clients-table {
       margin:auto;
@@ -682,7 +730,7 @@
             </div><!-- /gn-scroller -->-
           </nav>
         </li>
-        <li class="logo-menu" style='border-right:none;' ><a href="<?php echo $site['http']; ?>users/"><img src="<?php echo $site['logo']; ?>" style="max-height:48px;" ></a></li>
+        <li class="logo-menu" style='border-right:none;' ><a href="<?php echo $site['http']; ?>"><img src="<?php echo $site['logo']; ?>" style="max-height:48px;" ></a></li>
         <li class="radio-menu pull-right"  style='border-right:none;' >
           <a class="audio-player-title codrops-icon codrops-icon-prev" href="<?php echo $site['http']; ?>radio/"><span><i class="radio-player-control fa fa-play" ></i>
           <span style="color:red;" >LIVE</span> ON AIR</a>
@@ -694,3 +742,8 @@
         </li>
       </ul>
   </div>
+
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://public.radio.co/playerapi/jquery.radiocoplayer.min.js"></script>
+<script>$('.radioplayer').radiocoPlayer();</script>

@@ -730,7 +730,7 @@
             </div><!-- /gn-scroller -->-
           </nav>
         </li>
-        <li class="logo-menu" style='border-right:none;' ><a href="<?php echo $site['http']; ?>users/"><img src="<?php echo $site['logo']; ?>" style="max-height:48px;" ></a></li>
+        <li class="logo-menu" style='border-right:none;' ><a href="<?php echo $site['http']; ?>"><img src="<?php echo $site['logo']; ?>" style="max-height:48px;" ></a></li>
         <li class="radio-menu pull-right"  style='border-right:none;' >
           <a class="audio-player-title codrops-icon codrops-icon-prev" href="<?php echo $site['http']; ?>radio/"><span><i class="radio-player-control fa fa-play" ></i>
           <span style="color:red;" >LIVE</span> ON AIR</a>
