@@ -16,13 +16,21 @@
     <div class="card-block container">
       <div class="row">
         <div class="col-md-4 card-stat">
-          <h4><?php echo number_format($stats); ?> <small class="text-uppercase">Views (for <?php echo $s['user_twitter'];?>)</small></h4>
+          <h4><?php if (isset($stats) && $stats!=='N') {
+              echo number_format($stats); 
+              echo '<small class="text-uppercase">Views (for '.$s['user_twitter'].')</small>'; 
+            } else {
+              // echo number_format($stats); 
+              echo '<span style="color:red;">'.'No Uploads</span>'; 
+              echo '<small class="text-uppercase">Upload to start counting up!</small>'; 
+
+              } ?></h4>
         </div>
         <div class="col-md-4 card-stat">
           <h4><?php echo $num_tracks; ?> <small class="text-uppercase">Posts</small></h4>
         </div>
         <div class="col-md-4 card-stat">
-          <h4>$<?php echo number_format($score, 2); ?> <small>Earnings (Exclusve Accounts Only)</small></h4>
+          <h4>$<?php echo number_format($score, 2); ?> <small>Earnings (Exclusive Accounts Only)</small></h4>
         </div>
       </div>
     </div>
@@ -54,8 +62,22 @@
   <div class="card card-chart">
     <ul class="stats-track-list list-group">
       <?php 
-      foreach ($tracks as $key => $value) {
-        echo '<li class="list-group-item complete"><a href="'.$value['blog_story_url'].'">'.$value['twitter'].' - '.$value['blogtitle'].'</a></li>';
+    if (isset($tracks)) {      
+        foreach ($tracks as $key => $value) {
+          echo '<li class="list-group-item"><a href="'.$value['blog_story_url'].'">'.$value['twitter'].' - '.$value['blogtitle'].'</a></li>';
+        }
+      } else {
+        echo '<li class="list-group-item"><p class="section-description">To get your music placed in radio rotation, magazine pages, and booked on different events, you\'ll need to start uploading music to your account so our DJs, Radio Hosts, and Event managers can have your info for getting you confirmed placement on Major Projects.
+
+        <br>
+        <br>
+
+        As long as you are Consistently uploading new music, booking events, and creating promotions for your profile, you end up in our feed more often, which results in you getting placed on more projects.
+
+        <br>
+        <br>
+
+        Our goal is to have everything we need of yours and create new ways to release all of your content. Watch as we build your following to grow larger than you possibly imagined.</p></li>';
       }
       ?>
     </ul>

@@ -251,7 +251,7 @@ class Login extends Controller
      */
     function create()
     {
-        $this->view->render('login/create');
+        $this->view->render('login/create1');
     }
     function signin () 
     {

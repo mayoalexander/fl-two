@@ -2318,58 +2318,71 @@ public function getUserInfo($user_name) {
     } else {
       $colWidth = 'col-md-6';
     }
-    foreach ($data as $key => $value) {
-      // load thumbnail 
-      $thumbnail =  str_replace('server/php/upload/', 'server/php/upload/thumb/', $value['image']);
-      if (file_exists($thumbnail)) {
-        $thumbnail = $thumbnail;
-      } else {
-        $thumbnail = $value['image'];
-      }
-      $photos .= "
-      <article class='full-width-article ".$colWidth." col-xs-12 eq-row-height' data-promo-id='".$value['id']."'>";
 
-      $type = $this->detect_type($value['image']);
-      $photos .= ''.$this->display_promo_options($value['id'], $user_name , $value['image'], $value['description']);
-      switch (strtolower($type)) {
-        case 'mp4':
-          $photos .="<label id='title-id-".$value['id']."' class='file_name editable-promo' >".$value['title']."</label>";
-          $photos .="<label class='file_name text-muted'>".$value['stats']."</label>";
-          $photos .= '<video class="user-video-item" controls preload="metadata" src="'.$value['image'].'">';
-          break;
-        case 'mp3':
-          $photos .="<label id='title-id-".$value['id']."' class='file_name editable-promo' >".$value['title']."</label>";
-          $photos .= "<a href='#' id='controls-".$value['id']."' class='controls-play' ".'data-src="'.$value['image'].'" data-title="'.$value['title'].'" style="background-image:url(\''.$value['poster'].'\');" '."><i class='promotion-player-button fa fa-play-circle'></i></a>";
-          break;
-        case 'png' OR 'jpeg' OR 'jpg':
-          $photos .="<label id='title-id-".$value['id']."' class='file_name editable-promo' >".$value['title']."</label>";
-          $photos .="<label class='file_name'>".$value['stats']." views</label>";
-          $photos .= '<a href="http://freelabel.net/users/index/image/'.$value['id'].'" ><img class="user-photo-item" src="'.$thumbnail.'"></a>';
-          $photos .="<br><label class='file_name'>Tags:</label><label id='desc-id-".$value['id']."' class='file_name editable-promo text-muted' >".$value['desc']."</label>";
-          // $photos .="<br><label class='file_name'>Caption:</label><label id='caption-id-".$value['id']."' class='file_name editable-promo text-muted' >".$value['caption']."</label>";
-          // $photos .="<br><label class='file_name'>Status:</label><label id='caption-id-".$value['id']."' class='file_name text-muted' ><select><option selected>Public</option><option>Private</option></select></label>";
-          $photos .= '<ol>';
-          $photos .= $this->display_attached_files($value['files_attached']);
-          $photos .= '</ol>';
-          break;
-        default:
-          //print_r($value['image']);
-          if (strpos($value['image'] , 'mp4')>0) {
-            $photos .="<label id='promo-id-".$value['id']."' class='file_name editable-promo'>".$value['title']."</label>";
-            //$photos .= '<video class="user-photo-item" controls preload="metadata" src="'.$value['image'].'">';
-            // $photos .= '<img class="user-photo-item" src="'.$value['image'].'">';
+    if (isset($data)) {
+        foreach ($data as $key => $value) {
+          // load thumbnail 
+          $thumbnail =  str_replace('server/php/upload/', 'server/php/upload/thumb/', $value['image']);
+          if (file_exists($thumbnail)) {
+            $thumbnail = $thumbnail;
           } else {
-            $photos .="<label id='promo-id-".$value['id']."' class='file_name editable-promo'>".$value['title']."</label>";
-            // $photos .= 'files: '.$value['files_attached'];
-            $photos .= '<ol>';
-            $photos .= $this->display_attached_files($value['files_attached']);
-            $photos .= '</ol>';
+            $thumbnail = $value['image'];
           }
-        break;
-      }
-      $photos .='</article>';
-    }
+          $photos .= "
+          <article class='full-width-article ".$colWidth." col-xs-12 eq-row-height' data-promo-id='".$value['id']."'>";
+    
+          $type = $this->detect_type($value['image']);
+          $photos .= ''.$this->display_promo_options($value['id'], $user_name , $value['image'], $value['description']);
+          switch (strtolower($type)) {
+            case 'mp4':
+              $photos .="<label id='title-id-".$value['id']."' class='file_name editable-promo' >".$value['title']."</label>";
+              $photos .="<label class='file_name text-muted'>".$value['stats']."</label>";
+              $photos .= '<video class="user-video-item" controls preload="metadata" src="'.$value['image'].'">';
+              break;
+            case 'mp3':
+              $photos .="<label id='title-id-".$value['id']."' class='file_name editable-promo' >".$value['title']."</label>";
+              $photos .= "<a href='#' id='controls-".$value['id']."' class='controls-play' ".'data-src="'.$value['image'].'" data-title="'.$value['title'].'" style="background-image:url(\''.$value['poster'].'\');" '."><i class='promotion-player-button fa fa-play-circle'></i></a>";
+              break;
+            case 'png' OR 'jpeg' OR 'jpg':
+              $photos .="<label id='title-id-".$value['id']."' class='file_name editable-promo' >".$value['title']."</label>";
+              $photos .="<label class='file_name'>".$value['stats']." views</label>";
+              $photos .= '<a href="http://freelabel.net/users/index/image/'.$value['id'].'" ><img class="user-photo-item" src="'.$thumbnail.'"></a>';
+              $photos .="<br><label class='file_name'>Tags:</label><label id='desc-id-".$value['id']."' class='file_name editable-promo text-muted' >".$value['desc']."</label>";
+              // $photos .="<br><label class='file_name'>Caption:</label><label id='caption-id-".$value['id']."' class='file_name editable-promo text-muted' >".$value['caption']."</label>";
+              // $photos .="<br><label class='file_name'>Status:</label><label id='caption-id-".$value['id']."' class='file_name text-muted' ><select><option selected>Public</option><option>Private</option></select></label>";
+              $photos .= '<ol>';
+              $photos .= $this->display_attached_files($value['files_attached']);
+              $photos .= '</ol>';
+              break;
+            default:
+              //print_r($value['image']);
+              if (strpos($value['image'] , 'mp4')>0) {
+                $photos .="<label id='promo-id-".$value['id']."' class='file_name editable-promo'>".$value['title']."</label>";
+                //$photos .= '<video class="user-photo-item" controls preload="metadata" src="'.$value['image'].'">';
+                // $photos .= '<img class="user-photo-item" src="'.$value['image'].'">';
+              } else {
+                $photos .="<label id='promo-id-".$value['id']."' class='file_name editable-promo'>".$value['title']."</label>";
+                // $photos .= 'files: '.$value['files_attached'];
+                $photos .= '<ol>';
+                $photos .= $this->display_attached_files($value['files_attached']);
+                $photos .= '</ol>';
+              }
+            break;
+          }
+          $photos .='</article>';
+        }
+    } else {
+         $photos .= "<article class='full-width-article ".$colWidth." col-xs-12 eq-row-height' data-promo-id='".$value['id']."'>";
+         $photos .='<h2>You have no promos created! uploaded!</h2>';
+         $photos .='<p class="section-description">You have no promos created! uploaded!</p>';
+         $photos .='</article>';
 
+        $photos .= "<article class='full-width-article ".$colWidth." col-xs-12 eq-row-height' data-promo-id='".$value['id']."'>";
+         $photos .='<h2>You have no promos created! uploaded!</h2>';
+         $photos .='<p class="section-description">You have no promos created! uploaded!</p>';
+         $photos .='</article>';
+
+    }
     /* pagination */
     $count = count($data);
     if ($count == 6) {

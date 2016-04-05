@@ -10,6 +10,7 @@
  */
 ;( function( window ) {
 	
+	console.log('page loaded');
 	'use strict';
 
 	function extend( a, b ) {
