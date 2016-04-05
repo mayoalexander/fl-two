@@ -162,6 +162,9 @@
       color:#e3e3e3;
       border-radius: 0px;
     }
+    .profile_builder_form {
+      padding:2em;
+    }
     textarea:focus, input:focus{
         outline: 0;
     }

@@ -80,6 +80,9 @@ class Dashboard extends Controller
     function featured() {
         $this->view->render('dashboard/featured',true);
     }
+    function complete() {
+        $this->view->render('dashboard/complete');
+    }
     function dev()
     {
         $this->view->render('dashboard/dev');

@@ -598,3 +598,13 @@ if($row = mysqli_fetch_array($result))
 	
 }
 ?>
+
+<script type="text/javascript">
+	$(function(){
+		$('.profile_builder_form').submit(function(event){
+			var data = $(this).seralize();
+			event.preventDefault();
+			alert(data);
+		});
+	});
+</script>
