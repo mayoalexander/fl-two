@@ -71,7 +71,7 @@ function getInx(currentTab){
 	var currentInx = getInx(currentTab);
 	var loadData = getPageData(currentTab);
 
-	console.log('current tab: '+currentTab);
+	// console.log('current tab: '+currentTab);
 	
 
 	'use strict';
@@ -98,7 +98,7 @@ function getInx(currentTab){
 	};
 
 	CBPFWTabs.prototype._init = function() {
-		console.log('current index: '+currentInx);
+		// console.log('current index: '+currentInx);
 
 		// tabs elems
 		this.tabs = [].slice.call( this.el.querySelectorAll( 'nav > ul > li' ) );

@@ -31,8 +31,7 @@ function stopAllAudio() {
          tooltip   : 'Click to Edit URL...'
     });
 
-    // datepicker for the events 
-    $('.event-datepicker').datepicker({dateFormat: "yy-mm-dd"});
+
 
     // Main Feed Videon Controls Functionality
     $('video').click(function(){
@@ -204,51 +203,58 @@ $(function() {
     //  PLAY BUTTON CONTROL 
     // *********************************
 
+
+    function updateView(elem, audio, title,audioTitle, audioFile) {
+      var playIcon = '<i class="fa fa-play"></i>';
+      var pauseIcon = '<i class="fa fa-pause"></i>';
+              elem.html(pauseIcon);
+              audio.play();
+              title.text(audioTitle);
+              globalAudioPlayer.attr('src', audioFile);
+              globalAudioPlayer.attr('autoplay', 1);
+              $(this).addClass('now-playing');
+    }
     //  ---------- play button ------------ /
     $('.controls-play').click(function(event){
+
+      // stop all playing audio and video
       stopAllAudio();
       event.preventDefault();
+
+      // grab data into variables
       var audioFile = $(this).attr('data-src');
       var audioTitle = $(this).attr('data-title');
+
+
+
+      // design UI into variables
       var nowplaying = '<i class="fa fa-play"></i>';
       var nowpaused = '<i class="fa fa-pause"></i>';
+      var playIcon = '<i class="fa fa-play"></i>';
+      var pauseIcon = '<i class="fa fa-pause"></i>';
+
       // get next song
       var nextsong = $(this).parent().parent().next();
       var nextFile = nextsong.find('.controls-play').attr('data-src');
       var nextTitle = nextsong.find('.controls-play').attr('data-title');
-      globalButtons.html('<i class="fa fa-play"></i>'); // * 
+
+
+      // update view 
+      globalButtons.html(playIcon); // * 
       
+      var elem = $(this);
+      // detect if audio is playing or not
       if (isPlaying(globalAudioPlayer[0])==false) {
         // play file
-              $(this).html('<i class="fa fa-pause"></i>');
-              globalAudioPlayer[0].play();
-              globalAudioPlayerText.text(audioTitle);
-              globalAudioPlayer.attr('src', audioFile);
-              globalAudioPlayer.attr('autoplay', 1);
-              $(this).addClass('now-playing'); // *
-              // globalAudioPlayer.attr('loop', 1);
+
+        updateView(elem , globalAudioPlayer[0], globalAudioPlayerText,audioTitle ,audioFile );
       } else if (isPlaying(globalAudioPlayer[0])==true && audioFile !== globalAudioPlayer[0].src) {
         // pause function
-              $(this).html('<i class="fa fa-pause"></i>');
-              globalAudioPlayer[0].play();
-              globalAudioPlayerText.text(audioTitle);
-              globalAudioPlayer.attr('src', audioFile);
-              globalAudioPlayer.attr('autoplay', 1);
-              // globalAudioPlayer.attr('loop', 1);
+        updateView(elem , globalAudioPlayer[0], globalAudioPlayerText,audioTitle ,audioFile );
       } else {
-        $(this).html('<i class="fa fa-play"></i>');
-        globalAudioPlayer[0].pause();
-      }
-
-      if ($(this).html()==nowpaused) {
-          // alert('show pawuse : ' + $(this).html());
-          $(this).removeClass('btn-secondary-outline');
-          $(this).addClass('btn-primary-outline');
-      } else {
-          // alert('show play button ' + $(this).html());
-          // $(this).html('<i class="fa fa-pause"></i>');
-          $(this).removeClass('btn-secondary-outline');
-          $(this).addClass('btn-primary-outline');
+        alert('what is going on here?');
+        // $(this).html('<i class="fa fa-play"></i>');
+        // globalAudioPlayer[0].pause();
       }
 
 
