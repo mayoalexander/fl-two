@@ -955,3 +955,12 @@ function delete_event(key) {
 			  </div>
 </div>
 <?php echo $schedule_listing; ?>
+
+
+
+<script type="text/javascript">
+	$(function(){
+	    // datepicker for the events 
+	    $('.event-datepicker').datepicker({dateFormat: "yy-mm-dd"});
+	});
+</script>
