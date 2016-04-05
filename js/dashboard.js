@@ -1,7 +1,8 @@
 
 function stopAllAudio() {
   var data = $('.audio-player').get(0).pause();
-
+  console.log(data);
+  // alert('pause');
   var videos = $('video');
   // var videostop = $('video').pause();
 
@@ -204,21 +205,28 @@ $(function() {
     // *********************************
 
 
-    function updateView(elem, audio, title,audioTitle, audioFile) {
+    function updateView(elem, audio, title,audioTitle, audioFile, autoplay) {
       var playIcon = '<i class="fa fa-play"></i>';
       var pauseIcon = '<i class="fa fa-pause"></i>';
               elem.html(pauseIcon);
-              audio.play();
+              var player = $('.audio-player');
+              var playerAudio = player.get(0);
+              playerAudio.play()
+              if (autoplay==true) {
+                // audio.play();
+              globalAudioPlayer.attr('autoplay', 1);
+              } else {
+              globalAudioPlayer.attr('autoplay', 0);
+                // audio.pause();
+              }
               title.text(audioTitle);
               globalAudioPlayer.attr('src', audioFile);
-              globalAudioPlayer.attr('autoplay', 1);
               $(this).addClass('now-playing');
     }
     //  ---------- play button ------------ /
     $('.controls-play').click(function(event){
 
       // stop all playing audio and video
-      stopAllAudio();
       event.preventDefault();
 
       // grab data into variables
@@ -245,14 +253,21 @@ $(function() {
       var elem = $(this);
       // detect if audio is playing or not
       if (isPlaying(globalAudioPlayer[0])==false) {
+        stopAllAudio();
         // play file
+        updateView(elem , globalAudioPlayer[0], globalAudioPlayerText,audioTitle ,audioFile, true );
+        console.log('first?');
 
-        updateView(elem , globalAudioPlayer[0], globalAudioPlayerText,audioTitle ,audioFile );
       } else if (isPlaying(globalAudioPlayer[0])==true && audioFile !== globalAudioPlayer[0].src) {
         // pause function
+        stopAllAudio();
         updateView(elem , globalAudioPlayer[0], globalAudioPlayerText,audioTitle ,audioFile );
+        console.log('second?');
+
       } else {
-        alert('what is going on here?');
+        stopAllAudio();
+        updateView(elem , globalAudioPlayer[0], globalAudioPlayerText,audioTitle ,audioFile ,false);
+        console.log('third?');
         // $(this).html('<i class="fa fa-play"></i>');
         // globalAudioPlayer[0].pause();
       }

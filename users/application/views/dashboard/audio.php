@@ -95,11 +95,11 @@ if ($user_name == 'admin' OR $user_name == "thatdudewayne") {
 
 
  $('.search-tracks-input').submit(function(event){
-  $(this).append('Loading...');
-  $(this).hide('fast');
+  $(this).append('<span class="text-muted">Searching...</span>');
   event.preventDefault();
   var x = $(this).find('input').val();
   var u = $(this).find('input').attr('data-user');
+  var thisvalue = $(this).find('input').val('');
   var url = 'http://freelabel.net/users/dashboard/audio/';
   var data = {
     q:x,
