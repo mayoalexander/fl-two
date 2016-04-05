@@ -890,10 +890,11 @@ class Blog
         `user_name` ,
         `attached` ,
         `url` ,
+        `src` ,
         `date_created`
         )
       VALUES (
-        NULL ,  '".$info['title']."', '".$info['user_name']."', '$files_attached', '".$info['url']."',
+        NULL ,  '".$info['title']."', '".$info['user_name']."', '$files_attached', '".$info['url']."', '".$info['src']."',
         CURRENT_TIMESTAMP
         )";
       if ($result = mysqli_query($con,$sql)) {
@@ -2526,18 +2527,26 @@ public function display_promo_public($data , $featured=false, $public=false) {
               $media .= '<a href="'.$value['url'].'" target="_blank"><img class="user-photo-item" src="'.$thumbnail.'"></a>';
               $media .="<span class='list_name list-item text-muted edit-options-hidden' >".$value['name']."</span>";
               $media .="<span class='list_type text-muted edit-options-hidden' >photo</span>";
+              $media .= ''.$this->display_file_options($value['id'], $user_name , $value['url'], $value['twitter'] .' - '.$value['title']);
+              
               $media .= '<div class="row share-buttons-row" style="margin-top:5%;">';
+
                 // $media .="<a class='col-md-4 fa fa-link   open-link-options' href='#'    alt='View Public URL'   data-id='".$value['id']."'  ></a>";
                 // $media .="<a class='col-md-4 fa fa-pencil  open-edit-options' href='#'    alt='Edit File'         data-id='".$value['id']."'  ></a>";
                 // $media .="<a class='col-md-4 fa fa-trash   open-delete-options' href='#'  alt='Delete File'       data-id='".$value['id']."'  ></a>";
               $media .= "</div>";
             default:
-              //print_r($value['image']);
-              if (strpos($value['url'] , 'mp4')>0) {
-                $media .="<h1>".$value['url']."</h1>";
-                $media .= '<video class="user-photo-item" controls preload="metadata" src="'.$value['url'].'">';
-                // $media .= '<img class="user-photo-item" src="'.$value['image'].'">';
-              }
+              $media .="<label id='name-id-".$value['id']."' class='file_name edit editable-file' >".$value['name']."</label>";
+              // $media .="<label id='desc-id-".$value['id']."' class='file_name edit editable-file' >".$value['name']."</label>";
+              // $media . "<span class='file_type' >photo</span>";
+              $media .= '<video controls>'.$value['src'].'</video>';
+              $media .="<span class='list_name list-item text-muted edit-options-hidden' >ad".$value['name']."</span>";
+              $media .="<span class='list_type text-muted edit-options-hidden' >photo</span>";
+              $media .= '<div class="row share-buttons-row" style="margin-top:5%;">';
+                // $media .="<a class='col-md-4 fa fa-link   open-link-options' href='#'    alt='View Public URL'   data-id='".$value['id']."'  ></a>";
+                // $media .="<a class='col-md-4 fa fa-pencil  open-edit-options' href='#'    alt='Edit File'         data-id='".$value['id']."'  ></a>";
+                // $media .="<a class='col-md-4 fa fa-trash   open-delete-options' href='#'  alt='Delete File'       data-id='".$value['id']."'  ></a>";
+              $media .= "</div>";
             break;
           } // end of switch
           $media .= ''.$this->display_file_options($value['id'], $user_name , $value['url'], $value['twitter'] .' - '.$value['title']);
