@@ -727,7 +727,7 @@ class Blog
     $res = '<meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>'.$site['page_title'] . $site['name'].'</title>
+        <title>'.$site['page_title'] .' | '. $site['name'].'</title>
         <meta name="description" content="'.$site['meta_tag_caption'].' // '.$site['description'].'" />
         <meta name="keywords" content="'.$site['keywords'].'" />
         <meta name="author" content="'.$site['author'].'" />
@@ -2050,6 +2050,27 @@ class Blog
   }
 
 
+  public function getPromoByDesc($id='', $page=0, $tag=NULL,$sort_by=false) {
+    $query = '';
+    // echo 'the current tag is :'. $tag.'<hr>';
+    if (!$tag==NULL) {
+      $query .= 'AND `desc` LIKE \'%'.trim($tag).'%\' ';
+    }
+    if (!$sort_by==NULL) {
+      $query .= 'AND `'.$sort_by.'` LIKE \'%'.trim($tag).'%\' ';
+    }
+    $sql = "SELECT * FROM `images`
+        WHERE `desc` LIKE '%$id%'
+        ORDER BY `id` DESC LIMIT 1";
+    include(ROOT.'inc/connection.php');
+      $result_stats = mysqli_query($con,$sql);
+    $i=0;
+    while($row = mysqli_fetch_assoc($result_stats)) {
+      $promos[] = $row;
+    }
+    return $promos;
+  }
+
 
 
 
@@ -2236,9 +2257,15 @@ public function getUserInfo($user_name) {
 
 
 
-  public function display_attached_files($attached_files, $status=NULL, $desc=null, $title=null, $id=null) {
+  public function display_attached_files($attached_files, $status=NULL, $desc=null, $title=null, $id=null, $promo=null) {
     $res = '';
-    $share_button = '<a href="#" data-title="'.$title.'" data-id="'.$id.'" class="fa fa-share-alt share-promo-button"></a>';
+    $share_button = '';
+
+    if (isset($promo['paypal_url'])) {
+      $share_button .= '<a href="'.$promo['paypal_url'].'" class="btn btn-success-outline" target="_blank">Purchase Tickets</a>' ;
+    }
+    $share_button .= '<a href="#" data-title="'.$title.'" data-id="'.$id.'" class="btn fa fa-share-alt share-promo-button"></a>';
+
     if (isset($desc)) {
       $res .="<p class='promo-description' >".$desc."<br>{$share_button}</p>";
     }
@@ -2256,6 +2283,7 @@ public function getUserInfo($user_name) {
     }
     return $res;
   }
+
 
   public function getVideosByUser($user_name='', $limit=6) {
 
@@ -2394,7 +2422,7 @@ public function display_promo_public($data , $featured=false, $public=false) {
                   
       
                     $photos .= '<ol>';
-                    $photos .= $this->display_attached_files($value['files_attached'], 'public', $value['caption'], $value['title'], $value['id']);
+                    $photos .= $this->display_attached_files($value['files_attached'], 'public', $value['caption'], $value['title'], $value['id'], $value);
                     $photos .= '</ol>';
                   $photos .= '</panel>';
                   break;

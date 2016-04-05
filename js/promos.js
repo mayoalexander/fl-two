@@ -101,15 +101,8 @@ $(function(){
       // play audio  
       if (isPlaying(globalAudioPlayer[0])==false) {
               // play file
-                // console.log();
-                // var trackListing = ;
-                // alert(trackListing);
-                // console.log(trackListing[0]);
                 $(this).find('a').removeClass('fa-play-circle')
                 $(this).find('a').addClass('fa-pause');
-                // trackListing[0].removeClass('fa-play-circle');
-                // trackListing[0].addClass('fa-pause-circle');
-                    // $(this).html('<i class="fa fa-pause"></i>');
                     globalAudioPlayer[0].play();
                     globalAudioPlayerText.text(audioTitle);
                     globalAudioPlayer.attr('src', audioFile);
@@ -136,14 +129,12 @@ $(function(){
       }
 
       if ($(this).html()==nowpaused) {
-          // alert('show pawuse : ' + $(this).html());
+          console.log('okay this');
           $(this).removeClass('btn-secondary-outline');
           $(this).addClass('btn-primary-outline');
       } else {
-          // alert('show play button ' + $(this).html());
-          // $(this).html('<i class="fa fa-pause"></i>');
+          console.log('stop');
           $(this).removeClass('btn-secondary-outline');
-          $(this).addClass('btn-primary-outline');
       }
 
 
