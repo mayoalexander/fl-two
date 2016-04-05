@@ -6,6 +6,15 @@ vars[key] = value;
 return vars;
 }
 
+
+var curretTab = getUrlVars();
+
+if (typeof curretTab != 'undefined') {
+  // alert('');
+} else {
+  // alert();
+}
+
 function stopAllAudio() {
   var data = $('.audio-player').get(0).pause();
 
