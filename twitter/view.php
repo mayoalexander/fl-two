@@ -1,82 +1,57 @@
-<div class="row">
-        <?php
-        if (empty($_SESSION['access_token']) || empty($_SESSION['access_token']['oauth_token']) || empty($_SESSION['access_token']['oauth_token_secret'])) {
-            echo '<a href="twitter/index.php?redirect=true"><img src="twitter/images/lighter.png" alt="Sign in with Twitter"/></a>';
-        }
-        else
-        {
-            
-            echo $message.'
-          <div id="som_buttons" style="display:none;margin-bottom:2%;">
-            <a href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4" class="btn btn-default" target="_blank">Auto</a>
-            <a href="http://freelabel.net/twitter/?som=1&q=1" class="btn btn-default" target="_blank">1</a>
-            <a href="http://freelabel.net/twitter/?som=1&q=2" class="btn btn-default" target="_blank">2</a>
-            <a href="http://freelabel.net/twitter/?som=1&q=3" class="btn btn-default" target="_blank">3</a>
-            <a href="http://freelabel.net/twitter/?som=1&q=4" class="btn btn-default" target="_blank">4</a>
-            <a href="http://freelabel.net/twitter/?som=1&q=5" class="btn btn-default" target="_blank">5</a>
-          </div>
-            <form action="twitter/index.php" method="post">
-              <div class="input-group">
-                <input type="text" class="form-control"  name="status" id="status" placeholder="Write something...." aria-describedby="basic-addon1">
-                <span class="input-group-btn" ><input class="btn btn-primary" type="submit" id="status" name="submit" value="Tweet"></span>
-              </div>
-              <input type="hidden" name="user_post" value="1">
-            </form><hr>';
-            echo '<a onclick="$(\'#som_buttons\').slideToggle();" class="btn btn-primary btn-xs">Start SOM</a>';
-            echo "<a class='btn btn-danger btn-xs' href='twitter/destroysessions.php'>Logout of Twitter</a>
-            <hr>";
-        } 
-                  echo '<div class="overflow_div" style="display:inline-block;width:32%;">';
-                    //print_r($twitter_followers);
-                    /*foreach ($tweets['followers/list'] as $tweet) {
-                      echo $tweet;
-                    };*/
-                    foreach ($tweets['direct_messages'] as $conversation) {
-                      echo "<div class='panel panel-body'>";
-                        //print_r($conversation);
-                        foreach ($conversation as $message) {
-                          echo $message;
-                        }
-                      echo '</div>';
-                    };
+<?php 
+include_once('/home/content/59/13071759/html/config/index.php');
 
+$app = new Config();
+$config = new Blog();
 
-                  echo '</div>';
+$access_token['oauth_token'] = '1018532587-qbLJXcpMzhvmFU0xHmmIF1SgSzzfC9CG0NccwXq';
+$access_token['oauth_token_secret'] = 'ZZgJzwgPt7jpj3RVPrQYVv2u0E3PPvXRJD2yK9oTXa2r8';
+$access_token['screen_name'] = 'FreeLabelNet';
+$access_token['user_id'] = '1018532587';
+$access_token['x_auth_expires'] = '0';
+$_SESSION['access_token'] = $access_token;
+$todays_date = date('Y-m-d H:i:s');
 
 
 
 
 
 
+require_once(ROOT.'twitter/oauth/twitteroauth.php');
+require_once(ROOT.'twitter/config.php');
+
+$access_token = $_SESSION['access_token'];
+$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+//print_r($access_token);
+//print_r($_SESSION);
+  //exit;
+
+
+
+$access_token = $_SESSION['access_token'];
+$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+
+if(isset($_GET["redirect"]))
+{
+    $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET);
+ 
+    $request_token = $connection->getRequestToken(OAUTH_CALLBACK);
+
+    $_SESSION['oauth_token'] = $token = $request_token['oauth_token'];
+    $_SESSION['oauth_token_secret'] = $request_token['oauth_token_secret'];
+     
+    switch ($connection->http_code) {
+      case 200:
+        $url = $connection->getAuthorizeURL($token);
+        header('Location: ' . $url); 
+        break;
+      default:
+        echo 'Could not connect to Twitter. Refresh the page or try again later.';
+    }
+    exit;
+}
 
 
 
 
-
-                    echo '<section class="overflow_div panel panel-body" style="display:inline-block;width:32%;">';
-                    //print_r($twitter_followers);
-                    /*foreach ($tweets['followers/list'] as $tweet) {
-                      echo $tweet;
-                    };*/
-                    foreach ($tweets['direct_messages'] as $conversation) {
-                        //print_r($conversation);
-                        foreach ($conversation as $message) {
-                          echo $message;
-                        }
-                    };
-                    echo "</section>";
-
-
-
-                  echo '<section class="overflow_div" style="display:inline-block;width:32%;">';
-                  echo '<h3>Home</h3>';
-                  foreach ($user_timeline as $status) {
-                    $time_since_posted = ((time() - strtotime($status->created_at)) / 60);
-                    $time_since_posted = substr($time_since_posted, 0,2);
-                    //$date = date( 'm-d h:i:s' , strtotime($status->created_at));
-                    $text = $status->text;
-                    echo $time_since_posted.' - '.$text.'<hr>';
-                  }
-                  echo '</section>';
-        ?>
-</div>
+?>

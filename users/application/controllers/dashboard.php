@@ -91,6 +91,10 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/leads',true);
     }
+    function twitter() 
+    {
+        $this->view->render('dashboard/twitter',true);
+    }
     function sendContact() 
     {
         $numb = $_POST['number'];

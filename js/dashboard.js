@@ -315,7 +315,12 @@ $(function() {
     $('.share-post-button').click(function(event){
       event.preventDefault();
       var txt = $(this).attr('data-type');
-      alert(txt);
+
+
+
+
+      
+      // alert(txt);
 
       // loading UI message 
       $('#loginModal .modal-body').html('<i class="fa fa-circle-o-notch fa-spin"></i> Please wait...');

@@ -13,9 +13,9 @@
       <li><a href="#section-linemove-2" class="icon icon-display dash-filter" data-load="analytics"><span>
       <!-- <i class="fa fa-database" ></i> -->
        Analytics</span></a></li>
-      <li><a href="#section-linemove-3" class="icon icon-plug dash-filter" data-load="promos"><span>
+      <li><a href="#section-linemove-3" class="icon icon-plug dash-filter" data-load="twitter"><span>
       <!-- <i class="fa fa-bullhorn" ></i> -->
-       Promotions</span></a></li>
+       Twitter</span></a></li>
       <li><a href="#section-linemove-4" class="icon icon-upload dash-filter" data-load="leads"><span>
       <!-- <i class="fa fa-music" ></i> -->
        Leads</span></a></li>
@@ -39,7 +39,7 @@
 
     <section id="analytics" class="autoload al-analytics" data-load="analytics"></section>
 
-    <section id="promos" class="autoload al-promos" data-load="promos"></section>
+    <section id="twitter" class="autoload al-twitter" data-load="twitter"></section>
 
     <section id="leads" class="autoload al-leads" data-load="leads"></section>
 

@@ -2,7 +2,7 @@
 include_once('/home/content/59/13071759/html/config/index.php');
 require(ROOT.'inc/conn.php');
 
-$todays_date = date('m-d');
+$todays_date = date('Y-m-d');
 $result = $conn->query('select * from twitter_data WHERE timestamp LIKE "%'.$todays_date.'%" ORDER BY `id` DESC');
 $numb_soms_sent = count($result->fetchAll());
 
@@ -15,9 +15,10 @@ $leads_conversion = new Config();
  */
 $status[] = 'Messages Sent: '.$numb_soms_sent.' / 600';
 if ($numb_soms_sent < 600) {
-	$status[] = 'Not Enough SOMS Sent.';
+	$status[] = '<span class="text-danger">Not Enough SOMS Sent.</span>';
+	$status[] = '<a class="btn btn-success-outline btn-block pull-left" href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=all" target="_blank">SOM</a>';
 } else {
-	$status[] = 'SOM quota met!';
+	$status[] = '<span class="text-danger">SOM quota met!</span>';
 }
 /* 
  * GET SOM ALERT DATA 
@@ -25,9 +26,8 @@ if ($numb_soms_sent < 600) {
 $data='<div class="card card-chart">
 <ul class="list-group"><h1>Alerts</h1>';
 foreach ($status as $key => $value) {
-    $data .= '<li class="list-group-item complete">
-        <span class="label pull-right">0</span>
-        <span class="pull-left icon-status status-completed"></span> '.$value.'
+    $data .= '<li class="list-group-item complete clearfix">
+         '.$value.'
     </li>';
 }
 $data.='</ul>
@@ -60,15 +60,10 @@ while($row = mysqli_fetch_assoc($result)) {
 	$i = $i + 1;
 	//echo $i;
 }
-	$number_of_leads = count($leads);
-	$min_sales = 60;
-	$price = 56;
-	// GET PERCENTAGACES
-	$sales_progress = round(($number_of_leads / $min_sales) * 100);
-	$total_sales 	= number_format($number_of_leads * $price);
-	$sales_estimate = $total_sales * 0.1;
-	$total_sales_quota	=	number_format($min_sales * $price);	
+
+
 /* 
+
  * GET SOM ALERT DATA 
  */
 $lead_build='<div class="card card-chart">
@@ -78,11 +73,56 @@ foreach ($leads as $key => $value) {
 	// var_dump($value);
 	// echo '</pre>';
     $lead_build .= '<li class="list-group-item complete">
-        <span class="label pull-right">[@'.$key.']</span>
+        <span class="label pull-left"><a class="fa fa-comment lead-response-button" href="#" data-id="'.$key.'"></a></span>
+        <span class="label pull-right">[<a href="http://twitter.com/@'.$key.'" target="_blank">@'.$key.'</a>]</span>
         <span class="pull-left icon-status status-completed"></span>'.$value[0].'
     </li>';
 }
 $lead_build.='</ul>
+</div>';
+
+$number_of_leads = count($leads);
+	$min_sales = 100;
+	$price = 56;
+	// GET PERCENTAGACES
+	$sales_progress = round(($number_of_leads / $min_sales) * 100);
+	$total_sales 	= number_format($number_of_leads * $price);
+	$sales_estimate = $total_sales * 0.1;
+	$total_sales_quota	=	number_format($min_sales * $price);	
+
+
+/* 
+ * GET SOM ALERT DATA 
+ */
+$data.='<div class="card card-chart">
+<ul class="list-group"><h1>Progress</h1>';
+// foreach ($status as $key => $value) {
+    $data .= '<li class="list-group-item complete">
+        <span class="label pull-right">0</span>
+        <span class="pull-left icon-status status-completed"></span> '.$sales_progress.'% Completed
+    </li>';
+    $data .= '<li class="list-group-item complete">
+        <span class="label pull-right">0</span>
+        <span class="pull-left icon-status status-completed"></span> $'.$total_sales.' / $'.$total_sales_quota.' Estimated Revenue
+    </li>';
+    $data .= '<li class="list-group-item complete">
+        <span class="label pull-right">0</span>
+        <span class="pull-left icon-status status-completed"></span> '.$number_of_leads.' / '.$min_sales.'
+    </li>';
+    $data .= '<li class="list-group-item complete">
+        <span class="label pull-right">0</span><span class="pull-left icon-status status-completed"></span> ';
+    if ($number_of_leads > $min_sales) {
+    	$sales_status = '<span class="text-success">Sales met!</span>';
+    } else {
+    	$sales_status = '<span class="text-danger">Sales not met!</span>';
+
+    }
+
+    $data.=  $sales_status.'
+    </li>';
+
+// }
+$data.='</ul>
 </div>';
 
 
@@ -108,6 +148,18 @@ $lead_build.='</ul>
     		<?php echo $lead_build; ?>
     	</div>
     </div>
+
+
+ <script type="text/javascript">
+ 	$(function(){
+ 		$('.lead-response-button').click(function(event){
+ 			event.preventDefault();
+ 			var lead_id = $(this).attr('data-id');
+ 			alert(lead_id);
+ 		});
+ 	});
+
+ </script>
 
     
 
