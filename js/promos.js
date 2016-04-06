@@ -46,20 +46,20 @@ $(function(){
 
 
 
-		// config
-	  	function isPlaying(audelem) {
-	    	return !audelem.paused;
-	  	}
+		// // config
+	 //  	function isPlaying(audelem) {
+	 //    	return !audelem.paused;
+	 //  	}
 
-		// Custom Controls
-	    var globalAudioPlayer = $(".audio-player");
-	    var globalButtons = $(".promo-file-options .attached-file-button");
-	    var globalAudioPlayerText =  $(".audio-player-title");
+		// // Custom Controls
+	 //    var globalAudioPlayer = $(".audio-player");
+	 //    var globalButtons = $(".promo-file-options .attached-file-button");
+	 //    var globalAudioPlayerText =  $(".audio-player-title");
 
-		// $('.promo-file-options').click(function(event){
-		// 	event.preventDefault();
-		// 	alert($(this).attr('data-url'));
-		// });
+		// // $('.promo-file-options').click(function(event){
+		// // 	event.preventDefault();
+		// // 	alert($(this).attr('data-url'));
+		// // });
 
 
 
@@ -70,75 +70,75 @@ $(function(){
     //  PLAY BUTTON CONTROL 
     // *********************************
 
-    //  ---------- play button ------------ /
-    $('.promo-file-options').click(function(event){
-      runCheck();
-    // console.log(globalButtons);
-      event.preventDefault();
-      var audioFile = $(this).attr('data-src');
-      var filetype = $(this).attr('data-type');
-      var audioTitle = $(this).attr('data-title');
-      var nowplaying = '<i class="fa fa-play"></i>';
-      var nowpaused = '<i class="fa fa-pause"></i>';
-      // get next song
-      var nextsong = $(this).parent().parent().next();
-      var nextFile = nextsong.find('.controls-play').attr('data-src');
-      var nextTitle = nextsong.find('.controls-play').attr('data-title');
-      globalButtons.removeClass('fa fa-pause'); // * 
-      globalButtons.addClass('fa fa-play'); // * 
+    // //  ---------- play button ------------ /
+    // $('.promo-file-options').click(function(event){
+    //   runCheck();
+    // // console.log(globalButtons);
+    //   event.preventDefault();
+    //   var audioFile = $(this).attr('data-src');
+    //   var filetype = $(this).attr('data-type');
+    //   var audioTitle = $(this).attr('data-title');
+    //   var nowplaying = '<i class="fa fa-play"></i>';
+    //   var nowpaused = '<i class="fa fa-pause"></i>';
+    //   // get next song
+    //   var nextsong = $(this).parent().parent().next();
+    //   var nextFile = nextsong.find('.controls-play').attr('data-src');
+    //   var nextTitle = nextsong.find('.controls-play').attr('data-title');
+    //   globalButtons.removeClass('fa fa-pause'); // * 
+    //   globalButtons.addClass('fa fa-play'); // * 
       
 
 
 
-      // console.log(nextFile);
-      // console.log(nextsong);
-      // console.log(audioFile);
-      // console.log(globalAudioPlayer[0].src);
-      // alert(filetype);
+    //   // console.log(nextFile);
+    //   // console.log(nextsong);
+    //   // console.log(audioFile);
+    //   // console.log(globalAudioPlayer[0].src);
+    //   // alert(filetype);
 
 
-    if (filetype === 'audio/mp3') {  
-      // play audio  
-      if (isPlaying(globalAudioPlayer[0])==false) {
-              // play file
-                $(this).find('a').removeClass('fa-play-circle')
-                $(this).find('a').addClass('fa-pause');
-                    globalAudioPlayer[0].play();
-                    globalAudioPlayerText.text(audioTitle);
-                    globalAudioPlayer.attr('src', audioFile);
-                    globalAudioPlayer.attr('autoplay', 1);
-                    $(this).addClass('now-playing'); // *
-                    globalAudioPlayer.attr('loop', 1);
-            } else if (isPlaying(globalAudioPlayer[0])==true && audioFile !== globalAudioPlayer[0].src) {
-              // pause function
-                  $(this).find('a').removeClass('fa-play-circle')
-                $(this).find('a').addClass('fa-pause');
-                    globalAudioPlayer[0].play();
-                    globalAudioPlayerText.text(audioTitle);
-                    globalAudioPlayer.attr('src', audioFile);
-                    globalAudioPlayer.attr('autoplay', 1);
-                    // globalAudioPlayer.attr('loop', 1);
-            } else {
-              $(this).html('<i class="fa fa-play"></i>');
-              globalAudioPlayer[0].pause();
-            }
-      } else {
-        // play video 
-        // alert("playing video");
-        // $(this).attr('');
-      }
+    // if (filetype === 'audio/mp3') {  
+    //   // play audio  
+    //   if (isPlaying(globalAudioPlayer[0])==false) {
+    //           // play file
+    //             $(this).find('a').removeClass('fa-play-circle')
+    //             $(this).find('a').addClass('fa-pause');
+    //                 globalAudioPlayer[0].play();
+    //                 globalAudioPlayerText.text(audioTitle);
+    //                 globalAudioPlayer.attr('src', audioFile);
+    //                 globalAudioPlayer.attr('autoplay', 1);
+    //                 $(this).addClass('now-playing'); // *
+    //                 globalAudioPlayer.attr('loop', 1);
+    //         } else if (isPlaying(globalAudioPlayer[0])==true && audioFile !== globalAudioPlayer[0].src) {
+    //           // pause function
+    //               $(this).find('a').removeClass('fa-play-circle')
+    //             $(this).find('a').addClass('fa-pause');
+    //                 globalAudioPlayer[0].play();
+    //                 globalAudioPlayerText.text(audioTitle);
+    //                 globalAudioPlayer.attr('src', audioFile);
+    //                 globalAudioPlayer.attr('autoplay', 1);
+    //                 // globalAudioPlayer.attr('loop', 1);
+    //         } else {
+    //           $(this).html('<i class="fa fa-play"></i>');
+    //           globalAudioPlayer[0].pause();
+    //         }
+    //   } else {
+    //     // play video 
+    //     // alert("playing video");
+    //     // $(this).attr('');
+    //   }
 
-      if ($(this).html()==nowpaused) {
-          console.log('okay this');
-          $(this).removeClass('btn-secondary-outline');
-          $(this).addClass('btn-primary-outline');
-      } else {
-          console.log('stop');
-          $(this).removeClass('btn-secondary-outline');
-      }
+    //   if ($(this).html()==nowpaused) {
+    //       console.log('okay this');
+    //       $(this).removeClass('btn-secondary-outline');
+    //       $(this).addClass('btn-primary-outline');
+    //   } else {
+    //       console.log('stop');
+    //       $(this).removeClass('btn-secondary-outline');
+    //   }
 
 
-    });
+    // });
 
 
 

@@ -2262,9 +2262,10 @@ public function getUserInfo($user_name) {
     $res = '';
     $share_button = '';
 
-    if (isset($promo['paypal_url'])) {
+    if (isset($promo['paypal_url']) && $promo['paypal_url']!='') {
       $share_button .= '<a href="'.$promo['paypal_url'].'" class="btn btn-success-outline" target="_blank">Purchase Tickets</a>' ;
     }
+
     $share_button .= '<a href="#" data-title="'.$title.'" data-id="'.$id.'" class="btn fa fa-share-alt share-promo-button"></a>';
 
     if (isset($desc)) {

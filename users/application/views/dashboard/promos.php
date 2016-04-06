@@ -4,7 +4,7 @@ $config = new Blog();
 // userz
 // get tag value
 if (isset($_POST["page"]) ) {
-	$tag = $_POST["page"];
+  $tag = $_POST["page"];
   $current_tag = $tag;
 
 } else if (isset($_GET["page"]) ) {
@@ -12,7 +12,7 @@ if (isset($_POST["page"]) ) {
   $current_tag = $tag;
 
 } else {
-	$tag = '';
+  $tag = '';
   $current_tag = NULL;
 }
 ?>
@@ -22,10 +22,10 @@ if (isset($_POST["page"]) ) {
 
 <!-- button tool bar  -->
 <div class="event-option-panel btn-group" style="background-color:transparent;text-align:left;border-bottom:3px solid #303030;padding:2% 0%;">
-	<!-- <button class="btn btn-success btn-xs add-new-media-photo" data-link="http://freelabel.net/upload/?uid=<?php echo Session::get('user_name'); ?>&type=photo" target="_blank"><i class="fa fa-plus"></i> Add New Promo</button> -->
-	<button type="button" class="btn btn-success btn-xs add-new-media-photo" data-toggle="modal" data-target="#addPromo">
-	  <i class="fa fa-plus"></i> Add New Promo
-	</button>
+  <!-- <button class="btn btn-success btn-xs add-new-media-photo" data-link="http://freelabel.net/upload/?uid=<?php echo Session::get('user_name'); ?>&type=photo" target="_blank"><i class="fa fa-plus"></i> Add New Promo</button> -->
+  <button type="button" class="btn btn-success btn-xs add-new-media-photo" data-toggle="modal" data-target="#addPromo">
+    <i class="fa fa-plus"></i> Add New Promo
+  </button>
 </div>
 
 <!-- get user tags  -->
@@ -95,12 +95,12 @@ if (isset($_POST["page"]) ) {
      
 
 
-	$(".add-new-media-photo").click(function(event) {
-		event.preventDefault();
+  $(".add-new-media-photo").click(function(event) {
+    event.preventDefault();
     // alert('okay');
-		$.get('http://freelabel.net/users/dashboard/add_new_promo/',function(data){
-			$('.new-form-modal').html(data);
-		});
+    $.get('http://freelabel.net/users/dashboard/add_new_promo/',function(data){
+      $('.new-form-modal').html(data);
+    });
   }); 
 
 

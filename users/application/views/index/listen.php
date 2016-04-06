@@ -3,7 +3,7 @@
 // var_dump($_GET);
 // var_dump($_POST);
 // var_dump($config);
-$media = $user_logged_in->getUserMedia('admin');
+$media = $config->getUserMedia('admin');
 
 
 ?>
