@@ -1787,7 +1787,7 @@ class Blog
                 } // IF END
               } // FOREACH END
         } else {
-          $b['posts'] = '<h2>You have no tracks pushed to your profile!</h2>';
+          $b['posts'] = '<h2>You have nothing uploaded to your profile!</h2>';
         }
 
       return $b;
@@ -2201,17 +2201,17 @@ class Blog
       if ($files['filetype']=='image/jpeg' OR $files['filetype']=='image/png' OR $files['filetype']=='image/jpg') {
       
         // PHOTO
-        $photos .= '<li class="promo-file-options promo-image col-md-3 col-xs-12 col-lg-4" data-id="'.$files['id'].'" data-type="'.$files['filetype'].'"  > <img src="'.$files['photo'].'" class="promo-image-img"> '.$files['name'].' '.$files['name'].' <a data-action="share" data-id="'.$files['id'].'" class="fa fa-share-alt share-promo-file" data-id="'.$files['id'].'" data-title="'.$files['twitter'].' - '.$files['blogtitle'].'" '.$files['twitpic'].'" ></a></li>';
+        $photos .= '<li> <img src="'.$files['photo'].'" class="promo-image-img"> '.$files['name'].' '.$files['name'].' <a data-action="share" data-id="'.$files['id'].'" class="fa fa-share-alt share-promo-file" data-id="'.$files['id'].'" data-src="'.$files['trackmp3'].'" data-title="'.$files['twitter'].' - '.$files['blogtitle'].'" '.$files['twitpic'].'" ></a></li>';
       
       } elseif ($files['filetype']==='video/mp4') {
         
         // VIDEOS
         // $photos .= '<li class="promo-file-options promo-image" data-type="'.$files['filetype'].'"  >asdfs<video src="'.$files['trackmp3'].'" poster="'.$files['photo'].'"> <a class="fa fa-play-circle attached-file-button" ></a>  <a class="fa fa-play-circle attached-file-button" ></a> '.$files['twitter'].' - '.$files['blogtitle'].'  <a data-action="share" data-id="'.$files['id'].'" data-title="'.$files['twitter'].' - '.$files['blogtitle'].'" class="fa fa-share-alt share-promo-file pull-right" ></a></li>';
-        $photos .= '<li class="promo-image" data-type="'.$files['filetype'].'"  > <span style="50px" ><video src="'.$files['trackmp3'].'" poster="'.$files['photo'].'"></video> </span> <a class="fa fa-play-circle attached-file-button" ></a> '.$files['twitter'].' - '.$files['blogtitle'].'  <a data-action="share" data-id="'.$files['id'].'" data-title="'.$files['twitter'].' - '.$files['blogtitle'].'" class="fa fa-share-alt share-promo-file pull-right" ></a></li>';
+        // $photos .= '<li class="promo-image" data-type="'.$files['filetype'].'"  > <span style="50px" ><video src="'.$files['trackmp3'].'" poster="'.$files['photo'].'"></video> </span> <a class="fa fa-play-circle attached-file-button" ></a> '.$files['twitter'].' - '.$files['blogtitle'].'  <a data-action="share" data-id="'.$files['id'].'" data-title="'.$files['twitter'].' - '.$files['blogtitle'].'" class="fa fa-share-alt share-promo-file pull-right" ></a></li>';
       
       } elseif ($files['filetype']==='audio/mp3') {
         // AUDIO
-        $res .= '<li class="promo-file-options" data-type="'.$files['filetype'].'" data-action="play" data-id="'.$files['id'].'" data-src="'.$files['trackmp3'].'"  data-title="'.$files['blogtitle'].' - '.$files['twitter'].'" ><img src="'.$files['photo'].'" style="width:50px;height:auto;"> <a class="fa fa-play-circle attached-file-button" ></a> '.$files['twitter'].' - '.$files['blogtitle'].' <a data-action="share" data-id="'.$files['id'].'" data-title="'.$files['twitter'].' - '.$files['blogtitle'].'" class="fa fa-share-alt share-promo-file pull-right" ></a></li>';
+        $res .= '<li ><a href="#"  data-src="'.$files['trackmp3'].'" > <img src="'.$files['photo'].'" style="width:50px;height:auto;"> '.$files['twitter'].' - '.$files['blogtitle'].'</a> </li>';
       }
 
 
@@ -2272,7 +2272,7 @@ public function getUserInfo($user_name) {
     }
  
     $attached_files = explode(", ", $attached_files);
-
+    $res.='<ol class="audio-player-playlist">';
     if (!$status==NULL && $status=='public') {
       foreach ($attached_files as $value) {
         $res .=''.$this->display_promo_public_controls(trim($value), $desc).'';
@@ -2282,6 +2282,7 @@ public function getUserInfo($user_name) {
         $res .=''.$this->display_promo_file_controls(trim($value), $desc).'';
       }
     }
+    $res.='</ol>';
     return $res;
   }
 
@@ -2459,6 +2460,75 @@ public function display_promo_public($data , $featured=false, $public=false) {
       }
     return $photos;
   }
+
+
+
+
+
+
+
+public function display_promo_playlist($data , $featured=false, $public=false) {
+    $photos = '';
+    if ($featured==true) {
+      $colWidth = 'col-md-12';
+    } else {
+      $colWidth = 'col-md-6';
+    }
+
+    if (isset($data)) {
+        foreach ($data as $key => $value) {
+              // load thumbnail 
+              $thumbnail =  str_replace('server/php/files/', 'server/php/files/thumbnail/', $value['image']);
+              $photos .= "";
+              $type = $this->detect_type($value['image']);
+              //$photos .= ''.$this->display_promo_options($value['id'], $user_name , $value['image'], $value['description']);
+              switch (strtolower($type)) {
+                case 'mp4':
+                  $photos .="<h2 id='title-id-".$value['id']."' class='promo-title editable-promo' >".$value['title']."</h2>";
+                  $photos .="<h2 id='promo-id-".$value['id']."' class='promo-subtitle editable-promo'>".$value['desc']."</h2>";
+                  // $photos .= '<video class="user-video-item" controls preload="metadata" src="'.$value['image'].'">';
+                  $photos .= "<video href='#' id='controls-".$value['id']."' class='controls-play' ".'poster="'.$value['image'].'" data-title="'.$value['title'].'" style="background-image:url(\''.$value['poster'].'\');" '.">";
+                  break;
+                case 'mp3':
+                  // $photos .="<h2 id='title-id-".$value['id']."' class='promo-title editable-promo' >".$value['title']."</h2>";
+                  // $photos .="<h2 id='promo-id-".$value['id']."' class='promo-subtitle editable-promo'>".$value['desc']."</h2>";
+                  $photos .= "<a href='#' id='controls-".$value['id']."' class='controls-play' ".'data-src="'.$value['trackmp3'].'" data-title="'.$value['title'].'" style="background-image:url(\''.$value['poster'].'\');" '."><i class='promotion-player-button fa fa-play-circle'></i></a>";
+                  break;
+                case 'png' OR 'jpeg' OR 'jpg':
+                    $photos .="<h2 id='title-id-".$value['id']."' class='promo-title editable-promo' >".$value['title']."</h2>";
+                    // $photos .="<p id='promo-id-".$value['id']."' class='promo-subtitle editable-promo'>".$value['caption']."</p>";
+                  // $photos .= '<panel class="col-md-7col-xs-12">';
+                    $photos .= '<a href="http://freelabel.net/users/index/image/'.$value['id'].'" ><img class="user-photo-item" src="'.$thumbnail.'"></a>';
+                    $photos .="<br><label class='file_name'>Tags:</label><label id='desc-id-".$value['id']."' class='file_name editable-promo text-muted' >".$value['desc']."</label>";
+                  // $photos .= '</panel>';
+                  // $photos .= '<panel class="col-md-5 col-xs-12">';
+                  
+      
+                    // $photos .= '<ol>';
+                    $photos .= $this->display_attached_files($value['files_attached'], 'public', $value['caption'], $value['title'], $value['id'], $value);
+                    // $photos .= '</ol>';
+                  // $photos .= '</panel>';
+                  break;
+                default:
+                  if (strpos($value['image'] , 'mp4')>0) {
+                    $photos .="<h2 id='promo-id-".$value['id']."' class='promo-title editable-promo'>".$value['title']."</h2>";
+                  } else {
+                    $photos .="<h2 id='promo-id-".$value['id']."' class='promo-title editable-promo'>".$value['title']."</h2>";
+                    $photos .="<h2 id='promo-id-".$value['id']."' class='promo-subtitle editable-promo'>".$value['desc']."</h2>";
+                    $photos .= '<ol>';
+                    $photos .= $this->display_attached_files($value['files_attached'], 'public');
+                    $photos .= '</ol>';
+                  }
+                break;
+              }
+            }
+      } else {
+        $photos  .='No Promotion Found';
+      }
+    return $photos;
+  }
+
+
 
 
 
@@ -2838,6 +2908,8 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
         $site['map'][] = array('title' => 'Radio' , 'path'=>'index/radio', 'icon'=>'archive'  );
         $site['map'][] = array('title' => 'Settings' , 'path'=>'login/showprofile', 'icon'=>'cog'  );
         $site['map'][] = array('title' => 'Upload' , 'path'=>'upload/?uid='.$user_name, 'icon'=>'download' );
+        $site['map'][] = array('title' => 'Listen' , 'path'=>'index/listen', 'icon'=>'archive'  );
+
         // $site['map'][] = array('title' => 'Social' , 'path'=>'dashboard/social', 'icon'=>'cog' );
 
         // $site['map'][] = array('title' => 'About' , 'path'=>'help/index', 'icon'=>'help'  );
@@ -2854,6 +2926,7 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
         $site['map'][] = array('title' => 'Upload' , 'path'=>'dashboard/', 'icon'=>'download'  );
         $site['map'][] = array('title' => 'Promos' , 'path'=>'index/promos', 'icon'=>'archive'  );
         $site['map'][] = array('title' => 'Radio' , 'path'=>'index/radio', 'icon'=>'archive'  );
+        $site['map'][] = array('title' => 'Listen' , 'path'=>'index/listen', 'icon'=>'archive'  );
         // $site['map'][] = array('title' => 'Upload' , 'path'=>'upload/index', 'icon'=>'download'  );
         // $site['map'][] = array('title' => 'About' , 'path'=>'help/index', 'icon'=>'help'  );
         break;

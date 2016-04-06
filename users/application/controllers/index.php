@@ -42,6 +42,9 @@ class Index extends Controller
     {
             $this->view->render('index/promos');
     }
+    function listen() {
+            $this->view->render('index/listen');
+    }
     function page($page=0)
     {
             $this->view->render('index/page',true);

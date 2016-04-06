@@ -49,6 +49,8 @@
 
     $front_page_photos = $config->getPhotoAds($site['creator'], 'front');
     shuffle($front_page_photos);
+
+
     if ($user_name = Session::get('user_name')) {
         $upload_link =  'http://freelabel.net/upload/?uid='.$user_name;
     }
@@ -243,6 +245,10 @@
       font-size:24px;
       display: block;
       color:#101010;
+    }
+    .audio-player-playlist {
+      /*height:30vh;*/
+      /*overflow-y:scroll;*/
     }
     .controls-play , .user-video-item {
       border-radius: 0px;
@@ -748,5 +754,5 @@
 
 
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://public.radio.co/playerapi/jquery.radiocoplayer.min.js"></script>
-<script>$('.radioplayer').radiocoPlayer();</script>
+<!-- <script src="https://public.radio.co/playerapi/jquery.radiocoplayer.min.js"></script> -->
+<!-- <script>$('.radioplayer').radiocoPlayer();</script>-->
