@@ -16,12 +16,12 @@
       <li><a href="#section-linemove-3" class="icon icon-plug dash-filter" data-load="promos"><span>
       <!-- <i class="fa fa-bullhorn" ></i> -->
        Promotions</span></a></li>
-      <li><a href="#section-linemove-4" class="icon icon-upload dash-filter" data-load="audio"><span>
+      <li><a href="#section-linemove-4" class="icon icon-upload dash-filter" data-load="leads"><span>
       <!-- <i class="fa fa-music" ></i> -->
-       Uploads</span></a></li>
+       Leads</span></a></li>
       <li><a href="#section-linemove-5" class="icon icon-date dash-filter" data-load="box"><span>
       <!-- <i class="fa fa-calendar" ></i> -->
-       Events</span></a></li>
+       Box</span></a></li>
     </ul>
   </nav>
   <div class="content-wrap">
@@ -41,7 +41,7 @@
 
     <section id="promos" class="autoload al-promos" data-load="promos"></section>
 
-    <section id="audio" class="autoload al-audio" data-load="audio"></section>
+    <section id="leads" class="autoload al-leads" data-load="leads"></section>
 
     <section id="box" class="autoload al-box" data-load="box"></section>
 

@@ -87,6 +87,10 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/dev');
     }
+    function leads() 
+    {
+        $this->view->render('dashboard/leads',true);
+    }
     function sendContact() 
     {
         $numb = $_POST['number'];
