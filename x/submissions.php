@@ -90,6 +90,15 @@ while($row = mysqli_fetch_array($result))
 									 <input name='radio_twitter' type='hidden' value='".$row['twitter']."'>
 									 <input name='radio_user' type='hidden' value='".$row['user_name']."'>
 									 <input type='submit' class='btn btn-warning' value='APPROVE'></form>";
+								} else {
+									$approval_status = "NOT APPROVED";
+									 echo "<form class='approve-form' method='POST' style='display:inline;' action='update.php' >
+									 <input name='submission_id' type='hidden' value='".$submission_id."'>
+									 <input name='radio_mp3' type='hidden' value='".$row['trackmp3']."'>
+									 <input name='radio_title' type='hidden' value='".$row['blogtitle']."'>
+									 <input name='radio_twitter' type='hidden' value='".$row['twitter']."'>
+									 <input name='radio_user' type='hidden' value='".$row['user_name']."'>
+									 <input type='submit' class='btn btn-warning' value='APPROVE'></form>";
 								}
 						echo "</td>";
 						

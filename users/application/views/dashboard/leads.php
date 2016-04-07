@@ -42,7 +42,7 @@ $data.='</ul>
 
 
 
-include_once(ROOT.'inc/connection.php');
+include(ROOT.'inc/connection.php');
 // START COUTNING LEADS
 	$result = mysqli_query($con,"SELECT * FROM leads 
 			WHERE follow_up_date LIKE '%$todays_date%'
@@ -52,15 +52,19 @@ include_once(ROOT.'inc/connection.php');
 				OR follow_up_date='$fourdaysback' 
 				OR follow_up_date='$fivedaysback'
 				/*OR `user_name` = '".$user_name_session."' */
-				ORDER BY `follow_up_date` DESC LIMIT 100");
+				ORDER BY `follow_up_date` DESC LIMIT 200");
 $i = 0;
 while($row = mysqli_fetch_assoc($result)) {
 	$i = $i;
 	$leads[$row['lead_twitter']][] = $row['lead_name'];
 	$i = $i + 1;
 	//echo $i;
+	echo $leads[$row['lead_twitter']][0].'<br>';
 }
-
+if ($leads==NULL) {
+	$leads['noneFound'] =  'no leads found';
+}
+// var_dump($leads);
 
 /* 
 
@@ -72,10 +76,11 @@ foreach ($leads as $key => $value) {
 	// echo '<pre>';
 	// var_dump($value);
 	// echo '</pre>';
-    $lead_build .= '<li class="list-group-item complete">
+    $lead_build .= '
+    <li class="list-group-item complete">
         <span class="label pull-left"><a class="fa fa-comment lead-response-button" href="#" data-id="'.$key.'"></a></span>
         <span class="label pull-right">[<a href="http://twitter.com/@'.$key.'" target="_blank">@'.$key.'</a>]</span>
-        <span class="pull-left icon-status status-completed"></span>'.$value[0].'
+        <span class="pull-left icon-status status-completed">'.count($value).'</span>'.$value[0].'
     </li>';
 }
 $lead_build.='</ul>

@@ -128,9 +128,9 @@ $rss_feed = array(/*'http://freelabelmagazine.wordpress.com/rss',
 	'http://www.dirty-glove.com/feed/',
   'http://trapsntrunks.com/feed/',
   'http://www.saycheesetv.com/feed/',
-  'http://www.myhiphoplife.com/rss',
+  // 'http://www.myhiphoplife.com/rss',
   // 'http://nothinbuthits.com/feed/',
-  'http://pyramidatlanta.com/feed/',
+  // 'http://pyramidatlanta.com/feed/',
   'http://www.hiphopsmission.com/feed/',
   'http://feeds.feedburner.com/256up?format=xml',
   'http://hiphopsince1987.com/feed/',
@@ -148,7 +148,7 @@ $rss_feed = array(/*'http://freelabelmagazine.wordpress.com/rss',
   'http://feeds.feedburner.com/2dopeboyz',
   'http://hiphop-n-more.com/feed/',*/
   'http://www.viewhiphop.com/category/new-music/feed/',
-  'http://straightfresh.net/feed/',
+  // 'http://straightfresh.net/feed/',
   );
 
 
