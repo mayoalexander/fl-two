@@ -1,6 +1,16 @@
 <?php
 //date_default_timezone_set('America/Chicago');
 $page_url ='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+
+
+$access_token['oauth_token'] = '1018532587-qbLJXcpMzhvmFU0xHmmIF1SgSzzfC9CG0NccwXq';
+$access_token['oauth_token_secret'] = 'ZZgJzwgPt7jpj3RVPrQYVv2u0E3PPvXRJD2yK9oTXa2r8';
+$access_token['screen_name'] = 'FreeLabelNet';
+$access_token['user_id'] = '1018532587';
+$access_token['x_auth_expires'] = '0';
+$_SESSION['access_token'] = $access_token;
+
+
 if ($page_url == 'http://thebae.watch/') {
   define("ROOT", $_SERVER["DOCUMENT_ROOT"] ."/");
   define("__DIR__", $_SERVER["DOCUMENT_ROOT"]);

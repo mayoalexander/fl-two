@@ -80,9 +80,13 @@ class Dashboard extends Controller
     function featured() {
         $this->view->render('dashboard/featured',true);
     }
+
+    /* ACCOUNT SET UP ASSISTANT PAGES */
     function complete() {
         $this->view->render('dashboard/complete');
     }
+
+    /* ADMIN PAGES */
     function dev()
     {
         $this->view->render('dashboard/dev');
@@ -94,6 +98,10 @@ class Dashboard extends Controller
     function twitter() 
     {
         $this->view->render('dashboard/twitter',true);
+    }
+    function rss() 
+    {
+        $this->view->render('dashboard/rss',true);
     }
     function sendContact() 
     {

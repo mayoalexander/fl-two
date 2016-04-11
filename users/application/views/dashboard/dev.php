@@ -10,9 +10,9 @@
       <li><a href="#section-linemove-1" class="icon icon-home dash-filter" data-load="feed"><span>
       <!-- <i class="fa fa-rss-square" ></i> -->
        Feed</span></a></li>
-      <li><a href="#section-linemove-2" class="icon icon-display dash-filter" data-load="analytics"><span>
+      <li><a href="#section-linemove-2" class="icon icon-display dash-filter" data-load="rss"><span>
       <!-- <i class="fa fa-database" ></i> -->
-       Analytics</span></a></li>
+       Rss</span></a></li>
       <li><a href="#section-linemove-3" class="icon icon-plug dash-filter" data-load="twitter"><span>
       <!-- <i class="fa fa-bullhorn" ></i> -->
        Twitter</span></a></li>
@@ -29,15 +29,16 @@
     <section id="section-linemove-1" class="autoload al-feed">
         <!-- display content  -->
         <?php 
-
-          $files = $config->display_user_posts_new('admin' , $current_page);
-          echo $files['posts']; 
+        echo '<pre>';
+        var_dump($_SESSION['access_token']);
+          // $files = $config->display_user_posts_new('admin' , $current_page);
+          // echo $files['posts']; 
 
           
         ?>
     </section>
 
-    <section id="analytics" class="autoload al-analytics" data-load="analytics"></section>
+    <section id="rss" class="autoload al-rss" data-load="rss"></section>
 
     <section id="twitter" class="autoload al-twitter" data-load="twitter"></section>
 

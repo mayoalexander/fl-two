@@ -839,7 +839,7 @@ if($_GET['som']=='1')
                       $direct_message_user_photo = $user_meta[$user]['photo'];
 
 
-                      echo '<section class="card card-chart col-md-12 col-xs-12" style="border:red 1px solid;margin-bottom:2%;padding:2%;">
+                      echo '<div class="card card-chart col-md-12 col-xs-12" style="border:red 1px solid;margin-bottom:2%;padding:2%;">
                       <a href="https://twitter.com/@'.$user.'" target="_blank"><h1 class="section_title"><img src="'.$direct_message_user_photo.'" style="width:80px;border-radius:50px;">@'.$user.'</h1></a>';
                       
                         // --- DISPLAY EACH MESSAGE ------/
@@ -880,7 +880,7 @@ echo '
                   });
                 </script>
                           ';
-                      echo '</section>';
+                      echo '</div>';
 
                       $i++;
                     } // end of foreach
