@@ -41,13 +41,24 @@ $current_page = '0';
   .full-width-article img {
     margin-right: 12px;
   }
-
+  .promo-bg-img {
+    width:100%;
+    position:absolute;
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
+    -webkit-filter: brightness(0.30);
+    filter: brightness(0.30);
+  }
+  .featured-ad {
+    padding-top: 2em;
+    overflow: hidden;
+  }
 </style>
 <header class="jumbotron feature bg-inverse text-center center-vertically" role="banner">
   <div class="container jumbotron-body">
     <!-- <div class="background-tint"></div> -->
     <h1 class="display-3"><?php echo $site['name']; ?></h1>
-    <h2 class="m-b-lg"><?php echo $site['description']; ?> <a href="<?php echo $site['http']; ?>users/login" class="jumbolink">Login Now</a>.</h2>
+    <p class="m-b-lg"><?php echo $site['description']; ?> <a href="<?php echo $site['http']; ?>users/login" class="jumbolink">Login Now</a>.</p>
     <p class="m-b-lg"><?php echo $site['media']['photos']['front-page'][$r]['title']; ?> <a href="<?php echo 'http://freelabel.net/users/index/image/'.$site['media']['photos']['front-page'][$r]['id']; ?>" class="jumbolink">View Now</a>.</p>
     <a class="btn btn-secondary-outline m-b-md" href="http://freelabel.net/users/<?php echo $calltoaction_link; ?>" role="button"><?php echo $calltoaction; ?></a>
   </div>
@@ -60,8 +71,10 @@ $current_page = '0';
 
 
 <!-- first promo -->
-<nav class="promo-container row row-eq-height"  style="background-image:url('<?php echo $site['media']['photos']['ads'][0]['image'] ; ?>');">
-  <panel class="col-md-12 pull-left featured-ad background-tint-promo"  >
+<nav class="promo-container row row-eq-height" >
+  <img class="promo-bg-img" src="<?php echo $site['media']['photos']['ads'][0]['image'] ; ?>">
+
+  <panel class="featured-ad row"  >
     <h1>NEW EXCLUSIVES DAILY.</h1>
     <!-- current-promo advertisement --> 
       <div class="col-md-3">

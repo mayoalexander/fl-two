@@ -18,7 +18,7 @@
 
   } else {
   	echo 'user found!';
-    echo '<script>window.location.assign("http://freelabel.net/users/dashboard/complete");</script>';
+    // echo '<script>window.location.assign("http://freelabel.net/users/dashboard/complete");</script>';
   }
 
 

@@ -167,6 +167,14 @@
 
             <?php 
                 echo $info['benefits'];
+
+                echo "Give fans a rich record release experience on iPhone & Android by turning your single into a living mobile magazine. 
+
+Easy publishing interface to drop new singles, and add an endless stream of articles, photos, and videos at any time. 
+
+Build hype, streamline your promotional content, and send fans to a single mobile destination with automatic notifications. 
+
+Leverage upcoming Slyde™ tools to monetize music and performances, and gain valuable insight into fan engagement analytics.";
             ?>
             </p>
             <a class="media-item" target="_blank" href="<?php echo $site['http'].'users/index/image/'.$site['media']['credit'][0]['id']; ?>">

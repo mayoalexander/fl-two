@@ -5,10 +5,17 @@
   $current_page = '0';
   $user = $config->getUserData($site['user']['name']);
 
-  // NEW USER REGISTRATION
-  if ($user===null) {
-    echo '<script>window.location.assign("http://freelabel.net/users/dashboard/complete/")</script>';
-  }
+  // $config->debug($site['user']);
+  // $config->debug($site['user']['name']);
+
+  // // NEW USER REGISTRATION
+  // if ($user===null) {
+  //   echo '<script>window.location.assign("http://freelabel.net/users/dashboard/complete/")</script>';
+  // }
+
+
+
+
 
 ?>
 <div class="tabs tabs-style-linemove" id="main_display_panel" >

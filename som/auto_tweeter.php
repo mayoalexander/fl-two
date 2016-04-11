@@ -183,9 +183,9 @@ if ($_POST['live'] || $_GET['live']) {
                       $content_SOM .= '<script>
                       function execAutoPromote(linkToTweet) {
                         $.post(linkToTweet,"",function(data){
-                          alert("Succesfully Posted Tweet! ----- " + data);
+                          console.log("Succesfully Posted Tweet! ----- " + linkToTweet);
                         });
-                        console.log(linkToTweet);
+                        // console.log(linkToTweet);
                       }
                       setTimeout( function () { execAutoPromote("'.$link_to_tweet.'"); }  , '.$timeOutTime.');
                       </script>';

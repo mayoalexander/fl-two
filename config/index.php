@@ -218,7 +218,7 @@ class User
       $user_data['session'] = $_SESSION['user_name'];
       $user_data['user_logged_in'] = $_SESSION['user_logged_in'];
       $user_data['cookie'] = $_COOKIE['fl-user-name'];
-      $user_data['name'] = $_COOKIE['fl-user-name'];
+      $user_data['name'] = $_SESSION['user_name'];
     } else {
       $user_data = FALSE;
     }
@@ -594,6 +594,7 @@ class Blog
         //$site['description'] = 'The Leaders In Innovative Online Showcasing';
         $site['description'] = 'Innovative Showcasing';
         $site['description'] = 'Create, Discover, Share.';
+        $site['description'] = "The new platform to release singles and engage fans with a beautiful digital format";
         $site['font-head'] = '"Oswald"';
         // $site['font-body'] = '"Abel"';
         $site['font-body'] = '"Open Sans Condensed"';
@@ -2189,6 +2190,7 @@ class Blog
     $photos = '';
     $res = '';
 
+
     include(ROOT.'inc/connection.php');
       //echo '<pre>';
     $sql = "SELECT * FROM `feed`
@@ -2212,10 +2214,14 @@ class Blog
       } elseif ($files['filetype']==='audio/mp3') {
         // AUDIO
         $res .= '<li ><a href="#"  data-src="'.$files['trackmp3'].'" > <img src="'.$files['photo'].'" style="width:50px;height:auto;"> '.$files['twitter'].' - '.$files['blogtitle'].'</a> </li>';
+      } else {
+        $res .= '<li ><a href="#"  data-src="'.$files['trackmp3'].'" data-type="'.$files['filetype'].'" > <img src="'.$files['photo'].'" style="width:50px;height:auto;"> '.$files['twitter'].' - '.$files['blogtitle'].'</a> </li>';
       }
 
 
     }
+
+
     $res = $photos.$res;
     return $res;
   }
@@ -2261,6 +2267,10 @@ public function getUserInfo($user_name) {
   public function display_attached_files($attached_files, $status=NULL, $desc=null, $title=null, $id=null, $promo=null) {
     $res = '';
     $share_button = '';
+
+
+    // echo 'you are here';
+    // exit;
 
     if (isset($promo['paypal_url']) && $promo['paypal_url']!='') {
       $share_button .= '<a href="'.$promo['paypal_url'].'" class="btn btn-success-outline" target="_blank">Purchase Tickets</a>' ;
@@ -2506,6 +2516,7 @@ public function display_promo_playlist($data , $featured=false, $public=false) {
                   
       
                     // $photos .= '<ol>';
+
                     $photos .= $this->display_attached_files($value['files_attached'], 'public', $value['caption'], $value['title'], $value['id'], $value);
                     // $photos .= '</ol>';
                   // $photos .= '</panel>';

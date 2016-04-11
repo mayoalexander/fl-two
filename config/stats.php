@@ -41,37 +41,37 @@ FETCH & UPDATE STATS
 		include_once(ROOT."inc/connection.php");
 		$query = "SELECT * FROM  `stats` WHERE `page` LIKE '%".$page_title."%' LIMIT 1";
 		$result = mysqli_query($con,$query);
-		if ($row = mysqli_fetch_array($result)) {
+		// if ($row = mysqli_fetch_array($result)) {
 
-			/* --------------------------------------
-			IF ALREADY EXIST 
-			-------------------------------------- */
-			// * DEFINE CURRENT VIEW COUNT
-			$current_counts = $row['count'];
-			$new_counts = $current_counts+1 ;
-			$alter 		 =	$new_counts * 3; $debug[] = 'CURRENT '.$current_counts.', NEW '.$new_counts . ', ALTER '.$alter;
-			// * EXECUTE UPDATE!!!!!!
-			$sql = "UPDATE  `amrusers`.`stats` SET `count` =  '".$new_counts."' , `id` = '".$id."', `page_url` = '".$page_url."' WHERE page='".$page_title."'";
-			if ($update_count = mysqli_query($con,$sql)) {
-				$debug[] = 'ALREADY EXISTS! EXECUTED: '.$sql;
-				$page_views		=	$new_counts;
-			} else {
-				$debug[] = 'SOMETHING WITH UPDATING THE QUERY DIDNT WORK!';
-			};
-		} else {
-			$debug[] = 'NOPE SO LETS TRY AND CREATE NEW!';
-			$id = time();
-			$sql ="INSERT INTO stats (id,page, count, date_posted, page_url)
-						VALUES
-						( $id , '$page_title','1', '$date_posted', '$page_url')";
-						//$debug[] = $create_new_count;
-			if ($update_count = mysqli_query($con,$sql)) {
-				$debug[] = 'NEW PAGE CREATED: (COUNTS '.$new_counts.') '.$sql;
-				//$debug[] = $page_title.': NEW PAGE CREATED! = '.$new_counts;
-			} else {
-				$debug[] = 'WE COULNT CREATE THE NEW PAGE!';
-			}
-		}
+		// 	/* --------------------------------------
+		// 	IF ALREADY EXIST 
+		// 	-------------------------------------- */
+		// 	// * DEFINE CURRENT VIEW COUNT
+		// 	$current_counts = $row['count'];
+		// 	$new_counts = $current_counts+1 ;
+		// 	$alter 		 =	$new_counts * 3; $debug[] = 'CURRENT '.$current_counts.', NEW '.$new_counts . ', ALTER '.$alter;
+		// 	// * EXECUTE UPDATE!!!!!!
+		// 	$sql = "UPDATE  `amrusers`.`stats` SET `count` =  '".$new_counts."' , `id` = '".$id."', `page_url` = '".$page_url."' WHERE page='".$page_title."'";
+		// 	if ($update_count = mysqli_query($con,$sql)) {
+		// 		$debug[] = 'ALREADY EXISTS! EXECUTED: '.$sql;
+		// 		$page_views		=	$new_counts;
+		// 	} else {
+		// 		$debug[] = 'SOMETHING WITH UPDATING THE QUERY DIDNT WORK!';
+		// 	};
+		// } else {
+		// 	$debug[] = 'NOPE SO LETS TRY AND CREATE NEW!';
+		// 	$id = time();
+		// 	$sql ="INSERT INTO stats (id,page, count, date_posted, page_url)
+		// 				VALUES
+		// 				( $id , '$page_title','1', '$date_posted', '$page_url')";
+		// 				//$debug[] = $create_new_count;
+		// 	if ($update_count = mysqli_query($con,$sql)) {
+		// 		$debug[] = 'NEW PAGE CREATED: (COUNTS '.$new_counts.') '.$sql;
+		// 		//$debug[] = $page_title.': NEW PAGE CREATED! = '.$new_counts;
+		// 	} else {
+		// 		$debug[] = 'WE COULNT CREATE THE NEW PAGE!';
+		// 	}
+		// }
 		if (strpos($user_name_session, 'admin@freelabel.net')) {
 			echo '<pre>';
 				print_r($debug);

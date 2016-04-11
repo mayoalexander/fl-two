@@ -29,7 +29,6 @@ include(ROOT.'inc/connection.php');
 		// NOT NUMERIC, SO SEARCH FOR THE TEXT
 		$search_text = str_replace('-', ' ', $_GET['id']);
 	 	$sql_result = "SELECT * FROM  `images` WHERE `title` LIKE CONVERT( _utf8 '%".$search_text."%' USING latin1 ) COLLATE latin1_swedish_ci ORDER BY `id` DESC LIMIT 0 , 30";
-		//var_dump($sql_result);
 		$result = mysqli_query($con,$sql_result);
 
 	}

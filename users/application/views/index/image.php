@@ -127,6 +127,7 @@
       <?php 
       // print_r($promo_id);
       // print_r($_GET);
+      // exit;
       echo $config->display_promo_playlist($current_promo, true); 
 
  ?>

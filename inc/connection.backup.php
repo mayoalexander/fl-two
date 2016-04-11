@@ -5,7 +5,7 @@
 $hostname = "amrusers.db.13071759.hostedresource.com";
 $username = "amrusers";
 $dbname = "amrusers";
-$password = "Treytonmayo2010!";
+$password = "Leighl11!";
 
 /*
 $hostname = "localhost";

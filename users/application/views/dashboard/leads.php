@@ -16,7 +16,7 @@ $leads_conversion = new Config();
 $status[] = 'Messages Sent: '.$numb_soms_sent.' / 600';
 if ($numb_soms_sent < 600) {
 	$status[] = '<span class="text-danger">Not Enough SOMS Sent.</span>';
-	$status[] = '<a class="btn btn-success-outline btn-block pull-left" href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=all" target="_blank">SOM</a>';
+	$status[] = '<a class="btn btn-success-outline som-button-trigger btn-block pull-left" href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=all" target="_blank">SOM</a>';
 } else {
 	$status[] = '<span class="text-danger">SOM quota met!</span>';
 }
@@ -54,12 +54,14 @@ include(ROOT.'inc/connection.php');
 				/*OR `user_name` = '".$user_name_session."' */
 				ORDER BY `follow_up_date` DESC LIMIT 200");
 $i = 0;
+
+
 while($row = mysqli_fetch_assoc($result)) {
 	$i = $i;
 	$leads[$row['lead_twitter']][] = $row['lead_name'];
 	$i = $i + 1;
 	//echo $i;
-	echo $leads[$row['lead_twitter']][0].'<br>';
+	// echo $leads[$row['lead_twitter']][0].'<br>';
 }
 if ($leads==NULL) {
 	$leads['noneFound'] =  'no leads found';
@@ -162,6 +164,14 @@ $data.='</ul>
  			var lead_id = $(this).attr('data-id');
  			alert(lead_id);
  		});
+        $('.som-button-trigger').click(function(e){
+            e.preventDefault();
+            var posturl = $(this).attr('href');
+            var somurl = 'http://freelabel.net/twitter/?som=1&q=1';
+            // alert('open ' + url);
+            window.open(posturl);
+            window.open(somurl);
+        });
  	});
 
  </script>
