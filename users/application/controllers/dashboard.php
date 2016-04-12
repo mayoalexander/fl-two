@@ -103,6 +103,18 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/rss',true);
     }
+    function script() 
+    {
+        $this->view->render('dashboard/script',true);
+    }
+    function submissions() 
+    {
+        $this->view->render('dashboard/submissions',true);
+    }
+
+
+
+
     function sendContact() 
     {
         $numb = $_POST['number'];

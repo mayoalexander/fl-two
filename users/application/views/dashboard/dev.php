@@ -7,9 +7,9 @@
 <div class="tabs tabs-style-linemove" id="main_display_panel" >
   <nav>
     <ul>
-      <li><a href="#section-linemove-1" class="icon icon-home dash-filter" data-load="feed"><span>
+      <li><a href="#section-linemove-1" class="icon icon-home dash-filter" data-load="submissions"><span>
       <!-- <i class="fa fa-rss-square" ></i> -->
-       Feed</span></a></li>
+       submissions</span></a></li>
       <li><a href="#section-linemove-2" class="icon icon-display dash-filter" data-load="rss"><span>
       <!-- <i class="fa fa-database" ></i> -->
        Rss</span></a></li>
@@ -19,18 +19,18 @@
       <li><a href="#section-linemove-4" class="icon icon-upload dash-filter" data-load="leads"><span>
       <!-- <i class="fa fa-music" ></i> -->
        Leads</span></a></li>
-      <li><a href="#section-linemove-5" class="icon icon-date dash-filter" data-load="box"><span>
+      <li><a href="#section-linemove-5" class="icon icon-date dash-filter" data-load="script"><span>
       <!-- <i class="fa fa-calendar" ></i> -->
-       Box</span></a></li>
+       Script</span></a></li>
     </ul>
   </nav>
   <div class="content-wrap">
 
-    <section id="section-linemove-1" class="autoload al-feed">
+    <section id="submissions" class="autoload al-submissions">
         <!-- display content  -->
         <?php 
-        echo '<pre>';
-        var_dump($_SESSION['access_token']);
+        // echo '<pre>';
+        // var_dump($_SESSION['access_token']);
           // $files = $config->display_user_posts_new('admin' , $current_page);
           // echo $files['posts']; 
 
@@ -44,7 +44,7 @@
 
     <section id="leads" class="autoload al-leads" data-load="leads"></section>
 
-    <section id="box" class="autoload al-box" data-load="box"></section>
+    <section id="script" class="autoload al-script" data-load="script"></section>
 
   </div><!-- /content -->
 </div><!-- /tabs -->

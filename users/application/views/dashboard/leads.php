@@ -144,6 +144,7 @@ $data.='</ul>
 
 
 
+<?php //include(ROOT.'submit/views/db/current_clients.php'); ?>
 
 
 
