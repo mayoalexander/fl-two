@@ -166,8 +166,8 @@ $current_page = '0';
 
       <div class="col-md-9">
         <h2 class='text-muted'><?php echo $site['media']['photos']['ads'][1]['title'] ; ?></h2>
-        <p><?php echo $site['media']['photos']['ads'][0]['caption'] ; ?></p>
-        <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][0]['id'] ; ?>" class="btn btn-secondary-outline m-b-md">View Now</a>
+        <p><?php echo $site['media']['photos']['ads'][1]['caption'] ; ?></p>
+        <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][1]['id'] ; ?>" class="btn btn-secondary-outline m-b-md">View Now</a>
       </div>
 
 

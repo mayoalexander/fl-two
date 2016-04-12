@@ -1,11 +1,10 @@
 <a name="submissions">
-	<h2 id="subtitle">SUBMISSIONS</h2>
-	<?php $tweetmessage_submit = urlencode("SUBMIT MUSIC TO ---> submit.FREELABEL.net"); ?>
-	<a target="_blank" id="navimenu" href="https://twitter.com/intent/tweet?screen_name=&text=<?php echo $tweetmessage_submit; ?>" class="twitter-mention-button" data-related="FreeLabelNet">SUBMIT MUSIC</a>
+<!-- 	<h2 id="subtitle">SUBMISSIONS</h2>
+	<?php //$tweetmessage_submit = urlencode("SUBMIT MUSIC TO ---> submit.FREELABEL.net"); ?>
+	<a target="_blank" id="navimenu" href="https://twitter.com/intent/tweet?screen_name=&text=<?php //echo $tweetmessage_submit; ?>" class="twitter-mention-button" data-related="FreeLabelNet">SUBMIT MUSIC</a>
 	<a id="navimenu" target="_blank" href="http://singles.FREELABEL.net/" >Open Singles >>></a>
-	<br><br>
-	
-
+<br><br> 
+-->
 <?php
 include_once('/home/content/59/13071759/html/config/index.php');
 

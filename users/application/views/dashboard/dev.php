@@ -19,9 +19,9 @@
       <li><a href="#section-linemove-4" class="icon icon-upload dash-filter" data-load="leads"><span>
       <!-- <i class="fa fa-music" ></i> -->
        Leads</span></a></li>
-      <li><a href="#section-linemove-5" class="icon icon-date dash-filter" data-load="script"><span>
+      <li><a href="#section-linemove-5" class="icon icon-date dash-filter" data-load="box"><span>
       <!-- <i class="fa fa-calendar" ></i> -->
-       Script</span></a></li>
+       Box</span></a></li>
     </ul>
   </nav>
   <div class="content-wrap">
@@ -44,7 +44,7 @@
 
     <section id="leads" class="autoload al-leads" data-load="leads"></section>
 
-    <section id="script" class="autoload al-script" data-load="script"></section>
+    <section id="box" class="autoload al-box" data-load="box"></section>
 
   </div><!-- /content -->
 </div><!-- /tabs -->

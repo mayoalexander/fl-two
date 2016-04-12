@@ -2167,7 +2167,7 @@ class Blog
       $result_stats = mysqli_query($con,$sql);
     $i=0;
     while($row = mysqli_fetch_assoc($result_stats)) {
-        //print_r($row);
+        print_r($row);
       $files[] = $row;
         //echo '<hr>';
     }

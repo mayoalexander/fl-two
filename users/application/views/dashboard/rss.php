@@ -33,27 +33,8 @@ $rss_feed = array(/*'http://freelabelmagazine.wordpress.com/rss',
   	'http://www.elevatormag.com/feed/',
   	'http://thedailyloud.com/feed/',
 
-  // 'http://www.myhiphoplife.com/rss',
-  // 'http://nothinbuthits.com/feed/',
-  // 'http://pyramidatlanta.com/feed/',
-
-
- /*
-  'http://www.hiphopcanada.com/feed/',
-  'http://www.fakeshoredrive.com/feed/',
-  'http://feeds.feedburner.com/nah_right' ,
-  'http://feeds.soundcloud.com/users/soundcloud:users:6169895/sounds.rss',
-  'http://www.dirty-glove.com/feed/',
-  'http://www.saycheesetv.com/feed/',
-  //'http://www.itsguccit.com/feed/',
-  'http://hiphopdx.com/rss/news.xml',
-  'http://www.hiphopcanada.com/feed/',
-  'http://themusicenthusiast.tumblr.com/rss',
-  'http://feeds.feedburner.com/2dopeboyz',
-  'http://hiphop-n-more.com/feed/',*/
-  // 'http://straightfresh.net/feed/',
   );
-
+ 
 
 echo "<button onclick=\"loadPage('http://freelabel.net/rssreader/index.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\"  alt='RSS'  class='btn btn-default lead_control widget_menu' alt='Navigation'>Admin Posts</button>";
 echo "<button onclick=\"window.open('http://freelabel.net/drive/plus.php?uid=".$user_name_session."')\"  alt='Upload'  class='btn btn-social btn-facebook lead_control widget_menu' alt='Navigation'>Upload</button>";

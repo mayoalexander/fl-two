@@ -63,7 +63,7 @@ $(function() {
         user_name : "admin"
       }
       $.post('http://freelabel.net/users/dashboard/add_to_files/',data,function(result){
-        // alert(result);
+        alert(result);
         element.parent().hide('slow');
       });
 

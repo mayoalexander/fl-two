@@ -8,6 +8,7 @@ if (isset($_POST["page"]) ) {
 } else {
 	$tag = '';
 }
+
 ?>
 
 
@@ -39,7 +40,11 @@ if (isset($_POST["page"]) ) {
 <!-- display content  -->
 <div id="files-list">
 	<ul class="list">
-		<?php $files = $config->getFilesByUser(Session::get('user_name') , 20);
+		<?php 
+
+
+
+$files = $config->getFilesByUser(Session::get('user_name') , 20);
 		echo $config->display_files($files , Session::get('user_name'));
 		?>
 	</ul>
