@@ -3140,34 +3140,43 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
 
   public function getStatsByUser($user_name , $range='total') {
     include(ROOT.'inc/connection.php');
-    $query = "SELECT * FROM feed WHERE user_name='".$user_name."' ORDER BY `id` DESC";
+    $query = "SELECT * FROM  `feed` WHERE  `user_name` = '$user_name' ORDER BY `id` DESC";
     $result = mysqli_query($con,$query);
-    if (mysqli_num_rows($result)!=0 && $row = mysqli_fetch_assoc($result)) {
-      $user_twitter = $row['twitter'];
-      switch ($range) {
-        case 'total':
-        $sql = "SELECT * FROM  `stats` WHERE  `page` LIKE  '%$user_twitter%'";
-        break;
-
-        default:
-        $sql = "SELECT * FROM  `stats` WHERE  `page` LIKE  '%$user_twitter%'";
-        break;
-      }
-      include_once(ROOT.'inc/connection.php');
-      $resultt = mysqli_query($con, $sql);
-      if (mysqli_num_rows($resultt) > 0) {
-            // output data of each row
-        while($stats = mysqli_fetch_assoc($resultt)) {
-          $stats_total[] = $stats['count'];
-        }
-        $stats['count'] = array_sum($stats_total);
-        $stats['user_twitter'] = $user_twitter;
-      } else {
-              // echo "0 results";
-      }
-    } else {
-      $stats = 'No Tracks Uploaded';
+    $count=0;
+    while($row = mysqli_fetch_assoc($result)) {
+      $count = $count + $row['views'];
+      $stats['user_twitter'] = $row['user_name'];
     }
+    $stats['count'] = $count;
+    // echo 'final count: '.$stats['count'];
+    // $row = mysqli_fetch_assoc($result);
+    // count($row);
+    // if (mysqli_num_rows($result)!=0 && $row = mysqli_fetch_assoc($result)) {
+    //   $user_twitter = $row['twitter'];
+    //   switch ($range) {
+    //     case 'total':
+    //     $sql = "SELECT * FROM  `stats` WHERE  `page` LIKE  '%$user_twitter%'";
+    //     break;
+
+    //     default:
+    //     $sql = "SELECT * FROM  `stats` WHERE  `page` LIKE  '%$user_twitter%'";
+    //     break;
+    //   }
+    //   include_once(ROOT.'inc/connection.php');
+    //   $resultt = mysqli_query($con, $sql);
+    //   if (mysqli_num_rows($resultt) > 0) {
+    //         // output data of each row
+    //     while($stats = mysqli_fetch_assoc($resultt)) {
+    //       $stats_total[] = $stats['count'];
+    //     }
+    //     $stats['count'] = array_sum($stats_total);
+    //     $stats['user_twitter'] = $user_twitter;
+    //   } else {
+    //           // echo "0 results";
+    //   }
+    // } else {
+    //   $stats = 'No Tracks Uploaded';
+    // }
     return $stats;
   }
 
