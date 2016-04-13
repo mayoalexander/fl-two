@@ -8,10 +8,10 @@
   // $config->debug($site['user']);
   // $config->debug($site['user']['name']);
 
-  // // NEW USER REGISTRATION
-  // if ($user===null) {
-  //   echo '<script>window.location.assign("http://freelabel.net/users/dashboard/complete/")</script>';
-  // }
+  // NEW USER REGISTRATION
+  if ($user===null) {
+    echo '<script>window.location.assign("http://freelabel.net/users/dashboard/complete/")</script>';
+  }
 
 
 

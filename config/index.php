@@ -1798,8 +1798,12 @@ class Blog
                 } // IF END
               } // FOREACH END
         } else {
-          $b['posts'] = '<h2>You have nothing uploaded to your profile!</h2>';
-        }
+          $b['posts'] = '<div class="col-md-12" style="padding:5em 20em;">';
+          $b['posts'] .= '<h2 class="text-warning">You have nothing uploaded to your profile!</h2>';
+          $b['posts'] .= '<p class="text-muted">Click the "+ Add New" button at the top, or click the "Upload" button in the navigation menu to go to FLDRIVE where you can Drag & Drop files directly into your FREELABEL Profile.</p>';
+          $b['posts'] .= '</div>';
+
+        } 
 
       return $b;
   }
@@ -2370,7 +2374,7 @@ public function getUserInfo($user_name) {
               $photos .="<label id='title-id-".$value['id']."' class='file_name editable-promo' >".$value['title']."</label>";
               $photos .="<label class='file_name'>".$value['stats']." views</label>";
               $photos .= '<a href="http://freelabel.net/users/index/image/'.$value['id'].'" ><img class="user-photo-item" src="'.$thumbnail.'"></a>';
-              $photos .="<br><label class='file_name'>Tags:</label><label id='desc-id-".$value['id']."' class='file_name editable-promo text-muted' >".$value['desc']."</label>";
+              $photos .="<br><label class='file_name'>Tags:</label><label id='desc-id-".$value['id']."' class='file_name editable-promo text-hjh' >".$value['desc']."</label>";
               // $photos .="<br><label class='file_name'>Caption:</label><label id='caption-id-".$value['id']."' class='file_name editable-promo text-muted' >".$value['caption']."</label>";
               // $photos .="<br><label class='file_name'>Status:</label><label id='caption-id-".$value['id']."' class='file_name text-muted' ><select><option selected>Public</option><option>Private</option></select></label>";
               $photos .= '<ol>';
@@ -2396,13 +2400,13 @@ public function getUserInfo($user_name) {
         }
     } else {
          $photos .= "<article class='full-width-article ".$colWidth." col-xs-12 eq-row-height' data-promo-id='".$value['id']."'>";
-         $photos .='<h2>You have no promos created! uploaded!</h2>';
-         $photos .='<p class="section-description">You have no promos created! uploaded!</p>';
+         $photos .='<h2 class="text-warning">You have no promos created :(</h2>';
+         $photos .='<p class="section-description">You\'ll need to create a new promotion with the green "Add New Promo" button at the top!</p>';
          $photos .='</article>';
 
         $photos .= "<article class='full-width-article ".$colWidth." col-xs-12 eq-row-height' data-promo-id='".$value['id']."'>";
-         $photos .='<h2>You have no promos created! uploaded!</h2>';
-         $photos .='<p class="section-description">You have no promos created! uploaded!</p>';
+         $photos .='<h2 class="text-info">What are Promos?</h2>';
+         $photos .='<p class="section-description">Promotions are categories, playlists, albums, or events that you can attach tracks, videos, photos and more all in one place!</p>';
          $photos .='</article>';
 
     }
