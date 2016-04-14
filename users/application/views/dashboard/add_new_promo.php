@@ -93,6 +93,31 @@ $('.add-new-promo-form #poster').change(function() {
 		var formdata_PHO = $('.add-new-promo-form #poster')[0].files[0];
 		var formdata = new FormData();
 
+		// CHREAK
+		var maxSize = (1000 * 1000) * 2; // 2 Megabytes
+		var ext = formdata_PHO.name.split('.').pop();
+		// alert(ext);
+
+
+        if (ext.toLowerCase() !=='png' && ext.toLowerCase() !=='jpeg' && ext.toLowerCase() !=='jpg' && ext.toLowerCase() !=='gif') {
+            var type = 'Uh oh, this file you\'ve selected is not a photo. Please upload a photo for the artwork!';
+            alert(type);
+            $('#artwork_photo').val('');
+            return false;
+        } else {
+            // alert("its a photo!");
+        }
+
+
+		// console.log(formdata_PHO.size);
+	    if (formdata_PHO.size > maxSize) {
+			alert('file too large!');
+			$('#artwork_photo').val('');
+			return;
+        } else {
+        	// alert('great file size!');
+        }
+
 		// Add the file to the request.
   		formdata.append('photos[]', formdata_PHO);
 	$.ajax({
