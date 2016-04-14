@@ -126,6 +126,7 @@ $(function(){
     background-color: #101010;
     padding:2%;
     border: red solid 1px;
+    opacity: 0.7;
   }
   #twitpic button {
       border-radius: 0;

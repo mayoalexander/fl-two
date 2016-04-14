@@ -18,7 +18,7 @@ if ($numb_soms_sent < 600) {
 	$status[] = '<span class="text-danger">Not Enough SOMS Sent.</span>';
 	$status[] = '<a class="btn btn-success-outline som-button-trigger btn-block pull-left" href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=all" target="_blank">SOM</a>';
 } else {
-	$status[] = '<span class="text-danger">SOM quota met!</span>';
+	$status[] = '<span class="text-success">SOM quota met!</span>';
 }
 /* 
  * GET SOM ALERT DATA 
@@ -163,7 +163,11 @@ $data.='</ul>
  		$('.lead-response-button').click(function(event){
  			event.preventDefault();
  			var lead_id = $(this).attr('data-id');
- 			alert(lead_id);
+            var wrapper = $(this).parent().parent();
+
+            // hide wrapper
+            wrapper.remove();
+ 			// alert(lead_id);
  		});
         $('.som-button-trigger').click(function(e){
             e.preventDefault();
