@@ -12,21 +12,18 @@
     // LOAD SITE DATA
     $config = new Blog($_SERVER['HTTP_HOST']);
     $site = $config->getSiteData($config->site);
-    $site['media']['photos']['front-page'] = $config->getPhotoAds($site['creator'], 'freelabel front');
-    $site['media']['photos']['ads'] = $config->getPhotoAds($site['creator'], 'current-promo');
+    $site['media']['photos']['front-page'] = $config->getPhotoAds($site['creator'], 'freelabel front',8);
+    $site['media']['photos']['ads'] = $config->getPhotoAds($site['creator'], 'current-promo',10);
+    $r = rand(0,6);
 
+    // echo '<pre>';
+    // var_dump($r);
+    // echo '<hr>';
+    // var_dump($site['media']['photos']['front-page']);
+    // exit;
 
     /* load page title */
     $site['page_title'] = $config->getPageTitle(strtoupper($_GET['url']));
-
-
-
-
-
-    /* SET PAGE TITLES */
-    function setMetaTags() {
-
-    }
 
 
 
@@ -49,34 +46,37 @@
 
     $front_page_photos = $config->getPhotoAds($site['creator'], 'front');
     shuffle($front_page_photos);
+
+
     if ($user_name = Session::get('user_name')) {
         $upload_link =  'http://freelabel.net/upload/?uid='.$user_name;
     }
 
     if (!strpos($_GET['url'], '/image/')) {
-
-      // for links using FREELABEL.NET/TOUR/
-      $site['meta_tag_photo'] = $site['media']['photos']['front-page'][0]['image'];
+      // FRONT PAGE & NOT QUERY SETS!
+      // $site['meta_tag_photo'] = $site['media']['photos']['front-page'][0]['image'];
       $site['meta_tag_title'] = $site['media']['photos']['front-page'][0]['title'];
       $site['meta_tag_caption'] = $site['media']['photos']['front-page'][0]['caption'];
-    } elseif (strpos($_GET['url'], '/image/')  && isset($_GET['id'])) {
+      $site['page_title'] = 'HOME';//$site['meta_tag_title']; 
 
-// for links using "index/image/#id"
+      if (!$site['media']['photos']['front-page'][0]['thumb']=='') {
+        $site['meta_tag_photo'] = $site['media']['photos']['front-page'][0]['thumb'];
+      } else {
+        $site['meta_tag_photo'] = $site['media']['photos']['front-page'][0]['image'];
+      }
+
+    } elseif (strpos($_GET['url'], '/image/')  && isset($_GET['id'])) {
+      // PROMO PAGE METATTILES
       $promo_id = str_replace('index/image/', '', $_GET['id']);
       $current_promo = $config->getPromoByDesc($promo_id,null,null,'desc');
-      // $site['meta_tag_photo'] = $current_promo[0]['image'];
-
-  
       $site['meta_tag_title'] = $current_promo[0]['title'];
       $site['meta_tag_caption'] = $current_promo[0]['caption'];
       $site['page_title'] = $site['meta_tag_title'].' // FREELABEL'; 
-
       if (!$current_promo[0]['thumb']=='') {
         $site['meta_tag_photo'] = $current_promo[0]['thumb'];
       } else {
         $site['meta_tag_photo'] = $current_promo[0]['image'];
       }
-
 
     } else {
       // for links using "index/image/#id"
@@ -86,8 +86,6 @@
       $site['meta_tag_title'] = $current_promo[0]['title'];
       $site['meta_tag_caption'] = $current_promo[0]['caption'];
       $site['page_title'] = $site['meta_tag_title'].' // FREELABEL'; 
-
-
       if (!$current_promo[0]['thumb']=='') {
         $site['meta_tag_photo'] = $current_promo[0]['thumb'];
       } else {
@@ -161,6 +159,9 @@
       border:1px solid #202020;
       color:#e3e3e3;
       border-radius: 0px;
+    }
+    .profile_builder_form {
+      padding:2em;
     }
     textarea:focus, input:focus{
         outline: 0;
@@ -240,6 +241,10 @@
       font-size:24px;
       display: block;
       color:#101010;
+    }
+    .audio-player-playlist {
+      /*height:30vh;*/
+      /*overflow-y:scroll;*/
     }
     .controls-play , .user-video-item {
       border-radius: 0px;
@@ -393,7 +398,7 @@
           PROMOTIONS FUNCTIONALITY 
     ------------------------------------------ */
     .jumbotron {
-      background-image: <?php $r = rand(0,6); echo 'url("'.$site['media']['photos']['front-page'][$r]['image'].'")'; ?> ;
+      background-image: <?php echo 'url("'.$site['media']['photos']['front-page'][$r]['image'].'")'; ?> ;
       min-height: 100vh;
       background-position:center top ;
     }
@@ -745,5 +750,5 @@
 
 
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://public.radio.co/playerapi/jquery.radiocoplayer.min.js"></script>
-<script>$('.radioplayer').radiocoPlayer();</script>
+<!-- <script src="https://public.radio.co/playerapi/jquery.radiocoplayer.min.js"></script> -->
+<!-- <script>$('.radioplayer').radiocoPlayer();</script>-->

@@ -765,7 +765,7 @@ class Blog
         <meta name="twitter:site" content="@freelabelnet">
         <meta name="twitter:creator" content="@freelabelnet">
         <meta name="twitter:title" content="'.$site['meta_tag_title'].' // FREELABEL MAG + RADIO">
-        <meta name="twitter:description" content="'.$site['meta_tag_caption'].'">
+        <meta name="twitter:description" content="'.$site['meta_tag_caption'].' Login at FREELABEL.NET">
         <meta name="twitter:image" content="'.$site['meta_tag_photo'].'">';
 
     return $res;
@@ -2837,14 +2837,14 @@ public function display_promo_playlist($data , $featured=false, $public=false) {
   }
 
 
-  public function getPhotoAds($user_name='' , $search_query='advertise registration') {
+  public function getPhotoAds($user_name='' , $search_query='advertise registration', $limit=10) {
     include(ROOT.'inc/connection.php');
       //echo '<pre>';
     $sql = "SELECT *
 FROM  `images`
 WHERE  `desc` LIKE CONVERT( _utf8 '%$search_query%'
 USING latin1 )
-COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC LIMIT 10";
+COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC LIMIT $limit";
     $result_stats = mysqli_query($con,$sql);
     $i=0;
     while($row = mysqli_fetch_assoc($result_stats)) {

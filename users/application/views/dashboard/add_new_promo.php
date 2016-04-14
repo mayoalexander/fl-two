@@ -33,7 +33,7 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 		<input type='text' class="form-control" name='title' placeholder='Enter Title' required>
 		<!-- <label>Description</label> -->
 		<!-- <input type='text' class="form-control" name='caption' placeholder='Enter Description' required> -->
-		<textarea class="form-control" name="caption" placeholder="Enter Description.."></textarea>
+		<textarea class="form-control" name="caption" placeholder="Enter Description.." required></textarea>
 
 		<label>Attach Files</label>
 		<small>Hold Cmd or Shift to select multiple files</small>
