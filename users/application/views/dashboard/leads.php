@@ -148,14 +148,47 @@ $data.='</ul>
 
 
 
-    <div class="container row"> 
-    	<div class="col-md-4">
-    		<?php echo $data; ?>
-    	</div>
-    	<div class="col-md-8">
-    		<?php echo $lead_build; ?>
-    	</div>
+<style type="text/css">
+    .lead-response-window {
+        width: 100%;
+        min-height:300px;
+    }
+</style>
+
+
+
+<!-- MAIN CONTAINER AREA -->
+<div class="container row"> 
+	<div class="col-md-4">
+		<?php echo $data; ?>
+	</div>
+	<div class="col-md-8">
+		<?php echo $lead_build; ?>
+	</div>
+</div>
+
+
+
+
+
+
+<!-- MODAL -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <textarea class="form-control lead-response-input" rows="5"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary lead-response-trigger">Send Message</button>
+      </div>
     </div>
+  </div>
+</div>
 
 
  <script type="text/javascript">
@@ -167,7 +200,16 @@ $data.='</ul>
 
             // hide wrapper
             wrapper.remove();
- 			// alert(lead_id);
+
+            // reset wrapper
+            $('#myModal .modal-title').html('');
+            $('.lead-response-input').val('');
+
+            // Open Modal 
+            $('#myModal').modal('toggle');
+            $('#myModal .modal-title').html(wrapper.html());
+            // $('#myModal .modal-body').append('<iframe src="http://freelabel.net/" class="lead-response-window" ></iframe>');
+
  		});
         $('.som-button-trigger').click(function(e){
             e.preventDefault();
@@ -176,6 +218,12 @@ $data.='</ul>
             // alert('open ' + url);
             window.open(posturl);
             window.open(somurl);
+        });
+
+        // Lead Response Trigger
+        $('.lead-response-trigger').click(function(){
+            var text = $('.lead-response-input').val();
+            alert('okay do this right here: ' + text);
         });
  	});
 
