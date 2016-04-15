@@ -722,9 +722,12 @@ if($_GET['som']=='1')
                 $status = substr($status,0,130);
         }
         $access_token = $_SESSION['access_token'];
-        $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+        $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, 
+          '1018532587-ap1IiTYR7xA0O15YTYcZnwL4RlRGolZNKK0kx1c', 
+          'EV3jqsvfHhxGV6faVQh4YA8Uu4kvojXZ3vcqwDOEYMzo1');
         $connection_search_query_results =      $connection->get('search/tweets', $api_query_search);
         $i=1;
+        echo '<pre>';
         foreach ($connection_search_query_results->statuses as $user_twitter_data) {
             //echo $i.') '.$user_twitter_data->user->screen_name.' ';
             $user_twitter_name = $user_twitter_data->user->screen_name;

@@ -63,8 +63,9 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 			var data = $(this).serialize();
 			// console.log(data);
 			$.post('http://freelabel.net/users/dashboard/add_new_promo/',data,function(result){
-				alert(result);
+				// alert(result);
 				// console.log(result);
+				$('.add-new-promo-form').html(result);
 				location.reload();
 			});
 		});
