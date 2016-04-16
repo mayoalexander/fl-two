@@ -1,4 +1,23 @@
-
+<style type="text/css">
+	.content .product {
+		width:200px;
+		height:200px;
+		display:inline-block;
+		background-color:#202020;
+		margin:0.2em;
+		padding: 5em;
+	}
+	.content {
+		min-height: 50vh;
+	}
+	.content, footer {
+		position: relative;
+		left: 150px;
+	}
+	.section-footer.bg-inverse {
+		background-color: transparent;
+	}
+</style>
 	<!-- <meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,19 +43,21 @@
 			<button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
 			<div class="menu__wrap">
 				<ul data-menu="main" class="menu__level">
-					<li class="menu__item"><a class="menu__link" data-submenu="submenu-1" href="#">Tracks</a></li>
-					<li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#">Videos</a></li>
-					<li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="#">Interviews</a></li>
-					<li class="menu__item"><a class="menu__link" data-submenu="submenu-4" href="#">Albums</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-1" href="#">Dashboard</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#">Admin</a></li>
+					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="#">Public</a></li> -->
+					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="#">Interviews</a></li> -->
+					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-4" href="#">Albums</a></li> -->
 				</ul>
 				<!-- Submenu 1 -->
 				<ul data-menu="submenu-1" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="#">Rock</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">Mainstream</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">Underground</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">Jazz</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">Instrumentals</a></li>
-					<li class="menu__item"><a class="menu__link" data-submenu="submenu-1-1" href="#">Rap</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Box</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Audio</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Analytics</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Events</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Promos</a></li>
+					<!-- <li class="menu__item"><a class="menu__link" href="#">Instrumentals</a></li> -->
+					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-1-1" href="#">Rap</a></li> -->
 				</ul>
 				<!-- Submenu 1-1 -->
 				<ul data-menu="submenu-1-1" class="menu__level">
@@ -47,11 +68,15 @@
 				</ul>
 				<!-- Submenu 2 -->
 				<ul data-menu="submenu-2" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="#">Citrus Fruits</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">Berries</a></li>
-					<li class="menu__item"><a class="menu__link" data-submenu="submenu-2-1" href="#">Special Selection</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">Tropical Fruits</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">Melons</a></li>
+					<!-- <li class="menu__item"><a class="menu__link" href="#">Mail</a></li> -->
+					<!-- <li class="menu__item"><a class="menu__link" href="#">Social</a></li> -->
+					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-2-1" href="#">Special Selection</a></li> -->
+					<!-- <li class="menu__item"><a class="menu__link" href="#">Featured</a></li> -->
+					<li class="menu__item"><a class="menu__link" href="#">Leads</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Twitter</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Rss</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Script</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Submissions</a></li>
 				</ul>
 				<!-- Submenu 2-1 -->
 				<ul data-menu="submenu-2-1" class="menu__level">
@@ -61,7 +86,7 @@
 				</ul>
 				<!-- Submenu 3 -->
 				<ul data-menu="submenu-3" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="#">Buckwheat</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Promos</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Millet</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Quinoa</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Wild Rice</a></li>
@@ -131,14 +156,18 @@
 
 		function loadDummyData(ev, itemName) {
 			ev.preventDefault();
-
+			var pagename = itemName.toLowerCase()
+			// alert(pagename);
 			closeMenu();
 			gridWrapper.innerHTML = '';
 			classie.add(gridWrapper, 'content--loading');
-			setTimeout(function() {
+			$.get('http://freelabel.net/users/dashboard/' + pagename + '/',function(result){
+				$('.content').html(result);
+			});
+/*			setTimeout(function() {
 				classie.remove(gridWrapper, 'content--loading');
 				gridWrapper.innerHTML = '<ul class="products">' + dummyData[itemName] + '<ul>';
-			}, 700);
+			}, 700);*/
 		}
 	})();
 	</script>

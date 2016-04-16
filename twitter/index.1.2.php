@@ -411,8 +411,8 @@ if ($_POST['page']=='timeline'){
 if ($_POST['page']=='direct_messages' OR $_POST['page']=='direct_messages_auto_rtm'){
 
         // $api_query_dm =array("count" => '50');
-        $api_query_dm =array("count" => '200');
-        // $api_query_dm =array("count" => '1');
+        // $api_query_dm =array("count" => '200');
+        $api_query_dm =array("count" => '5');
         $method = 'direct_messages';
         $direct_messages =   $connection->get($method, $api_query_dm);
         $i=1;
@@ -858,13 +858,7 @@ if($_GET['som']=='1')
                       echo '<div class="card card-chart col-md-12 col-xs-12 twitter-dm-card clearfix" >
                       <a href="https://twitter.com/@'.$user.'" target="_blank" class="pull-left"><h5 class="section_title"><img src="'.$direct_message_user_photo.'" style="width:40px;border-radius:50px;">@'.$user.'</h5></a>';
                       
-                      echo '
-                      <div class="btn-group pull-right">
 
-                        <button class="btn btn-default twitter-reply-button" ><span class="glyphicon glyphicon-comment"></span>Reply</button>
-                        <button onclick="addToLeads(\''.$user.'\',\''.str_replace("'", "\'", $message['message']).'\',\''.$todays_date.'\',\''.$todays_date.'\' , \''.$i.'\')" class="add-lead-btn-'.$i.' btn btn-success"><span class="glyphicon glyphicon-usd" ></span>Add Leads</button>
-                      </div>
-                      ';
 
                         // --- DISPLAY EACH MESSAGE ------/
                         foreach ($user_meta[$user]['messages'] as $message) {
@@ -872,6 +866,14 @@ if($_GET['som']=='1')
                                 '<label class="label text-muted" style="display:inline;">'.get_timeago($message['date']).'</label><span class="twitter-message-text">'.$message['message'].'</span>';
                             echo '</blockquote>';
                         }
+                      echo '
+                      <div class="btn-group pull-right">
+
+                        <button class="btn btn-default twitter-reply-button" ><span class="glyphicon glyphicon-comment"></span>Reply</button>
+                        <button onclick="addToLeads(\''.$user.'\',\''.str_replace("'", "\'", $message['message']).'\',\''.$todays_date.'\',\''.$todays_date.'\' , \''.$i.'\')" class="add-lead-btn-'.$i.' btn btn-success"><span class="glyphicon glyphicon-usd" ></span>Add Leads</button>
+                      </div>
+                      ';
+                      
                       
 
 echo '
