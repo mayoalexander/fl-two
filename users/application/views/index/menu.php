@@ -1,0 +1,145 @@
+
+	<!-- <meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Blueprint: Multi-Level Menu</title>
+	<meta name="description" content="Blueprint: A basic template for a responsive multi-level menu" />
+	<meta name="keywords" content="blueprint, template, html, css, menu, responsive, mobile-friendly" />
+	<meta name="author" content="Codrops" />
+	<link rel="shortcut icon" href="http://freelabel.net/landing/view/menu/favicon.ico"> -->
+	<!-- food icons -->
+	<link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/menu/css/organicfoodicons.css" />
+	<!-- demo styles -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/menu/css/demo.css" /> -->
+	<!-- menu styles -->
+	<link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/menu/css/component.css" />
+	<script src="http://freelabel.net/landing/view/menu/js/modernizr-custom.js"></script>
+
+
+	<!-- Main container -->
+	<div class="container">
+		<!-- Blueprint header -->
+		<button class="action action--open" aria-label="Open Menu"><span class="icon icon--menu"></span></button>
+		<nav id="ml-menu" class="menu">
+			<button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
+			<div class="menu__wrap">
+				<ul data-menu="main" class="menu__level">
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-1" href="#">Tracks</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#">Videos</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="#">Interviews</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-4" href="#">Albums</a></li>
+				</ul>
+				<!-- Submenu 1 -->
+				<ul data-menu="submenu-1" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="#">Rock</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Mainstream</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Underground</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Jazz</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Instrumentals</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-1-1" href="#">Rap</a></li>
+				</ul>
+				<!-- Submenu 1-1 -->
+				<ul data-menu="submenu-1-1" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="#">Trap</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Lyrical</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">The South</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Westcoast</a></li>
+				</ul>
+				<!-- Submenu 2 -->
+				<ul data-menu="submenu-2" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="#">Citrus Fruits</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Berries</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-2-1" href="#">Special Selection</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Tropical Fruits</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Melons</a></li>
+				</ul>
+				<!-- Submenu 2-1 -->
+				<ul data-menu="submenu-2-1" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="#">Exotic Mixes</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Wild Pick</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Vitamin Boosters</a></li>
+				</ul>
+				<!-- Submenu 3 -->
+				<ul data-menu="submenu-3" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="#">Buckwheat</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Millet</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Quinoa</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Wild Rice</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Durum Wheat</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-3-1" href="#">Promo Packs</a></li>
+				</ul>
+				<!-- Submenu 3-1 -->
+				<ul data-menu="submenu-3-1" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="#">Starter Kit</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">The Essential 8</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Bolivian Secrets</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Flour Packs</a></li>
+				</ul>
+				<!-- Submenu 4 -->
+				<ul data-menu="submenu-4" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="#">Grain Mylks</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Seed Mylks</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Nut Mylks</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Nutri Drinks</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-4-1" href="#">Selection</a></li>
+				</ul>
+				<!-- Submenu 4-1 -->
+				<ul data-menu="submenu-4-1" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="#">Nut Mylk Packs</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Amino Acid Heaven</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Allergy Free</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div class="content">
+			<p class="info">Please choose a category</p>
+			<!-- Ajax loaded content here -->
+		</div>
+	</div>
+	<!-- /view -->
+	<script src="http://freelabel.net/landing/view/menu/js/classie.js"></script>
+	<script src="http://freelabel.net/landing/view/menu/js/dummydata.js"></script>
+	<script src="http://freelabel.net/landing/view/menu/js/main.js"></script>
+	<script>
+	(function() {
+		var menuEl = document.getElementById('ml-menu'),
+			mlmenu = new MLMenu(menuEl, {
+				// breadcrumbsCtrl : true, // show breadcrumbs
+				// initialBreadcrumb : 'all', // initial breadcrumb text
+				backCtrl : false, // show back button
+				// itemsDelayInterval : 60, // delay between each menu item sliding animation
+				onItemClick: loadDummyData // callback: item that doesn´t have a submenu gets clicked - onItemClick([event], [inner HTML of the clicked item])
+			});
+
+		// mobile menu toggle
+		var openMenuCtrl = document.querySelector('.action--open'),
+			closeMenuCtrl = document.querySelector('.action--close');
+
+		openMenuCtrl.addEventListener('click', openMenu);
+		closeMenuCtrl.addEventListener('click', closeMenu);
+
+		function openMenu() {
+			classie.add(menuEl, 'menu--open');
+		}
+
+		function closeMenu() {
+			classie.remove(menuEl, 'menu--open');
+		}
+
+		// simulate grid content loading
+		var gridWrapper = document.querySelector('.content');
+
+		function loadDummyData(ev, itemName) {
+			ev.preventDefault();
+
+			closeMenu();
+			gridWrapper.innerHTML = '';
+			classie.add(gridWrapper, 'content--loading');
+			setTimeout(function() {
+				classie.remove(gridWrapper, 'content--loading');
+				gridWrapper.innerHTML = '<ul class="products">' + dummyData[itemName] + '<ul>';
+			}, 700);
+		}
+	})();
+	</script>
+

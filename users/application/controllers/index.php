@@ -58,4 +58,10 @@ class Index extends Controller
     function stream($slug) {
             $this->view->render('index/stream',true);
     }
+    function menu() {
+            $this->view->render('index/menu');
+    }
+    function off() {
+            $this->view->render('index/off',true);
+    }
 }

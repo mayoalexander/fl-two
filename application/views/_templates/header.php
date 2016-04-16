@@ -49,6 +49,8 @@
 
     $front_page_photos = $config->getPhotoAds($site['creator'], 'front');
     shuffle($front_page_photos);
+
+
     if ($user_name = Session::get('user_name')) {
         $upload_link =  'http://freelabel.net/upload/?uid='.$user_name;
     }
@@ -150,17 +152,22 @@
       
     }
     body,html, h1, h2,h3,h4,h5,h6, label, button {
-      font-family:<?php echo $site['font-head']; ?>;
+      /*font-family:<?php echo $site['font-head']; ?>;*/
+      font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
     }
     /*body fonts */
-    body , p , .tabs-style-linemove nav a {
+    body , p , .tabs-style-linemove nav a, .card-social small {
       font-family:<?php echo $site['font-body']; ?>;
+      font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif; 
     }
     .form-control {
       background-color:transparent;
       border:1px solid #202020;
       color:#e3e3e3;
       border-radius: 0px;
+    }
+    .profile_builder_form {
+      padding:2em;
     }
     textarea:focus, input:focus{
         outline: 0;
@@ -240,6 +247,10 @@
       font-size:24px;
       display: block;
       color:#101010;
+    }
+    .audio-player-playlist {
+      /*height:30vh;*/
+      /*overflow-y:scroll;*/
     }
     .controls-play , .user-video-item {
       border-radius: 0px;
@@ -404,6 +415,19 @@
       font-size:24px;
     }
 
+
+
+
+
+    /* -----------------------------------------
+    navigation menus
+    ----------------------------------------- */
+    .nav-link {
+      font-weight: bold;
+    }
+    .nav-link:hover {
+        color:#e3e3e3;
+    }
 
     /* ------------------------------------------
           RSS FUNCITONALITY
@@ -635,6 +659,11 @@
       font-size:0.7em;
       padding: 0.5em;
     }
+    .header-logo {
+      max-height: 60px;
+      position:relative;
+      bottom:1px;
+    }
     .logo-menu a {
       padding:0%;
     }
@@ -730,7 +759,7 @@
             </div><!-- /gn-scroller -->-
           </nav>
         </li>
-        <li class="logo-menu" style='border-right:none;' ><a href="<?php echo $site['http']; ?>"><img src="<?php echo $site['logo']; ?>" style="max-height:48px;" ></a></li>
+        <li class="logo-menu" style='border-right:none;' ><a href="<?php echo $site['http']; ?>"><img src="<?php echo $site['logo']; ?>" class="header-logo" ></a></li>
         <li class="radio-menu pull-right"  style='border-right:none;' >
           <a class="audio-player-title codrops-icon codrops-icon-prev" href="<?php echo $site['http']; ?>radio/"><span><i class="radio-player-control fa fa-play" ></i>
           <span style="color:red;" >LIVE</span> ON AIR</a>
@@ -745,5 +774,5 @@
 
 
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://public.radio.co/playerapi/jquery.radiocoplayer.min.js"></script>
-<script>$('.radioplayer').radiocoPlayer();</script>
+<!-- <script src="https://public.radio.co/playerapi/jquery.radiocoplayer.min.js"></script> -->
+<!-- <script>$('.radioplayer').radiocoPlayer();</script>-->

@@ -12,8 +12,8 @@ $blog = new Blog();
 if (isset($_SESSION['user_name']) == false) {
   session_start();
 }
-$access_token['oauth_token'] = '1018532587-qbLJXcpMzhvmFU0xHmmIF1SgSzzfC9CG0NccwXq';
-$access_token['oauth_token_secret'] = 'ZZgJzwgPt7jpj3RVPrQYVv2u0E3PPvXRJD2yK9oTXa2r8';
+$access_token['oauth_token'] = '1018532587-ap1IiTYR7xA0O15YTYcZnwL4RlRGolZNKK0kx1c';
+$access_token['oauth_token_secret'] = 'EV3jqsvfHhxGV6faVQh4YA8Uu4kvojXZ3vcqwDOEYMzo1';
 $access_token['screen_name'] = 'FreeLabelNet';
 $access_token['user_id'] = '1018532587';
 $access_token['x_auth_expires'] = '0';
@@ -67,8 +67,8 @@ GRAB ALL SCRIPT VALUES
                         // echo 'Sending 2nd Follow Up: [@'.$related_user.']<br>';
 
                       } else {
-                        $debug['twitter']['direct-messages'] = 'Auto Response Sent: ';
-                        echo $debug['twitter']['direct-messages'].'<br>';
+                        $debug[]['twitter']['direct-messages'] = 'Auto Response Sent: ';
+                        // echo $debug[]['twitter']['direct-messages'].'<br>';
                         saveTwitterData($type , $related_user , $data);
                         $send_tweet_ornot = false;
                       }
@@ -239,6 +239,16 @@ if(isset($_GET["redirect"]))
 }
 .twitter-controls-group .btn , .twitter-controls-group button, .twitter-controls-group {
   border-radius:0;
+}
+.twitter-dm-card {
+  border: red 1px solid;
+  margin-bottom: 2em;
+  padding: 2em;
+  font-size: 0.5em;
+  line-height: 5px;
+}
+.twitter-dm-card button {
+  padding: 0.75em;
 }
 </style>
 <script src="<?php echo $leap; ?>../config/jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
@@ -511,6 +521,9 @@ if ($_POST['page']=='direct_messages' OR $_POST['page']=='direct_messages_auto_r
         }
               
 
+
+              echo count($debug). ' messages sent!<br>';
+
 }
 
 
@@ -727,7 +740,7 @@ if($_GET['som']=='1')
           'EV3jqsvfHhxGV6faVQh4YA8Uu4kvojXZ3vcqwDOEYMzo1');
         $connection_search_query_results =      $connection->get('search/tweets', $api_query_search);
         $i=1;
-        echo '<pre>';
+        // echo '<pre>';
         foreach ($connection_search_query_results->statuses as $user_twitter_data) {
             //echo $i.') '.$user_twitter_data->user->screen_name.' ';
             $user_twitter_name = $user_twitter_data->user->screen_name;
@@ -824,7 +837,7 @@ if($_GET['som']=='1')
            // echo "<a class='btn btn-danger btn-lg btn-lg col-md-3fa fa-eject' href='twitter/destroysessions.php'></a>";
         } 
         echo '<div id="row">';
-                  echo '<div class="col-md-10 main_twitter_panel" style="font-size:80%;text-align:left;height:90vh;overflow-y:scroll;">';
+                  echo '<div class="col-md-12 main_twitter_panel" style="font-size:80%;text-align:left;height:90vh;overflow-y:scroll;">';
                     //print_r($twitter_followers);
                     /*foreach ($tweets['followers/list'] as $tweet) {
                       echo $tweet;
@@ -842,9 +855,17 @@ if($_GET['som']=='1')
                       $direct_message_user_photo = $user_meta[$user]['photo'];
 
 
-                      echo '<div class="card card-chart col-md-12 col-xs-12" style="border:red 1px solid;margin-bottom:2%;padding:2%;">
-                      <a href="https://twitter.com/@'.$user.'" target="_blank"><h1 class="section_title"><img src="'.$direct_message_user_photo.'" style="width:80px;border-radius:50px;">@'.$user.'</h1></a>';
+                      echo '<div class="card card-chart col-md-12 col-xs-12 twitter-dm-card clearfix" >
+                      <a href="https://twitter.com/@'.$user.'" target="_blank" class="pull-left"><h5 class="section_title"><img src="'.$direct_message_user_photo.'" style="width:40px;border-radius:50px;">@'.$user.'</h5></a>';
                       
+                      echo '
+                      <div class="btn-group pull-right">
+
+                        <button class="btn btn-default twitter-reply-button" ><span class="glyphicon glyphicon-comment"></span>Reply</button>
+                        <button onclick="addToLeads(\''.$user.'\',\''.str_replace("'", "\'", $message['message']).'\',\''.$todays_date.'\',\''.$todays_date.'\' , \''.$i.'\')" class="add-lead-btn-'.$i.' btn btn-success"><span class="glyphicon glyphicon-usd" ></span>Add Leads</button>
+                      </div>
+                      ';
+
                         // --- DISPLAY EACH MESSAGE ------/
                         foreach ($user_meta[$user]['messages'] as $message) {
                             echo '<blockquote class="" style="color:#101010;"> '.
@@ -852,13 +873,7 @@ if($_GET['som']=='1')
                             echo '</blockquote>';
                         }
                       
-                      echo '
-                      <div class="btn-group">
 
-                        <button class="btn btn-default twitter-reply-button" ><span class="glyphicon glyphicon-comment"></span>Reply</button>
-                        <button onclick="addToLeads(\''.$user.'\',\''.str_replace("'", "\'", $message['message']).'\',\''.$todays_date.'\',\''.$todays_date.'\' , \''.$i.'\')" class="add-lead-btn-'.$i.' btn btn-success"><span class="glyphicon glyphicon-usd" ></span>Add Leads</button>
-                      </div>
-                        ';
 echo '
                           <span class="tweet-buttons" id="tb_'.$user.'">
                           <form id="direct_message_'.$user.'">

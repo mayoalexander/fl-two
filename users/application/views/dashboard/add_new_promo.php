@@ -5,31 +5,42 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 // var_dump($user_files);
 // exit;
 ?>
+<style type="text/css">
+	.con {
+		
+	}
+</style>
 <form class="add-new-promo-form">
 
 	<panel class="col-md-4" style="min-height:250px;">
-		<label>Upload Promo Image</label>
+		<!-- <label>Upload Promo Image</label> -->
 		<span class="photo-upload-results"></span>
 		<input type='file' class="form-control" name='promo-img' id='poster' required>
-		<label>Status</label>
-		<select name='type' class="form-control">
-			<option value="album" selected>Album</option>
+		<!-- <label>Status</label> -->
+		<select name='type' id="promo-type" class="form-control">
+			<option selected>Choose Type..</option>
+			<option value="album" >Album</option>
 			<option value="event" >Event</option>
 			<option value="merch" >Product</option>
-			<option value="gallery" selected>Gallery</option>
+			<option value="gallery">Gallery</option>
 			<option value="other">Other..</option>
 		</select>
 
-		<label>Tags</label>
+
+		<!-- <label class="paypal_url">Paypal URL</label> -->
+		<!-- <small></small><br> -->
+		<input type='text' class="form-control paypal_url" name='paypal_url' placeholder='Enter Paypal URL..' style="display:none;" required>
+
+
+		<!-- <label>Tags</label> -->
 		<!-- <small></small><br> -->
 		<input type='text' class="form-control" name='desc' placeholder='Enter Tags (Separate tags using commas)' required>
-
 	</panel>
 	
 	<panel class="col-md-8">
 
 
-		<label>Title</label>
+		<!-- <label>Title</label> -->
 		<input type='text' class="form-control" name='title' placeholder='Enter Title' required>
 		<!-- <label>Description</label> -->
 		<!-- <input type='text' class="form-control" name='caption' placeholder='Enter Description' required> -->
@@ -52,11 +63,21 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 	
 	<input type="hidden" name='add_new_promo' value='1'>
 	<input type="hidden" name='user_name' value='<?php echo Session::get('user_name'); ?>'>
-	<button class="btn btn-primary btn-block confirm-upload-buttons">Add Promotion</button>
+	<button class="btn btn-success-outline btn-block confirm-upload-buttons">Add Promotion</button>
 </form>
 
 <script type="text/javascript">
 	$(function(){
+		$('.paypal_url').hide();
+		$('#promo-type').change(function(e){
+			var data = $(this).val();
+			if (data == 'merch') {
+				$('.paypal_url').show();
+				// alert(data);
+			} else {
+				$('.paypal_url').hide();
+			}
+		});
 		$('.add-new-promo-form').submit(function(event){
 			event.preventDefault();
 			$(this).parent().html('Please wait..');
@@ -85,10 +106,10 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 $('.add-new-promo-form #poster').change(function() {
 		var pleaseWait = 'Please wait...';
      	// ------ NEW NEW NEW NEW ------ //
-     	$('.photo-upload-results').html(' ');
-     	$('.photo-upload-results').append(pleaseWait);
-     	$('.confirm-upload-buttons').prepend('<p class="wait" style="color:#303030;">Please wait..<p>');
-		$('.confirm-upload-buttons').hide('fast');
+     	// $('.photo-upload-results').html(' ');
+     	// $('.photo-upload-results').append(pleaseWait);
+     	// $('.confirm-upload-buttons').prepend('<p class="wait" style="color:#303030;">Please wait..<p>');
+		// $('.confirm-upload-buttons').hide('fast');
 		var path = 'http://freelabel.net/upload/server/php/upload-photo.php';
 		var data;
 		var formdata_PHO = $('.add-new-promo-form #poster')[0].files[0];
@@ -103,7 +124,7 @@ $('.add-new-promo-form #poster').change(function() {
         if (ext.toLowerCase() !=='png' && ext.toLowerCase() !=='jpeg' && ext.toLowerCase() !=='jpg' && ext.toLowerCase() !=='gif') {
             var type = 'Uh oh, this file you\'ve selected is not a photo. Please upload a photo for the artwork!';
             alert(type);
-            $('#artwork_photo').val('');
+            $('.add-new-promo-form #poster').val('');
             return false;
         } else {
             // alert("its a photo!");
@@ -113,7 +134,7 @@ $('.add-new-promo-form #poster').change(function() {
 		// console.log(formdata_PHO.size);
 	    if (formdata_PHO.size > maxSize) {
 			alert('file too large!');
-			$('#artwork_photo').val('');
+			$('.add-new-promo-form #poster').val('');
 			return;
         } else {
         	// alert('great file size!');

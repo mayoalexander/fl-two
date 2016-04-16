@@ -42,25 +42,20 @@ $current_page = '0';
     margin-right: 12px;
   }
   .promo-bg-img {
-    z-index: -10;
     width:100%;
     position:absolute;
-    -webkit-filter: blur(20px);
-    filter: blur(20px);
-    opacity: 0.6;
-/*    -webkit-filter: brightness(0.30);
-    filter: brightness(0.30);*/
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
   }
   .featured-ad {
     padding-top: 2em;
     overflow: hidden;
   }
-  .featured-ad h1 {
-    margin-top:1em;
-    margin-left:0.5em;
+  .promos-table img {
+    width: 100%;
   }
-  panel > div.col-md-3 {
-    padding-bottom:3em;
+  .promos-table div {
+    padding:5em;
   }
 </style>
 <header class="jumbotron feature bg-inverse text-center center-vertically" role="banner">
@@ -76,16 +71,35 @@ $current_page = '0';
 
 
 
+<div class="row promos-table">
+    <div class="col-md-4" >
+        <span class='text-muted'><?php echo $site['media']['photos']['ads'][0]['type'] ; ?></span>
+        <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][0]['id'] ; ?>"><img src="<?php echo $site['media']['photos']['ads'][0]['image'] ; ?>"></a>
+        <h2 class='text-muted'><?php echo $site['media']['photos']['ads'][0]['title'] ; ?></h2>
+        <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][0]['id'] ; ?>" class="btn btn-secondary-outline m-b-md">View Now</a>
 
+    </div>
+    <div class="col-md-4" >
+        <span class='text-muted'><?php echo $site['media']['photos']['ads'][1]['type'] ; ?></span>
+        <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][1]['id'] ; ?>"><img src="<?php echo $site['media']['photos']['ads'][1]['image'] ; ?>"></a>
+        <h2 class='text-muted'><?php echo $site['media']['photos']['ads'][1]['title'] ; ?></h2>
+        <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][1]['id'] ; ?>" class="btn btn-secondary-outline m-b-md">View Now</a>
+    </div>
+    <div class="col-md-4" >
+        <span class='text-muted'><?php echo $site['media']['photos']['ads'][2]['type'] ; ?></span>
+        <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][2]['id'] ; ?>"><img src="<?php echo $site['media']['photos']['ads'][2]['image'] ; ?>"></a>
+        <h2 class='text-muted'><?php echo $site['media']['photos']['ads'][2]['title'] ; ?></h2>
+        <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][2]['id'] ; ?>" class="btn btn-secondary-outline m-b-md">View Now</a>
+    </div>
+</div>
 
 
 <!-- first promo -->
-<nav class="promo-container row row-eq-height" >
+<!-- <nav class="promo-container col-md-6" >
   <img class="promo-bg-img" src="<?php echo $site['media']['photos']['ads'][0]['image'] ; ?>">
 
   <panel class="featured-ad row"  >
     <h1>NEW EXCLUSIVES DAILY.</h1>
-    <!-- current-promo advertisement --> 
       <div class="col-md-3">
         <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][0]['id'] ; ?>"><img src="<?php echo $site['media']['photos']['ads'][0]['image'] ; ?>"></a>
       </div>
@@ -96,7 +110,7 @@ $current_page = '0';
         <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][0]['id'] ; ?>" class="btn btn-secondary-outline m-b-md">View Now</a>
       </div>
   </panel>
-</nav>
+</nav> -->
 
 
 
@@ -166,8 +180,8 @@ $current_page = '0';
 
       <div class="col-md-9">
         <h2 class='text-muted'><?php echo $site['media']['photos']['ads'][1]['title'] ; ?></h2>
-        <p><?php echo $site['media']['photos']['ads'][1]['caption'] ; ?></p>
-        <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][1]['id'] ; ?>" class="btn btn-secondary-outline m-b-md">View Now</a>
+        <p><?php echo $site['media']['photos']['ads'][0]['caption'] ; ?></p>
+        <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][0]['id'] ; ?>" class="btn btn-secondary-outline m-b-md">View Now</a>
       </div>
 
 
