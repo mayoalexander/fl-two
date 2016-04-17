@@ -45,7 +45,7 @@
 				<ul data-menu="main" class="menu__level">
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-1" href="#">Dashboard</a></li>
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#">Admin</a></li>
-					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="#">Public</a></li> -->
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="#">Testing</a></li>
 					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="#">Interviews</a></li> -->
 					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-4" href="#">Albums</a></li> -->
 				</ul>
@@ -56,7 +56,6 @@
 					<li class="menu__item"><a class="menu__link" href="#">Analytics</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Events</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Promos</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">Video</a></li>
 					<!-- <li class="menu__item"><a class="menu__link" href="#">Instrumentals</a></li> -->
 					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-1-1" href="#">Rap</a></li> -->
 				</ul>
@@ -87,12 +86,10 @@
 				</ul>
 				<!-- Submenu 3 -->
 				<ul data-menu="submenu-3" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="#">Promos</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">Millet</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">Quinoa</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">Wild Rice</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">Durum Wheat</a></li>
-					<li class="menu__item"><a class="menu__link" data-submenu="submenu-3-1" href="#">Promo Packs</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Video</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Player</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Form</a></li>
+					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-3-1" href="#">Promo Packs</a></li> -->
 				</ul>
 				<!-- Submenu 3-1 -->
 				<ul data-menu="submenu-3-1" class="menu__level">
