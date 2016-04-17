@@ -111,6 +111,10 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/submissions',true);
     }
+    function video() 
+    {
+        $this->view->render('dashboard/video',true);
+    }
 
 
 

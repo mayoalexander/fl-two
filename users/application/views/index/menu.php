@@ -56,6 +56,7 @@
 					<li class="menu__item"><a class="menu__link" href="#">Analytics</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Events</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Promos</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Video</a></li>
 					<!-- <li class="menu__item"><a class="menu__link" href="#">Instrumentals</a></li> -->
 					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-1-1" href="#">Rap</a></li> -->
 				</ul>
