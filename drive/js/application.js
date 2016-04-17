@@ -48,6 +48,7 @@ function fileValidation(){
                 $('.photo-upload-results').append(pleaseWait);
                 $('.confirm-upload-buttons').prepend('<p class="wait" style="color:#303030;">Please wait..<p>');
                 $('.confirm-upload-buttons').hide('fast');
+                var artworkButton = $('#artwork_photo_button').hide(); // hide artwork photo button
 
                 // Add the file to the request.
                 formdata.append('photos[]', formdata_PHO);
@@ -82,6 +83,8 @@ function fileValidation(){
                 $('.confirm-upload-buttons').show('fast');
                 $('.confirm-upload-buttons').css('display','block');
                 $('.wait').hide('fast');
+                var artworkButton = $('#artwork_photo_button').remove();
+
             });
 
 
