@@ -102,9 +102,9 @@
 				<!-- Submenu 3 -->
 				<ul data-menu="submenu-4" class="menu__level">
 					<li class="menu__item"><a class="menu__link" href="#">Video</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">Player</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Form</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Stream</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Slider</a></li>
 				</ul>
 				<!-- Submenu 3-1 -->
 				<ul data-menu="submenu-3-1" class="menu__level">

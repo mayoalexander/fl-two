@@ -101,6 +101,14 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/audio',true);
     }
+    function slider()
+    {
+        $this->view->render('dashboard/slider',true);
+    }
+    function message()
+    {
+        $this->view->render('dashboard/message',true);
+    }
     function events()
     {
         $this->view->render('dashboard/events',true);

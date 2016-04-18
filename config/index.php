@@ -921,6 +921,45 @@ class Blog
 
 
 
+    public function add_message($table , $info) {
+
+      include_once(ROOT.'inc/connection.php');
+
+      // attach files 
+
+      // foreach ($info['files'] as $file) {
+        // $files_attached = implode(', ', $info['files']);
+      // }
+
+      $rand = rand(1111111111,9999999999);
+      $sql = "INSERT INTO  `amrusers`.`$table` (
+        `id` ,
+        `sender` ,
+        `receiver` ,
+        `message` ,
+        `date_created`
+        )
+      VALUES (
+        NULL ,  
+        '".$info['sender']."', 
+        '".$info['receiver']."', 
+        '".mysqli_real_escape_string($con,$info['message'])."', 
+        CURRENT_TIMESTAMP
+        )";
+      if ($result = mysqli_query($con,$sql)) {
+        $res = 'It worked! :]';
+      }
+       else {
+        $res = 'It Didnt Work!';
+        print_r($sql);
+       }
+      return $res;
+  }
+
+
+
+
+
 
     public function add_info_photo($table , $info) {
 
@@ -3283,6 +3322,19 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
     return $twitpic;
   }
 
+
+
+  public function getUsers() {
+    include(ROOT.'inc/huge.php');
+    // var_dump($con);
+    $query = "SELECT * FROM  `users` ORDER BY `user_id` DESC";
+    $result = mysqli_query($con,$query);
+    while($row = mysqli_fetch_assoc($result)) {
+      $users[] = $row;
+    }
+
+    return $users;
+  }
 
 
 
