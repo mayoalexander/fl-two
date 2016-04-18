@@ -251,6 +251,7 @@
     .audio-player-playlist {
       /*height:30vh;*/
       /*overflow-y:scroll;*/
+      text-align: left;
     }
     .controls-play , .user-video-item {
       border-radius: 0px;
@@ -259,7 +260,10 @@
       display: block;
       margin-bottom: 50px;
     }
-
+    .playlist-img {
+      width:50px;
+      height:auto;
+    }
     .seamless {
       padding-left:0;
       padding-right:0;

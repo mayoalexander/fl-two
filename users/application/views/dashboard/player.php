@@ -29,6 +29,17 @@
 				.grid figcaption p {
 					color:<?php echo $site['primary-color']; ?>
 				}
+				.navigation-buttons {
+					position: absolute;
+				}
+				.slideshow nav span.nav-close {
+					top:180px;
+					left:50vw;
+				}
+				.slideshow figure {
+					background-color:#202020;
+					border-color:#202020;
+				}
 				</style>
 			</header>
 			<div id="grid-gallery" class="grid-gallery">
@@ -69,7 +80,7 @@
 
 						?>
 					</ul>
-					<nav>
+					<nav class="navigation-buttons">
 						<span class="icon nav-prev"></span>
 						<span class="icon nav-next"></span>
 						<span class="icon nav-close"></span>

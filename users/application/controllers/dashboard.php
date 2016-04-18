@@ -49,6 +49,10 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/box',true);
     }
+    function stream()
+    {
+        $this->view->render('dashboard/stream',true);
+    }
     function analytics()
     {
         $this->view->render('dashboard/analytics',true);
@@ -65,6 +69,10 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/promos',true);
     }
+    function promo()
+    {
+        $this->view->render('dashboard/promo',true);
+    }    
     function audio()
     {
         $this->view->render('dashboard/audio',true);

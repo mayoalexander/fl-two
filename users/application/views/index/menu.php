@@ -44,8 +44,9 @@
 			<div class="menu__wrap">
 				<ul data-menu="main" class="menu__level">
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-1" href="#">Dashboard</a></li>
-					<li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#">Admin</a></li>
-					<li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="#">Testing</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#">Featured</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="#">Admin</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-4" href="#">Testing</a></li>
 					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="#">Interviews</a></li> -->
 					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-4" href="#">Albums</a></li> -->
 				</ul>
@@ -72,6 +73,14 @@
 					<!-- <li class="menu__item"><a class="menu__link" href="#">Social</a></li> -->
 					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-2-1" href="#">Special Selection</a></li> -->
 					<!-- <li class="menu__item"><a class="menu__link" href="#">Featured</a></li> -->
+					<li class="menu__item"><a class="menu__link" href="#">Promo</a></li>
+				</ul>
+				<!-- Submenu 3 -->
+				<ul data-menu="submenu-3" class="menu__level">
+					<!-- <li class="menu__item"><a class="menu__link" href="#">Mail</a></li> -->
+					<!-- <li class="menu__item"><a class="menu__link" href="#">Social</a></li> -->
+					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-2-1" href="#">Special Selection</a></li> -->
+					<!-- <li class="menu__item"><a class="menu__link" href="#">Featured</a></li> -->
 					<li class="menu__item"><a class="menu__link" href="#">Leads</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Twitter</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Rss</a></li>
@@ -85,11 +94,11 @@
 					<li class="menu__item"><a class="menu__link" href="#">Vitamin Boosters</a></li>
 				</ul>
 				<!-- Submenu 3 -->
-				<ul data-menu="submenu-3" class="menu__level">
+				<ul data-menu="submenu-4" class="menu__level">
 					<li class="menu__item"><a class="menu__link" href="#">Video</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Player</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Form</a></li>
-					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-3-1" href="#">Promo Packs</a></li> -->
+					<li class="menu__item"><a class="menu__link" href="#">Stream</a></li>
 				</ul>
 				<!-- Submenu 3-1 -->
 				<ul data-menu="submenu-3-1" class="menu__level">
@@ -99,7 +108,7 @@
 					<li class="menu__item"><a class="menu__link" href="#">Flour Packs</a></li>
 				</ul>
 				<!-- Submenu 4 -->
-				<ul data-menu="submenu-4" class="menu__level">
+				<ul data-menu="submenu-5" class="menu__level">
 					<li class="menu__item"><a class="menu__link" href="#">Grain Mylks</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Seed Mylks</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Nut Mylks</a></li>

@@ -81,7 +81,7 @@ foreach ($leads as $key => $value) {
     $lead_build .= '
     <li class="list-group-item complete">
         <span class="label pull-left"><a class="fa fa-comment lead-response-button" href="#" data-id="'.$key.'"></a></span>
-        <span class="label pull-right">[<a href="http://twitter.com/@'.$key.'" target="_blank">@'.$key.'</a>]</span>
+        <span class="label pull-right lead-twitter-name">[<a href="http://twitter.com/@'.$key.'" target="_blank">@'.$key.'</a>]</span>
         <span class="pull-left icon-status status-completed">'.count($value).'</span>'.$value[0].'
     </li>';
 }
@@ -218,6 +218,13 @@ $data.='</ul>
             // alert('open ' + url);
             window.open(posturl);
             window.open(somurl);
+        });
+
+        // open twitter messages 
+        $('.lead-twitter-name').click(function(e){
+            // e.preventDefault();
+            var name = $(this).val();
+            alert(name);
         });
 
         // Lead Response Trigger
