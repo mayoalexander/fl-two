@@ -44,7 +44,7 @@
 			<div class="menu__wrap">
 				<ul data-menu="main" class="menu__level">
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-1" href="#">Dashboard</a></li>
-					<li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#">Featured</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#">Feed</a></li>
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="#">Admin</a></li>
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-4" href="#">Testing</a></li>
 					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="#">Interviews</a></li> -->
@@ -73,7 +73,13 @@
 					<!-- <li class="menu__item"><a class="menu__link" href="#">Social</a></li> -->
 					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-2-1" href="#">Special Selection</a></li> -->
 					<!-- <li class="menu__item"><a class="menu__link" href="#">Featured</a></li> -->
-					<li class="menu__item"><a class="menu__link" href="#">Promo</a></li>
+					<li class="menu__item"><a class="menu__link"  data-submenu="submenu-2-1" href="#">Your Collection</a></li> <!-- user collection -->
+					<li class="menu__item"><a class="menu__link" href="#">Magazine</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Radio</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">TV</a></li> <!-- this is the videos app -->
+					<li class="menu__item"><a class="menu__link" href="#">Promo</a></li> <!-- rename to events -->
+
+
 				</ul>
 				<!-- Submenu 3 -->
 				<ul data-menu="submenu-3" class="menu__level">
@@ -89,9 +95,9 @@
 				</ul>
 				<!-- Submenu 2-1 -->
 				<ul data-menu="submenu-2-1" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="#">Exotic Mixes</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">Wild Pick</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">Vitamin Boosters</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Likes</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Discover</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Recommended</a></li>
 				</ul>
 				<!-- Submenu 3 -->
 				<ul data-menu="submenu-4" class="menu__level">
