@@ -29,7 +29,7 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 
 		<!-- <label class="paypal_url">Paypal URL</label> -->
 		<!-- <small></small><br> -->
-		<input type='text' class="form-control paypal_url" name='paypal_url' placeholder='Enter Paypal URL..' style="display:none;" required>
+		<input type='text' class="form-control paypal_url" name='paypal_url' placeholder='Enter Paypal URL..' style="display:none;">
 
 
 		<!-- <label>Tags</label> -->
@@ -104,7 +104,7 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 
 
 $('.add-new-promo-form #poster').change(function() {
-		var pleaseWait = 'Please wait...';
+		var pleaseWait = '<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw margin-bottom"></i><span class="sr-only">Loading...</span>';
      	// ------ NEW NEW NEW NEW ------ //
      	// $('.photo-upload-results').html(' ');
      	// $('.photo-upload-results').append(pleaseWait);

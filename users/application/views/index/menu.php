@@ -38,9 +38,9 @@
 	<!-- Main container -->
 	<div class="container">
 		<!-- Blueprint header -->
-		<button class="action action--open" aria-label="Open Menu"><span class="icon icon--menu"></span></button>
+		<button class="action action--open" aria-label="Open Menu"><span class="fa fa-ellipsis-h"></span></button>
 		<nav id="ml-menu" class="menu">
-			<button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
+			<button class="action action--close" aria-label="Close Menu"><span class="fa fa-close"></span></button>
 			<div class="menu__wrap">
 				<ul data-menu="main" class="menu__level">
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-1" href="#">Dashboard</a></li>
@@ -77,7 +77,7 @@
 					<li class="menu__item"><a class="menu__link" href="#">Magazine</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Radio</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">TV</a></li> <!-- this is the videos app -->
-					<li class="menu__item"><a class="menu__link" href="#">Promo</a></li> <!-- rename to events -->
+					<li class="menu__item"><a class="menu__link" href="#">Promotions</a></li> <!-- rename to events -->
 
 
 				</ul>

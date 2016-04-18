@@ -69,7 +69,31 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/promos',true);
     }
-    function promo()
+    function tv()
+    {
+        $this->view->render('dashboard/tv',true);
+    }
+    function radio()
+    {
+        $this->view->render('dashboard/radio',true);
+    }
+    function discover()
+    {
+        $this->view->render('dashboard/discover',true);
+    }
+    function magazine()
+    {
+        $this->view->render('dashboard/magazine',true);
+    }
+    function likes()
+    {
+        $this->view->render('dashboard/likes',true);
+    }
+    function recommended()
+    {
+        $this->view->render('dashboard/recommended',true);
+    }
+    function promotions()
     {
         $this->view->render('dashboard/promo',true);
     }    

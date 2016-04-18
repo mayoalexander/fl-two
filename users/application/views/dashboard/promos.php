@@ -160,7 +160,8 @@ if (isset($_POST["page"]) ) {
         <h4 class="modal-title" id="addPromoLabel">Create New Promotion</h4>
       </div>
       <div class="modal-body new-form-modal">
-        ...
+        <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw margin-bottom"></i>
+        <span class="sr-only">Loading...</span>
       </div>
       <!-- <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
