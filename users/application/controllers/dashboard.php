@@ -105,9 +105,13 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/slider',true);
     }
-    function message()
+    function compose()
     {
-        $this->view->render('dashboard/message',true);
+        $this->view->render('dashboard/compose',true);
+    }
+    function messages()
+    {
+        $this->view->render('dashboard/messages',true);
     }
     function follow()
     {
@@ -162,6 +166,10 @@ class Dashboard extends Controller
     function video() 
     {
         $this->view->render('dashboard/video',true);
+    }
+    function soundcloud() 
+    {
+        $this->view->render('dashboard/soundcloud',true);
     }
     function player() 
     {

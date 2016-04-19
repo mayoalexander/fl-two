@@ -2575,7 +2575,12 @@ public function getUserInfo($user_name) {
             case 'mp4':
               $photos .="<label id='title-id-".$value['id']."' class='file_name editable-promo' >".$value['blogtitle']."</label>";
               $photos .="<label class='file_name text-muted'>".$value['views']."</label>";
-              $photos .= '<video class="user-video-item" controls preload="metadata" src="'.$value['trackmp3'].'" poster="'.$value['poster'].'">';
+              $photos .= '<video class="user-video-item" controls preload="metadata" src="'.$value['trackmp3'].'" poster="'.$value['poster'].'"></video>';
+              $photos .='<div class="dropdown"><i class="pull-left fa fa-share-alt dropdown-toggle" data-toggle="dropdown"></i>';
+              $photos .='<ul class="dropdown-menu">';
+              $photos .= $this->getShareButtonsList($value['id']);
+              $photos .='</ul></div>';
+
               break;
             case 'mp3':
               $photos .="<label id='title-id-".$value['id']."' class='file_name editable-promo' >".$value['title']."</label>";
@@ -3323,6 +3328,29 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
     return $str;
   }
 
+
+
+  public function formatBlogEntry($writeup) {
+    if(strpos($writeup, 'livemixtapes')) {
+      $writeup = '<iframe src="'.$writeup.'" width="100%" height="450px" frameborder=0 seamless></iframe>';
+    } elseif(strpos($writeup, 'youtube')) {
+      $writeup = '<iframe src="'.$writeup.'" width="100%" height="450px" frameborder=0 seamless></iframe>';
+    } elseif(strpos($writeup, 'soundcloud')) {
+      $writeup = '<iframe src="'.$writeup.'" width="100%" height="450px" frameborder=0 seamless></iframe>';
+    }elseif(strpos($writeup, 'datpiff')) {
+      //echo 'datpiff';
+      $writeup = '<iframe src="'.$writeup.'" width="100%" height="450px" frameborder=0 seamless></iframe>';
+    }elseif(strpos($writeup, 'audiomack')) {
+      //echo 'datpiff';
+      $writeup = '<iframe src="'.$writeup.'" width="100%" height="450px" frameborder=0 seamless></iframe>';
+    } else {
+      //$writeup =  'not found';
+    }
+    return $writeup;
+  }
+
+
+
   public function datePosted( $ptime ) {
     date_default_timezone_set('America/Chicago');
     $estimate_time = time() - $ptime;
@@ -3388,6 +3416,18 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
     include(ROOT.'inc/connection.php');
     // var_dump($con);
     $query = "SELECT * FROM  `relationships` WHERE `user_name` = '$user_name' ORDER BY `date_created` DESC";
+    $result = mysqli_query($con,$query);
+    while($row = mysqli_fetch_assoc($result)) {
+      $users[] = $row;
+    }
+
+    return $users;
+  }
+
+  public function getMessages($user_name) {
+    include(ROOT.'inc/connection.php');
+    // var_dump($con);
+    $query = "SELECT * FROM  `messages` WHERE `sender` = '$user_name' OR `receiver` = '$user_name' ORDER BY `date_created` DESC";
     $result = mysqli_query($con,$query);
     while($row = mysqli_fetch_assoc($result)) {
       $users[] = $row;

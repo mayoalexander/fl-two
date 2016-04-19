@@ -45,6 +45,7 @@
 				<ul data-menu="main" class="menu__level">
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-1" href="#">Dashboard</a></li>
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#">Feed</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-3-1" href="#">Inbox</a></li>
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="#">Admin</a></li>
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-4" href="#">Testing</a></li>
 					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="#">Interviews</a></li> -->
@@ -57,8 +58,6 @@
 					<li class="menu__item"><a class="menu__link" href="#">Analytics</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Events</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Promos</a></li>
-					<!-- <li class="menu__item"><a class="menu__link" href="#">Instrumentals</a></li> -->
-					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-1-1" href="#">Rap</a></li> -->
 				</ul>
 				<!-- Submenu 1-1 -->
 				<ul data-menu="submenu-1-1" class="menu__level">
@@ -69,10 +68,6 @@
 				</ul>
 				<!-- Submenu 2 -->
 				<ul data-menu="submenu-2" class="menu__level">
-					<!-- <li class="menu__item"><a class="menu__link" href="#">Mail</a></li> -->
-					<!-- <li class="menu__item"><a class="menu__link" href="#">Social</a></li> -->
-					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-2-1" href="#">Special Selection</a></li> -->
-					<!-- <li class="menu__item"><a class="menu__link" href="#">Featured</a></li> -->
 					<li class="menu__item"><a class="menu__link"  data-submenu="submenu-2-1" href="#">Your Collection</a></li> <!-- user collection -->
 					<li class="menu__item"><a class="menu__link" href="#">Magazine</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Radio</a></li>
@@ -83,10 +78,6 @@
 				</ul>
 				<!-- Submenu 3 -->
 				<ul data-menu="submenu-3" class="menu__level">
-					<!-- <li class="menu__item"><a class="menu__link" href="#">Mail</a></li> -->
-					<!-- <li class="menu__item"><a class="menu__link" href="#">Social</a></li> -->
-					<!-- <li class="menu__item"><a class="menu__link" data-submenu="submenu-2-1" href="#">Special Selection</a></li> -->
-					<!-- <li class="menu__item"><a class="menu__link" href="#">Featured</a></li> -->
 					<li class="menu__item"><a class="menu__link" href="#">Leads</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Twitter</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Rss</a></li>
@@ -104,11 +95,12 @@
 					<li class="menu__item"><a class="menu__link" href="#">Video</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Form</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Stream</a></li>
-					<li class="menu__item"><a class="menu__link" data-submenu="submenu-3-1" href="#">Inbox</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Soundcloud</a></li>
 				</ul>
 				<!-- Submenu 3-1 -->
 				<ul data-menu="submenu-3-1" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="#">Message</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Compose</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Messages</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Follow</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Following</a></li>
 				</ul>
