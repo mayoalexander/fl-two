@@ -104,14 +104,13 @@
 					<li class="menu__item"><a class="menu__link" href="#">Video</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Form</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Stream</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">Slider</a></li>
+					<li class="menu__item"><a class="menu__link" data-submenu="submenu-3-1" href="#">Inbox</a></li>
 				</ul>
 				<!-- Submenu 3-1 -->
 				<ul data-menu="submenu-3-1" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="#">Starter Kit</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">The Essential 8</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">Bolivian Secrets</a></li>
-					<li class="menu__item"><a class="menu__link" href="#">Flour Packs</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Message</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Follow</a></li>
+					<li class="menu__item"><a class="menu__link" href="#">Following</a></li>
 				</ul>
 				<!-- Submenu 4 -->
 				<ul data-menu="submenu-5" class="menu__level">

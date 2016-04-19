@@ -109,6 +109,14 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/message',true);
     }
+    function follow()
+    {
+        $this->view->render('dashboard/follow',true);
+    }
+    function following()
+    {
+        $this->view->render('dashboard/following',true);
+    }
     function events()
     {
         $this->view->render('dashboard/events',true);
@@ -250,6 +258,21 @@ class Dashboard extends Controller
             echo 'Email Successfully Sent!';
         } else {
             echo 'Oh NOOOOOOOOOOO!!!!!! The email did not send!';
+        }
+    }
+
+
+
+
+
+    function unfollow() {
+        include_once('/home/content/59/13071759/html/config/index.php');
+        $config = new Blog();
+        $res = $config->unfollow($_POST);
+        if ($res) {
+            echo 'Unfollowed!';
+        } else {
+            echo 'Error!!';
         }
     }
 

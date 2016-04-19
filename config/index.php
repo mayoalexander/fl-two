@@ -923,7 +923,10 @@ class Blog
 
     public function add_message($table , $info) {
 
-      include_once(ROOT.'inc/connection.php');
+
+
+
+      include(ROOT.'inc/connection.php');
 
       // attach files 
 
@@ -948,6 +951,37 @@ class Blog
         )";
       if ($result = mysqli_query($con,$sql)) {
         $res = 'It worked! :]';
+      }
+       else {
+        $res = 'It Didnt Work!';
+        print_r($sql);
+       }
+      return $res;
+  }
+
+  public function add_relationship($info) {
+
+      include(ROOT.'inc/connection.php');
+
+      // attach files 
+
+      // foreach ($info['files'] as $file) {
+        // $files_attached = implode(', ', $info['files']);
+      // }
+
+      $rand = rand(1111111111,9999999999);
+      $sql = "INSERT INTO  `amrusers`.`relationships` (
+        `user_name` ,
+        `following` ,
+        `date_created`
+        )
+      VALUES (
+        '".$info['user_name']."', 
+        '".$info['following']."', 
+        CURRENT_TIMESTAMP
+        )";
+      if ($result = mysqli_query($con,$sql)) {
+        $res = 'Now Following!';
       }
        else {
         $res = 'It Didnt Work!';
@@ -996,6 +1030,17 @@ class Blog
 
 
 
+  public function checkIfAlreadyFollowing($user_name , $following)
+  {
+      include_once(ROOT.'inc/connection.php');
+      $query = "SELECT * FROM `relationships` WHERE `user_name`='$user_name' AND `following` = '$following' ORDER BY `id` DESC LIMIT 1";
+      $result = mysqli_query($con,$query);
+      // echo '<pre>';
+      // var_dump($query);
+      $info = $result->num_rows;
+    return $info;
+  }
+
   public function get_info($table , $id)
   {
       include_once(ROOT.'inc/connection.php');
@@ -1009,6 +1054,9 @@ class Blog
       }
     return $info;
   }
+
+
+
 
   public function delete($table, $id='')
   {
@@ -3334,6 +3382,29 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
     }
 
     return $users;
+  }
+
+  public function getFollowing($user_name) {
+    include(ROOT.'inc/connection.php');
+    // var_dump($con);
+    $query = "SELECT * FROM  `relationships` WHERE `user_name` = '$user_name' ORDER BY `date_created` DESC";
+    $result = mysqli_query($con,$query);
+    while($row = mysqli_fetch_assoc($result)) {
+      $users[] = $row;
+    }
+
+    return $users;
+  }
+
+
+  public function unfollow($data) {
+    $user_name = $data['user_name'];
+    $following = $data['following'];
+    include(ROOT.'inc/connection.php');
+    // var_dump($con);
+    $query = "DELETE FROM  `relationships` WHERE `user_name` = '$user_name' AND `following` = '$following' ";
+    $result = mysqli_query($con,$query);
+    return $result;
   }
 
 
