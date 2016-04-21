@@ -138,10 +138,10 @@ $(function(){
 <?php
 $soundcloud_downloader = "
 <form id='soundcloud-form' class='soundcloud-download input-group'>
-  <input type='text' id='soundcloud_link' class='form-control' placeholder='Paste Soundcloud URL'>
   <span class='input-group-btn'>
     <input type='hidden' name='ctrl' value='rss'>
-    <button class='btn btn-success-outline' onclick=''>Download</button>
+    <!--<button class='btn btn-success-outline' onclick=''>Download</button>-->
+    <input type='text' id='soundcloud_link' class='form-control' placeholder='Paste Soundcloud URL'>
   </span>
 </form>
 ";
