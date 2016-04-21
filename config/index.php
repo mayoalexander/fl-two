@@ -3242,7 +3242,7 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
     if ($user_name == 'admin' 
       OR $user_name == 'AlexMayo' 
       // OR $user_name == 'thatdudewayne'
-      OR $user_name == 'desertwxlf') {
+      OR $user_name == 'DESERTWXLF') {
         $site['map'][] = array('title' => 'Admin' , 'path'=>'dashboard/admin', 'icon'=>'cog'  );
         $site['map'][] = array('title' => 'Development' , 'path'=>'dashboard/dev', 'icon'=>'cog'  );
         $site['map'][] = array('title' => 'Site' , 'path'=>'index/menu', 'icon'=>'cog'  );

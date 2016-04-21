@@ -1,6 +1,7 @@
 <?php
 include_once('/home/content/59/13071759/html/config/index.php');
 require(ROOT.'inc/conn.php');
+$config = new Blog();
 
 $todays_date = date('Y-m-d');
 $result = $conn->query('select * from twitter_data WHERE timestamp LIKE "%'.$todays_date.'%" ORDER BY `id` DESC');
@@ -34,12 +35,19 @@ $data.='</ul>
 </div>';
 
 
+$adminPosts = $config->getPostsByUser(0,20,'admin');
+
+// foreach ($adminPosts as $post) {
+//     echo $postdate = date('m-d',strtotime($post['submission_date'])).', ';
+//     if ($postdate == date('m-d')) { 
+//         $postsToday
+//         echo 'its the same date!!!!<br>';
+//     } else {
+//         echo 'not the same date as '.date('m-d').'<br>';    }
+// }
 
 
-
-
-
-
+// // var_dump($adminPosts);
 
 
 include(ROOT.'inc/connection.php');
@@ -52,7 +60,7 @@ include(ROOT.'inc/connection.php');
 				OR follow_up_date='$fourdaysback' 
 				OR follow_up_date='$fivedaysback'
 				/*OR `user_name` = '".$user_name_session."' */
-				ORDER BY `follow_up_date` DESC LIMIT 200");
+				ORDER BY `id` DESC LIMIT 200");
 $i = 0;
 
 

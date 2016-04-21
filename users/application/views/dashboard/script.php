@@ -23,6 +23,9 @@ include_once('/home/content/59/13071759/html/config/index.php');
 .edit input {
 	color:#e3e3e3;
 }
+.phone-script {
+	padding:2em;
+}
 #script_label {
 	width:100px;
 	//background-color:red;
@@ -280,7 +283,7 @@ Now Available on FREELABEL.net");
 				?>
 
 <hr>
-			<div id="phonescript" class="card card-chart" >
+			<div id="phonescript" class="card card-chart phone-script" >
 				
 				<?php $phonescript = "Hi this is YO NAME with FREELABEL Radio & Magazine. Our DJs approved your submissions & wanted me to follow up with you about getting your account created so we can start getting you placed on our radio & magazine interviews, projects, videos, & events this month.<br><br><br>
 
