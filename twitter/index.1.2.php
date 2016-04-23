@@ -12,8 +12,8 @@ $blog = new Blog();
 if (isset($_SESSION['user_name']) == false) {
   session_start();
 }
-$access_token['oauth_token'] = '1018532587-ap1IiTYR7xA0O15YTYcZnwL4RlRGolZNKK0kx1c';
-$access_token['oauth_token_secret'] = 'EV3jqsvfHhxGV6faVQh4YA8Uu4kvojXZ3vcqwDOEYMzo1';
+$access_token['oauth_token'] = '1018532587-ePnn93z1v2GafbuAla6QRQe4gspUbKRDy9kuSGh';
+$access_token['oauth_token_secret'] = 'hGaLGtPdcHKgnjM7qJzdjIAUGfuKwGovUFmKlpzlAlGM5';
 $access_token['screen_name'] = 'FreeLabelNet';
 $access_token['user_id'] = '1018532587';
 $access_token['x_auth_expires'] = '0';
@@ -736,8 +736,8 @@ if($_GET['som']=='1')
         }
         $access_token = $_SESSION['access_token'];
         $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, 
-          '1018532587-ap1IiTYR7xA0O15YTYcZnwL4RlRGolZNKK0kx1c', 
-          'EV3jqsvfHhxGV6faVQh4YA8Uu4kvojXZ3vcqwDOEYMzo1');
+          $access_token['oauth_token'], 
+          $access_token['oauth_token_secret']);
         $connection_search_query_results =      $connection->get('search/tweets', $api_query_search);
         $i=1;
         // echo '<pre>';

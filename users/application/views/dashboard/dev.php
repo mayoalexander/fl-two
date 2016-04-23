@@ -33,8 +33,6 @@
         // var_dump($_SESSION['access_token']);
           // $files = $config->display_user_posts_new('admin' , $current_page);
           // echo $files['posts']; 
-
-          
         ?>
     </section>
 
