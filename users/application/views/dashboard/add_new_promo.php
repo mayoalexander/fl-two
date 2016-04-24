@@ -6,16 +6,80 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 // exit;
 ?>
 <style type="text/css">
-	.con {
-		
-	}
+        .inputfile {
+	        position:relative;
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .inputfile , #artwork_photo_button {
+            font-size: 0.75em;
+            color: #e3e3e3;
+            background-color: #202020;
+            display: inline-block;
+        }
+
+        .inputfile:focus, #artwork_photo_button,
+        .inputfile, #artwork_photo_button:hover {
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #77b55a), color-stop(1, #72b352));
+        background:-moz-linear-gradient(top, #77b55a 5%, #72b352 100%);
+        background:-webkit-linear-gradient(top, #77b55a 5%, #72b352 100%);
+        background:-o-linear-gradient(top, #77b55a 5%, #72b352 100%);
+        background:-ms-linear-gradient(top, #77b55a 5%, #72b352 100%);
+        background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77b55a', endColorstr='#72b352',GradientType=0);
+        background-color:#77b55a;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        border:1px solid #4b8f29;
+        display:inline-block;
+        width: 100%;
+        cursor:pointer;
+        font-weight:bold;
+        padding:1em;
+        text-align: center;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #5b8a3c;
+        }
+        .inputfile:hover {
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #72b352), color-stop(1, #77b55a));
+        background:-moz-linear-gradient(top, #72b352 5%, #77b55a 100%);
+        background:-webkit-linear-gradient(top, #72b352 5%, #77b55a 100%);
+        background:-o-linear-gradient(top, #72b352 5%, #77b55a 100%);
+        background:-ms-linear-gradient(top, #72b352 5%, #77b55a 100%);
+        background:linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#72b352', endColorstr='#77b55a',GradientType=0);
+        background-color:#72b352;
+        }
+        .inputfile:active {
+	        top:1px;
+        }
+        .inputfile:hover {
+	        top:2px;
+        }
+
+        .inputfile , #artwork_photo_button {
+            cursor: pointer; /* "hand" cursor */
+        }
+
+        /* CUSTOM CSS STYLES */
+        .add-new-promo-form panel {
+        	padding:1em;
+        }
+        .choose-attached-files {
+        	padding: 1em;
+        }
 </style>
 <form class="add-new-promo-form">
 
 	<panel class="col-md-4" style="min-height:250px;">
-		<!-- <label>Upload Promo Image</label> -->
-		<span class="photo-upload-results"></span>
-		<input type='file' class="form-control" name='promo-img' id='poster' required>
+
+
 		<!-- <label>Status</label> -->
 		<select name='type' id="promo-type" class="form-control">
 			<option selected>Choose Type..</option>
@@ -25,6 +89,14 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 			<option value="gallery">Gallery</option>
 			<option value="other">Other..</option>
 		</select>
+
+
+		<!-- <label>Upload Promo Image</label> -->
+		<!-- <span class="photo-upload-results"></span> -->
+		<!-- <input type='file' class="form-control" name='promo-img' id='poster' required> -->
+        <label id="artwork_photo_button" for="poster"><i class="fa fa-plus"></i> Choose a file</label><input class="form-control inputfile" type="file" name="photo" id="poster" /><span class="photo-upload-results"></span>
+
+
 
 
 		<!-- Paypal URL-->
@@ -50,7 +122,7 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 
 		<label>Attach Files</label>
 		<small>Hold Cmd or Shift to select multiple files</small>
-		<select name="files[]" multiple class="form-control" required style="min-height:250px;">
+		<select name="files[]" multiple class="form-control choose-attached-files" required style="min-height:250px;">
 			<?php
 			foreach ($user_files as $key => $file) {
 				echo "<option value='".$file['id']."' >".$file['twitter']." - ".$file['blogtitle']."</option>";
