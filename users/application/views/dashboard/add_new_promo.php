@@ -27,9 +27,11 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 		</select>
 
 
-		<!-- <label class="paypal_url">Paypal URL</label> -->
-		<!-- <small></small><br> -->
-		<input type='text' class="form-control paypal_url" name='paypal_url' placeholder='Enter Paypal URL..' style="display:none;">
+		<!-- Paypal URL-->
+		<input type='text' class="form-control paypal_url additionals" name='paypal_url' placeholder='Enter Paypal URL..' style="display:none;">
+
+		<!-- Event Date -->
+		<input type='text' class="form-control start_date additionals" name='start_date' placeholder='Enter Start Date..' style="display:none;">
 
 
 		<!-- <label>Tags</label> -->
@@ -70,12 +72,16 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 	$(function(){
 		$('.paypal_url').hide();
 		$('#promo-type').change(function(e){
+			// hide additionals
+			$('.additionals').hide();
 			var data = $(this).val();
 			if (data == 'merch') {
 				$('.paypal_url').show();
-				// alert(data);
+			} else if (data == 'event') {
+				$('.start_date').show();
 			} else {
-				$('.paypal_url').hide();
+				// $('.paypal_url').hide();
+				// $('.start_date').hide();
 			}
 		});
 		$('.add-new-promo-form').submit(function(event){
@@ -93,6 +99,11 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 
 
 
+
+
+
+	    // datepicker for the events 
+	    $('.start_date').datepicker({dateFormat: "yy-mm-dd"});
 
 
 
@@ -188,5 +199,6 @@ $('.add-new-promo-form #poster').change(function() {
 
 	});
 </script>
+
 
 

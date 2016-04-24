@@ -827,10 +827,11 @@ class Blog
         `thumb` ,
         `type` ,
         `paypal_url` ,
+        `start_date` ,
         `date_created`
         )
       VALUES (
-        NULL ,  '".mysqli_real_escape_string($con,$info['title'])."',  '".mysqli_real_escape_string($con,$info['desc'])."',  '".mysqli_real_escape_string($con,$info['caption'])."',  '".$info['user_name']."', '".$info['promo_key']."', '$files_attached', '".$info['photo']."', '".$info['poster']."', '".$info['type']."', '".$info['paypal_url']."',
+        NULL ,  '".mysqli_real_escape_string($con,$info['title'])."',  '".mysqli_real_escape_string($con,$info['desc'])."',  '".mysqli_real_escape_string($con,$info['caption'])."',  '".$info['user_name']."', '".$info['promo_key']."', '$files_attached', '".$info['photo']."', '".$info['poster']."', '".$info['type']."', '".$info['paypal_url']."', '".$info['start_date']."',
         CURRENT_TIMESTAMP
         )";
       if ($result = mysqli_query($con,$sql)) {

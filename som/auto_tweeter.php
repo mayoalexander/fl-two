@@ -182,10 +182,12 @@ if ($_POST['live'] || $_GET['live']) {
                       echo '<script>console.log('.$timeOutTime.');</script>';
                       $content_SOM .= '<script>
                       function execAutoPromote(linkToTweet) {
-                        $.post(linkToTweet,"",function(data){
-                          console.log("Succesfully Posted Tweet! ----- " + linkToTweet);
-                        });
-                        // console.log(linkToTweet);
+                        // $.post(linkToTweet,"",function(data){
+                        //   // console.log("Succesfully Posted Tweet! ----- " + linkToTweet);
+                        //   // window.open(linkToTweet);
+                        // });
+                        
+                        window.open(linkToTweet);
                       }
                       setTimeout( function () { execAutoPromote("'.$link_to_tweet.'"); }  , '.$timeOutTime.');
                       </script>';
