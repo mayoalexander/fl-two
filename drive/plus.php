@@ -362,7 +362,7 @@
 
 <div class="col-md-2 header gradient-bg">
 
-        <a href="http://freelabel.net/users/dashboard/index/"><img src="http://freelabel.net/images/FREELABELLOGO.gif"></a>
+        <a href="http://freelabel.net/users/dashboard/index/?ctrl=uploads"><img src="http://freelabel.net/images/FREELABELLOGO.gif"></a>
         <!-- <img src="<?php echo $site['logo'];?>"> -->
         <h3>DRIVE</h3>
         <!-- <small class="info text-muted">Or just and drop here..</small> -->
@@ -457,24 +457,6 @@ function openPost(data) {
         if (typeof data.result === 'undefined') {
             console.log('There was an error thrown');
             alert("Uh, oh. Something is wrong with your MP3 file that does not allow us to update the metatags. Please, re-export your MP3 and reupload so we can have the right type of file format!");
-            // $.each(data.result.files, function (index, file) {
-                // var twitter = data.formData[4].value;
-                // var postUrl = 'http://freelabel.net/' + twitter + "/" ;
-                // console.log(postUrl);
-                // window.open(postUrl);
-            //     if (file.url) {
-            //         // var link = $('<a>')
-            //         //     .attr('target', '_blank')
-            //         //     .prop('href', file.url);
-            //         // $(data.context.children()[index])
-            //         //     .wrap(link);
-            //     } else if (file.error) {
-            //         var error = $('<span class="text-danger"/>').text(file.error);
-            //         $(data.context.children()[index])
-            //             .append('<br>')
-            //             .append(error);
-            //     }
-            // });
         } else {
             console.log('NO ERROR WAS THROWN, RESUME REGULLARRY');
             $.each(data.result.files, function (index, file) {
@@ -505,12 +487,6 @@ function openPost(data) {
 }
 
 /* CUSTOM JAVASCRIPT */
-$(function(){
-    // // alert();
-    // $('video').Z;
-    // $('#myModal').modal('show');
-});
-
 function showMoreOptions(elem) {
     // x = elem.siblings().get(6);
     $('.more-options').append('<input type="text" name="release_date" placeholder="Enter Release Date.." class="form-control release_date">');
@@ -633,8 +609,8 @@ $(function () {
             case 'audio/mp3':
                 var node = $('<p class="file-panel col-md-12 col-xs-12"/>')
                             // .append($('<span class="file-name" />').text(file.name))
-                            .append($('<panel class="col-md-4"><div>Photo</div><label id="artwork_photo_button" for="artwork_photo"><i class="fa fa-plus"></i> Please add a photo</label><input class="form-control inputfile" type="file" name="photo" id="artwork_photo" /><span class="photo-upload-results"></span> <div>Status</div><select class="form-control" name="status"><option value="public" selected>Public</option><option value="private">Private</option></select> <i class="btn fa fa-ellipsis-h" onclick="showMoreOptions($(this))"></i><div class="more-options" ></div></panel>'))
-                            .append($('<panel class="col-md-8"> <div>Title</div><input class="form-control" type="text" name="title" required value="'+file.name+'"/>  <div>Twitter</div><input class="form-control" type="text" name="twitter" id="twitter" required/> <div>Phone</div><input class="form-control" type="text" name="phone"/> <div>Description</div><textarea class="form-control" type="text" name="description" /> </panel>'))
+                            .append($('<panel class="col-md-4"><div>Photo</div><label id="artwork_photo_button" for="artwork_photo"><i class="fa fa-plus"></i> Please add a photo</label><input class="form-control inputfile" type="file" name="photo" id="artwork_photo" /><span class="photo-upload-results"></span> <div>Status</div><select class="form-control" name="status"><option value="public" selected>Public</option><option value="private">Private</option></select> </panel>'))
+                            .append($('<panel class="col-md-8"> <div>Title</div><input class="form-control" type="text" name="title" required value="'+file.name+'"/>  <div>Twitter</div><input class="form-control" type="text" name="twitter" id="twitter" required/> <div>Phone</div><input class="form-control" type="text" name="phone"/> <div>Description</div><textarea class="form-control" type="text" name="description" /> <div class="btn fa fa-calendar" onclick="showMoreOptions($(this))"></div><div class="more-options" ></div></panel>'))
                             .append($('<input type="hidden" name="user_name" value="' + user_name +'" />'))
                             // .append($('<input type="hidden" name="trackmp3" value="' + file.url +'" />'))
                             .append($('<input type="hidden" name="user_email" value="' + user_email +'" />'));
