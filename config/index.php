@@ -3,8 +3,8 @@
 $page_url ='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
 
-$access_token['oauth_token'] = '1018532587-qbLJXcpMzhvmFU0xHmmIF1SgSzzfC9CG0NccwXq';
-$access_token['oauth_token_secret'] = 'ZZgJzwgPt7jpj3RVPrQYVv2u0E3PPvXRJD2yK9oTXa2r8';
+$access_token['oauth_token'] = '1018532587-ePnn93z1v2GafbuAla6QRQe4gspUbKRDy9kuSGh';
+$access_token['oauth_token_secret'] = 'hGaLGtPdcHKgnjM7qJzdjIAUGfuKwGovUFmKlpzlAlGM5';
 $access_token['screen_name'] = 'FreeLabelNet';
 $access_token['user_id'] = '1018532587';
 $access_token['x_auth_expires'] = '0';

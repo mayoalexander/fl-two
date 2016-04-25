@@ -251,9 +251,10 @@ $('.add-new-promo-form #poster').change(function() {
     }).fail(function(jqXHR){
 		alert(jqXHR.statusText + 'oh no it didnt work!')
 	}).done(function (result) {
-        //alert('YES');
+        // alert('YES');
 		$('.photo-upload-results').html(result);
 		$('.confirm-upload-buttons').show('fast');
+		$('#artwork_photo_button').hide('fast');
 		// $('.confirm-upload-buttons').css('opacity',1);
 		$('.wait').hide('fast');
 	})

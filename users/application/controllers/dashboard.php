@@ -163,6 +163,10 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/submissions',true);
     }
+    function clients() 
+    {
+        $this->view->render('dashboard/clients',true);
+    }
     function video() 
     {
         $this->view->render('dashboard/video',true);

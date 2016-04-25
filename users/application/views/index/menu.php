@@ -78,6 +78,7 @@
 				</ul>
 				<!-- Submenu 3 -->
 				<ul data-menu="submenu-3" class="menu__level">
+					<li class="menu__item"><a class="menu__link" href="#">Clients</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Leads</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Twitter</a></li>
 					<li class="menu__item"><a class="menu__link" href="#">Rss</a></li>

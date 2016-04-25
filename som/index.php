@@ -67,7 +67,18 @@ $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oau
 
 getPremadeTweets();
 
+
+
+
+
+
+// // echo 'what the fuck is oigngoin ';
+// // echo '<pre>';
+// var_dump($_SESSION);
+// exit;
 /* ------------------------------------------------------------
+
+
 MAIN SOM PROCESSING
 ------------------------------------------------------------ */
 switch ($_GET['q']) {
