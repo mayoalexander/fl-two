@@ -436,6 +436,7 @@
 <script src="js/jquery.fileupload-video.js"></script>
 <!-- The File Upload validation plugin -->
 <script src="js/jquery.fileupload-validate.js"></script>
+<script src="http://freelabel.net/js/jquery-ui.min.js"></script>
 <script>
 function hideFilePanel(data) {
 
@@ -510,10 +511,13 @@ $(function(){
     // $('#myModal').modal('show');
 });
 
-$('.close-button').click(function(event){
-    alert($(this));
-    // console.log($(this));
-});
+function showMoreOptions(elem) {
+    // x = elem.siblings().get(6);
+    $('.more-options').append('<input type="text" name="release_date" placeholder="Enter Release Date.." class="form-control release_date">');
+    elem.hide();    
+    // datepicker for the events 
+    $('.release_date').datepicker({dateFormat: "yy-mm-dd"});
+}
 
 
 
@@ -629,7 +633,7 @@ $(function () {
             case 'audio/mp3':
                 var node = $('<p class="file-panel col-md-12 col-xs-12"/>')
                             // .append($('<span class="file-name" />').text(file.name))
-                            .append($('<panel class="col-md-4"><div>Photo</div><label id="artwork_photo_button" for="artwork_photo"><i class="fa fa-plus"></i> Please add a photo</label><input class="form-control inputfile" type="file" name="photo" id="artwork_photo" /><span class="photo-upload-results"></span> <div>Status</div><select class="form-control" name="status"><option value="public" selected>Public</option><option value="private">Private</option></select> </panel>'))
+                            .append($('<panel class="col-md-4"><div>Photo</div><label id="artwork_photo_button" for="artwork_photo"><i class="fa fa-plus"></i> Please add a photo</label><input class="form-control inputfile" type="file" name="photo" id="artwork_photo" /><span class="photo-upload-results"></span> <div>Status</div><select class="form-control" name="status"><option value="public" selected>Public</option><option value="private">Private</option></select> <i class="btn fa fa-ellipsis-h" onclick="showMoreOptions($(this))"></i><div class="more-options" ></div></panel>'))
                             .append($('<panel class="col-md-8"> <div>Title</div><input class="form-control" type="text" name="title" required value="'+file.name+'"/>  <div>Twitter</div><input class="form-control" type="text" name="twitter" id="twitter" required/> <div>Phone</div><input class="form-control" type="text" name="phone"/> <div>Description</div><textarea class="form-control" type="text" name="description" /> </panel>'))
                             .append($('<input type="hidden" name="user_name" value="' + user_name +'" />'))
                             // .append($('<input type="hidden" name="trackmp3" value="' + file.url +'" />'))
@@ -675,7 +679,7 @@ $(function () {
                     .append('<br>')
                     .append(uploadButton.clone(true).data(data));
             }
-            
+
             $('.file-upload-trigger').hide();
 
             node.appendTo(data.context);
