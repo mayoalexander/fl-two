@@ -1250,7 +1250,7 @@ class Blog
                   $b .= '<div class="col-md-8 col-xs-8" >';
                   $b .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
                   $b .= '<p class="post-text" >'.$this->display_title($meta,false).'
-                  '.$this->getStatsByTitle($meta['twitter'], $meta['blogtitle']).'
+                  '.$this->getStatsByID($meta['id']).'
                   </p>';
                   $b .= '
                 </div>
@@ -1276,7 +1276,7 @@ class Blog
                   $b .= '<div class="col-md-8 col-xs-12" >';
                   $b .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
                   $b .= '<p class="post-text" >'.$this->display_title($meta,false).'
-                  '.$this->getStatsByTitle($meta['twitter'], $meta['blogtitle']).'
+                  '.$this->getStatsByID($meta['twitter'], $meta['blogtitle']).'
                   </p>';
                   // $b .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
                   $b .= '
@@ -3495,6 +3495,20 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
   }
 
 
+  public function getStatsByID($post_id) {
+
+    include(ROOT.'inc/connection.php');
+    $query = "SELECT * FROM  `feed` WHERE  `id` = '$post_id' ORDER BY `id` DESC";
+    $result = mysqli_query($con,$query);
+    $count=0;
+    while($row = mysqli_fetch_assoc($result)) {
+      $count = $count + $row['views'];
+    }
+    $count='<div class="post-item-stats">
+                <span class="fa fa-eye text-icon" style="margin-right:1%;"></span>'.$count.' Views
+              </div>';
+    return $count; 
+  }
 
   public function getStatsByUser($user_name , $range='total') {
     include(ROOT.'inc/connection.php');

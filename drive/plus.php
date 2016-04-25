@@ -530,7 +530,7 @@ $(function () {
     var url = window.location.hostname === 'blueimp.github.io' ?
                 '//jquery-file-upload.appspot.com/' : 'server/php/',
         uploadButton = $('<button/>')
-            .addClass('btn btn-primary btn-block')
+            .addClass('btn btn-primary btn-block file-upload-trigger')
             .prop('disabled', true)
             .text('Processing...')
             .on('click', function () {
@@ -585,6 +585,7 @@ $(function () {
         });
 
         // alert(file.type); 
+        $('.file-upload-trigger').hide();
 
         switch(file.type) {
             case 'image/jpeg':
@@ -674,6 +675,9 @@ $(function () {
                     .append('<br>')
                     .append(uploadButton.clone(true).data(data));
             }
+            
+            $('.file-upload-trigger').hide();
+
             node.appendTo(data.context);
         });
     }).on('fileuploadprocessalways', function (e, data) {
