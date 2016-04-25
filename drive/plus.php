@@ -362,7 +362,7 @@
 
 <div class="col-md-2 header gradient-bg">
 
-        <a href="http://freelabel.net/users/dashboard/index/?ctrl=uploads"><img src="http://freelabel.net/images/FREELABELLOGO.gif"></a>
+        <a href="http://freelabel.net/users/dashboard/index/?ctrl=audio"><img src="http://freelabel.net/images/FREELABELLOGO.gif"></a>
         <!-- <img src="<?php echo $site['logo'];?>"> -->
         <h3>DRIVE</h3>
         <!-- <small class="info text-muted">Or just and drop here..</small> -->
@@ -610,10 +610,11 @@ $(function () {
                 var node = $('<p class="file-panel col-md-12 col-xs-12"/>')
                             // .append($('<span class="file-name" />').text(file.name))
                             .append($('<panel class="col-md-4"><div>Photo</div><label id="artwork_photo_button" for="artwork_photo"><i class="fa fa-plus"></i> Please add a photo</label><input class="form-control inputfile" type="file" name="photo" id="artwork_photo" /><span class="photo-upload-results"></span> <div>Status</div><select class="form-control" name="status"><option value="public" selected>Public</option><option value="private">Private</option></select> </panel>'))
-                            .append($('<panel class="col-md-8"> <div>Title</div><input class="form-control" type="text" name="title" required value="'+file.name+'"/>  <div>Twitter</div><input class="form-control" type="text" name="twitter" id="twitter" required/> <div>Phone</div><input class="form-control" type="text" name="phone"/> <div>Description</div><textarea class="form-control" type="text" name="description" /> <div class="btn fa fa-calendar" onclick="showMoreOptions($(this))"></div><div class="more-options" ></div></panel>'))
+                            .append($('<panel class="col-md-8"> <div>Title</div><input class="form-control" type="text" name="title" required value="'+file.name+'"/>  <div>Twitter</div><input class="form-control" type="text" name="twitter" id="twitter" required/> <div>Phone</div><input class="form-control" type="text" name="phone"/> <div>Description</div><textarea class="form-control" type="text" name="description" /> </panel>'))
                             .append($('<input type="hidden" name="user_name" value="' + user_name +'" />'))
                             // .append($('<input type="hidden" name="trackmp3" value="' + file.url +'" />'))
-                            .append($('<input type="hidden" name="user_email" value="' + user_email +'" />'));
+                            .append($('<input type="hidden" name="user_email" value="' + user_email +'" />'))
+                            .append($('<div class="btn fa fa-calendar" onclick="showMoreOptions($(this))"></div><div class="more-options" ></div>'));
                 break;
             case 'audio/mpeg':
                 var node = $('<p class="file-panel col-md-12 col-xs-12"/>')
@@ -694,6 +695,7 @@ $(function () {
         // SUCCESS 
         hideFilePanel(data);
         openPost(data);
+        console.log(data[9]);
 
     }).on('fileuploadfail', function (e, data) {
 
