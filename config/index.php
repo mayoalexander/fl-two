@@ -604,7 +604,7 @@ class Blog
         //$site['description'] = 'The Leaders In Innovative Online Showcasing';
         $site['description'] = 'Innovative Showcasing';
         $site['description'] = 'Create, Discover, Share.';
-        $site['description'] = "The new platform to release singles and engage fans with a beautiful digital format";
+        // $site['description'] = "The new platform to release singles and engage fans with a beautiful digital format";
         $site['font-head'] = '"Oswald"';
         // $site['font-body'] = '"Abel"';
         $site['font-body'] = '"Open Sans Condensed"';
@@ -3211,8 +3211,8 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
       case true:
         // $site['map'][] = array('title' => 'Home' , 'path'=>'index/index', 'icon'=>'home' );
         $site['map'][] = array('title' => 'Dashboard' , 'path'=>'dashboard/', 'icon'=>'archive'  );
-        $site['map'][] = array('title' => 'Ideas' , 'path'=>'note/', 'icon'=>'pictures'  );
-        $site['map'][] = array('title' => 'Promos' , 'path'=>'index/promos', 'icon'=>'archive'  );
+        // $site['map'][] = array('title' => 'Ideas' , 'path'=>'note/', 'icon'=>'pictures'  );
+        $site['map'][] = array('title' => 'Promos' , 'path'=>'dashboard/?ctrl=promos', 'icon'=>'archive'  );
         $site['map'][] = array('title' => 'Radio' , 'path'=>'index/radio', 'icon'=>'archive'  );
         $site['map'][] = array('title' => 'Settings' , 'path'=>'login/showprofile', 'icon'=>'cog'  );
         $site['map'][] = array('title' => 'Upload' , 'path'=>'upload/?uid='.$user_name, 'icon'=>'download' );

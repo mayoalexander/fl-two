@@ -33,6 +33,9 @@ include_once('/home/content/59/13071759/html/config/index.php');
 	font-size: 80%;
 	display: inline-block;
 }
+.lead .script-item {
+	border-bottom: 1px solid #e3e3e3;
+}
 /*#phonescript {
 	font-size: 100%;
 	background-color: #303030;
@@ -230,7 +233,7 @@ Now Available on FREELABEL.net");
 				  	$script_id = $row['id'];
 				  	$i=1;
 				  	foreach ($script as $key => $value) {
-				  		echo '<div class="lead script-item" ><span class="script-int text-muted">'.$i.'</span><data class="edit" id="lead-script-'.$key.'-'.$row['id'].'" >'.$value.'</data></div>';
+				  		echo '<div class="lead script-item" ><data class="edit" id="lead-script-'.$key.'-'.$row['id'].'" >'.$value.'</data></div>';
 				  		$i++;
 				  	}
 				  	$i++;

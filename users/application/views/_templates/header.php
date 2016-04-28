@@ -234,7 +234,8 @@
     }
     .jumbotron {
       text-shadow:1px 1px 50px #101010;
-    }
+    } 
+
     .dark-bg {
       color:#101010;
     }
@@ -547,13 +548,8 @@
       width:100%;
     }
     .main-feed {
-      padding-top:5%;
+      padding-top:5em;
       min-height: 100vh;
-
-
-
-
-
     }
     .jumbotron .container , .modal {
       margin-top: 20vh;

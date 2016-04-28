@@ -251,18 +251,16 @@ Leverage upcoming Slyde™ tools to monetize music and performances, and gain va
                 </div>
                 <div class="pricing__item">
                     <h3 class="pricing__title"><i class="fa fa-institution"></i> Exclusive</h3>
-                    <p class="pricing__sentence">For creators who are looking for more Studio Production, hands-on development, interested in expanding their team, building more resources for their content production. audio and visual production such as recording, mixing, mastering, video or photoshoots, etc.</p>
+                    <!-- <p class="pricing__sentence">For creators who are looking for more Studio Production, hands-on development, interested in expanding their team, building more resources for their content production. audio and visual production such as recording, mixing, mastering, video or photoshoots, etc.</p> -->
+                    <p class="pricing__sentence">Expand your resources, get booked on shows, and unlimited studio time.</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>200<span class="pricing__period">/ month</span></div>
                     <ul class="pricing__feature-list">
                         <li class="pricing__feature">Includes Creator Features</li>
-                        <li class="pricing__feature">Public Relations</li>
+                        <li class="pricing__feature">Weekly Press Releases</li>
                         <li class="pricing__feature">Artist Management</li>
                         <li class="pricing__feature">Event + Tour Booking</li>
-                        <li class="pricing__feature">Earn Monthly Royalties for Radio Streams, Views, Followers, & Subscribers</li>
-                        <li class="pricing__feature">Full Social Media Package</li>
-                        <li class="pricing__feature">Project Placement</li>
-                        <li class="pricing__feature">Recording, Mixing, & Mastering</li>
-                        <li class="pricing__feature">Video + Photoshoots</li>
+                        <li class="pricing__feature">Monthly Royalties</li>
+                        <li class="pricing__feature">Full Social Media Production</li>
 
                     </ul>
                     <button class="pricing__action" data-type="exclusive" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>

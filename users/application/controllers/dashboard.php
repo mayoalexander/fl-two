@@ -183,6 +183,10 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/form',true);
     }
+    function paypal()
+    {
+        $this->view->render('dashboard/paypal',true);
+    }
 
 
 
