@@ -4,6 +4,7 @@
     $site = $config->getSiteData();
     $site['media']['photos'] = $config->getPhotoAds($site['creator'], 'registration');
     $site['media']['studio'] = $config->getPhotoAds($site['creator'], 'register-feature');
+    $site['media']['studio'] = $config->getPhotoAds($site['creator'], 'freelabel front');
     $site['media']['artists'] = $config->getPhotoAds($site['creator'], 'artist flyer');
     $site['media']['promos'] = $config->getPhotoAds($site['creator'], 'current-promo');
     // $site['media']['credit'] = array_reverse($config->getPhotoAds($site['creator'], 'magazine'));
@@ -28,7 +29,6 @@
     foreach ($site['landing-info']['how'] as $key => $text) {
         $info['how'] .=  '<li class="pricing-list-info">'.$text.'</li>';
     }
-
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -56,6 +56,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <style type="text/css">
+        body, html, .pricing--tashi .pricing__item {
+            font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
         a {
             color:#FE3F44;
         }
@@ -95,6 +98,14 @@
             max-width:400px;
             margin:auto;
         }
+        .media-item__title {
+            font-weight: 400;
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+        }
+        .media-item {
+            padding:2em;
+        }
         .marketing-area img {
             /*max-width:650px;*/
         }
@@ -105,7 +116,15 @@
         .pricing-list-info h3 {
             color:#303030;
         }
-
+        .pricing--tashi .pricing__item {
+            background-color: #202020;
+        }
+        .bg-8 {
+            background-color: #101010;
+        }
+        .bg-1 {
+            background-color: #303030;
+        }
         /* LOGIN FORM */
         .login-form {
             text-align: center;
