@@ -19,9 +19,9 @@
       <li><a href="#section-linemove-4" class="icon icon-upload dash-filter" data-load="leads"><span>
       <!-- <i class="fa fa-music" ></i> -->
        Leads</span></a></li>
-      <li><a href="#section-linemove-5" class="icon icon-date dash-filter" data-load="box"><span>
+      <li><a href="#section-linemove-5" class="icon icon-date dash-filter" data-load="script"><span>
       <!-- <i class="fa fa-calendar" ></i> -->
-       Box</span></a></li>
+       script</span></a></li>
     </ul>
   </nav>
   <div class="content-wrap">
@@ -33,8 +33,6 @@
         // var_dump($_SESSION['access_token']);
           // $files = $config->display_user_posts_new('admin' , $current_page);
           // echo $files['posts']; 
-
-          
         ?>
     </section>
 
@@ -44,7 +42,7 @@
 
     <section id="leads" class="autoload al-leads" data-load="leads"></section>
 
-    <section id="box" class="autoload al-box" data-load="box"></section>
+    <section id="script" class="autoload al-script" data-load="script"></section>
 
   </div><!-- /content -->
 </div><!-- /tabs -->
@@ -138,10 +136,10 @@ $(function(){
 <?php
 $soundcloud_downloader = "
 <form id='soundcloud-form' class='soundcloud-download input-group'>
-  <input type='text' id='soundcloud_link' class='form-control' placeholder='Paste Soundcloud URL'>
   <span class='input-group-btn'>
     <input type='hidden' name='ctrl' value='rss'>
-    <button class='btn btn-success-outline' onclick=''>Download</button>
+    <!--<button class='btn btn-success-outline' onclick=''>Download</button>-->
+    <input type='text' id='soundcloud_link' class='form-control' placeholder='Paste Soundcloud URL'>
   </span>
 </form>
 ";

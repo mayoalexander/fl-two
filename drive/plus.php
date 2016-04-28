@@ -226,6 +226,64 @@
             display: block;
             margin: auto;
         }
+        .inputfile {
+            position:relative;
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .inputfile , label {
+            font-size: 0.75em;
+            color: #e3e3e3;
+            background-color: #202020;
+            display: inline-block;
+        }
+
+        .inputfile:focus, label,
+        .inputfile, label:hover {
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #77b55a), color-stop(1, #72b352));
+        background:-moz-linear-gradient(top, #77b55a 5%, #72b352 100%);
+        background:-webkit-linear-gradient(top, #77b55a 5%, #72b352 100%);
+        background:-o-linear-gradient(top, #77b55a 5%, #72b352 100%);
+        background:-ms-linear-gradient(top, #77b55a 5%, #72b352 100%);
+        background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77b55a', endColorstr='#72b352',GradientType=0);
+        background-color:#77b55a;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        border:1px solid #4b8f29;
+        display:inline-block;
+        width: 100%;
+        cursor:pointer;
+        font-weight:bold;
+        padding:1em;
+        text-align: center;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #5b8a3c;
+        }
+        .inputfile:hover {
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #72b352), color-stop(1, #77b55a));
+        background:-moz-linear-gradient(top, #72b352 5%, #77b55a 100%);
+        background:-webkit-linear-gradient(top, #72b352 5%, #77b55a 100%);
+        background:-o-linear-gradient(top, #72b352 5%, #77b55a 100%);
+        background:-ms-linear-gradient(top, #72b352 5%, #77b55a 100%);
+        background:linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#72b352', endColorstr='#77b55a',GradientType=0);
+        background-color:#72b352;
+        }
+        .inputfile:active {
+        position:relative;
+        top:1px;
+        }
+
+        .inputfile , label {
+            cursor: pointer; /* "hand" cursor */
+        }
 
 
         .gradient-bg {
@@ -304,7 +362,7 @@
 
 <div class="col-md-2 header gradient-bg">
 
-        <a href="http://freelabel.net/users/dashboard/index/"><img src="http://freelabel.net/images/FREELABELLOGO.gif"></a>
+        <a href="http://freelabel.net/users/dashboard/index/?ctrl=audio"><img src="http://freelabel.net/images/FREELABELLOGO.gif"></a>
         <!-- <img src="<?php echo $site['logo'];?>"> -->
         <h3>DRIVE</h3>
         <!-- <small class="info text-muted">Or just and drop here..</small> -->
@@ -378,6 +436,7 @@
 <script src="js/jquery.fileupload-video.js"></script>
 <!-- The File Upload validation plugin -->
 <script src="js/jquery.fileupload-validate.js"></script>
+<script src="http://freelabel.net/js/jquery-ui.min.js"></script>
 <script>
 function hideFilePanel(data) {
 
@@ -398,24 +457,6 @@ function openPost(data) {
         if (typeof data.result === 'undefined') {
             console.log('There was an error thrown');
             alert("Uh, oh. Something is wrong with your MP3 file that does not allow us to update the metatags. Please, re-export your MP3 and reupload so we can have the right type of file format!");
-            // $.each(data.result.files, function (index, file) {
-                // var twitter = data.formData[4].value;
-                // var postUrl = 'http://freelabel.net/' + twitter + "/" ;
-                // console.log(postUrl);
-                // window.open(postUrl);
-            //     if (file.url) {
-            //         // var link = $('<a>')
-            //         //     .attr('target', '_blank')
-            //         //     .prop('href', file.url);
-            //         // $(data.context.children()[index])
-            //         //     .wrap(link);
-            //     } else if (file.error) {
-            //         var error = $('<span class="text-danger"/>').text(file.error);
-            //         $(data.context.children()[index])
-            //             .append('<br>')
-            //             .append(error);
-            //     }
-            // });
         } else {
             console.log('NO ERROR WAS THROWN, RESUME REGULLARRY');
             $.each(data.result.files, function (index, file) {
@@ -446,16 +487,13 @@ function openPost(data) {
 }
 
 /* CUSTOM JAVASCRIPT */
-$(function(){
-    // // alert();
-    // $('video').Z;
-    // $('#myModal').modal('show');
-});
-
-$('.close-button').click(function(event){
-    alert($(this));
-    // console.log($(this));
-});
+function showMoreOptions(elem) {
+    // x = elem.siblings().get(6);
+    $('.more-options').append('<input type="text" name="release_date" placeholder="Enter Release Date.." class="form-control release_date">');
+    elem.hide();    
+    // datepicker for the events 
+    $('.release_date').datepicker({dateFormat: "yy-mm-dd"});
+}
 
 
 
@@ -472,7 +510,7 @@ $(function () {
     var url = window.location.hostname === 'blueimp.github.io' ?
                 '//jquery-file-upload.appspot.com/' : 'server/php/',
         uploadButton = $('<button/>')
-            .addClass('btn btn-primary btn-block')
+            .addClass('btn btn-primary btn-block file-upload-trigger')
             .prop('disabled', true)
             .text('Processing...')
             .on('click', function () {
@@ -527,6 +565,7 @@ $(function () {
         });
 
         // alert(file.type); 
+        $('.file-upload-trigger').hide();
 
         switch(file.type) {
             case 'image/jpeg':
@@ -570,11 +609,12 @@ $(function () {
             case 'audio/mp3':
                 var node = $('<p class="file-panel col-md-12 col-xs-12"/>')
                             // .append($('<span class="file-name" />').text(file.name))
-                            .append($('<panel class="col-md-3"><div>Photo</div><input class="form-control" type="file" name="photo" id="artwork_photo" /><span class="photo-upload-results"></span> <div>Status</div><select class="form-control" name="status"><option value="public" selected>Public</option><option value="private">Private</option></select> </panel>'))
+                            .append($('<panel class="col-md-4"><div>Photo</div><label id="artwork_photo_button" for="artwork_photo"><i class="fa fa-plus"></i> Please add a photo</label><input class="form-control inputfile" type="file" name="photo" id="artwork_photo" /><span class="photo-upload-results"></span> <div>Status</div><select class="form-control" name="status"><option value="public" selected>Public</option><option value="private">Private</option></select> </panel>'))
                             .append($('<panel class="col-md-8"> <div>Title</div><input class="form-control" type="text" name="title" required value="'+file.name+'"/>  <div>Twitter</div><input class="form-control" type="text" name="twitter" id="twitter" required/> <div>Phone</div><input class="form-control" type="text" name="phone"/> <div>Description</div><textarea class="form-control" type="text" name="description" /> </panel>'))
                             .append($('<input type="hidden" name="user_name" value="' + user_name +'" />'))
                             // .append($('<input type="hidden" name="trackmp3" value="' + file.url +'" />'))
-                            .append($('<input type="hidden" name="user_email" value="' + user_email +'" />'));
+                            .append($('<input type="hidden" name="user_email" value="' + user_email +'" />'))
+                            .append($('<div class="btn fa fa-calendar" onclick="showMoreOptions($(this))"></div><div class="more-options" ></div>'));
                 break;
             case 'audio/mpeg':
                 var node = $('<p class="file-panel col-md-12 col-xs-12"/>')
@@ -588,7 +628,9 @@ $(function () {
             case 'video/mp4':
                 var node = $('<p class="file-panel col-md-12 col-xs-12"/>')
                             // .append($('<span class="file-name" />').text(file.name))
-                            .append($('<panel class="col-md-3"><div>Photo</div><input class="form-control" type="file" name="photo" id="artwork_photo" /><span class="photo-upload-results"></span> <div>Status</div><select class="form-control" name="status"><option value="public" selected>Public</option><option value="private">Private</option></select> </panel>'))
+                            // .append($('<panel class="col-md-3"><div>Photo</div><input class="form-control" type="file" name="photo" id="artwork_photo" /><span class="photo-upload-results"></span> <div>Status</div><select class="form-control" name="status"><option value="public" selected>Public</option><option value="private">Private</option></select> </panel>'))
+                            .append($('<panel class="col-md-4"><div>Photo</div><label id="artwork_photo_button" for="artwork_photo"><i class="fa fa-plus"></i> Please add a photo</label><input class="form-control inputfile" type="file" name="photo" id="artwork_photo" /><span class="photo-upload-results"></span> <div>Status</div><select class="form-control" name="status"><option value="public" selected>Public</option><option value="private">Private</option></select> </panel>'))
+
                             .append($('<panel class="col-md-8"><div>Title</div><input class="form-control" type="text" name="title" required value="'+file.name+'"/> <div>Twitter</div><input class="form-control" type="text" name="twitter" id="twitter" required/> <div>Phone</div><input class="form-control" type="text" name="phone"/> <div>Description</div><textarea class="form-control" type="text" name="description" /> </panel>'))
                             .append($('<panel class="col-md-12">'))
                             .append($('<input type="hidden" name="user_name" value="' + user_name +'" />'))
@@ -614,6 +656,9 @@ $(function () {
                     .append('<br>')
                     .append(uploadButton.clone(true).data(data));
             }
+
+            $('.file-upload-trigger').hide();
+
             node.appendTo(data.context);
         });
     }).on('fileuploadprocessalways', function (e, data) {
@@ -650,6 +695,7 @@ $(function () {
         // SUCCESS 
         hideFilePanel(data);
         openPost(data);
+        console.log(data[9]);
 
     }).on('fileuploadfail', function (e, data) {
 

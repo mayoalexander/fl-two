@@ -1,6 +1,7 @@
 <?php
 include_once('/home/content/59/13071759/html/config/index.php');
 require(ROOT.'inc/conn.php');
+$config = new Blog();
 
 $todays_date = date('Y-m-d');
 $result = $conn->query('select * from twitter_data WHERE timestamp LIKE "%'.$todays_date.'%" ORDER BY `id` DESC');
@@ -34,12 +35,19 @@ $data.='</ul>
 </div>';
 
 
+$adminPosts = $config->getPostsByUser(0,20,'admin');
+
+// foreach ($adminPosts as $post) {
+//     echo $postdate = date('m-d',strtotime($post['submission_date'])).', ';
+//     if ($postdate == date('m-d')) { 
+//         $postsToday
+//         echo 'its the same date!!!!<br>';
+//     } else {
+//         echo 'not the same date as '.date('m-d').'<br>';    }
+// }
 
 
-
-
-
-
+// // var_dump($adminPosts);
 
 
 include(ROOT.'inc/connection.php');
@@ -52,7 +60,7 @@ include(ROOT.'inc/connection.php');
 				OR follow_up_date='$fourdaysback' 
 				OR follow_up_date='$fivedaysback'
 				/*OR `user_name` = '".$user_name_session."' */
-				ORDER BY `follow_up_date` DESC LIMIT 200");
+				ORDER BY `id` DESC LIMIT 200");
 $i = 0;
 
 
@@ -81,7 +89,7 @@ foreach ($leads as $key => $value) {
     $lead_build .= '
     <li class="list-group-item complete">
         <span class="label pull-left"><a class="fa fa-comment lead-response-button" href="#" data-id="'.$key.'"></a></span>
-        <span class="label pull-right">[<a href="http://twitter.com/@'.$key.'" target="_blank">@'.$key.'</a>]</span>
+        <span class="label pull-right lead-twitter-name" data-user="'.$key.'">[<a href="http://twitter.com/@'.$key.'" target="_blank">@'.$key.'</a>]</span>
         <span class="pull-left icon-status status-completed">'.count($value).'</span>'.$value[0].'
     </li>';
 }
@@ -148,14 +156,47 @@ $data.='</ul>
 
 
 
-    <div class="container row"> 
-    	<div class="col-md-4">
-    		<?php echo $data; ?>
-    	</div>
-    	<div class="col-md-8">
-    		<?php echo $lead_build; ?>
-    	</div>
+<style type="text/css">
+    .lead-response-window {
+        width: 100%;
+        min-height:300px;
+    }
+</style>
+
+
+
+<!-- MAIN CONTAINER AREA -->
+<div class="container row"> 
+	<div class="col-md-4">
+		<?php echo $data; ?>
+	</div>
+	<div class="col-md-8">
+		<?php echo $lead_build; ?>
+	</div>
+</div>
+
+
+
+
+
+
+<!-- MODAL -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <textarea class="form-control lead-response-input" rows="5"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary lead-response-trigger">Send Message</button>
+      </div>
     </div>
+  </div>
+</div>
 
 
  <script type="text/javascript">
@@ -167,7 +208,16 @@ $data.='</ul>
 
             // hide wrapper
             wrapper.remove();
- 			// alert(lead_id);
+
+            // reset wrapper
+            $('#myModal .modal-title').html('');
+            $('.lead-response-input').val('');
+
+            // Open Modal 
+            $('#myModal').modal('toggle');
+            $('#myModal .modal-title').html(wrapper.html());
+            // $('#myModal .modal-body').append('<iframe src="http://freelabel.net/" class="lead-response-window" ></iframe>');
+
  		});
         $('.som-button-trigger').click(function(e){
             e.preventDefault();
@@ -176,6 +226,20 @@ $data.='</ul>
             // alert('open ' + url);
             window.open(posturl);
             window.open(somurl);
+        });
+
+        // open twitter messages 
+        $('.lead-twitter-name').click(function(e){
+            // e.preventDefault();
+            $(this).css('color','red');
+            var name = $(this).attr('data-user');
+            // alert(name);
+        });
+
+        // Lead Response Trigger
+        $('.lead-response-trigger').click(function(){
+            var text = $('.lead-response-input').val();
+            alert('okay do this right here: ' + text);
         });
  	});
 

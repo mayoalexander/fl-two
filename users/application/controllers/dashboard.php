@@ -49,6 +49,10 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/box',true);
     }
+    function stream()
+    {
+        $this->view->render('dashboard/stream',true);
+    }
     function analytics()
     {
         $this->view->render('dashboard/analytics',true);
@@ -65,9 +69,57 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/promos',true);
     }
+    function tv()
+    {
+        $this->view->render('dashboard/tv',true);
+    }
+    function radio()
+    {
+        $this->view->render('dashboard/radio',true);
+    }
+    function discover()
+    {
+        $this->view->render('dashboard/discover',true);
+    }
+    function magazine()
+    {
+        $this->view->render('dashboard/magazine',true);
+    }
+    function likes()
+    {
+        $this->view->render('dashboard/likes',true);
+    }
+    function recommended()
+    {
+        $this->view->render('dashboard/recommended',true);
+    }
+    function promotions()
+    {
+        $this->view->render('dashboard/promo',true);
+    }    
     function audio()
     {
         $this->view->render('dashboard/audio',true);
+    }
+    function slider()
+    {
+        $this->view->render('dashboard/slider',true);
+    }
+    function compose()
+    {
+        $this->view->render('dashboard/compose',true);
+    }
+    function messages()
+    {
+        $this->view->render('dashboard/messages',true);
+    }
+    function follow()
+    {
+        $this->view->render('dashboard/follow',true);
+    }
+    function following()
+    {
+        $this->view->render('dashboard/following',true);
     }
     function events()
     {
@@ -110,6 +162,30 @@ class Dashboard extends Controller
     function submissions() 
     {
         $this->view->render('dashboard/submissions',true);
+    }
+    function clients() 
+    {
+        $this->view->render('dashboard/clients',true);
+    }
+    function video() 
+    {
+        $this->view->render('dashboard/video',true);
+    }
+    function soundcloud() 
+    {
+        $this->view->render('dashboard/soundcloud',true);
+    }
+    function player() 
+    {
+        $this->view->render('dashboard/player',true);
+    }
+    function form()
+    {
+        $this->view->render('dashboard/form',true);
+    }
+    function paypal()
+    {
+        $this->view->render('dashboard/paypal',true);
     }
 
 
@@ -198,6 +274,21 @@ class Dashboard extends Controller
             echo 'Email Successfully Sent!';
         } else {
             echo 'Oh NOOOOOOOOOOO!!!!!! The email did not send!';
+        }
+    }
+
+
+
+
+
+    function unfollow() {
+        include_once('/home/content/59/13071759/html/config/index.php');
+        $config = new Blog();
+        $res = $config->unfollow($_POST);
+        if ($res) {
+            echo 'Unfollowed!';
+        } else {
+            echo 'Error!!';
         }
     }
 

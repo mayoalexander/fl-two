@@ -92,7 +92,7 @@ if (!isset($_GET['q'])) {
 
       echo $posts;
 
-      $db = $config->display_dashboard_feed($site['user']); 
+      // $db = $config->display_dashboard_feed($site['user']); 
     ?>
 </div>
 

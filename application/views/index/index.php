@@ -42,63 +42,80 @@ $current_page = '0';
     margin-right: 12px;
   }
   .promo-bg-img {
-    z-index: -10;
     width:100%;
     position:absolute;
-    -webkit-filter: blur(20px);
-    filter: blur(20px);
-    opacity: 0.6;
-/*    -webkit-filter: brightness(0.30);
-    filter: brightness(0.30);*/
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
+  }
+  .promo-title-head {
+    font-size:1em;
+    margin-top:1em;
+    margin-bottom:1em;
+  }
+  .display-3 {
+    font-weight: 700;
   }
   .featured-ad {
     padding-top: 2em;
     overflow: hidden;
   }
-  .featured-ad h1 {
-    margin-top:1em;
-    margin-left:0.5em;
+  .promos-table img {
+    width: 100%;
   }
-  panel > div.col-md-3 {
-    padding-bottom:3em;
+  .promos-table div {
+    padding:5em;
+  }
+  .promo-feed img {
+    width: 100%;
+  }
+  .promo-feed {
+    padding-top: 3.5em;
+  }
+  .promo-panel {
+    display: block;
+    margin-bottom:3.5em;
+  }
+  .promo-panel span {
+    background-color: rgba(100,100,100,0.8);
+    padding:0.5em;
+    position: absolute;
+    color: #e3e3e3;
+    transition: background-color 0.5s;
+    text-transform: uppercase;
+    font-size: 0.75em;
+  }
+  .promo-panel span:hover {
+    background-color: rgba(100,100,100,1);
+  }
+  .promo-feed .page-header {
+    margin-bottom: 2em;
+  }
+  .header-description {
+    font-size:1.63em;
+  }
+  /* LARGE SCREENS*/
+  @media screen and (min-width: 460px) {
+    .main-feed {
+      padding-left:5em;
+    }
+  }
+  /* SMALL SCREENS*/
+  @media screen and (max-width: 460px) {
+    .container {
+      padding-left:0;
+      padding-right:0;
+    }
   }
 </style>
 <header class="jumbotron feature bg-inverse text-center center-vertically" role="banner">
   <div class="container jumbotron-body">
     <!-- <div class="background-tint"></div> -->
     <h1 class="display-3"><?php echo $site['name']; ?></h1>
-    <p class="m-b-lg"><?php echo $site['description']; ?> <a href="<?php echo $site['http']; ?>users/login" class="jumbolink">Login Now</a>.</p>
-    <p class="m-b-lg"><?php echo $site['media']['photos']['front-page'][$r]['title']; ?> <a href="<?php echo 'http://freelabel.net/users/index/image/'.$site['media']['photos']['front-page'][$r]['id']; ?>" class="jumbolink">View Now</a>.</p>
-    <a class="btn btn-secondary-outline m-b-md" href="http://freelabel.net/users/<?php echo $calltoaction_link; ?>" role="button"><?php echo $calltoaction; ?></a>
+    <p class="header-description"><?php echo $site['description']; ?> <a href="<?php echo $site['http']; ?>users/login" class="jumbolink">Login Now</a>.</p>
+    <!--<p class="m-b-lg"><?php echo $site['media']['photos']['front-page'][$r]['title']; ?> <a href="<?php echo 'http://freelabel.net/users/index/image/'.$site['media']['photos']['front-page'][$r]['id']; ?>"class="jumbolink">View Now</a>.</p> -->
+    <a class="btn btn-secondary-outline btn-xs m-b-md" href="http://freelabel.net/users/<?php echo $calltoaction_link; ?>" role="button"><?php echo $calltoaction; ?></a>
   </div>
 </header>
-
-
-
-
-
-
-
-<!-- first promo -->
-<nav class="promo-container row row-eq-height" >
-  <img class="promo-bg-img" src="<?php echo $site['media']['photos']['ads'][0]['image'] ; ?>">
-
-  <panel class="featured-ad row"  >
-    <h1>NEW EXCLUSIVES DAILY.</h1>
-    <!-- current-promo advertisement --> 
-      <div class="col-md-3">
-        <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][0]['id'] ; ?>"><img src="<?php echo $site['media']['photos']['ads'][0]['image'] ; ?>"></a>
-      </div>
-
-      <div class="col-md-9">
-        <h2 class='text-muted'><?php echo $site['media']['photos']['ads'][0]['title'] ; ?></h2>
-        <p><?php echo $site['media']['photos']['ads'][0]['caption'] ; ?></p>
-        <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][0]['id'] ; ?>" class="btn btn-secondary-outline m-b-md">View Now</a>
-      </div>
-  </panel>
-</nav>
-
-
 
 
 
@@ -106,7 +123,7 @@ $current_page = '0';
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://public.radio.co/playerapi/jquery.radiocoplayer.min.js"></script>
 
-<section class="site-break dropdown">
+<section class="site-break dropdown" >
   <div class="container" style="max-width:500px;">
       <hr>
       <h1 class="display-3"><button class="radio-menu player-trigger audio-player-title btn btn-secondary-outline"><i class="fa fa-circle-o-notch fa-spin"></i> Loading</button> FLRADIO</h1>
@@ -120,16 +137,8 @@ $current_page = '0';
       <input type="range" id="volume-meter"></input>
       
       <br><br>
-      <?php 
-  // $page_title = 'Listen LIVE ON-AIR to #FREELABELRADIO ';
-  // $page_url = 'RADIO.FREELABEL.NET';
-  // echo $config->share_page_button($page_title , $page_url); 
-  ?>
   </div>
-
-
-
-<script>$('.radioplayer').radiocoPlayer();</script>
+  <script>$('.radioplayer').radiocoPlayer();</script>
 <!-- <script type="text/javascript" src="http://freelabel.net/js/radio.js"></script> -->
 
 
@@ -143,12 +152,30 @@ $current_page = '0';
 </section>
 
 
+<section class="container">
 
 
-<section id='section-linemove-1' class="container page-header main-feed">
-        <?php $files = $config->display_user_posts_new('admin' , $current_page);
-        echo $files['posts']; ?>
-</section> 
+    <section class="container col-md-3 promo-feed">
+          <h2 class="page-header clearfix"><span class="pull-left">Promos</span></h2>
+        <?php 
+          foreach ($site['media']['photos']['ads'] as $key => $site) {
+            echo "<panel class='promo-panel'>
+                    <span class='text-muted'>".$site['type']."</span>
+                    <a href=\"http://freelabel.net/users/index/image/".$site['id']."\"><img src=\"".$site['image']."\"></a>
+                    <h5 class='promo-title-head text-muted'>".$site['title']."</h5>
+                    <a href=\"http://freelabel.net/users/index/image/".$site['id']."\" class=\"btn btn-secondary-outline m-b-md\">View Now</a>
+                  </panel>";
+          }
+        ?>
+  </section> 
+
+  <section id='section-linemove-1' class="container page-header main-feed col-md-9">
+          <?php $files = $config->display_user_posts_new('admin' , $current_page);
+          echo $files['posts']; ?>
+  </section>
+
+</section>
+
 
 
 
@@ -158,7 +185,7 @@ $current_page = '0';
 
 
 <!-- second promo -->
-<nav class="promo-container row row-eq-height"  style="background-image:url('<?php echo $site['media']['photos']['ads'][1]['image'] ; ?>');">
+<nav class="promo-container row row-eq-height"  style="background-image:url('<?php echo $site['media']['photos']['ads'][1]['image'] ; ?>');display:none;">
   <panel class="col-md-12 pull-left featured-ad background-tint-promo"  >
     <h1>SOMETHING IS ALWAYS GOING ON.</h1>
     <!-- current-promo advertisement --> 
@@ -166,8 +193,8 @@ $current_page = '0';
 
       <div class="col-md-9">
         <h2 class='text-muted'><?php echo $site['media']['photos']['ads'][1]['title'] ; ?></h2>
-        <p><?php echo $site['media']['photos']['ads'][1]['caption'] ; ?></p>
-        <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][1]['id'] ; ?>" class="btn btn-secondary-outline m-b-md">View Now</a>
+        <p><?php echo $site['media']['photos']['ads'][0]['caption'] ; ?></p>
+        <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][0]['id'] ; ?>" class="btn btn-secondary-outline m-b-md">View Now</a>
       </div>
 
 

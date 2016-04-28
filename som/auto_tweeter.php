@@ -139,9 +139,9 @@ if ($_POST['live'] || $_GET['live']) {
 
 
         /* GET THE PROMOS */
-        $promos1 = $config->getPromosByUser('admin', 0, 'current-promo');
-        $promos2 = $config->getPromosByUser('admin', 1, 'current-promo');
-        $promos = array_merge($promos1, $promos2);
+        /*$promos1 = $config->getPromosByUser('admin', 0, 'current-promo');
+        $promos2 = $config->getPromosByUser('admin', 1, 'current-promo');*/
+        $promos = $config->getPromosByUser('admin', 0, 'current-promo'); //array_merge($promos1, $promos2);
         foreach ($promos as $promo) {
           $new_tweets[] = $promo['title'] . ' | http://freelabel.net/users/index/image/'. $promo['id'];
           $new_tweets[] = $promo['title'] . ' | http://freelabel.net/users/index/image/'. $promo['id'];
@@ -182,10 +182,12 @@ if ($_POST['live'] || $_GET['live']) {
                       echo '<script>console.log('.$timeOutTime.');</script>';
                       $content_SOM .= '<script>
                       function execAutoPromote(linkToTweet) {
-                        $.post(linkToTweet,"",function(data){
-                          console.log("Succesfully Posted Tweet! ----- " + linkToTweet);
-                        });
-                        // console.log(linkToTweet);
+                        // $.post(linkToTweet,"",function(data){
+                        //   // console.log("Succesfully Posted Tweet! ----- " + linkToTweet);
+                        //   // window.open(linkToTweet);
+                        // });
+                        
+                        window.open(linkToTweet);
                       }
                       setTimeout( function () { execAutoPromote("'.$link_to_tweet.'"); }  , '.$timeOutTime.');
                       </script>';

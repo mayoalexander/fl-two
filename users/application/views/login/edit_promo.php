@@ -37,12 +37,15 @@ function hiddenInput($key , $value) {
 			case 'paypal_url':
 				textInput($key , $value);
 				break;
+			case 'start_date':
+				textInput($key , $value,true);
+				break;
 			case 'desc':
 				textInput($key , $value);
 				break;
-			case 'date':
-				textInput($key , $value, true);
-				break;
+			// case 'date':
+			// 	textInput($key , $value, true);
+			// 	break;
 			case 'id':
 				hiddenInput($key , $value);
 				break;

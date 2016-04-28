@@ -64,7 +64,8 @@
       <?php 
     if (isset($tracks)) {      
         foreach ($tracks as $key => $value) {
-          echo '<li class="list-group-item"><a href="'.$value['blog_story_url'].'">'.$value['twitter'].' - '.$value['blogtitle'].'</a></li>';
+          echo '<li class="list-group-item"><a href="'.$value['blog_story_url'].'">'.$value['twitter'].' - '.$value['blogtitle'].'
+          <span class="pull-right text-muted">'.$value['views'].'</span></a></li>';
         }
       } else {
         echo '<li class="list-group-item"><p class="section-description">To get your music placed in radio rotation, magazine pages, and booked on different events, you\'ll need to start uploading music to your account so our DJs, Radio Hosts, and Event managers can have your info for getting you confirmed placement on Major Projects.

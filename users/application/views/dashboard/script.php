@@ -23,12 +23,18 @@ include_once('/home/content/59/13071759/html/config/index.php');
 .edit input {
 	color:#e3e3e3;
 }
+.phone-script {
+	padding:2em;
+}
 #script_label {
 	width:100px;
 	//background-color:red;
 	padding:1% 3%;
 	font-size: 80%;
 	display: inline-block;
+}
+.lead .script-item {
+	border-bottom: 1px solid #e3e3e3;
 }
 /*#phonescript {
 	font-size: 100%;
@@ -227,7 +233,7 @@ Now Available on FREELABEL.net");
 				  	$script_id = $row['id'];
 				  	$i=1;
 				  	foreach ($script as $key => $value) {
-				  		echo '<div class="lead script-item" ><span class="script-int text-muted">'.$i.'</span><data class="edit" id="lead-script-'.$key.'-'.$row['id'].'" >'.$value.'</data></div>';
+				  		echo '<div class="lead script-item" ><data class="edit" id="lead-script-'.$key.'-'.$row['id'].'" >'.$value.'</data></div>';
 				  		$i++;
 				  	}
 				  	$i++;
@@ -280,7 +286,7 @@ Now Available on FREELABEL.net");
 				?>
 
 <hr>
-			<div id="phonescript" class="card card-chart" >
+			<div id="phonescript" class="card card-chart phone-script" >
 				
 				<?php $phonescript = "Hi this is YO NAME with FREELABEL Radio & Magazine. Our DJs approved your submissions & wanted me to follow up with you about getting your account created so we can start getting you placed on our radio & magazine interviews, projects, videos, & events this month.<br><br><br>
 

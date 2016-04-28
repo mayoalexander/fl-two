@@ -1187,6 +1187,14 @@ class UploadHandler
         $filedata['description'] = trim($_POST['description']);
         $filedata['email'] = $upload->getUserEmail($filedata['user_name']);
 
+        // set release date
+        if (isset($_POST['release_date'])) {
+            $filedata['release_date'] = date('Y-m-d H:s:i',strtotime($_POST['release_date']));
+        } else {
+            $filedata['release_date'] = NULL;
+        }
+
+
         // detect status and set private as default
         if (isset($_POST['status'])) {
             $filedata['status'] = $_POST['status'];
@@ -1245,8 +1253,8 @@ class UploadHandler
 
         // ADD TO DATABASE
         $sql = 'INSERT INTO `amrusers`.`feed`
-        (`id`, `type`, `blog_story_url`, `size`, `filetype`, `trackmp3`, `user_name`, `twitter`, `blogtitle`, `photo`, `playerpath`, `trackname` , `twitpic`, `submission_date`, `blogentry` , `email`, `phone`,`status`, `writeup`, `poster`) VALUES
-        (NULL, "'.$filedata['type'].'" , "'.$filedata['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$filedata['user_name'].'", "'.$filedata['twitter'].'", "'.$filedata['blogtitle'].'", "'.$filedata['photo'].'", "'.$_POST['playerpath'].'", "'.$filedata['blogtitle'].'", "'.$twitpic.'", "'.$filedata['submission_date'].'", "'.$filedata['description'].'", "'.$filedata['email'].'", "'.$filedata['phone'].'", "'.$filedata['status'].'", "'.$filedata['description'].'" , "'.$filedata['poster'].'");';
+        (`id`, `type`, `blog_story_url`, `size`, `filetype`, `trackmp3`, `user_name`, `twitter`, `blogtitle`, `photo`, `playerpath`, `trackname` , `twitpic`, `submission_date`, `blogentry` , `email`, `phone`,`status`, `writeup`, `poster`, `release_date`) VALUES
+        (NULL, "'.$filedata['type'].'" , "'.$filedata['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$filedata['user_name'].'", "'.$filedata['twitter'].'", "'.$filedata['blogtitle'].'", "'.$filedata['photo'].'", "'.$_POST['playerpath'].'", "'.$filedata['blogtitle'].'", "'.$twitpic.'", "'.$filedata['submission_date'].'", "'.$filedata['description'].'", "'.$filedata['email'].'", "'.$filedata['phone'].'", "'.$filedata['status'].'", "'.$filedata['description'].'" , "'.$filedata['poster'].'" , "'.$filedata['release_date'].'");';
         
         // $sql = 'INSERT INTO `amrusers`.`feed`
         // (`id`, `type`, `blog_story_url`) VALUES

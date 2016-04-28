@@ -2,7 +2,7 @@
 include_once('/home/content/59/13071759/html/config/index.php');
 include_once(ROOT.'config/stats.php');
 $user = new User();
-//$blog = new Blog();
+$config = new Blog();
 //$page_title = 'Magazine';
 if ($blog_type=='single') {
 	// IF SINGLE, FORMAT FOR SINGLE
@@ -11,21 +11,8 @@ if ($blog_type=='single') {
 	<source src="'.$trackmp3.'"></source>
 	</audio>';
 }
-if(strpos($blog_post_data['writeup'], 'livemixtapes')) {
-	$blog_post_data['writeup'] = '<iframe src="'.$blog_post_data['writeup'].'" width="100%" height="450px" frameborder=0 seamless></iframe>';
-} elseif(strpos($blog_post_data['writeup'], 'youtube')) {
-	$blog_post_data['writeup'] = '<iframe src="'.$blog_post_data['writeup'].'" width="100%" height="450px" frameborder=0 seamless></iframe>';
-} elseif(strpos($blog_post_data['writeup'], 'soundcloud')) {
-	$blog_post_data['writeup'] = '<iframe src="'.$blog_post_data['writeup'].'" width="100%" height="450px" frameborder=0 seamless></iframe>';
-}elseif(strpos($blog_post_data['writeup'], 'datpiff')) {
-	//echo 'datpiff';
-	$blog_post_data['writeup'] = '<iframe src="'.$blog_post_data['writeup'].'" width="100%" height="450px" frameborder=0 seamless></iframe>';
-}elseif(strpos($blog_post_data['writeup'], 'audiomack')) {
-	//echo 'datpiff';
-	$blog_post_data['writeup'] = '<iframe src="'.$blog_post_data['writeup'].'" width="100%" height="450px" frameborder=0 seamless></iframe>';
-} else {
-	//$blog_post_data['writeup'] =  'not found';
-}
+
+$blog_post_data['writeup'] = $config->formatBlogEntry($blog_post_data['writeup']);
 
 if ($_GET['dev']==1) {
 	print_r($config); exit;

@@ -3,8 +3,8 @@
 $page_url ='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
 
-$access_token['oauth_token'] = '1018532587-qbLJXcpMzhvmFU0xHmmIF1SgSzzfC9CG0NccwXq';
-$access_token['oauth_token_secret'] = 'ZZgJzwgPt7jpj3RVPrQYVv2u0E3PPvXRJD2yK9oTXa2r8';
+$access_token['oauth_token'] = '1018532587-ePnn93z1v2GafbuAla6QRQe4gspUbKRDy9kuSGh';
+$access_token['oauth_token_secret'] = 'hGaLGtPdcHKgnjM7qJzdjIAUGfuKwGovUFmKlpzlAlGM5';
 $access_token['screen_name'] = 'FreeLabelNet';
 $access_token['user_id'] = '1018532587';
 $access_token['x_auth_expires'] = '0';
@@ -604,7 +604,7 @@ class Blog
         //$site['description'] = 'The Leaders In Innovative Online Showcasing';
         $site['description'] = 'Innovative Showcasing';
         $site['description'] = 'Create, Discover, Share.';
-        $site['description'] = "The new platform to release singles and engage fans with a beautiful digital format";
+        // $site['description'] = "The new platform to release singles and engage fans with a beautiful digital format";
         $site['font-head'] = '"Oswald"';
         // $site['font-body'] = '"Abel"';
         $site['font-body'] = '"Open Sans Condensed"';
@@ -826,10 +826,12 @@ class Blog
         `image` ,
         `thumb` ,
         `type` ,
+        `paypal_url` ,
+        `start_date` ,
         `date_created`
         )
       VALUES (
-        NULL ,  '".mysqli_real_escape_string($con,$info['title'])."',  '".mysqli_real_escape_string($con,$info['desc'])."',  '".mysqli_real_escape_string($con,$info['caption'])."',  '".$info['user_name']."', '".$info['promo_key']."', '$files_attached', '".$info['photo']."', '".$info['poster']."', '".$info['type']."',
+        NULL ,  '".mysqli_real_escape_string($con,$info['title'])."',  '".mysqli_real_escape_string($con,$info['desc'])."',  '".mysqli_real_escape_string($con,$info['caption'])."',  '".$info['user_name']."', '".$info['promo_key']."', '$files_attached', '".$info['photo']."', '".$info['poster']."', '".$info['type']."', '".$info['paypal_url']."', '".$info['start_date']."',
         CURRENT_TIMESTAMP
         )";
       if ($result = mysqli_query($con,$sql)) {
@@ -920,6 +922,79 @@ class Blog
 
 
 
+    public function add_message($table , $info) {
+
+
+
+
+      include(ROOT.'inc/connection.php');
+
+      // attach files 
+
+      // foreach ($info['files'] as $file) {
+        // $files_attached = implode(', ', $info['files']);
+      // }
+
+      $rand = rand(1111111111,9999999999);
+      $sql = "INSERT INTO  `amrusers`.`$table` (
+        `id` ,
+        `sender` ,
+        `receiver` ,
+        `message` ,
+        `date_created`
+        )
+      VALUES (
+        NULL ,  
+        '".$info['sender']."', 
+        '".$info['receiver']."', 
+        '".mysqli_real_escape_string($con,$info['message'])."', 
+        CURRENT_TIMESTAMP
+        )";
+      if ($result = mysqli_query($con,$sql)) {
+        $res = 'It worked! :]';
+      }
+       else {
+        $res = 'It Didnt Work!';
+        print_r($sql);
+       }
+      return $res;
+  }
+
+  public function add_relationship($info) {
+
+      include(ROOT.'inc/connection.php');
+
+      // attach files 
+
+      // foreach ($info['files'] as $file) {
+        // $files_attached = implode(', ', $info['files']);
+      // }
+
+      $rand = rand(1111111111,9999999999);
+      $sql = "INSERT INTO  `amrusers`.`relationships` (
+        `user_name` ,
+        `following` ,
+        `date_created`
+        )
+      VALUES (
+        '".$info['user_name']."', 
+        '".$info['following']."', 
+        CURRENT_TIMESTAMP
+        )";
+      if ($result = mysqli_query($con,$sql)) {
+        $res = 'Now Following!';
+      }
+       else {
+        $res = 'It Didnt Work!';
+        print_r($sql);
+       }
+      return $res;
+  }
+
+
+
+
+
 
     public function add_info_photo($table , $info) {
 
@@ -956,6 +1031,17 @@ class Blog
 
 
 
+  public function checkIfAlreadyFollowing($user_name , $following)
+  {
+      include_once(ROOT.'inc/connection.php');
+      $query = "SELECT * FROM `relationships` WHERE `user_name`='$user_name' AND `following` = '$following' ORDER BY `id` DESC LIMIT 1";
+      $result = mysqli_query($con,$query);
+      // echo '<pre>';
+      // var_dump($query);
+      $info = $result->num_rows;
+    return $info;
+  }
+
   public function get_info($table , $id)
   {
       include_once(ROOT.'inc/connection.php');
@@ -969,6 +1055,9 @@ class Blog
       }
     return $info;
   }
+
+
+
 
   public function delete($table, $id='')
   {
@@ -1161,7 +1250,7 @@ class Blog
                   $b .= '<div class="col-md-8 col-xs-8" >';
                   $b .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
                   $b .= '<p class="post-text" >'.$this->display_title($meta,false).'
-                  '.$this->getStatsByTitle($meta['twitter'], $meta['blogtitle']).'
+                  '.$this->getStatsByID($meta['id']).'
                   </p>';
                   $b .= '
                 </div>
@@ -1187,7 +1276,7 @@ class Blog
                   $b .= '<div class="col-md-8 col-xs-12" >';
                   $b .= '<div class="controls-options-'.$meta['id'].'" style="display:none;">'.$this->getShareButtons($meta['id']).'</div>';
                   $b .= '<p class="post-text" >'.$this->display_title($meta,false).'
-                  '.$this->getStatsByTitle($meta['twitter'], $meta['blogtitle']).'
+                  '.$this->getStatsByID($meta['twitter'], $meta['blogtitle']).'
                   </p>';
                   // $b .= $this->getStatsByTitle($meta['twitter'] , $meta['blogtitle']);
                   $b .= '
@@ -1935,7 +2024,11 @@ class Blog
       $prev = '<a onclick=\'page("http://freelabel.net/users/index/stream/" , "'.($page-1).'")\' class="fa fa-arrow-left"></a>';
     }
 
-      echo '<h2 class="page-header feed-header"><span class="pull-left" >Feed</span> <span class="pagination-count pull-right text-muted text-small"> '.$prev.' '.$page_read.' <a onclick=\'page("http://freelabel.net/users/index/stream/" , "'.($page+1).'")\' class="fa fa-arrow-right"></a></span></h2>';
+
+
+
+
+      echo '<h2 class="page-header feed-header clearfix"><span class="pull-left" >Feed</span> <span class="pagination-count pull-right text-muted text-small"> '.$prev.' '.$page_read.' <a onclick=\'page("http://freelabel.net/users/index/stream/" , "'.($page+1).'")\' class="fa fa-arrow-right"></a></span></h2>';
 
         // GRAB GLOBAL FEED
         $feed_posts = $this->getPostsByUser($page,20,$user_name);
@@ -2227,7 +2320,7 @@ class Blog
       
       } elseif ($files['filetype']==='audio/mp3') {
         // AUDIO
-        $res .= '<li ><a href="#"  data-src="'.$files['trackmp3'].'" > <img src="'.$files['photo'].'" style="width:50px;height:auto;"> '.$files['twitter'].' - '.$files['blogtitle'].'</a> </li>';
+        $res .= '<li ><a href="#"  data-src="'.$files['trackmp3'].'" > <img src="'.$files['photo'].'" class="playlist-img"> '.$files['twitter'].' - '.$files['blogtitle'].'</a> </li>';
       } else {
         $res .= '<li ><a href="#"  data-src="'.$files['trackmp3'].'" data-type="'.$files['filetype'].'" > <img src="'.$files['photo'].'" style="width:50px;height:auto;"> '.$files['twitter'].' - '.$files['blogtitle'].'</a> </li>';
       }
@@ -2312,11 +2405,46 @@ public function getUserInfo($user_name) {
   }
 
 
+
+  public function display_attached_files_single($attached_files, $status=NULL, $desc=null, $title=null, $id=null, $promo=null) {
+    $res = '';
+    $share_button = '';
+
+
+    // echo 'you are here';
+    // exit;
+
+    if (isset($promo['paypal_url']) && $promo['paypal_url']!='') {
+      $share_button .= '<a href="'.$promo['paypal_url'].'" class="btn btn-success-outline" target="_blank">Purchase Tickets</a>' ;
+    }
+
+    $share_button .= '<a href="#" data-title="'.$title.'" data-id="'.$id.'" class="btn fa fa-share-alt share-promo-button"></a>';
+
+    if (isset($desc)) {
+      $res .="<p class='promo-description' >".$desc."<br>{$share_button}</p>";
+    }
+ 
+    $attached_files = explode(", ", $attached_files);
+    $res.='<ol class="audio-player-playlist">';
+    if (!$status==NULL && $status=='public') {
+      foreach ($attached_files as $value) {
+        $res .=''.$this->display_promo_public_controls(trim($value), $desc).'';
+      }
+    } else {
+      foreach ($attached_files as $value) {
+        $res .=''.$this->display_promo_file_controls(trim($value), $desc).'';
+      }
+    }
+    $res.='</ol>';
+    return $res;
+  }
+
+
   public function getVideosByUser($user_name='', $limit=6) {
 
     include(ROOT.'inc/connection.php');
       //echo '<pre>';
-    $result_stats = mysqli_query($con,"SELECT * FROM `images` WHERE `user_name` LIKE '%$user_name%' AND `image` LIKE '%.mp4%' ORDER BY `id` DESC LIMIT $limit");
+    $result_stats = mysqli_query($con,"SELECT * FROM `feed` WHERE `user_name` LIKE '%$user_name%' AND `type` LIKE '%blog%' ORDER BY `id` DESC LIMIT $limit");
     $i=0;
     while($row = mysqli_fetch_assoc($result_stats)) {
         //print_r($row);
@@ -2365,6 +2493,95 @@ public function getUserInfo($user_name) {
               $photos .="<label id='title-id-".$value['id']."' class='file_name editable-promo' >".$value['title']."</label>";
               $photos .="<label class='file_name text-muted'>".$value['stats']."</label>";
               $photos .= '<video class="user-video-item" controls preload="metadata" src="'.$value['image'].'">';
+              break;
+            case 'mp3':
+              $photos .="<label id='title-id-".$value['id']."' class='file_name editable-promo' >".$value['title']."</label>";
+              $photos .= "<a href='#' id='controls-".$value['id']."' class='controls-play' ".'data-src="'.$value['image'].'" data-title="'.$value['title'].'" style="background-image:url(\''.$value['poster'].'\');" '."><i class='promotion-player-button fa fa-play-circle'></i></a>";
+              break;
+            case 'png' OR 'jpeg' OR 'jpg':
+              $photos .="<label id='title-id-".$value['id']."' class='file_name editable-promo' >".$value['title']."</label>";
+              $photos .="<label class='file_name'>".$value['stats']." views</label>";
+              $photos .= '<a href="http://freelabel.net/users/index/image/'.$value['id'].'" ><img class="user-photo-item" src="'.$thumbnail.'"></a>';
+              $photos .="<br><label class='file_name'>Tags:</label><label id='desc-id-".$value['id']."' class='file_name editable-promo text-hjh' >".$value['desc']."</label>";
+              // $photos .="<br><label class='file_name'>Caption:</label><label id='caption-id-".$value['id']."' class='file_name editable-promo text-muted' >".$value['caption']."</label>";
+              // $photos .="<br><label class='file_name'>Status:</label><label id='caption-id-".$value['id']."' class='file_name text-muted' ><select><option selected>Public</option><option>Private</option></select></label>";
+              $photos .= '<ol>';
+              $photos .= $this->display_attached_files($value['files_attached']);
+              $photos .= '</ol>';
+              break;
+            default:
+              //print_r($value['image']);
+              if (strpos($value['image'] , 'mp4')>0) {
+                $photos .="<label id='promo-id-".$value['id']."' class='file_name editable-promo'>".$value['title']."</label>";
+                //$photos .= '<video class="user-photo-item" controls preload="metadata" src="'.$value['image'].'">';
+                // $photos .= '<img class="user-photo-item" src="'.$value['image'].'">';
+              } else {
+                $photos .="<label id='promo-id-".$value['id']."' class='file_name editable-promo'>".$value['title']."</label>";
+                // $photos .= 'files: '.$value['files_attached'];
+                $photos .= '<ol>';
+                $photos .= $this->display_attached_files($value['files_attached']);
+                $photos .= '</ol>';
+              }
+            break;
+          }
+          $photos .='</article>';
+        }
+    } else {
+         $photos .= "<article class='full-width-article ".$colWidth." col-xs-12 eq-row-height' data-promo-id='".$value['id']."'>";
+         $photos .='<h2 class="text-warning">You have no promos created :(</h2>';
+         $photos .='<p class="section-description">You\'ll need to create a new promotion with the green "Add New Promo" button at the top!</p>';
+         $photos .='</article>';
+
+        $photos .= "<article class='full-width-article ".$colWidth." col-xs-12 eq-row-height' data-promo-id='".$value['id']."'>";
+         $photos .='<h2 class="text-info">What are Promos?</h2>';
+         $photos .='<p class="section-description">Promotions are categories, playlists, albums, or events that you can attach tracks, videos, photos and more all in one place!</p>';
+         $photos .='</article>';
+
+    }
+    /* pagination */
+    $count = count($data);
+    if ($count == 6) {
+      $next_page = $page + 1;
+      $photos .='<a onclick="promos('.$next_page.',\''.$tag.'\')" class="col-md-12 btn btn-block btn-link load-more-button">Load More</a>';
+    }
+      
+    return $photos;
+  }
+
+
+
+  public function display_feed($data , $featured=false, $page=0, $tag=null) {
+    $photos = '';
+    if ($featured==true) {
+      $colWidth = 'col-md-12';
+    } else {
+      $colWidth = 'col-md-6';
+    }
+    // var_dump($data);
+
+    if (isset($data)) {
+        foreach ($data as $key => $value) {
+          // load thumbnail 
+          $thumbnail =  str_replace('server/php/upload/', 'server/php/upload/thumb/', $value['photo']);
+          if (file_exists($thumbnail)) {
+            $thumbnail = $thumbnail;
+          } else {
+            $thumbnail = $value['photo'];
+          }
+          $photos .= "
+          <article class='full-width-article ".$colWidth." col-xs-12 eq-row-height' data-promo-id='".$value['id']."'>";
+    
+          $type = $this->detect_type($value['trackmp3']);
+          switch (strtolower($type)) {
+            case 'mp4':
+              $photos .="<label id='title-id-".$value['id']."' class='file_name editable-promo' >".$value['blogtitle']."</label>";
+              $photos .="<label class='file_name text-muted'>".$value['views']."</label>";
+              $photos .= '<video class="user-video-item" controls preload="metadata" src="'.$value['trackmp3'].'" poster="'.$value['poster'].'"></video>';
+              $photos .='<div class="dropdown"><i class="pull-left fa fa-share-alt dropdown-toggle" data-toggle="dropdown"></i>';
+              $photos .='<ul class="dropdown-menu">';
+              $photos .= $this->getShareButtonsList($value['id']);
+              $photos .='</ul></div>';
+
               break;
             case 'mp3':
               $photos .="<label id='title-id-".$value['id']."' class='file_name editable-promo' >".$value['title']."</label>";
@@ -2532,6 +2749,71 @@ public function display_promo_playlist($data , $featured=false, $public=false) {
                     // $photos .= '<ol>';
 
                     $photos .= $this->display_attached_files($value['files_attached'], 'public', $value['caption'], $value['title'], $value['id'], $value);
+                    // $photos .= '</ol>';
+                  // $photos .= '</panel>';
+                  break;
+                default:
+                  if (strpos($value['image'] , 'mp4')>0) {
+                    $photos .="<h2 id='promo-id-".$value['id']."' class='promo-title editable-promo'>".$value['title']."</h2>";
+                  } else {
+                    $photos .="<h2 id='promo-id-".$value['id']."' class='promo-title editable-promo'>".$value['title']."</h2>";
+                    $photos .="<h2 id='promo-id-".$value['id']."' class='promo-subtitle editable-promo'>".$value['desc']."</h2>";
+                    $photos .= '<ol>';
+                    $photos .= $this->display_attached_files($value['files_attached'], 'public');
+                    $photos .= '</ol>';
+                  }
+                break;
+              }
+            }
+      } else {
+        $photos  .='No Promotion Found';
+      }
+    return $photos;
+  }
+
+
+
+public function display_promo_playlist_single($data , $featured=false, $public=false) {
+    $photos = '';
+    if ($featured==true) {
+      $colWidth = 'col-md-12';
+    } else {
+      $colWidth = 'col-md-6';
+    }
+
+    if (isset($data)) {
+        foreach ($data as $key => $value) {
+              // load thumbnail 
+              $thumbnail =  str_replace('server/php/files/', 'server/php/files/thumbnail/', $value['image']);
+              $photos .= "";
+              $type = $this->detect_type($value['image']);
+              //$photos .= ''.$this->display_promo_options($value['id'], $user_name , $value['image'], $value['description']);
+              switch (strtolower($type)) {
+                case 'mp4':
+                  $photos .="<h2 id='title-id-".$value['id']."' class='promo-title editable-promo' >".$value['title']."</h2>";
+                  $photos .="<h2 id='promo-id-".$value['id']."' class='promo-subtitle editable-promo'>".$value['desc']."</h2>";
+                  // $photos .= '<video class="user-video-item" controls preload="metadata" src="'.$value['image'].'">';
+                  $photos .= "<video href='#' id='controls-".$value['id']."' class='controls-play' ".'poster="'.$value['image'].'" data-title="'.$value['title'].'" style="background-image:url(\''.$value['poster'].'\');" '.">";
+                  break;
+                case 'mp3':
+                  // $photos .="<h2 id='title-id-".$value['id']."' class='promo-title editable-promo' >".$value['title']."</h2>";
+                  // $photos .="<h2 id='promo-id-".$value['id']."' class='promo-subtitle editable-promo'>".$value['desc']."</h2>";
+                  $photos .= "<a href='#' id='controls-".$value['id']."' class='controls-play' ".'data-src="'.$value['trackmp3'].'" data-title="'.$value['title'].'" style="background-image:url(\''.$value['poster'].'\');" '."><i class='promotion-player-button fa fa-play-circle'></i></a>";
+                  break;
+                case 'png' OR 'jpeg' OR 'jpg':
+                
+                    $photos .="<h2 id='title-id-".$value['id']."' class='promo-title editable-promo' >".$value['title']."</h2>";
+                    // $photos .="<p id='promo-id-".$value['id']."' class='promo-subtitle editable-promo'>".$value['caption']."</p>";
+                  // $photos .= '<panel class="col-md-7col-xs-12">';
+                    $photos .= '<a href="http://freelabel.net/users/index/image/'.$value['id'].'" ><img class="user-photo-item" src="'.$thumbnail.'"></a>';
+                    $photos .="<br><label class='file_name'>Tags:</label><label id='desc-id-".$value['id']."' class='file_name editable-promo text-muted' >".$value['desc']."</label>";
+                  // $photos .= '</panel>';
+                  // $photos .= '<panel class="col-md-5 col-xs-12">';
+                  
+      
+                    // $photos .= '<ol>';
+
+                    $photos .= $this->display_attached_files_single($value['files_attached'], 'public', $value['caption'], $value['title'], $value['id'], $value);
                     // $photos .= '</ol>';
                   // $photos .= '</panel>';
                   break;
@@ -2929,8 +3211,8 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
       case true:
         // $site['map'][] = array('title' => 'Home' , 'path'=>'index/index', 'icon'=>'home' );
         $site['map'][] = array('title' => 'Dashboard' , 'path'=>'dashboard/', 'icon'=>'archive'  );
-        $site['map'][] = array('title' => 'Ideas' , 'path'=>'note/', 'icon'=>'pictures'  );
-        $site['map'][] = array('title' => 'Promos' , 'path'=>'index/promos', 'icon'=>'archive'  );
+        // $site['map'][] = array('title' => 'Ideas' , 'path'=>'note/', 'icon'=>'pictures'  );
+        $site['map'][] = array('title' => 'Promos' , 'path'=>'dashboard/?ctrl=promos', 'icon'=>'archive'  );
         $site['map'][] = array('title' => 'Radio' , 'path'=>'index/radio', 'icon'=>'archive'  );
         $site['map'][] = array('title' => 'Settings' , 'path'=>'login/showprofile', 'icon'=>'cog'  );
         $site['map'][] = array('title' => 'Upload' , 'path'=>'upload/?uid='.$user_name, 'icon'=>'download' );
@@ -2960,10 +3242,11 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
     //echo $user_name;
     if ($user_name == 'admin' 
       OR $user_name == 'AlexMayo' 
-      OR $user_name == 'thatdudewayne'
-      OR $user_name == 'desertwxlf') {
+      // OR $user_name == 'thatdudewayne'
+      OR $user_name == 'DESERTWXLF') {
         $site['map'][] = array('title' => 'Admin' , 'path'=>'dashboard/admin', 'icon'=>'cog'  );
         $site['map'][] = array('title' => 'Development' , 'path'=>'dashboard/dev', 'icon'=>'cog'  );
+        $site['map'][] = array('title' => 'Site' , 'path'=>'index/menu', 'icon'=>'cog'  );
     }
     foreach ($site['map'] as $page) {
 
@@ -3046,6 +3329,29 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
     return $str;
   }
 
+
+
+  public function formatBlogEntry($writeup) {
+    if(strpos($writeup, 'livemixtapes')) {
+      $writeup = '<iframe src="'.$writeup.'" width="100%" height="450px" frameborder=0 seamless></iframe>';
+    } elseif(strpos($writeup, 'youtube')) {
+      $writeup = '<iframe src="'.$writeup.'" width="100%" height="450px" frameborder=0 seamless></iframe>';
+    } elseif(strpos($writeup, 'soundcloud')) {
+      $writeup = '<iframe src="'.$writeup.'" width="100%" height="450px" frameborder=0 seamless></iframe>';
+    }elseif(strpos($writeup, 'datpiff')) {
+      //echo 'datpiff';
+      $writeup = '<iframe src="'.$writeup.'" width="100%" height="450px" frameborder=0 seamless></iframe>';
+    }elseif(strpos($writeup, 'audiomack')) {
+      //echo 'datpiff';
+      $writeup = '<iframe src="'.$writeup.'" width="100%" height="450px" frameborder=0 seamless></iframe>';
+    } else {
+      //$writeup =  'not found';
+    }
+    return $writeup;
+  }
+
+
+
   public function datePosted( $ptime ) {
     date_default_timezone_set('America/Chicago');
     $estimate_time = time() - $ptime;
@@ -3095,6 +3401,54 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
 
 
 
+  public function getUsers() {
+    include(ROOT.'inc/huge.php');
+    // var_dump($con);
+    $query = "SELECT * FROM  `users` ORDER BY `user_id` DESC";
+    $result = mysqli_query($con,$query);
+    while($row = mysqli_fetch_assoc($result)) {
+      $users[] = $row;
+    }
+
+    return $users;
+  }
+
+  public function getFollowing($user_name) {
+    include(ROOT.'inc/connection.php');
+    // var_dump($con);
+    $query = "SELECT * FROM  `relationships` WHERE `user_name` = '$user_name' ORDER BY `date_created` DESC";
+    $result = mysqli_query($con,$query);
+    while($row = mysqli_fetch_assoc($result)) {
+      $users[] = $row;
+    }
+
+    return $users;
+  }
+
+  public function getMessages($user_name) {
+    include(ROOT.'inc/connection.php');
+    // var_dump($con);
+    $query = "SELECT * FROM  `messages` WHERE `sender` = '$user_name' OR `receiver` = '$user_name' ORDER BY `date_created` DESC";
+    $result = mysqli_query($con,$query);
+    while($row = mysqli_fetch_assoc($result)) {
+      $users[] = $row;
+    }
+
+    return $users;
+  }
+
+
+  public function unfollow($data) {
+    $user_name = $data['user_name'];
+    $following = $data['following'];
+    include(ROOT.'inc/connection.php');
+    // var_dump($con);
+    $query = "DELETE FROM  `relationships` WHERE `user_name` = '$user_name' AND `following` = '$following' ";
+    $result = mysqli_query($con,$query);
+    return $result;
+  }
+
+
 
   public function debug($data, $esc=FALSE) {
 
@@ -3141,6 +3495,20 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
   }
 
 
+  public function getStatsByID($post_id) {
+
+    include(ROOT.'inc/connection.php');
+    $query = "SELECT * FROM  `feed` WHERE  `id` = '$post_id' ORDER BY `id` DESC";
+    $result = mysqli_query($con,$query);
+    $count=0;
+    while($row = mysqli_fetch_assoc($result)) {
+      $count = $count + $row['views'];
+    }
+    $count='<div class="post-item-stats">
+                <span class="fa fa-eye text-icon" style="margin-right:1%;"></span>'.$count.' Views
+              </div>';
+    return $count; 
+  }
 
   public function getStatsByUser($user_name , $range='total') {
     include(ROOT.'inc/connection.php');
