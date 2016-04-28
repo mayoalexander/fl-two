@@ -13,14 +13,15 @@
                 $params[] = array('name'=>'user_password', 'id'=>'user_password','label'=>'Enter Password..','type'=>'password');
                 // $params[] = array('name'=>'user_password', 'id'=>'user_password','label'=>'Login');
                 echo $config->build_input($params); ?>
+
+
+
+                <input name="submit" class="btn btn-success-outline btn-block login-button" type="submit" value="Login">
                 <div class='remember-me-wrapper'>
                     <input type="checkbox" name="user_rememberme" class="remember-me-checkbox" />
                     <label class="remember-me-label">Keep Me Logged-in</label>
                 </div>
-
-
-                <input name="submit" class="btn btn-success-outline btn-block" type="submit" value="Login">
-
+                <hr>
                 <a href="<?php echo URL; ?>login/register">Register</a> | <a href="<?php echo URL; ?>login/requestpasswordreset">Forgot my Password</a>
 
             </form>

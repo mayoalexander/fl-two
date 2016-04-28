@@ -461,6 +461,10 @@
     .promotion-player-button {
       font-size:3em;
     }
+    .login-button {
+      border-top-left-radius:0px;
+      border-top-right-radius:0px;
+    }
     .load-more-button {
       color:#303030;
     }
