@@ -125,8 +125,16 @@
     <script src="http://freelabel.net/landing/view/tabs/js/modernizr.custom.js"></script>
     <script src="http://freelabel.net/js/list.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="<?php echo HTTP; ?>js/application.js"></script>
+    <script type="text/javascript" src="<?php echo HTTP; ?>js/application.js"></script> 
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+      ga('create', 'UA-40470023-1', 'auto');
+      ga('send', 'pageview');
+    </script>
 
     
     <style type="text/css">
@@ -171,6 +179,10 @@
     .lead_control {
       border-radius: 0;
       background-color:#202020;
+    }
+    .lead-container {
+      height:550px;
+      overflow-y: scroll;
     }
     .editable input , .editable textarea , .editable input:focus,
     .editable-file input , .editable-file textarea , .editable-file input:focus,

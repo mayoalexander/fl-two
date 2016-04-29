@@ -11,6 +11,45 @@ $numb_soms_sent = count($result->fetchAll());
 $leads_conversion = new Config();
 
 
+/* DETECT HOW MANY POSTS CREATED TODAY */
+$posted_today = null;
+$tp = $config->getPostsByUser(0,1,'admin');
+foreach ($tp as $post) {
+    $post_date = date('m-d',strtotime($post['submission_date']));
+    $todays_date2 = date('m-d');
+    if ($post_date===$todays_date2) {
+        $posted_today = true;
+    }
+}
+if ($posted_today===true) {
+    $status[] = '<span class="text-success">BLOGS POSTED TODAY!</span>';
+} else {
+    $status[] = '<span class="text-danger">NOT POSTED TODAY!</span>';
+}
+
+
+/* DETECT HOW MANY PROMOS POSTED TO DAY */
+$posted_today = null;
+$tpr = $config->getPromosByUser('admin',0);
+// $config->debug($tpr,1);
+foreach ($tpr as $promo) {
+    $post_date = date('m-d',strtotime($promo['date_created']));
+    $todays_date2 = date('m-d');
+    if ($post_date===$todays_date2) {
+        $posted_today = true;
+    }
+}
+if ($posted_today===true) {
+    $status[] = '<span class="text-success">PROMOS CREATED TODAY!</span>';
+} else {
+    $status[] = '<span class="text-danger">NO PROMOS CREATED TODAY</span>';
+}
+
+/* DETECT HOW MANY CLIENTS SIGNED UP TODAY */
+
+
+
+
 /*
  * BUILD SOM ALERTS
  */
@@ -89,8 +128,8 @@ foreach ($leads as $key => $value) {
     $lead_build .= '
     <li class="list-group-item complete">
         <span class="label pull-left"><a class="fa fa-comment lead-response-button" href="#" data-id="'.$key.'"></a></span>
-        <span class="label pull-right lead-twitter-name" data-user="'.$key.'">[<a href="http://twitter.com/@'.$key.'" target="_blank">@'.$key.'</a>]</span>
-        <span class="pull-left icon-status status-completed">'.count($value).'</span>'.$value[0].'
+        <span class="label pull-right lead-twitter-name" data-user="'.$key.'">[<a href="http://twitter.com/@'.$key.'" target="_blank">@'.$key.'</a>] ['.count($value).']</span>
+        <span class="pull-left icon-status status-completed"></span>'.$value[0].'
     </li>';
 }
 $lead_build.='</ul>
@@ -170,7 +209,7 @@ $data.='</ul>
 	<div class="col-md-4">
 		<?php echo $data; ?>
 	</div>
-	<div class="col-md-8">
+	<div class="col-md-8 lead-container">
 		<?php echo $lead_build; ?>
 	</div>
 </div>

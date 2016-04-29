@@ -105,6 +105,26 @@ $current_page = '0';
       padding-left:0;
       padding-right:0;
     }
+    .display-3 {
+      font-size: 3rem;
+    }
+    .promo-feed .page-header, .main-feed .page-header {
+      font-size: 2em;
+      margin: 0;
+      font-weight:700;
+      margin-left: 0.34em;
+    }
+    .promo-title-head {
+      padding-left:1em;
+      padding-right:1em;
+    }
+    .promo-panel .btn, .page-header {
+      display: inline-block;
+    }
+    .btn {
+      padding: 1.5em;
+      font-size: 0.5em;
+    }
   }
 </style>
 <header class="jumbotron feature bg-inverse text-center center-vertically" role="banner">
@@ -120,39 +140,11 @@ $current_page = '0';
 
 
 
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://public.radio.co/playerapi/jquery.radiocoplayer.min.js"></script>
-
-<section class="site-break dropdown" >
-  <div class="container" style="max-width:500px;">
-      <hr>
-      <h1 class="display-3"><button class="radio-menu player-trigger audio-player-title btn btn-secondary-outline"><i class="fa fa-circle-o-notch fa-spin"></i> Loading</button> FLRADIO</h1>
-      <h2 class="radioplayer"
-      data-elapsedtime="false"
-      data-showartwork="false"
-      data-showplayer="false"
-      data-volumeslider="false"
-      data-src="http://streaming.radio.co/s95fa8cba2/listen"
-      data-nowplaying="true"></h2></center>
-      <input type="range" id="volume-meter"></input>
-      
-      <br><br>
-  </div>
-  <script>$('.radioplayer').radiocoPlayer();</script>
-<!-- <script type="text/javascript" src="http://freelabel.net/js/radio.js"></script> -->
-
-
-  <!-- <span class="page-title">Stay Connected. Subscribe to FREELABEL Magazine</span> -->
-<!--   <a class="btn btn-secondary-outline dropdown-toggle" href="http://twitter.com/@freelabelnet" target="_blank"><i class="fa fa-twitter" ></i> Follow Us</a> -->
-<!--   <ul class="dropdown-menu">
-    <li><a href="#">HTML</a></li>
-    <li><a href="#">CSS</a></li>
-    <li><a href="#">JavaScript</a></li>
-  </ul> -->
-</section>
-
 
 <section class="container">
+
+
+
 
 
     <section class="container col-md-3 promo-feed">
@@ -206,6 +198,34 @@ $current_page = '0';
   </panel>
 </nav>
 
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://public.radio.co/playerapi/jquery.radiocoplayer.min.js"></script>
+
+<section class="site-break dropdown" >
+  <div class="container" style="max-width:500px;">
+      <hr>
+      <h1 class="display-3"><button class="radio-menu player-trigger audio-player-title btn btn-secondary-outline"><i class="fa fa-circle-o-notch fa-spin"></i> Loading</button> FLRADIO</h1>
+      <h2 class="radioplayer"
+      data-elapsedtime="false"
+      data-showartwork="false"
+      data-showplayer="false"
+      data-volumeslider="false"
+      data-src="http://streaming.radio.co/s95fa8cba2/listen"
+      data-nowplaying="true"></h2></center>
+      <input type="range" id="volume-meter"></input>
+      
+      <br><br>
+  </div>
+  <script>$('.radioplayer').radiocoPlayer();</script>
+</section>
 
 
 

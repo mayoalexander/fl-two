@@ -127,7 +127,15 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="<?php echo HTTP; ?>js/application.js"></script>
 
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+      ga('create', 'UA-40470023-1', 'auto');
+      ga('send', 'pageview');
+    </script>
     
     <style type="text/css">
     /* INTEGRATE INTO CSS FILE */
@@ -276,8 +284,6 @@
       background-size:100%;
       margin-bottom: 4vh;
       transition: height 1s;
-      /*left: 50px;*/
-      /*top: 50px;*/
     }
     .edit-options-hidden {
       display: none;
@@ -547,7 +553,7 @@
 
 
     }
-    .jumbotron .container , .modal {
+   .modal {
       margin-top: 20vh;
     }
     .modal-content {
@@ -689,6 +695,14 @@
       .jumbotron {
         background-position:center top ;
         width:100vw;
+        padding:0;
+      }
+      .jumbotron .container {
+        padding-top:10em;
+        min-height: 100vh;
+      }
+      .jumbotron .header-description {
+        font-size:0.7em;
       }
       .post-image {
         /*width:100%;*/

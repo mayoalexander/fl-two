@@ -66,10 +66,10 @@
             list-style-type: none;
         }
         .codrops-header {
-            background-position:center top;
-            background-size:auto 100vh;
+            background-position:center center;
+            background-size:100vw auto;
 
-            background-image:url('<?php echo $site["media"]["photos"][0]["image"]; ?>');
+            background-image:url('<?php echo $site["media"]["studio"][0]["image"]; ?>');
         }
         .marketing-area {
             background-position:center top;
@@ -79,7 +79,7 @@
         .pricing-area {
             background-position:center top;
             background-size:100% auto;
-            background-image:url('<?php echo $site["media"]["photos"][3]["image"]; ?>');
+            /*background-image:url('<?php echo $site["media"]["photos"][3]["image"]; ?>');*/
         }
         .freetrial-area {
             background-position:center top;
@@ -244,9 +244,9 @@ Leverage upcoming Slyde™ tools to monetize music and performances, and gain va
                     <div class="pricing__price"><span class="pricing__currency">$</span>FREE<span class="pricing__period">/ First Day</span></div>
                     <ul class="pricing__feature-list">
                         <li class="pricing__feature">Upload and Download Unlimited Songs, Videos, Interviews, Radio Shows, Magazine Issues, Exclusve Music & much more..</li>
-                        <li class="pricing__feature">Radio + Magazine App</li>
-                        <li class="pricing__feature">Post Directly FREELABEL Social Network Profiles</li>
-                        <li class="pricing__feature">Create Promotions to Showcase full Albums or Projects.</li>
+                        <li class="pricing__feature">Upload Music, Videos, & Photos to your Profile</li>
+                        <li class="pricing__feature">Front Page and Magazine Features</li>
+                        <li class="pricing__feature">Submit Music for Project and Showcase Placement.</li>
                     </ul>
                     <button class="pricing__action" data-type="lite" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
                 </div>
@@ -257,8 +257,8 @@ Leverage upcoming Slyde™ tools to monetize music and performances, and gain va
                     <div class="pricing__price"><span class="pricing__currency">$</span>59<span class="pricing__period">/ month</span></div>
                     <ul class="pricing__feature-list">
                         <li class="pricing__feature">Includes Trial Features</li>
-                        <li class="pricing__feature">24/7 Radio Rotation</li>
                         <li class="pricing__feature">Magazine + Radio Interviews</li>
+                        <li class="pricing__feature">24/7 Radio Rotation</li>
                         <li class="pricing__feature">Free Entry into FREELABEL Events</li>
                         <li class="pricing__feature">Full Project Streams</li>
                         <li class="pricing__feature">Full One-Hour Radio Show Broadcasting Your Projects Live On-air</li>
