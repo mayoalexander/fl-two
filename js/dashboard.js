@@ -223,6 +223,8 @@ $(function() {
               globalAudioPlayer.attr('src', audioFile);
               $(this).addClass('now-playing');
     }
+
+
     //  ---------- play button ------------ /
     $('.controls-play').click(function(event){
 
@@ -240,6 +242,7 @@ $(function() {
       var nowpaused = '<i class="fa fa-pause"></i>';
       var playIcon = '<i class="fa fa-play"></i>';
       var pauseIcon = '<i class="fa fa-pause"></i>';
+      var loadingIcon = '<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw margin-bottom"></i>';
 
       // get next song
       var nextsong = $(this).parent().parent().next();
@@ -251,23 +254,25 @@ $(function() {
       globalButtons.html(playIcon); // * 
       
       var elem = $(this);
+      // loading icon 
+      elem.html(loadingIcon);
       // detect if audio is playing or not
       if (isPlaying(globalAudioPlayer[0])==false) {
         stopAllAudio();
         // play file
         updateView(elem , globalAudioPlayer[0], globalAudioPlayerText,audioTitle ,audioFile, true );
-        console.log('first?');
+        // console.log('first?');
 
       } else if (isPlaying(globalAudioPlayer[0])==true && audioFile !== globalAudioPlayer[0].src) {
         // pause function
         stopAllAudio();
         updateView(elem , globalAudioPlayer[0], globalAudioPlayerText,audioTitle ,audioFile );
-        console.log('second?');
+        // console.log('second?');
 
       } else {
         stopAllAudio();
         updateView(elem , globalAudioPlayer[0], globalAudioPlayerText,audioTitle ,audioFile ,false);
-        console.log('third?');
+        // console.log('third?');
         // $(this).html('<i class="fa fa-play"></i>');
         // globalAudioPlayer[0].pause();
       }

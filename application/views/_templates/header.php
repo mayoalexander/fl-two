@@ -311,9 +311,13 @@
     }
     .video-play-button {
       position: absolute;
-      padding:10%;
+      padding:2.2em;
       text-align: center;
       width:100%;
+      cursor:pointer;
+    }
+    video {
+      cursor:pointer;
     }
     .main_wrapper {
       padding: 6%;
@@ -689,6 +693,9 @@
       display: inline-block;
       width:100%;
       border: #FE3F44 1px solid;
+    }
+    .play-button-trigger {
+      font-size: 5em;
     }
 
     @media (max-width: 600px) {

@@ -125,7 +125,8 @@
     <script src="http://freelabel.net/landing/view/tabs/js/modernizr.custom.js"></script>
     <script src="http://freelabel.net/js/list.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="<?php echo HTTP; ?>js/application.js"></script> 
+    <script type="text/javascript" src="<?php echo HTTP; ?>js/application.js"></script>
+
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -135,7 +136,6 @@
       ga('create', 'UA-40470023-1', 'auto');
       ga('send', 'pageview');
     </script>
-
     
     <style type="text/css">
     /* INTEGRATE INTO CSS FILE */
@@ -179,10 +179,6 @@
     .lead_control {
       border-radius: 0;
       background-color:#202020;
-    }
-    .lead-container {
-      height:550px;
-      overflow-y: scroll;
     }
     .editable input , .editable textarea , .editable input:focus,
     .editable-file input , .editable-file textarea , .editable-file input:focus,
@@ -242,8 +238,7 @@
     }
     .jumbotron {
       text-shadow:1px 1px 50px #101010;
-    } 
-
+    }
     .dark-bg {
       color:#101010;
     }
@@ -260,7 +255,6 @@
     .audio-player-playlist {
       /*height:30vh;*/
       /*overflow-y:scroll;*/
-      text-align: left;
     }
     .controls-play , .user-video-item {
       border-radius: 0px;
@@ -269,10 +263,7 @@
       display: block;
       margin-bottom: 50px;
     }
-    .playlist-img {
-      width:50px;
-      height:auto;
-    }
+
     .seamless {
       padding-left:0;
       padding-right:0;
@@ -293,8 +284,6 @@
       background-size:100%;
       margin-bottom: 4vh;
       transition: height 1s;
-      /*left: 50px;*/
-      /*top: 50px;*/
     }
     .edit-options-hidden {
       display: none;
@@ -473,10 +462,6 @@
     .promotion-player-button {
       font-size:3em;
     }
-    .login-button {
-      border-top-left-radius:0px;
-      border-top-right-radius:0px;
-    }
     .load-more-button {
       color:#303030;
     }
@@ -560,10 +545,15 @@
       width:100%;
     }
     .main-feed {
-      padding-top:5em;
+      padding-top:5%;
       min-height: 100vh;
+
+
+
+
+
     }
-    .jumbotron .container , .modal {
+   .modal {
       margin-top: 20vh;
     }
     .modal-content {
@@ -700,11 +690,22 @@
       width:100%;
       border: #FE3F44 1px solid;
     }
+    .play-button-trigger {
+      font-size: 5em;
+    }
 
     @media (max-width: 600px) {
       .jumbotron {
         background-position:center top ;
         width:100vw;
+        padding:0;
+      }
+      .jumbotron .container {
+        padding-top:10em;
+        min-height: 100vh;
+      }
+      .jumbotron .header-description {
+        font-size:0.7em;
       }
       .post-image {
         /*width:100%;*/

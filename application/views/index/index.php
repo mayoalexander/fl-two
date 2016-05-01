@@ -55,6 +55,7 @@ $current_page = '0';
   .display-3 {
     font-weight: 700;
   }
+
   .featured-ad {
     padding-top: 2em;
     overflow: hidden;
@@ -118,10 +119,10 @@ $current_page = '0';
       padding-left:1em;
       padding-right:1em;
     }
-    .promo-panel .btn, .page-header {
-      display: inline-block;
+    .view-promo-button {
+      margin-left: 2em;
     }
-    .btn {
+    .m-b-md {
       padding: 1.5em;
       font-size: 0.5em;
     }
@@ -142,12 +143,7 @@ $current_page = '0';
 
 
 <section class="container">
-
-
-
-
-
-    <section class="container col-md-3 promo-feed">
+  <section class="container col-md-3 promo-feed">
           <h2 class="page-header clearfix"><span class="pull-left">Promos</span></h2>
         <?php 
           foreach ($site['media']['photos']['ads'] as $key => $site) {
@@ -155,17 +151,16 @@ $current_page = '0';
                     <span class='text-muted'>".$site['type']."</span>
                     <a href=\"http://freelabel.net/users/index/image/".$site['id']."\"><img src=\"".$site['image']."\"></a>
                     <h5 class='promo-title-head text-muted'>".$site['title']."</h5>
-                    <a href=\"http://freelabel.net/users/index/image/".$site['id']."\" class=\"btn btn-secondary-outline m-b-md\">View Now</a>
+                    <a href=\"http://freelabel.net/users/index/image/".$site['id']."\" class=\"btn btn-secondary-outline m-b-md view-promo-button\">View Now</a>
                   </panel>";
           }
         ?>
   </section> 
-
   <section id='section-linemove-1' class="container page-header main-feed col-md-9">
-          <?php $files = $config->display_user_posts_new('admin' , $current_page);
+          <?php 
+          $files = $config->display_user_posts_new('admin' , $current_page);
           echo $files['posts']; ?>
   </section>
-
 </section>
 
 
@@ -182,19 +177,16 @@ $current_page = '0';
     <h1>SOMETHING IS ALWAYS GOING ON.</h1>
     <!-- current-promo advertisement --> 
 
-
       <div class="col-md-9">
         <h2 class='text-muted'><?php echo $site['media']['photos']['ads'][1]['title'] ; ?></h2>
         <p><?php echo $site['media']['photos']['ads'][0]['caption'] ; ?></p>
         <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][0]['id'] ; ?>" class="btn btn-secondary-outline m-b-md">View Now</a>
       </div>
 
-
       <div class="col-md-3">
         <a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['ads'][1]['id'] ; ?>"><img src="<?php echo $site['media']['photos']['ads'][1]['image'] ; ?>"></a>
       </div>
 
-      
   </panel>
 </nav>
 
