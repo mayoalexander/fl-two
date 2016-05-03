@@ -1,4 +1,5 @@
 <?php
+
 if (isset($user_name_session) == false) {
     if (isset($_SESSION['user_name'])) {
       $user_name_session = $_SESSION['user_name'];
@@ -21,7 +22,8 @@ $rss_feed = array(/*'http://freelabelmagazine.wordpress.com/rss',
   // 'http://freelabelnet.tumblr.com/rss',
 	// 'http://www.dirty-glove.com/feed/',
   	'http://trapsntrunks.com/feed/',
-	'http://www.saycheesetv.com/feed/',
+	  'http://www.saycheesetv.com/feed/',
+    'http://www.gullysteez.com/rss',
   	'http://www.dancingastronaut.com/feed/',
     'http://www.hiphopsmission.com/feed/',
   	'http://feeds.feedburner.com/256up?format=xml',
@@ -36,7 +38,7 @@ $rss_feed = array(/*'http://freelabelmagazine.wordpress.com/rss',
   );
  
 
-echo "<button onclick=\"loadPage('http://freelabel.net/rssreader/index.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\"  alt='RSS'  class='btn btn-default lead_control widget_menu' alt='Navigation'>Admin Posts</button>";
+// echo "<button onclick=\"loadPage('http://freelabel.net/rssreader/index.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\"  alt='RSS'  class='btn btn-default lead_control widget_menu' alt='Navigation'>Admin Posts</button>";
 echo "<button onclick=\"window.open('http://freelabel.net/drive/plus.php?uid=".$user_name_session."')\"  alt='Upload'  class='btn btn-social btn-facebook lead_control widget_menu' alt='Navigation'>Upload</button>";
 
 echo '<hr>';
