@@ -295,6 +295,20 @@ class Dashboard extends Controller
 
 
 
+    function updateLeadCount() {
+        include_once('/home/content/59/13071759/html/config/index.php');
+        $config = new Blog();
+        $res = $config->updateLeadCount($_POST['lead_id'], $_POST['count']);
+        if ($res) {
+            echo 'Unfollowed!';
+        } else {
+            echo 'Error!!';
+        }
+    }
+
+
+
+
 
 
     function delete_promo_file($id) {

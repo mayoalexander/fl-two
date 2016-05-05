@@ -42,9 +42,11 @@
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="text" id="user_name" name="user_name" class="form-control" placeholder="Choose Username.." required autofocus>
         <input type="text" id="user_email" name="user_email" class="form-control" placeholder="Choose Email.." required autofocus>
-        <input type="text" id="user_password_new" name="user_password_new" class="form-control" placeholder="Choose Password.." required autofocus>
-        <input type="text" id="user_password_repeat" name="user_password_repeat" class="form-control" placeholder="Repeat Password.." required autofocus>
+        <input type="password" id="user_password_new" name="user_password_new" class="form-control" placeholder="Choose Password.." required autofocus>
+        <input type="password" id="user_password_repeat" name="user_password_repeat" class="form-control" placeholder="Repeat Password.." required autofocus>
 
+
+        <input type="text" id="captcha" name="captcha" class="form-control" placeholder="Enter Captcha Below.." required autofocus>
         <br>
 
         <img id="captcha" src="<?php echo URL; ?>login/showCaptcha" />
@@ -52,7 +54,6 @@
             <!-- quick & dirty captcha reloader -->
             <a href="#" onclick="document.getElementById('captcha').src = '<?php echo URL; ?>login/showCaptcha?' + Math.random(); return false">[ Reload Captcha ]</a>
         </span>
-        <input type="text" id="captcha" name="captcha" class="form-control" placeholder="Enter Captcha.." required autofocus>
 
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
@@ -69,7 +70,7 @@
 
 
 <a name="register-form"></a>
-<header class="jumbotron bg-inverse text-center center-vertically show-after-cta" role="banner" style='background-image:none;background-color:transparent;'>
+<header class="jumbotron bg-inverse text-center center-vertically show-after-cta" role="banner" style='background-image:none;background-color:transparent;display: none;'>
         <link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/inputs/css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
         <!-- <link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/inputs/css/demo.css" /> -->

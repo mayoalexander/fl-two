@@ -256,6 +256,9 @@
       /*height:30vh;*/
       /*overflow-y:scroll;*/
     }
+    .playlist-img {
+      width: 60px;
+    }
     .controls-play , .user-video-item {
       border-radius: 0px;
     }
@@ -333,6 +336,7 @@
       /*background-color:#000000;*/
       padding:2.5%;
     }
+
     .full-width-article h1 {
       font-size:2em;
     }
@@ -617,8 +621,10 @@
       border-radius:2px;
     }
     .feedback {
-      font-size:10px;
+      max-width: 100%;
+      font-size:17px;
       padding:0.6em;
+      display: inline-block;
     }
     .current-clients-container .current-clients-table {
       margin:auto;

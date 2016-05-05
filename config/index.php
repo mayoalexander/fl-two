@@ -1085,6 +1085,27 @@ class Blog
     return $res;
   }
 
+
+
+
+  public function updateLeadCount($lead_id='',$count)
+  {
+    include(ROOT.'inc/connection.php');
+    $newcount = $count+1;
+    // $sql = "UPDATE `amrusers`.`leads` SET `count`='$newcount' WHERE `leads`.`lead_twitter`='".$lead_id."' LIMIT 1";
+    $sql = "UPDATE  `amrusers`.`leads` SET  `count` = $newcount WHERE  `leads`.`lead_twitter` ='$lead_id' ";
+    $updatequery = mysqli_query($con,$sql);
+    if ($updatequery) {
+      $res = true;
+    } else {
+      $res = false;
+    }
+    // UPDATE  `amrusers`.`images` SET  `files_attached` =  '503, 502, 501, 500' WHERE  `images`.`id` =2270 LIMIT 1 ;
+    return $res;
+  }
+
+
+
   public function update($table,$col, $data, $id='')
   {
     include(ROOT.'inc/connection.php');
@@ -3785,6 +3806,8 @@ $twitter_share = "#FLMAG | ".$twitter.'
 
   public function build_input($params) {
     $output = '';
+    // var_dump($params);
+    // exit;
     foreach ($params as $value) {
       if (isset($value['type']) && $value['type']!=='') {
         $type=$value['type'];

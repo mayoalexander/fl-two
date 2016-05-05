@@ -105,10 +105,8 @@ $i = 0;
 
 while($row = mysqli_fetch_assoc($result)) {
 	$i = $i;
-	$leads[$row['lead_twitter']][] = $row['lead_name'];
+	$leads[$row['lead_twitter']][] = array('name'=>$row['lead_name'],'count'=>$row['count']);
 	$i = $i + 1;
-	//echo $i;
-	// echo $leads[$row['lead_twitter']][0].'<br>';
 }
 if ($leads==NULL) {
 	$leads['noneFound'] =  'no leads found';
@@ -122,14 +120,22 @@ if ($leads==NULL) {
 $lead_build='<div class="card card-chart">
 <ul class="list-group"><h1>Leads</h1>';
 foreach ($leads as $key => $value) {
-	// echo '<pre>';
-	// var_dump($value);
-	// echo '</pre>';
+    
+    $status = '';
+    if ($value[0]['count']===NULL) {
+        $count = 0; 
+        $status = 'status-backlog';
+    } else {
+        $count = $value[0]['count']; 
+        $status = 'status-completed';
+    }
+
+
     $lead_build .= '
     <li class="list-group-item complete">
         <span class="label pull-left"><a class="fa fa-comment lead-response-button" href="#" data-id="'.$key.'"></a></span>
-        <span class="label pull-right lead-twitter-name" data-user="'.$key.'">[<a href="http://twitter.com/@'.$key.'" target="_blank">@'.$key.'</a>] ['.count($value).']</span>
-        <span class="pull-left icon-status status-completed"></span>'.$value[0].'
+        <span class="label pull-right lead-twitter-name" data-user="'.$key.'" data-count="'.$count.'">[<a href="http://twitter.com/@'.$key.'" target="_blank">@'.$key.'</a>] <span class="text-muted">['.count($value).':'.$count.']</span></span>
+        <span class="pull-left icon-status '.$status.'"></span>'.$value[0]['name'].'
     </li>';
 }
 $lead_build.='</ul>
@@ -270,9 +276,20 @@ $data.='</ul>
         // open twitter messages 
         $('.lead-twitter-name').click(function(e){
             // e.preventDefault();
-            $(this).css('color','red');
-            var name = $(this).attr('data-user');
-            // alert(name);
+            var elem = $(this);
+            var lead_id = elem.attr('data-user');
+            var count = elem.attr('data-count');
+            var url = 'http://freelabel.net/users/dashboard/updateLeadCount';
+
+            $.post(url, {
+                lead_id : lead_id,
+                count: count
+            }, function(result){
+                elem.css('color','red');
+                var name = elem.attr('data-user');
+                // alert('okay ' + result);
+                // alert('okay ' + result);
+            });
         });
 
         // Lead Response Trigger
