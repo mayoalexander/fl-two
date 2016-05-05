@@ -13,11 +13,11 @@ $config = new Blog();
 		<input type='text' name='search_query' placeholder='Search Clients..' class="form-control">
 	</form>
 	<span>Categories:</span>
-	<a onclick="loadPage('http://freelabel.net/submit/views/db/current_clients.php?filter=all', '#main_display_panel', 'paid' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>All</a>
-	<a onclick="loadPage('http://freelabel.net/submit/views/db/current_clients.php?filter=paid', '#main_display_panel', 'paid' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>Paid</a>
-	<a onclick="loadPage('http://freelabel.net/submit/views/db/current_clients.php?filter=expired', '#main_display_panel', 'paid' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>Expired</a>
-	<a onclick="loadPage('http://freelabel.net/submit/views/db/current_clients.php?filter=uncategorized', '#main_display_panel', 'paid' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>Uncategorized</a>
-	<a onclick="loadPage('http://freelabel.net/submit/views/db/current_clients.php?filter=paid&sort=chrono', '#main_display_panel', 'paid' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>Client Showcases</a>
+	<a onclick="loadPage('http://freelabel.net/users/dashboard/clients/?filter=all', '#leads', 'paid' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>All</a>
+	<a onclick="loadPage('http://freelabel.net/users/dashboard/clients/?filter=paid', '#leads', 'paid' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>Paid</a>
+	<a onclick="loadPage('http://freelabel.net/users/dashboard/clients/?filter=expired', '#leads', 'paid' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>Expired</a>
+	<a onclick="loadPage('http://freelabel.net/users/dashboard/clients/?filter=uncategorized', '#leads', 'paid' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>Uncategorized</a>
+<!-- 	<a onclick="loadPage('http://freelabel.net/users/dashboard/clients/?filter=paid&sort=chrono', '#leads', 'paid' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>Client Showcases</a> -->
 	
 
 	<hr>
@@ -58,7 +58,7 @@ $config = new Blog();
 		//echo $updated_user_status.', ';
 	}
 
-	include_once(ROOT.'inc/huge.php');
+	include(ROOT.'inc/huge.php');
 	// Detect Sort Parameter
 	if (isset($_GET['sort']) && $_GET['sort']!=='') {
 		switch ($_GET['sort']) {
@@ -112,10 +112,9 @@ $config = new Blog();
 			LIMIT 0 , 60";
 			break;
 	}
-	// Debugging
-	//print_r($_GET);
+	// // Debugging
+	// print_r($_GET);
 	// print_r($sql);
-
 
 		$result = mysqli_query($con,$sql);
 						while($row = mysqli_fetch_array($result))
@@ -425,7 +424,7 @@ FREELABEL Featured: ".$name." (".$twitter.")
 	$('#client-search').submit(function(event){
 		event.preventDefault();
 		var thedata = $(this).serialize();
-		loadPage('http://freelabel.net/submit/views/db/current_clients.php?filter=search&' + thedata, '#main_display_panel', 'paid' , <?php echo "'".$_SESSION["user_name"]."'"; ?>)
+		loadPage('http://freelabel.net/users/dashboard/clients/?filter=search&' + thedata, '#leads', 'paid' , <?php echo "'".$_SESSION["user_name"]."'"; ?>)
 		//alert(thedata);
 	});
 	$('.edit').editable('http://freelabel.net/submit/update.php',{

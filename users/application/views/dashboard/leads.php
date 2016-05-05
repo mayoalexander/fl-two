@@ -90,6 +90,8 @@ $adminPosts = $config->getPostsByUser(0,20,'admin');
 
 
 include(ROOT.'inc/connection.php');
+
+
 // START COUTNING LEADS
 	$result = mysqli_query($con,"SELECT * FROM leads 
 			WHERE follow_up_date LIKE '%$todays_date%'
@@ -99,7 +101,7 @@ include(ROOT.'inc/connection.php');
 				OR follow_up_date='$fourdaysback' 
 				OR follow_up_date='$fivedaysback'
 				/*OR `user_name` = '".$user_name_session."' */
-				ORDER BY `id` DESC LIMIT 200");
+				ORDER BY `id` DESC LIMIT 100");
 $i = 0;
 
 
@@ -119,24 +121,31 @@ if ($leads==NULL) {
  */
 $lead_build='<div class="card card-chart">
 <ul class="list-group"><h1>Leads</h1>';
+
 foreach ($leads as $key => $value) {
-    
-    $status = '';
-    if ($value[0]['count']===NULL) {
-        $count = 0; 
-        $status = 'status-backlog';
+if ($value!=='no leads found') {
+        $status = '';
+        if ($value[0]['count']>=3) {
+            $count = $value[0]['count']; 
+            $status = 'status-completed';
+        } elseif ($value[0]['count']>=1) {
+            $count = $value[0]['count']; 
+            $status = 'status-backlog';
+        } else {
+            $count = 0; 
+            $status = 'status-noticket';
+        }
+
+
+        $lead_build .= '
+        <li class="list-group-item complete clearfix">
+            <span class="label pull-left"><a class="fa fa-comment lead-response-button" href="#" data-id="'.$key.'"></a></span>
+            <span class="label pull-right lead-twitter-name" data-user="'.$key.'" data-count="'.$count.'">[<a href="http://twitter.com/@'.$key.'" target="_blank">@'.$key.'</a>] <span class="text-muted">['.count($value).':'.$count.']</span></span>
+            <span class="pull-left icon-status '.$status.'"></span>'.$value[0]['name'].'
+        </li>';
     } else {
-        $count = $value[0]['count']; 
-        $status = 'status-completed';
+        // echo 'No leads found!!';
     }
-
-
-    $lead_build .= '
-    <li class="list-group-item complete">
-        <span class="label pull-left"><a class="fa fa-comment lead-response-button" href="#" data-id="'.$key.'"></a></span>
-        <span class="label pull-right lead-twitter-name" data-user="'.$key.'" data-count="'.$count.'">[<a href="http://twitter.com/@'.$key.'" target="_blank">@'.$key.'</a>] <span class="text-muted">['.count($value).':'.$count.']</span></span>
-        <span class="pull-left icon-status '.$status.'"></span>'.$value[0]['name'].'
-    </li>';
 }
 $lead_build.='</ul>
 </div>';
@@ -179,6 +188,12 @@ $data.='<div class="card card-chart">
     }
 
     $data.=  $sales_status.'
+    </li>';
+
+
+
+$data .= '<li class="list-group-item complete clearfix">
+        <a class="btn btn-success-outline open-clients-trigger btn-block pull-left" href="#" target="_blank">View Clients</a>
     </li>';
 
 // }
@@ -296,6 +311,41 @@ $data.='</ul>
         $('.lead-response-trigger').click(function(){
             var text = $('.lead-response-input').val();
             alert('okay do this right here: ' + text);
+        });
+
+
+
+        // Open Clients Trigger
+        $('.open-clients-trigger').click(function(e){
+            e.preventDefault();
+            var wrap = $('#leads');
+            var url = 'http://freelabel.net/users/dashboard/clients/';
+            wrap.html('Loading clients..');
+            $.post(url , function(result){
+                wrap.html(result);
+            })
+            alert('okay do this right here: ' + text);
+        });
+
+
+
+        /* LEADS FILETERS */
+        $('.lead-filter').change(function(e){
+            var data = $(this).val();
+            var wrap = $('#leads');
+            wrap.html(data);
+
+                // var tabName = tabName;
+                // var elem = '#' + tabName;
+                // // loading
+                //   $(elem).html('Loading..');
+        
+                // // load the data in to the wrapper
+                // var url = 'http://freelabel.net/users/dashboard/' + tabName + '/' ;
+                // $.get(url, function(data){
+                //   $(elem).html(data);
+                // });
+        
         });
  	});
 

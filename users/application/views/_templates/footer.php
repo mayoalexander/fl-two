@@ -39,6 +39,17 @@
   </div>
 </div>
 
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-video" role="document">
+    <div class="modal-content">
+      <!-- 16:9 aspect ratio -->
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe id="vimeo-play" src="https://player.vimeo.com/video/98330466?color=6c59b4&amp;byline=0&amp;portrait=0&amp;badge=0&amp;api=1&amp;player_id=vvvvimeoVideo-0" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="http://freelabel.net/jPlayer/dist/jplayer/jquery.jplayer.min.js"></script>
