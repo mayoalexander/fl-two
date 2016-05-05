@@ -116,7 +116,7 @@ if (isset($_GET['user_twitter_name']) && isset($_GET['blog_title']) && $_GET['bl
 							$blogentry 			= 	urldecode($row['blogentry']);
 
 								if ($blog_type == 'single') {
-									$blogtitle = $row['trackname'];
+									$blogtitle = $row['blogtitle'];
 									$blog_write_up .= '<iframe style="width:100%;height:250px;" src="'.$playerpath.'" frameborder=0 scrolling="no" seamless></iframe>';
 									$photopath		= $row['photo'];
 								}

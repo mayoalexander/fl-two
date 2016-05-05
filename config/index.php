@@ -1521,7 +1521,7 @@ class Blog
     //echo ' 1) .'.$feed_filter. ' - '.$site.'<hr>';
     include(ROOT.'inc/connection.php');
       //echo '<pre>';
-    $f='WHERE blogtitle LIKE "%'.$query.'%" AND user_name = "'.$user.'"';
+    $f='WHERE blogtitle LIKE "%'.$query.'%" AND user_name = "'.$user.'" OR twitter LIKE "%'.$query.'%" AND user_name = "'.$user.'"';
     $sql = "SELECT * FROM `feed` $f ORDER BY `id` DESC LIMIT $db_start , $limit";
     $result_stats = mysqli_query($con,$sql);
     $i=0;
