@@ -72,7 +72,7 @@ class Dashboard extends Controller
     function fldrive()
     {
         if ($_POST['trackmp3']) {
-            
+            include_once(ROOT.'config/upload_post.php');
         } else {
             $this->view->render('dashboard/fldrive',true);
         }

@@ -145,7 +145,22 @@ function uploadFile(formdata , formdata_PHO, path, element) {
 
 
 
-	$(function(){
+	$(function() {
+
+
+        // trim twitter username
+        $("#twitter").keypress(function() {
+          var $y = $(this).val();
+          var $newy = $y.replace(/\s+/g, '');
+          if ($newy.toLowerCase().indexOf("@") >= 0) {
+            // console.log('yes mane');
+          //   $newy = $newy.append('@');
+          } else {
+            $newy = '@'+ $newy;
+            // console.log('No mane');
+          }
+          $(this).val($newy);
+        });
 
 		$("#file-to-upload").change(function (){
 			var fileName = $(this).val();
@@ -160,10 +175,24 @@ function uploadFile(formdata , formdata_PHO, path, element) {
 
 		$(".inputfile").change(function (e){
 			e.preventDefault();
+
+			// Validate if Photo or Not
+	        var img = $('#artwork_photo').val();
+	        var ext = img.split('.').pop();
+	        if (ext.toLowerCase() !=='png' && ext.toLowerCase() !=='jpeg' && ext.toLowerCase() !=='jpg' && ext.toLowerCase() !=='gif') {
+	            var type = 'Uh oh, this file you\'ve selected is not a photo. Please upload a photo for the artwork!';
+	            alert(type);
+	            $('#artwork_photo').val('');
+	            return false;
+	        } else {
+	            // alert("its a photo!");
+	        }
+
+	        // Update Button
 			var data = $(this).parent().find('#artwork_photo_button');
-			data.remove();
+			data.html('<i class="fa fa-cog"></i> Change Photo');
 
-
+			// Upload File
 			var formdata_PHO = $('.inputfile')[0].files[0];
 			var formdata = new FormData();
 	        var path = 'http://freelabel.net/upload/server/php/upload-photo.php';
@@ -172,11 +201,13 @@ function uploadFile(formdata , formdata_PHO, path, element) {
 
 		});
 
+		// Submit Form
 		$(".single-upload-form").submit(function (e){
 			e.preventDefault();
 			alert('ok');
 			var data = $(this).serialize();
 			alert(data);
+			console.log(data);
 		});
 
        
