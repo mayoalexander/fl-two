@@ -1,6 +1,7 @@
 <?php
 
-
+echo 'The site is undergoing some maintenence';
+exit;
 // Load application config (error reporting, database credentials etc.)
 require 'application/config/config.php';
 

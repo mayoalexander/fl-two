@@ -998,7 +998,7 @@ class Blog
 
     public function add_info_photo($table , $info) {
 
-      include_once(ROOT.'inc/connection.php');
+      include(ROOT.'inc/connection.php');
 
       // attach files 
 
@@ -1033,7 +1033,7 @@ class Blog
 
   public function checkIfAlreadyFollowing($user_name , $following)
   {
-      include_once(ROOT.'inc/connection.php');
+      include(ROOT.'inc/connection.php');
       $query = "SELECT * FROM `relationships` WHERE `user_name`='$user_name' AND `following` = '$following' ORDER BY `id` DESC LIMIT 1";
       $result = mysqli_query($con,$query);
       // echo '<pre>';
@@ -1044,7 +1044,7 @@ class Blog
 
   public function get_info($table , $id)
   {
-      include_once(ROOT.'inc/connection.php');
+      include(ROOT.'inc/connection.php');
       $query = "SELECT * FROM $table WHERE `id`=$id ORDER BY `id` DESC LIMIT 1";
       $result = mysqli_query($con,$query);
       if($row = mysqli_fetch_assoc($result)) {
@@ -1061,7 +1061,7 @@ class Blog
 
   public function delete($table, $id='')
   {
-    include_once(ROOT.'inc/connection.php');
+    include(ROOT.'inc/connection.php');
     $deletequery = mysqli_query($con,"DELETE FROM `$table` WHERE `$table`.`id` = ".$id." LIMIT 1");
     if ($deletequery) {
       $res = true;

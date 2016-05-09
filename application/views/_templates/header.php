@@ -717,6 +717,10 @@
       .jumbotron .header-description {
         font-size:0.7em;
       }
+      .content-wrap section, .row {
+        padding-left: 0;
+        padding-right:0;
+      }
       .post-image {
         /*width:100%;*/
       }

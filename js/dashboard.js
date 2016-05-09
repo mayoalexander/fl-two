@@ -97,17 +97,22 @@ function stopAllAudio() {
     // DELETE PROMO ATTACHMENT
     // *********************************
     $('.promo-file-options a').click(function(event){
-      $(this).parent().hide('fast');
-      var action = $(this).attr('data-action');
-      var id = $(this).attr('data-id');
-      var promoId = $(this).parent().parent().parent().attr('data-promo-id');
-      console.log(promoId);
+      var elem = $(this);
+      var action = elem.attr('data-action');
+      var id = elem.attr('data-id');
+      var promoId = elem.parent().parent().parent().parent().attr('data-promo-id');
       var data = {
         promo_id:promoId
       }
-      $.post('http://freelabel.net/users/dashboard/delete_promo_file/' + id , data ,  function(data) {
-        // alert(data);
-      });
+      if (confirm('are you sure you want to delete this?')) {
+        $.post('http://freelabel.net/users/dashboard/delete_promo_file/' + id , data ,  function(data) {
+          // alert('deleted!');
+          elem.parent().hide('fast');
+        });
+      } else {
+        // alert('not deleted!');
+      }
+
     });
 
 

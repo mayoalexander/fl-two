@@ -31,9 +31,6 @@ function fileValidation(){
                 var formdata = new FormData();
                 var maxSize = (1000 * 1000) * 2; // 2 Megabytes
 
-                console.log(formdata_PHO);
-                console.log(formdata_PHO.size + ' --- ' + maxSize);
-
                 if (formdata_PHO.size > maxSize) {
                     alert('file too large!');
                     $('#artwork_photo').val('');

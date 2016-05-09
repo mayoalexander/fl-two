@@ -18,7 +18,7 @@ $rss_feed = array(/*'http://freelabelmagazine.wordpress.com/rss',
   'https://freelabelcontent.wordpress.com/feed/', */
   //'http://freelabelnet.tumblr.com/rss' ,
   // 'http://assets.complex.com/feeds/channels/all.xml?_ga=1.103967424.130544531.1429827317',
-  // 'http://www.elevatormag.com/feed/',
+  'http://www.elevatormag.com/feed/',
   // 'http://freelabelnet.tumblr.com/rss',
 	// 'http://www.dirty-glove.com/feed/',
   	'http://trapsntrunks.com/feed/',
@@ -76,7 +76,6 @@ echo '<hr>';
 
 
 ?>
-<a class='btn btn-default lead_control' onclick="loadPage('http://freelabel.net/rssreader/cosign.php?control=update&rss=1', '#main_display_panel', 'mag')"  >RSS</a>
 <script type="text/javascript">
 $(function() {
 

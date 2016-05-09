@@ -43,6 +43,8 @@ if ($posted_today===true) {
     $status[] = '<span class="text-success">PROMOS CREATED TODAY!</span>';
 } else {
     $status[] = '<span class="text-danger">NO PROMOS CREATED TODAY</span>';
+    
+    $status[] = '<a class="btn btn-success-outline btn-block pull-left" href="http://freelabel.net/users/dashboard/?ctrl=promos" target="_blank">ADD NEW PROMO</a>';    
 }
 
 /* DETECT HOW MANY CLIENTS SIGNED UP TODAY */

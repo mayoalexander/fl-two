@@ -1,3 +1,12 @@
+<style type="text/css">
+	#submissions td {
+		color:#e3e3e3;
+	}
+	#submissions .btn {
+		padding:0.5em;
+	}
+</style>
+
 <a name="submissions">
 <!-- 	<h2 id="subtitle">SUBMISSIONS</h2>
 	<?php //$tweetmessage_submit = urlencode("SUBMIT MUSIC TO ---> submit.FREELABEL.net"); ?>
@@ -49,18 +58,14 @@ while($row = mysqli_fetch_array($result))
 	
 
 
-	echo "<tr>";
+	echo "<tr class='card card-chart'>";
 					echo "<td>\"".$trackname."\"</td>";
 						echo "<td  >".get_timeago(strtotime($submission_date))."</td> ";
 						echo '	<td><a target="_blank" href="https://twitter.com/intent/tweet?screen_name='.$twitter_name_clean.'&text='.$follow_up_message.'" class="twitter-mention-button" data-count="vertical" data-related="AMRadioLIVE">'.$twitter_name.'</a></td> ';
 						echo '	<td><a class="btn btn-default" target="_blank" href="https://mobile.twitter.com/'.$twitter_name_clean.'/messages" ><span class="glyphicon glyphicon-folder-open"></span></a></td> ';
-						
+
 									$email2send = str_replace("+", " ", $email2send);
 									$subjecttosend = str_replace("+", " ", $subjecttosend);
-						// PLAY SONG
-						echo '<td><a class="btn btn-default" target="_blank" href="'.$trackmp3.'"><span class="glyphicon glyphicon-play" ></span></a></td>';
-						// SEND EMAIL
-						echo '<td><a class="btn btn-default" target="_blank" href="http://x.freelabel.net/sendmail.php?to=artist&t='.$twitter_name.'&e='.$email.'&p='.$phone.'&n='.urlencode($trackname).'"><span class="glyphicon glyphicon-envelope"></span></a></td>';
 						// REQUEST CALL	
 						echo '<td><a class="btn btn-default" href="#" >'.$phone.'</a></td>';
 						// OPEN PLAYER PAGE

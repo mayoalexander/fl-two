@@ -69,6 +69,15 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/promos',true);
     }
+    function fldrive()
+    {
+        if ($_POST['trackmp3']) {
+            
+        } else {
+            $this->view->render('dashboard/fldrive',true);
+        }
+        
+    }
     function tv()
     {
         $this->view->render('dashboard/tv',true);
@@ -312,7 +321,7 @@ class Dashboard extends Controller
 
 
     function delete_promo_file($id) {
-        // print_r($_POST);
+        print_r($_POST);
         include_once('/home/content/59/13071759/html/config/index.php');
         $config = new Blog();
         $promo_data = $config->get_info('images', $_POST['promo_id']);
