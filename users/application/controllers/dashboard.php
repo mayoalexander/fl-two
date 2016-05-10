@@ -109,7 +109,8 @@ class Dashboard extends Controller
     }    
     function audio()
     {
-        $this->view->render('dashboard/audio',true);
+        // $this->view->render('dashboard/audio',true);
+        $this->view->render('dashboard/audio1',true);
     }
     function slider()
     {

@@ -59,25 +59,40 @@
 
 
 
+<!-- button tool bar  -->
+<div class="event-option-panel btn-group dropdown" style="background-color:transparent;text-align:left;border-bottom:3px solid #303030;padding:2% 0%;">
+  <!-- Split button -->
+<!--   <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus"></i> Add New</button>
+  <ul class="dropdown-menu">
+    <li><a href='http://freelabel.net/drive/plus.php?uid=<?php echo $user_name; ?>'><i class="fa fa-cloud-upload"></i> Upload via FLDRIVE</a></li>
+    <li><a href='http://freelabel.net/vendor/instagram/example/'><i class="fa fa-instagram"></i> Connect to Instagram</a></li>
+  </ul>
+  <button class="btn btn-success btn-xs btn-block add-new-media-audio" style="display:block;" data-link="http://freelabel.net/drive/plus.php?uid=<?php echo $user_name; ?>&type=idea" ><i class="fa fa-plus"></i> Add New</button>
+</div> -->
+
+<!-- get user tags  -->
+<nav class="filter-option-panel btn-group clearfix" style="background-color:transparent;text-align:left;border-bottom:3px solid #303030;padding:2% 0%;">
+  <form class="search-tracks-input pull-left">
+    <span class="fa fa-search"></span>
+    <input type='text' placeholder="Search Your Uploads..." class="form-control" data-user='<?php echo $user_name; ?>'>
+  </form>
+  <div class="pull-right col-md-3">
+	  <label id="artwork_photo_button" for="file-to-upload" class="btn btn-success-outline btn-block add-file-button"><i class="fa fa-plus"></i> Add File</label>
+		<input type="file" class="form-control" id="file-to-upload"></input>
+  </div>
+</nav>
+
+
+
+
+
+
+
 
 <!-- UPLOAD FORM -->
 <form class="single-upload-form row">
-
-	<div style="text-align: left;">
-		<h1>Upload Files</h1>
-		<p>This is where you upload your stuff</p>
-	</div>
-
-
-
-
-
-
-
-
 	<panel class="col-md-3">
-		<label id="artwork_photo_button" for="file-to-upload" class="btn btn-success-outline btn-block add-file-button"><i class="fa fa-plus"></i> Add File</label>
-		<input type="file" class="form-control" id="file-to-upload"></input>
+		
 		<!-- <div name="file_upload" class="btn btn-block btn-success-outline hide-before-upload add-artwork-trigger"><i class="fa fa-plus"></i> Add Artwork</div> -->
 
 		<!-- Add Artwork Photo -->
@@ -98,7 +113,7 @@
 	<panel class="col-md-12">
 		<input type="hidden" name="user_email" value="<?php echo $user_email; ?>">
 		<input type="hidden" name="user_name" value="<?php echo $user_name; ?>">
-		<input type="submit" name="file_upload" class="btn btn-block btn-success-outline hide-before-upload"></input>
+		<button name="file_upload" class="btn btn-block btn-success-outline hide-before-upload">Upload</button>
 	</panel>
 </form>
 
@@ -140,3 +155,41 @@
 
 <!-- UPLOAD SCRIPT -->
 <script type="text/javascript" src='http://freelabel.net/js/uploadFile.js'></script>
+<script type="text/javascript">
+	
+$(function(){
+		 $('.search-tracks-input').submit(function(event){
+		  $(this).append('<span class="text-muted">Searching...</span>');
+		  event.preventDefault();
+		  var x = $(this).find('input').val();
+		  var u = $(this).find('input').attr('data-user');
+		  var thisvalue = $(this).find('input').val('');
+		  var url = 'http://freelabel.net/users/dashboard/audio/';
+		  var data = {
+		    q:x,
+		    user:u
+		  }
+		  $.get(url,data,function(result){
+		    $('#audio').html(result);
+		  });
+		 });
+
+	// ********************************* 
+    //  DELETE PROMO CONTROL 
+    // *********************************
+    $(".controls-audio-delete").click(function(event){
+      event.preventDefault();
+      var file_id = $(this).attr('data-id');
+      var wrapper = $(this).parent();
+      var url = 'http://freelabel.net/users/login/delete_feed/' + file_id + '/';
+      c = confirm("Are you sure you want to delete this posts?");
+      if (c==true) {
+        $.get(url,function(result){
+          wrapper.parent().hide('fast');
+        });
+      }     
+    });
+
+
+});
+</script>

@@ -197,6 +197,7 @@
       text-align: center;
       width:100%;
     }
+
     .post-item .dropdown-menu {
       left:-85px;
       padding:7%;
@@ -675,6 +676,9 @@
       max-height: 60px;
       position:relative;
       bottom:1px;
+    }
+    .promo-image-img {
+      max-width: 60px;
     }
     .logo-menu a {
       padding:0%;
