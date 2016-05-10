@@ -22,7 +22,7 @@
 	.add-artwork-trigger {
 		cursor: pointer;
 	}
-    .inputfile {
+    .inputfile, #file-to-upload {
         position:relative;
         width: 0.1px;
         height: 0.1px;
@@ -36,6 +36,9 @@
         color: #e3e3e3;
         background-color: #202020;
         display: inline-block;
+    }
+    .drag-over {
+    	border:solid red 1px;
     }
 </style>
 
@@ -62,11 +65,12 @@
 	</div>
 
 	<panel class="col-md-3">
+		<label id="artwork_photo_button" for="file-to-upload" class="btn btn-success-outline btn-block add-file-button"><i class="fa fa-plus"></i> Add File</label>
 		<input type="file" class="form-control" id="file-to-upload"></input>
 		<!-- <div name="file_upload" class="btn btn-block btn-success-outline hide-before-upload add-artwork-trigger"><i class="fa fa-plus"></i> Add Artwork</div> -->
 
 		<!-- Add Artwork Photo -->
-		<label id="artwork_photo_button" for="artwork_photo" class="btn btn-success-outline btn-block hide-before-upload"><i class="fa fa-plus"></i> Add Artwork</label>
+		<label id="artwork_photo_button" for="artwork_photo" class="btn btn-warning-outline btn-block hide-before-upload"><i class="fa fa-plus"></i> Add Artwork</label>
 		<input class="form-control inputfile hide-before-upload" type="file" name="photo" id="artwork_photo">
 		<span class="file-upload-results"></span>
 		<select class="form-control hide-before-upload" name="status"><option value="public" selected="">Public</option><option value="private">Private</option></select>
@@ -108,8 +112,8 @@
 <!-- UPLOAD SCRIPT -->
 <script type="text/javascript">
 
+/* CONFIGURAATIONS */
 pleaseWait = '<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw margin-bottom"></i><span class="sr-only">Loading...</span>';
-
 function uploadFile(formdata , formdata_PHO, path, element) {
 
 	    // Add the file to the request.
@@ -139,40 +143,52 @@ function uploadFile(formdata , formdata_PHO, path, element) {
 		}).done(function (result) {
 			element.html(result);
 			$('#file-to-upload').hide();
+			$('#artwork_photo_button').hide();
+
 			$('.hide-before-upload').show();
 		});
 }
 
 
 
+
+
 	$(function() {
 
 
-        // trim twitter username
-        $("#twitter").keypress(function() {
-          var $y = $(this).val();
-          var $newy = $y.replace(/\s+/g, '');
-          if ($newy.toLowerCase().indexOf("@") >= 0) {
-            // console.log('yes mane');
-          //   $newy = $newy.append('@');
-          } else {
-            $newy = '@'+ $newy;
-            // console.log('No mane');
-          }
-          $(this).val($newy);
-        });
 
+		// MAIN FILE UPLOAD
 		$("#file-to-upload").change(function (){
 			var fileName = $(this).val();
 			var formdata_PHO = $('#file-to-upload')[0].files[0];
 			var formdata = new FormData();
-			$('.status').html(pleaseWait);
+
+
+			console.log('file name: ' + fileName);
+
+			// Validate if Photo or Not
+	        var ext = fileName.split('.').pop();
+	        if (ext.toLowerCase() !=='mp3') {
+	            var type = 'Uh oh, this file you\'ve selected is not an mp3. Please upload an audio file!';
+	            alert(type);
+	            $('#artwork_photo').val('');
+	            return false;
+	        } else {
+	            // alert("its a photo!");
+	        }
+
+			// Update Button
+			var data = $(this).parent().find('#artwork_photo_button');
+			// data.html('<i class="fa fa-cog"></i> Change Photo');
+			data.html(pleaseWait + "Uploading..");
 
 	        var path = 'http://freelabel.net/upload/server/php/upload-file.php';
 	        var element = $('.status');
 			uploadFile(formdata,formdata_PHO, path, element);
 		});
 
+
+		// UPLOAD ARTWORK PHOTO
 		$(".inputfile").change(function (e){
 			e.preventDefault();
 
@@ -201,13 +217,39 @@ function uploadFile(formdata , formdata_PHO, path, element) {
 
 		});
 
+
+        // Trim Username 
+        $("#twitter").keypress(function() {
+          var $y = $(this).val();
+          var $newy = $y.replace(/\s+/g, '');
+          if ($newy.toLowerCase().indexOf("@") >= 0) {
+            // console.log('yes mane');
+          //   $newy = $newy.append('@');
+          } else {
+            $newy = '@'+ $newy;
+            // console.log('No mane');
+          }
+          $(this).val($newy);
+        });
+
+
+
+
 		// Submit Form
 		$(".single-upload-form").submit(function (e){
 			e.preventDefault();
-			alert('ok');
+			// alert('ok');
+			var elem = $(this);
 			var data = $(this).serialize();
-			alert(data);
-			console.log(data);
+			var path = 'http://freelabel.net/users/dashboard/fldrive/';
+
+			elem.html('Please Wait' + data['twitter']);
+			$.post(path,data,function(result){
+
+				alert(result);
+				console.log(result);
+			});
+			// console.log(data);
 		});
 
        

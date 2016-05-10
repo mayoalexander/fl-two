@@ -3,14 +3,14 @@
 /**
 * 
 */
-class ClassName
+class Uploader
 {
 	
 	function __construct()
 	{
 		# code...
 	}
-public function handle_form_data($file, $index) {
+public function handle_form_data($post_data, $file) {
         // CREATE QUICK URLS
         include_once('/home/content/59/13071759/html/config/index.php');
         include_once('/home/content/59/13071759/html/config/upload.php');
@@ -23,13 +23,13 @@ public function handle_form_data($file, $index) {
         $filedata['poster'] = '';
 
         // Clean up twitter name: place the TWITTER @ sign and trim whitespace
-        $filedata['twitter'] = trim($_POST['twitter']);
+        $filedata['twitter'] = trim($post_data['twitter']);
         if (strpos($filedata['twitter'], "@") === false) {
             $filedata['twitter'] = '@'.$filedata['twitter'];
         }
 
         // Clean Up Blog Title:  get rid of bad extentions
-        $filedata['blogtitle'] = trim($_POST['title']);
+        $filedata['blogtitle'] = trim($post_data['title']);
         $find = array('.mp3','.png','.jpeg','.jpg','.mp4');
         $filedata['blogtitle'] = str_replace($find, '', $filedata['blogtitle']);
 
@@ -38,32 +38,32 @@ public function handle_form_data($file, $index) {
 
 
         // CREATE QUICK URLS
-        $filepath = 'http://freelabel.net/drive/server/php/files/'.$file->name;
+        $filepath = $post_data['trackmp3'];
         $shortname = explode(' ',$filedata['blogtitle']);
         $invchars = array(" ","@",":","/","&","'");
-        $_POST['playerpath'] = 'http://freelabel.net/x/'.$filedata['twitter'].'/'.str_replace($invchars, "-", $filedata['blogtitle']).'/';
+        $post_data['playerpath'] = 'http://freelabel.net/x/'.$filedata['twitter'].'/'.str_replace($invchars, "-", $filedata['blogtitle']).'/';
         $filedata['blog_story_url'] = 'http://freelabel.net/'.$filedata['twitter'].'/'.str_replace($invchars, "-", $shortname[0]);
         
         // User Profile Data
-        $filedata['user_name'] = $_POST['user_name'];
-        $filedata['phone'] = trim($_POST['phone']);
+        $filedata['user_name'] = $post_data['user_name'];
+        $filedata['phone'] = trim($post_data['phone']);
         
         $filedata['trackname'] = $filedata['blogtitle'];
         $filedata['submission_date'] = date('Y-m-d H:s:i');
-        $filedata['description'] = trim($_POST['description']);
+        $filedata['description'] = trim($post_data['description']);
         $filedata['email'] = $upload->getUserEmail($filedata['user_name']);
 
         // set release date
-        if (isset($_POST['release_date'])) {
-            $filedata['release_date'] = date('Y-m-d H:s:i',strtotime($_POST['release_date']));
+        if (isset($post_data['release_date'])) {
+            $filedata['release_date'] = date('Y-m-d H:s:i',strtotime($post_data['release_date']));
         } else {
             $filedata['release_date'] = NULL;
         }
 
 
         // detect status and set private as default
-        if (isset($_POST['status'])) {
-            $filedata['status'] = $_POST['status'];
+        if (isset($post_data['status'])) {
+            $filedata['status'] = $post_data['status'];
         } else {
             $filedata['status'] = 'private';
         }
@@ -77,14 +77,14 @@ public function handle_form_data($file, $index) {
             $filedata['type']='single';
             $filedata['trackmp3'] = $filepath;
             // set photo implementation here
-            $filedata['photo'] = $_POST['photo'];
-            $filedata['poster'] = $_POST['poster'];
+            $filedata['photo'] = $post_data['photo'];
+            $filedata['poster'] = $post_data['poster'];
 
         } else if ( strpos($filepath, 'mp4') ) {
             // $filedata['type']='video';
             $filedata['type']='blog';
-            $filedata['photo'] = $_POST['photo'];
-            $filedata['poster'] = $_POST['poster'];
+            $filedata['photo'] = $post_data['photo'];
+            $filedata['poster'] = $post_data['poster'];
             $filedata['trackmp3'] = $filepath;
         } else { 
             $filedata['type']='blog';
@@ -120,7 +120,7 @@ public function handle_form_data($file, $index) {
         // ADD TO DATABASE
         $sql = 'INSERT INTO `amrusers`.`feed`
         (`id`, `type`, `blog_story_url`, `size`, `filetype`, `trackmp3`, `user_name`, `twitter`, `blogtitle`, `photo`, `playerpath`, `trackname` , `twitpic`, `submission_date`, `blogentry` , `email`, `phone`,`status`, `writeup`, `poster`, `release_date`) VALUES
-        (NULL, "'.$filedata['type'].'" , "'.$filedata['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$filedata['user_name'].'", "'.$filedata['twitter'].'", "'.$filedata['blogtitle'].'", "'.$filedata['photo'].'", "'.$_POST['playerpath'].'", "'.$filedata['blogtitle'].'", "'.$twitpic.'", "'.$filedata['submission_date'].'", "'.$filedata['description'].'", "'.$filedata['email'].'", "'.$filedata['phone'].'", "'.$filedata['status'].'", "'.$filedata['description'].'" , "'.$filedata['poster'].'" , "'.$filedata['release_date'].'");';
+        (NULL, "'.$filedata['type'].'" , "'.$filedata['blog_story_url'].'" , "'.$file->size.'" , "'.$file->type.'" , "'.$filepath.'", "'.$filedata['user_name'].'", "'.$filedata['twitter'].'", "'.$filedata['blogtitle'].'", "'.$filedata['photo'].'", "'.$post_data['playerpath'].'", "'.$filedata['blogtitle'].'", "'.$twitpic.'", "'.$filedata['submission_date'].'", "'.$filedata['description'].'", "'.$filedata['email'].'", "'.$filedata['phone'].'", "'.$filedata['status'].'", "'.$filedata['description'].'" , "'.$filedata['poster'].'" , "'.$filedata['release_date'].'");';
         
         // $sql = 'INSERT INTO `amrusers`.`feed`
         // (`id`, `type`, `blog_story_url`) VALUES
@@ -144,10 +144,11 @@ public function handle_form_data($file, $index) {
 
         } else {
           echo "Error: " . $sql . "<br>" . mysqli_error($con);
+          return false;
         }
 
 
-
+    return true;
     }
 
 
@@ -160,3 +161,10 @@ public function handle_form_data($file, $index) {
 
 
 } // end of class
+
+
+
+
+// var_dump($_POST);
+$upload = new Uploader();
+$upload->handle_form_data($_POST, $post);

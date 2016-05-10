@@ -21,8 +21,8 @@ foreach ($_FILES as $file) {
 		$src = '../../../upload/server/php/upload/'.$file_to_upload.'';
 		$path_thumb = '../../../upload/server/php/upload/thumb/'.$file_to_upload;
 
-		echo '<audio style="width:100%;" src="'.$path.'"" controls="1" autoplay=1>';
-		echo '<input type="hidden" name="photo" id="photo" value="'.$path.'"">';
+		echo '<audio style="width:100%;" src="'.$path.'"" controls="1" preload="none">';
+		echo '<input type="hidden" name="trackmp3" id="trackmp3" value="'.$path.'"">';
 
 	} else {
 		echo 'NO! it didnt work!<Br> ';
