@@ -1498,7 +1498,7 @@ class Blog
     //echo ' 1) .'.$feed_filter. ' - '.$site.'<hr>';
     include(ROOT.'inc/connection.php');
       //echo '<pre>';
-    $f='WHERE user_name = "'.$user.'" ';
+    $f='WHERE user_name = "'.$user.'" AND status = "public" ';
     $sql = "SELECT * FROM `feed` $f ORDER BY `id` DESC LIMIT $db_start , $limit";
     $result_stats = mysqli_query($con,$sql);
     $i=0;
@@ -1521,7 +1521,7 @@ class Blog
     //echo ' 1) .'.$feed_filter. ' - '.$site.'<hr>';
     include(ROOT.'inc/connection.php');
       //echo '<pre>';
-    $f='WHERE blogtitle LIKE "%'.$query.'%" AND user_name = "'.$user.'" OR twitter LIKE "%'.$query.'%" AND user_name = "'.$user.'"';
+    $f='WHERE blogtitle LIKE "%'.$query.'%" AND user_name = "'.$user.'" AND status="public" OR twitter LIKE "%'.$query.'%" AND user_name = "'.$user.'" AND status="public"';
     $sql = "SELECT * FROM `feed` $f ORDER BY `id` DESC LIMIT $db_start , $limit";
     $result_stats = mysqli_query($con,$sql);
     $i=0;
@@ -1921,7 +1921,7 @@ class Blog
 
   public function get_user_posts_search($user,$query) {
         // GRAB GLOBAL FEED
-        $feed_posts = $this->getPostsBySearch(0,20,$query, $user);
+        $feed_posts = $this->getPostsBySearch(0,200,$query, $user);
 
         if (!$feed_posts==false) {
                 // shuffle($feed_posts);

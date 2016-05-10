@@ -421,7 +421,8 @@ class Login extends Controller
         //echo '<pre>';
         include_once('/home/content/59/13071759/html/config/index.php');
         include(ROOT.'inc/connection.php');
-        $sql = "DELETE FROM `feed` WHERE `feed`.`id` = $file_id LIMIT 1";
+        // $sql = "DELETE FROM `feed` WHERE `feed`.`id` = $file_id LIMIT 1";
+        $sql = "UPDATE `feed` SET `status`='deleted' WHERE `feed`.`id` = $file_id LIMIT 1";
         $result = mysqli_query($con,$sql);
         if ($result = mysqli_query($con,$sql)){
             echo 'Feed Successfully Deleted!';
@@ -430,6 +431,26 @@ class Login extends Controller
         }
         //echo 'so here we are.';
     }
+
+
+
+    function archive_feed($file_id)
+    {
+        //echo '<pre>';
+        include_once('/home/content/59/13071759/html/config/index.php');
+        include(ROOT.'inc/connection.php');
+        // $sql = "DELETE FROM `feed` WHERE `feed`.`id` = $file_id LIMIT 1";
+        $sql = "UPDATE `feed` SET `status`='archived' WHERE `feed`.`id` = $file_id LIMIT 1";
+        $result = mysqli_query($con,$sql);
+        if ($result = mysqli_query($con,$sql)){
+            echo 'Feed Successfully Deleted!';
+        } else {
+            echo 'Oops, the feed was not archived! Something went wrong!!';
+        }
+        //echo 'so here we are.';
+    }
+
+
 
             /**
      * Register page
