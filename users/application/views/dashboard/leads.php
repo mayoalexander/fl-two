@@ -2,7 +2,7 @@
 include_once('/home/content/59/13071759/html/config/index.php');
 require(ROOT.'inc/conn.php');
 $config = new Blog();
-
+$current_page = 0;
 $todays_date = date('Y-m-d');
 $result = $conn->query('select * from twitter_data WHERE timestamp LIKE "%'.$todays_date.'%" ORDER BY `id` DESC');
 $numb_soms_sent = count($result->fetchAll());
@@ -119,7 +119,7 @@ if ($leads==NULL) {
 
 /* 
 
- * GET SOM ALERT DATA 
+ * Lead Build Data
  */
 $lead_build='<div class="card card-chart">
 <ul class="list-group"><h1>Leads</h1>';
@@ -233,6 +233,11 @@ $data.='</ul>
 		<?php echo $data; ?>
 	</div>
 	<div class="col-md-8 lead-container">
+    <select class="form-control lead-filter">
+        <option value="today">Today</option>
+        <option value="yesterday">Yesterday</option>
+        <option value="this_month">This Month</option>
+    </select>
 		<?php echo $lead_build; ?>
 	</div>
 </div>
@@ -333,9 +338,16 @@ $data.='</ul>
 
         /* LEADS FILETERS */
         $('.lead-filter').change(function(e){
-            var data = $(this).val();
-            var wrap = $('#leads');
-            wrap.html(data);
+            var filter = $(this).val();
+            var path = "http://freelabel.net/users/dashboard/leads_stream/";
+            var data = {
+                filter : filter
+            }
+            $.get(path, data, function(result){
+                // alert(result);
+                $('.lead-container').html(result);
+            });
+            // wrap.html(data);
 
                 // var tabName = tabName;
                 // var elem = '#' + tabName;

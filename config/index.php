@@ -2388,6 +2388,20 @@ public function getUserInfo($user_name) {
 
 
 
+public function getUserType($user_name) {
+  include(ROOT.'inc/huge.php');
+  $sql = "SELECT account_type FROM  `users` WHERE  `user_name` = '$user_name' LIMIT 1";
+  $result = mysqli_query($con,$sql);
+  if ($row = mysqli_fetch_assoc($result)){
+    $user_data = $row;
+        // print_r($row);
+  } else {
+    $user_data = NULL;
+  }
+  return $user_data;
+}
+
+
 
 
 

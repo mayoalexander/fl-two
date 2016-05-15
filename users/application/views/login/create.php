@@ -1,5 +1,5 @@
 <a name="register-form"></a>
-<header class="jumbotron bg-inverse text-center center-vertically show-after-cta" role="banner" style='background-image:none;background-color:transparent;'>
+<section class="" role="banner" style='background-image:none;background-color:transparent;'>
         <div class="container">
 
                 <form action="<?php echo URL; ?>login/register_action" method="POST" style="max-width:400px;margin:auto;" name="registerform" >
@@ -77,5 +77,5 @@
                 }
             })();
         </script>
-</header>
+</section>
 

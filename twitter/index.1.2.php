@@ -806,11 +806,11 @@ if($_GET['som']=='1')
           
             $twtter_tabs .= '<div class="btn-group-vertical col-md-2 twitter-controls-group " >';
               $twtter_tabs .= '<a onclick="$(\'#som_buttons\').slideToggle();" class="btn btn-default btn-lg col-md-3 col-xs-12"><i class="fa fa-ellipsis-h" ></i></a>';
-              $twtter_tabs .= '<button class="btn btn-default btn-lg col-xs-6 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'mentions', '".$_SESSION['user_name']."','','calendar')".'" alt="mentions"><i class="fa fa-comments" ></i> Mentions</button>';
-              //$twtter_tabs .= '<button class="btn btn-default btn-lg col-xs-6 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'direct_messages', '".$_SESSION['user_name']."','','calendar')".'" alt="messages"><i class="fa fa-envelope" ></i> Messages</button>';
-              $twtter_tabs .= '<button class="btn btn-default btn-lg col-xs-6 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'followers', '".$_SESSION['user_name']."','','calendar')".'"><i class="fa fa-users" ></i> Followers</button>';
-              $twtter_tabs .= '<button class="btn btn-default btn-lg col-xs-6 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'timeline', '".$_SESSION['user_name']."','','calendar')".'"><i class="fa fa-list" ></i> Timeline</button>';
-              $twtter_tabs .= '<button class="btn btn-primary btn-lg col-xs-12 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'direct_messages_auto_rtm', '".$_SESSION['user_name']."','','calendar')".'" alt="messages"><i class="fa fa-usd"></i> RESPOND</button>';
+              $twtter_tabs .= '<button class="card card-chart col-xs-6 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'mentions', '".$_SESSION['user_name']."','','calendar')".'" alt="mentions"><i class="fa fa-comments" ></i> Mentions</button>';
+              //$twtter_tabs .= '<button class="card card-chart col-xs-6 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'direct_messages', '".$_SESSION['user_name']."','','calendar')".'" alt="messages"><i class="fa fa-envelope" ></i> Messages</button>';
+              $twtter_tabs .= '<button class="card card-chart col-xs-6 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'followers', '".$_SESSION['user_name']."','','calendar')".'"><i class="fa fa-users" ></i> Followers</button>';
+              $twtter_tabs .= '<button class="card card-chart col-xs-6 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'timeline', '".$_SESSION['user_name']."','','calendar')".'"><i class="fa fa-list" ></i> Timeline</button>';
+              $twtter_tabs .= '<button class="card card-chart col-xs-12 col-md-12" onclick="'."loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'direct_messages_auto_rtm', '".$_SESSION['user_name']."','','calendar')".'" alt="messages"><i class="fa fa-usd"></i> RESPOND</button>';
             $twtter_tabs .= '</div>';
 
             $twtter_tabs .= '

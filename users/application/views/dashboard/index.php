@@ -2,6 +2,8 @@
   include_once('/home/content/59/13071759/html/config/index.php');
 
   $config = new Blog($_SERVER['HTTP_HOST']);
+  $account_type = $config->getUserType($site['user']['name']);
+
   // add these stats in here somehwere in the layout
   $stats = $config->getStatsByUser($site['user']['name']);
   $current_page = '0';
@@ -14,6 +16,16 @@
   if ($user===null) {
     echo '<script>window.location.assign("http://freelabel.net/users/dashboard/complete/")</script>';
   }
+  if ($account_type==='paid') {
+
+    // echo 'YES PAID!';
+  } else {
+    echo 'NOT PAID';
+    echo '<script>window.location.assign("http://freelabel.net/users/dashboard/unpaid/")</script>';
+  }
+
+  // $config->debug($account_type,true);
+
 
 
 

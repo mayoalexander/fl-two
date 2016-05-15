@@ -61,7 +61,6 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/stats',true);
     }
-
     function mail() {
         $this->view->render('dashboard/mail', true);
     }
@@ -82,6 +81,10 @@ class Dashboard extends Controller
     function tv()
     {
         $this->view->render('dashboard/tv',true);
+    }
+    function unpaid()
+    {
+        $this->view->render('dashboard/unpaid');
     }
     function radio()
     {
@@ -157,6 +160,10 @@ class Dashboard extends Controller
     function leads() 
     {
         $this->view->render('dashboard/leads',true);
+    }
+    function leads_stream() 
+    {
+        $this->view->render('dashboard/leads_stream',true);
     }
     function twitter() 
     {

@@ -15,15 +15,15 @@
 		width:30px;
 	}
 </style>
-<!-- <button class="btn btn-default btn-lg col-xs-6 col-md-12" onclick="loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'timeline', 'admin','','calendar')"><i class="fa fa-list"></i> Timeline</button> -->
+<!-- <button class="card card-chart btn-lg col-xs-6 col-md-12" onclick="loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'timeline', 'admin','','calendar')"><i class="fa fa-list"></i> Timeline</button> -->
 
 <div class="btn-group-vertical col-md-2 twitter-controls-group ">
-	<!-- <button onclick="$('#som_buttons').slideToggle();" class="btn btn-default btn-secondary-outline btn-lg"><i class="fa fa-ellipsis-h"></i></button> -->
-	<button class="btn btn-default btn-lg" onclick="$('#som_buttons').slideToggle();" alt="mentions"><i class="fa fa-ellipsis-h"></i> Mentions</button>
-	<button class="btn btn-default btn-lg" onclick="loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'mentions', 'admin','','calendar')" alt="mentions"><i class="fa fa-comments"></i> Mentions</button>
-	<button class="btn btn-default btn-lg" onclick="loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'followers', 'admin','','calendar')"><i class="fa fa-users"></i> Followers</button>
-	<button class="btn btn-default btn-lg" onclick="loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'timeline', 'admin','','calendar')"><i class="fa fa-list"></i> Timeline</button>
-	<button class="btn btn-primary btn-lg" onclick="loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'direct_messages_auto_rtm', 'admin','','calendar')" alt="messages"><i class="fa fa-usd"></i> RESPOND</button>
+	<!-- <button onclick="$('#som_buttons').slideToggle();" class="card card-chart btn-secondary-outline btn-lg"><i class="fa fa-ellipsis-h"></i></button> -->
+	<button class="card card-chart" onclick="$('#som_buttons').slideToggle();" alt="mentions"><i class="fa fa-ellipsis-h"></i> Mentions</button>
+	<button class="card card-chart" onclick="loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'mentions', 'admin','','calendar')" alt="mentions"><i class="fa fa-comments"></i> Mentions</button>
+	<button class="card card-chart" onclick="loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'followers', 'admin','','calendar')"><i class="fa fa-users"></i> Followers</button>
+	<button class="card card-chart" onclick="loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'timeline', 'admin','','calendar')"><i class="fa fa-list"></i> Timeline</button>
+	<button class="card card-chart" onclick="loadFeed('http://freelabel.net/twitter/index.php', '.main_twitter_panel', 'direct_messages_auto_rtm', 'admin','','calendar')" alt="messages"><i class="fa fa-usd"></i> RESPOND</button>
 
 </div>
 

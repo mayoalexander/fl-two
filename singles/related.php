@@ -72,7 +72,15 @@ MODE
 )
 LIMIT 1 , 100";
 
-  $sql = "SELECT * FROM feed WHERE twitter LIKE '%{$search_query}%' OR trackname LIKE '%{$search_query}%' OR blogtitle LIKE '%{$search_query}%' OR type LIKE '%{$search_query}%' OR email LIKE '%{$search_query}%' OR writeup LIKE '%{$search_query}%' OR blogentry LIKE '%{$search_query}%' ORDER BY  `id` DESC LIMIT 24";
+  $sql = "SELECT * FROM feed WHERE 
+  twitter LIKE '%{$search_query}%' AND status='public'
+  OR trackname LIKE '%{$search_query}%' AND status='public'
+  OR blogtitle LIKE '%{$search_query}%' AND status='public'
+  OR type LIKE '%{$search_query}%' AND status='public'
+  OR email LIKE '%{$search_query}%' AND status='public'
+  OR writeup LIKE '%{$search_query}%' AND status='public'
+  OR blogentry LIKE '%{$search_query}%' AND status='public'
+  ORDER BY  `id` DESC LIMIT 24";
 	$result = mysqli_query($con,$sql);
 }
 
@@ -181,7 +189,7 @@ if ($stream_pull == "exact") {
 
 
 
-// echo 'OKAY '.$search_query.' -- '.$stream_pull ;
+// echo $sql . 'OKAY '.$search_query.' -- '.$stream_pull ;
 
 
 

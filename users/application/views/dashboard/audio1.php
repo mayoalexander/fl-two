@@ -30,9 +30,7 @@
     padding: 1em;
     border-radius: 5px;
   }
-  .hide-before-upload {
-    display: none;
-  }
+
   .add-artwork-trigger {
     cursor: pointer;
   }
@@ -51,12 +49,19 @@
     .inputfile , label {
         font-size: 0.75em;
         color: #e3e3e3;
-        background-color: #202020;
+        background-color: transparent;
         display: inline-block;
     }
-    .drag-over {
-      border:solid red 1px;
+    .hide-before-upload {
+      display: none;
     }
+    .dragover {
+      border:dotted red 1px;
+    }
+    .dragover-success {
+      border:solid green 1px;
+    }
+
 </style>
 
 
@@ -145,9 +150,56 @@
 
 
 
-
+<script type="text/javascript" src="http://freelabel.net/js/jquery.jeditable.js"></script>
 <script type="text/javascript">
 $(function(){
+
+  $('#artwork_photo_button').click(function(e){
+    // e.preventDefault();
+    // window.open('http://freelabel.net/drive/plus.php?uid=<?php echo $user_name; ?>');
+  });
+
+
+  // $('#audio').bind('drop',function(e){
+  //   e.preventDefault();
+  //   alert('drpped');
+  // // })
+
+  // var dropzone = document.getElementById('audio');
+  // // dropzone.ondrop = function(e) {
+  // //   // e.preventDefault();
+  // //   alert('dropped');
+  // //   // this.className = 'content-current dragover-success';
+  // //   // console.log(e);
+  // //   // alert(e);
+  // // }
+
+  // dropzone.ondragover = function() {
+  //   this.className = 'content-current dragover';
+  //   return false;
+  // }
+
+  // dropzone.ondragleave = function(e) {
+  //   console.log($(this));
+  //   console.log(e);
+  //   this.className = 'content-current';
+  //   return false;
+  // }
+
+  // $('#audio').bind('dragenter',function(e){
+  //   e.preventDefault();
+  //   $(this).css('border','red 6px dotted');
+  //   console.log(e);
+  // })
+  // $('#audio').bind('drop',function(){
+  //   alert('dropped!');
+  //   // e.preventDefault();
+  //   // $(this).css('border','none');
+  // })
+  // $('#audio').bind('drop',function(e){
+  //   e.preventDefault();
+  //   // $(this).css('border','none');
+  // })
 
 // search functionality
  $('.search-tracks-input').submit(function(event){
@@ -193,11 +245,11 @@ $(function(){
     return !audelem.paused;
   }
 
-    // $('.editable').editable('http://freelabel.net/submit/update.php',{
-    //   id  : 'user_post_id',
-    //   // type    : 'textarea',
-    //   name : 'title'
-    // });
+    $('.editable').editable('http://freelabel.net/submit/update.php',{
+      id  : 'user_post_id',
+      // type    : 'textarea',
+      name : 'title'
+    });
 
 
 

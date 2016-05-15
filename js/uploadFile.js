@@ -50,17 +50,18 @@ function uploadFile(formdata , formdata_PHO, path, element) {
 			var formdata = new FormData();
 
 
-			console.log('file name: ' + fileName);
+			// console.log('file name: ' + fileName);
 
 			// Validate if Photo or Not
 	        var ext = fileName.split('.').pop();
-	        if (ext.toLowerCase() !=='mp3') {
-	            var type = 'Uh oh, this file you\'ve selected is not an mp3. Please upload an audio file!';
-	            alert(type);
+	        // alert(ext.toLowerCase());
+	        if (ext.toLowerCase() =='mp3' || ext.toLowerCase()=='mp4') {
+	            // alert("Its an MP3!!");
+	        } else {
+				var type = 'Uh oh, this file you\'ve selected is not an mp3. Please upload an audio file!';
+	            // alert(type);
 	            $('#artwork_photo').val('');
 	            return false;
-	        } else {
-	            // alert("its a photo!");
 	        }
 
 			// Update Button
@@ -70,6 +71,7 @@ function uploadFile(formdata , formdata_PHO, path, element) {
 
 	        var path = 'http://freelabel.net/upload/server/php/upload-file.php';
 	        var element = $('.status');
+	        $('#title').val(fileName);
 			uploadFile(formdata,formdata_PHO, path, element);
 		});
 
@@ -133,6 +135,9 @@ function uploadFile(formdata , formdata_PHO, path, element) {
 			// reset everything
 			$('.hide-before-upload').hide();
 			$('.hide-before-upload').val('');
+
+			elem.addClass('card');
+			elem.addClass('card-chart');
 			// $('.file-upload-results').html('');
 
 

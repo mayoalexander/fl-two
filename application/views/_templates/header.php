@@ -320,7 +320,7 @@
       width:100%;
       cursor:pointer;
     }
-    video {
+    video, .img-circle {
       cursor:pointer;
     }
     .main_wrapper {
@@ -541,7 +541,7 @@
     .promo-file-options img {
       margin-right: 12px;
     }
-    article .list-item {
+    article .list-item, .modal-title {
       text-align:left;
     }
     .media-container video , .media-container img  {

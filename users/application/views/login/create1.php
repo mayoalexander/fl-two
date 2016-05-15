@@ -15,15 +15,16 @@
     }
     .registration-form {
         max-width: 350px;
+        padding-top: 5%;
     }
     .facebook-login-button {
         font-size:0.75em;
     }
 
     @media (max-width: 600px) {
-      .registration-form {
+/*      .registration-form {
         display: none;
-      }
+      }*/
     }
 </style>
 
@@ -36,7 +37,7 @@
     <div class="container">
       <form action="<?php echo URL; ?>login/register_action" method="POST" class="registration-form" name="registerform" >
 
-        <h2 class="form-signin-heading">Please sign in</h2>
+        <h2 class="form-signin-heading">Please Create Your Login</h2>
         <?php $this->renderFeedbackMessages(); ?>
 
         <label for="inputEmail" class="sr-only">Email address</label>

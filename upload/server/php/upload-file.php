@@ -1,4 +1,5 @@
 <?php 
+header("Access-Control-Allow-Origin: *");
 
 $sourcePath = $_FILES['photos']['tmp_name'];       // Storing source path of the file in a variable
 $targetPath = "upload/".$_FILES['photos']['name']; // Target path where file is to be stored

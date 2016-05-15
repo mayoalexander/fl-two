@@ -1,17 +1,34 @@
+<style type="text/css">
+      .inputfile, #file-to-upload {
+        position:relative;
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+    .inputfile , label {
+        font-size: 0.75em;
+        color: #e3e3e3;
+        background-color: #202020;
+        display: inline-block;
+    }
+</style>
 <panel class="col-md-12">
   <div class="card card-inverse card-social text-center">
     <div class="card-block has-gradient">
-      <img src="<?php echo $photo; ?>" height="90" width="90" alt="Avatar" class="img-circle">
+      <img src="<?php echo $photo; ?>" height="90" width="90" alt="Avatar" class="img-circle" data-toggle="modal" data-target="#editPhoto" data-param="Photo" >
       <h5 class="card-title"><?php echo $user['name']; ?></h5>
       <h6 class="card-subtitle"><?php echo $user['description']; ?></h6>
       <a href="http://freelabel.net/u/<?php echo $user_name; ?>" class="btn btn-secondary-outline btn-sm" target="_blank">View Profile</a>
-      <div class="dropdown">
-      <a class="btn-secondary-outline btn-sm dropdown-toggle pull-left" type="button" data-toggle="dropdown"><i class='fa fa-cog' > Edit</i>
-      <span class="caret"></span></a>
-      <ul class="dropdown-menu edit-profile-menu">
+      <!-- <div class="dropdown"> -->
+      <!-- <a class="btn-secondary-outline btn-sm dropdown-toggle pull-left" type="button" data-toggle="dropdown"><i class='fa fa-cog' > Edit</i> -->
+      <!-- <span class="caret"></span></a> -->
+<!--       <ul class="dropdown-menu edit-profile-menu">
         <li><a href="#" type="button" class="btn-link" data-toggle="modal" data-target="#editPhoto" data-param="Photo"><i class="fa fa-photo" ></i> Change Profile Photo</a></li>
-      </ul>
-    </div>
+      </ul> -->
+    <!-- </div> -->
     </div>
     <div class="card-block container">
       <div class="row">
@@ -111,11 +128,12 @@
     <!-- Modal content-->
     <div class="modal-content edit-profile-modal">
       <div class="modal-header">
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Update Profile Photo</h4>
       </div>
       <div class="modal-body">
         <form class="edit-profile-photo-form">
-          <input type='file' id='edit-profile-photo-input' class="form-contol">
+          <label for='edit-profile-photo-input' class="btn btn-secondary-outline btn-block"><i class="fa fa-picture-o"></i> Choose Photo</label>
+          <input type='file' id='edit-profile-photo-input' class="form-contol inputfile">
           <input type='hidden' name='user_name' value='<?php echo $user_name; ?>'>
           <input type='submit' class="btn btn-social btn-warning confirm-upload-buttons save-changes-photo" value="Save Changes">
           <hr>

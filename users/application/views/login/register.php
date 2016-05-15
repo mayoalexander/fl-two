@@ -238,7 +238,7 @@ Leverage upcoming Slyde™ tools to monetize music and performances, and gain va
                     <button class="pricing__action" data-type="lite" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
                 </div> -->
 
-                <div class="pricing__item">
+<!--                 <div class="pricing__item">
                     <h3 class="pricing__title"><i class="fa fa-ticket"></i> Trial</h3>
                     <p class="pricing__sentence">For people wanting to try out the platform and start sharing your profile to the world.</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>FREE<span class="pricing__period">/ First Day</span></div>
@@ -249,21 +249,20 @@ Leverage upcoming Slyde™ tools to monetize music and performances, and gain va
                         <li class="pricing__feature">Submit Music for Project and Showcase Placement.</li>
                     </ul>
                     <button class="pricing__action" data-type="lite" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
-                </div>
+                </div> -->
 
                 <div class="pricing__item">
                     <h3 class="pricing__title"><i class="fa fa-microphone"></i> Creator</h3>
                     <p class="pricing__sentence">For more advanced creators looking to make a impression to millions by get their content showcased exclusively on the Radio + Magazine.</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>59<span class="pricing__period">/ month</span></div>
                     <ul class="pricing__feature-list">
+                        <li class="pricing__feature">24/7 Radio Rotation</li>
+                        <li class="pricing__feature">Full Project Streams</li>
+                        <li class="pricing__feature">Event/Project Placement</li>
                         <li class="pricing__feature">Includes Trial Features</li>
                         <li class="pricing__feature">Magazine + Radio Interviews</li>
-                        <li class="pricing__feature">24/7 Radio Rotation</li>
-                        <li class="pricing__feature">Free Entry into FREELABEL Events</li>
-                        <li class="pricing__feature">Full Project Streams</li>
+                        <!-- <li class="pricing__feature">Free Entry into FREELABEL Events</li> -->
                         <li class="pricing__feature">Full One-Hour Radio Show Broadcasting Your Projects Live On-air</li>
-                        <li class="pricing__feature">Event/Project Placement</li>
-                        <li class="pricing__feature">Audio Mixing & Mastering (Radio Ready)</li>
 
                     </ul>
                     <button class="pricing__action" data-type="pro" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
@@ -280,9 +279,25 @@ Leverage upcoming Slyde™ tools to monetize music and performances, and gain va
                         <li class="pricing__feature">Event + Tour Booking</li>
                         <li class="pricing__feature">Monthly Royalties</li>
                         <li class="pricing__feature">Full Social Media Production</li>
-
+                        <li class="pricing__feature">Audio Mixing & Mastering (Radio Ready)</li>
                     </ul>
                     <button class="pricing__action" data-type="exclusive" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
+                </div>
+                <div class="pricing__item">
+                    <h3 class="pricing__title"><i class="fa fa-institution"></i> Professional</h3>
+                    <!-- <p class="pricing__sentence">For creators who are looking for more Studio Production, hands-on development, interested in expanding their team, building more resources for their content production. audio and visual production such as recording, mixing, mastering, video or photoshoots, etc.</p> -->
+                    <p class="pricing__sentence">Expand your resources, get booked on shows, and unlimited studio time.</p>
+                    <div class="pricing__price"><span class="pricing__currency">$</span>550<span class="pricing__period">/ month</span></div>
+                    <ul class="pricing__feature-list">
+                        <li class="pricing__feature">Includes Exclusive Features</li>
+                        <li class="pricing__feature">Weekly Press Releases</li>
+                        <li class="pricing__feature">Artist Management</li>
+                        <li class="pricing__feature">Event + Tour Booking</li>
+                        <li class="pricing__feature">Monthly Royalties</li>
+                        <li class="pricing__feature">Full Social Media Production</li>
+                        <li class="pricing__feature">Audio Mixing & Mastering (Radio Ready)</li>
+                    </ul>
+                    <button class="pricing__action" data-type="tour" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
                 </div>
             </div>
         </section>

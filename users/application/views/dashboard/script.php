@@ -287,86 +287,58 @@ Now Available on FREELABEL.net");
 
 <hr>
 			<div id="phonescript" class="card card-chart phone-script" >
-				
-				<?php $phonescript = "Hi this is YO NAME with FREELABEL Radio & Magazine. Our DJs approved your submissions & wanted me to follow up with you about getting your account created so we can start getting you placed on our radio & magazine interviews, projects, videos, & events this month.<br><br><br>
+			<h1>Interview Questions</h1>
+				<ul>
+					<li>Where are you from? What does your city have to do with your style? What is your city like? What is your local scene consist of?</li>
+					<li>Who do you work with? Who are you looking to work with in the future? Who have you worked with in the past?</li>
+					<li>Are you working on any new projects right now? Where did you get the idea or concept of this project?</li>
+					<li>Do you have an overall message in your art? What is your message as an artists?</li>
+					<li>If you could branch into any genre of music, and still have major success, what would it be?</li>
+					<li>Whats the most messed up, tragic, or craziest thing that has happened in your music careers so far?</li>
+					<li>What advice do you have for other musicians and fans that listen to your music and watch your moves?</li>
+				</ul>
+				<?php 
 
-<!--
-				We have a 4,500+ Square Foot Headquarters in Dallas, TX with a 3 Recording Studios, Radio, and Film Room
-				<br><br>
-				and a 1,500 Square Foot Radio + Recording Studio in Houston, TX
-				<hr>
+// 				$phonescript = "Hi this is YO NAME with FREELABEL Radio & Magazine. Our DJs approved your submissions & wanted me to follow up with you about getting your account created so we can start getting you placed on our radio & magazine interviews, projects, videos, & events this month.<br><br><br>
 
-				We get over 3.5 Million impressions each month on twitter, we've done booking for artists such as: <br><br>
+// <!--
+// 				We have a 4,500+ Square Foot Headquarters in Dallas, TX with a 3 Recording Studios, Radio, and Film Room
+// 				<br><br>
+// 				and a 1,500 Square Foot Radio + Recording Studio in Houston, TX
+// 				<hr>
 
-				- Chief Keef, Ab Soul, & Odd Future in Dallas 
-				<br>- Release Songs & DJ Events Johnny Cinco <br>
-				- Gucci Mane & BSM 1017 reached out to us directly for hosting mixtapes & debuting exclusives,
-				<br>
-				- Miley Cyrus shared our site & got over 10,000 impressions alone in one day<br>
-				- We Produced the Beat Up The Block by Boosie and Dorrough<br>
-				- We were the ones who orginally released the OG Maco & OGG Documentary in November.<br>
-				<hr> 
--->
-				if you create an account, for $200 a month, we will provide you with:<br><br>
-				- A FREELABEL DJ <br>
-				- Radio + Full Magazine Interviews <br>
-				- Studio Time: Audio Engineering, Production, Mixing/Mastering<br>
-				- Video, Single, & Project Releases <br>
-				- Graphic Design & Instagram Commercials <br>
-				- 2 Hour Radio Show Broadcasting your full project + Interviews <br>
-<hr>
-				if you create an account, for $50 a month, we will provide you with:<br><br>
-				the same but we will not be able to include Royalty Payouts, Event Booking, and Traveling to your location. Instead of doing on-site video interviews, we'll have you call into the studio.
-<hr>
+// 				We get over 3.5 Million impressions each month on twitter, we've done booking for artists such as: <br><br>
 
-//////////// (IF INTERESTED)<br><br>
+// 				- Chief Keef, Ab Soul, & Odd Future in Dallas 
+// 				<br>- Release Songs & DJ Events Johnny Cinco <br>
+// 				- Gucci Mane & BSM 1017 reached out to us directly for hosting mixtapes & debuting exclusives,
+// 				<br>
+// 				- Miley Cyrus shared our site & got over 10,000 impressions alone in one day<br>
+// 				- We Produced the Beat Up The Block by Boosie and Dorrough<br>
+// 				- We were the ones who orginally released the OG Maco & OGG Documentary in November.<br>
+// 				<hr> 
+// -->
+// 				if you create an account, for $200 a month, we will provide you with:<br><br>
+// 				- A FREELABEL DJ <br>
+// 				- Radio + Full Magazine Interviews <br>
+// 				- Studio Time: Audio Engineering, Production, Mixing/Mastering<br>
+// 				- Video, Single, & Project Releases <br>
+// 				- Graphic Design & Instagram Commercials <br>
+// 				- 2 Hour Radio Show Broadcasting your full project + Interviews <br>
+// <hr>
+// 				if you create an account, for $50 a month, we will provide you with:<br><br>
+// 				the same but we will not be able to include Royalty Payouts, Event Booking, and Traveling to your location. Instead of doing on-site video interviews, we'll have you call into the studio.
+// <hr>
 
-Are you by a computer, cell phone, or anything that you could use to get on the website you submitted on?<br><br>
+// //////////// (IF INTERESTED)<br><br>
 
-IF YOU CREATE AN ARTIST ACCOUNT WITH US, WE'LL FEATURE AN INTERVIEW OR MUSIC REVIEWS EACH MONTH + WE'LL PROMOTE YOUR VIDEOS, ALBUMS, PROJECTS, OR SINGLES ALL MONTH SUCH AS RADIO SHOWCASES, BLOG REVIEWS OF EACH OF YOUR SINGLES, and WEEKLY INTERVIEWS TO TALK ABOUT YOUR UPCOMING EVENTS AND PROJECTS FOR $35 MONTH<br><br>
+// Are you by a computer, cell phone, or anything that you could use to get on the website you submitted on?<br><br>
 
-&& EXCLUSIVE ACCOUNTS: WE DISTRIBUTE YOUR MUSIC & YOU EARN 100% ROYALTIES. WE HAVE OTHER CLIENTS WHO EARN UP OVER $5,000+ EACH MONT BY HAVING OVER 1000 FANS SUBSCIBED TO THEIR ACCOUNT - $199 MONTH"; 
+// IF YOU CREATE AN ARTIST ACCOUNT WITH US, WE'LL FEATURE AN INTERVIEW OR MUSIC REVIEWS EACH MONTH + WE'LL PROMOTE YOUR VIDEOS, ALBUMS, PROJECTS, OR SINGLES ALL MONTH SUCH AS RADIO SHOWCASES, BLOG REVIEWS OF EACH OF YOUR SINGLES, and WEEKLY INTERVIEWS TO TALK ABOUT YOUR UPCOMING EVENTS AND PROJECTS FOR $35 MONTH<br><br>
 
-if ($script_id=='') {
-	$script_id = 'testing_row';
-}
-echo $phonescript; ?>
+// && EXCLUSIVE ACCOUNTS: WE DISTRIBUTE YOUR MUSIC & YOU EARN 100% ROYALTIES. WE HAVE OTHER CLIENTS WHO EARN UP OVER $5,000+ EACH MONT BY HAVING OVER 1000 FANS SUBSCIBED TO THEIR ACCOUNT - $199 MONTH"; 
+
+//echo $phonescript; ?>
 			</div>
 		
-		<input type="submit" class="btn btn-default" name="update_script" value="Update Script">
 		</form>
-
-		<br>
-		<script type="text/javascript">
-				function open_script_new_tab() {
-					window.open("http://www.freelabel.net/x/s.php", "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=400, height=700");
-				}	
-		</script>	
-		<button onclick="open_script_new_tab()">Open In New Tab</button><br>
-		
-
-
-</div>
-<div class='panel col-md-4' style='display:none;'>
-	<?php// include(ROOT.'tweeter.php'); ?>
-</div>
-<script type="text/javascript" src='http://freelabel.net/js/jquery.jeditable.js'></script>
-<script>
-	$('.edit').editable('http://freelabel.net/submit/update.php',{
-     	id   : 'lead_script_id',
-     	//type    : 'textarea',
-        name : 'title'
-     });
-	function showOptions(id) {
-		$('#follow_up_options' + id).toggle();
-	}
-</script>
-
-
-
-
-<?php 
-
-//include_once('../new_footer.php');
-
-?>
