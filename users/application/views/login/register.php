@@ -238,7 +238,7 @@ Leverage upcoming Slyde™ tools to monetize music and performances, and gain va
                     <button class="pricing__action" data-type="lite" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
                 </div> -->
 
-<!--                 <div class="pricing__item">
+                <div class="pricing__item">
                     <h3 class="pricing__title"><i class="fa fa-ticket"></i> Trial</h3>
                     <p class="pricing__sentence">For people wanting to try out the platform and start sharing your profile to the world.</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>FREE<span class="pricing__period">/ First Day</span></div>
@@ -249,7 +249,7 @@ Leverage upcoming Slyde™ tools to monetize music and performances, and gain va
                         <li class="pricing__feature">Submit Music for Project and Showcase Placement.</li>
                     </ul>
                     <button class="pricing__action" data-type="lite" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
-                </div> -->
+                </div>
 
                 <div class="pricing__item">
                     <h3 class="pricing__title"><i class="fa fa-microphone"></i> Creator</h3>
@@ -283,10 +283,10 @@ Leverage upcoming Slyde™ tools to monetize music and performances, and gain va
                     </ul>
                     <button class="pricing__action" data-type="exclusive" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
                 </div>
-                <div class="pricing__item">
+                <div class="pricing__item" style="display:none;">
                     <h3 class="pricing__title"><i class="fa fa-institution"></i> Professional</h3>
-                    <!-- <p class="pricing__sentence">For creators who are looking for more Studio Production, hands-on development, interested in expanding their team, building more resources for their content production. audio and visual production such as recording, mixing, mastering, video or photoshoots, etc.</p> -->
-                    <p class="pricing__sentence">Expand your resources, get booked on shows, and unlimited studio time.</p>
+                    <p class="pricing__sentence">For creators who are looking for more Studio Production, hands-on development, interested in expanding their team, building more resources for their content production. audio and visual production such as recording, mixing, mastering, video or photoshoots, etc.</p>
+                    <!-- <p class="pricing__sentence">Expand your resources, get booked on shows, and unlimited studio time.</p> -->
                     <div class="pricing__price"><span class="pricing__currency">$</span>550<span class="pricing__period">/ month</span></div>
                     <ul class="pricing__feature-list">
                         <li class="pricing__feature">Includes Exclusive Features</li>

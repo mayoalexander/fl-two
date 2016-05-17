@@ -155,8 +155,8 @@
 $(function(){
 
   $('#artwork_photo_button').click(function(e){
-    // e.preventDefault();
-    // window.open('http://freelabel.net/drive/plus.php?uid=<?php echo $user_name; ?>');
+    e.preventDefault();
+    window.open('http://freelabel.net/drive/plus.php?uid=<?php echo $user_name; ?>');
   });
 
 

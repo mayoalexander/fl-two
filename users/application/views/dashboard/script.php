@@ -2,6 +2,17 @@
 include_once('/home/content/59/13071759/html/config/index.php');
 //include_once('../new_header.php');
 ?>
+<script type="text/javascript" src='http://freelabel.net/js/jquery.jeditable.js'></script>
+<script>
+	$('.edit').editable('http://freelabel.net/submit/update.php',{
+     	id   : 'lead_script_id',
+     	//type    : 'textarea',
+        name : 'title'
+     });
+	function showOptions(id) {
+		$('#follow_up_options' + id).toggle();
+	}
+</script>
 <style type="text/css">
 .edit input {
 	width:100%;
@@ -82,7 +93,7 @@ function tweetScript(text) {
 </script>
 
 <a name='updated'></a>
-<div class='panel col-md-12'>
+<div class='panel col-md-12 card card-chart'>
 	<a name="script">
 	<h2 id="sub_label">THE SCRIPT</h2>
 		<form name="theScript" class='the-script' method="POST" action="http://freelabel.net/x/update_script.php" >
@@ -233,7 +244,7 @@ Now Available on FREELABEL.net");
 				  	$script_id = $row['id'];
 				  	$i=1;
 				  	foreach ($script as $key => $value) {
-				  		echo '<div class="lead script-item" ><data class="edit" id="lead-script-'.$key.'-'.$row['id'].'" >'.$value.'</data></div>';
+				  		echo '<div class="lead script-item list-group-item" ><data class="edit" id="lead-script-'.$key.'-'.$row['id'].'" >'.$value.'</data></div>';
 				  		$i++;
 				  	}
 				  	$i++;

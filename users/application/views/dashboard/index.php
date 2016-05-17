@@ -16,13 +16,13 @@
   if ($user===null) {
     echo '<script>window.location.assign("http://freelabel.net/users/dashboard/complete/")</script>';
   }
-  if ($account_type==='paid') {
+  // if ($account_type==='paid') {
 
-    // echo 'YES PAID!';
-  } else {
-    echo 'NOT PAID';
-    echo '<script>window.location.assign("http://freelabel.net/users/dashboard/unpaid/")</script>';
-  }
+  //   // echo 'YES PAID!';
+  // } else {
+  //   echo 'NOT PAID';
+  //   echo '<script>window.location.assign("http://freelabel.net/users/dashboard/unpaid/")</script>';
+  // }
 
   // $config->debug($account_type,true);
 

@@ -3,11 +3,34 @@
 pleaseWait = '<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw margin-bottom"></i><span class="sr-only">Loading...</span>';
 function uploadFile(formdata , formdata_PHO, path, element) {
 
+		// alert('helllooo');
+
+
+		
 	    // Add the file to the request.
 	    formdata.append('photos[]', formdata_PHO);
 
 		$.ajax({
-		    // Uncomment the following to send cross-domain cookies:
+		    xhr: function() {
+			    var xhr = new window.XMLHttpRequest();
+
+			    xhr.upload.addEventListener("progress", function(evt) {
+			      if (evt.lengthComputable) {
+			        var percentComplete = evt.loaded / evt.total;
+			        percentComplete = parseInt(percentComplete * 100);
+			        document.getElementById('artwork_photo_button').innerHTML = percentComplete + '% Uploaded';
+			        // $('#artwork_photo_button').html();
+
+			        if (percentComplete === 100) {
+			        	// alert('done!');
+
+			        }
+
+			      }
+			    }, false);
+
+			    return xhr;
+			},
 		    xhrFields: {withCredentials: true},
 		    url: path,
 		    method: 'POST',

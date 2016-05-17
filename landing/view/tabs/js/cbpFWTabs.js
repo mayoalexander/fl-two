@@ -156,6 +156,7 @@ $(function(){
         // $('#' + tabName).html('<h3 class="text-muted" style="margin:10% 10%;"><i class="fa fa-cog fa-spin"></i> Loading...</h3>');
         
         getPageData(tabName);
+        // alert(tabName);
         // load the data in to the wrapper
         // var url = 'http://freelabel.net/users/dashboard/' + tabName + '/' ;
         // $.get(url, function(data){
