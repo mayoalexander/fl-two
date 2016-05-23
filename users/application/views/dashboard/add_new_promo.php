@@ -81,7 +81,7 @@ $user_files = $config->get_all_files(Session::get('user_name'));
 
 
 		<!-- <label>Status</label> -->
-		<select name='type' id="promo-type" class="form-control">
+		<select name='type' id="promo-type" class="form-control" required>
 			<option selected>Choose Type..</option>
 			<option value="album" >Album</option>
 			<option value="event" >Event</option>

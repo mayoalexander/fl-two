@@ -21,7 +21,7 @@ $config = new Blog();
 	
 
 	<hr>
-	<div class="current-clients-container">
+	<div class="current-clients-container card card-chart">
 		<table class="current-clients-table table table-bordered table-hover" style='font-size:80%;'>
 			<tr>
 				<td>#</td>
@@ -351,7 +351,7 @@ FREELABEL Featured: ".$name." (".$twitter.")
 											
 												';
 
-												echo '<tr>';
+												echo '<tr >';
 													echo $client_info;
 												echo '</tr>';
 							

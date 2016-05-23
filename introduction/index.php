@@ -272,6 +272,8 @@ if (!$blog_post_data['poster']=='') {
 
   			<section class="related-posts">
   				<?php
+
+
 					// echo $config->getPostsRelatedGallery($twitter);
   				$stream_pull ='related';
   				$search_query = $twitter;

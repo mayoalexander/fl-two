@@ -69,7 +69,7 @@
             background-position:center center;
             background-size:100vw auto;
 
-            background-image:url('<?php echo $site["media"]["studio"][0]["image"]; ?>');
+            background-image:url('<?php echo $site["media"]["studio"][2]["image"]; ?>');
         }
         .marketing-area {
             background-position:center top;
@@ -245,7 +245,7 @@ Leverage upcoming Slyde™ tools to monetize music and performances, and gain va
                     <ul class="pricing__feature-list">
                         <li class="pricing__feature">Upload and Download Unlimited Songs, Videos, Interviews, Radio Shows, Magazine Issues, Exclusve Music & much more..</li>
                         <li class="pricing__feature">Upload Music, Videos, & Photos to your Profile</li>
-                        <li class="pricing__feature">Front Page and Magazine Features</li>
+                        <!-- <li class="pricing__feature">Front Page and Magazine Features</li> -->
                         <li class="pricing__feature">Submit Music for Project and Showcase Placement.</li>
                     </ul>
                     <button class="pricing__action" data-type="lite" aria-label="Purchase this plan"><span class="icon icon--arrow-right"></span></button>
@@ -259,8 +259,7 @@ Leverage upcoming Slyde™ tools to monetize music and performances, and gain va
                         <li class="pricing__feature">24/7 Radio Rotation</li>
                         <li class="pricing__feature">Full Project Streams</li>
                         <li class="pricing__feature">Event/Project Placement</li>
-                        <li class="pricing__feature">Includes Trial Features</li>
-                        <li class="pricing__feature">Magazine + Radio Interviews</li>
+                        <!-- <li class="pricing__feature">Includes Trial Features</li> -->
                         <!-- <li class="pricing__feature">Free Entry into FREELABEL Events</li> -->
                         <li class="pricing__feature">Full One-Hour Radio Show Broadcasting Your Projects Live On-air</li>
 
@@ -273,8 +272,11 @@ Leverage upcoming Slyde™ tools to monetize music and performances, and gain va
                     <p class="pricing__sentence">Expand your resources, get booked on shows, and unlimited studio time.</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>200<span class="pricing__period">/ month</span></div>
                     <ul class="pricing__feature-list">
-                        <li class="pricing__feature">Includes Creator Features</li>
+                        <li class="pricing__feature">Music Distribution (Apple Music, iTunes, Spotify, Amazon,
+Rdio, Google Play, + more)</li>
+                        <!-- <li class="pricing__feature">Includes Creator Features</li> -->
                         <li class="pricing__feature">Weekly Press Releases</li>
+                        <li class="pricing__feature">Magazine + Radio Interviews</li>
                         <li class="pricing__feature">Artist Management</li>
                         <li class="pricing__feature">Event + Tour Booking</li>
                         <li class="pricing__feature">Monthly Royalties</li>

@@ -3387,6 +3387,22 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
 
 
 
+
+  public function formatTwitter($twittername) {
+    $illegals = array("http://", "https://","twitter.com/", "HTTPS://");// "i", "o", "u", "A", "E", "I", "O", "U"
+    $twittername = str_replace($illegals, "", $twittername);
+    if (strpos($twittername,'@')===false) {
+      echo 'No @ name included..';
+      $twittername = "@".$twittername;
+    } else {
+      echo 'its there!';
+    }
+    return $twittername;
+  }
+
+
+
+
   public function datePosted( $ptime ) {
     date_default_timezone_set('America/Chicago');
     $estimate_time = time() - $ptime;

@@ -189,9 +189,12 @@ if ($stream_pull == "exact") {
 
 
 
+
+
+// echo "<pre>";
+// // echo 'twitter: '.$twitter;
 // echo $sql . 'OKAY '.$search_query.' -- '.$stream_pull ;
-
-
+// echo "</pre>";
 
 
 

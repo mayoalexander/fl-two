@@ -1158,8 +1158,21 @@ class UploadHandler
 
         // Clean up twitter name: place the TWITTER @ sign and trim whitespace
         $filedata['twitter'] = trim($_POST['twitter']);
-        if (strpos($filedata['twitter'], "@") === false) {
-            $filedata['twitter'] = '@'.$filedata['twitter'];
+        // if (strpos($filedata['twitter'], "@") === false) {
+        //     $filedata['twitter'] = '@'.$filedata['twitter'];
+        // }
+        // if (strpos($filedata['twitter'],'https://twitter.com/')===0) {
+        //     $filedata['twitter'] = str_replace('https://twitter.com/', '', $filedata['twitter']);
+        // }
+
+        // 
+        $illegals = array("http://", "https://","twitter.com/", "HTTPS://");// "i", "o", "u", "A", "E", "I", "O", "U"
+        $filedata['twitter'] = str_replace($illegals, "", $filedata['twitter']);
+        if (strpos($filedata['twitter'],'@')===false) {
+            // echo 'No @ name included..';
+            $filedata['twitter'] = "@".$filedata['twitter'];
+        } else {
+            // echo 'its there!';
         }
 
         // Clean Up Blog Title:  get rid of bad extentions

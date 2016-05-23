@@ -151,7 +151,7 @@ $current_page = '0';
                     <span class='text-muted'>".$site['type']."</span>
                     <a href=\"http://freelabel.net/users/index/image/".$site['id']."\"><img src=\"".$site['image']."\"></a>
                     <h5 class='promo-title-head text-muted'>".$site['title']."</h5>
-                    <a href=\"http://freelabel.net/users/index/image/".$site['id']."\" class=\"btn btn-secondary-outline m-b-md view-promo-button\">View Now</a>
+                    <!--<a href=\"http://freelabel.net/users/index/image/".$site['id']."\" class=\"btn btn-secondary-outline m-b-md view-promo-button\">View Now</a>-->
                   </panel>";
           }
         ?>

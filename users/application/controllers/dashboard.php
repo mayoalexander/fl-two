@@ -214,7 +214,7 @@ class Dashboard extends Controller
         $numb = $_POST['number'];
         $user = $_POST['user_name'];
         var_dump($numb);
-        if (mail('notifications@freelabel.net','Client Booking - ' . $user, 'Here is the number: '.$numb)) {
+        if (mail('admin@freelabel.net','Client Booking - ' . $user, 'Here is the number: '.$numb)) {
             echo 'it sent out!';
         } else {
             echo 'not sent!';
