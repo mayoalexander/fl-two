@@ -90,6 +90,40 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/radio',true);
     }
+
+
+
+
+
+    // FEED 
+    function sport()
+    {
+        $this->view->render('dashboard/sport',true);
+    }
+    function fashion()
+    {
+        $this->view->render('dashboard/fashion',true);
+    }
+    function lifestyle()
+    {
+        $this->view->render('dashboard/lifestyle',true);
+    }
+    function music()
+    {
+        $this->view->render('dashboard/music',true);
+    }
+    function featured()
+    {
+        $this->view->render('dashboard/featured',true);
+    }
+
+
+    /* FEED */
+
+
+
+
+
     function discover()
     {
         $this->view->render('dashboard/discover',true);
@@ -143,9 +177,9 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/social');
     }
-    function featured() {
-        $this->view->render('dashboard/featured',true);
-    }
+    // function featured() {
+    //     $this->view->render('dashboard/featured',true);
+    // }
 
     /* ACCOUNT SET UP ASSISTANT PAGES */
     function complete() {

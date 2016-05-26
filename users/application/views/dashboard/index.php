@@ -32,6 +32,26 @@
 
 
 ?>
+<style type="text/css">
+  .categories {
+    font-weight: 700;
+  }
+  .feed-categories {
+    margin:0 0 2em 0;
+    font-size:0.8em;
+  }
+  .feed-categories div {
+    color:#74777b;
+    text-transform: lowercase;
+    /*background-color:#202020;*/
+    border-bottom:solid 1px #74777b;
+    cursor: pointer;
+  }
+  .feed-categories div:hover {
+    color:#e3e3e3;
+    background-color:#74777b;
+  }
+</style>
 <div class="tabs tabs-style-linemove" id="main_display_panel" >
   <nav>
     <ul>
@@ -58,6 +78,8 @@
         <!-- display content  -->
         <?php 
 
+          // echo $config->displayCategories();
+
           $files = $config->display_user_posts_new('admin' , $current_page);
           echo $files['posts']; 
 
@@ -76,5 +98,19 @@
   </div><!-- /content -->
 </div><!-- /tabs -->
 
+
+<script type="text/javascript">
+  // $('.feed-categories div').click(function(e){
+  //   var catName = $(this).text();
+  //   $('#section-linemove-1').html('Loading...');
+  //   // alert(catName);
+  //   // alert(tabName);
+  //   // load the data in to the wrapper
+  //   var url = 'http://freelabel.net/users/dashboard/' + catName + '/' ;
+  //   $.get(url, function(data){
+  //     $('#section-linemove-1').html(data);
+  //   })
+  // });
+</script>
 
 <script type="text/javascript" src="http://freelabel.net/js/dashboard.js"></script>

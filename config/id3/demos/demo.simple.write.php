@@ -1,4 +1,5 @@
 <?php
+// var_dump($_GET);
 /////////////////////////////////////////////////////////////////
 /// getID3() by James Heinrich <info@getid3.org>               //
 //  available at http://getid3.sourceforge.net                 //
@@ -68,7 +69,7 @@ $tagwriter->tag_data = $TagData;
 // write tags
 if ($tagwriter->WriteTags()) {
 	echo 'Success!';
-	//print_r($_GET);
+	// print_r($_GET);
 	if (!empty($tagwriter->warnings)) {
 		echo 'There were some warnings:<br>'.implode('<br><br>', $tagwriter->warnings);
 	}

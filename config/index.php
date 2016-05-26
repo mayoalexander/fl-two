@@ -1978,6 +1978,23 @@ class Blog
 
 
 
+public function displayCategories() {
+  $res='';
+  $res .= '<div class="container row feed-categories">
+    <div class="col-md-2 categories">Categories:</div>
+    <div class="col-md-2">Featured</div>
+    <div class="col-md-2">Music</div>
+    <div class="col-md-2">Lifestyle</div>
+    <div class="col-md-2">Fashion</div>
+    <div class="col-md-2">Sport</div>
+  </div>';
+
+  return $res;
+}
+
+
+
+
   public function display_user_posts($user_name, $page=0) {
         // GRAB GLOBAL FEED
         $feed_posts = $this->getPostsByUser($page,20,$user_name);

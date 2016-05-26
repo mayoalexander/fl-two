@@ -34,6 +34,26 @@ function stopAllAudio() {
 
 
 
+
+
+
+
+
+  // FEED CATEGORIES
+  $('.feed-categories div').click(function(e){
+    var catName = $(this).text();
+    $('#section-linemove-1').html('Loading...');
+    // alert(catName);
+    // alert(tabName);
+    // load the data in to the wrapper
+    var url = 'http://freelabel.net/users/dashboard/' + catName + '/' ;
+    $.get(url, function(data){
+      $('#section-linemove-1').html(data);
+    })
+  });
+
+
+
     // Main Feed Videon Controls Functionality
     $('video').click(function(){
       stopAllAudio();

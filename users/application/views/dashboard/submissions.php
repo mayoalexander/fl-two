@@ -121,14 +121,16 @@ function updateID3(mp3file, trackname, twittername) {
 					title: trackname,
 					artist: twittername
 				},function(result){
+					// alert(result);
 					if (result == 'Success!') {
 						/* it worked! proceed with processing*/
-						// return true;
+						return true;
 						console.log(result);
+						console.log('it worked! proceed with processing');
 					} else {
 						alert('Something went wrong with the writing of the ID3 Tags. Maybe the file type was not correct.');
 						console.log(result);
-						// return false;
+						return false;
 					}
 					
 			});
@@ -143,15 +145,16 @@ function updateID3(mp3file, trackname, twittername) {
 		element.text('Saving..');
 		element.css('disabled');
 		// alert(data);
-		// console.log(data);
+		console.log(data);
 		// alert(data[1]['value']);
 		var init = updateID3(data[1]['value'], data[2]['value'] ,data[3]['value']);
-		console.log(init);
+		// console.log(init);
+		// console.log(init);
 		// if (init === true) {
-		$.post('http://freelabel.net/submit/update.php', data, function(result) {
-					// alert(result);
-					element.text('Approved!');
-		});
+		// 	$.post('http://freelabel.net/submit/update.php', data, function(result) {
+		// 				// alert(result);
+		// 				element.text('Approved!');
+		// 	});
 		// } else {
 		// 	element.html('failed..');
 		// }
