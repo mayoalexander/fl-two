@@ -1,6 +1,8 @@
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <div class="container-fixed">
 <?php
+// echo 'fuclk';
+// exit;
  include_once('/home/content/59/13071759/html/config/index.php');
  $config = new Blog();
 
@@ -74,7 +76,7 @@ LIMIT 0 , 0";
 			   
 			   
 			   
-               $link_to_post = $page_url = 'FREELA.BE/L/'.$twitter.'/'.$post_title_short;
+               $link_to_post = $page_url = 'FREELABEL.NET/'.$twitter.'/'.$post_title_short;
  
  $posts_to_tweet[$i] = "#FLMAG | ".$twitter."
  

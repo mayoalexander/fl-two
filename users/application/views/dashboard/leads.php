@@ -59,6 +59,9 @@ $status[] = 'Messages Sent: '.$numb_soms_sent.' / 600';
 if ($numb_soms_sent < 600) {
 	$status[] = '<span class="text-danger">Not Enough SOMS Sent.</span>';
 	$status[] = '<a class="btn btn-success-outline som-button-trigger btn-block pull-left" href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=all" target="_blank">SOM</a>';
+    $status[] = '<button onclick="openScript()" class="btn btn-warning-outline btn-block"> 
+            Open Script
+        </button>';
 } else {
 	$status[] = '<span class="text-success">SOM quota met!</span>';
 }
@@ -215,7 +218,11 @@ $data.='</ul>
 
 
 <?php //include(ROOT.'submit/views/db/current_clients.php'); ?>
-
+<script type="text/javascript">
+            function openScript() {
+            window.open("http://freelabel.net/users/dashboard/dev?ctrl=script", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=10,left=0,width=290,height=1100");
+        }
+</script>
 
 
 <style type="text/css">
@@ -234,7 +241,7 @@ $data.='</ul>
 	</div>
 	<div class="col-md-8 lead-container">
     <select class="form-control lead-filter">
-        <option value="today">Today</option>
+        <option value="today">Tojkhhday</option>
         <option value="yesterday">Yesterday</option>
         <option value="this_month">This Month</option>
     </select>
@@ -268,6 +275,8 @@ $data.='</ul>
 
  <script type="text/javascript">
  	$(function(){
+
+
  		$('.lead-response-button').click(function(event){
  			event.preventDefault();
  			var lead_id = $(this).attr('data-id');
