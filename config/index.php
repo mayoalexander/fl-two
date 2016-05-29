@@ -1525,7 +1525,53 @@ class Blog
     $sql = "SELECT * FROM `feed` $f ORDER BY `id` DESC LIMIT $db_start , $limit";
     $result_stats = mysqli_query($con,$sql);
     $i=0;
-      //print_r($sql);
+      // print_r($sql);
+    while($row = mysqli_fetch_assoc($result_stats)) {
+
+      $blog[] = $row;
+        //echo '<hr>';
+    }
+    if (!$blog) {
+      $blog = NULL;
+    }
+    return $blog;
+  }
+
+
+  public function getPostsBySearchPublic($page=0, $limit=24, $query=false , $user=false) {
+
+    $db_start = $page * $limit;
+    //echo ' 1) .'.$feed_filter. ' - '.$site.'<hr>';
+    include(ROOT.'inc/connection.php');
+      //echo '<pre>';
+    $f='WHERE blogtitle LIKE "%'.$query.'%" AND status="public" OR twitter LIKE "%'.$query.'%" AND status="public"';
+    $sql = "SELECT * FROM `feed` $f ORDER BY `id` DESC LIMIT $db_start , $limit";
+    $result_stats = mysqli_query($con,$sql);
+    $i=0;
+      // var_dump($sql);
+    while($row = mysqli_fetch_assoc($result_stats)) {
+
+      $blog[] = $row;
+        //echo '<hr>';
+    }
+    if (!$blog) {
+      $blog = NULL;
+    }
+    return $blog;
+  }
+
+
+  public function getPostsByCategory($page=0, $limit=24, $query=false , $user=false) {
+
+    $db_start = $page * $limit;
+    //echo ' 1) .'.$feed_filter. ' - '.$site.'<hr>';
+    include(ROOT.'inc/connection.php');
+      //echo '<pre>';
+    $f='WHERE writeup LIKE "%'.$query.'%" AND status="public" OR tags LIKE "%'.$query.'%" AND status="public"';
+    $sql = "SELECT * FROM `feed` $f ORDER BY `id` DESC LIMIT $db_start , $limit";
+    $result_stats = mysqli_query($con,$sql);
+    $i=0;
+      // var_dump($sql);
     while($row = mysqli_fetch_assoc($result_stats)) {
 
       $blog[] = $row;

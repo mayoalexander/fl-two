@@ -77,6 +77,10 @@ function fileValidation(){
                 $('.wait').hide('fast');
             }).done(function (result) {
                 $('.photo-upload-results').html(result);
+                var uploadButton = $('.file-upload-trigger');
+                uploadButton.removeClass('disabled');
+                console.log(uploadButton);
+
                 $('.confirm-upload-buttons').show('fast');
                 $('.confirm-upload-buttons').css('display','block');
                 $('.wait').hide('fast');

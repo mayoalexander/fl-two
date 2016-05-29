@@ -136,6 +136,21 @@
       ga('create', 'UA-40470023-1', 'auto');
       ga('send', 'pageview');
     </script>
+    <script type="text/javascript">
+        // function searchQ() {
+        //   setTimeout(function(){
+        //     var qtxt = $('.search-bar').val();
+
+        //     $.post('http://freelabel.net/users/dashboard/search_instant', {q:qtxt} , function(results){
+        //       console.log(results);
+        //       $('#result').html(result);
+        //     })
+         
+        //   },200);
+
+        // }
+
+    </script>
     
     <style type="text/css">
     /* INTEGRATE INTO CSS FILE */
@@ -780,7 +795,7 @@
                 <li class="gn-search-item">
                 <?php //include(ROOT.'landing/livesearch/index.php'); ?>
                   <form method="GET" action="http://freelabel.net/users/index/search/">
-                    <input placeholder="Search" name="q" type="search" class="gn-search">
+                    <input placeholder="Search" name="q" type="search" class="gn-search search-bar" onkeydown="searchQ()">
                     <a class="gn-icon gn-icon-search"><span>Search</span></a>
                   </form>
                   <span id="result"></span>
@@ -816,5 +831,6 @@
 
 
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
 <!-- <script src="https://public.radio.co/playerapi/jquery.radiocoplayer.min.js"></script> -->
 <!-- <script>$('.radioplayer').radiocoPlayer();</script>-->

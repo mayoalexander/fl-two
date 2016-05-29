@@ -78,7 +78,7 @@
         <!-- display content  -->
         <?php 
 
-          echo $config->displayCategories();
+          // echo $config->displayCategories();
 
           $files = $config->display_user_posts_new('admin' , $current_page);
           echo $files['posts']; 

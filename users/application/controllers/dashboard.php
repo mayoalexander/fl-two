@@ -121,8 +121,11 @@ class Dashboard extends Controller
     /* FEED */
 
 
-
-
+    
+    function search_instant()
+    {
+        $this->view->render('dashboard/search_instant',true);
+    }
 
     function discover()
     {

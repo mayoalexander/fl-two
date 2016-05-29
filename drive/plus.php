@@ -132,6 +132,11 @@
         .navbar-header, .file-container {
             padding:0.5%;
         }
+
+        .upload-preview-img {
+            max-height:80px;
+            max-width:80px;
+        }
         .toolbar {
             background-color:rgba(0,0,0,0.7);
         }
@@ -439,11 +444,17 @@
 <script src="http://freelabel.net/js/jquery-ui.min.js"></script>
 <script>
 function hideFilePanel(data) {
+    console.log(data);
+    var photo = $.trim(data.formData[0].value);
+    var title = $.trim(data.formData[3].value);
+    var twitter = $.trim(data.formData[4].value);
+    var postUrl = 'http://freelabel.net/' + twitter + "/" ;
 
-    $(data.context.find('.file-panel')).remove();
-    $(data.context.find('.file-panel .form-control')).remove();
-    $(data.context.find('.file-panel .photo-upload-results')).remove();
-    $(data.context.find('.file-panel')).prepend('<button onclick="location.reload()" class="close-button btn btn-primary pull-right" ><i class="fa fa-close"></i></button>');
+    // $(data.context.find('.file-panel')).html('');
+    // $(data.context.find('.file-panel')).remove();
+    // $(data.context.find('.file-panel .form-control')).remove();
+    // $(data.context.find('.file-panel .photo-upload-results')).remove();
+    $(data.context.find('.file-panel')).html('<img src="' + photo + '" class="upload-preview-img pull-right"> <h2>' + twitter + '</h2> <p>' + title + '</p> <a class="btn btn-primary" href="' + postUrl + '">View Post</a> <a class="btn btn-primary" href="' + postUrl + '">View All Uploads</a>');
     // $(data.context.find('.file-panel')).append('<button onclick="$(this).parent().hide()" class="close-button btn btn-primary pull-right" ><i class="fa fa-plus"></i></button>');
     // hide the tool bar
     $('.toolbar').hide();
@@ -510,7 +521,7 @@ $(function () {
     var url = window.location.hostname === 'blueimp.github.io' ?
                 '//jquery-file-upload.appspot.com/' : 'server/php/',
         uploadButton = $('<button/>')
-            .addClass('btn btn-primary btn-block file-upload-trigger')
+            .addClass('btn btn-primary btn-block file-upload-trigger disabled')
             .prop('disabled', true)
             .text('Processing...')
             .on('click', function () {
