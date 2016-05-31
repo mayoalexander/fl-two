@@ -16,6 +16,8 @@ $config = new Blog();
 	<a onclick="loadPage('http://freelabel.net/users/dashboard/clients/?filter=all', '#leads', 'paid' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>All</a>
 	<a onclick="loadPage('http://freelabel.net/users/dashboard/clients/?filter=paid', '#leads', 'paid' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>Paid</a>
 	<a onclick="loadPage('http://freelabel.net/users/dashboard/clients/?filter=expired', '#leads', 'paid' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>Expired</a>
+	<a onclick="loadPage('http://freelabel.net/users/dashboard/clients/?filter=unpaid', '#leads', 'paid' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>Unpaid</a>
+	<a onclick="loadPage('http://freelabel.net/users/dashboard/clients/?filter=admin', '#leads', 'paid' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>Admin</a>
 	<a onclick="loadPage('http://freelabel.net/users/dashboard/clients/?filter=uncategorized', '#leads', 'paid' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>Uncategorized</a>
 <!-- 	<a onclick="loadPage('http://freelabel.net/users/dashboard/clients/?filter=paid&sort=chrono', '#leads', 'paid' , '<?php echo $_SESSION["user_name"]; ?>')" href='#' class='btn btn-default btn-xs'>Client Showcases</a> -->
 	
@@ -78,21 +80,28 @@ $config = new Blog();
 		case 'paid':
 			$sql = "SELECT * 
 			FROM  `users` 
-			WHERE `account_type` LIKE '%paid%'
+			WHERE `account_type` = 'paid'
 			ORDER BY  `users`.`$sort` DESC 
 			LIMIT 0 , 20";
 			break;
 		case 'expired':
 			$sql = "SELECT * 
 			FROM  `users` 
-			WHERE `account_type` LIKE '%expired%'
+			WHERE `account_type` = 'expired'
+			ORDER BY  `users`.`$sort` DESC 
+			LIMIT 0 , 20";
+			break;
+		case 'unpaid':
+			$sql = "SELECT * 
+			FROM  `users` 
+			WHERE `account_type` = 'unpaid'
 			ORDER BY  `users`.`$sort` DESC 
 			LIMIT 0 , 20";
 			break;
 		case 'uncategorized':
 			$sql = "SELECT * 
 			FROM  `users` 
-			WHERE `account_type` NOT LIKE '%expired%' AND `account_type` NOT LIKE '%paid%' 
+			WHERE `account_type` NOT = 'expired' AND `account_type` NOT = 'paid' 
 			ORDER BY  `users`.`$sort` DESC 
 			LIMIT 0 , 20";
 			break;

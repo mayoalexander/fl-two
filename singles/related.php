@@ -248,7 +248,7 @@ if ($row['type'] == 'blog') {
 
 
       //$blog_story_url = 'http://FREELABEL.net/'.$twitter.'/'.$post_title_short;
-      $blog_story_url = 'http://freela.be/l/'.$twitter.'/'.$post_title_short;
+      $blog_story_url = 'http://freelabel.net/'.$twitter.'/'.$post_title_short;
 
 
     

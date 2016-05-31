@@ -454,7 +454,7 @@ function hideFilePanel(data) {
     // $(data.context.find('.file-panel')).remove();
     // $(data.context.find('.file-panel .form-control')).remove();
     // $(data.context.find('.file-panel .photo-upload-results')).remove();
-    $(data.context.find('.file-panel')).html('<img src="' + photo + '" class="upload-preview-img pull-right"> <h2>' + twitter + '</h2> <p>' + title + '</p> <a class="btn btn-primary" href="' + postUrl + '">View Post</a> <a class="btn btn-primary" href="' + postUrl + '">View All Uploads</a>');
+    $(data.context.find('.file-panel')).html('<img src="' + photo + '" class="upload-preview-img pull-right"> <h2>' + twitter + '</h2> <p>' + title + '</p> <a class="btn btn-primary" href="' + postUrl + '">View Post</a> <a class="btn btn-primary" href="http://freelabel.net/users/dashboard/?ctrl=audio">View All Uploads</a>');
     // $(data.context.find('.file-panel')).append('<button onclick="$(this).parent().hide()" class="close-button btn btn-primary pull-right" ><i class="fa fa-plus"></i></button>');
     // hide the tool bar
     $('.toolbar').hide();

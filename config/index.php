@@ -3603,7 +3603,7 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
     } else {
       $post_title_short = $post_title_array[0];
     }
-    $blog_story_url = 'http://freela.be/l/'.$post['twitter'].'/'.$post_title_short;
+    $blog_story_url = 'http://freelabel.net/'.$post['twitter'].'/'.$post_title_short;
     return $blog_story_url;
 
   }

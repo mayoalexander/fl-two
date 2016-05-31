@@ -81,6 +81,17 @@ function fileValidation(){
                 uploadButton.removeClass('disabled');
                 console.log(uploadButton);
 
+
+
+
+
+
+
+
+
+
+                // alert(uploadButton);
+
                 $('.confirm-upload-buttons').show('fast');
                 $('.confirm-upload-buttons').css('display','block');
                 $('.wait').hide('fast');
