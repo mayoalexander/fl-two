@@ -141,20 +141,28 @@ function updateID3(mp3file, trackname, twittername) {
 	$('.approve-form').submit(function(event){
 		event.preventDefault();
 		var data = $(this).serializeArray();
-		var element = $(this);
-		element.text('Saving..');
-		element.css('disabled');
+		var elem = $(this);
+		var element = $(this).find('.btn');
+		element[0].value = 'SAVING..';
+
+		// element[0].addClass('disabled');
+		// var element = $(this).find('.btn').get(0).addClass('disabled');
+
+		// console.log(element);
+		// element.text('Saving..');
+		// element.addClass('disabled');
+		// element.addClass('btn btn-default');
 		// alert(data);
-		console.log(data);
+		// console.log(data);
 		// alert(data[1]['value']);
 		var init = updateID3(data[1]['value'], data[2]['value'] ,data[3]['value']);
 		// console.log(init);
 		// console.log(init);
 		// if (init === true) {
-		// 	$.post('http://freelabel.net/submit/update.php', data, function(result) {
-		// 				// alert(result);
-		// 				element.text('Approved!');
-		// 	});
+		$.post('http://freelabel.net/submit/update.php', data, function(result) {
+					// alert(result);
+					elem.text('Approved!');
+		});
 		// } else {
 		// 	element.html('failed..');
 		// }

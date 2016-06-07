@@ -7,8 +7,8 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 
 
 
-$access_token = '1018532587-ePnn93z1v2GafbuAla6QRQe4gspUbKRDy9kuSGh';
-$access_token_secret = 'hGaLGtPdcHKgnjM7qJzdjIAUGfuKwGovUFmKlpzlAlGM5';
+$access_token = '1018532587-AYr3PjvTb881X5dZReDnboqISrDZm4jyyZWfKgb';
+$access_token_secret = 'aBwkLuX8MczHZvadwdeFQpKoi0W6JJIy3dALpB8Ob9Hk7';
 
 $connection = new TwitterOAuth('yaN4EQqnWE8Q4YGFL4lR0xRxi', 'rudYALyDVhfGosR3L4WxPt3go4X6rRwlSuwfmYspkqEJbo9wmX', $access_token, $access_token_secret);
 

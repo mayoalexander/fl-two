@@ -180,9 +180,6 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/social');
     }
-    // function featured() {
-    //     $this->view->render('dashboard/featured',true);
-    // }
 
     /* ACCOUNT SET UP ASSISTANT PAGES */
     function complete() {

@@ -64,4 +64,13 @@ class Index extends Controller
     function off() {
             $this->view->render('index/off',true);
     }
+    function marketing() {
+            $this->view->render('index/marketing',true);
+    }
+    function marketing_pricing() {
+            $this->view->render('index/marketing_pricing', true);
+    }
+    // function marketing() {
+    //         $this->view->render('marketing', true);
+    // }
 }

@@ -12,8 +12,8 @@ $blog = new Blog();
 if (isset($_SESSION['user_name']) == false) {
   session_start();
 }
-$access_token['oauth_token'] = '1018532587-ePnn93z1v2GafbuAla6QRQe4gspUbKRDy9kuSGh';
-$access_token['oauth_token_secret'] = 'hGaLGtPdcHKgnjM7qJzdjIAUGfuKwGovUFmKlpzlAlGM5';
+$access_token['oauth_token'] = '1018532587-AYr3PjvTb881X5dZReDnboqISrDZm4jyyZWfKgb';
+$access_token['oauth_token_secret'] = 'aBwkLuX8MczHZvadwdeFQpKoi0W6JJIy3dALpB8Ob9Hk7';
 $access_token['screen_name'] = 'FreeLabelNet';
 $access_token['user_id'] = '1018532587';
 $access_token['x_auth_expires'] = '0';

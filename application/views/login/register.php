@@ -182,13 +182,52 @@
                 <h3 class="media-item__title"><?php echo $site['media']['credit'][2]['title']; ?></h3>
             </a>
         </section> -->
+asdfasfd
+<section class="features-list" id="features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
 
+                        <div class="col-md-4 feature-1 wp2 animated fadeInDown">
+                            <div class="feature-icon">
+                                <i class="fa fa-desktop"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h1>Create Your Account</h1>
+                                <p>Choose your account type, make your payment, and create your username and password!</p>
+                                <a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 feature-2 wp2 delay-05s animated fadeInDown">
+                            <div class="feature-icon">
+                                <i class="fa fa-flash"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h1>Upload and Distribute Your Music + Videos</h1>
+                                <p>Login to your dashboard and start uploading music to your profile and booking project releases, interviews, or showcases via your Events tab.</p>
+                                <a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 feature-3 wp2 delay-1s animated fadeInDown">
+                            <div class="feature-icon">
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h1>Watch Your Audience Grow</h1>
+                                <p>A Team of producers, A&amp;Rs, and Event coordinators will contact you about getting booked on different projects and showcases!</p>
+                                <a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a>
+                            </div>
+                        </div>
 
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
         <!-- Pricing Tables and More  -->
         <section class="pricing-section bg-8 pricing-area">
-            <h2 class="pricing-section__title">Choose Your Account Type:</h2>
+            <h2 class="pricing-section__title">Choose Your Acasdfasfdcount Type:</h2>
             <div class="pricing pricing--tashi">
 <!--                 <div class="pricing__item">
                     <h3 class="pricing__title">Lite</h3>

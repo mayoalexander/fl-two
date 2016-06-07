@@ -14,6 +14,9 @@ switch ($type) {
 	case 'exclusive':
 		$url = $exclusive[1];
 		break;
+	case 'trial':
+		$url = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=J67CSAKQMWDT8';
+		break;
 	case 'freetrial':
 		//$url = $magazine[1];
 		$url = 'http://freelabel.net/config/register_freetrial.php?freetrial';

@@ -139,6 +139,21 @@
         .jumbotron {
             background-size:200%;
         }
+        .col-md-4 {
+            width:32%;
+            margin:0;
+            display: inline-block;
+            padding:5em 2em;
+            vertical-align: top;
+            text-align: center;
+        }
+        .feature-icon i {
+            font-size:5em;
+        }
+        .features-list h1 {
+            text-align: center;
+            text-transform: uppercase;
+        }
 
         /*MOBILE STYLES */
          
@@ -210,7 +225,47 @@ Leverage upcoming Slyde™ tools to monetize music and performances, and gain va
             </a>
         </section> -->
 
+<section class="pricing-section features-list" id="features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>What Can You Do With a FREELABEL Account?</h1>
 
+                        <div class="col-md-4 feature-1 wp2 animated fadeInDown">
+                            <div class="feature-icon">
+                                <i class="fa fa-desktop"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h1>Create Your Account</h1>
+                                <p>Choose your account type, make your payment, and create your username and password!</p>
+                                <!-- <a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a> -->
+                            </div>
+                        </div>
+                        <div class="col-md-4 feature-2 wp2 delay-05s animated fadeInDown">
+                            <div class="feature-icon">
+                                <i class="fa fa-flash"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h1>Upload and Distribute Your Music + Videos</h1>
+                                <p>Login to your dashboard and start uploading music to your profile and booking project releases, interviews, or showcases via your Events tab.</p>
+                                <!-- <a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a> -->
+                            </div>
+                        </div>
+                        <div class="col-md-4 feature-3 wp2 delay-1s animated fadeInDown">
+                            <div class="feature-icon">
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h1>Watch Your Audience Grow</h1>
+                                <p>A Team of producers, A&amp;Rs, and Event coordinators will contact you about getting booked on different projects and showcases!</p>
+                                <!-- <a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a> -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
         <!-- Pricing Tables and More  -->
@@ -240,7 +295,7 @@ Leverage upcoming Slyde™ tools to monetize music and performances, and gain va
 
                 <div class="pricing__item">
                     <h3 class="pricing__title"><i class="fa fa-ticket"></i> Trial</h3>
-                    <p class="pricing__sentence">For people wanting to try out the platform and start sharing your profile to the world.</p>
+                    <p class="pricing__sentence">Try out the platform and start uploading and sharing your music to the world.</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>FREE<span class="pricing__period">/ First Day</span></div>
                     <ul class="pricing__feature-list">
                         <li class="pricing__feature">Upload and Download Unlimited Songs, Videos, Interviews, Radio Shows, Magazine Issues, Exclusve Music & much more..</li>
@@ -253,7 +308,7 @@ Leverage upcoming Slyde™ tools to monetize music and performances, and gain va
 
                 <div class="pricing__item">
                     <h3 class="pricing__title"><i class="fa fa-microphone"></i> Creator</h3>
-                    <p class="pricing__sentence">For more advanced creators looking to make a impression to millions by get their content showcased exclusively on the Radio + Magazine.</p>
+                    <p class="pricing__sentence">Make a impression to millions by get your content showcased exclusively on the Radio + Magazine.</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>59<span class="pricing__period">/ month</span></div>
                     <ul class="pricing__feature-list">
                         <li class="pricing__feature">24/7 Radio Rotation</li>
@@ -269,7 +324,7 @@ Leverage upcoming Slyde™ tools to monetize music and performances, and gain va
                 <div class="pricing__item">
                     <h3 class="pricing__title"><i class="fa fa-institution"></i> Exclusive</h3>
                     <!-- <p class="pricing__sentence">For creators who are looking for more Studio Production, hands-on development, interested in expanding their team, building more resources for their content production. audio and visual production such as recording, mixing, mastering, video or photoshoots, etc.</p> -->
-                    <p class="pricing__sentence">Expand your resources, get booked on shows, and unlimited studio time.</p>
+                    <p class="pricing__sentence">Make Money, Grow your audience, Distribute your music on major platforms, Expand your business, and Get Booked Consistently.</p>
                     <div class="pricing__price"><span class="pricing__currency">$</span>200<span class="pricing__period">/ month</span></div>
                     <ul class="pricing__feature-list">
                         <li class="pricing__feature">Music Distribution (Apple Music, iTunes, Spotify, Amazon,

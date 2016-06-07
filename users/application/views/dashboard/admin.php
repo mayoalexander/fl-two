@@ -53,7 +53,10 @@ $(function(){
 			window.open('http://anything2mp3.com/?url=' + soundcloud_link)
 		} else if (soundcloud_link.indexOf('youtu') > -1) {
       // alert('its a youtube video!');
-			window.open('http://keepvid.com/?url=' + soundcloud_link)
+      // window.open('http://keepvid.com/?url=' + soundcloud_link)
+      // string replace soundcloud_link and take out the url
+      var res = soundcloud_link.replace("http://youtube.com/", "");
+			window.open('http://savemedia.com/?url=' + res);
 		} else {
 
       // alert('idk what it is!');

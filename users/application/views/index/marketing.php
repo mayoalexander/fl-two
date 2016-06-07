@@ -87,7 +87,73 @@
 		<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
 		<link href="http://freelabel.net/vendor/boxify/css/styles.css" rel="stylesheet">
 		<link href="http://freelabel.net/vendor/boxify/css/queries.css" rel="stylesheet">
+		<style type="text/css">
+			.hero {
+				background: rgb(40, 70, 102) url('<?php echo $site['media']['photos']['front-page'][4]['image']; ?>') no-repeat center center;
+				background-size: 200%;
+			}
+			.features-bg {
+				background: rgb(40, 70, 102) url('<?php echo $site['media']['photos']['front-page'][0]['image']; ?>') no-repeat center center;
+				background-size: 110%;
+				background-image:url('http://thatgrapejuice.net/wp-content/uploads/2016/03/streaming-2016-music.jpg');
 
+			}
+			.showcase {
+				background: rgb(40, 70, 102) url('<?php echo $site['media']['photos']['front-page'][1]['image']; ?>') no-repeat center center;
+				background-size: 200%;
+			}
+			.site-logo {
+			    width: 60px;
+			    border-radius: 2px;
+			}
+			.read-more-btn {
+				/*color:#4e9ba3;*/
+				/*color:#e3e3e3;*/
+				color:#4e9ba3;
+				border:#4e9ba3 solid 1px;
+				padding: 1.2em;
+				border-radius: 2px;
+				font-size:1.1em;
+				/*width:100%;*/
+			}
+			.heading-subtext {
+				font-size:0.5em;
+			}
+			.avatar-logo {
+				width:60px;
+			}
+			.feature-content li {
+				color:#778899;
+				color:#e3e3e3;
+			}
+			@media (max-width: 1068px) {
+				.features-bg {
+					background-size:130%;
+				}
+			}
+			@media (max-width: 768px) {
+				.features-bg {
+					background-size:100%;
+				}
+			}
+			@media (max-width: 668px) {
+				.features-bg {
+					background-size:150%;
+				}
+				.hero , .showcase {
+					background-size: 300%;
+				}
+			}
+			@media (max-width: 468px) {
+				.hero , .showcase {
+					background-size:600%;
+				}
+				.features-bg {
+					background-size: 200%;
+					background-position:left;
+				}
+			}
+		</style>
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -106,7 +172,7 @@
 				<div class="container">
 					<div class="row nav-wrapper">
 						<div class="col-md-6 col-sm-6 col-xs-6 text-left">
-							<a href="#"><img src="<?php echo $site['logo']; ?>" alt="Boxify Logo"></a>
+							<a href="#"><img class="site-logo" src="<?php echo $site['logo']; ?>" alt="Boxify Logo"></a>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-6 text-right navicon">
 							<p>MENU</p><a id="trigger-overlay" class="nav_slide_button nav-toggle" href="#"><span></span></a>
@@ -114,22 +180,13 @@
 					</div>
 					<div class="row hero-content">
 						<div class="col-md-12">
-							<h1 class="animated fadeInDown">An Exclusive, Premium HTML5 &amp; CSS3 Template by Peter Finlan, for Codrops.</h1>
-							<a href="http://tympanus.net/codrops/?p=22554" class="use-btn animated fadeInUp">Use it for free</a> <a href="#about" class="learn-btn animated fadeInUp">Learn more <i class="fa fa-arrow-down"></i></a>
+							<h1 class="animated fadeInDown"><?php echo $site['name'].' <span class="heading-subtext text-muted">'.$site['description'].'</span>';?></h1>
+							<a href="http://freelabel.net/confirm/free/" target="_blank" class="use-btn animated fadeInUp">Create A FREE TRIAL</a> <a href="#pricing" class="learn-btn animated fadeInUp">Learn more <i class="fa fa-arrow-down"></i></a>
 						</div>
 					</div>
 				</div>
 			</section>
 		</header>
-		<section class="video" id="about">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<h1><a href="http://www.youtube.com/embed/9No-FiEInLA?autoplay=1&wmode=opaque&fs=1" class="youtube-media"><i class="fa fa-play-circle-o"></i> Watch the Video</a></h1>
-					</div>
-				</div>
-			</div>
-		</section>
 		<section class="features-intro">
 			<div class="container-fluid">
 				<div class="row">
@@ -137,7 +194,7 @@
 						<div class="features-bg">
 							<div class="texture-overlay"></div>
 							<div class="features-img wp1">
-								<img src="img/html5-logo.png" alt="HTML5 Logo">
+								<!-- <img class="distribution-" src="http://thatgrapejuice.net/wp-content/uploads/2016/03/streaming-2016-music.jpg" alt="HTML5 Logo"> -->
 							</div>
 						</div>
 					</div>
@@ -145,19 +202,19 @@
 						<div class="features-slider">
 								<ul class="slides" id="featuresSlider">
 									<li>
-										<h1>The Fore-front of Design &amp; Technology</h1>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+										<h1><?php echo $site['landing-info'][0].'</span>';?></h1>
+										<p><?php echo $site['landing-info'][1].'</span>';?></p>
 										<p><a href="#features" class="arrow-btn">Find out why this freebie rocks! <i class="fa fa-long-arrow-right"></i></a></p>
 									</li>
 									<li>
-										<h1>Multi-Purpose User Centric Design</h1>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-										<p><a href="http://tympanus.net/codrops/?p=22554" class="arrow-btn">Find out why this freebie rocks! <i class="fa fa-long-arrow-right"></i></a></p>
+										<h1><?php echo $site['landing-info'][2].'</span>';?></h1>
+										<p><?php echo $site['landing-info'][3].'</span>';?>.</p>
+										<p><a href="http://freelabel.net/users/index/marketing_pricing/" class="arrow-btn">Find out why this freebie rocks! <i class="fa fa-long-arrow-right"></i></a></p>
 									</li>
 									<li>
-										<h1>Made with Love, Released for Free</h1>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-										<p><a href="http://tympanus.net/codrops/?p=22554" class="arrow-btn">Find out why this freebie rocks! <i class="fa fa-long-arrow-right"></i></a></p>
+										<h1><?php echo $site['landing-info'][4].'</span>';?></h1>
+										<p><?php echo $site['landing-info'][5].'</span>';?></p>
+										<p><a href="http://freelabel.net/users/index/marketing_pricing/" class="arrow-btn">Find out why this freebie rocks! <i class="fa fa-long-arrow-right"></i></a></p>
 									</li>
 								</ul>
 						</div>
@@ -175,9 +232,9 @@
 								<i class="fa fa-desktop"></i>
 							</div>
 							<div class="feature-content">
-								<h1>Responsive</h1>
-								<p>Built using HTML5/CSS3 and jQuery, and built using one of the world's most powerful CSS frameworks available, Bootstrap.</p>
-								<a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a>
+								<h1>Create Your Account</h1>
+								<p><?php echo $site['landing-info']['instruction'][0].'</span>';?></p>
+								<a href="#pricing" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a>
 							</div>
 						</div>
 						<div class="col-md-4 feature-2 wp2 delay-05s">
@@ -185,9 +242,9 @@
 								<i class="fa fa-flash"></i>
 							</div>
 							<div class="feature-content">
-								<h1>Multi-Purpose</h1>
-								<p>Perfect if you run your own start-up, product or service. Boxify can showcase your business converting your visits to income.</p>
-								<a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a>
+								<h1>Upload and Distribute Your Music + Videos</h1>
+								<p><?php echo $site['landing-info']['instruction'][1].'</span>';?></p>
+								<a href="#pricing" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a>
 							</div>
 						</div>
 						<div class="col-md-4 feature-3 wp2 delay-1s">
@@ -195,9 +252,9 @@
 								<i class="fa fa-heart"></i>
 							</div>
 							<div class="feature-content">
-								<h1>Absolutely Free</h1>
-								<p>As aways, download Boxify for free exclusively from Codrops. If you love Boxify and want to thank me, simply <a href="http://peterfinlan.com/">buy me a beer</a>. </p>
-								<a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a>
+								<h1>Watch Your Audience Grow</h1>
+								<p><?php echo $site['landing-info']['instruction'][2].'</span>';?></p>
+								<a href="#pricing" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a>
 							</div>
 						</div>
 
@@ -216,13 +273,13 @@
 									<div class="showcase-slider">
 										<ul class="slides" id="showcaseSlider">
 											<li>
-												<img src="img/screen1.jpg" alt="Device Content Image">
+												<img src="http://freelabel.net/upload/server/php/upload/thumb/mobile-site-screenshot--302277916-.png" alt="Device Content Image">
 											</li>
 											<li>
-												<img src="img/screen2.jpg" alt="Device Content Image">
+												<img src="http://freelabel.net/upload/server/php/upload/thumb/mobile-site-screenshot--302277916-.png" alt="Device Content Image">
 											</li>
 											<li>
-												<img src="img/screen3.jpg" alt="Device Content Image">
+												<img src="http://freelabel.net/upload/server/php/upload/thumb/mobile-site-screenshot--302277916-.png" alt="Device Content Image">
 											</li>
 										</ul>
 									</div>
@@ -230,16 +287,16 @@
 							</div>
 						</div>
 						<div class="col-md-6">
-							<h1>Showcase your Product or Service</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+							<h1>Create Your Account and Upload Your Music/Videos to get Showcased and Distributed on Major Platforms, Blogs, Projects + Events</h1>
+							<p><?php echo $site['landing-info'][18].'</span>';?></p>
 							<blockquote class="team-quote">
-								<div class="avatar"><img src="img/avatar.png" alt="User Avatar"></div>
+								<div class="avatar"><img class="avatar-logo" src="http://freelabel.net/images/fllogo.png" alt="User Avatar"></div>
 								<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc." - Peter Finlan</p>
 								<div class="logo-quote">
-									<a href="http://tympanus.net/codrops/"><img src="img/codrops-logo.png" alt="Codrops Logo"></a>
+									<a href="http://freelabel.net/users/index/marketing_pricing/"><img src="http://www.onalytica.com/wp-content/uploads/2015/02/logo_white.png" alt="Codrops Logo"></a>
 								</div>
 							</blockquote>
-							<a href="http://tympanus.net/codrops/?p=22554" class="download-btn">Download! <i class="fa fa-download"></i></a>
+							<a href="http://freelabel.net/users/index/marketing_pricing/" class="download-btn">Create An Account! <i class="fa fa-download"></i></a>
 						</div>
 					</div>
 				</div>
@@ -251,7 +308,14 @@
 				<div class="row">
 					<div class="col-md-12">
 						<h1>Packed Full of Powerful Features</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+						<p>Give fans a rich record release experience on iPhone & Android by turning your single into a living mobile magazine called a "slyde." 
+
+Easy publishing interface to drop new singles, and add an endless stream of articles, photos, and videos at any time. 
+
+Build hype, streamline your promotional content, and send fans to a single mobile destination with automatic notifications. 
+
+Leverage upcoming FREELABEL™ tools to monetize music and performances, and gain valuable insight into fan engagement analytics.
+								</p>
 						<p><a href="#screenshots" class="arrow-btn">See the screenshots! <i class="fa fa-long-arrow-right"></i></a></p>
 					</div>
 				</div>
@@ -268,7 +332,9 @@
 								<div class="caption-content">
 									<a href="img/large/01.jpg" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>Optimised For Design</p>
+										<p>Optimised For Design
+
+										</p>
 									</a>
 								</div>
 								</figcaption>
@@ -373,24 +439,14 @@
 				</div>
 			</div>
 		</section>
-		<section class="download" id="download">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 text-center wp4">
-						<h1>Seen Enough?</h1>
-						<a href="http://tympanus.net/codrops/?p=22554" class="download-btn">Download! <i class="fa fa-download"></i></a>
-					</div>
-				</div>
-			</div>
-		</section>
 		<footer>
 			<div class="container">
 				<div class="row">
 					<div class="col-md-5">
 						<h1 class="footer-logo">
-						<img src="img/logo-blue.png" alt="Footer Logo Blue">
+						<!-- <img src="http://freelabel.net/images/FREELABELLOGO.gif" alt="Footer Logo Blue"> -->
 						</h1>
-						<p>© Boxify 2015 - <a href="http://tympanus.net/codrops/licensing/">Licence</a> - Designed &amp; Developed by <a href="http://www.peterfinlan.com/">Peter Finlan</a></p>
+						<p>© FREELABEL NETWORKS 2016 - <a href="http://tympanus.net/codrops/licensing/">Licensing</a> - Designed &amp; Developed by <a href="http://www.twitter.com/@siralexmayo">Alexander Mayo</a></p>
 					</div>
 					<div class="col-md-7">
 						<ul class="footer-nav">

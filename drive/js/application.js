@@ -88,8 +88,6 @@ function fileValidation(){
 
 
 
-
-
                 // alert(uploadButton);
 
                 $('.confirm-upload-buttons').show('fast');

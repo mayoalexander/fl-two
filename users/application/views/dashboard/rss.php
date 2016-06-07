@@ -33,7 +33,6 @@ $rss_feed = array(/*'http://freelabelmagazine.wordpress.com/rss',
   	'http://www.highsnobiety.com/feed/',
   	'http://feeds.feedblitz.com/Gizmag',
   	'http://www.vibe.com/feed/',
-  	'http://www.elevatormag.com/feed/',
   	'http://thedailyloud.com/feed/',
 
   );
