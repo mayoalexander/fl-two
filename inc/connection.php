@@ -3,15 +3,15 @@
 //These variable values come from your hosting account.
 
 // back up
-// $hostname = 'amrusersbackup.db.13071759.hostedresource.com';
-// $dbname = "amrusersbackup";
-// $username = "amrusersbackup";
-// $password = "Leighl11!";
-
-$hostname = "amrusers.db.13071759.hostedresource.com";
+$hostname = 'amrusers.db.13071759.hostedresource.com';
 $dbname = "amrusers";
 $username = "amrusers";
 $password = "Leighl11!";
+
+// $hostname = "amrusers.db.13071759.hostedresource.com";
+// $dbname = "amrusers";
+// $username = "amrusers";
+// $password = "Leighl11!";
 //$usertable = "users";
 //Connecting to your database
 $con = mysqli_connect($hostname, $username, $password, $dbname) ;

@@ -174,61 +174,34 @@
 				<div class="container">
 					<div class="row nav-wrapper">
 						<div class="col-md-6 col-sm-6 col-xs-6 text-left">
-							<a href="#"><img class="site-logo" src="<?php echo $site['logo']; ?>" alt="Boxify Logo"></a>
+							<a href="http://freelabel.net/#"><img class="site-logo" src="<?php echo $site['logo']; ?>" alt="Boxify Logo"></a>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-6 text-right navicon">
 							<p>MENU</p><a id="trigger-overlay" class="nav_slide_button nav-toggle" href="#"><span></span></a>
 						</div>
 					</div>
 					<div class="row hero-content">
-						<div class="col-md-12">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12">
+									<h1>Create Your Account</h1>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+									<p><a href="#screenshots" class="arrow-btn">See the screenshots! <i class="fa fa-long-arrow-right"></i></a></p>
+								</div>
+							</div>
+						</div>
+						<!-- <div class="col-md-12">
 							<h1 class="animated fadeInDown"><?php echo $site['name'].' <span class="heading-subtext text-muted">'.$site['description'].'</span>';?></h1>
 							<a href="http://freelabel.net/confirm/free/" target="_blank" class="use-btn animated fadeInUp">Create A FREE TRIAL</a> <a href="#pricing" class="learn-btn animated fadeInUp">Learn more <i class="fa fa-arrow-down"></i></a>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</section>
 		</header>
 
-		<!-- open/close -->
-		<section class="features-intro" style="display:none;">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-6 nopadding features-intro-img">
-						<div class="features-bg">
-							<div class="texture-overlay"></div>
-							<div class="features-img wp1">
-								<!-- <img class="distribution-" src="http://thatgrapejuice.net/wp-content/uploads/2016/03/streaming-2016-music.jpg" alt="HTML5 Logo"> -->
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 nopadding">
-						<div class="features-slider">
-								<ul class="slides" id="featuresSlider">
-									<li>
-										<h1><?php echo $site['landing-info'][0].'</span>';?></h1>
-										<p><?php echo $site['landing-info'][1].'</span>';?></p>
-										<p><a href="#features" class="arrow-btn">Find out why this freebie rocks! <i class="fa fa-long-arrow-right"></i></a></p>
-									</li>
-									<li>
-										<h1><?php echo $site['landing-info'][2].'</span>';?></h1>
-										<p><?php echo $site['landing-info'][3].'</span>';?>.</p>
-										<p><a href="http://freelabel.net/users/index/marketing_pricing/" class="arrow-btn">Find out why this freebie rocks! <i class="fa fa-long-arrow-right"></i></a></p>
-									</li>
-									<li>
-										<h1><?php echo $site['landing-info'][4].'</span>';?></h1>
-										<p><?php echo $site['landing-info'][5].'</span>';?></p>
-										<p><a href="http://freelabel.net/users/index/marketing_pricing/" class="arrow-btn">Find out why this freebie rocks! <i class="fa fa-long-arrow-right"></i></a></p>
-									</li>
-								</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
 
 
-		<section class="screenshots-intro">
+		<section class="screenshots-intro" style="display:none;">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -283,10 +256,7 @@
 						                        <li class="pricing__feature">24/7 Radio Rotation</li>
 						                        <li class="pricing__feature">Full Project Streams</li>
 						                        <li class="pricing__feature">Event/Project Placement</li>
-						                        <!-- <li class="pricing__feature">Includes Trial Features</li> -->
-						                        <!-- <li class="pricing__feature">Free Entry into FREELABEL Events</li> -->
 						                        <li class="pricing__feature">Full One-Hour Radio Show Broadcasting Your Projects Live On-air</li>
-
 						                    </ul>
 											</p>
 											<a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">$60/month <i class="fa fa-chevron-circle-right"></i></a>

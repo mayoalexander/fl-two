@@ -78,36 +78,21 @@ foreach ($status as $key => $value) {
 $data.='</ul>
 </div>';
 
-
 $adminPosts = $config->getPostsByUser(0,20,'admin');
-
-// foreach ($adminPosts as $post) {
-//     echo $postdate = date('m-d',strtotime($post['submission_date'])).', ';
-//     if ($postdate == date('m-d')) { 
-//         $postsToday
-//         echo 'its the same date!!!!<br>';
-//     } else {
-//         echo 'not the same date as '.date('m-d').'<br>';    }
-// }
-
-
-// // var_dump($adminPosts);
-
 
 include(ROOT.'inc/connection.php');
 
-
 // START COUTNING LEADS
-	$result = mysqli_query($con,"SELECT * FROM leads 
-			WHERE follow_up_date LIKE '%$todays_date%'
-				/*OR follow_up_date='$yesterdays_date' 
-				OR follow_up_date='$daybefore_date' 
-				OR follow_up_date='$threedaysback' 
-				OR follow_up_date='$fourdaysback' 
-				OR follow_up_date='$fivedaysback'
-				/*OR `user_name` = '".$user_name_session."' */
-				ORDER BY `id` DESC LIMIT 100");
-$i = 0;
+$result = mysqli_query($con,"SELECT * FROM leads 
+		WHERE follow_up_date LIKE '%$todays_date%'
+			/*OR follow_up_date='$yesterdays_date' 
+			OR follow_up_date='$daybefore_date' 
+			OR follow_up_date='$threedaysback' 
+			OR follow_up_date='$fourdaysback' 
+			OR follow_up_date='$fivedaysback'
+			/*OR `user_name` = '".$user_name_session."' */
+			ORDER BY `id` DESC LIMIT 100");
+
 
 
 while($row = mysqli_fetch_assoc($result)) {
@@ -241,7 +226,7 @@ $data.='</ul>
 	</div>
 	<div class="col-md-8 lead-container">
     <select class="form-control lead-filter">
-        <option value="today">Tojkhhday</option>
+        <option value="today">Today</option>
         <option value="yesterday">Yesterday</option>
         <option value="this_month">This Month</option>
     </select>

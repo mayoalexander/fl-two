@@ -109,7 +109,7 @@ $config = new Blog();
 		$q = trim($_GET['search_query']);
 			$sql = "SELECT * 
 			FROM  `users` 
-			WHERE `account_type` LIKE '%$q%' OR `user_name` LIKE '%$q%' OR `user_email` LIKE '%$q%' OR `twitter` LIKE '%$q%'
+			WHERE `user_name` LIKE '%$q%'
 			ORDER BY  `users`.`$sort` DESC 
 			LIMIT 0 , 20";
 			break;

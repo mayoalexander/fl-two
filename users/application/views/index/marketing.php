@@ -122,9 +122,14 @@
 			.avatar-logo {
 				width:60px;
 			}
-			.feature-content li {
+			.feature-content li, .team-quote li, .pricing__feature-heading {
 				color:#778899;
 				color:#e3e3e3;
+			}
+			.pricing__feature-heading {
+				text-decoration: underline;
+				margin-bottom: 0.5em;
+				padding-bottom: 0.5em;
 			}
 			@media (max-width: 1068px) {
 				.features-bg {
@@ -181,7 +186,7 @@
 					<div class="row hero-content">
 						<div class="col-md-12">
 							<h1 class="animated fadeInDown"><?php echo $site['name'].' <span class="heading-subtext text-muted">'.$site['description'].'</span>';?></h1>
-							<a href="http://freelabel.net/confirm/free/" target="_blank" class="use-btn animated fadeInUp">Create A FREE TRIAL</a> <a href="#pricing" class="learn-btn animated fadeInUp">Learn more <i class="fa fa-arrow-down"></i></a>
+							<a href="http://freelabel.net/confirm/trial/" target="_blank" class="use-btn animated fadeInUp">Start FREETRIAL <i class="fa fa-check"></i></a> <a href="http://freelabel.net/users/index/marketing_pricing/#pricing" class="learn-btn animated fadeInUp">More Packages <i class="fa fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -234,7 +239,7 @@
 							<div class="feature-content">
 								<h1>Create Your Account</h1>
 								<p><?php echo $site['landing-info']['instruction'][0].'</span>';?></p>
-								<a href="#pricing" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a>
+								<!-- <a href="#pricing" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a> -->
 							</div>
 						</div>
 						<div class="col-md-4 feature-2 wp2 delay-05s">
@@ -244,7 +249,7 @@
 							<div class="feature-content">
 								<h1>Upload and Distribute Your Music + Videos</h1>
 								<p><?php echo $site['landing-info']['instruction'][1].'</span>';?></p>
-								<a href="#pricing" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a>
+								<!-- <a href="#pricing" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a> -->
 							</div>
 						</div>
 						<div class="col-md-4 feature-3 wp2 delay-1s">
@@ -254,7 +259,7 @@
 							<div class="feature-content">
 								<h1>Watch Your Audience Grow</h1>
 								<p><?php echo $site['landing-info']['instruction'][2].'</span>';?></p>
-								<a href="#pricing" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a>
+								<!-- <a href="#pricing" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a> -->
 							</div>
 						</div>
 
@@ -292,11 +297,17 @@
 							<blockquote class="team-quote">
 								<div class="avatar"><img class="avatar-logo" src="http://freelabel.net/images/fllogo.png" alt="User Avatar"></div>
 								<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc." - Peter Finlan</p>
-								<div class="logo-quote">
-									<a href="http://freelabel.net/users/index/marketing_pricing/"><img src="http://www.onalytica.com/wp-content/uploads/2015/02/logo_white.png" alt="Codrops Logo"></a>
-								</div>
+								<h5 class="pricing__feature-heading">Basic Account Includes:</h5>
+								<ul class="pricing__feature-list">
+			                        <li class="pricing__feature">24/7 Radio Rotation</li>
+			                        <li class="pricing__feature">Full Project Streams</li>
+			                        <li class="pricing__feature">Event/Project Placement</li>
+			                        <li class="pricing__feature">Full One-Hour Radio Show Broadcasting Your Projects Live On-air</li>
+			                    </ul>
 							</blockquote>
-							<a href="http://freelabel.net/users/index/marketing_pricing/" class="download-btn">Create An Account! <i class="fa fa-download"></i></a>
+							<!-- <a href="http://freelabel.net/users/index/marketing_pricing/" class="download-btn">Basic - $59/month <i class="fa fa-arrow-right"></i></a> -->
+							<a href="http://freelabel.net/confirm/basic/" target="_blank" class="download-btn">Basic - $59/month <i class="fa fa-arrow-right"></i></a>
+							<a href="http://freelabel.net/confirm/tour/" target="_blank" class="use-btn">Basic - $550/year <i class="fa fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -330,11 +341,9 @@ Leverage upcoming FREELABEL™ tools to monetize music and performances, and gai
 								<img src="<?php echo $site['media']['photos']['front-page'][0]['image']; ?>" alt="Screenshot 01">
 								<figcaption>
 								<div class="caption-content">
-									<a href="img/large/01.jpg" class="single_image">
+									<a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['front-page'][0]['id']; ?>" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>Optimised For Design
-
-										</p>
+										<p><?php echo $site['media']['photos']['front-page'][0]['title']; ?></p>
 									</a>
 								</div>
 								</figcaption>
@@ -345,9 +354,9 @@ Leverage upcoming FREELABEL™ tools to monetize music and performances, and gai
 								<img src="<?php echo $site['media']['photos']['front-page'][1]['image']; ?>" alt="Screenshot 01">
 								<figcaption>
 								<div class="caption-content">
-									<a href="img/large/02.jpg" class="single_image">
+									<a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['front-page'][1]['id']; ?>" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>User Centric Design</p>
+										<p><?php echo $site['media']['photos']['front-page'][1]['title']; ?></p>
 									</a>
 								</div>
 								</figcaption>
@@ -358,9 +367,9 @@ Leverage upcoming FREELABEL™ tools to monetize music and performances, and gai
 								<img src="<?php echo $site['media']['photos']['front-page'][2]['image']; ?>" alt="Screenshot 01">
 								<figcaption>
 								<div class="caption-content">
-									<a href="img/large/03.jpg" class="single_image">
+									<a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['front-page'][2]['id']; ?>" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>Responsive and Adaptive</p>
+										<p><?php echo $site['media']['photos']['front-page'][2]['title']; ?></p>
 									</a>
 								</div>
 								</figcaption>
@@ -368,12 +377,12 @@ Leverage upcoming FREELABEL™ tools to monetize music and performances, and gai
 						</li>
 						<li>
 							<figure>
-								<img src="<?php echo $site['media']['photos']['front-page'][3]['image']; ?>" alt="Screenshot 01">
+								<img src="<?php echo $site['media']['photos']['front-page'][3]['image']; ?>" alt="<?php echo $site['media']['photos']['front-page'][3]['title']; ?>">
 								<figcaption>
 								<div class="caption-content">
-									<a href="img/large/04.jpg" class="single_image">
+									<a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['front-page'][3]['id']; ?>" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>Absolutely Free</p>
+										<p><?php echo $site['media']['photos']['front-page'][3]['title']; ?></p>
 									</a>
 								</div>
 								</figcaption>
@@ -388,9 +397,9 @@ Leverage upcoming FREELABEL™ tools to monetize music and performances, and gai
 								<img src="<?php echo $site['media']['photos']['front-page'][4]['image']; ?>" alt="Screenshot 01">
 								<figcaption>
 								<div class="caption-content">
-									<a href="img/large/05.jpg" class="single_image">
+									<a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['front-page'][4]['id']; ?>" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>Multi-Purpose Design</p>
+										<p><?php echo $site['media']['photos']['front-page'][4]['title']; ?></p>
 									</a>
 								</div>
 								</figcaption>
@@ -401,9 +410,9 @@ Leverage upcoming FREELABEL™ tools to monetize music and performances, and gai
 								<img src="<?php echo $site['media']['photos']['front-page'][5]['image']; ?>" alt="Screenshot 01">
 								<figcaption>
 								<div class="caption-content">
-									<a href="img/large/06.jpg" class="single_image">
+									<a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['front-page'][5]['id']; ?>" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>Exclusive to Codrops</p>
+										<p><?php echo $site['media']['photos']['front-page'][5]['title']; ?></p>
 									</a>
 								</div>
 								</figcaption>
@@ -414,9 +423,9 @@ Leverage upcoming FREELABEL™ tools to monetize music and performances, and gai
 								<img src="<?php echo $site['media']['photos']['front-page'][6]['image']; ?>" alt="Screenshot 01">
 								<figcaption>
 								<div class="caption-content">
-									<a href="img/large/07.jpg" class="single_image">
+									<a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['front-page'][6]['id']; ?>" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>Made with Love</p>
+										<p><?php echo $site['media']['photos']['front-page'][6]['title']; ?></p>
 									</a>
 								</div>
 								</figcaption>
@@ -427,9 +436,9 @@ Leverage upcoming FREELABEL™ tools to monetize music and performances, and gai
 								<img src="<?php echo $site['media']['photos']['front-page'][7]['image']; ?>" alt="Screenshot 01">
 								<figcaption>
 								<div class="caption-content">
-									<a href="img/large/08.jpg" class="single_image">
+									<a href="http://freelabel.net/users/index/image/<?php echo $site['media']['photos']['front-page'][7]['id']; ?>" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>In Sydney, Australia</p>
+										<p><?php echo $site['media']['photos']['front-page'][7]['title']; ?></p>
 									</a>
 								</div>
 								</figcaption>

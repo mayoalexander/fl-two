@@ -3,8 +3,8 @@
 $page_url ='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
 
-$access_token['oauth_token'] = '1018532587-AYr3PjvTb881X5dZReDnboqISrDZm4jyyZWfKgb';
-$access_token['oauth_token_secret'] = 'aBwkLuX8MczHZvadwdeFQpKoi0W6JJIy3dALpB8Ob9Hk7';
+$access_token['oauth_token'] = '1018532587-n9ylld7S5gtMmeYDQMvjdoXKat5lye3tnPWU0rr';
+$access_token['oauth_token_secret'] = 'IgZAbzfR39e7zRHbmIPDjSTSyzodnm9CFXZ4yRdIqrwuI';
 $access_token['screen_name'] = 'FreeLabelNet';
 $access_token['user_id'] = '1018532587';
 $access_token['x_auth_expires'] = '0';
@@ -188,6 +188,7 @@ class User
 {
 
   public function init($_SESSION='none', $_COOKIE='none') {
+
     // check if if session exists,
     if (isset($_SESSION['user_name'])) {
       // set cookie to remember username
@@ -265,16 +266,16 @@ class User
       $result_stats = mysqli_query($con,$sql);
       if($row = mysqli_fetch_assoc($result_stats)) {
       // IF EXISTS, SET USER TO TRUE
-        mysqli_close($con);
+       // $this->showView(true);
         $this->verifySession = true;
         return true;
       } else {
-        mysqli_close($con);
         $this->verifySession = false;
-        return false;
-      }
-      // return $this->verifySession;
 
+        return false;
+        //$this->showView(false);
+       // echo 'No username Assosicated<br>';
+      }
       //echo $sql;
       //exit;
       print_r($this->verifySession );
@@ -333,8 +334,6 @@ class User
     } else {
       $type = 'false';
     }
-
-    mysqli_close($con);
     return $type;
   }
 
@@ -348,10 +347,8 @@ class User
     // IF EXISTS, SET USER TO TRUE
      // $this->showView(true);
       //$this->verifySession = true;
-      mysqli_close($con);
       return true;
     } else {
-      mysqli_close($con);
       return false;
     }
 
@@ -414,10 +411,8 @@ class User
       $result = mysqli_query($con,$sql);
       if ( $row = mysqli_fetch_assoc($result)) {
         $user_data = $row['user_active'];
-        mysqli_close($con);
         return $user_data;
       } else {
-        mysqli_close($con);
         return $user_data;
       }
     }
@@ -442,9 +437,7 @@ class User
         CURRENT_TIMESTAMP
         )";
       $result = mysqli_query($con,$sql);
-      //print_r($result);
-      mysqli_close($con);
-
+          //print_r($result);
       return $result;
     }
 
@@ -858,7 +851,6 @@ class Blog
         $res = 'It Didnt Work!';
         print_r($sql);
        }
-      mysqli_close($con);
       return $res;
   }
 
@@ -935,7 +927,6 @@ class Blog
         $res = 'It Didnt Work!';
         print_r($sql);
        }
-      mysqli_close($con);
       return $res;
   }
 
@@ -976,8 +967,6 @@ class Blog
         $res = 'It Didnt Work!';
         print_r($sql);
        }
-
-      mysqli_close($con);
       return $res;
   }
 
@@ -1009,8 +998,6 @@ class Blog
         $res = 'It Didnt Work!';
         print_r($sql);
        }
-
-      mysqli_close($con);
       return $res;
   }
 
@@ -1049,7 +1036,6 @@ class Blog
         $res = 'It Didnt Work!';
         print_r($sql);
        }
-      mysqli_close($con);
       return $res;
   }
 
@@ -1063,8 +1049,7 @@ class Blog
       // echo '<pre>';
       // var_dump($query);
       $info = $result->num_rows;
-      mysqli_close($con);
-      return $info;
+    return $info;
   }
 
   public function get_info($table , $id)
@@ -1078,7 +1063,6 @@ class Blog
         echo 'there was an issue!';
         print_r($query);
       }
-    mysqli_close($con);
     return $info;
   }
 
@@ -1108,7 +1092,6 @@ class Blog
       $res = false;
     }
     // UPDATE  `amrusers`.`images` SET  `files_attached` =  '503, 502, 501, 500' WHERE  `images`.`id` =2270 LIMIT 1 ;
-    mysqli_close($con);
     return $res;
   }
 
@@ -1128,7 +1111,6 @@ class Blog
       $res = false;
     }
     // UPDATE  `amrusers`.`images` SET  `files_attached` =  '503, 502, 501, 500' WHERE  `images`.`id` =2270 LIMIT 1 ;
-    mysqli_close($con);
     return $res;
   }
 
@@ -1145,7 +1127,6 @@ class Blog
       $res = false;
     }
     // UPDATE  `amrusers`.`images` SET  `files_attached` =  '503, 502, 501, 500' WHERE  `images`.`id` =2270 LIMIT 1 ;
-    mysqli_close($con);
     return $res;
   }
 
@@ -1174,7 +1155,6 @@ class Blog
     }
     print_r($res);
     // // UPDATE  `amrusers`.`images` SET  `files_attached` =  '503, 502, 501, 500' WHERE  `images`.`id` =2270 LIMIT 1 ;
-    mysqli_close($con);
     return $res;
   }
 
@@ -1188,7 +1168,6 @@ class Blog
     } else {
       $debug[] = 'SOMETHING WITH UPDATING THE QUERY DIDNT WORK!';
     };
-    mysqli_close($con);
     return $debug;
   }
 
@@ -1202,7 +1181,6 @@ class Blog
     } else {
       $res = false;
     }
-    mysqli_close($con);
     return $res;
   }
 
@@ -1245,7 +1223,6 @@ class Blog
       $blog[] = $row;
         //echo '<hr>';
     }
-    mysqli_close($con);
     return $blog;
 
   }
@@ -1275,8 +1252,6 @@ class Blog
       while ($row = mysqli_fetch_assoc($result)){
         $feed_posts[] = $row;
       }
-      mysqli_close($con);
-
 
       // VERIFY POSTS
       if (!isset($feed_posts)) {
@@ -1378,8 +1353,6 @@ class Blog
       while ($row = mysqli_fetch_assoc($sql)){
         $feed_posts[] = $row;
       }
-      mysqli_close($con);
-
 
       // VERIFY POSTS
       if (!isset($feed_posts)) {
@@ -1460,8 +1433,6 @@ class Blog
         while ($row = mysqli_fetch_assoc($sql)){
           $feed_posts[] = $row;
         }
-        mysqli_close($con);
-
 
         // VERIFY POSTS
         if (!isset($feed_posts)) {
@@ -1523,8 +1494,6 @@ class Blog
     while ($row = mysqli_fetch_assoc($result)){
       $user_media[] = $row;
     }
-    mysqli_close($con);
-
     if (!isset($user_media)) {
       $user_media = NULL;
     }
@@ -1549,8 +1518,6 @@ class Blog
       $blog[] = $row;
         //echo '<hr>';
     }
-    mysqli_close($con);
-
     if (!$blog) {
       $blog = NULL;
     }
@@ -1574,8 +1541,6 @@ class Blog
       $blog[] = $row;
         //echo '<hr>';
     }
-    mysqli_close($con);
-
     if (!$blog) {
       $blog = NULL;
     }
@@ -1599,8 +1564,6 @@ class Blog
       $blog[] = $row;
         //echo '<hr>';
     }
-    mysqli_close($con);
-
     if (!$blog) {
       $blog = NULL;
     }
@@ -1624,8 +1587,6 @@ class Blog
       $blog[] = $row;
         //echo '<hr>';
     }
-    mysqli_close($con);
-
     if (!$blog) {
       $blog = NULL;
     }
@@ -1645,8 +1606,6 @@ class Blog
       $blog[] = $row;
         //echo '<hr>';
     }
-    mysqli_close($con);
-
     if (!$blog) {
       $blog = NULL;
     }
@@ -1669,8 +1628,6 @@ class Blog
     } else {
       $photo = 'No Profile Picture Uploaded!';
     }
-    mysqli_close($con);
-
     return $photo;
   }
 
@@ -1732,8 +1689,6 @@ class Blog
       $result[] = $row;
         //echo '<hr>';
     }
-    mysqli_close($con);
-
     if (!$result) {
       $result = NULL;
     }
@@ -2242,8 +2197,6 @@ public function displayCategories() {
     while($row = mysqli_fetch_assoc($result_stats)) {
       $photos[] = $row;
     }
-    mysqli_close($con);
-
     return $photos;
   }
 
@@ -2274,8 +2227,6 @@ public function displayCategories() {
     while($row = mysqli_fetch_assoc($result_stats)) {
       $promos[] = $row;
     }
-    mysqli_close($con);
-
     return $promos;
   }
 
@@ -2298,8 +2249,6 @@ public function displayCategories() {
     while($row = mysqli_fetch_assoc($result_stats)) {
       $promos[] = $row;
     }
-    mysqli_close($con);
-
     return $promos;
   }
 
@@ -2322,8 +2271,6 @@ public function displayCategories() {
     while($row = mysqli_fetch_assoc($result_stats)) {
       $promos[] = $row;
     }
-    mysqli_close($con);
-
     return $promos;
   }
 
@@ -2356,8 +2303,6 @@ public function displayCategories() {
     while($row = mysqli_fetch_assoc($result_stats)) {
       $promos[] = $row;
     }
-    mysqli_close($con);
-
     return $promos;
   }
 
@@ -2379,8 +2324,6 @@ public function displayCategories() {
     while($row = mysqli_fetch_assoc($result_stats)) {
       $promos[] = $row;
     }
-    mysqli_close($con);
-
     return $promos;
   }
 
@@ -2402,8 +2345,6 @@ public function displayCategories() {
       $files[] = $row;
         //echo '<hr>';
     }
-    mysqli_close($con);
-
     return $files;
   }
 
@@ -2421,8 +2362,6 @@ public function displayCategories() {
       $files[] = $row;
         //echo '<hr>';
     }
-    mysqli_close($con);
-
     return $files;
   }
 
@@ -2443,8 +2382,6 @@ public function displayCategories() {
         <span id="blogtitle-id-'.$files['id'].'" class="editable-promo-file">'.$files['blogtitle'].'</span> <a data-action="delete" data-id="'.$files['id'].'" class="fa fa-trash" ></a>
       </li>';
     }
-    mysqli_close($con);
-
     return $res;
   }
 
@@ -2485,8 +2422,6 @@ public function displayCategories() {
 
     }
 
-    mysqli_close($con);
-
 
     $res = $photos.$res;
     return $res;
@@ -2508,8 +2443,6 @@ LIMIT 0 , 30";
   } else {
     $user_data = NULL;
   }
-  mysqli_close($con);
-
   return $user_data;
 }
 
@@ -2523,8 +2456,6 @@ public function getUserInfo($user_name) {
   } else {
     $user_data = NULL;
   }
-  mysqli_close($con);
-
   return $user_data;
 }
 
@@ -2540,8 +2471,6 @@ public function getUserType($user_name) {
   } else {
     $user_data = NULL;
   }
-  mysqli_close($con);
-
   return $user_data;
 }
 
@@ -2579,7 +2508,6 @@ public function getUserType($user_name) {
         $res .=''.$this->display_promo_file_controls(trim($value), $desc).'';
       }
     }
-
     $res.='</ol>';
     return $res;
   }
@@ -2631,8 +2559,6 @@ public function getUserType($user_name) {
       $photos[] = $row;
         //echo '<hr>';
     }
-    mysqli_close($con);
-
     return $photos;
   }
 
@@ -2645,7 +2571,6 @@ public function getUserType($user_name) {
     while($row = mysqli_fetch_assoc($result_stats)) {
       $events[] = $row;
     }
-    mysqli_close($con);
     return $events;
   }
 
@@ -3304,20 +3229,18 @@ public function display_promo_playlist_single($data , $featured=false, $public=f
 
   public function getPhotoAds($user_name='' , $search_query='advertise registration', $limit=10) {
     include(ROOT.'inc/connection.php');
+      //echo '<pre>';
     $sql = "SELECT *
-    FROM  `images`
-    WHERE  `desc` LIKE CONVERT( _utf8 '%$search_query%'
-    USING latin1 )
-    COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC LIMIT $limit";
+FROM  `images`
+WHERE  `desc` LIKE CONVERT( _utf8 '%$search_query%'
+USING latin1 )
+COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC LIMIT $limit";
     $result_stats = mysqli_query($con,$sql);
     $i=0;
     while($row = mysqli_fetch_assoc($result_stats)) {
       $photos[] = $row;
     }
-
-    // close connection 
-    mysqli_close($con);
-
+    //echo '<br>'.$sql.'<br>';
     return $photos;
   }
 
@@ -3341,8 +3264,6 @@ public function display_promo_playlist_single($data , $featured=false, $public=f
       $photos[] = $row;
         //echo '<hr>';
     }
-    mysqli_close($con);
-
     return $photos;
   }
 
@@ -3357,8 +3278,6 @@ public function display_promo_playlist_single($data , $featured=false, $public=f
       $photos[] = $row;
         //echo '<hr>';
     }
-    mysqli_close($con);
-
     return $photos;
   }
 
@@ -3373,8 +3292,6 @@ public function display_promo_playlist_single($data , $featured=false, $public=f
       $blog[] = $row;
         //echo '<hr>';
     }
-    mysqli_close($con);
-
     return $blog;
 
   }
@@ -3433,7 +3350,8 @@ public function display_promo_playlist_single($data , $featured=false, $public=f
     //echo $user_name;
     if ($user_name == 'admin' 
       OR $user_name == 'AlexMayo' 
-      // OR $user_name == 'thatdudewayne'
+      OR $user_name == 'Fokus' 
+      OR $user_name == 'DrGhostmonious '
       OR $user_name == 'DESERTWXLF') {
         $site['map'][] = array('title' => 'Admin' , 'path'=>'dashboard/admin', 'icon'=>'cog'  );
         $site['map'][] = array('title' => 'Development' , 'path'=>'dashboard/dev', 'icon'=>'cog'  );
@@ -3628,8 +3546,6 @@ public function display_promo_playlist_single($data , $featured=false, $public=f
     while($row = mysqli_fetch_assoc($result)) {
       $users[] = $row;
     }
-    mysqli_close($con);
-
 
     return $users;
   }
@@ -3642,7 +3558,6 @@ public function display_promo_playlist_single($data , $featured=false, $public=f
     while($row = mysqli_fetch_assoc($result)) {
       $users[] = $row;
     }
-    mysqli_close($con);
 
     return $users;
   }
@@ -3655,7 +3570,6 @@ public function display_promo_playlist_single($data , $featured=false, $public=f
     // var_dump($con);
     $query = "DELETE FROM  `relationships` WHERE `user_name` = '$user_name' AND `following` = '$following' ";
     $result = mysqli_query($con,$query);
-    mysqli_close($con);
     return $result;
   }
 
@@ -3760,8 +3674,6 @@ public function display_promo_playlist_single($data , $featured=false, $public=f
     // } else {
     //   $stats = 'No Tracks Uploaded';
     // }
-    mysqli_close($con);
-
     return $stats;
   }
 
@@ -3840,8 +3752,6 @@ $twitter_share = "#FLMAG | ".$twitter.'
       </span>
       ';
     }
-    mysqli_close($con);
-
       //print_r($post_data);
       //echo 'found data!';
 
@@ -3936,8 +3846,6 @@ $twitter_share = "#FLMAG | ".$twitter.'
       </span>
       ';
     }
-    mysqli_close($con);
-
       //print_r($post_data);
       //echo 'found data!';
 
@@ -3959,8 +3867,6 @@ $twitter_share = "#FLMAG | ".$twitter.'
       $promos[] = $row;
         //echo '<hr>';
     }
-    mysqli_close($con);
-
     return $promos;
 
   }
@@ -3996,8 +3902,6 @@ $twitter_share = "#FLMAG | ".$twitter.'
         } else {
             // echo "0 results";
         }
-    mysqli_close($con);
-
     return $view;
   }
 
@@ -4380,8 +4284,6 @@ class Config
       } else {
         // 2.3 Throw Error if Does Not Exist
       }
-      mysqli_close($con);
-
     }
     return $app_build;
   }
@@ -4403,7 +4305,6 @@ class Config
       } else {
         // 2.3 Throw Error if Does Not Exist
       }
-      mysqli_close($con); 
     }
     return $app_build;
   }
@@ -4497,8 +4398,6 @@ class Config
       } else {
         // 2.3 Throw Error if Does Not Exist
       }
-    mysqli_close($con);
-
     return $app_build;
   }
 
@@ -4591,7 +4490,6 @@ class Config
       } else {
         $campaign = 'No Profile Found!!';
       }
-      mysqli_close($con);
       return $campaign;
     }
 
@@ -4638,7 +4536,6 @@ public function getProfilePhoto($user_name) {
   } else {
     $photo = 'No Profile Picture Uploaded!';
   }
-  mysqli_close($con);
   return $photo;
 }
 
@@ -4655,8 +4552,6 @@ LIMIT 0 , 30";
   } else {
     $user_data = 'No Profile Found!!!';
   }
-  mysqli_close($con);
-
   return $user_data;
 }
 
@@ -4681,8 +4576,6 @@ public function getUserStats($user_name , $range='total') {
       $sql = "SELECT * FROM  `stats` WHERE  `page` LIKE  '%$user_twitter%'";
       break;
     }
-    mysqli_close($con);
-
     include_once(ROOT.'inc/connection.php');
     $resultt = mysqli_query($con, $sql);
     if (mysqli_num_rows($resultt) > 0) {
@@ -4697,8 +4590,6 @@ public function getUserStats($user_name , $range='total') {
   } else {
     $stats = 'No Tracks Uploaded';
   }
-  mysqli_close($con);
-
   return $stats;
 }
 
@@ -4715,8 +4606,6 @@ public function getUserMedia($user_name) {
   if (!isset($user_media)) {
     $user_media = NULL;
   }
-  mysqli_close($con);
-
   return $user_media;
 }
 
@@ -4862,8 +4751,6 @@ class UploadFile {
       $status = false;
         echo "Error: " . $sql . "<br>" . mysqli_error($con);
     }
-    mysqli_close($con);
-
     return $status;
   }
 
@@ -4932,8 +4819,6 @@ class UploadFile {
       $status = false;
         echo "Error: " . $sql . "<br>" . mysqli_error($con);
     }
-    mysqli_close($con);
-
     return $status;
   }
 
