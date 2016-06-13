@@ -177,11 +177,11 @@
 				<div class="container">
 					<div class="row nav-wrapper">
 						<div class="col-md-6 col-sm-6 col-xs-6 text-left">
-							<a href="#"><img class="site-logo" src="<?php echo $site['logo']; ?>" alt="Boxify Logo"></a>
+							<a href="<?php echo $site['http']; ?>#"><img class="site-logo" src="<?php echo $site['logo']; ?>" alt="Boxify Logo"></a>
 						</div>
-						<div class="col-md-6 col-sm-6 col-xs-6 text-right navicon">
+	<!-- 					<div class="col-md-6 col-sm-6 col-xs-6 text-right navicon">
 							<p>MENU</p><a id="trigger-overlay" class="nav_slide_button nav-toggle" href="#"><span></span></a>
-						</div>
+						</div> -->
 					</div>
 					<div class="row hero-content">
 						<div class="col-md-12">
@@ -455,20 +455,20 @@ Leverage upcoming FREELABEL™ tools to monetize music and performances, and gai
 						<h1 class="footer-logo">
 						<!-- <img src="http://freelabel.net/images/FREELABELLOGO.gif" alt="Footer Logo Blue"> -->
 						</h1>
-						<p>© FREELABEL NETWORKS 2016 - <a href="http://tympanus.net/codrops/licensing/">Licensing</a> - Designed &amp; Developed by <a href="http://www.twitter.com/@siralexmayo">Alexander Mayo</a></p>
+						<p>© FREELABEL NETWORKS 2016 - <a href="http://freelabel.net/users/index/licensing/">Licensing</a> - Designed &amp; Developed by <a href="http://www.twitter.com/@siralexmayo">Alexander Mayo</a></p>
 					</div>
 					<div class="col-md-7">
 						<ul class="footer-nav">
-							<li><a href="#about">About</a></li>
-							<li><a href="#features">Features</a></li>
-							<li><a href="#screenshots">Screenshots</a></li>
-							<li><a href="#download">Download</a></li>
+							<li><a href="<?php echo $site['http']; ?>">Home</a></li>
+							<li><a href="<?php echo $site['http'].'users/index/marketing/#pricing'; ?>">Pricing</a></li>
+							<li><a href="<?php echo $site['http'].'drive/'; ?>">Submissions</a></li>
+							<!-- <li><a href="#download">Radio</a></li> -->
 						</ul>
 					</div>
 				</div>
 			</div>
 		</footer>
-		<div class="overlay overlay-boxify">
+		<!-- <div class="overlay overlay-boxify">
 			<nav>
 				<ul>
 					<li><a href="#about"><i class="fa fa-heart"></i>About</a></li>
@@ -479,7 +479,7 @@ Leverage upcoming FREELABEL™ tools to monetize music and performances, and gai
 					<li><a href="#download"><i class="fa fa-download"></i>Download</a></li>
 				</ul>
 			</nav>
-		</div>
+		</div> -->
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="http://freelabel.net/vendor/boxify/js/min/toucheffects-min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

@@ -64,6 +64,9 @@ class Index extends Controller
     function off() {
             $this->view->render('index/off',true);
     }
+    function licensing() {
+            $this->view->render('index/licensing');
+    }
     function marketing() {
             $this->view->render('index/marketing',true);
     }

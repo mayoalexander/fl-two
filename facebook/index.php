@@ -2,6 +2,7 @@
 session_start();
 require 'src/config.php';
 require 'src/facebook.php';
+
 // Create our Application instance (replace this with your appId and secret).
 $facebook = new Facebook(array(
   'appId'  => $config['App_ID'],
@@ -9,23 +10,40 @@ $facebook = new Facebook(array(
   'cookie' => true
 ));
 
-ini_set("display_errors",1);
-if(isset($_GET['logout']))
-{
-    $url = 'https://www.facebook.com/logout.php?next=' . urlencode('http://demo.phpgang.com/post-status-facebook/') .
-      '&access_token='.$_GET['tocken'];
-    session_destroy();
-    header('Location: '.$url);
-}
 if(isset($_POST['status']))
 {
-        $publish = $facebook->api('/me/feed', 'post',
-        array('access_token' => $_SESSION['token'],'message'=>$_POST['status'] .'   via PHPGang.com Demo',
-        'from' => $config['App_ID']
-        ));
-        $message = 'Status updated.<br>';
-        $extra = "<a href='index.php?logout=1&tocken=".$params['access_token']."'>Logout</a><br>";
-    $content = '
+    $page = split("-",$_POST['page']);
+    $page_token = $page[0];
+    $page_id= $page[1];
+    // status with link
+    $publish = $facebook->api('/'.$page_id.'/feed', 'post',
+            array('access_token' => $page_token,
+            'message'=> $_POST['status'],
+            'from' => $config['App_ID'],
+            'to' => $page_id,
+            'caption' => 'Caption',
+            'name' => 'Name',
+            'link' => 'http://www.example.com/',
+            'picture' => 'http://www.phpgang.com/wp-content/themes/PHPGang_v2/img/logo.png',
+            'description' => $_POST['status'].' via demo.PHPGang.com'
+            ));
+    //Simple status without link
+
+    //$publish = $facebook->api('/'.$page_id.'/feed', 'post',
+//        array('access_token' => $page_token,'message'=>$_POST['status'] .'   via PHPGang.com Demo',
+//        'from' => $config['App_ID']
+//        ));
+
+    echo 'Status updated.<br>';
+    $graph_url_pages = "https://graph.facebook.com/me/accounts?access_token=".$_SESSION['token'];
+    $pages = json_decode(file_get_contents($graph_url_pages)); // get all pages information from above url.
+    $dropdown = "";
+    for($i=0;$i<count($pages->data);$i++)
+    {
+        $dropdown .= "<option value='".$pages->data[$i]->access_token."-".$pages->data[$i]->id."'>".$pages->data[$i]->name."</option>";
+    }
+    
+    echo '
     <style>
     #status
     {
@@ -36,42 +54,32 @@ if(isset($_POST['status']))
     </style>
     '.$message.'
     <form action="index.php" method="post">
-    <input type="text" name="status" id="status" placeholder="Write a comment...." /><input type="submit" value="Post On My Wall!" style="padding: 5px;" />
+    Select Page on which you want to post status: <br><select name="page" id=status>'.$dropdown.'</select><br><br>
+    <input type="text" name="status" id="status" placeholder="Write a comment...." /><input type="submit" value="Post On My Page!" style="padding: 5px;" />
     <form>';
+
 }
 elseif(isset($_GET['fbTrue']))
 {
-    if($_GET['fbTrue'] == 'true11' )
-    {
-        $token_url = "https://graph.facebook.com/oauth/access_token?"
-        . "client_id=".$config['App_ID']."&redirect_uri=" . urlencode($config['callback_url'])
-        . "11&client_secret=".$config['App_Secret']."&code=" . $_GET['code'];
-    }
-    else
-    {
-        $token_url = "https://graph.facebook.com/oauth/access_token?"
+    $token_url = "https://graph.facebook.com/oauth/access_token?"
         . "client_id=".$config['App_ID']."&redirect_uri=" . urlencode($config['callback_url'])
         . "&client_secret=".$config['App_Secret']."&code=" . $_GET['code'];
-    }
-    
-    $response = file_get_contents($token_url);
+
+    $response = file_get_contents($token_url);   // get access token from url
     $params = null;
     parse_str($response, $params);
 
-    $graph_url = "https://graph.facebook.com/me?access_token=" 
-        . $params['access_token'];
-        $_SESSION['token'] = $params['access_token'];
-    $user = json_decode(file_get_contents($graph_url));
-    if($_GET['fbTrue'] == 'true11' )
+    $_SESSION['token'] = $params['access_token'];
+
+    $graph_url_pages = "https://graph.facebook.com/me/accounts?access_token=".$_SESSION['token'];
+    $pages = json_decode(file_get_contents($graph_url_pages)); // get all pages information from above url.
+    $dropdown = "";
+    for($i=0;$i<count($pages->data);$i++)
     {
-        $publish = $facebook->api('/me/feed', 'post',
-        array('access_token' => $params['access_token'],'message'=>'This Messsage published by PHPGang.com Demo.',
-        'from' => $config['App_ID']
-        ));
-        $message = 'Default status updated.<br>';
+        $dropdown .= "<option value='".$pages->data[$i]->access_token."-".$pages->data[$i]->id."'>".$pages->data[$i]->name."</option>";
     }
-    $extra = "<a href='index.php?logout=1&tocken=".$params['access_token']."'>Logout</a><br>";
-    $content = '
+    
+    echo '
     <style>
     #status
     {
@@ -82,16 +90,12 @@ elseif(isset($_GET['fbTrue']))
     </style>
     '.$message.'
     <form action="index.php" method="post">
-    <input type="text" name="status" id="status" placeholder="Write a comment...." /><input type="submit" value="Post On My Wall!" style="padding: 5px;" />
+    Select Page on which you want to post status: <br><select name="page" id=status>'.$dropdown.'</select><br><br>
+    <input type="text" name="status" id="status" placeholder="Write a comment...." /><input type="submit" value="Post On My Page!" style="padding: 5px;" />
     <form>';    
 }
 else
 {
-    $content = 'Connect only &nbsp;&nbsp;<a href="https://www.facebook.com/dialog/oauth?client_id='.$config['App_ID'].'&redirect_uri='.$config['callback_url'].'&scope=email,user_likes,publish_stream"><img src="./images/login-button.png" alt="Sign in with Facebook"/></a>';
-    $content .= '<br><br>Connect and post Status &nbsp;&nbsp;<a href="https://www.facebook.com/dialog/oauth?client_id='.$config['App_ID'].'&redirect_uri='.$config['callback_url'].'11&scope=email,user_likes,publish_stream"><img src="./images/login-button.png" alt="Sign in with Facebook"/></a>';
+    echo 'Connect &nbsp;&nbsp;<a href="https://www.facebook.com/dialog/oauth?client_id='.$config['App_ID'].'&redirect_uri='.$config['callback_url'].'&scope=email,user_about_me,offline_access,publish_stream,publish_actions,manage_pages"><img src="./images/login-button.png" alt="Sign in with Facebook"/></a>';
 }
-
-
-$title = "How to post status on Facebook with Graph API"; 
-$heading = "How to post status on Facebook with Graph API example.";
-include('html.inc');
+?>
