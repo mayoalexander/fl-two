@@ -821,6 +821,7 @@
           <a class="audio-player-title codrops-icon codrops-icon-prev" href="<?php echo $site['http']; ?>radio/"><span><i class="radio-player-control fa fa-play" ></i>
           <span style="color:red;" >LIVE</span> ON AIR</a>
           </span></a>
+          
           <!-- hidden audioplayer  -->
           <audio class="audio-player">
             <source src="http://streaming.radio.co/s95fa8cba2/listen">
@@ -831,6 +832,3 @@
 
 
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-<!-- <script src="https://public.radio.co/playerapi/jquery.radiocoplayer.min.js"></script> -->
-<!-- <script>$('.radioplayer').radiocoPlayer();</script>-->
