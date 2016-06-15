@@ -14,16 +14,14 @@ Visitors can browse the site without an account to search and stream new music r
 [User Dashboard Login: http://freelabel.net/users/dashboard/index/](http://freelabel.net/users/dashboard/index/)
 
 
-## URL 
+## SEO URL Redirect Functionality
 
-### Desktop browsers
-The File Upload plugin is regularly tested with the latest browser versions and supports the following minimal versions:
+### Individual Posts Query
+For Search Engine Optimization reasons, each post is accesable in two different ways:
 
-* Google Chrome
-* Apple Safari 4.0+
-* Mozilla Firefox 3.0+
-* Opera 11.0+
-* Microsoft Internet Explorer 6.0+
+* FREELABEL.NET/@****USERNAME*******
+
+* FREELABEL.NET/@****USERNAME*******/*****TITLE_SLUG****
 
 
 
