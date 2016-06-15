@@ -14,21 +14,31 @@ Visitors can browse the site without an account to search and stream new music r
 [User Dashboard Login: http://freelabel.net/users/dashboard/index/](http://freelabel.net/users/dashboard/index/)
 
 
-## SEO URL Redirect Functionality
+## Public Views and Applications
 
-### Individual Posts Query
+### SEO URL Redirect Functionality
+
 For Search Engine Optimization reasons, each post is accesable in two different ways:
 
-* FREELABEL.NET/@****USERNAME*******
+* FREELABEL.NET/@*****USERNAME***** (for viewing all of the latest post from a user)
 
-* FREELABEL.NET/@****USERNAME*******/*****TITLE_SLUG****
+* FREELABEL.NET/@*****USERNAME*****/*****TITLE_SLUG*****/ (for viewing an individual post + all related posts from a user)
+
+* FREELABEL.NET/@*****USERNAME*****/*****TITLE_SLUG*****/ (for viewing an individual post based on absolute Post ID number **Most Secure/Less SEO Friendly**)
+
+The URL Redirects are located in the `.htaccess` file located in the main directory.
 
 
+
+## Private User Dashboard Views and Applications
+
+### Development
+The user application is standalone from the rest of the websites applications and located in the `/users/` directory.
 
 ## Browsers
 
 ### Desktop browsers
-The File Upload plugin is regularly tested with the latest browser versions and supports the following minimal versions:
+The FREELAEL Web Application is regulary tested with the latest browser versions and is currently supported by: 
 
 * Google Chrome
 * Apple Safari 4.0+
@@ -44,9 +54,6 @@ The File Upload plugin has been tested with and supports the following mobile br
 * Google Chrome on Android 4.0+
 * Default Browser on Android 2.3+
 * Opera Mobile 12.0+
-
-### Supported features
-For a detailed overview of the features supported by each browser version, please have a look at the [Extended browser support information](https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support).
 
 
 
