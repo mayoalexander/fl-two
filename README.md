@@ -1,21 +1,15 @@
-Blueprint: Multi-Level Menu
+FREELABEL NETWORK WEB APPLICATION
 =========
 
 A simple multi-level menu with delayed item animations and optional breadcrumb navigation and back button. 
 
-[Article on Codrops](http://tympanus.net/codrops/?p=25521)
+[Public Enviroment](http://freelabel.net/)
 
-[Demo](http://tympanus.net/Blueprints/MultiLevelMenu/)
+[User Dashboard Enviroment](http://freelabel.net/users/)
 
-The Blueprints are a collection of basic and minimal website concepts, components, plugins and layouts with minimal style for easy adaption and usage, or simply for inspiration.
+Read more here: [License](http://freelabel.net/licensing/)
 
-Check out all of our Blueprints [here](http://tympanus.net/codrops/category/blueprints/)
-
-Integrate or build upon it for free in your personal or commercial projects. Don't republish, redistribute or sell "as-is". 
-
-Read more here: [License](http://tympanus.net/codrops/licensing/)
-
-[Organic Food Icons](http://tympanus.net/codrops/2015/03/19/freebie-organic-food-icon-set/) by Wojciech Zasina.
+[Organic Food Icons](http://freelabel.net/2015/03/19/freebie-organic-food-icon-set/) by Wojciech Zasina.
 
 [Feather Icons](http://colebemis.com/feather/) by Cole Bemis.
 
