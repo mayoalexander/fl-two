@@ -39,7 +39,7 @@ The URL Redirects are located in the `.htaccess` file located in the main direct
 
 ## Private
 
-** Development **
+#### Development
 The user application is standalone from the rest of the websites applications and located in the `/users/` directory. This is where most of the public user functionality and controllers are housed. Some of the features that users have are: 
 * An interactive Streaming Feed for viewing other user submitted posts and featured content.
 * A schedule for booking events and and sending notifications to company administrators for approving client requests and opportunites.
@@ -55,7 +55,7 @@ The user application is standalone from the rest of the websites applications an
 
 ## Admin-Only
 
-**Tools**
+####Tools
 The FREELABEL Network provides the Administrator with tools to manage userbase, automating repetitive tasks, and getting updates from whats happening in the industry by collected RSS Feeds.
 * Automated Social Media Publishing via API
 * Lead Generation Tracking and Communication via API
