@@ -107,18 +107,16 @@
 
     <link rel="stylesheet" href="http://freelabel.net/landio/css/landio.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="https://code.createjs.com/createjs-2015.05.21.min.js">
     <link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/nexus/css/component.css" />
-    <link rel="stylesheet" type="text/css" href="http://freelabel.net/css/bootstrap-social/bootstrap-social.css"/>
+    <link rel="stylesheet" type="text/css" href="http://freelabel.net/public/css/bootstrap-social/bootstrap-social.css"/>
     <link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/tabs/css/tabs.css">
     <link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/tabs/css/tabstyles.css">
-    <link rel="stylesheet" type="text/css" href="http://freelabel.net/jPlayer/dist/skin/pink.flag/css/jplayer.pink.flag.css">
     <link href='https://fonts.googleapis.com/css?family=Oswald:400|Open+Sans+Condensed:300|Abel' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
     <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
     <link rel="stylesheet" href="http://freelabel.net/upload/css/jquery.fileupload.css">
     <link rel="stylesheet" href="http://freelabel.net/upload/css/jquery.fileupload-ui.css">
-    <link rel="stylesheet" href="http://freelabel.net/js/jquery-ui.min.css">
+    <link rel="stylesheet" href="http://freelabel.net/public/js/jquery-ui.min.css">
     <!-- CSS adjustments for browsers with JavaScript disabled -->
     <noscript><link rel="stylesheet" href="http://freelabel.net/css/jquery.fileupload-noscript.css"></noscript>
     <noscript><link rel="stylesheet" href="http://freelabel.net/css/jquery.fileupload-ui-noscript.css"></noscript>
