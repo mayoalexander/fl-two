@@ -22,7 +22,8 @@ if (isset($_GET['limit'])) {
   $limit = $_GET['limit'];
 
 } else {
-  $limit = 320;
+  // $limit = 320;
+  $limit = 100;
 }
 // print_r($limit);
 // exit;

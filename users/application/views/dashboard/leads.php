@@ -3,6 +3,8 @@ include_once('/home/content/59/13071759/html/config/index.php');
 require(ROOT.'inc/conn.php');
 $config = new Blog();
 $current_page = 0;
+$site = $config->getSiteData($config->site);
+$site['media']['photos'] = $config->getPhotoAds($site['creator'], 'current-promo',1);
 $todays_date = date('Y-m-d');
 $result = $conn->query('select * from twitter_data WHERE timestamp LIKE "%'.$todays_date.'%" ORDER BY `id` DESC');
 $numb_soms_sent = count($result->fetchAll());
@@ -128,7 +130,8 @@ if ($value!=='no leads found') {
 
 
         $lead_build .= '
-        <li class="list-group-item complete clearfix">
+        <li class="lead-block list-group-item complete clearfix">
+            <span class="label pull-left"><a class="fa fa-star-o lead-promo-button" href="#" data-id="'.$key.'"></a></span>
             <span class="label pull-left"><a class="fa fa-comment lead-response-button" href="#" data-id="'.$key.'"></a></span>
             <span class="label pull-right lead-twitter-name" data-user="'.$key.'" data-count="'.$count.'">[<a href="http://twitter.com/@'.$key.'" target="_blank">@'.$key.'</a>] <span class="text-muted">['.count($value).':'.$count.']</span></span>
             <span class="pull-left icon-status '.$status.'"></span>'.$value[0]['name'].'
@@ -214,6 +217,12 @@ $data.='</ul>
     .lead-response-window {
         width: 100%;
         min-height:300px;
+    }
+    .lead-block .fa {
+        margin-right: 0.5em;
+    }
+    .hot-lead {
+        color: gold;
     }
 </style>
 
@@ -314,6 +323,27 @@ $data.='</ul>
             alert('okay do this right here: ' + text);
         });
 
+        // Lead Promo Trigger
+        $('.lead-promo-button').click(function(e) {
+            e.preventDefault();
+            var lead_name = $(this).attr('data-id');
+            var elem = $(this);
+            var promo = '@' + lead_name + ' <?php echo $site['media']['photos'][0]['title']. ' - freelabel.net/users/image/index/'.$site['media']['photos'][0]['id']; ?>';
+            var message = encodeURI('d ' + promo);
+            var url = 'http://freelabel.net/som/index.php?post=1&t=&text=' + message;
+
+            $.post(url,function(result){
+                alert(result);
+                elem.removeClass('fa-star-o');
+                elem.addClass('fa-star');
+                elem.css('color', 'yellow');   
+            });
+
+
+            // var url = 'http://freelabel.net/som/index.php?post=1&t=&text=' + message;
+            // window.open(url);
+        });
+
 
 
         // Open Clients Trigger
@@ -341,19 +371,6 @@ $data.='</ul>
                 // alert(result);
                 $('.lead-container').html(result);
             });
-            // wrap.html(data);
-
-                // var tabName = tabName;
-                // var elem = '#' + tabName;
-                // // loading
-                //   $(elem).html('Loading..');
-        
-                // // load the data in to the wrapper
-                // var url = 'http://freelabel.net/users/dashboard/' + tabName + '/' ;
-                // $.get(url, function(data){
-                //   $(elem).html(data);
-                // });
-        
         });
  	});
 
