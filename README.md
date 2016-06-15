@@ -40,7 +40,12 @@ The URL Redirects are located in the `.htaccess` file located in the main direct
 ## Private
 
 ** Development **
-The user application is standalone from the rest of the websites applications and located in the `/users/` directory.
+The user application is standalone from the rest of the websites applications and located in the `/users/` directory. This is where most of the public user functionality and controllers are housed. Some of the features that users have are: 
+* An interactive Streaming Feed for viewing other user submitted posts and featured content.
+* A schedule for booking events and and sending notifications to company administrators for approving client requests and opportunites.
+* A Promos application for creating playlists, albums, or packaging up multiple songs for specific showcases.
+* Drag-Drop JQuery uploading via FLDRIVE
+* Extensive Client-side and Server Side form validation.
 
 
 
