@@ -20,7 +20,7 @@ FEATURES
 
 ## Public
 
-### SEO URL Redirect Functionality
+**SEO URL Redirect Functionality**
 
 For Search Engine Optimization reasons, each post is accesable in a few different ways:
 
@@ -39,7 +39,7 @@ The URL Redirects are located in the `.htaccess` file located in the main direct
 
 ## Private
 
-### Development
+** Development **
 The user application is standalone from the rest of the websites applications and located in the `/users/` directory.
 
 
@@ -50,7 +50,7 @@ The user application is standalone from the rest of the websites applications an
 
 ## Admin-Only
 
-### Tools
+**Tools**
 The FREELABEL Network provides the Administrator with tools to manage userbase, automating repetitive tasks, and getting updates from whats happening in the industry by collected RSS Feeds.
 * Automated Social Media Publishing via API
 * Lead Generation Tracking and Communication via API
