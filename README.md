@@ -3,7 +3,7 @@ FREELABEL NETWORK WEB APPLICATION
 
 ## What is the FREELABEL Network? 
 
-The FREELABEL NETWORK is a streaming Radio, TV, and Magazine publication distributed through a social networing platform where users create accounts, upload all types of media, and showcase their work with the world. 
+The FREELABEL NETWORK is a streaming Radio, TV, and Magazine publication distributed through a social networking platform where users create accounts, upload various types of media, and showcase their work with the world using their profile and the automated systems. 
 
 Visitors can browse the site without an account to search and stream new music released by account-holders. The site is consistently updated by individual users uploading new content to their profiles. 
 
@@ -14,17 +14,23 @@ Visitors can browse the site without an account to search and stream new music r
 [User Dashboard Login: http://freelabel.net/users/dashboard/index/](http://freelabel.net/users/dashboard/index/)
 
 
+
+
+
 ## Public Views and Applications
 
 ### SEO URL Redirect Functionality
 
-For Search Engine Optimization reasons, each post is accesable in two different ways:
+For Search Engine Optimization reasons, each post is accesable in a few different ways:
 
-* FREELABEL.NET/@*****USERNAME***** (for viewing all of the latest post from a user)
+Viewing all of the latest post from a user
+* `FREELABEL.NET/@*****USERNAME*****`
 
-* FREELABEL.NET/@*****USERNAME*****/*****TITLE_SLUG*****/ (for viewing an individual post + all related posts from a user)
+Viewing an individual post + all related posts from a user
+* `FREELABEL.NET/@*****USERNAME*****/*****TITLE_SLUG*****/`
 
-* FREELABEL.NET/@*****USERNAME*****/*****TITLE_SLUG*****/ (for viewing an individual post based on absolute Post ID number **Most Secure/Less SEO Friendly**)
+Viewing an individual post based on absolute Post ID number (Most Secure/Less SEO Friendly)
+* `FREELABEL.NET/@*****USERNAME*****/*****TITLE_SLUG*****/`
 
 The URL Redirects are located in the `.htaccess` file located in the main directory.
 
@@ -34,6 +40,31 @@ The URL Redirects are located in the `.htaccess` file located in the main direct
 
 ### Development
 The user application is standalone from the rest of the websites applications and located in the `/users/` directory.
+
+
+
+
+
+
+
+## Private Administrative Views and Applications
+
+### Tools
+The FREELABEL Network provides the Administrator with tools to manage userbase, automating repetitive tasks, and getting updates from whats happening in the industry by collected RSS Feeds.
+* Automated Social Media Publishing via API
+* Lead Generation Tracking and Communication via API
+* Client Management
+* RSS Feed of Realtime Industry updates and trends.
+* FTP upload to a Remote Server for live radio streaming
+* Image Resizing, Resampling, and thumbnail creation
+* Updating audio file ID3 Tags to format correctly for the Radio Server
+
+
+
+
+
+
+
 
 ## Browsers
 
