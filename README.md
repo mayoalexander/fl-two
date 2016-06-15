@@ -17,7 +17,7 @@ Visitors can browse the site without an account to search and stream new music r
 
 
 
-## Public Views and Applications
+## Public
 
 ### SEO URL Redirect Functionality
 
@@ -36,7 +36,7 @@ The URL Redirects are located in the `.htaccess` file located in the main direct
 
 
 
-## Private User Dashboard Views and Applications
+## Private
 
 ### Development
 The user application is standalone from the rest of the websites applications and located in the `/users/` directory.
@@ -47,7 +47,7 @@ The user application is standalone from the rest of the websites applications an
 
 
 
-## Private Administrative Views and Applications
+## Admin-Only
 
 ### Tools
 The FREELABEL Network provides the Administrator with tools to manage userbase, automating repetitive tasks, and getting updates from whats happening in the industry by collected RSS Feeds.
