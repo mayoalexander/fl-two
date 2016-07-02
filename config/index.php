@@ -605,7 +605,8 @@ class Blog
         $site['description'] = 'Innovative Showcasing';
         // $site['description'] = 'Create, Discover, Share.';
         // $site['description'] = 'A Platform to Discover, Follow, and Share Immersive Music Experiences.';
-        $site['description'] = 'A Magazine + Radio + TV Platform built for Discovering, Following, and Sharing Immersive Music Experiences.';
+        // $site['description'] = 'A Magazine + Radio + TV Platform built for Discovering, Following, and Sharing Immersive Music Experiences.';
+        $site['description'] = 'A Streaming Magazine + Radio + TV Platform in one place.';
         // $site['description'] = "The new platform to release singles and engage fans with a beautiful digital format";
         $site['font-head'] = '"Oswald"';
         // $site['font-body'] = '"Abel"';
@@ -615,15 +616,18 @@ class Blog
         //$site['description'] = 'Discover, Create, Stream, Share.';
 
         // $site['landing-info'][] = 'A complete music experience packed with photos, videos, articles, and promos';
-        $site['landing-info'][] = 'Upload Music, Videos, and more to get distributed though Apple Music, Spotify, Tidal, Youtube, Soundcloud, and more';
-        $site['landing-info'][] = 'Share Your Music, Get Updates, & New Releases 24/7';
+        // $site['landing-info'][] = 'Upload Music, Videos, and more to get distributed though Apple Music, Spotify, Tidal, Youtube, Soundcloud, and more';
+        $site['landing-info'][] = 'Get New Releases Directly from the Artists and Brands';
+        $site['landing-info'][] = 'Get updated with newest exclusive content before the public. All the top trending stories, music, movies, radio shows and more are directly tailored to what you like.';
         // $site['landing-info'][] = 'More than a social network, like Netflix, more progressive than a music website.';
-        $site['landing-info'][] = "Connect your music & playlists with the world like you never have before.";
+        // $site['landing-info'][] = 'New Music Daily';
+        $site['landing-info'][] = "Search, Browse, and Discover";
+        $site['landing-info'][] = "Search for your favorites, find new music related to what you like, and discover new music curated by us.";
 
 
         $site['landing-info'][] = "Distribute easily and quickly.";
 
-        $site['landing-info'][] = "Get a fair deal. Keep 100% of your sales revenue. Your music career is more than just downloads and streams. FREELABEL's tools and services will help.";
+        $site['landing-info'][] = "Get a fair deal. Keep 100% of your sales revenue. Your music career is more than just downloads and streams. FREELABEL's tools and services will help you along your journey to building your business.";
         $site['landing-info'][] = "Stand out from the crowd.";
 
 
@@ -657,9 +661,9 @@ class Blog
         $site['landing-info']['facebook'] = "1,296";
 
         // ** signup instructions **/
-        $site['landing-info']['instruction'][] = 'Choose your account type, make your payment, and create your username and password!';
-        $site['landing-info']['instruction'][] = 'Login to your dashboard and start uploading music to your profile and booking project releases, interviews, or showcases via your Events tab.';
-        $site['landing-info']['instruction'][] = 'A Team of producers, A&Rs, and Event coordinators will contact you about getting booked on different projects and showcases!';
+        $site['landing-info']['instruction'][] = 'Choose your account type, create your username/password, and start building your collection and uploading tracks directly to your profile!';
+        $site['landing-info']['instruction'][] = 'You get a dashboard for uploading music to your profile, and booking project releases, interviews, or showcases using your events tab.';
+        $site['landing-info']['instruction'][] = 'A Team of producers, A&Rs, and Event coordinators are constantly providing with events, music, and products directly from the artist and brands.';
 
 
 

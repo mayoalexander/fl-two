@@ -240,8 +240,8 @@ class Login extends Controller
         }
 
         // $this->view->render('login/register');
-        $this->view->render('login/register',true);
-        // $this->view->render('index/marketing',true);
+        // $this->view->render('login/register',true);
+        $this->view->render('index/marketing',true);
         // http://freelabel.net/landing/view/pricing/
     }
 

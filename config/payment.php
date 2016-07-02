@@ -21,6 +21,9 @@ switch ($type) {
 		//$url = $magazine[1];
 		$url = 'http://freelabel.net/config/register_freetrial.php?freetrial';
 		break;
+	case 'plus':
+		$url = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PA4HD77R69M68';
+		break;
 	case 'tour':
 		//$url = $magazine[1];
 		$url = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=S89WJV7T7Q4E8';
