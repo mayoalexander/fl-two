@@ -21,6 +21,8 @@ $rss_feed = array(/*'http://freelabelmagazine.wordpress.com/rss',
   // 'http://www.elevatormag.com/feed/',
   // 'http://freelabelnet.tumblr.com/rss',
 	// 'http://www.dirty-glove.com/feed/',
+    'http://freelabelnet.tumblr.com/rss',
+    'http://tooheavyx.tumblr.com/rss',
   	'http://trapsntrunks.com/feed/',
 	  'http://www.saycheesetv.com/feed/',
     // 'http://www.gullysteez.com/rss',
@@ -38,7 +40,7 @@ $rss_feed = array(/*'http://freelabelmagazine.wordpress.com/rss',
   );
  
 
-// echo "<button onclick=\"loadPage('http://freelabel.net/rssreader/index.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\"  alt='RSS'  class='btn btn-default lead_control widget_menu' alt='Navigation'>Admin Posts</button>";
+echo "<button onclick=\"loadPage('http://freelabel.net/rssreader/index.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\"  alt='RSS'  class='btn btn-default lead_control widget_menu' alt='Navigation'>Admin Posts</button>";
 echo "<button onclick=\"window.open('http://freelabel.net/drive/plus.php?uid=".$user_name_session."')\"  alt='Upload'  class='btn btn-social btn-facebook lead_control widget_menu' alt='Navigation'>Upload</button>";
 
 echo '<hr>';
@@ -227,7 +229,8 @@ foreach ($rss_feed as $site) {
                 if ($content == '') {
                   $content = $item->description;
                 }
-                $content = formatContent($content);
+
+                $raw_content = $content;
 
                 $description = $item->description;
                 $pubDate = $item->pubDate;

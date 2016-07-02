@@ -86,7 +86,7 @@ include(ROOT.'inc/connection.php');
 
 // START COUTNING LEADS
 $result = mysqli_query($con,"SELECT * FROM leads 
-		WHERE follow_up_date LIKE '%$todays_date%'
+		-- WHERE follow_up_date LIKE '%$todays_date%'
 			/*OR follow_up_date='$yesterdays_date' 
 			OR follow_up_date='$daybefore_date' 
 			OR follow_up_date='$threedaysback' 
@@ -329,7 +329,7 @@ $data.='</ul>
             var lead_name = $(this).attr('data-id');
             var elem = $(this);
             var promo = '@' + lead_name + ' <?php echo $site['media']['photos'][0]['title']. ' - freelabel.net/users/image/index/'.$site['media']['photos'][0]['id']; ?>';
-            var message = encodeURI('d ' + promo);
+            var message = encodeURI(promo);
             var url = 'http://freelabel.net/som/index.php?post=1&t=&text=' + message;
 
             $.post(url,function(result){
@@ -338,7 +338,6 @@ $data.='</ul>
                 elem.addClass('fa-star');
                 elem.css('color', 'yellow');   
             });
-
 
             // var url = 'http://freelabel.net/som/index.php?post=1&t=&text=' + message;
             // window.open(url);

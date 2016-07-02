@@ -3,8 +3,8 @@
 $page_url ='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
 
-$access_token['oauth_token'] = '1018532587-n9ylld7S5gtMmeYDQMvjdoXKat5lye3tnPWU0rr';
-$access_token['oauth_token_secret'] = 'IgZAbzfR39e7zRHbmIPDjSTSyzodnm9CFXZ4yRdIqrwuI';
+$access_token['oauth_token'] = '1018532587-pZivWibRwTz1uXmUgWS9XfnQw3HidZ7bLJuwowD';
+$access_token['oauth_token_secret'] = '9hc6heSLfF1CTKdAlpScQwiAor9iP0CVLKHz8VzGVmhCi';
 $access_token['screen_name'] = 'FreeLabelNet';
 $access_token['user_id'] = '1018532587';
 $access_token['x_auth_expires'] = '0';
@@ -589,7 +589,7 @@ class Blog
 {
   public function __construct($site='freelabel.net') {
     $this->site = $site;
-    //$this->site = $this->getSiteData($site);
+    // $this->site = $this->getSiteData($site);
   }
   public function getSiteData($site_name='freelabel.net') {
     if (strpos($site_name, 'landing/')==true OR strpos($site_name, 'index.php')==true) {

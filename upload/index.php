@@ -22,7 +22,7 @@ include(ROOT.'submit/views/db/index.php');
 // 3.
 // --------------------------------------------------- /
 //$__redirect = 'http://freelabel.net/form/upload';
-$__redirect = 'http://freelabel.net/upload/?uid=submission';
+$__redirect = 'http://freelabel.net/drive/plus.php?uid=submission';
 
 if ($_GET['uid']=='') {
     // No Username Set! ;

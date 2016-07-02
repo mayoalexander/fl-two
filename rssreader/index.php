@@ -2,7 +2,9 @@
 $user_name_session = 'admin';
 echo "<button onclick=\"loadPage('http://freelabel.net/rssreader/index.php', '#main_display_panel', 'dashboard', '".$user_name_session."')\"  alt='RSS'  class='btn-link lead_control widget_menu' alt='Navigation'><i class='fa fa-refresh'></i> Reload</button>";
 
-$rss = simplexml_load_file('http://alexandermayo.tumblr.com/rss/');
+// $rss = simplexml_load_file('http://alexandermayo.tumblr.com/rss/');
+$rss = simplexml_load_file('http://freelabelnet.tumblr.com/rss/');
+$rss = simplexml_load_file('http://tooheavyx.tumblr.com/rss/');
 // $rss = simplexml_load_file('http://freelabelnet.tumblr.com/rss/');
 $feed1 = '<h3>'. $rss->channel->title . '</h3>';
 foreach ($rss->channel->item as $item) {
@@ -15,26 +17,27 @@ foreach ($rss->channel->item as $item) {
    
 }
 ?>
-<!--  <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <script type="text/javascript" src="jquery-1.8.0.min.js"></script> 
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-<script type="text/javascript">
-$(function() {
-    $( "#tabs" ).tabs();
-  });
-</script>
-  </head>
--->
-  <body>
 
-<div id="tabs" style="margin:auto;padding:1%;text-align:center;">                
+
+<style type="text/css">
+  .tabs {
+    margin:auto;
+    padding:1%;
+    text-align:center;
+    background-color:#fff;
+  }
+</style>
+
+<div class="tabs clearfix">                
   <div id="tabs-1">
   <?php echo $feed1; ?>
   </div>
 </div>
 </body>
+
+
+
+
 
 <script type="text/javascript">
   $(function(){
@@ -68,6 +71,17 @@ $(function() {
       });
 
       // Update View After Completion
+    });
+
+    $('video').click(function(e){
+      e.preventDefault();
+      var vid = $(this).get(0);
+      if (vid.paused!==false) {
+        vid.play();
+      } else {
+        vid.pause();
+      }
+    
     });
   });
 </script>
