@@ -312,14 +312,14 @@
 						<h1 class="footer-logo">
 						<!-- <img src="http://freelabel.net/images/FREELABELLOGO.gif" alt="Footer Logo Blue"> -->
 						</h1>
-						<p>© FREELABEL NETWORKS 2016 - <a href="http://tympanus.net/codrops/licensing/">Licensing</a> - Designed &amp; Developed by <a href="http://www.twitter.com/@siralexmayo">Alexander Mayo</a></p>
+						<p>© FREELABEL NETWORKS 2016 - Designed &amp; Developed by <a href="http://www.freelabel.net/alexmayo">Alex Mayo</a></p>
 					</div>
 					<div class="col-md-7">
 						<ul class="footer-nav">
-							<li><a href="#about">About</a></li>
-							<li><a href="#features">Features</a></li>
-							<li><a href="#screenshots">Screenshots</a></li>
-							<li><a href="#download">Download</a></li>
+							<li><a href="<?php echo $site['http']; ?>">Home</a></li>
+							<li><a href="<?php echo $site['http'].'users/index/marketing_pricing/#pricing'; ?>">Artist Accounts</a></li>
+							<li><a href="<?php echo $site['http'].'radio/'; ?>" target="_blank">Radio</a></li>
+							<!-- <li><a href="#download">Radio</a></li> -->
 						</ul>
 					</div>
 				</div>

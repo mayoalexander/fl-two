@@ -9,8 +9,19 @@ Header add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
 RewriteRule ^dev$ 										/landio/index.php
 RewriteRule ^dev/$ 										/landio/index.php
 
-RewriteRule ^register$ 										artists/templates/ZoomSlider/index.php?ctrl=$1
-RewriteRule ^register/$ 									artists/templates/ZoomSlider/index.php?ctrl=$1
+RewriteRule ^register$ 										users/index/marketing/
+RewriteRule ^register/$ 									users/index/marketing/
+
+
+
+
+
+RewriteRule ^pricing$ 										users/index/marketing_pricing/
+RewriteRule ^pricing/$ 										users/index/marketing_pricing/
+
+RewriteRule ^store$ 										artists/templates/ZoomSlider/index.php?ctrl=$1
+RewriteRule ^store/([\w-]+)$ 								artists/templates/ZoomSlider/index.php?ctrl=$1
+RewriteRule ^store/([\w-]+)/$ 								artists/templates/ZoomSlider/index.php?ctrl=$1
 
 
 RewriteRule ^info$ 										/pricing/info/index.php
@@ -72,7 +83,7 @@ RewriteRule ^l/@([\w-]+)/([\w-]+)$ 							/config/profile.php?user_twitter_name=
 RewriteRule ^L/@([\w-]+)/$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
 RewriteRule ^L/@([\w-]+)$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
 
-RewriteRule ^L/@([\w-]+)/([\w-]+)/$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
+RewriteRule ^L/@([\w-]+)/([\w-]+)/$ 								/config/profile.php?user_twitter_name=$1&blog_title=$2
 RewriteRule ^L/@([\w-]+)/([\w-]+)$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
 
  

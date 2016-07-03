@@ -3355,7 +3355,8 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
     if ($user_name == 'admin' 
       OR $user_name == 'AlexMayo' 
       OR $user_name == 'Fokus' 
-      OR $user_name == 'DrGhostmonious '
+      OR $user_name == 'DrGhostmonious'
+      OR $user_name == 'DjSyonKream'
       OR $user_name == 'DESERTWXLF') {
         $site['map'][] = array('title' => 'Admin' , 'path'=>'dashboard/admin', 'icon'=>'cog'  );
         $site['map'][] = array('title' => 'Development' , 'path'=>'dashboard/dev', 'icon'=>'cog'  );

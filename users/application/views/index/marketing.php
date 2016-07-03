@@ -187,7 +187,7 @@
 						<div class="col-md-12">
 							<h1 class="animated fadeInDown"><?php echo $site['name'].' <span class="heading-subtext text-muted">'.$site['description'].'</span>';?></h1>
 							<!-- <a href="http://freelabel.net/confirm/trial/" target="_blank" class="use-btn animated fadeInUp">Start FREETRIAL <i class="fa fa-check"></i></a> <a href="http://freelabel.net/users/index/marketing_pricing/#pricing" class="learn-btn animated fadeInUp">Artist Packages <i class="fa fa-arrow-right"></i></a> -->
-							<a href="http://freelabel.net/confirm/plus/" target="_blank" class="use-btn animated fadeInUp">Create An Account <i class="fa fa-check"></i></a> <a href="http://freelabel.net/users/index/marketing_pricing/#pricing" class="learn-btn animated fadeInUp">Signup as Artist <i class="fa fa-arrow-right"></i></a>
+							<a href="http://freelabel.net/confirm/plus/" target="_blank" class="use-btn animated fadeInUp">Create An Account <i class="fa fa-check"></i></a> <a href="http://freelabel.net/pricing/#pricing" class="learn-btn animated fadeInUp">Signup as Artist <i class="fa fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -309,7 +309,7 @@
 			                    </ul>
 							</blockquote>
 							<!-- <a href="http://freelabel.net/users/index/marketing_pricing/" class="download-btn">Basic - $59/month <i class="fa fa-arrow-right"></i></a> -->
-							<a href="http://freelabel.net/confirm/basic/" target="_blank" class="download-btn">$10/month <i class="fa fa-arrow-right"></i></a>
+							<a href="http://freelabel.net/confirm/plus/" target="_blank" class="download-btn">$10/month <i class="fa fa-arrow-right"></i></a>
 							<a href="http://freelabel.net/confirm/tour/" target="_blank" class="use-btn">$90/year <i class="fa fa-arrow-right"></i></a>
 						</div>
 					</div>
@@ -452,13 +452,13 @@
 						<h1 class="footer-logo">
 						<!-- <img src="http://freelabel.net/images/FREELABELLOGO.gif" alt="Footer Logo Blue"> -->
 						</h1>
-						<p>© FREELABEL NETWORKS 2016 - <a href="http://freelabel.net/users/index/licensing/">Licensing</a> - Designed &amp; Developed by <a href="http://www.twitter.com/@siralexmayo">Alexander Mayo</a></p>
+						<p>© FREELABEL NETWORKS 2016 - Designed &amp; Developed by <a href="http://www.freelabel.net/alexmayo">Alex Mayo</a></p>
 					</div>
 					<div class="col-md-7">
 						<ul class="footer-nav">
 							<li><a href="<?php echo $site['http']; ?>">Home</a></li>
-							<li><a href="<?php echo $site['http'].'users/index/marketing/#pricing'; ?>">Pricing</a></li>
-							<li><a href="<?php echo $site['http'].'drive/'; ?>">Submissions</a></li>
+							<li><a href="<?php echo $site['http'].'pricing/#pricing'; ?>">Artist Accounts</a></li>
+							<li><a href="<?php echo $site['http'].'radio/'; ?>" target="_blank">Radio</a></li>
 							<!-- <li><a href="#download">Radio</a></li> -->
 						</ul>
 					</div>
