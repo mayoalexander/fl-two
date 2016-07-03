@@ -214,7 +214,7 @@
 									</li>
 									<li>
 										<h1><?php echo $site['landing-info'][2].'</span>';?></h1>
-										<p><?php echo $site['landing-info'][3].'</span>';?>.</p>
+										<p><?php echo $site['landing-info'][3].'</span>';?></p>
 										<!-- <p><a href="http://freelabel.net/users/index/marketing_pricing/" class="arrow-btn">Find out why this freebie rocks! <i class="fa fa-long-arrow-right"></i></a></p> -->
 									</li>
 									<li>
@@ -238,7 +238,7 @@
 								<i class="fa fa-heart"></i>
 							</div>
 							<div class="feature-content">
-								<h1>Save and Build a Collection of your Favorites</h1>
+								<h1>Save and Build an Exclusive Playlist of your Favorites</h1>
 								<p><?php echo $site['landing-info']['instruction'][0].'</span>';?></p>
 								<!-- <a href="#pricing" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a> -->
 							</div>
@@ -248,7 +248,7 @@
 								<i class="fa fa-cloud-upload"></i>
 							</div>
 							<div class="feature-content">
-								<h1>Upload and Distribute Your Music + Videos</h1>
+								<h1>Upload and Showcase Your Music + Videos + Products</h1>
 								<p><?php echo $site['landing-info']['instruction'][1].'</span>';?></p>
 								<!-- <a href="#pricing" class="read-more-btn">Read More <i class="fa fa-chevron-circle-right"></i></a> -->
 							</div>

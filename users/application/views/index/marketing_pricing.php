@@ -176,9 +176,6 @@
 						<div class="col-md-6 col-sm-6 col-xs-6 text-left">
 							<a href="http://freelabel.net/#"><img class="site-logo" src="<?php echo $site['logo']; ?>" alt="Boxify Logo"></a>
 						</div>
-						<div class="col-md-6 col-sm-6 col-xs-6 text-right navicon">
-							<p>MENU</p><a id="trigger-overlay" class="nav_slide_button nav-toggle" href="#"><span></span></a>
-						</div>
 					</div>
 					<div class="row hero-content">
 						<div class="container">
@@ -206,15 +203,15 @@
 				<div class="row">
 					<div class="col-md-12">
 						<h1>Create Your Account</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-						<p><a href="#screenshots" class="arrow-btn">See the screenshots! <i class="fa fa-long-arrow-right"></i></a></p>
+						<!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p> -->
+						<p><a href="#pricing" class="arrow-btn">View Packages! <i class="fa fa-long-arrow-right"></i></a></p>
 					</div>
 				</div>
 			</div>
 		</section>
 
-
-				<section class="download" id="download">
+		<a name="pricing"></a>
+		<section class="download" id="download">
 			<div class="container">
 				<div class="row">
 <!-- 					<div class="col-md-12 text-center wp4">
@@ -233,16 +230,16 @@
 											<i class="fa fa-desktop"></i>
 										</div>
 										<div class="feature-content">
-											<h1>TRIAL</h1>
+											<h1>Contributor</h1>
 											<p><?php echo $site['landing-info']['instruction'][0].'</span>';?>
 												<ul class="pricing__feature-list">
 							                        <li class="pricing__feature">Upload and Download Unlimited Songs, Videos, Interviews, Radio Shows, Magazine Issues, Exclusve Music &amp; much more..</li>
-							                        <li class="pricing__feature">Upload Music, Videos, &amp; Photos to your Profile</li>
+							                        <!-- <li class="pricing__feature">Upload Music, Videos, &amp; Photos to your Profile</li> -->
 							                        <!-- <li class="pricing__feature">Front Page and Magazine Features</li> -->
 							                        <li class="pricing__feature">Submit Music for Project and Showcase Placement.</li>
 							                    </ul>
 						                    </p>
-											<a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">$0/first day <i class="fa fa-chevron-circle-right"></i></a>
+											<a href="http://freelabel.net/confirm/sub" target="_blank" class="read-more-btn">$10 / month <i class="fa fa-chevron-circle-right"></i></a>
 										</div>
 									</div>
 									<div class="col-md-4 feature-2 wp2 delay-05s">
@@ -250,16 +247,18 @@
 											<i class="fa fa-flash"></i>
 										</div>
 										<div class="feature-content">
-											<h1>BASIC</h1>
+											<h1>Exclusive</h1>
 											<p><?php echo $site['landing-info']['instruction'][1].'</span>';?>
 											<ul class="pricing__feature-list">
 						                        <li class="pricing__feature">24/7 Radio Rotation</li>
 						                        <li class="pricing__feature">Full Project Streams</li>
 						                        <li class="pricing__feature">Event/Project Placement</li>
-						                        <li class="pricing__feature">Full One-Hour Radio Show Broadcasting Your Projects Live On-air</li>
+						                        <li class="pricing__feature">Full One-Hour Radio Show Interview</li>
+						                        <!-- <li class="pricing__feature">Broadcasting Your Project Live On-air</li> -->
 						                    </ul>
 											</p>
-											<a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">$60/month <i class="fa fa-chevron-circle-right"></i></a>
+											<!-- <a href="http://freelabel.net/confirm/basic" target="_blank" class="read-more-btn">$60 / month <i class="fa fa-chevron-circle-right"></i></a> -->
+											<a href="http://freelabel.net/confirm/exclusive" target="_blank" class="read-more-btn">$200 / month <i class="fa fa-chevron-circle-right"></i></a>
 										</div>
 									</div>
 									<div class="col-md-4 feature-3 wp2 delay-1s">
@@ -267,13 +266,13 @@
 											<i class="fa fa-heart"></i>
 										</div>
 										<div class="feature-content">
-											<h1>EXCLUSIVE</h1>
+											<h1>Professional</h1>
 											<p><?php echo $site['landing-info']['instruction'][2].'</span>';?>
 												<ul class="pricing__feature-list">
 							                        <li class="pricing__feature">Music Distribution (Apple Music, iTunes, Spotify, Amazon,
 							Rdio, Google Play, + more)</li>
 							                        <!-- <li class="pricing__feature">Includes Creator Features</li> -->
-							                        <li class="pricing__feature">Weekly Press Releases</li>
+							                        <li class="pricing__feature">Bi-Weekly Press Releases</li>
 							                        <li class="pricing__feature">Magazine + Radio Interviews</li>
 							                        <li class="pricing__feature">Artist Management</li>
 							                        <li class="pricing__feature">Event + Tour Booking</li>
@@ -282,7 +281,8 @@
 							                        <li class="pricing__feature">Audio Mixing &amp; Mastering (Radio Ready)</li>
 							                    </ul>
 											</p>
-											<a href="http://tympanus.net/codrops/?p=22554" class="read-more-btn">$200/year <i class="fa fa-chevron-circle-right"></i></a>
+											<!-- <a href="http://freelabel.net/confirm/exclusive" target="_blank" class="read-more-btn">$200 / year <i class="fa fa-chevron-circle-right"></i></a> -->
+											<a href="http://freelabel.net/confirm/tour" target="_blank" class="read-more-btn">$375 / month <i class="fa fa-chevron-circle-right"></i></a>
 										</div>
 									</div>
 
@@ -295,16 +295,9 @@
 		</section>
 
 
-		<section class="download" id="download">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 text-center wp4">
-						<h1>Don't have the money?</h1>
-						<a href="http://freelabel.net/users/index/marketing_pricing" class="download-btn">Start a FREE TRIAL! <i class="fa fa-key"></i></a>
-					</div>
-				</div>
-			</div>
-		</section>
+
+
+
 		<footer>
 			<div class="container">
 				<div class="row">
