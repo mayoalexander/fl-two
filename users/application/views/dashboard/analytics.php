@@ -68,7 +68,8 @@ $user = $config->getUserData($user_name);
 if (isset($user)) {
 	include_once(ROOT.'users/application/views/dashboard/stats.php');
 } else {
-	include_once(ROOT.'submit/views/db/campaign_info.php');
+  // include_once(ROOT.'submit/views/db/campaign_info.php');
+  include_once(ROOT.'users/application/views/dashboard/account.php');
 }
 ?>
 

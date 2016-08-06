@@ -4,8 +4,14 @@
 
 	$profile = $site->get_user_profile($_SESSION['user_name']);
 ?>
-
-
+<style type="text/css">
+	.profile div {
+		padding:2em;
+	}
+	.profile {
+		font-size: 0.8em;
+	}
+</style>
 		<div class="dashboard-header">
 			<h1 class="pull-left">Dashboard</h1>
 		</div>
@@ -19,9 +25,10 @@
 					<p class="section-description text-muted">Use this form to complete your FREELABEL Profile. We will use this information to build your campaign as well as tag you during promotional campaigns!</p>
 
 					<div class="col-md-4 col-sm-6">
-						
-						<h4><i class="fa fa-photo"></i> Upload Profile Photo</h4><input type="file" class="form-control profile_photo" name="photo" >
-						<span class="file-upload-results"></span>
+						<img src="<?php echo $profile['photo']; ?>" class="profile-img img-thumbnail">
+
+						<!-- <h4><i class="fa fa-photo"></i> Upload Profile Photo</h4><input type="file" class="form-control profile_photo" name="photo" >
+						<span class="file-upload-results"></span> -->
 						
 					</div>
 
@@ -106,7 +113,6 @@
 			// elem.append(data);
 			// alert(data);
 			var path = '<?php echo $site->url; ?>views/profile.php';
-			alert(path);
 			$.post(path, data, function(result){
 				// elem.parent().parent().parent().html(result);
 				btn.removeClass('btn-warning');

@@ -185,6 +185,10 @@
       color:#e3e3e3;
       border-radius: 0px;
     }
+    .form-signin {
+      max-width: 350px;
+      margin:auto;
+    }
     .profile_builder_form {
       padding:2em;
     }
