@@ -3353,13 +3353,13 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
     //echo $user_name;
     if ($user_name == 'admin' 
       OR $user_name == 'AlexMayo' 
-      OR $user_name == 'Fokus' 
+      // OR $user_name == 'Fokus' 
       OR $user_name == 'DrGhostmonious'
       OR $user_name == 'DjSyonKream'
       OR $user_name == 'DESERTWXLF') {
-        $site['map'][] = array('title' => 'Admin' , 'path'=>'dashboard/admin', 'icon'=>'cog'  );
-        $site['map'][] = array('title' => 'Development' , 'path'=>'dashboard/dev', 'icon'=>'cog'  );
-        $site['map'][] = array('title' => 'Site' , 'path'=>'index/menu', 'icon'=>'cog'  );
+        // $site['map'][] = array('title' => 'Admin' , 'path'=>'dashboard/admin', 'icon'=>'cog'  );
+        $site['map'][] = array('title' => 'Admin' , 'path'=>'dashboard/dev', 'icon'=>'cog'  );
+        // $site['map'][] = array('title' => 'Site' , 'path'=>'index/menu', 'icon'=>'cog'  );
     }
     foreach ($site['map'] as $page) {
 
@@ -3952,7 +3952,10 @@ $twitter_share = "#FLMAG | ".$twitter.'
     $output = '';
     $output .= '<a '.$p.' id="blogtitle-'.$meta['id'].'" class="'.$editable.' list-title" >'.$meta['blogtitle'].'</a>';
     $output .= '<a '.$p.' id="twitter-'.$meta['id'].'" class="'.$editable.' list-twitter" >'.$meta['twitter'].'</a>';
-    $output .= '<a '.$p.' id="writeup-'.$meta['id'].'" class="'.$editable.' list-writeup" >'.$meta['writeup'].'</a>';
+    if (isset($meta['writeup']) && $meta['writeup']!=='') {
+      // $output .= '<a '.$p.' id="writeup-'.$meta['id'].'" class="'.$editable.' list-writeup" >View Description</a>';
+      // $output .= '<a '.$p.' id="writeup-'.$meta['id'].'" class="'.$editable.' list-writeup" >'.$meta['writeup'].'</a>';
+    }
 
     //print_r($meta);
     //$this->debug($meta);

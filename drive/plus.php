@@ -506,6 +506,11 @@ function showMoreOptions(elem) {
     $('.release_date').datepicker({dateFormat: "yy-mm-dd"});
 }
 
+function enableButton() {
+    // alert('okay');
+    $('.file-upload-trigger').removeClass('disabled');
+}
+
 
 
 
@@ -670,7 +675,12 @@ $(function () {
 
             $('.file-upload-trigger').hide();
 
+
+
             node.appendTo(data.context);
+            if (file.type=='image/jpeg' || file.type=='image/jpg' || file.type=='image/png') {
+                setTimeout(enableButton(),2000);
+            }
         });
     }).on('fileuploadprocessalways', function (e, data) {
         // bind validation
