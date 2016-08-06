@@ -53,6 +53,10 @@ class Dashboard extends Controller
     {
         $this->view->render('dashboard/stream',true);
     }
+    function account()
+    {
+        $this->view->render('dashboard/account',true);
+    }
     function analytics()
     {
         $this->view->render('dashboard/analytics',true);

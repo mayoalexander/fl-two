@@ -137,7 +137,7 @@
           <input type='hidden' name='user_name' value='<?php echo $user_name; ?>'>
           <input type='submit' class="btn btn-social btn-warning confirm-upload-buttons save-changes-photo" value="Save Changes">
           <hr>
-          <span class="photo-upload-results" ></span>
+          <span class="file-upload-results" ></span>
         </form>
       </div>
       <div class="modal-footer">
@@ -163,54 +163,61 @@
 
 $('.confirm-upload-buttons').hide();
 
-$('#edit-profile-photo-input').change(function() {
-    var pleaseWait = 'Please wait...';
-      // ------ NEW NEW NEW NEW ------ //
-      $('.photo-upload-results').html('');
-      $('.photo-upload-results').append(pleaseWait);
-      $('.confirm-upload-buttons').prepend('<p class="wait" style="color:#303030;">Please wait..<p>');
-    $('.confirm-upload-buttons').hide('fast');
-    var path = 'http://freelabel.net/upload/server/php/upload-photo.php';
-    var data;
-    var formdata_PHO = $('#edit-profile-photo-input')[0].files[0];
-    var formdata = new FormData();
 
-    // Add the file to the request.
-      formdata.append('photos[]', formdata_PHO);
-  $.ajax({
-        // Uncomment the following to send cross-domain cookies:
-        xhrFields: {withCredentials: true},
-        url: path,
-        //dataType: 'json',
-        method: 'POST',
-        cache       : false,
-      processData: false,
-      contentType: false, 
-      fileElementId: 'image-upload',
-        data: formdata,
-        beforeSend: function (x) {
-              if (x && x.overrideMimeType) {
-                  x.overrideMimeType("multipart/form-data");
-              }
-      },
-      // Now you should be able to do this:
-      mimeType: 'multipart/form-data'    //Property added in 1.5.1
-    }).always(function () {
-      //alert(formdata_PHO);
-      console.log(formdata_PHO);
-      //$('#confirm_upload').html('please wait..');
-        //$(this).removeClass('fileupload-processing');
-    }).fail(function(jqXHR){
-    alert(jqXHR.statusText + 'oh no it didnt work!')
-  }).done(function (result) {
-        //alert('YES');
-    $('.photo-upload-results').html(result);
-    $('.confirm-upload-buttons').show('fast');
-    // $('.confirm-upload-buttons').css('opacity',1);
-    $('.wait').hide('fast');
-  })
-    
- });
+
+/*
+  CHANGE PROFILE PHOTO FUNCTIONALITY
+*/
+$("#edit-profile-photo-input").change(function (){
+  $(this).hide();
+  var img = $(this).val();
+  var ext = img.split('.').pop();
+      if (ext.toLowerCase() !=='png' && ext.toLowerCase() !=='jpeg' && ext.toLowerCase() !=='jpg' && ext.toLowerCase() !=='gif') {
+          var type = 'Uh oh, this file you\'ve selected is not a photo. Please upload a photo for the artwork!';
+          alert(type);
+          $('#artwork_photo').val('');
+          return false;
+      } else {
+          alert("its a photo!");
+      }
+        // var formdata_PHO = $('#artwork_photo')[0].files[0];
+        path = '<?php echo $site[""]; ?>http://freelabel.net/lvtr/config/upload-profile-photo.php';
+        elem = $(this);
+        formdata_PHO = $(this).get(0).files[0];
+  var formdata = new FormData();
+        // Add the file to the request.
+        formdata.append('photos[]', formdata_PHO);
+
+        $.ajax({
+            // Uncomment the following to send cross-domain cookies:
+            xhrFields: {withCredentials: true},
+            url: path,
+            method: 'POST',
+            cache       : false,
+            processData: false,
+            contentType: false, 
+            fileElementId: 'image-upload',
+            data: formdata,
+            beforeSend: function (x) {
+                    if (x && x.overrideMimeType) {
+                        x.overrideMimeType("multipart/form-data");
+                    }
+            },
+            // Now you should be able to do this:
+            mimeType: 'multipart/form-data'    //Property added in 1.5.1
+        }).always(function () {
+            console.log(formdata_PHO);
+        }).fail(function(jqXHR){
+            // alert(jqXHR.statusText + 'oh no it didnt work!')
+            $('.file-upload-results').html('You didnt upload the correct file format!');
+        }).done(function (result) {
+            $('.file-upload-results').html(result);
+            $('.file-upload-results').append('<input type="hidden" name="user_name" value="<?php echo $_SESSION['user_name']; ?>">');
+      $(".file-upload-results").append('<button class="btn btn-primary save_profile_photo">Save As Profile Image</button> <button class="btn btn-danger"><i class="fa fa-trash"></i></button>');
+        });
+});
+
+
 
 
 $('.edit-profile-photo-form').submit(function(event){

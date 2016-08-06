@@ -29,12 +29,12 @@ if ($user_name == 'admin' OR $user_name == "thatdudewayne") {
 <!-- button tool bar  -->
 <div class="event-option-panel btn-group dropdown" style="background-color:transparent;text-align:left;border-bottom:3px solid #303030;padding:2% 0%;">
   <!-- Split button -->
-  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus"></i> Add New</button>
+<!--   <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus"></i> Add New</button>
   <ul class="dropdown-menu">
     <li><a href='http://freelabel.net/drive/plus.php?uid=<?php echo $user_name; ?>'><i class="fa fa-cloud-upload"></i> Upload via FLDRIVE</a></li>
     <li><a href='http://freelabel.net/vendor/instagram/example/'><i class="fa fa-instagram"></i> Connect to Instagram</a></li>
-  </ul>
-  <!-- <button class="btn btn-success btn-xs btn-block add-new-media-audio" style="display:block;" data-link="http://freelabel.net/drive/plus.php?uid=<?php echo $user_name; ?>&type=idea" ><i class="fa fa-plus"></i> Add New</button> -->
+  </ul> -->
+  <button class="btn btn-success btn-xs btn-block add-new-media-audio" style="display:block;" data-link="http://freelabel.net/drive/plus.php?uid=<?php echo $user_name; ?>&type=idea" ><i class="fa fa-plus"></i> Add New</button>
 </div>
 
 <!-- get user tags  -->
@@ -91,54 +91,69 @@ if ($user_name == 'admin' OR $user_name == "thatdudewayne") {
 <script type="text/javascript" src="http://freelabel.net/js/control.js"></script>
 
 
+
+
+
+
+
 <script type="text/javascript">
 
+  // ********************************* 
+  //  SEARCH
+  // *********************************
+  // $('.search-tracks-input').submit(function(event){
+  $('.search-tracks-input').keyup(function(event){
+    // $(this).append('<span class="text-muted">Searching...</span>');
+    // event.preventDefault();
+    var x = $(this).find('input').val();
+    // var u = $(this).find('input').attr('data-user');
 
- $('.search-tracks-input').submit(function(event){
-  $(this).append('<span class="text-muted">Searching...</span>');
-  event.preventDefault();
-  var x = $(this).find('input').val();
-  var u = $(this).find('input').attr('data-user');
-  var thisvalue = $(this).find('input').val('');
-  var url = 'http://freelabel.net/users/dashboard/audio/';
-  var data = {
-    q:x,
-    user:u
-  }
-  $.get(url,data,function(result){
-    $('#audio').html(result);
+    console.log(x);
+    // var thisvalue = $(this).find('input').val('');
+    // var url = 'http://freelabel.net/users/dashboard/audio/';
+    // var data = {
+    //   q:x,
+    //   user:u
+    // }
+    // $.get(url,data,function(result){
+    //   $('#audio').html(result);
+    // });
   });
- });
 
 
+  // ********************************* 
+  //  ADD NEW AUDIO
+  // *********************************
 	$(".add-new-media-audio").click(function(event) {
 		event.preventDefault();
-      	var link = $(this).attr('data-link');
-      	// window.open(link);
-      	window.location.assign(link);
-    });
+    	var link = $(this).attr('data-link');
+    	window.location.assign(link);
+  });
 
-    $('.editable').editable('http://freelabel.net/submit/update.php',{
-      id  : 'user_post_id',
-      // type    : 'textarea',
-      name : 'title'
-    });
+  // ********************************* 
+  //  EDITABLE
+  // *********************************
+  $('.editable').editable('http://freelabel.net/submit/update.php',{
+    id  : 'user_post_id',
+    // type    : 'textarea',
+    name : 'title'
+  });
 
-    // ********************************* 
-    //  DELETE PROMO CONTROL 
-    // *********************************
-    $(".controls-audio-delete").click(function(event){
-      event.preventDefault();
-      var file_id = $(this).attr('data-id');
-      var wrapper = $(this).parent();
-      var url = 'http://freelabel.net/users/login/delete_feed/' + file_id + '/';
-      c = confirm("Are you sure you want to delete this posts?");
-      if (c==true) {
-        $.get(url,function(result){
-          wrapper.parent().hide('fast');
-        });
-      }     
-    });
+  // ********************************* 
+  //  DELETE PROMO CONTROL
+  // *********************************
+  $(".controls-audio-delete").click(function(event){
+    event.preventDefault();
+    var file_id = $(this).attr('data-id');
+    var wrapper = $(this).parent();
+    var url = 'http://freelabel.net/users/login/delete_feed/' + file_id + '/';
+    c = confirm("Are you sure you want to delete this posts?");
+    if (c==true) {
+      $.get(url,function(result){
+        wrapper.parent().hide('fast');
+      });
+    }    
+  });
 
 </script>
 <script type="text/javascript">
@@ -385,7 +400,9 @@ $(function() {
 
 
 
-
+    // ********************************* 
+    //  ADD TO PROMOS OR LIKES
+    // *********************************
 
     $('.share-post-button').click(function(event){
       event.preventDefault();

@@ -67,9 +67,9 @@
       <li><a href="#section-linemove-4" class="icon icon-upload dash-filter" data-load="audio"><span>
       <!-- <i class="fa fa-music" ></i> -->
        Uploads</span></a></li>
-      <li><a href="#section-linemove-5" class="icon icon-date dash-filter" data-load="events"><span>
+      <li><a href="#section-linemove-5" class="icon icon-date dash-filter" data-load="account"><span>
       <!-- <i class="fa fa-calendar" ></i> -->
-       Events</span></a></li>
+       Account</span></a></li>
     </ul>
   </nav>
   <div class="content-wrap">
@@ -93,7 +93,7 @@
 
     <section id="audio" class="autoload al-audio" data-load="audio"></section>
 
-    <section id="events" class="autoload al-events" data-load="events"></section>
+    <section id="account" class="autoload al-account" data-load="account"></section>
 
   </div><!-- /content -->
 </div><!-- /tabs -->
