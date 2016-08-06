@@ -187,26 +187,26 @@ if(isset($_GET['verify'])){
 class User
 {
 
-  public function init($_SESSION='none', $_COOKIE='none') {
+  public function init($session='none', $cookie='none') {
 
     // check if if session exists,
-    if (isset($_SESSION['user_name'])) {
+    if (isset($session['user_name'])) {
       // set cookie to remember username
-      setcookie("fl-user-name", $_SESSION['user_name'], time()+3600 *24*30);  /* expire in 30 days */
-      setcookie("fl-user-email", $_SESSION['user_email'], time()+3600 *24*30);  /* expire in 30 days */
-      setcookie("fl-user-id", $_SESSION['user_id'], time()+3600 *24*30);  /* expire in 30 days */
+      setcookie("fl-user-name", $session['user_name'], time()+3600 *24*30);  /* expire in 30 days */
+      setcookie("fl-user-email", $session['user_email'], time()+3600 *24*30);  /* expire in 30 days */
+      setcookie("fl-user-id", $session['user_id'], time()+3600 *24*30);  /* expire in 30 days */
       //echo 'session is set';
-    } elseif (isset($_COOKIE['fl-user-name'])) {
-      //$_SESSION['user_name'] = $_COOKIE['fl-user-name'];
-      $_SESSION['user_logged_in'] = 0;
-      //$_SESSION['user_email'] = $_COOKIE['fl-user-email'];
-      //$_SESSION['user_id'] = $_COOKIE['fl-user-id'];
+    } elseif (isset($cookie['fl-user-name'])) {
+      //$session['user_name'] = $cookie['fl-user-name'];
+      $session['user_logged_in'] = 0;
+      //$session['user_email'] = $cookie['fl-user-email'];
+      //$session['user_id'] = $cookie['fl-user-id'];
       //echo 'cookie is set';
     } else {
       // set cookie data
       setcookie("fl-viewer-id", $this->generateRandomString(20), time()+3600 *24*30);  /* expire in 30 days */
       //setcookie("fl-viewer-id", $this->generateRandomString(10), time()+3600 *24*30);  /* expire in 30 days */
-      //print_r($_COOKIE);
+      //print_r($cookie);
       //echo '<hr>';
     }
 
@@ -214,21 +214,21 @@ class User
 
 
     //
-    // if (isset($_SESSION)) {
+    // if (isset($session)) {
     //   echo 'none';
     // }else {
-    //  // echo 'something '.$_SESSION;
-    //   //print_r($_COOKIE);
+    //  // echo 'something '.$session;
+    //   //print_r($cookie);
     // }
 
     // save to global site variables
-  if (isset($_SESSION['user_name']))
+  if (isset($session['user_name']))
     {
 
-      $user_data['session'] = $_SESSION['user_name'];
-      $user_data['user_logged_in'] = $_SESSION['user_logged_in'];
-      $user_data['cookie'] = $_COOKIE['fl-user-name'];
-      $user_data['name'] = $_SESSION['user_name'];
+      $user_data['session'] = $session['user_name'];
+      $user_data['user_logged_in'] = $session['user_logged_in'];
+      $user_data['cookie'] = $cookie['fl-user-name'];
+      $user_data['name'] = $session['user_name'];
     } else {
       $user_data = FALSE;
     }
@@ -597,7 +597,7 @@ class Blog
       $site_name = str_replace('index.php', '', $site_name);
     }
     switch ($site_name) {
-      case 'freelabel.net':
+      case 'freelabel.net' OR 'http://localhost:8888/':
         $site['name'] = 'FREELABEL';
         $site['keywords'] = 'Create, Discover, Share, Upload, freelabel, texas, music, promotion, streaming, radio stations, network';
 
@@ -4186,7 +4186,7 @@ class Config
 
   function __construct()
   {
-    include_once('/home/content/59/13071759/html/config/index.php');
+    include_once(ROOT.'config/index.php');
     $todays_date = date('Y-m-d');
     if (!isset($_SESSION)) {
       // start_session();
@@ -4516,7 +4516,7 @@ class UserDashboard
 
   function __construct($sessiondata)
   {
-   include_once('/home/content/59/13071759/html/config/index.php');
+   include_once(ROOT.'config/index.php');
    //$this->session =  $sessiondata;
    $this->user_name = $sessiondata;
  }

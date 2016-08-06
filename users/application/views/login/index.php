@@ -25,8 +25,8 @@
                 <a href="<?php echo URL; ?>login/register">Register</a> | <a href="<?php echo URL; ?>login/requestpasswordreset">Forgot my Password</a>
 
             </form>
-            <hr><br>or signin with..<br><br>
-        <a href="<?php echo $this->facebook_login_url; ?>" class="btn btn-secondary-outline m-b-md btn-facebook facebook-login-button"><i class="fa fa-facebook" ></i></a>
+            <!-- <hr><br>or signin with..<br><br> -->
+        <!-- <a href="<?php echo $this->facebook_login_url; ?>" class="btn btn-secondary-outline m-b-md btn-facebook facebook-login-button"><i class="fa fa-facebook" ></i></a> -->
     </div>
 </header>
 

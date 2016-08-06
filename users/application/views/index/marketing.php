@@ -187,7 +187,8 @@
 						<div class="col-md-12">
 							<h1 class="animated fadeInDown"><?php echo $site['name'].' <span class="heading-subtext text-muted">'.$site['description'].'</span>';?></h1>
 							<!-- <a href="http://freelabel.net/confirm/trial/" target="_blank" class="use-btn animated fadeInUp">Start FREETRIAL <i class="fa fa-check"></i></a> <a href="http://freelabel.net/users/index/marketing_pricing/#pricing" class="learn-btn animated fadeInUp">Artist Packages <i class="fa fa-arrow-right"></i></a> -->
-							<a href="http://freelabel.net/confirm/plus/" target="_blank" class="use-btn animated fadeInUp">Create An Account <i class="fa fa-check"></i></a> <a href="http://freelabel.net/pricing/#pricing" class="learn-btn animated fadeInUp">Signup as Artist <i class="fa fa-arrow-right"></i></a>
+							<a href="http://freelabel.net/confirm/plus/" target="_blank" class="use-btn animated fadeInUp">Create An Account <i class="fa fa-check"></i></a> 
+							<!-- <a href="http://freelabel.net/pricing/#pricing" class="learn-btn animated fadeInUp">Signup as Artist <i class="fa fa-arrow-right"></i></a> -->
 						</div>
 					</div>
 				</div>
