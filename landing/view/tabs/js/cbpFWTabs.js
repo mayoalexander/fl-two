@@ -50,7 +50,7 @@ function getInx(currentTab){
 	    case 'audio':
 	        currentInx = 3;
 	        break;
-	    case 'events':
+	    case 'account':
 	        currentInx = 4;
 	        break;
 	    default:

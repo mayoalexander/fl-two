@@ -60,7 +60,8 @@ $config = new Blog();
 		//echo $updated_user_status.', ';
 	}
 
-	include(ROOT.'inc/huge.php');
+	include(ROOT.'inc/connection.php');
+	// include(ROOT.'inc/huge.php');
 	// Detect Sort Parameter
 	if (isset($_GET['sort']) && $_GET['sort']!=='') {
 		switch ($_GET['sort']) {

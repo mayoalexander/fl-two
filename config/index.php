@@ -1635,6 +1635,15 @@ class Blog
   }
 
 
+  public function show_profile_img($user) {
+    if (!$user['photo']=='') { 
+      return $user['photo']; 
+    } else { 
+      return 'http://img.freelabel.net/noprofileimgset.png'; 
+    }
+  }
+
+
 
 
   public function get_user_tags($user_name, $current_tag=null) {
@@ -3358,7 +3367,7 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
       OR $user_name == 'DjSyonKream'
       OR $user_name == 'DESERTWXLF') {
         // $site['map'][] = array('title' => 'Admin' , 'path'=>'dashboard/admin', 'icon'=>'cog'  );
-        $site['map'][] = array('title' => 'Admin' , 'path'=>'dashboard/dev', 'icon'=>'cog'  );
+        $site['map'][] = array('title' => 'Administration' , 'path'=>'dashboard/dev', 'icon'=>'cog'  );
         // $site['map'][] = array('title' => 'Site' , 'path'=>'index/menu', 'icon'=>'cog'  );
     }
     foreach ($site['map'] as $page) {

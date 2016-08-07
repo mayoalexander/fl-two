@@ -1,7 +1,7 @@
 <div class="container">
 
     <form class="form-signin">
-        <h2 class="form-signin-heading">Create Your Account</h2>
+        <h2 class="form-signin-heading">Create Your Accountt</h2>
         <div class="login-results"></div>
         <label for="user_name" class="sr-only">Username</label>
         <input type="text" name="user_name" id="user_name" class="form-control" placeholder="Choose Username.." required autocomplete="off" autofocus>
@@ -22,21 +22,42 @@
 
 
 <script type="text/javascript">
-$('.form-signin').submit(function(e) {
-    e.preventDefault();
 
-    elem = $(this);
-    elem.find('button').addClass('disabled')
-    results = $('.login-results');
-    var data = $(this).serialize();
-    var url = 'http://freelabel.net/lvtr/config/register.php';
-    console.log(data);
-    $.post(url , data, function(result){
-        results.addClass('label');
-        results.addClass('label-warning');
-        results.html(result);
-        // alert(result);
+
+$(function(){
+    $('.form-signin').submit(function(e) {
+        e.preventDefault();
+
+        elem = $(this);
+        elem.find('button').addClass('disabled')
+        results = $('.login-results');
+        var data = $(this).serialize();
+        var url = 'http://freelabel.net/lvtr/config/register.php';
+        console.log(data);
+        $.post(url , data, function(result){
+            results.addClass('label');
+            results.addClass('label-warning');
+            results.html(result);
+            // alert(result);
+        });
+        // alert(data);
     });
-    // alert(data);
+
+
+    $('#user_name').keyup(function() {
+        var data = $(this).val();
+
+        // get rid of white space
+        if (/\s/.test(data)) {
+            data = data.replace(/\s+/g, '');
+        }
+        // format lowercase
+        data = data.toLowerCase();
+
+        // output to input
+        $(this).val(data);
+
+        console.log('Pressed: ' + data);
+    }); 
 });
 </script>

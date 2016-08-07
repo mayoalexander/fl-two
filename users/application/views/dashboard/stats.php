@@ -1,3 +1,7 @@
+<?php
+// var_dump($user);
+// exit;
+?>
 <style type="text/css">
       .inputfile, #file-to-upload {
         position:relative;
@@ -18,7 +22,7 @@
 <panel class="col-md-12">
   <div class="card card-inverse card-social text-center">
     <div class="card-block has-gradient">
-      <img src="<?php echo $photo; ?>" height="90" width="90" alt="Avatar" class="img-circle" data-toggle="modal" data-target="#editPhoto" data-param="Photo" >
+      <img src="<?php echo $config->show_profile_img($user); ?>" height="90" width="90" alt="Avatar" class="img-circle" data-toggle="modal" data-target="#editPhoto" data-param="Photo" >
       <h5 class="card-title"><?php echo $user['name']; ?></h5>
       <h6 class="card-subtitle"><?php echo $user['description']; ?></h6>
       <a href="http://freelabel.net/u/<?php echo $user_name; ?>" class="btn btn-secondary-outline btn-sm" target="_blank">View Profile</a>
@@ -178,7 +182,7 @@ $("#edit-profile-photo-input").change(function (){
           $('#artwork_photo').val('');
           return false;
       } else {
-          alert("its a photo!");
+          // alert("its a photo!");
       }
         // var formdata_PHO = $('#artwork_photo')[0].files[0];
         path = '<?php echo $site[""]; ?>http://freelabel.net/lvtr/config/upload-profile-photo.php';

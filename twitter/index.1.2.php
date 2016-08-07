@@ -411,8 +411,8 @@ if ($_POST['page']=='timeline'){
 if ($_POST['page']=='direct_messages' OR $_POST['page']=='direct_messages_auto_rtm'){
 
         // $api_query_dm =array("count" => '50');
-        // $api_query_dm =array("count" => '200');
-        $api_query_dm =array("count" => '5'); 
+        $api_query_dm =array("count" => '200');
+        // $api_query_dm =array("count" => '5'); 
         $method = 'direct_messages';
         $direct_messages =   $connection->get($method, $api_query_dm);
         $i=1;

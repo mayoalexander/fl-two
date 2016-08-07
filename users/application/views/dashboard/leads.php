@@ -60,7 +60,7 @@ if ($posted_today===true) {
 $status[] = 'Messages Sent: '.$numb_soms_sent.' / 600';
 if ($numb_soms_sent < 600) {
 	$status[] = '<span class="text-danger">Not Enough SOMS Sent.</span>';
-	$status[] = '<a class="btn btn-success-outline som-button-trigger btn-block pull-left" href="http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=all" target="_blank">SOM</a>';
+	$status[] = '<a class="btn btn-success-outline som-button-trigger btn-block pull-left" href="http://freelabel.net/twitter/?som=1&q=1" target="_blank">SOM</a>';
     $status[] = '<button onclick="openScript()" class="btn btn-warning-outline btn-block"> 
             Open Script
         </button>';
@@ -86,7 +86,7 @@ include(ROOT.'inc/connection.php');
 
 // START COUTNING LEADS
 $result = mysqli_query($con,"SELECT * FROM leads 
-		-- WHERE follow_up_date LIKE '%$todays_date%'
+		WHERE follow_up_date LIKE '%$todays_date%'
 			/*OR follow_up_date='$yesterdays_date' 
 			OR follow_up_date='$daybefore_date' 
 			OR follow_up_date='$threedaysback' 
@@ -292,7 +292,8 @@ $data.='</ul>
         $('.som-button-trigger').click(function(e){
             e.preventDefault();
             var posturl = $(this).attr('href');
-            var somurl = 'http://freelabel.net/twitter/?som=1&q=1';
+            // var somurl = 'http://freelabel.net/twitter/?som=1&q=1';
+            var somurl = 'http://freelabel.net/som/index.php?som=1&stayopen=1&mins=4&recent=1&cat=all';
             // alert('open ' + url);
             window.open(posturl);
             window.open(somurl);
