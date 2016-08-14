@@ -1,6 +1,4 @@
 <?php
-// echo 'Site under temporary maintentence, we will be back up in a few! Please check back later!';
-// exit;
 // Load application config (error reporting, database credentials etc.)
 require 'application/config/config.php';
 

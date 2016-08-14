@@ -109,7 +109,7 @@ function fileValidation(){
 
 
             // trim twitter username
-            $("#twitter").keypress(function() {
+            $("#twitter").keyup(function() {
               var $y = $(this).val();
               var $newy = $y.replace(/\s+/g, '');
               if ($newy.toLowerCase().indexOf("@") >= 0) {
