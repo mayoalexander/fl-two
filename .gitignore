@@ -2,4 +2,5 @@
 /images
 /users/vendor
 /upload/server/php/files
+/upload/server/php/upload
 composer.lock
