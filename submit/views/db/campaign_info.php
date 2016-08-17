@@ -10,7 +10,7 @@ if ($_SESSION['user_name']=='') {
 }
 //print_r($user_name_session);
 
-include_once('/home/content/59/13071759/html/config/index.php');
+include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
 $db = new UserDashboard($_SESSION);
 
 // $user = $db->getUserData($user_name_session);

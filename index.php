@@ -1,4 +1,7 @@
 <?php
+// echo '<pre>';
+// var_dump($_SERVER);
+// exit;
 // Load application config (error reporting, database credentials etc.)
 require 'application/config/config.php';
 

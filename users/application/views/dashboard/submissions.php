@@ -15,7 +15,7 @@
 <br><br> 
 -->
 <?php
-include_once('/home/content/59/13071759/html/config/index.php');
+include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
 
 $subjecttosend = urlencode("YOUR SUBMISSION HAS BEEN APPROVED");
 $email2send = urlencode('	Thank you for submitting your music! Our DJs reviewed your submission and had me reach out to you personally to get your music broadcasted all this month.

@@ -28,7 +28,7 @@ $tagwriter = new getid3_writetags;
 
 function fixGetURL($url) {
 	// $url = urldecode($url);
-	$mp3 = str_replace('http://freelabel.net/', '/home/content/59/13071759/html/', $url);
+	$mp3 = str_replace('http://freelabel.net/', $_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/', $url);
 	return $mp3;
 }
 if ($_GET['mp3']!=='') {
@@ -39,8 +39,8 @@ if ($_GET['mp3']!=='') {
 }
 $tagwriter->filename = $mp3;
 //$tagwriter->filename = '../../../upload/server/php/files/Akobi_%20First%20Born%20S%20%28u%29%20n%20%281%29.mp3';
-//$tagwriter->filename = '/home/content/59/13071759/html/upload/server/php/files/Akobi_%20First%20Born%20S%20%28u%29%20n%20%281%29.mp3';
-//$tagwriter->filename = '/home/content/59/13071759/html/upload/server/php/files/nevercall.mp3';
+//$tagwriter->filename = $_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/upload/server/php/files/Akobi_%20First%20Born%20S%20%28u%29%20n%20%281%29.mp3';
+//$tagwriter->filename = $_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/upload/server/php/files/nevercall.mp3';
 
 
 

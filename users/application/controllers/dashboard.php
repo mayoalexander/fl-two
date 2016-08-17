@@ -75,7 +75,7 @@ class Dashboard extends Controller
     function fldrive()
     {
         if ($_POST['trackmp3']) {
-            include('/home/content/59/13071759/html/config/index.php');
+            include($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
             include(ROOT.'config/upload_post.php');
         } else {
             $this->view->render('dashboard/fldrive',true);
@@ -273,7 +273,7 @@ class Dashboard extends Controller
     function edit_promo() {
         if (isset($_POST['processing'])) {
             // echo 'okay saving promo data';
-            include_once('/home/content/59/13071759/html/config/index.php');
+            include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
             $config = new Blog();
             $config->edit_promo($_POST,$_POST['id']);
         } else {
@@ -284,7 +284,7 @@ class Dashboard extends Controller
         $this->view->render('dashboard/add_photos_from_instagram',true);
     }
     function add_new_promo() {
-        include_once('/home/content/59/13071759/html/config/index.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
         $config = new Blog();
         $_POST['promo_key'] = $config->generateRandomString();
         if ($_POST['add_new_promo']==1) {
@@ -298,7 +298,7 @@ class Dashboard extends Controller
 
 
     function add_to_files() {
-        include_once('/home/content/59/13071759/html/config/index.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
         $config = new Blog();
         $_POST['promo_key'] = $config->generateRandomString();
         echo $config->add_info_files('files',$_POST);
@@ -307,7 +307,7 @@ class Dashboard extends Controller
 
     function attach() {
         if (isset($_POST['file_id'])) {
-            include_once('/home/content/59/13071759/html/config/index.php');
+            include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
             $config = new Blog();
             // echo 'okay updating';
             echo $config->attach_files($_POST['file_id'],$_POST['promo_id']);
@@ -338,7 +338,7 @@ class Dashboard extends Controller
 
 
     function unfollow() {
-        include_once('/home/content/59/13071759/html/config/index.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
         $config = new Blog();
         $res = $config->unfollow($_POST);
         if ($res) {
@@ -352,7 +352,7 @@ class Dashboard extends Controller
 
 
     function updateLeadCount() {
-        include_once('/home/content/59/13071759/html/config/index.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
         $config = new Blog();
         $res = $config->updateLeadCount($_POST['lead_id'], $_POST['count']);
         if ($res) {
@@ -369,7 +369,7 @@ class Dashboard extends Controller
 
     function delete_promo_file($id) {
         print_r($_POST);
-        include_once('/home/content/59/13071759/html/config/index.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
         $config = new Blog();
         $promo_data = $config->get_info('images', $_POST['promo_id']);
         $attached_files = $promo_data['files_attached'];
@@ -385,7 +385,7 @@ class Dashboard extends Controller
     }
 
     function update_photo() {
-        include_once('/home/content/59/13071759/html/config/index.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
         $config = new Blog();
         $res = $config->update('user_profiles','photo',$_POST['photo'],$_POST['user_name']);
         // print_r($res);
@@ -408,7 +408,7 @@ class Dashboard extends Controller
                 }
                 $files = implode(', ', $files);
             }
-            include_once('/home/content/59/13071759/html/config/index.php');
+            include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
             $config = new Blog();
             // echo 'okay updating';
             echo $config->attach_files_to_promo($files,$_POST['promo_id']);

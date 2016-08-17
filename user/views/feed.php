@@ -10,7 +10,7 @@ if (isset($_GET['p'])==false) {
 }
 $next_page = $current_page + 1;
 $next_page_read = $next_page +1;
-include_once('/home/content/59/13071759/html/config/index.php');
+include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
 $blog = new Blog();
 if (isset($_POST['filter'])==false) {
   $feed_filter = '';

@@ -1,6 +1,6 @@
 <?php
 // print_r($_GET);
-include_once('/home/content/59/13071759/html/config/index.php');
+include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
 $config = new Blog();
 
 

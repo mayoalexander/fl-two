@@ -1,7 +1,7 @@
 <?php
 	$user_name = Session::get('user_name');
 	$user_email = Session::get('user_email');
-	include_once('/home/content/59/13071759/html/config/index.php');
+	include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
 	$config = new Blog();
 
 	// get tag value

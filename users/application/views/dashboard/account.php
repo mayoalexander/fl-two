@@ -1,7 +1,7 @@
 <?php 
 // CHECK IF SOURCE IS FROM DASHBOARD OR COMPLETE PROFILE 
 if (isset($_GET['url']) && $_GET['url']=='dashboard/account/') {
-	include_once('/home/content/59/13071759/html/lvtr/config.php');
+	include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/lvtr/config.php');
 	$site = new Config();
 	$profile = $site->get_user_profile($_SESSION['user_name']);
 } else {

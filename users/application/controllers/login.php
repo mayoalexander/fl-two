@@ -389,7 +389,7 @@ class Login extends Controller
     function delete_file($file_id)
     {
         //echo '<pre>';
-        include_once('/home/content/59/13071759/html/config/index.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
         include(ROOT.'inc/connection.php');
         $sql = "DELETE FROM `files` WHERE `files`.`id` = $file_id LIMIT 1";
         $result = mysqli_query($con,$sql);
@@ -405,7 +405,7 @@ class Login extends Controller
     function delete_promo($file_id)
     {
         //echo '<pre>';
-        include_once('/home/content/59/13071759/html/config/index.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
         include(ROOT.'inc/connection.php');
         $sql = "DELETE FROM `images` WHERE `images`.`id` = $file_id LIMIT 1";
         $result = mysqli_query($con,$sql);
@@ -420,7 +420,7 @@ class Login extends Controller
     function delete_feed($file_id)
     {
         //echo '<pre>';
-        include_once('/home/content/59/13071759/html/config/index.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
         include(ROOT.'inc/connection.php');
         // $sql = "DELETE FROM `feed` WHERE `feed`.`id` = $file_id LIMIT 1";
         $sql = "UPDATE `feed` SET `status`='deleted' WHERE `feed`.`id` = $file_id LIMIT 1";
@@ -438,7 +438,7 @@ class Login extends Controller
     function archive_feed($file_id)
     {
         //echo '<pre>';
-        include_once('/home/content/59/13071759/html/config/index.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
         include(ROOT.'inc/connection.php');
         // $sql = "DELETE FROM `feed` WHERE `feed`.`id` = $file_id LIMIT 1";
         $sql = "UPDATE `feed` SET `status`='archived' WHERE `feed`.`id` = $file_id LIMIT 1";
@@ -463,7 +463,7 @@ class Login extends Controller
         //echo '<pre>';
         $data = $_POST;
         $date = date('Y-m-d');
-        include_once('/home/content/59/13071759/html/config/index.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
         $config = new Blog();
         include(ROOT.'inc/connection.php');
         $sql = "INSERT INTO  `amrusers`.`images` (

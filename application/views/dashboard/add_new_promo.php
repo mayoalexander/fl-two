@@ -1,5 +1,5 @@
 <?php 
-include_once('/home/content/59/13071759/html/config/index.php');
+include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
 $config = new Blog();
 $user_files = $config->get_all_files(Session::get('user_name'));
 // var_dump($user_files);
