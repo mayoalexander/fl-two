@@ -23,7 +23,7 @@
     // exit;
 
     /* load page title */
-    $site['page_title'] = $config->getPageTitle(strtoupper($_GET['url']));
+    // $site['page_title'] = $config->getPageTitle(strtoupper($_GET['url']));
 
 
 
@@ -48,11 +48,12 @@
     shuffle($front_page_photos);
 
 
-    if ($user_name = Session::get('user_name')) {
-        $upload_link =  'http://freelabel.net/upload/?uid='.$user_name;
-    }
+    // if ($user_name = Session::get('user_name')) {
+    //     $upload_link =  'http://freelabel.net/upload/?uid='.$user_name;
+    // }
 
-    if (!strpos($_GET['url'], '/image/')) {
+    if (!isset($_GET['url']) || !strpos($_GET['url'], '/image/')) {
+      // DEFAULT
       // FRONT PAGE & NOT QUERY SETS!
       // $site['meta_tag_photo'] = $site['media']['photos']['front-page'][0]['image'];
       $site['meta_tag_title'] = $site['media']['photos']['front-page'][0]['title'];
@@ -93,6 +94,7 @@
       }
 
     }
+    // $config->debug($site['page_title'],1);
 
 
 

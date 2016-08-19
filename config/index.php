@@ -598,6 +598,7 @@ class Blog
     switch ($site_name) {
       case 'freelabel.net' OR 'http://localhost:8888/':
         $site['name'] = 'FREELABEL';
+        $site['author'] = '@mayoalexander';
         $site['keywords'] = 'Create, Discover, Share, Upload, freelabel, texas, music, promotion, streaming, radio stations, network';
 
         //$site['description'] = 'The Leaders In Innovative Online Showcasing';
