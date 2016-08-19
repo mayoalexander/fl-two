@@ -42,7 +42,7 @@ function createthumb($name) {
     }
     imagedestroy($dst_img); 
     imagedestroy($src_img); 
-    $dest = str_replace($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/', 'http://freelabel.net/', $name);
+    $dest = str_replace('/kunden/homepages/0/d643120834/htdocs/', 'http://freelabel.net/', $name);
     */
 
     return $dest;

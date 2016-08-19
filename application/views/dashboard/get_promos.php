@@ -11,7 +11,7 @@
 	}
 
 	/* LOAD CONFIGURATION APP */
-	include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+	include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
 	$config = new Blog();
 
 	$promos = $config->getPromosByUser('admin' , $current_page, $tag);

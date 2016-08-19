@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
 $page_url ='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 	if (isset($_GET['u'])) {
 		$_SESSION['user_name'] = $_GET['u'];

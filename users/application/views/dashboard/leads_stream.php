@@ -1,5 +1,5 @@
 <?php 
-include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
 include(ROOT.'inc/connection.php');
 $todays_date = date('Y-m-d');
 $yesterdays_date = date('Y-m-d' , strtotime(' - 1 day'));

@@ -4,7 +4,7 @@ session_start();
     $user_name = $_POST['user_name'];
     $user_name_session = $_POST['user_name'];
   }
-include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
   if($user_name_session=='') {
   if ($_POST['user_name']!='') {
     $user_name_session = $_POST['user_name'];

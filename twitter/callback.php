@@ -4,8 +4,8 @@
  * Verify credentials and redirect to based on response from Twitter.
  */
 session_start();
-require_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/twitter/oauth/twitteroauth.php');
-require_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/twitter/config.php');
+require_once('/kunden/homepages/0/d643120834/htdocs/twitter/oauth/twitteroauth.php');
+require_once('/kunden/homepages/0/d643120834/htdocs/twitter/config.php');
 
 if (isset($_REQUEST['oauth_token']) && $_SESSION['oauth_token'] !== $_REQUEST['oauth_token']) {
   $_SESSION['oauth_status'] = 'oldtoken';

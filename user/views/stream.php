@@ -1,7 +1,7 @@
 <?php 
 
 
-include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
 
 //include_once(ROOT.'landing/header.php');
 
@@ -19,7 +19,7 @@ if (isset($_GET['view'])==false) {
 }
 $next_page = $current_page + 1;
 $next_page_read = $next_page +1;
-include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
 $blog = new Blog();
 
 //$posts = $blog->randomizePosts($current_page,13 , '' , $_SERVER['SCRIPT_URI']);

@@ -1,6 +1,6 @@
 sdfks<?php
 exit;
-include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
 //require ROOT.'vendor/autoload.php';
 //$log = new Monolog\Logger('name');
 //$log->pushHandler(new Monolog\Handler\StreamHandler('app.log', Monolog\Logger::WARNING));
@@ -16,7 +16,7 @@ include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.ph
     *
     */
 
-    include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+    include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
     /* HEADER THIS IS WHAT IT DOES:
     * builds the site variable
     * loads the user with the user session, and cookie data

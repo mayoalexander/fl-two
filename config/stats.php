@@ -1,5 +1,5 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
 date_default_timezone_set('America/Chicago');
 if (isset($page_title) && $page_title!='') {
 } else {
@@ -37,7 +37,7 @@ FETCH & UPDATE STATS
 		$date_posted = date('YYYY-MM-DD HH:MM:SS');
 		$last_visited = date('YYYY-MM-DD HH:MM:SS');
 		$id = date("ymdhis").rand(00000000,999999999); $debug[] = 'ID :'.$id;
-		include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+		include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
 		include_once(ROOT."inc/connection.php");
 		$query = "SELECT * FROM  `stats` WHERE `page` LIKE '%".$page_title."%' LIMIT 1";
 		$result = mysqli_query($con,$query);
