@@ -6,6 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    $vendorDir . '/ircmaxell/password-compat/lib/password.php',
-    $vendorDir . '/raveren/kint/Kint.class.php',
+    'e40631d46120a9c38ea139981f8dab26' => $vendorDir . '/ircmaxell/password-compat/lib/password.php',
+    '6bc45d0537e6858fd179bdbc31d62c79' => $vendorDir . '/raveren/kint/Kint.class.php',
 );
