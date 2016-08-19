@@ -421,7 +421,7 @@ class User
 
       include_once(ROOT.'inc/connection.php');
       $rand = rand(1111111111,9999999999);
-      $sql = "INSERT INTO  `amrusers`.`user_subscribers` (
+      $sql = "INSERT INTO  `user_subscribers` (
         `id` ,
         `status` ,
         `type` ,
@@ -827,7 +827,7 @@ class Blog
       // }
 
       $rand = rand(1111111111,9999999999);
-      $sql = "INSERT INTO  `amrusers`.`$table` (
+      $sql = "INSERT INTO  `$table` (
         `id` ,
         `title` ,
         `desc` ,
@@ -909,7 +909,7 @@ class Blog
       // }
 
       $rand = rand(1111111111,9999999999);
-      $sql = "INSERT INTO  `amrusers`.`$table` (
+      $sql = "INSERT INTO  `$table` (
         `id` ,
         `title` ,
         `user_name` ,
@@ -948,7 +948,7 @@ class Blog
       // }
 
       $rand = rand(1111111111,9999999999);
-      $sql = "INSERT INTO  `amrusers`.`$table` (
+      $sql = "INSERT INTO  `$table` (
         `id` ,
         `sender` ,
         `receiver` ,
@@ -983,7 +983,7 @@ class Blog
       // }
 
       $rand = rand(1111111111,9999999999);
-      $sql = "INSERT INTO  `amrusers`.`relationships` (
+      $sql = "INSERT INTO  `relationships` (
         `user_name` ,
         `following` ,
         `date_created`
@@ -1019,7 +1019,7 @@ class Blog
       // }
 
       $rand = rand(1111111111,9999999999);
-      $sql = "INSERT INTO  `amrusers`.`$table` (
+      $sql = "INSERT INTO  `$table` (
         `id` ,
         `title` ,
         `user_name` ,
@@ -1086,14 +1086,14 @@ class Blog
   public function update_promo($table,$col, $data, $id='')
   {
     include(ROOT.'inc/connection.php');
-    $sql = "UPDATE `amrusers`.`images` SET `files_attached`='$data' WHERE `images`.`id`='".$id."' LIMIT 1";
+    $sql = "UPDATE `images` SET `files_attached`='$data' WHERE `images`.`id`='".$id."' LIMIT 1";
     $updatequery = mysqli_query($con,$sql);
     if ($updatequery) {
       $res = true;
     } else {
       $res = false;
     }
-    // UPDATE  `amrusers`.`images` SET  `files_attached` =  '503, 502, 501, 500' WHERE  `images`.`id` =2270 LIMIT 1 ;
+    // UPDATE  `images` SET  `files_attached` =  '503, 502, 501, 500' WHERE  `images`.`id` =2270 LIMIT 1 ;
     return $res;
   }
 
@@ -1104,15 +1104,15 @@ class Blog
   {
     include(ROOT.'inc/connection.php');
     $newcount = $count+1;
-    // $sql = "UPDATE `amrusers`.`leads` SET `count`='$newcount' WHERE `leads`.`lead_twitter`='".$lead_id."' LIMIT 1";
-    $sql = "UPDATE  `amrusers`.`leads` SET  `count` = $newcount WHERE  `leads`.`lead_twitter` ='$lead_id' ";
+    // $sql = "UPDATE `leads` SET `count`='$newcount' WHERE `leads`.`lead_twitter`='".$lead_id."' LIMIT 1";
+    $sql = "UPDATE  `leads` SET  `count` = $newcount WHERE  `leads`.`lead_twitter` ='$lead_id' ";
     $updatequery = mysqli_query($con,$sql);
     if ($updatequery) {
       $res = true;
     } else {
       $res = false;
     }
-    // UPDATE  `amrusers`.`images` SET  `files_attached` =  '503, 502, 501, 500' WHERE  `images`.`id` =2270 LIMIT 1 ;
+    // UPDATE  `images` SET  `files_attached` =  '503, 502, 501, 500' WHERE  `images`.`id` =2270 LIMIT 1 ;
     return $res;
   }
 
@@ -1121,14 +1121,14 @@ class Blog
   public function update($table,$col, $data, $id='')
   {
     include(ROOT.'inc/connection.php');
-    $sql = "UPDATE `amrusers`.`$table` SET `$col`='$data' WHERE `$table`.`id`='".$id."' LIMIT 1";
+    $sql = "UPDATE `$table` SET `$col`='$data' WHERE `$table`.`id`='".$id."' LIMIT 1";
     $updatequery = mysqli_query($con,$sql);
     if ($updatequery) {
       $res = true;
     } else {
       $res = false;
     }
-    // UPDATE  `amrusers`.`images` SET  `files_attached` =  '503, 502, 501, 500' WHERE  `images`.`id` =2270 LIMIT 1 ;
+    // UPDATE  `images` SET  `files_attached` =  '503, 502, 501, 500' WHERE  `images`.`id` =2270 LIMIT 1 ;
     return $res;
   }
 
@@ -1142,7 +1142,7 @@ class Blog
     $_POST['title'] = mysqli_real_escape_string($con,$_POST['title']);
     $_POST['paypal_url'] = mysqli_real_escape_string($con,$_POST['paypal_url']);
 
-    $sql = "UPDATE  `amrusers`.`images` SET  `desc` =  '".$_POST['desc']."',
+    $sql = "UPDATE  `images` SET  `desc` =  '".$_POST['desc']."',
 `caption` =  '".$_POST['caption']."',
 `date` =  '".$_POST['date']."',
 `paypal_url` =  '".$_POST['paypal_url']."',
@@ -1156,7 +1156,7 @@ class Blog
       $res = false;
     }
     print_r($res);
-    // // UPDATE  `amrusers`.`images` SET  `files_attached` =  '503, 502, 501, 500' WHERE  `images`.`id` =2270 LIMIT 1 ;
+    // // UPDATE  `images` SET  `files_attached` =  '503, 502, 501, 500' WHERE  `images`.`id` =2270 LIMIT 1 ;
     return $res;
   }
 
@@ -1164,7 +1164,7 @@ class Blog
   public function  update_stats($counts , $promo_id) {
     $new_counts = $counts+1;
     include(ROOT."inc/connection.php");
-    $sql = "UPDATE  `amrusers`.`images` SET  `stats` =  '$new_counts' WHERE  `images`.`id` = $promo_id LIMIT 1 ;";
+    $sql = "UPDATE  `images` SET  `stats` =  '$new_counts' WHERE  `images`.`id` = $promo_id LIMIT 1 ;";
     if ($update_count = mysqli_query($con,$sql)) {
       $debug[] = 'Updated!!!: '.$sql;
     } else {
@@ -3240,7 +3240,6 @@ public function display_promo_playlist_single($data , $featured=false, $public=f
 
   public function getPhotoAds($user_name='' , $search_query='advertise registration', $limit=10) {
     include(ROOT.'inc/connection.php');
-      //echo '<pre>';
     $sql = "SELECT *
 FROM  `images`
 WHERE  `desc` LIKE CONVERT( _utf8 '%$search_query%'
@@ -3251,7 +3250,8 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
     while($row = mysqli_fetch_assoc($result_stats)) {
       $photos[] = $row;
     }
-    //echo '<br>'.$sql.'<br>';
+
+    mysqli_close($con);
     return $photos;
   }
 
@@ -4738,7 +4738,7 @@ class UploadFile {
   }
   public function saveToDatabase($file) {
 
-    $sql= "INSERT INTO  `amrusers`.`blog` (
+    $sql= "INSERT INTO  `blog` (
       `id` ,
       `type` ,
       `blog_story_url` ,
@@ -4803,7 +4803,7 @@ class UploadFile {
 
   public function saveToBackUpDatabase($file) {
     include(ROOT.'inc/connection.php');
-    $sql= "INSERT INTO  `amrusers`.`feed` (
+    $sql= "INSERT INTO  `feed` (
       `id` ,
       `type` ,
       `blog_story_url` ,

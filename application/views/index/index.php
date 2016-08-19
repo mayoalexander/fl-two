@@ -146,20 +146,21 @@ $current_page = '0';
   <section class="container col-md-3 promo-feed">
           <h2 class="page-header clearfix"><span class="pull-left">Promos</span></h2>
         <?php 
-          // foreach ($site['media']['photos']['ads'] as $key => $site) {
-          //   echo "<panel class='promo-panel'>
-          //           <span class='text-muted'>".$site['type']."</span>
-          //           <a href=\"http://freelabel.net/users/index/image/".$site['id']."\"><img src=\"".$site['image']."\"></a>
-          //           <h5 class='promo-title-head text-muted'>".$site['title']."</h5>
-          //           <!--<a href=\"http://freelabel.net/users/index/image/".$site['id']."\" class=\"btn btn-secondary-outline m-b-md view-promo-button\">View Now</a>-->
-          //         </panel>";
-          // }
+          foreach ($site['media']['photos']['ads'] as $key => $site) {
+            echo "<panel class='promo-panel'>
+                    <span class='text-muted'>".$site['type']."</span>
+                    <a href=\"http://freelabel.net/users/index/image/".$site['id']."\"><img src=\"".$site['image']."\"></a>
+                    <h5 class='promo-title-head text-muted'>".$site['title']."</h5>
+                    <!--<a href=\"http://freelabel.net/users/index/image/".$site['id']."\" class=\"btn btn-secondary-outline m-b-md view-promo-button\">View Now</a>-->
+                  </panel>";
+          }
         ?>
   </section> 
   <section id='section-linemove-1' class="container page-header main-feed col-md-9">
           <?php 
-          //$files = $config->display_user_posts_new('admin' , $current_page);
-          //echo $files['posts']; ?>
+          $files = $config->display_user_posts_new('admin' , $current_page);
+          echo $files['posts']; 
+          ?>
   </section>
 </section>
 
