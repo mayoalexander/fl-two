@@ -3364,8 +3364,7 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
       OR $user_name == 'AlexMayo' 
       // OR $user_name == 'Fokus' 
       OR $user_name == 'DrGhostmonious'
-      OR $user_name == 'DjSyonKream'
-      OR $user_name == 'DESERTWXLF') {
+      OR $user_name == 'DjSyonKream') {
         // $site['map'][] = array('title' => 'Admin' , 'path'=>'dashboard/admin', 'icon'=>'cog'  );
         $site['map'][] = array('title' => 'Administration' , 'path'=>'dashboard/dev', 'icon'=>'cog'  );
         // $site['map'][] = array('title' => 'Site' , 'path'=>'index/menu', 'icon'=>'cog'  );
@@ -3374,7 +3373,7 @@ COLLATE latin1_swedish_ci AND `user_name` LIKE '%$user_name%' ORDER BY `id` DESC
 
       $site_map .= '
       <li class="nav-item nav-item-toggable active"">
-        <a class="nav-link gn-icon gn-icon-'.$page['icon'].' navi-'.$page['title'].'" href="'.$site['http'].'users/'.$page['path'].'" >'.$page['title'].'<span class="sr-only">(current)</span></a>
+        <a class="nav-link gn-icon gn-icon-'.$page['icon'].' navi-'.$page['title'].'" href="'.HTTP.'users/'.$page['path'].'" >'.$page['title'].'<span class="sr-only">(current)</span></a>
         '.$submenu.'
       </li>';
     }

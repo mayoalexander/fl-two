@@ -134,7 +134,7 @@ $current_page = '0';
     <h1 class="display-3"><?php echo $site['name']; ?></h1>
     <p class="header-description"><?php echo $site['description']; ?> <a href="<?php echo $site['http']; ?>users/login" class="jumbolink">Login Now</a>.</p>
     <!--<p class="m-b-lg"><?php echo $site['media']['photos']['front-page'][$r]['title']; ?> <a href="<?php echo 'http://freelabel.net/users/index/image/'.$site['media']['photos']['front-page'][$r]['id']; ?>"class="jumbolink">View Now</a>.</p> -->
-    <a class="btn btn-secondary-outline btn-xs m-b-md" href="http://freelabel.net/users/<?php echo $calltoaction_link; ?>" role="button"><?php echo $calltoaction; ?></a>
+    <a class="btn btn-secondary-outline btn-xs m-b-md" href="<?php echo HTTP.'users/'.$calltoaction_link; ?>" role="button"><?php echo $calltoaction; ?></a>
   </div>
 </header>
 
