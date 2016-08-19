@@ -105,23 +105,23 @@
     <?php // displa meta tags
     echo $config->display_site_meta($site); ?>
 
-    <link rel="stylesheet" href="http://freelabel.net/landio/css/landio.css">
+    <link rel="stylesheet" href="<?php echo HTTP; ?>landio/css/landio.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/nexus/css/component.css" />
-    <link rel="stylesheet" type="text/css" href="http://freelabel.net/public/css/bootstrap-social/bootstrap-social.css"/>
-    <link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/tabs/css/tabs.css">
-    <link rel="stylesheet" type="text/css" href="http://freelabel.net/landing/view/tabs/css/tabstyles.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo HTTP; ?>landing/view/nexus/css/component.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo HTTP; ?>public/css/bootstrap-social/bootstrap-social.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo HTTP; ?>landing/view/tabs/css/tabs.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo HTTP; ?>landing/view/tabs/css/tabstyles.css">
     <link href='https://fonts.googleapis.com/css?family=Oswald:400|Open+Sans+Condensed:300|Abel' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
     <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
-    <link rel="stylesheet" href="http://freelabel.net/upload/css/jquery.fileupload.css">
-    <link rel="stylesheet" href="http://freelabel.net/upload/css/jquery.fileupload-ui.css">
-    <link rel="stylesheet" href="http://freelabel.net/public/js/jquery-ui.min.css">
+    <link rel="stylesheet" href="<?php echo HTTP; ?>upload/css/jquery.fileupload.css">
+    <link rel="stylesheet" href="<?php echo HTTP; ?>upload/css/jquery.fileupload-ui.css">
+    <link rel="stylesheet" href="<?php echo HTTP; ?>public/js/jquery-ui.min.css">
     <!-- CSS adjustments for browsers with JavaScript disabled -->
-    <noscript><link rel="stylesheet" href="http://freelabel.net/css/jquery.fileupload-noscript.css"></noscript>
-    <noscript><link rel="stylesheet" href="http://freelabel.net/css/jquery.fileupload-ui-noscript.css"></noscript>
-    <script src="http://freelabel.net/landing/view/tabs/js/modernizr.custom.js"></script>
-    <script src="http://freelabel.net/js/list.js"></script>
+    <noscript><link rel="stylesheet" href="<?php echo HTTP; ?>css/jquery.fileupload-noscript.css"></noscript>
+    <noscript><link rel="stylesheet" href="<?php echo HTTP; ?>css/jquery.fileupload-ui-noscript.css"></noscript>
+    <script src="<?php echo HTTP; ?>landing/view/tabs/js/modernizr.custom.js"></script>
+    <script src="<?php echo HTTP; ?>js/list.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="<?php echo HTTP; ?>js/application.js"></script>
 

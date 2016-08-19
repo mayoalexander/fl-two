@@ -41,14 +41,13 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="http://freelabel.net/jPlayer/dist/jplayer/jquery.jplayer.min.js"></script>
-<script src="http://freelabel.net/landio/js/landio.min.js"></script>
-<script src="http://freelabel.net/js/jquery-ui.min.js"></script>
-<script src="http://freelabel.net/config/globals.js"></script>
-<script src="http://freelabel.net/landing/view/nexus/js/classie.js"></script>
-<script src="http://freelabel.net/landing/view/nexus/js/gnmenu.js"></script>
-<script src="http://freelabel.net/js/radio.js"></script>
-<script type="text/javascript" src="http://freelabel.net/js/jquery.jeditable.js"></script>
+<script src="<?php echo HTTP; ?>landio/js/landio.min.js"></script>
+<script src="<?php echo HTTP; ?>js/jquery-ui.min.js"></script>
+<script src="<?php echo HTTP; ?>config/globals.js"></script>
+<script src="<?php echo HTTP; ?>landing/view/nexus/js/classie.js"></script>
+<script src="<?php echo HTTP; ?>landing/view/nexus/js/gnmenu.js"></script>
+<script src="<?php echo HTTP; ?>js/radio.js"></script>
+<script type="text/javascript" src="<?php echo HTTP; ?>js/jquery.jeditable.js"></script>
 <script>
   new gnMenu( document.getElementById( 'gn-menu' ) );
 </script>

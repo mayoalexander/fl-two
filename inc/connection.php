@@ -3,11 +3,16 @@
 //These variable values come from your hosting account.
 
 // back up
-$hostname = 'amrusers.db.13071759.hostedresource.com';
-$dbname = "amrusers";
-$username = "amrusers";
-$password = "Leighl11!";
+// $hostname = 'amrusers.db.13071759.hostedresource.com';
+// $dbname = "amrusers";
+// $username = "amrusers";
+// $password = "Leighl11!";
 
+
+$hostname = 'localhost';
+$dbname = "amrusers";
+$username = "root";
+$password = "root";
 // $hostname = "amrusers.db.13071759.hostedresource.com";
 // $dbname = "amrusers";
 // $username = "amrusers";

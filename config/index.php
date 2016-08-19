@@ -28,8 +28,8 @@ if ($page_url == 'http://thebae.watch/') {
   define("SITE_SHORT", 'FREELABEL.net');
   define("SITE_NAME", 'FREELABEL');
   define("HTTP", ($_SERVER["SERVER_NAME"] == "localhost")
-   ? "http://localhost:8888/"
-   : "http://freelabel.net/"
+   ? "http://localhost:8888". $_SERVER['REQUEST_URI']
+   : "http://freelabel.net". $_SERVER['REQUEST_URI']
    );
 }
 
