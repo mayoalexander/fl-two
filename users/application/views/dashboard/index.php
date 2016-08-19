@@ -1,11 +1,9 @@
 <?php
   include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
 
-  $config = new Blog($_SERVER['HTTP_HOST']);
+  // $config = new Blog($_SERVER['HTTP_HOST']);
   $account_type = $config->getUserType($site['user']['name']);
 
-  // add these stats in here somehwere in the layout
-  $stats = $config->getStatsByUser($site['user']['name']);
   $current_page = '0';
   $user = $config->getUserData($site['user']['name']);
 

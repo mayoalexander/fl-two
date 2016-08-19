@@ -8,13 +8,13 @@
 /**
 * Edit User Posts
 */
-include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+include_once('/home/content/59/13071759/html/config/index.php');
 
 class Posts
 {
 	function __construct()
 	{
-		include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+		include_once('/home/content/59/13071759/html/config/index.php');
 		include(ROOT.'/inc/connection.php');
 	}
 	public function updateBlogPost($update) {
@@ -59,7 +59,7 @@ class Photos
 
 	function __construct()
 	{
-		include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+		include_once('/home/content/59/13071759/html/config/index.php');
 		include(ROOT.'/inc/connection.php');
 	}
 	public function updatePhotoTitle($update) {
@@ -176,7 +176,7 @@ class Account
 
 	function __construct()
 	{
-		include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+		include_once('/home/content/59/13071759/html/config/index.php');
 		include(ROOT.'/inc/connection.php');
 	}
 
@@ -251,7 +251,7 @@ class Leads
 
 	function __construct()
 	{
-		include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+		include_once('/home/content/59/13071759/html/config/index.php');
 	}
 	public function updateDB($update) {
 		$table = $update['db_table'];
@@ -281,7 +281,7 @@ class Files
 
 	function __construct()
 	{
-		include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+		include_once('/home/content/59/13071759/html/config/index.php');
 	}
 	public function updateDB($update) {
 		$table = $update['db_table'];
@@ -311,7 +311,7 @@ class Promos
 
 	function __construct()
 	{
-		include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+		include_once('/home/content/59/13071759/html/config/index.php');
 	}
 	public function updateDB($update) {
 		$table = $update['db_table'];
@@ -344,7 +344,7 @@ class Events
 
 	function __construct()
 	{
-		include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+		include_once('/home/content/59/13071759/html/config/index.php');
 		include(ROOT.'/inc/connection.php');
 	}
 

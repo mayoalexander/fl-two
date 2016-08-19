@@ -2,6 +2,7 @@
 /images
 /lvtr
 /users/vendor
+/submit/uploads
 /upload/server/php/files
 /upload/server/php/upload
 composer.lock
