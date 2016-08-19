@@ -1521,7 +1521,7 @@ class Blog
       $blog[] = $row;
         //echo '<hr>';
     }
-    if (!$blog) {
+    if (!isset($blog)) {
       $blog = NULL;
     }
     return $blog;
@@ -2122,6 +2122,7 @@ public function displayCategories() {
 
 
   public function display_user_posts_new($user_name, $page=0) {
+    $b['posts']='';
     $page = (int)$page;
     $page_read = (($page * 20)+1).' - '. (20 * ($page+1));
     if ($page===0) {
@@ -2138,7 +2139,6 @@ public function displayCategories() {
 
         // GRAB GLOBAL FEED
         $feed_posts = $this->getPostsByUser($page,20,$user_name);
-
         shuffle($feed_posts);
       foreach ($feed_posts as $track_num => $meta) {
 
@@ -3850,7 +3850,7 @@ $twitter_share = "#FLMAG | ".$twitter.'
         id="'.$post_id.'"
         data-user="'.$user_name.'"
         data-filepath="'.$post_mp3.'" 
-        data-filetitle="'.$blogtitle.'"
+        data-filetitle="'.$post_title.'"
          ></a></li>
 
       <a id="like_button'.$post_id.'" class="btn btn-social btn-default btn-facebook" href="'.$post_mp3.'#" onclick="likePost('.$post_id.', '.$current_likes.' , \''.$user_name.'\')" style="display:none;">
