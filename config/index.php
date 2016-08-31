@@ -392,7 +392,6 @@ class User
      //echo '<hr>';
         include_once(ROOT.'user/views/stream.php');
       //echo 'No View Set!';
-
       }
     }
 

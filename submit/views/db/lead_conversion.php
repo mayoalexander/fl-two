@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php include_once('/home/content/59/13071759/html/config/index.php');
+=======
+<?php include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
+>>>>>>> master
 // include_once(ROOT.'twitter/index.php');
 $leads_conversion = new Config();
 //include_once(ROOT.'submit/views/db/current_clients.php');

@@ -3,7 +3,7 @@ $page_title = 'REGISTER';
 $page_desc = 'Register For Your FREELABEL Account';
 //include('../new_header.php');
 
-include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
 define(WORDING_REGISTRATION_USERNAME, 'Username');
 define(WORDING_REGISTRATION_EMAIL, 'Email');
 define(WORDING_REGISTRATION_PASSWORD, 'Password');

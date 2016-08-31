@@ -1,5 +1,9 @@
 <?php 
+<<<<<<< HEAD
 include_once('/home/content/59/13071759/html/config/index.php');
+=======
+include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
+>>>>>>> master
 $config = new Blog(); 
 ?>
 <a name="currentClients"></a>

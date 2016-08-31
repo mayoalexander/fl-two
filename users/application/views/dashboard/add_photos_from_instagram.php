@@ -3,8 +3,8 @@
 
 
     // CREATE QUICK URLS
-        include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
-        include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/upload.php');
+        include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
+        include_once('/kunden/homepages/0/d643120834/htdocs/config/upload.php');
         $config = new UploadFile();
         $upload = new Upload();
         include_once(ROOT.'inc/connection.php');

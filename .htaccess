@@ -101,14 +101,14 @@ RewriteRule ^L/@([\w-]+)/([\w-]+)$ 									/config/profile.php?user_twitter_nam
 #RewriteRule ^L/@([\w-]+)/([\w-]+)$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
 
 
-RewriteRule ^@([\w-]+)/$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
-RewriteRule ^@([\w-]+)$ 									/config/profile.php?user_twitter_name=$1&blog_title=$2
+RewriteRule ^@([\w-]+)/$ 									/lvtr/views/public.php?twitter=$1&blog_title=$2
+RewriteRule ^@([\w-]+)$ 									/lvtr/views/public.php?twitter=$1&blog_title=$2
 
-RewriteRule ^@([\w-]+)/t/([\w-]+)/$ 		/config/profile.php?user_twitter_name=$1&post_id=$2
-RewriteRule ^@([\w-]+)/t/([\w-]+)$ 		/config/profile.php?user_twitter_name=$1&post_id=$2
+RewriteRule ^@([\w-]+)/t/([\w-]+)/$ 						/lvtr/views/public.php?twitter=$1&post_id=$2
+RewriteRule ^@([\w-]+)/t/([\w-]+)$ 							/lvtr/views/public.php?twitter=$1&post_id=$2
 
-RewriteRule ^@([\w-]+)/([\w-]+)/$ 		/config/profile.php?user_twitter_name=$1&blog_title=$2
-RewriteRule ^@([\w-]+)/([\w-]+)$ 		/config/profile.php?user_twitter_name=$1&blog_title=$2
+RewriteRule ^@([\w-]+)/([\w-]+)/$ 							/lvtr/views/public.php?twitter=$1&blog_title=$2
+RewriteRule ^@([\w-]+)/([\w-]+)$ 							/lvtr/views/public.php?twitter=$1&blog_title=$2
 
 
 RewriteRule ^@([\w-]+)/@([\w-]+)/$ 		/config/profile.php?user_twitter_name=$1&blog_title=$2

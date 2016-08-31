@@ -8,13 +8,21 @@
 /**
 * Edit User Posts
 */
+<<<<<<< HEAD
 include_once('/home/content/59/13071759/html/config/index.php');
+=======
+include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
+>>>>>>> master
 
 class Posts
 {
 	function __construct()
 	{
+<<<<<<< HEAD
 		include_once('/home/content/59/13071759/html/config/index.php');
+=======
+		include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
+>>>>>>> master
 		include(ROOT.'/inc/connection.php');
 	}
 	public function updateBlogPost($update) {
@@ -59,7 +67,11 @@ class Photos
 
 	function __construct()
 	{
+<<<<<<< HEAD
 		include_once('/home/content/59/13071759/html/config/index.php');
+=======
+		include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
+>>>>>>> master
 		include(ROOT.'/inc/connection.php');
 	}
 	public function updatePhotoTitle($update) {
@@ -176,7 +188,11 @@ class Account
 
 	function __construct()
 	{
+<<<<<<< HEAD
 		include_once('/home/content/59/13071759/html/config/index.php');
+=======
+		include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
+>>>>>>> master
 		include(ROOT.'/inc/connection.php');
 	}
 
@@ -251,7 +267,11 @@ class Leads
 
 	function __construct()
 	{
+<<<<<<< HEAD
 		include_once('/home/content/59/13071759/html/config/index.php');
+=======
+		include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
+>>>>>>> master
 	}
 	public function updateDB($update) {
 		$table = $update['db_table'];
@@ -281,7 +301,11 @@ class Files
 
 	function __construct()
 	{
+<<<<<<< HEAD
 		include_once('/home/content/59/13071759/html/config/index.php');
+=======
+		include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
+>>>>>>> master
 	}
 	public function updateDB($update) {
 		$table = $update['db_table'];
@@ -311,7 +335,11 @@ class Promos
 
 	function __construct()
 	{
+<<<<<<< HEAD
 		include_once('/home/content/59/13071759/html/config/index.php');
+=======
+		include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
+>>>>>>> master
 	}
 	public function updateDB($update) {
 		$table = $update['db_table'];
@@ -344,7 +372,11 @@ class Events
 
 	function __construct()
 	{
+<<<<<<< HEAD
 		include_once('/home/content/59/13071759/html/config/index.php');
+=======
+		include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
+>>>>>>> master
 		include(ROOT.'/inc/connection.php');
 	}
 

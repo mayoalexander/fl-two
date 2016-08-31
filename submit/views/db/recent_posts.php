@@ -19,7 +19,11 @@ if ($user_name_session == false) {
     $user_name = $user_name_session;
   }
 
+<<<<<<< HEAD
 include_once('/home/content/59/13071759/html/config/index.php');
+=======
+include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
+>>>>>>> master
 $ud = new UserDashboard($_SESSION['user_name']);
 $upload_options = $ud->getUserUploadOptions($user_name_session);
 

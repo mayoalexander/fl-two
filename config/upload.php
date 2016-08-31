@@ -3,7 +3,7 @@
 class Upload {
 
 	public function __construct() {
-		include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+		include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
 		// require_once ROOT . 'users/vendor/autoload.php';
 		//$sprite = new ThumbnailSprite();
         //$thumb_app = new Facebook(array('appId' => 'FACEBOOK_LOGIN_APP_ID', 'secret' => 'FACEBOOK_LOGIN_APP_SECRET'));
@@ -12,7 +12,7 @@ class Upload {
 	}
 
 	public function checkIfUserExists($userNameToFind) {
-		include_once($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/config/index.php');
+		include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
 		$user = new User();
 		if ($user->userExists($userNameToFind) == true) {
 			return true;
@@ -340,7 +340,7 @@ class Upload {
 		// $SourceFile, $WaterMarkText, $DestinationFile
 	   $SourceFile = $file['photo'];
 	   $WaterMarkText = 'FREELABEL.NET';
-	   $DestinationFile = $_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/test/uploads/'.$file['twitter'].'-'.rand(11111,99999);
+	   $DestinationFile = '/kunden/homepages/0/d643120834/htdocs/test/uploads/'.$file['twitter'].'-'.rand(11111,99999);
 	   list($width, $height) = getimagesize($SourceFile);
 	   $image_p = imagecreatetruecolor($width, $height);
 	   $image = imagecreatefromjpeg($SourceFile);
@@ -363,8 +363,8 @@ class Upload {
 
 	public function createthumb($name,$filename,$new_w,$new_h) {
 
-		$filename = str_replace('http://freelabel.net/', $_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/', $filename);
-		$name = str_replace('http://freelabel.net/', $_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/', $name);
+		$filename = str_replace('http://freelabel.net/', '/kunden/homepages/0/d643120834/htdocs/', $filename);
+		$name = str_replace('http://freelabel.net/', '/kunden/homepages/0/d643120834/htdocs/', $name);
 
 		$system=explode('.',$name);
 		if (preg_match('/jpg|jpeg/',$system[1])){
@@ -400,7 +400,7 @@ class Upload {
 		}
 		imagedestroy($dst_img); 
 		imagedestroy($src_img); 
-		$dest = str_replace($_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI'].'/', 'http://freelabel.net/', $filename);
+		$dest = str_replace('/kunden/homepages/0/d643120834/htdocs/', 'http://freelabel.net/', $filename);
 		return $dest;
 	}
 

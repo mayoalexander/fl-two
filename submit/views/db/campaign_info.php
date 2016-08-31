@@ -10,7 +10,11 @@ if ($_SESSION['user_name']=='') {
 }
 //print_r($user_name_session);
 
+<<<<<<< HEAD
 include_once('/home/content/59/13071759/html/config/index.php');
+=======
+include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
+>>>>>>> master
 $db = new UserDashboard($_SESSION);
 
 // $user = $db->getUserData($user_name_session);

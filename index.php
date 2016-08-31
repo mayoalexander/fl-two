@@ -1,4 +1,6 @@
 <?php
+header('Location: lvtr/');
+exit;
 // echo '<pre>';
 // var_dump($_SERVER);
 // exit;
