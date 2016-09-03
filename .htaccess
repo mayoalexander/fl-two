@@ -104,8 +104,8 @@ RewriteRule ^L/@([\w-]+)/([\w-]+)$ 									/config/profile.php?user_twitter_nam
 RewriteRule ^@([\w-]+)/$ 									/lvtr/views/public.php?twitter=$1&blog_title=$2
 RewriteRule ^@([\w-]+)$ 									/lvtr/views/public.php?twitter=$1&blog_title=$2
 
-RewriteRule ^@([\w-]+)/t/([\w-]+)/$ 						/lvtr/views/public.php?twitter=$1&post_id=$2
-RewriteRule ^@([\w-]+)/t/([\w-]+)$ 							/lvtr/views/public.php?twitter=$1&post_id=$2
+RewriteRule ^@([\w-]+)/id/([\w-]+)/$ 						/lvtr/views/public.php?post_id=$2
+RewriteRule ^@([\w-]+)/id/([\w-]+)$ 							/lvtr/views/public.php?post_id=$2
 
 RewriteRule ^@([\w-]+)/([\w-]+)/$ 							/lvtr/views/public.php?twitter=$1&blog_title=$2
 RewriteRule ^@([\w-]+)/([\w-]+)$ 							/lvtr/views/public.php?twitter=$1&blog_title=$2

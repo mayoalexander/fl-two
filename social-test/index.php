@@ -1,6 +1,6 @@
 <?php 
-include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
-require ROOT."social-test/vendor/autoload.php";
+// include_once('/kunden/homepages/0/d643120834/htdocs/config/index.php');
+require "/kunden/homepages/0/d643120834/htdocs/social-test/vendor/autoload.php";
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 
